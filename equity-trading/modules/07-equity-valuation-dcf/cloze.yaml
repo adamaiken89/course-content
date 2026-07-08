@@ -1,0 +1,70 @@
+- id: c.1
+  question: Free Cash Flow to Firm equals EBIT times one minus the tax rate, plus
+    {blank}, minus capital expenditures, minus change in working capital.
+  answer: depreciation and amortization
+  difficulty: 1
+  tags:
+  - formula
+- id: c.2
+  question: Free Cash Flow to {blank} equals FCFF minus after-tax interest expense
+    plus net borrowing.
+  answer: Equity
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: Terminal value using the perpetuity growth method is calculated as FCF_(n+1)
+    divided by {blank} minus the perpetual growth rate.
+  answer: WACC
+  difficulty: 1
+  tags:
+  - formula
+- id: c.4
+  question: In the exit multiple method, terminal value equals terminal year {blank}
+    multiplied by a selected valuation multiple.
+  answer: EBITDA
+  difficulty: 1
+  tags:
+  - formula
+- id: c.5
+  question: WACC equals cost of equity times equity weight plus cost of {blank} after-tax
+    times debt weight.
+  answer: debt
+  difficulty: 1
+  tags:
+  - formula
+- id: c.6
+  question: The {blank} model estimates cost of equity as risk-free rate plus beta
+    times equity risk premium.
+  answer: CAPM
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.7
+  question: A beta of {blank} means the stock is expected to move in line with the
+    overall market.
+  answer: '1.0'
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: In a DCF sensitivity table, the two most commonly varied inputs are {blank}
+    and the perpetual growth rate.
+  answer: WACC
+  difficulty: 2
+  tags:
+  - concept
+- id: c.9
+  question: If perpetual growth rate equals or exceeds {blank}, the Gordon Growth
+    terminal value formula breaks down mathematically.
+  answer: WACC
+  difficulty: 3
+  tags:
+  - concept
+- id: c.10
+  question: To derive equity value from enterprise value in a DCF, subtract net debt
+    (total debt minus {blank}) from enterprise value.
+  answer: cash
+  difficulty: 2
+  tags:
+  - formula

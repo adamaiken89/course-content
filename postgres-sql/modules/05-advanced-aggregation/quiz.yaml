@@ -1,0 +1,119 @@
+- id: "5.1"
+  question: What does FILTER (WHERE ...) do to a single aggregate call?
+  options:
+    a: restricts just that aggregate's input rows
+    b: applies the condition to the whole query first
+    c: adds a HAVING clause
+    d: forces a table scan
+  answer: a
+  explanation: FILTER scopes one aggregate to matching rows, so several criteria aggregate side by side in one pass.
+  difficulty: 1
+  tags: [terminology]
+
+- id: "5.2"
+  question: Which GROUP BY form produces region subtotals, product subtotals, and a grand total in one result?
+  options:
+    a: GROUP BY DISTINCT region
+    b: GROUP BY region, product
+    c: GROUP BY ROLLUP (region, product)
+    d: GROUP BY CUBE (product)
+  answer: c
+  explanation: ROLLUP drills down the given hierarchy, adding subtotals and the grand total.
+  difficulty: 2
+  tags: [scenario]
+
+- id: "5.3"
+  question: GROUPING(region) equals 1 on a ROLLUP row means what?
+  options:
+    a: region is the detail level
+    b: region is uppercase
+    c: region has a real NULL value
+    d: region is a subtotal placeholder for the collapsed dimension
+  answer: d
+  explanation: GROUPING() returns 1 when the column is rolled up (absent), distinguishing placeholder NULLs from real ones.
+  difficulty: 2
+  tags: [concept]
+
+- id: "5.4"
+  question: Which construct asks for the FULL cross-tab of two dimensions, including every combination?
+  options:
+    a: CUBE
+    b: ROLLUP
+    c: GROUPING SETS
+    d: HAVING
+  answer: a
+  explanation: CUBE(a,b) covers a, b, (a,b), and grand total — every combination.
+  difficulty: 2
+  tags: [comparison]
+
+- id: "5.5"
+  question: How many grouping levels does ROLLUP (a,b) produce?
+  options:
+    a: "1"
+    b: "3"
+    c: "2"
+    d: "4"
+  answer: b
+  explanation: (a,b), then (a) alone, then grand total — the dimension prefix hierarchy.
+  difficulty: 2
+  tags: [concept]
+
+- id: "5.6"
+  question: Which aggregate joins grouped values into a comma-separated text list?
+  options:
+    a: count
+    b: mode
+    c: array_agg
+    d: string_agg
+  answer: d
+  explanation: string_agg(x, ',') concatenates with a separator; array_agg builds a native array.
+  difficulty: 1
+  tags: [terminology]
+
+- id: "5.7"
+  question: percentile_cont(0.5) WITHIN GROUP (ORDER BY x) returns what, given a distribution?
+  options:
+    a: the most common value
+    b: the maximum
+    c: the median (interpolated)
+    d: the count of matches
+  answer: c
+  explanation: Ordered-set aggregate returns the continuous median/quantile by interpolation over the ordered group.
+  difficulty: 2
+  tags: [concept]
+
+- id: "5.8"
+  question: Why does percentile_cont typically add a Sort under the Aggregate in EXPLAIN?
+  options:
+    a: percentile needs ORDER BY x within its group
+    b: it always needs the table sorted permanently
+    c: GROUP BY needs the partition sorted by x to interpolate
+    d: it never adds a Sort
+  answer: a
+  explanation: Ordered-set aggregates require their own WITHIN GROUP ordering, which the planner materializes as a Sort unless an index supplies it.
+  difficulty: 3
+  tags: [concept]
+
+- id: "5.9"
+  question: When is FILTER pointless?
+  options:
+    a: when several aggregates need different conditions in one scan
+    b: when an outer WHERE already restricts rows to exactly what the aggregate would see
+    c: when GROUPING SETS is present
+    d: never
+  answer: b
+  explanation: If outer filters already reduce input to the FILTER predicate, FILTER adds nothing.
+  difficulty: 2
+  tags: [scenario]
+
+- id: "5.10"
+  question: Which GROUP BY allows an ARBITRARY mix of grouping combinations, e.g. (a,b), (a), ()?
+  options:
+    a: ROLLUP
+    b: CUBE
+    c: GROUPING SETS
+    d: WHERE
+  answer: c
+  explanation: GROUPING SETS enumerates exactly the combos you list; ROLLUP/CUBE are shorthand subsets.
+  difficulty: 2
+  tags: [comparison]

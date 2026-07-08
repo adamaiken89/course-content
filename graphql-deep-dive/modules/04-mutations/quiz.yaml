@@ -1,0 +1,127 @@
+- id: '4.1'
+  question: How does GraphQL execution differ between queries and mutations?
+  options:
+    b: Queries run in parallel, mutations in series
+    a: Queries run in series, mutations in parallel
+    c: Both run in parallel
+    d: Both run in series
+  answer: b
+  explanation: Queries execute fields in parallel (no side effects). Mutations execute
+    top-level fields serially to guarantee order for side-effect-dependent operations.
+  difficulty: 2
+  tags: []
+- id: '4.2'
+  question: What directive enforces exactly-one-field-set on input types?
+  options:
+    d: '@oneOf'
+    a: '@unique'
+    b: '@exclusive'
+    c: '@union'
+  answer: d
+  explanation: '@oneOf (GraphQL spec 2024+) validates that exactly one field is set
+    on the input. Useful for mutually exclusive options.'
+  difficulty: 2
+  tags: []
+- id: '4.3'
+  question: Mutation `createOrder` must not create duplicate if client retries. What
+    mechanism?
+  options:
+    a: Idempotency key — check before creating
+    b: HTTP POST is idempotent by default
+    c: Rate limiting prevents retries
+    d: Database unique constraint on order ID
+  answer: a
+  explanation: Idempotency key stored in input. Resolver checks if key was processed
+    before creating. HTTP POST is not idempotent. Rate limiting doesn't prevent duplicates.
+  difficulty: 2
+  tags: []
+- id: '4.4'
+  question: Mutation creates a user. Email is duplicate. Where does this error belong?
+  options:
+    a: Payload errors[] field
+    b: Top-level GraphQL errors[]
+    c: HTTP 409 status code
+    d: Throw an exception
+  answer: a
+  explanation: Business logic error (duplicate) belongs in the payload's errors[]
+    field alongside partial data. Top-level errors are for system failures.
+  difficulty: 2
+  tags: []
+- id: '4.5'
+  question: What is the purpose of a mutation payload type?
+  options:
+    b: Return entity + errors + query root + future-extensible fields
+    a: Reduce response size
+    c: Bypass resolver chain
+    d: Make mutations cacheable
+  answer: b
+  explanation: Payload pattern bundles the entity, field-level errors, optional query
+    root for chaining, and allows future fields without breaking changes.
+  difficulty: 2
+  tags: []
+- id: '4.6'
+  question: 'Mutation `mutation { a: createUser(...) b: createUser(...) }`. 10 users
+    each. Execution order?'
+  options:
+    c: a completes, then b starts
+    a: Both execute simultaneously
+    b: b completes, then a starts
+    d: Server chooses order
+  answer: c
+  explanation: Top-level mutation fields execute serially left-to-right. a runs to
+    completion before b starts.
+  difficulty: 2
+  tags: []
+- id: '4.7'
+  question: BatchCreateUsers mutation receives 3 users. 1st succeeds, 2nd fails (duplicate
+    email), 3rd succeeds. Payload shape?
+  options:
+    d: 'users: [User], errors: [UserError] with all results'
+    a: 'users: [User, null, User], errors: null'
+    b: 'data: null, all in errors[]'
+    c: HTTP 400
+  answer: d
+  explanation: 'Partial success: users array contains 2 successful users, errors array
+    contains 1 error for the duplicate. Both fields present simultaneously.'
+  difficulty: 2
+  tags: []
+- id: '4.8'
+  question: Can a mutation's input type be an interface or union?
+  options:
+    c: No — input types must be explicit input keyword types
+    a: Yes — any type can be an input
+    b: Only interfaces
+    d: Only unions
+  answer: c
+  explanation: Input types are defined with `input` keyword. Interfaces and unions
+    cannot be input types. @oneOf is the closest alternative.
+  difficulty: 2
+  tags: []
+- id: '4.9'
+  question: UpdateProfile mutation returns User. In v2, you need to return validation
+    warnings. What's the cleanest migration?
+  options:
+    a: Change mutation to return a new UpdateProfilePayload type
+    b: Add optional warnings field to User type
+    c: Add errors to top-level extensions
+    d: Create new mutation updateProfileV2
+  answer: a
+  explanation: Payload type is extensible — add warnings field without breaking existing
+    clients. Polluting User type or creating v2 mutations are worse patterns.
+  difficulty: 2
+  tags: []
+- id: '4.10'
+  question: Mutation resolver throws GraphQLError('Not authorized') on purpose. What
+    happens to other mutation fields executing sequentially after this one?
+  options:
+    b: They are skipped — mutation execution stops on error
+    a: They still execute — errors are field-level
+    c: They execute in parallel anyway
+    d: Depends on error code
+  answer: b
+  explanation: If a mutation resolver throws, subsequent top-level mutation fields
+    in the same request are not executed. This is because mutations are ordered and
+    one failure typically invalidates the chain.
+  difficulty: 2
+  tags: []
+

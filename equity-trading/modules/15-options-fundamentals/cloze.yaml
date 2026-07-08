@@ -1,0 +1,68 @@
+- id: c.1
+  question: A {call} option gives holder right to {buy} underlying at strike price.
+    A {put} option gives holder right to {sell} underlying.
+  answer: call
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: If AAPL is $180 and call strike is $175, intrinsic value = {5}. If premium
+    is $8, time value = {3}.
+  answer: '5'
+  difficulty: 2
+  tags:
+  - calculation
+- id: c.3
+  question: Breakeven for call option = {strike} + {premium}. Breakeven for put option
+    = {strike} - {premium}.
+  answer: strike
+  difficulty: 2
+  tags:
+  - calculation
+- id: c.4
+  question: An option with S > K for a call is {ITM}. An option with S < K for a call
+    is {OTM}.
+  answer: ITM
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.5
+  question: Option premium = {intrinsic value} + {time value}.
+  answer: intrinsic value
+  difficulty: 1
+  tags:
+  - concept
+- id: c.6
+  question: Options that can be exercised any time before expiry are {American}-style.
+    Options exercisable only at expiry are {European}-style.
+  answer: American
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.7
+  question: In an options chain, {Open Interest} represents total outstanding contracts,
+    while {Volume} represents contracts traded today.
+  answer: Open Interest
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.8
+  question: '{Implied Volatility} measures market expected future volatility. Higher IV means higher {premium}.'
+  answer: Implied Volatility
+  difficulty: 2
+  tags:
+  - concept
+- id: c.9
+  question: Time decay is also called {theta}. It accelerates in the final {weeks}
+    before expiration.
+  answer: theta
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.10
+  question: Call payout at expiry = max(0, {S_T} - {K}). Put payout = max(0, {K} -
+    {S_T}).
+  answer: S_T
+  difficulty: 2
+  tags:
+  - calculation

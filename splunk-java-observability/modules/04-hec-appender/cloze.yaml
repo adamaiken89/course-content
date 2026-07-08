@@ -1,0 +1,69 @@
+- id: "c.4"
+  question: "HEC listens on {8088} by default, at the path /services/collector."
+  answer: "8088"
+  explanation: "HEC's default ingest port is 8088 with endpoint /services/collector."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Each HEC request carries the {Authorization} header with the value {Splunk} <token>."
+  answer: "Authorization; Splunk"
+  explanation: "Authentication is a header — 'Authorization: Splunk <token>' — never the URL."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "The appender flushes its buffer on the first of three thresholds: {count}, {bytes}, or {interval}."
+  answer: "count; bytes; interval"
+  explanation: "Batching flushes when batch_size_count, batch_size_bytes, or batch_interval fires first."
+  difficulty: 2
+  tags: [comprehension]
+
+- id: "c.4"
+  question: "Set messageFormat to {json} so events arrive structured and fields can be mapped."
+  answer: "json"
+  explanation: "json pairs with a JSON encoder; the default text format only ships the rendered message string."
+  difficulty: 1
+  tags: [application]
+
+- id: "c.4"
+  question: "Setting type={raw} forces batch count to 1 and makes batch settings incompatible."
+  answer: "raw"
+  explanation: "Raw mode sends bare text lines, one per POST, ignoring batch_size_count and friends."
+  difficulty: 2
+  tags: [comprehension]
+
+- id: "c.4"
+  question: "The Logback appender class is {HttpEventCollectorLogbackAppender}, provided by splunk-library-javalogging."
+  answer: "HttpEventCollectorLogbackAppender"
+  explanation: "This class wires Logback events into the HEC pipeline."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "{disableCertificateValidation} must be set to true only for self-signed certs in dev, never in production."
+  answer: "disableCertificateValidation"
+  explanation: "It switches off TLS trust verification — a dev-only escape hatch; prod should import the CA instead."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "The HEC token is a secret, so inject it via an environment variable referenced as {SPLUNK_TOKEN} in the appender config."
+  answer: "SPLUNK_TOKEN"
+  explanation: "Referencing an env var keeps the token out of git and per-environment."
+  difficulty: 1
+  tags: [application]
+
+- id: "c.4"
+  question: "Failed HEC batches are retried according to {retries_on_error}, processed by the middleware chain."
+  answer: "retries_on_error"
+  explanation: "ResendMiddleware and ErrorMiddleware intercept failures, bounded by retries_on_error."
+  difficulty: 2
+  tags: [comprehension]
+
+- id: "c.4"
+  question: "If the appender omits an index, events land in the default {index} or {sourcetype} configured on the HEC token."
+  answer: "index; sourcetype"
+  explanation: "Token-level defaults act as a safety net; appender-level values override them."
+  difficulty: 2
+  tags: [application]

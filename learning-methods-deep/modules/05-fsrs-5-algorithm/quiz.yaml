@@ -1,0 +1,116 @@
+- id: '5.1'
+  question: What does Stability (S) represent in FSRS-5?
+  options:
+    a: The predicted interval at which retrievability drops to ~90%
+    b: The number of times a card has been reviewed
+    c: The probability of recalling a card today
+    d: The number of times the card was forgotten
+  answer: a
+  explanation: Stability is defined as the interval at which R ≈ 0.9. If S = 30, in
+    30 days the predicted recall probability is about 90%.
+  difficulty: 1
+  tags:
+  - concept
+- id: '5.2'
+  question: How many w-parameters does FSRS-5 use?
+  options:
+    a: '5'
+    b: '21'
+    c: '12'
+    d: '35'
+  answer: b
+  explanation: FSRS-5 uses 21 w-parameters (indices 0-20) that control all algorithm
+    equations. Defaults come from large-scale optimization.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.3'
+  question: After a card in the Review state receives rating 1 (Again), what state
+    does it enter?
+  options:
+    a: New
+    b: Learning
+    c: Relearning
+    d: Review (stays)
+  answer: c
+  explanation: Rating < 3 on a Review card transitions to Relearning state. This preserves
+    residual stability — the card doesn't reset to New.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.4'
+  question: What prevents a single bad rating from permanently increasing a card's
+    difficulty in FSRS-5?
+  options:
+    a: Difficulty is clamped to [1, 5] so it can't increase much
+    b: Difficulty only changes on successful reviews, not failures
+    c: Difficulty is fixed at initialization and never changes
+    d: Linear damping for high-difficulty cards + mean reversion toward initial difficulty
+  answer: d
+  explanation: Linear damping means cards with D near 10 change less per rating, and
+    mean reversion pulls difficulty back toward the initial default. This prevents
+    one lapse from ruining difficulty permanently.
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.5'
+  question: Why does FSRS-5's forget stability formula produce a value higher than
+    initial stability?
+  options:
+    a: Previously-learned material has residual memory — relearning is faster than
+      new learning
+    b: Forgotten cards are moved to New state with fresh stability
+    c: Forget stability is always set to the previous stability value
+    d: Forget stability is computed from difficulty only, not previous stability
+  answer: a
+  explanation: 'The forget stability function uses a residual model: S'' = min(S_long,
+    S_short) where S_long includes the previous S. This captures the real phenomenon
+    that previously-learned material is easier to re-learn.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.6'
+  question: In the next recall stability equation, which factor represents the desirable
+    difficulty effect?
+  options:
+    a: w[15] hard_penalty
+    b: (exp((1-R)*w[10]) - 1) — lower R (harder recall) gives bigger stability increase
+    c: S^(-w[9]) — decaying growth for high-stability cards
+    d: (11 - D) — easier cards get bigger increases
+  answer: b
+  explanation: The term (exp((1-R)*w[10]) - 1) means retrievability near 1 (easy recall)
+    gives near-zero boost; lower R gives exponentially larger boost. This mathematically
+    encodes desirable difficulty.
+  difficulty: 3
+  tags:
+  - concept
+- id: '5.7'
+  question: A card has S=30, D=5, and is reviewed after 15 days with a Good rating.
+    What happens to stability?
+  options:
+    a: Stability resets to initial value for Good rating
+    b: Stability stays the same because rating=3 is neutral
+    c: Stability increases by an amount proportional to current S, difficulty, and
+      retrievability
+    d: Stability decreases because elapsed_days < S means too-early review
+  answer: c
+  explanation: For rating ≥ 3 and elapsed ≥ 1 day, S' = S * (1 + delta) where delta
+    depends on S, D, R, and rating modifiers. Elapsed=15, S=30 means R > 0.9, so the
+    retrievability boost is small but difficulty (11-5=6) gives good growth.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '5.8'
+  question: What does the short-term stability formula handle?
+  options:
+    a: Cards reviewed within 1 hour of creation
+    b: Cards with stability < 1 day
+    c: Cards in the Learning state only
+    d: Cards reviewed less than 1 day after the last review
+  answer: d
+  explanation: The short-term formula (`_short_term_stability`) applies when elapsed_days
+    < 1. It uses a different model (w[17], w[18], w[19]) because within-day review
+    follows different memory dynamics than long-term retention.
+  difficulty: 2
+  tags:
+  - concept

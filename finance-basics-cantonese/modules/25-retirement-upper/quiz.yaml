@@ -1,0 +1,134 @@
+- id: '25.1'
+  question: Future Value Annuity 公式?
+  options:
+    a: FV = PMT × (1+r)ⁿ
+    b: FV = PMT / r
+    c: FV = PMT × [(1+r)ⁿ - 1] / r
+    d: FV = PMT × n × r
+  answer: c
+  explanation: FV = PMT × [(1+r)ⁿ - 1] / r, PMT 每年供款, r 年回報, n 年期。
+  difficulty: 1
+  tags:
+  - formula
+  - terminology
+- id: '25.2'
+  question: 年供 $120,000, 30 年, 5% 回報, 終值?
+  options:
+    a: $3.6M
+    b: $8.0M
+    c: $15M
+    d: $1.2M
+  answer: b
+  explanation: FV = 120,000 × [(1.05)³⁰ - 1] / 0.05 = 120,000 × 66.44 = $7.97M, 約
+    $8M。
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '25.3'
+  question: 而家年開支 $400,000, 通脹 3%/年, 35 年後退休, 退休時年開支?
+  options:
+    a: $5,000,000
+    b: $200,000
+    c: $400,000 (通脹唔影響)
+    d: $1,124,000 (通脹 2.81 倍)
+  answer: d
+  explanation: 通脹因子 = (1.03)³⁵ = 2.81, 退休時年開支 = $400,000 × 2.81 = $1,124,000。
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '25.4'
+  question: 4% Rule 嘅原理?
+  options:
+    a: 第一年提 4%, 之後按通脹加, 30 年成功率 95%+
+    b: 每年固定提 4% 本金
+    c: 每月提 4%
+    d: 用 4% 通脹率
+  answer: a
+  explanation: 'Trinity Study 1998: 60/40 股債, 第一年提 4%, 之後按通脹加, 30 年成功率 95%+。'
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '25.5'
+  question: $10M 組合, 4% Rule 第一年提幾多?
+  options:
+    a: $1,000,000
+    b: $40,000
+    c: $100,000
+    d: $400,000
+  answer: d
+  explanation: $10M × 4% = $400,000 第一年, 之後按通脹加。第二年 $400,000 × 1.03 = $412,000。
+  difficulty: 1
+  tags:
+  - calculation
+  - formula
+- id: '25.6'
+  question: MPF 35 年強制供款 ($1,500/月), 5% 回報, 預期累積?
+  options:
+    a: $10M
+    b: $300,000
+    c: $1.6M
+    d: $5M
+  answer: c
+  explanation: '呢條計僱員部分: 年供 $18,000, 35 年, 5% 回報: FV = 18,000 × [(1.05)³⁵ - 1] / 0.05 = $1,625,760,
+    約 $1.6M。連埋僱主供款 (合共 $36,000/年, 兩邊都係你嘅錢) 就係約 $3.25M。'
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '25.7'
+  question: MPF 提取年齡 + 稅務?
+  options:
+    a: 55 歲提取, 免稅
+    b: 65 歲提取, 免稅
+    c: 60 歲提取, 交稅
+    d: 隨時提取, 免稅
+  answer: b
+  explanation: 'MPF 法定 65 歲提取, 提取時**完全免稅**。其他提取條件: 永久離港、完全喪失行為能力、死亡、小額結餘。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '25.8'
+  question: 退休時年開支 $1,124,000, 4% Rule 總需要?
+  options:
+    a: $4,496,000
+    b: $28,100,000
+    c: $112,400,000
+    d: $1,124,000
+  answer: b
+  explanation: '4% Rule: 總需要 = 年開支 / 4% = $1,124,000 / 0.04 = $28,100,000。'
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '25.9'
+  question: 以下邊個唔係常見退休規劃錯誤?
+  options:
+    a: 用 4% Rule 提款
+    b: 保守起見, 後生時 MPF 全部揀保證基金保本
+    c: 用 10% 年回報嚟計退休需要
+    d: 儲夠 15 年開支就提早退休
+  answer: a
+  explanation: '4% Rule 係正確提款策略, 唔係錯誤。其他選項聽落合理, 但都係常見錯誤: 後生全揀保證基金過分保守 (應該 Glide Path)、用 10% 計係高估回報 (現實 7% 較合理)、儲 15 年開支就退係短視年期 (長壽風險)。其他常見錯誤: 低估通脹、忽略醫療、無應急錢。'
+  difficulty: 2
+  tags:
+  - terminology
+  - misconception
+- id: '25.10'
+  question: 30 歲, 月投 $15k (7% 回報) + 儲 $5k (2%), 35 年後總資產大約?
+  options:
+    a: $30M
+    b: $50M
+    c: $10M
+    d: $20M
+  answer: a
+  explanation: '投資: FV = 180,000 × [(1.07)³⁵ - 1] / 0.07 = 180,000 × 138.24 = $24.9M。儲蓄:
+    60,000 × [(1.02)³⁵ - 1] / 0.02 = 60,000 × 50.0 = $3.0M。兩者合計 $27.9M, 加埋 MPF
+    $3.25M (僱主 + 僱員) 總資產約 $31M, 最接近 $30M。對比需要 $28.1M, 足夠有餘。'
+  difficulty: 3
+  tags:
+  - calculation
+  - application
+

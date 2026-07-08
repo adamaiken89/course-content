@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Postgres's default isolation level is {READ COMMITTED}."
+  answer: READ COMMITTED
+  explanation: "SHOW default_transaction_isolation; returns read committed for normal connections."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "In READ COMMITTED, each {statement} of a transaction gets a fresh snapshot, so later statements can see newly committed rows."
+  answer: statement
+  explanation: "READ COMMITTED snapshots per statement; REPEATABLE READ snapshots once for the whole transaction."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.3"
+  question: "Under MVCC, {readers} never block writers: a plain SELECT works from its own snapshot and ignores row locks."
+  answer: readers
+  explanation: "Row locks matter only between writers (and locking reads). Readers are snapshot-based, hence lock-free."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.4"
+  question: "SELECT ... {FOR UPDATE} locks each returned row until the transaction commits or rolls back."
+  answer: FOR UPDATE
+  explanation: "FOR UPDATE is a row lock held to transaction end, used for read-then-write serialization."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Adding {SKIP LOCKED} to a FOR UPDATE read makes it skip rows another transaction already locked."
+  answer: SKIP LOCKED
+  explanation: "SKIP LOCKED lets workers skip the hot row instead of queueing behind it — the job queue pattern."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "The standard safe job-claim pattern is SELECT ... FOR UPDATE {SKIP LOCKED} LIMIT 1, followed by an UPDATE that claims the chosen id."
+  answer: SKIP LOCKED
+  explanation: "Distinct workers get distinct rows, because the read skips locks instead of waiting on them."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.7"
+  question: "pg_advisory_{xact_lock}(...) is released automatically when the transaction ends, unlike the session-level variant."
+  answer: xact_lock
+  explanation: "pg_advisory_xact_lock is transaction-scoped; pg_advisory_lock must be explicitly released."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "A deadlock detected by the server aborts the victim with SQLSTATE {40P01}."
+  answer: 40P01
+  explanation: "40P01 = deadlock_detected; 40001 = serialization_failure from SSI or first-writer-wins."
+  difficulty: 1
+  tags: [process]
+
+- id: "c.9"
+  question: "Dead row versions left by updates are reclaimed by {VACUUM}, which frees space for reuse."
+  answer: VACUUM
+  explanation: "VACUUM removes tuples no snapshot can see; without it, update-heavy tables bloat."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.10"
+  question: "On a deadlock or serialization failure, retry the {whole} transaction from its first statement, with randomized backoff and a capped attempt count."
+  answer: whole
+  explanation: "The aborted transaction is gone; replaying a single statement would run against a brand-new world."
+  difficulty: 3
+  tags: [process]

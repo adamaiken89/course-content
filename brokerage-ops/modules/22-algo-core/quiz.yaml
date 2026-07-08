@@ -1,0 +1,122 @@
+- id: '22.1'
+  question: What is the formula for VWAP (Volume-Weighted Average Price)?
+  options:
+    a: Σ(Price_i × Volume_i) / Σ(Volume_i)
+    b: Σ(Price_i) / N
+    c: Σ(Volume_i) / Σ(Price_i)
+    d: (High + Low + Close) / 3
+  answer: a
+  explanation: VWAP = Σ(Price_i × Volume_i) / Σ(Volume_i), the sum of each trade's price times volume divided by total volume. TWAP is Σ(Price_i)/N.
+  difficulty: 1
+  tags:
+  - formula
+  - terminology
+- id: '22.2'
+  question: Compared to VWAP, what is the main characteristic of TWAP (Time-Weighted Average Price)?
+  options:
+    a: Allocates orders based on historical volume profile
+    b: Splits total quantity evenly across equal time slices
+    c: Uses arrival price as benchmark
+    d: Only seeks liquidity in dark pools
+  answer: b
+  explanation: TWAP ignores the volume profile and divides total quantity equally across time slices. VWAP schedules slices according to the historical volume distribution.
+  difficulty: 1
+  tags:
+  - comparison
+  - concept
+- id: '22.3'
+  question: What benchmark does Implementation Shortfall (IS) use?
+  options:
+    a: Day's VWAP
+    b: Closing price
+    c: Arrival price (market price at decision time)
+    d: TWAP
+  answer: c
+  explanation: IS uses the arrival (decision) price as benchmark. Cost = (avg fill price − arrival price) × shares, measuring execution efficiency against the decision point.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '22.4'
+  question: In the IS (Implementation Shortfall) decomposition, "additional cost from market price movement while waiting for execution" belongs to which category?
+  options:
+    a: Market Impact
+    b: Opportunity Cost
+    c: Fixed Cost
+    d: Timing Risk
+  answer: d
+  explanation: Timing Risk is the cost of market drift during the execution window. Market Impact is price movement caused by your own order. Opportunity Cost is P&L on the unfilled portion. Fixed Cost is commissions and fees.
+  difficulty: 2
+  tags:
+  - concept
+- id: '22.5'
+  question: What is the core mechanism of the POV (Percentage of Volume) algorithm?
+  options:
+    a: Participates at a fixed percentage of real-time market volume
+    b: Slices based on historical volume profile
+    c: Splits quantity evenly across time
+    d: Waits passively in dark pools only
+  answer: a
+  explanation: POV sets a target participation rate (e.g. 10%), monitors real-time market volume, and sends that proportion each period. Fast market → fast execution; slow market → slow execution.
+  difficulty: 1
+  tags:
+  - concept
+- id: '22.6'
+  question: 'Brokerage algo executes a buy order for 500K AAPL. Arrival Price = $150.00, Avg Fill Price = $150.30, all 500K filled. What is the IS cost (ignore fixed costs)?'
+  options:
+    a: $15,000
+    b: $150,000
+    c: $75,000
+    d: $150
+  answer: b
+  explanation: IS = (Avg Fill Price − Arrival Price) × Shares = ($150.30 − $150.00) × 500,000 = $0.30 × 500,000 = $150,000. Fixed costs are excluded here.
+  difficulty: 3
+  tags:
+  - calculation
+- id: '22.7'
+  question: 'A client says: "VWAP algo guaranteed my fill price equals the day''s VWAP." Why is this incorrect?'
+  options:
+    a: VWAP only applies to fixed income products
+    b: The statement is correct — VWAP algo guarantees the VWAP benchmark
+    c: VWAP algo only tracks the historical volume profile; actual volume may deviate, so the final price can diverge from VWAP
+    d: VWAP only works before market open
+  answer: c
+  explanation: A VWAP algo only tracks the historical volume profile. If intraday volume deviates (e.g. news events), the slicing schedule misaligns and the final result may be above or below the day's VWAP. No algo can guarantee reaching its benchmark.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '22.8'
+  question: Why is the volume profile typically highest in the 09:30–10:00 opening bucket?
+  options:
+    a: Opening orders get priority in venue matching engines
+    b: Brokers batch all client orders for the open
+    c: Spreads are narrowest at the open
+    d: Opening imbalance and overnight information accumulation drive elevated volume
+  answer: d
+  explanation: The open has elevated volume from opening imbalance and overnight information accumulation. If the VWAP algo falls behind in the morning, catching up in the low-volume midday period is hard without causing price impact.
+  difficulty: 2
+  tags:
+  - concept
+- id: '22.9'
+  question: For which scenario is TWAP most appropriate?
+  options:
+    a: Extremely illiquid micro-cap stock where the volume profile is unreliable
+    b: Large liquid large-cap order with 5% ADV
+    c: High-urgency order needing a fill within minutes
+    d: Order where minimizing opportunity cost matters most
+  answer: a
+  explanation: TWAP is suited to extremely illiquid stocks (unreliable volume profile), ETF market maker hedges needing a fixed window, and passive index rebalancing. It is simple and predictable but ignores volume variation.
+  difficulty: 2
+  tags:
+  - application
+- id: '22.10'
+  question: 'Suppose every large buyer in the market sets POV = 10%. What happens?'
+  options:
+    a: Each fills at a guaranteed 10% share of volume
+    b: Aggregate participation far exceeds 10%, creating self-fulfilling congestion
+    c: Participation naturally caps at 10% per venue
+    d: No effect — POV applies per venue independently
+  answer: b
+  explanation: If many large buyers all set 10% POV, combined participation far exceeds 10%, creating self-fulfilling congestion. This is why brokerage algo engines need order orchestration to prevent the same strategy competing against itself.
+  difficulty: 3
+  tags:
+  - scenario

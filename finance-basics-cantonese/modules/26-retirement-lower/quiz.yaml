@@ -1,0 +1,131 @@
+- id: '26.1'
+  question: Trinity Study 顯示 4% 提取率 + 50/50 股債 30 年成功率係?
+  options:
+    a: 85%
+    b: 95%
+    c: 100%
+    d: 65%
+  answer: b
+  explanation: Trinity Study 30 年 95% 成功率 (4% 提取 + 50/50 配置)。100% 債只得 65%, 100% 股
+    85%。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '26.2'
+  question: 5% 提取率 vs 4% 提取率, 30 年成功率差距?
+  options:
+    a: 一樣, 唔影響
+    b: 5% 高啲, 因為提多啲
+    c: 4% 高啲 (約 95% vs 80%)
+    d: 5% 高啲, 因為錢喺袋
+  answer: c
+  explanation: 4% 提取率 30 年成功率 95%, 5% 提取率降至 80%。提取率越低, 組合越安全。
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '26.3'
+  question: Sequence of Returns Risk 嘅意思?
+  options:
+    a: 退休頭幾年大跌, 終身提款受影響
+    b: 通貨膨脹風險
+    c: 股票選擇錯誤
+    d: 市場長線趨勢
+  answer: a
+  explanation: '序列風險: 退休頭 5-10 年遇上大跌, 組合縮水後即使之後反彈, 終身提款能力永久受損。'
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '26.4'
+  question: Guyton-Klinger 規則包含?
+  options:
+    a: 只用 4% Rule
+    b: 提取率規則 + 資本消耗規則
+    c: 只買股票
+    d: 只買債券
+  answer: b
+  explanation: 'Guyton-Klinger 雙重保險: 提取率規則 (按回報調整提取) + 資本消耗規則 (組合過低強制減提取)。'
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '26.5'
+  question: Bucket Strategy 桶子分配通常點分?
+  options:
+    a: 短 (1-3年現金)、中 (3-7年均衡)、長 (7+年股票)
+    b: 5 隻股一個桶
+    c: 分散到 100 隻 ETF
+    d: 全部一個桶
+  answer: a
+  explanation: '桶子策略: 短期現金 (1-3 年開支)、中期均衡 (3-7 年)、長期股票 (7+ 年)。跌市時由長桶補短桶, 唔使賣股。'
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '26.6'
+  question: FIRE 4 種變體中, 「儲夠複利滾到退休, 之後唔使再儲」叫?
+  options:
+    a: Fat FIRE
+    b: Barista FIRE
+    c: Coast FIRE
+    d: Lean FIRE
+  answer: c
+  explanation: 'Coast FIRE: 25 歲儲 300 萬, 唔使再儲, 複利滾到 65 歲自動夠用。適合早起步嘅人。'
+  difficulty: 2
+  tags:
+  - terminology
+- id: '26.7'
+  question: MPF 同個人投資嘅主要分別?
+  options:
+    a: MPF 高回報, 個人低回報
+    b: MPF 唔可以揀, 個人可以
+    c: 完全一樣
+    d: MPF 強制 + 稅優 + 鎖定 65 歲; 個人靈活但無稅優
+  answer: d
+  explanation: MPF 強制 5%+5%, 供款扣稅 (最高 $18K), 65 歲前鎖住; 個人投資自願靈活, 資本利得無稅 (香港) 但無供扣稅。
+  difficulty: 1
+  tags:
+  - comparison
+  - concept
+- id: '26.8'
+  question: TVC (可扣稅自願性供款) 最高扣稅額?
+  options:
+    a: $120,000
+    b: 冇上限
+    c: $18,000
+    d: $60,000
+  answer: d
+  explanation: TVC 額外供款可扣稅, 最高 $60,000/年, 加強制性 $18,000 合共 $78,000 扣稅額。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '26.9'
+  question: 傳統 Glide Path, 25 歲 vs 65 歲嘅股債比?
+  options:
+    a: 25 歲 50/50, 65 歲 90/10
+    b: 25 歲 90/10, 65 歲 50/50
+    c: 一樣, 都係 60/40
+    d: 25 歲 100% 債, 65 歲 100% 股
+  answer: b
+  explanation: '傳統 Glide Path: 年輕高股票 (90/10) → 退休 50/50。理論: 年輕長線, 承受波動; 退休保護累積。'
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '26.10'
+  question: 你 30 歲月投 $15,000 7% 回報 35 年, MPF 提 $1.6M, 退休需要 $28M。邊個策略最好?
+  options:
+    a: MPF + 個人 ETF 雙軌並行, 用 Glide Path 動態調整
+    b: 唔做 Glide Path, set-and-forget
+    c: 完全唔做退休規劃
+    d: All-in MPF
+  answer: a
+  explanation: MPF 強制 (低費 Default Fund) + 個人 ETF (VTI/VXUS) 雙軌並行。Glide Path 由 90/10
+    隨年齡降至 50/50。終身年金對沖長壽風險。動態提款抗序列風險。
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+

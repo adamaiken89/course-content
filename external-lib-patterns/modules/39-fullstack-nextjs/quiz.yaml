@@ -1,0 +1,155 @@
+- id: '39.1'
+  question: What is the default rendering model for all components in the Next.js
+    App Router?
+  options:
+    b: Server Component
+    a: Client Component
+    c: Static HTML export
+    d: Edge Function
+  answer: b
+  explanation: All components in App Router are Server Components by default. 'use
+    client' is required to opt into client-side interactivity.
+  difficulty: 1
+  tags:
+  - nextjs
+  - server-components
+- id: '39.2'
+  question: Which file convention provides Suspense fallback UI for a route segment?
+  options:
+    a: loading.tsx
+    b: error.tsx
+    c: fallback.tsx
+    d: pending.tsx
+  answer: a
+  explanation: loading.tsx automatically wraps the page in a Suspense boundary with
+    the loading component as fallback.
+  difficulty: 1
+  tags:
+  - nextjs
+  - loading
+  - suspense
+- id: '39.3'
+  question: What is the difference between a Route Handler (app/api/*) and a Server
+    Action?
+  options:
+    c: Route Handlers work with external clients (mobile, curl); Server Actions are
+      for form mutations within the same app
+    a: They are functionally identical
+    b: Server Actions are faster because they skip HTTP
+    d: Route Handlers cannot access the database
+  answer: c
+  explanation: Route Handlers serve external API consumers. Server Actions run on
+    form submission within the app with revalidatePath for cache invalidation.
+  difficulty: 2
+  tags:
+  - nextjs
+  - route-handlers
+  - server-actions
+- id: '39.4'
+  question: What does revalidatePath do in a Server Action?
+  options:
+    a: Clears the server-side cache for the given path, triggering re-fetch
+    b: Refreshes the client-side router cache only
+    c: Deletes the API route for that path
+    d: Redirects the user to a different page
+  answer: a
+  explanation: revalidatePath purges the server cache for the specified route, causing
+    the next request to re-fetch data and regenerate the page.
+  difficulty: 2
+  tags:
+  - nextjs
+  - revalidatePath
+  - server-actions
+- id: '39.5'
+  question: Which Next.js feature allows static pages to be regenerated on-demand
+    after build time?
+  options:
+    a: Incremental Static Regeneration (ISR)
+    b: Dynamic rendering
+    c: Client-side fetching
+    d: Edge Runtime
+  answer: a
+  explanation: ISR with revalidate tag pre-builds pages at build time and re-generates
+    them when stale requests come in.
+  difficulty: 2
+  tags:
+  - nextjs
+  - ISR
+  - static-generation
+- id: '39.6'
+  question: What React 19 hook replaces manual form submission state management in
+    the Next.js Server Action pattern?
+  options:
+    b: useActionState
+    a: useFormStatus
+    c: useOptimistic
+    d: useFormState
+  answer: b
+  explanation: useActionState (formerly useFormState) manages form pending state and
+    return values, integrating with Server Actions.
+  difficulty: 2
+  tags:
+  - nextjs
+  - react-19
+  - useActionState
+- id: '39.7'
+  question: How does Next.js detect that a page requires dynamic rendering?
+  options:
+    c: Using cookies(), headers(), or searchParams in the Server Component
+    a: The page must export const dynamic = 'force-dynamic'
+    b: Dynamic rendering is the default; opt out with static export
+    d: It checks if the component uses the useState hook
+  answer: c
+  explanation: Next.js automatically opts into dynamic rendering when Server Components
+    use dynamic APIs like cookies(), headers(), or searchParams.
+  difficulty: 2
+  tags:
+  - nextjs
+  - dynamic-rendering
+- id: '39.8'
+  question: What is the purpose of the matcher config in middleware.ts?
+  options:
+    d: It specifies which routes trigger the middleware function
+    a: It defines which database tables the middleware can access
+    b: It sets the matching algorithm for path parameters
+    c: It configures the rate limiter for API routes
+  answer: d
+  explanation: The matcher config limits which paths execute the middleware, preventing
+    unnecessary runs on static assets and API routes.
+  difficulty: 2
+  tags:
+  - nextjs
+  - middleware
+  - matcher
+- id: '39.9'
+  question: How do you pass a ref to a Client Component from a Server Component in
+    React 19?
+  options:
+    b: Use React.forwardRef in the Client Component; Server Components pass ref directly
+    a: Ref is automatically forwarded for all components
+    c: Server Components cannot pass refs; only props are allowed across the boundary
+    d: Use the useImperativeHandle hook in the Server Component
+  answer: b
+  explanation: In React 19, ref is a regular prop. Client Components use forwardRef
+    to receive it; Server Components pass it as any other prop.
+  difficulty: 3
+  tags:
+  - nextjs
+  - react-19
+  - ref
+- id: '39.10'
+  question: What does enabling experimental.reactCompiler in next.config.ts achieve?
+  options:
+    d: Auto-memoizes Server Actions and Client Component callbacks, reducing re-renders
+    a: Compiles JSX to plain JavaScript for older browsers
+    b: Enables TypeScript strict mode for all components
+    c: Automatically converts Server Components to Client Components
+  answer: d
+  explanation: React Compiler auto-memoizes functions and values, eliminating manual
+    useCallback/useMemo wrappers and reducing unnecessary re-renders.
+  difficulty: 3
+  tags:
+  - nextjs
+  - react-compiler
+  - memoization
+

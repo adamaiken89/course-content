@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "A B-tree leaf entry stores the key plus a {tid} pointing into the heap."
+  answer: tid
+  explanation: "The TID = heap block number + offset. The full row and MVCC metadata stay in the heap."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "B-tree height grows like O(log of fan-out, n) — for a billion rows a point lookup touches about {4} pages."
+  answer: "4"
+  explanation: "High fan-out (hundreds of keys/page) keeps height at 3-4 almost regardless of table size."
+  difficulty: 1
+  tags: [calculation]
+
+- id: "c.3"
+  question: "High fan-out is possible because each index {page} holds hundreds of key-to-pointer pairs."
+  answer: page
+  explanation: "Index pages are 8 KB (the same page size as heap pages), giving the tree its low height."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "MVCC metadata such as xmin and xmax lives on the heap row, not in the {index}."
+  answer: index
+  explanation: "Indexes map keys to TIDs only; visibility checks happen when the heap row is read."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.5"
+  question: "A {HOT} update keeps the new row version on the same heap page and adds NO new index entry."
+  answer: HOT
+  explanation: "Heap-Only Tuple: only used when no indexed column changes and the page has room."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "ASC btree indexes default to NULLS {LAST}; DESC defaults to NULLS FIRST."
+  answer: LAST
+  explanation: "Mismatched NULL ordering between index and ORDER BY defeats the index for sorting."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "With default settings, a UNIQUE btree treats NULLs as {distinct}, so unlimited NULL rows coexist."
+  answer: distinct
+  explanation: "UNIQUE NULLS NOT DISTINCT (PG15) collapses NULLs to a single allowed row."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "A scattered set of matches turns an index probe into many random heap {page} reads."
+  answer: page
+  explanation: "Each TID hits a different heap page — the reason low-selectivity queries prefer Seq Scan."
+  difficulty: 1
+  tags: [scenario]
+
+- id: "c.9"
+  question: "Setting {fillfactor} below 100 reserves per-page slack so HOT chains stay in one page."
+  answer: fillfactor
+  explanation: "Lower fillfactor (70-90) trades a little space for inexpensive in-place updates."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.10"
+  question: "Old index entries pointing at dead versions stay until {VACUUM} reclaims them."
+  answer: VACUUM
+  explanation: "Only vacuum removes dead index tuples; update-heavy tables grow index bloat without it."
+  difficulty: 3
+  tags: [process]

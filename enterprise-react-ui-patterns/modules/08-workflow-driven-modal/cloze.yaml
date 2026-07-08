@@ -1,0 +1,54 @@
+- id: "c.81"
+  question: "Complete: The dialog state is a single object { intent, {blank}, payload } — not a pile of booleans."
+  answer: "entityId"
+  explanation: "entityId identifies which record the dialog works on (for example the application being edited). Together with intent and payload it fully describes the open dialog."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.82"
+  question: "Complete: The dialog title, fields, validation, confirm label, and submit action come from one {blank} that maps each intent to its behavior."
+  answer: "workflowConfig"
+  explanation: "workflowConfig is the config map — the single source of truth for dialog behavior. Adding a new dialog means adding a config entry, not touching the shell."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.83"
+  question: "Complete: Modal state lives in a {blank} store because triggers span screens — batch bar, table row, and batch summary all open the same dialog."
+  answer: "zustand"
+  explanation: "Cross-screen triggers are the earned zustand case: module 7's local useState cannot reach across screens, but a store is readable from anywhere."
+  difficulty: 1
+  tags: [concept]
+- id: "c.84"
+  question: "Complete: The dirty guard turns a close attempt with unsaved changes into a transition from editing to {blank}."
+  answer: "confirming"
+  explanation: "The confirming step asks 'discard changes?' — the discard-guard-in-dialog form. Choosing keep editing returns to editing; choosing discard closes the dialog."
+  difficulty: 2
+  tags: [process]
+- id: "c.85"
+  question: "Complete: 'A modal is a {blank}, not a rectangle' — the opening config, config map, and state machine describe the dialog's behavior."
+  answer: "workflow"
+  explanation: "The rectangle is just the visual container; the workflow is the truth — open config, per-intent config map, and the edit/confirm/submit/done state machine."
+  difficulty: 1
+  tags: [concept]
+- id: "c.86"
+  question: "Complete: The {blank} is the single source of truth for the dialog's title, fields, validation, confirm text, and submit action."
+  answer: "config map"
+  explanation: "Whoever reads the config map knows everything the dialog does. Changing a flow means editing one config entry, not hunting for branch conditions."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.87"
+  question: "Complete: The {blank} guard compares the current draft against the open-time payload snapshot instead of comparing against null."
+  answer: "unsaved-changes"
+  explanation: "Dirty means changed since open. Comparing against null falsely flags every dialog that opened with data, even when the user changed nothing."
+  difficulty: 2
+  tags: [concept]
+- id: "c.88"
+  question: "Complete: The submit test routes through an MSW handler (server.use(contract.updateGrades)) to pin the POST {blank} the app sends."
+  answer: "contract"
+  explanation: "An MSW handler stands in for the real endpoint and pins method, URL, and body shape — the module 3 'MSW contract' idea. The dialog's submit seam is the store's submit action."
+  difficulty: 2
+  tags: [concept]
+- id: "c.89"
+  question: "Complete: The nested-workflow variant chains a second {blank} above the current one, using a parent reference and an extra stack in the store."
+  answer: "intent"
+  explanation: "Nesting is a second open with a new intent layered over the running dialog — same DialogShell, same workflowConfig map, one stack. Dynamic variants fetch the intent list from /workflows."
+  difficulty: 2
+  tags: [process]

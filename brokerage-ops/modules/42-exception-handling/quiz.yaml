@@ -1,0 +1,125 @@
+- id: '42.1'
+  question: "A team receives 500 alerts daily: 450 info, 45 warning, 5 critical. Ops checks the queue every hour. What is the most likely problem?"
+  options:
+    a: Information overload drowns the critical alerts — response time increases and SLAs may be missed
+    b: Too few alerts to act on
+    c: Critical alerts should be downgraded to info
+    d: Ops checks too frequently
+  answer: a
+  explanation: "Information overload. 450 info plus 45 warning alerts drown the 5 critical alerts, making prioritization hard. Solution: drastically reduce info alerts, aggregate warnings into a daily summary, and keep critical as real-time notifications."
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+- id: '42.2'
+  question: Automated exception handling decisions should be based on what?
+  options:
+    a: Severity level only (P0/P1/P2)
+    b: Exception type count only
+    c: Rule clarity, error frequency, and error cost
+    d: Handler skill level
+  answer: c
+  explanation: Automation decisions assess whether rules are clear and codifiable, exception frequency, and the risk of automated error propagation (error cost). Severity or volume alone is insufficient — P2 is a severity classification, not an automation-suitability classification.
+  difficulty: 1
+  tags:
+  - concept
+- id: '42.3'
+  question: An exception type occurred under 3/day for 2 months, then jumped to over 50/day in the last month, all from the same account. Best action?
+  options:
+    a: Continue manual handling — volume is still manageable
+    b: Flag as a systemic issue → root cause analysis → determine a process fix
+    c: Immediately automate all handling
+    d: Ask the client to self-handle
+  answer: b
+  explanation: A sudden volume spike concentrated in one account is a classic systemic-issue signal. Trigger RCA rather than immediate automation (which may amplify errors) or continued manual handling (wasted labor). Find the root cause before deciding the fix.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '42.4'
+  question: Why is it wrong to automate all P2 exceptions simply because they are low severity?
+  options:
+    a: P2 alerts are always safe to automate
+    b: P2 exceptions never require human judgment
+    c: Severity is the only criterion for automation
+    d: P2 is a severity classification, not an automation-suitability classification — some P2 exceptions like allocation mismatches over threshold need human judgment
+  answer: d
+  explanation: P2 is severity, not automation suitability. Some P2 exceptions (e.g., symbol mapping warnings) suit automation, but others (e.g., allocation mismatch over threshold) need human judgment. Decide based on rule clarity, frequency, and error cost.
+  difficulty: 1
+  tags:
+  - concept
+  - scenario
+- id: '42.5'
+  question: Which of the following is a cause of alert fatigue?
+  options:
+    a: False positives from overly sensitive thresholds
+    b: Too few alerts per day
+    c: Overly specific alert content
+    d: Escalation throttling
+  answer: a
+  explanation: Alert fatigue causes include false positives from thresholds set too sensitively, duplicate alerts, low-significance alerts, and unclear alert content. Escalation throttling is a control strategy, not a cause.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '42.6'
+  question: The price-deviation alert threshold is raised from 1% to 3%. What improves and what worsens?
+  options:
+    a: Nothing changes — thresholds are cosmetic
+    b: Missed true positives decrease while false positives increase
+    c: False positives drop substantially, but genuine 2-3% deviations stop alerting — missed true positives trade off against noise
+    d: Both false positives and true positives decrease proportionally
+  answer: c
+  explanation: Raising the threshold from 1% to 3% cuts false positives by about 60%, but genuine 2-3% deviations stop alerting. Both the false positive rate and the miss rate must be watched together.
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '42.7'
+  question: Deduplication of alerts should be based on which fields?
+  options:
+    a: Handler name and time of day
+    b: Exception object (trade ID / order ID) plus exception type
+    c: Client name only
+    d: Alert severity only
+  answer: b
+  explanation: Deduplication merges duplicate alerts for the same event based on the exception object (trade ID, order ID) plus the exception type, displaying first trigger time, trigger count, and latest time.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '42.8'
+  question: Which of the following is a risk of manual exception handling?
+  options:
+    a: Automated error propagation
+    b: Threshold misconfiguration
+    c: Excessive escalation
+    d: Inconsistency — different handlers treat the same exception differently, and knowledge is lost when senior staff leave
+  answer: d
+  explanation: Manual handling risks include latency, inconsistency between handlers, knowledge dependency on senior staff, and fatigue errors on high-volume repetitive exceptions.
+  difficulty: 2
+  tags:
+  - concept
+- id: '42.9'
+  question: In the CNS fail case study, the root cause was that the locate management system did not check locate expiry at settlement (T+2). What fix addresses this?
+  options:
+    a: Add a T+1 locate refresh check and a T+2 settlement-day auto-borrow trigger
+    b: Remove locate requirements for institutional clients
+    c: Report the fail to FINRA and close the alert
+    d: Extend settlement to T+5
+  answer: a
+  explanation: The post-mortem fix adds a T+1 locate refresh check, a T+2 settlement-day auto-borrow trigger, and a CNS fail predictive alert at T+1, with locate confirmation including the expiry datetime and a daily locate-expiry report.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '42.10'
+  question: Alert aggregation groups related alerts into a summary. Which grouping is appropriate?
+  options:
+    a: By alert handler shift
+    b: By exchange session
+    c: By account, product, or counterparty — e.g., 10 exceptions from one client become one client overview alert
+    d: By random assignment
+  answer: c
+  explanation: Aggregation groups related alerts by account, product, or counterparty. For example, 10 exceptions from the same client become one client overview alert, reducing queue noise.
+  difficulty: 2
+  tags:
+  - concept

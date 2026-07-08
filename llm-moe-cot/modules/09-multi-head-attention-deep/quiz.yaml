@@ -1,0 +1,130 @@
+- id: '9.1'
+  question: In multi-head attention, each head projects QKV into subspaces of what
+    dimension?
+  options:
+    a: d_model / h
+    b: d_model (full dimension)
+    c: h (number of heads)
+    d: d_model × h
+  answer: a
+  explanation: d_k = d_model / h. Each head processes a lower-dimensional subspace.
+    This allows h different attention patterns in parallel.
+  difficulty: 2
+  tags: []
+- id: '9.2'
+  question: Induction heads enable what capability?
+  options:
+    c: In-context learning by matching current token to its previous occurrence
+    a: Positional encoding
+    b: Vocabulary expansion
+    d: Layer normalization
+  answer: c
+  explanation: 'Induction heads: attend to token following current token''s previous
+    occurrence. Pattern: [A][B]...[A] → look back → predict [B]. Crucial for few-shot
+    learning.'
+  difficulty: 2
+  tags: []
+- id: '9.3'
+  question: What percentage of heads can typically be pruned with minimal perplexity
+    loss?
+  options:
+    c: 30-40%
+    a: 5-10%
+    b: 70-80%
+    d: 95%
+  answer: c
+  explanation: Research (Michel et al., Voita et al.) shows 30-40% of heads are redundant.
+    Pruning beyond ~50% causes significant quality degradation.
+  difficulty: 2
+  tags: []
+- id: '9.4'
+  question: Which metric is most accurate for measuring head importance?
+  options:
+    a: Gradient-based importance (|gradient × parameter|)
+    b: Attention weight magnitude
+    c: Head position (early vs late)
+    d: Number of parameters in head projection
+  answer: a
+  explanation: Gradient-based importance measures how much loss changes if head is
+    removed. More accurate than magnitude-based metrics.
+  difficulty: 2
+  tags: []
+- id: '9.5'
+  question: In Multi-Query Attention (MQA), which projections are shared across heads?
+  options:
+    b: K and V only
+    a: Q and K only
+    c: Q, K, and V all shared
+    d: Q only
+  answer: b
+  explanation: MQA shares K and V across all heads. Each head has its own Q. Q determines
+    attention pattern — needs head-specificity.
+  difficulty: 2
+  tags: []
+- id: '9.6'
+  question: A model has h=96 heads, d_head=128, 80 layers. How much KV cache (FP16)
+    for batch=4, seq=8192 with MHA vs MQA?
+  options:
+    a: 'MHA: 80GB, MQA: 0.8GB'
+    b: 'MHA: 40GB, MQA: 0.4GB'
+    c: 'MHA: 80GB, MQA: 1.25GB'
+    d: 'MHA: 160GB, MQA: 1.6GB'
+  answer: a
+  explanation: 'MHA: 4 × 8192 × 80 × 96 × 128 × 2 × 2 = 80GB. MQA: same formula with
+    heads=1 → 4 × 8192 × 80 × 1 × 128 × 2 × 2 = 0.8GB. MQA = 1/96 the cache.'
+  difficulty: 2
+  tags: []
+- id: '9.7'
+  question: Llama 2 70B uses GQA with 8 groups and 64 query heads. What is the KV
+    cache reduction compared to full MHA?
+  options:
+    b: 8x
+    a: 2x
+    c: 4x
+    d: 16x
+  answer: b
+  explanation: 64 heads → 8 KV groups. Reduction ratio = G/h = 8/64 = 1/8. So 8x less
+    KV cache than full MHA.
+  difficulty: 2
+  tags: []
+- id: '9.8'
+  question: You convert an MHA checkpoint to GQA by averaging K,V projections. Loss
+    increases by 0.3 PPL. What should you do next?
+  options:
+    b: Fine-tune the converted model for 5-10k steps to recover quality
+    a: Accept — 0.3 PPL is negligible
+    c: Train from scratch with GQA
+    d: Double the number of groups
+  answer: b
+  explanation: K,V averaging loses information. Short fine-tuning (5-10k steps) lets
+    model adapt to shared KV representation. Typically recovers to within 0.1 PPL
+    of original.
+  difficulty: 2
+  tags: []
+- id: '9.9'
+  question: Which models use Multi-Query Attention?
+  options:
+    d: PaLM, Gemini, Falcon
+    a: BERT and RoBERTa
+    b: Llama 2 and Llama 3
+    c: Only GPT-4
+  answer: d
+  explanation: PaLM, Gemini, Falcon use MQA. Llama 2/3 use GQA (not MQA). BERT uses
+    full MHA.
+  difficulty: 2
+  tags: []
+- id: '9.10'
+  question: Why can't MQA be used easily for training from scratch at small scale
+    (100M params)?
+  options:
+    d: At small scale, MQA's reduced parameter count hurts capacity more noticeably
+    a: MQA training is computationally infeasible
+    b: MQA doesn't support gradient descent
+    c: MQA requires tensor parallelism
+  answer: d
+  explanation: At 100M param scale, K,V projections are a significant fraction of
+    total parameters. Sharing them reduces capacity noticeably. At 10B+, K,V projections
+    are a tiny fraction — sharing barely affects total capacity.
+  difficulty: 2
+  tags: []
+

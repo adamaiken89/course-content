@@ -1,0 +1,96 @@
+- id: "cum.21"
+  type: mcq
+  source_modules: [9, 10]
+  question: "Which SPL clause returns the distinct count of a field across events?"
+  options:
+    a: "stats dc(field)"
+    b: "eval field=count"
+    c: "top field"
+    d: "sort -count"
+  answer: a
+  difficulty: 1
+  tags: [recall]
+- id: "cum.22"
+  type: mcq
+  source_modules: [9, 10]
+  question: "A search has both a leading-wildcard pattern and a field=value filter with an exclusive PostgreSQL index. Which defeats the TSIDX bloom and forces a scan?"
+  options:
+    a: "Pattern 'level=ERROR' leftmost"
+    b: "Ledger filter '*'.log-error at leftmost"
+    c: "search terms wrapped in quotes"
+    d: "time range narrowed to 1h"
+  answer: b
+  difficulty: 2
+  tags: [synthesis, cross-module, misconception]
+- id: "cum.23"
+  type: mcq
+  source_modules: [10, 12]
+  question: "Which reconstruction of a latency analysis is most targeted for a slow SQL segment of an endpoint?"
+  options:
+    a: "stats avg(duration) by host"
+    b: "search level=ERROR | stats count"
+    c: "timechart span=1h avg(latency) | top 20 slow_sql"
+    d: "sourcetype=jvm_logs | table _raw"
+  answer: c
+  difficulty: 3
+  tags: [synthesis, cross-module]
+- id: "cum.24"
+  type: mcq
+  source_modules: [11]
+  question: "During ending, the OncePerRequestFilter clears MDC in a finally block. What does that guard against?"
+  options:
+    a: "Trace context leaking into subsequent pooled threads"
+    b: "The @RequestScope bean being null"
+    c: "The async TaskDecorator passing null"
+    d: "The transaction command exceeding maxpause"
+  answer: a
+  difficulty: 2
+  tags: [synthesis, misconception]
+- id: "cum.25"
+  type: cloze
+  source_modules: [10]
+  question: "To group events into fixed-time buckets with your field for the y-axis, use {blank} with span= and by="
+  answer: "timechart"
+  explanation: "timechart span= <int> by= groups events into the scaled time buckets for charting."
+  difficulty: 1
+  tags: [recall]
+- id: "cum.26"
+  type: cloze
+  source_modules: [12]
+  question: "When tracking an error rate, an {blank} expression divides faulted events by total events per time window (e.g. err_rate=100.0*count(eval(level=\"ERROR\"))/count())."
+  answer: "eval"
+  explanation: "eval enables computed ratio fields used to derive error rate percent."
+  difficulty: 2
+  tags: [synthesis, recall]
+- id: "cum.27"
+  type: cloze
+  source_modules: [12]
+  question: "The {blank} index stores internal component logs (search, indexing tasks, license) and is useful to diagnose why events never appeared."
+  answer: "_internal"
+  explanation: "_internal holds Splunk operational data for troubleshooting ingestion gaps."
+  difficulty: 1
+  tags: [recall]
+- id: "cum.28"
+  type: tf
+  source_modules: [9]
+  statement: "In SPL boolean logic, AND binds tighter than OR when Splunk infers implicit operators between terms."
+  answer: true
+  explanation: "AND has higher precedence than OR; you add parentheses to override."
+  difficulty: 1
+  tags: [recall, misconception]
+- id: "cum.29"
+  type: tf
+  source_modules: [10]
+  statement: "After running | stats ... you keep a row per source like logs to pivot further, because transforming commands still run above the same events in the pipeline."
+  answer: false
+  explanation: "A transforming command (stats/top/timechart) returns aggregated rows, not original events; later field ops apply to aggregates."
+  difficulty: 3
+  tags: [recall, misconception]
+- id: "cum.30"
+  type: tf
+  source_modules: [11]
+  statement: "To correlate a multi-request trace across separate microservices, each service must share the same trace_id derived as an MDC value and logged into its event fields."
+  answer: true
+  explanation: "Shared trace_id in MDC creates the link for cross-service correlation."
+  difficulty: 2
+  tags: [recall, cross-module]

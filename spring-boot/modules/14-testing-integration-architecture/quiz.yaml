@@ -1,0 +1,119 @@
+- id: "14.1"
+  question: When is @SpringBootTest the right choice for a test?
+  options:
+    a: When the assembled context wiring is the subject under test
+    b: For every individual repository method call
+    c: For every controller endpoint in the service
+    d: For pure domain logic that never touches Spring
+  answer: a
+  explanation: Full-context @SpringBootTest boots the complete ApplicationContext and costs seconds, so use it only when the bean graph, property binding, or assembled wiring is what you verify. Slices and unit tests are cheaper for isolated layers.
+  difficulty: 1
+  tags: [concept, scenario]
+
+- id: "14.2"
+  question: Why does Testcontainers run a real Docker Postgres for SQL tests instead of H2?
+  options:
+    a: H2 is too slow to boot
+    b: H2 does not implement Postgres semantics such as SKIP LOCKED locking and JSONB
+    c: H2 is proprietary and unlicensed for CI
+    d: Docker containers always outperform embedded databases
+  answer: b
+  explanation: H2 parses a different SQL dialect and silently no-ops Postgres features. A test on H2 certifies H2 behavior, not the SQL you ship, so real Postgres via Testcontainers is the honest default for SQL semantics.
+  difficulty: 1
+  tags: [concept, comparison]
+
+- id: "14.3"
+  question: What is the only safe role for H2 in a Boot 4 persistence test strategy?
+  options:
+    a: The primary database for integration tests
+    b: A production-like replica for load tests
+    c: A boot smoke test that the context loads
+    d: The benchmark target for query performance
+  answer: c
+  explanation: H2 is fine for a quick smoke test that the context loads and the schema parses. Any test asserting SQL behavior such as locking, JSONB, or window functions must run against real Postgres.
+  difficulty: 2
+  tags: [concept, scenario]
+
+- id: "14.4"
+  question: Boot 4 validates repository query methods at build time. How does AssertJ complement that in a repository contract test?
+  options:
+    a: The runtime query never needs to run once the build validates it
+    b: Build-time validation makes AssertJ assertions unnecessary
+    c: AssertJ assertions only work when the database is H2
+    d: Build-time validation proves the query binds and AssertJ verifies the returned rows
+  answer: d
+  explanation: Build-time processing binds and validates the derived query, catching typos before deployment. The AssertJ assertions in a Testcontainers test then verify the runtime result on real Postgres. Each covers a different failure mode.
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "14.5"
+  question: In Spring Cloud Contract, which artifact enforces the API shape on both the producer and the consumer?
+  options:
+    a: The stub jar the producer publishes and consumers test against
+    b: The OpenAPI document kept only on the producer
+    c: The hand-written mocks inside the consumer test suite
+    d: The shared relational database schema
+  answer: a
+  explanation: The producer verifies its real implementation against the contract DSL and publishes a stub jar. The consumer tests against that jar via the stub-runner, so one contract is enforced on both sides.
+  difficulty: 3
+  tags: [terminology, process]
+
+- id: "14.6"
+  question: When is WireMock the better tool than Spring Cloud Contract?
+  options:
+    a: When the API shape must be a shared versioned guarantee
+    b: When the producer must verify its implementation against the DSL
+    c: When you only need a lightweight HTTP test double
+    d: When contracts must be enforced on both producer and consumer
+  answer: c
+  explanation: WireMock provides hand-written HTTP stubs with no shared contract artifact and no producer verification. It fits the simple test-double case. Spring Cloud Contract wins when the API shape itself must be a shared, versioned contract.
+  difficulty: 1
+  tags: [comparison, scenario]
+
+- id: "14.7"
+  question: An ArchUnit rule states that domain classes must never import jakarta.persistence or org.springframework. What kind of test is this?
+  options:
+    a: A contract test against a remote service
+    b: An architecture test that fails the build on a dependency violation
+    c: A performance test for the domain layer
+    d: A database integration test
+  answer: b
+  explanation: ArchUnit rules run as plain JUnit tests that evaluate package dependencies on every build. They turn the hexagon dependency rule from module 09 into automated enforcement instead of review discipline.
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "14.8"
+  question: Where do most tests belong on the test pyramid?
+  options:
+    a: Full-context @SpringBootTest tests, since they cover the most code
+    b: Only slice tests so no context boots at all
+    c: Distributed equally across unit, slice, and full-context levels
+    d: Many fast unit tests at the base and the fewest full-context tests at the top
+  answer: d
+  explanation: The pyramid puts the many fast unit tests at the base, fewer slice tests in the middle, and the fewest slow full-context tests at the top. That maximizes coverage per second of runtime.
+  difficulty: 2
+  tags: [concept, comparison]
+
+- id: "14.9"
+  question: In Testcontainers, what does a static field annotated @Container on a @Testcontainers class control?
+  options:
+    a: A new container is started for every test method
+    b: The container is never started automatically
+    c: One container is started per test class by the JUnit 5 extension
+    d: The container stays running outside CI indefinitely
+  answer: c
+  explanation: The JUnit 5 extension starts a static @Container once before the test class and stops it after, keeping container churn low. Per-method containers would multiply startup time.
+  difficulty: 3
+  tags: [terminology, process]
+
+- id: "14.10"
+  question: Which combination of settings keeps a Testcontainers suite fast?
+  options:
+    a: Parallel Testcontainers execution, JUnit parallel execution, and container reuse locally
+    b: Deleting all integration tests from the build
+    c: Running every persistence test against H2
+    d: Running the full suite sequentially on a single thread
+  answer: a
+  explanation: Parallel Testcontainers execution via @Testcontainers(parallel = true), JUnit parallel execution, and reuse of already-pulled containers cut wall-clock time. H2 and deleted tests trade away the guarantees the suite exists to give.
+  difficulty: 1
+  tags: [concept, calculation]

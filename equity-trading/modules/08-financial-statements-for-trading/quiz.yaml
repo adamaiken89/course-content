@@ -1,0 +1,138 @@
+- id: '8.1'
+  question: Which financial statement shows a company's revenues and expenses over
+    a period?
+  options:
+    a: Balance sheet
+    b: Cash flow statement
+    c: Income statement
+    d: Statement of changes in equity
+  answer: c
+  explanation: Income statement reports revenues and expenses over a period, culminating
+    in net income. Balance sheet is a snapshot at a point in time.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.2'
+  question: On a balance sheet, assets must equal which of the following?
+  options:
+    a: Liabilities minus equity
+    b: Liabilities plus equity
+    c: Revenue minus expenses
+    d: Cash plus inventory
+  answer: b
+  explanation: 'Accounting identity: Assets = Liabilities + Equity. This always balances.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.3'
+  question: Which cash flow category includes purchases of property, plant, and equipment?
+  options:
+    a: Operating activities
+    b: Investing activities
+    c: Financing activities
+    d: Non-cash activities
+  answer: b
+  explanation: Investing activities cover capital expenditures, acquisitions, and
+    sale of long-term assets. Operating covers core business; financing covers debt/equity
+    transactions.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.4'
+  question: A company reports net income of $10M and total shareholders' equity of
+    $50M. What is ROE?
+  options:
+    a: 10%
+    b: 50%
+    c: 25%
+    d: 20%
+  answer: d
+  explanation: ROE = Net Income / Shareholders' Equity = $10M / $50M = 20%. Measures
+    return on each dollar of equity.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '8.5'
+  question: 'A trader sees earnings per share $0.85 vs consensus estimate $0.92. This
+    is an example of:'
+  options:
+    a: Negative earnings surprise
+    b: Revenue recognition issue
+    c: Positive earnings surprise
+    d: In-line earnings
+  answer: a
+  explanation: 'Negative earnings surprise: actual EPS ($0.85) below consensus ($0.92).
+    Can trigger sell-off as market reprices expectations.'
+  difficulty: 2
+  tags:
+  - scenario
+- id: '8.6'
+  question: 'A company has current assets $200M and current liabilities $250M. Current
+    ratio is:'
+  options:
+    a: '1.25'
+    b: '2.00'
+    c: '0.80'
+    d: '0.25'
+  answer: c
+  explanation: Current ratio = Current Assets / Current Liabilities = $200M / $250M
+    = 0.80. Below 1.0 suggests potential liquidity concerns.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '8.7'
+  question: 'Under accrual accounting, revenue is recognized when:'
+  options:
+    a: Cash is received from customer
+    b: Invoice is generated
+    c: End of fiscal year
+    d: Goods are shipped or service is performed, regardless of cash
+  answer: d
+  explanation: 'Revenue recognition principle: record revenue when earned (goods delivered/service
+    performed), not when cash changes hands. Key distinction from cash accounting.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.8'
+  question: Which ratio measures financial leverage by comparing total debt to shareholders'
+    equity?
+  options:
+    a: Current ratio
+    b: Return on assets
+    c: Debt-to-equity ratio
+    d: Gross profit margin
+  answer: c
+  explanation: D/E = Total Debt / Shareholders' Equity. Higher ratio = more leverage,
+    higher financial risk. Traders watch D/E for balance sheet strength.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.9'
+  question: 'Trader analyzing two retail firms: Firm A has ROA 12%, Firm B has ROA
+    7%. Assuming similar risk profiles, which is more efficient at using assets to
+    generate profit?'
+  options:
+    a: Firm A, because higher ROA indicates better asset utilization
+    b: Firm B, because lower ROA indicates conservative management
+    c: Neither — ROA cannot be compared across firms
+    d: Firm B, because higher ROA means higher leverage
+  answer: a
+  explanation: ROA = Net Income / Total Assets. Higher ROA means more profit per dollar
+    of assets. Direct comparison valid within same industry with similar risk profiles.
+  difficulty: 3
+  tags:
+  - comparison
+- id: '8.10'
+  question: 'Company reports revenue $500M, COGS $300M, operating expenses $120M,
+    interest $20M, tax $15M. Net income is:'
+  options:
+    a: $80M
+    b: $60M
+    c: $180M
+    d: $45M
+  answer: d
+  explanation: Gross profit = $500M - $300M = $200M. Operating income = $200M - $120M
+    = $80M. Pre-tax income = $80M - $20M = $60M. Net income = $60M - $15M = $45M.
+  difficulty: 3
+  tags:
+  - calculation

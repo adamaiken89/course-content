@@ -1,0 +1,148 @@
+- id: '14.1'
+  question: What is the first step when refactoring legacy code with no tests?
+  options:
+    a: Write characterization tests that capture current behavior
+    b: Start refactoring — the code works, no tests needed
+    c: Delete the code and rewrite from scratch
+    d: Add E2E tests — they cover everything
+  answer: a
+  explanation: Characterization tests capture current behavior (including bugs) as
+    a baseline. They serve as a safety net during refactoring.
+  difficulty: 1
+  tags:
+  - concept
+- id: '14.2'
+  question: What is the key difference between characterization tests and contract
+    tests?
+  options:
+    d: Characterization tests capture what the code does. Contract tests specify what
+      it should do.
+    a: They are the same thing
+    b: Contract tests are for APIs, characterization tests are for UI
+    c: Characterization tests are faster
+  answer: d
+  explanation: Characterization tests document existing behavior (warts included).
+    Contract tests assert intended behavior. Characterization tests are scaffolding;
+    contract tests are permanent.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '14.3'
+  question: After refactoring, characterization tests pass. What is the next step?
+  options:
+    b: Replace with intentional contract tests + architecture guards
+    a: Keep characterization tests forever
+    c: Delete all tests — refactor is complete
+    d: Run production deploy
+  answer: b
+  explanation: Characterization tests captured old behavior. After refactoring, write
+    clean contract tests that specify the intended behavior. Add architecture guards
+    to protect the new design.
+  difficulty: 2
+  tags:
+  - workflow
+- id: '14.4'
+  question: A characterization test passes but the component has a known bug. What
+    should you do?
+  options:
+    c: Capture the buggy behavior in the characterization test, refactor, fix the
+      bug separately
+    a: Fix the bug before refactoring
+    b: Delete the characterization test — it captures a bug
+    d: Ignore the bug — characterization tests only capture
+  answer: c
+  explanation: Characterization tests capture reality. Refactoring should not change
+    behavior (even buggy behavior). Fix the bug as a separate step after the refactoring
+    is verified.
+  difficulty: 2
+  tags:
+  - concept
+- id: '14.5'
+  question: What is the purpose of architecture guards after refactoring?
+  options:
+    a: Prevent the new design from regressing — detect if someone reverts to old patterns
+    b: Increase test coverage percentage
+    c: Replace unit tests
+    d: Document the architecture
+  answer: a
+  explanation: 'Architecture guards enforce the new design. For example: a test that
+    asserts UserSettingsUI stays a pure component without side effects prevents someone
+    from mixing data fetching back into the UI.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '14.6'
+  question: How small should refactoring steps be?
+  options:
+    c: Small enough that if tests fail, the cause is obvious (one extraction at a
+      time)
+    a: One big refactor — faster
+    b: Refactor the entire file at once
+    d: Refactor only if tests exist
+  answer: c
+  explanation: Small steps (extract one hook, move one concern) mean characterization
+    tests pinpoint exactly what broke. Large refactors create cascading failures.
+  difficulty: 1
+  tags:
+  - concept
+- id: '14.7'
+  question: A component is 300 lines with 5 responsibilities. What is the refactoring
+    plan?
+  options:
+    a: Extract one responsibility at a time, run characterization tests after each
+      extraction
+    b: Refactor everything at once
+    c: Rewrite from scratch
+    d: Add integration tests first, then refactor
+  answer: a
+  explanation: 'One responsibility at a time: extract data fetching → run tests, extract
+    form state → run tests, extract UI component → run tests. Each step is safe and
+    reversible.'
+  difficulty: 2
+  tags:
+  - workflow
+- id: '14.8'
+  question: What is the highest-value test according to this module?
+  options:
+    b: The test that enables confident refactoring
+    a: The test with the highest coverage contribution
+    c: The fastest test
+    d: The E2E test
+  answer: b
+  explanation: Tests that enable refactoring are worth more than any coverage metric.
+    A test suite that lets you change code with confidence is the ultimate measure
+    of test quality.
+  difficulty: 1
+  tags:
+  - concept
+- id: '14.9'
+  question: Why should you git stash WIP changes before writing characterization tests?
+  options:
+    d: Writing tests against WIP code captures the partially-refactored contract,
+      not the original — tests may miss real regressions
+    a: Git stash is required to use the test runner
+    b: Git stash improves test performance
+    c: Characterization tests only work on committed code
+  answer: d
+  explanation: WIP code already has changes. Tests written against it calibrate to
+    the new behavior. Popping stash and refactoring further means tests aligned to
+    hybrid state — dangerous. Stash first, test clean code.
+  difficulty: 2
+  tags:
+  - concept
+- id: '14.10'
+  question: After popping stash, your characterization tests fail. What does this
+    mean?
+  options:
+    b: The refactoring broke something — tests correctly caught the regression
+    a: Tests are wrong
+    c: The stash corrupted the code
+    d: Characterization tests are unreliable
+  answer: b
+  explanation: Good! The characterization tests (written against clean code) now fail
+    because your WIP changed behavior. This is exactly what they are supposed to catch.
+    Investigate the difference between WIP and the original contract.
+  difficulty: 2
+  tags:
+  - scenario
+

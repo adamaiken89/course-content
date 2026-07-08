@@ -1,0 +1,57 @@
+- id: c.1
+  question: Neuron 嘅{權重}決定每個 input 嘅重要性。多個 neurons 組成{layer}，多層 layers 組成{network}。
+  answer: 權重，layer，network
+  explanation: 呢三個層次係 neural network 嘅基本結構單位。
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 訓練嘅核心 loop 係：forward pass → {計 loss} → {backward pass} → {update weights}
+    → 重複。
+  answer: 計 loss，backward pass，update weights
+  explanation: 呢個 loop 係所有 neural network training 嘅 core — 包括 LLM。
+  difficulty: 2
+  tags:
+  - process
+- id: c.3
+  question: Gradient descent 嘅 intuition：你喺山上面，{feel 最斜嘅方向}，然後向{反方向（落山）}行一步。
+  answer: feel 最斜嘅方向，反方向（落山）
+  explanation: Gradient = error 增加最快嘅方向。Descent = 向減少 error 嘅方向行。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.4
+  question: Learning rate 太大會{overshoot}山谷最低點，太細會{train 得太慢}。
+  answer: overshoot，train 得太慢
+  explanation: Learning rate 係 training 嘅關鍵 hyperparameter，要 tune 到啱啱好。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: LLM 嘅 training 同一般 NN 嘅 training 核心機制{一樣}，分別只在於{scale}同{參數量}。
+  answer: 一樣，scale，參數量
+  explanation: 呢個 insight 幫你理解 LLM 唔係乜嘢神秘新技術 — 只係超大規模嘅 neural network。
+  difficulty: 1
+  tags:
+  - comparison
+- id: c.6
+  question: Neuron 做三件事：收 inputs × {weights}、加埋、再用{activation function}決定 output。
+  answer: weights，activation function
+  explanation: Weight 代表 input 嘅重要性，activation function 決定 neuron 最後 output。
+  difficulty: 2
+  tags:
+  - process
+- id: c.7
+  question: Learning rate 太大會{overshoot}山谷最低點，太細會{train 得太慢}，啱啱好先 efficient。
+  answer: overshoot，train 得太慢
+  explanation: Learning rate = 每一步嘅 size。太大跨過最低點，太細永遠行唔到目的地。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: 「Deep learning」嘅「deep」指{多層 hidden layers}，唔係 data 或者 training 嘅深度。
+  answer: 多層 hidden layers
+  explanation: 傳統 NN 得一兩層 hidden layers，deep learning 可以有幾十到幾百層。
+  difficulty: 1
+  tags:
+  - terminology

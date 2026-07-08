@@ -1,0 +1,114 @@
+- id: "cum.1"
+  type: mcq
+  source_modules: [21, 22, 23, 24]
+  question: "香港薪俸稅累進稅率 (2024/25) 最高一級?"
+  options:
+    a: "15%"
+    b: "17%"
+    c: "20%"
+    d: "25%"
+  answer: b
+  explanation: "香港薪俸稅累進 2%-17% (2024/25), 或標準稅率 15%, 兩者取低。最高邊際稅率 17%。"
+  difficulty: 1
+  tags: [terminology, recall]
+
+- id: "cum.2"
+  type: mcq
+  source_modules: [21, 22, 23, 24]
+  question: "香港利得稅兩級制 (2024/25) 係?"
+  options:
+    a: "首 200 萬 8.25%, 之後 16.5%"
+    b: "一律 16.5%"
+    c: "一律 15%"
+    d: "累進 5-20%"
+  answer: a
+  explanation: "利得稅兩級: 首 HK$200 萬 8.25%, 之後 16.5%。只適用香港來源利潤。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "cum.3"
+  type: cloze
+  source_modules: [21, 22, 23, 24]
+  question: "MPF 強制性供款: {5% 老闆 + 5% 員工}, 月入上限 {HK$30,000}, 最高扣稅 {$18,000}。"
+  answer: "5% 老闆 + 5% 員工、HK$30,000、$18,000"
+  explanation: "MPF 5% + 5% 強制, 月入超過 HK$30,000 部分唔再強制, 供款扣稅上限 $18,000/年。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "cum.4"
+  type: tf
+  source_modules: [21, 22, 23, 24]
+  statement: "保險大數法則: 集合大量獨立風險, 個別不確定但整體可預測。"
+  answer: true
+  explanation: "對。大數法則係保險基礎, 集合 1 萬個 30 歲健康人, 雖然個別 1 年內死亡唔確定, 但整體死亡率 (e.g. 0.1%) 可預測。"
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "cum.5"
+  type: tf
+  source_modules: [21, 22, 23, 24]
+  statement: "Whole Life (終身壽險) 永遠比 Term Life (定期壽險) 抵買, 因為有 Cash Value。"
+  answer: false
+  explanation: "錯。Whole Life 頭 10 年回報極低 (扣費用), 對大部分人 Term Life + 投資蝕更低。Cash Value 流動性差, 早期有 surrender charge。"
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "cum.6"
+  type: mcq
+  source_modules: [21, 22, 23, 24]
+  question: "VHIS (自願醫保) 標準計劃最高扣稅額?"
+  options:
+    a: "$4,000"
+    b: "$8,000"
+    c: "$12,000"
+    d: "冇扣稅"
+  answer: b
+  explanation: "VHIS 標準計劃每年保費扣稅, 最高 HK$8,000 (本人 + 家人可分開計, 上限視乎受養人數)。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "cum.7"
+  type: cloze
+  source_modules: [21, 22, 23, 24]
+  question: "危疾保險 {一次過現金} 賠付, 醫療保險 {實報實銷}。兩者定位 {不同}, 通常 {需要兩者配合}。"
+  answer: "一次過現金、實報實銷、不同、需要兩者配合"
+  explanation: "危疾一次過現金 (用於生活/家庭開支), 醫療實報實銷 (用於醫療費)。兩者互補, 唔係二揀一。"
+  difficulty: 2
+  tags: [concept, comparison]
+
+- id: "cum.8"
+  type: mcq
+  source_modules: [21, 22, 23, 24]
+  question: "年金 (Annuity) 主要對沖邊種退休風險?"
+  options:
+    a: "通脹風險"
+    b: "長壽風險 (Longevity Risk)"
+    c: "市場風險"
+    d: "利率風險"
+  answer: b
+  explanation: "年金 = 投保一筆錢, 終身 (或固定年期) 每月收息。對沖長壽風險, 保證你活到幾多歲都有收入。Market 風險由其他投資對沖。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "cum.9"
+  type: tf
+  source_modules: [21, 22, 23, 24]
+  statement: "投資收入 (股票/基金) 喺香港要繳交資本利得稅。"
+  answer: false
+  explanation: "錯。香港無資本利得稅, 股票/基金投資收益唔使繳稅。但有股息稅 (少數情況), 同海外投資可能喺來源地交稅。"
+  difficulty: 1
+  tags: [concept, terminology]
+
+- id: "cum.10"
+  type: mcq
+  source_modules: [21, 22, 23, 24]
+  question: "你計咗兩個數: 用累進稅率計, 薪俸稅要交 $20,000; 用標準稅率計, 只係要交 $16,000。你實際要交幾多?"
+  options:
+    a: "$20,000"
+    b: "$16,000"
+    c: "$36,000"
+    d: "兩者平均, 即 $18,000"
+  answer: b
+  explanation: "香港薪俸稅係累進稅率同標準稅率兩者取低。標準稅率計出嚟平啲, 就交 $16,000。"
+  difficulty: 2
+  tags: [concept, application]

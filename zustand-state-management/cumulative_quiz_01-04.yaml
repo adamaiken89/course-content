@@ -1,0 +1,115 @@
+- type: mcq
+  question: Zustand's core value proposition?
+  options:
+    b: Minimal store API outside React with selector-based subscription slices
+    a: Immutable global classes
+    c: Time-travel only
+    d: Built-in routing
+  answer: b
+  explanation: Stores live outside React; components subscribe via selectors so only relevant slices re-render.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.1
+  source_modules:
+  - 1
+- type: mcq
+  question: When does useState beat Zustand?
+  options:
+    c: State confined to one component with no cross-tree sharing
+    a: Any server data
+    b: Deeply nested shared trees
+    d: Persistent sessions
+  answer: c
+  explanation: Local UI state with zero sharing needs no external store.
+  difficulty: 1
+  tags:
+  - comparison
+  id: cum.2
+  source_modules:
+  - 2
+- type: cloze
+  question: useReducer semantics inside Zustand appear as a single set function taking an {action-like
+    updater}, combining reducer ergonomics with store scope.
+  answer: action-like updater
+  difficulty: 2
+  tags:
+  - concept
+  id: cum.3
+  source_modules:
+  - 3
+- type: tf
+  statement: Context value changes re-render every consumer; Zustand selectors let consumers opt into
+    precise slices.
+  answer: true
+  explanation: Context broadcasts whole-value updates; Zustand subscribes per-selector with equality checks.
+  difficulty: 2
+  tags:
+  - concept
+  id: cum.4
+  source_modules:
+  - 4
+- type: mcq
+  question: 'Review zustand-state-management module 1: which statement reflects the module''s core guidance?'
+  options:
+    a: Apply the documented pattern with its stated tradeoffs
+    b: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: a
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.5
+  source_modules:
+  - 1
+- type: mcq
+  question: 'Review zustand-state-management module 2: which statement reflects the module''s core guidance?'
+  options:
+    d: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    b: Patterns never have costs
+    c: Always rewrite existing code first
+  answer: d
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.6
+  source_modules:
+  - 2
+- type: mcq
+  question: 'Review zustand-state-management module 3: which statement reflects the module''s core guidance?'
+  options:
+    b: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: b
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.7
+  source_modules:
+  - 3
+- type: mcq
+  question: 'Review zustand-state-management module 4: which statement reflects the module''s core guidance?'
+  options:
+    a: Apply the documented pattern with its stated tradeoffs
+    b: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: a
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.8
+  source_modules:
+  - 4

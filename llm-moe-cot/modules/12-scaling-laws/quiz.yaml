@@ -1,0 +1,81 @@
+- id: '12.1'
+  question: 邊個 function 最好描述 scaling laws 中 loss 同 model size 嘅關係？
+  options:
+    c: Power law
+    a: 指數衰減
+    b: 對數
+    d: 線性
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '12.2'
+  question: 根據 Chinchilla scaling，compute-optimal 下每個 parameter 大約要幾多 training tokens？
+  options:
+    d: '20'
+    a: '2'
+    b: '5'
+    c: '100'
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '12.3'
+  question: 點解 Kaplan et al. (2020) 建議將更多 compute 分配俾 model size 而唔係 data？
+  options:
+    c: 因為佢哋每個 model size 用固定 training steps，偏向更大 models
+    a: 因為 data 比 compute 更難收集
+    b: 因為 model size 改善 loss 永遠比 data 多
+    d: 因為 Chinchilla 後來確認咗佢哋嘅發現
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '12.4'
+  question: Irreducible loss L_∞ 主要存在係因為：
+  options:
+    a: 自然語言係 non-deterministic — 多個有效 next tokens 存在
+    b: Transformers 嘅 context windows 有限
+    c: 現有 hardware 無法訓練足夠大嘅 models
+    d: Optimizers 無法到達 true minimum
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '12.5'
+  question: 13B parameter model 要 train 大約幾多 tokens 先達到 compute-optimal？
+  options:
+    b: 260B tokens
+    a: 26B tokens
+    c: 130B tokens
+    d: 1.3T tokens
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '12.6'
+  question: 關於 emergent abilities 嘅邊個陳述最吻合 scaling law research？
+  options:
+    a: Emergent abilities 可能係 discontinuous metrics 造成嘅測量假象
+    b: Emergence 證明 model capabilities 有真正 phase transitions
+    c: Emergence 只喺大過 100B parameters 嘅 models 出現
+    d: Scaling laws 無法預測任何 emergent behaviors
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '12.7'
+  question: 如果 compute budget 加倍，Chinchilla 話 optimal model size 增加嘅倍數係：
+  options:
+    b: 1.41（√2）
+    a: 2（大一倍）
+    c: 1.73（C^0.73）
+    d: 1.07（C^0.07）
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '12.8'
+  question: 用現有 web text data 無限制 scaling LLMs 有咩限制？
+  options:
+    d: 獨特 web text 估計約 ~5T tokens — 有限資源
+    a: Hardware 無法處理更多 data
+    b: Data quality 隨 scale 自動改善
+    c: Scaling laws 喺 1T tokens 後失效
+  answer: d
+  difficulty: 2
+  tags: []
+

@@ -1,0 +1,110 @@
+- id: "3.1"
+  question: "What is a seam in the testing vocabulary?"
+  options:
+    a: "any place a test asserts on the DOM"
+    b: "an integration point you own where your code meets something you do not fully control"
+    c: "a snapshot of a large component tree"
+    d: "the boundary between two test files"
+  answer: c
+  explanation: "A seam is a boundary you own plus something external: fetch, clock, browser API. The decision rule follows: test the seam you own, mock the seam you don't."
+  difficulty: 1
+  tags: [terminology]
+- id: "3.2"
+  question: "Why does 'snapshot everything' fail as a primary approach?"
+  options:
+    a: "snapshots are always slower than unit tests"
+    b: "styling tweaks and timestamps churn the diff, teach 'accept all', and assert captured text instead of behavior"
+    c: "the test runner rejects snapshots over 1 MB"
+    d: "snapshots cannot run in CI"
+  answer: b
+  explanation: "Large DOM snapshots break on every incidental change, so reviewers stop reading diffs, and the suite asserts text that was once captured rather than behavior that must hold."
+  difficulty: 1
+  tags: [concept]
+- id: "3.3"
+  question: "Where does an MSW handler stand relative to the app?"
+  options:
+    a: "inside the component's adapter function"
+    b: "at the HTTP boundary exactly where fetch stands"
+    c: "as a call to setupServer in the production bundle"
+    d: "at the database layer"
+  answer: d
+  explanation: "MSW mocks the network at the HTTP boundary with realistic fixtures; the handler occupies the same place fetch does, so the contract is exercised, not bypassed."
+  difficulty: 1
+  tags: [terminology]
+- id: "3.4"
+  question: "Apply the rule 'test the seam you own; mock the seam you don't' to a fetch call. What is the owned seam?"
+  options:
+    a: "the server's database"
+    b: "the network adapter the component calls"
+    c: "the CI pipeline"
+    d: "the browser's rendering engine"
+  answer: a
+  explanation: "The HTTP boundary is yours to control and test; the server behind real fetch is not yours in a component test. MSW stands at that owned boundary while the component reads through real hooks."
+  difficulty: 2
+  tags: [concept]
+- id: "3.5"
+  question: "ProgramSelect passes integration tests, but production shows an empty list because GET /api/programs returns { results: [...] } while the fixture is a bare array. What failed?"
+  options:
+    a: "the renderer saw no stylesheet"
+    b: "the seam diverged: mock served a different shape than the real contract"
+    c: "userEvent dispatched a synthetic event"
+    d: "the snapshot covered the handler"
+  answer: c
+  explanation: "The mock lived at the wrong shape. A contract-typed MSW handler at the HTTP boundary would have broken on the shape mismatch instead of passing against a fiction."
+  difficulty: 2
+  tags: [scenario]
+- id: "3.6"
+  question: "Why prefer userEvent over fireEvent in RTL component tests?"
+  options:
+    a: "userEvent dispatches all events instantly"
+    b: "userEvent fires real timing, real focus management, and real keyboard semantics"
+    c: "fireEvent cannot click buttons"
+    d: "userEvent does not require a rendered component"
+  answer: b
+  explanation: "userEvent simulates a person: keystrokes with timing, focus, and keyboard behavior, so focus and accessibility bugs become visible. fireEvent dispatches a synthetic event with none of that."
+  difficulty: 1
+  tags: [concept]
+- id: "3.7"
+  question: "A flow only exists across three screens and inside real browser autofill. Where must it be tested?"
+  options:
+    a: "in a unit test of the validator"
+    b: "in an RTL integration test of one screen"
+    c: "in a Playwright journey"
+    d: "in a snapshot of each screen"
+  answer: a
+  explanation: "Cross-screen flows and browser-only behavior cannot be fabricated by an integration test; a Playwright journey is the honest price for behaviors that only exist in the real browser."
+  difficulty: 3
+  tags: [scenario]
+- id: "3.8"
+  question: "Which snapshot is legitimate under snapshot-when-structural?"
+  options:
+    a: "a full TrackerTable render with live timestamps"
+    b: "an error boundary's fallback alert"
+    c: "ProgramSelect with a dynamically fetched list"
+    d: "the login page with a greeting clock"
+  answer: d
+  explanation: "Error-boundary output is structural and stable; it only changes when the boundary's contract changes. Large DOM, timestamps, and server-fed labels churn and dim the signal."
+  difficulty: 2
+  tags: [comparison]
+- id: "3.9"
+  question: "The triangulation rule says duplicate coverage at two layers is a signal, at all three is waste. Why?"
+  options:
+    a: "all three layers run on different machines"
+    b: "the third assertion of the same string adds cost without adding information"
+    c: "unit tests cannot share fixtures"
+    d: "E2E replaces integration entirely above two layers"
+  answer: b
+  explanation: "A component behavior test and a journey covering the same behavior are deliberate signal; a third layer re-asserting the same string pays three times for one fact."
+  difficulty: 2
+  tags: [comparison]
+- id: "3.10"
+  question: "The programs service returns HTTP 500. Which test proves the error UI renders?"
+  options:
+    a: "a snapshot of the mock adapter"
+    b: "a unit test asserting HttpResponse.error() exists"
+    c: "an RTL test overriding the MSW handler with a 500 and asserting the error message"
+    d: "a Playwright test that skips login"
+  answer: c
+  explanation: "The negative test reuses the same seam: override the MSW handler for GET /api/programs with a failure, render ProgramSelect, and assert the error UI. One handler, one line of override."
+  difficulty: 3
+  tags: [scenario]

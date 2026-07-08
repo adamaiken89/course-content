@@ -1,0 +1,75 @@
+- id: c.1
+  question: 'Complete: The three BLURT phases are: brain {dump}, {compare} to source,
+    and fill gaps.'
+  answer: dump, compare
+  explanation: 'Phase 1: write everything remembered (5min). Phase 2: compare to lesson,
+    find gaps and misconceptions (5min). Phase 3: reread to fill top 3 gaps (5min).'
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 'Complete: Interleaving requires {context-switching} — identifying which
+    concept applies before answering.'
+  answer: context-switching
+  explanation: 'Blocked practice uses the same context. Interleaving demands discrimination:
+    ''which concept applies here?'' The extra effort is desirable difficulty.'
+  difficulty: 2
+  tags:
+  - concept
+- id: c.3
+  question: 'Complete: Interleaving feels {harder} but produces {triple} the retention
+    of blocked practice at 1 month.'
+  answer: harder, triple
+  explanation: 'Interleaved practice: ~60% retention at 1 month. Blocked practice:
+    ~30% at 1 month. The learner must override the preference for blocked because
+    it feels easier.'
+  difficulty: 2
+  tags:
+  - concept
+- id: c.4
+  question: 'Complete: Cumulative quizzes should occur every {3-5} modules with {varied}
+    formats (MCQ, cloze, T/F).'
+  answer: 3-5, varied
+  explanation: Cumulative quizzes build cross-module connections. Varied formats test
+    different retrieval pathways. Each question is tagged with source_modules for
+    analysis.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: 'Complete: Meta-learning tracks session {type}, module, duration, score,
+    and {skipped} days.'
+  answer: type, skipped
+  explanation: Weekly meta-analysis identifies weakest modules, best session types,
+    missed days, and adherence rate. Adjust protocol based on findings.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: 'Complete: The Feynman protocol requires two rounds: {simple} explanation
+    and {analogy} challenge.'
+  answer: simple, analogy
+  explanation: Simple explanation tests basic understanding. Analogy tests deep relational
+    understanding — mapping the concept to a different domain requires flexible knowledge.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: 'Complete: A good study protocol is {adaptable}, not rigid. Meta-learning
+    data drives {adjustments}.'
+  answer: adaptable, adjustments
+  explanation: The protocol is a starting point. Weak modules get more REVIEW. Missed
+    days indicate trigger/friction issues. Low quiz scores suggest reallocation. Iterate
+    weekly.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: 'Complete: BLURT immediately after LEARN tests initial {encoding}; BLURT
+    one month later tests long-term {consolidation}.'
+  answer: encoding, consolidation
+  explanation: Immediate BLURT finds weak points right after learning. Monthly BLURT
+    reveals what's consolidated into long-term memory.
+  difficulty: 2
+  tags:
+  - concept

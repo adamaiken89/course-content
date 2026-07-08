@@ -1,0 +1,43 @@
+- id: c.1
+  question: Implicit reasoning 係喺 {single forward pass 入面發生}，唔使 intermediate tokens。Explicit reasoning
+    會 {generate intermediate steps 做 text}。
+  answer: single forward pass 入面發生 / generate intermediate steps 做 text
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: ORM 只獎勵 {final answer}。PRM 獎勵每個 {intermediate reasoning step}。
+  answer: final answer / intermediate reasoning step
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: STaR 透過 {generate CoT}、{filter 淨係要正確嘅 examples} 同埋 {fine-tuning} 嚟 bootstrap reasoning。
+  answer: generate CoT / filter 淨係要正確嘅 examples / fine-tuning
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: PRM 需要 {step-level labels}，呢樣嘢好貴；automatic PRM 用 {Monte Carlo estimation} 嚟估計 sampled completions。
+  answer: step-level labels / Monte Carlo estimation
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: Rejection sampling for reasoning 意思係：generate 好多條 CoT paths，但只 train 嗰啲 path 係 leading 到 {correct
+    answer} 嘅。
+  answer: correct answer
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: R1-style models 用 {rule-based rewards}（format + answer correctness），呢個做法會令到 {self-verification}
+    同 {reflection} 湧現出嚟。
+  answer: rule-based rewards / self-verification / reflection
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: 自改進入面用唔完美 verifier 嘅問題係 {reward hacking} — 模型會利用 verifier 嘅 {blind spots}。
+  answer: reward hacking / blind spots
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: Process Reward Models 評分每一個 {reasoning step}，而唔係只評分最終答案。
+  answer: reasoning step
+  difficulty: 2
+  tags: []

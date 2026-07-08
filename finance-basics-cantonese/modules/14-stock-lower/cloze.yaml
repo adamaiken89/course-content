@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "EPS 嘅公式係 {淨利潤 / 流通股數}, 反映 {1 股賺幾多}。"
+  answer: "淨利潤 / 流通股數、1 股賺幾多"
+  explanation: "EPS (Earnings Per Share) 係最基本嘅盈利能力指標, 優先股股息要先扣。"
+  difficulty: 1
+  tags: [terminology, formula]
+
+- id: "c.2"
+  question: "P/E Ratio 嘅公式係 {股價 / EPS}, 數字上反映 {以當前盈利計, 幾年回本}。"
+  answer: "股價 / EPS、以當前盈利計, 幾年回本"
+  explanation: "P/E 10 = 10 年回本。但唔同行業標準差異大, 唔可以跨行業直接比。"
+  difficulty: 1
+  tags: [terminology, formula]
+
+- id: "c.3"
+  question: "{Trailing P/E} 用 {過去 12 個月 EPS}, {Forward P/E} 用 {預測下年 EPS}, 後者反映市場期望但靠估算。"
+  answer: "Trailing P/E、過去 12 個月 EPS、Forward P/E、預測下年 EPS"
+  explanation: "Trailing 真實但滯後, Forward 反映期望但依賴分析師估算。差異大反映市場對增長嘅預期。"
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "c.4"
+  question: "P/B Ratio 適合 {重資產/高槓桿} 行業, 例如 {銀行/保險/地產}。{科技/品牌} 行業用 P/B 冇意義, 因為主要價值係 {無形資產}。"
+  answer: "重資產/高槓桿、銀行/保險/地產、科技/品牌、無形資產"
+  explanation: "P/B = 股價 / 每股淨資產, 賬面值比較。軟件公司賬面低但實際值錢, P/B 會誤導。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.5"
+  question: "股息率 = {DPS / 股價}, 高息股要警惕 {派息陷阱}: Yield 過高可能 {股價大跌} 或 {公司準備削減派息}。"
+  answer: "DPS / 股價、派息陷阱、股價大跌、公司準備削減派息"
+  explanation: "Yield > 10% 通常唔正常, 應該 check Payout Ratio (派息/盈利) 同過往派息穩定性。"
+  difficulty: 2
+  tags: [concept, formula]
+
+- id: "c.6"
+  question: "資本利得 = {(賣出 - 買入) / 買入}。Total Return = {Capital Gain + Dividend Yield}。"
+  answer: "(賣出 - 買入) / 買入、Capital Gain + Dividend Yield"
+  explanation: "股票總回報包括股價升幅加派息。短炒 vs 長揸嘅稅務待遇唔同。"
+  difficulty: 1
+  tags: [formula, concept]
+
+- id: "c.7"
+  question: "PEG = {P/E / 盈利增長率%}。PEG < {1} 算 {平}, PEG > {2} 算 {貴}。"
+  answer: "P/E / 盈利增長率%、1、平、2、貴"
+  explanation: "PEG 結合估值同增長, 解決「低 P/E 唔一定平」嘅問題。"
+  difficulty: 2
+  tags: [concept, formula]
+
+- id: "c.8"
+  question: "常見估值陷阱: {低 P/E 唔一定平} (可能係 value trap)、{高 P/E 唔一定貴} (可能係高增長股)、{淨睇 P/E 唔睇盈利質量} (可能靠賣資產或會計調整)、{唔同行業用錯指標} (銀行應該睇 P/B, 軟件睇 P/S)。"
+  answer: "低 P/E 唔一定平、高 P/E 唔一定貴、淨睇 P/E 唔睇盈利質量、唔同行業用錯指標"
+  explanation: "估值係綜合判斷, 單一指標誤導。"
+  difficulty: 3
+  tags: [concept, misconception]
+
+- id: "c.9"
+  question: "唔同行業嘅典型 P/E: {銀行 5-12} (低增長)、{公用事業 10-18} (穩定派息)、{大盤指數 15-25} (整體平均)、{科技股 25-50+} (高增長)。"
+  answer: "銀行 5-12、公用事業 10-18、大盤指數 15-25、科技股 25-50+"
+  explanation: "P/E 唔可以跨行業直接比, 必須配合增長率同行業特性。"
+  difficulty: 2
+  tags: [terminology, comparison]
+
+- id: "c.10"
+  question: "判斷股價平貴嘅正確做法: {永遠睇 PEG + 行業 + 盈利質量}, 唔好 {單睇 P/E}。"
+  answer: "永遠睇 PEG + 行業 + 盈利質量、單睇 P/E"
+  explanation: "綜合指標 + 上下文, 唔可以單睇一個數字就落決定。"
+  difficulty: 1
+  tags: [concept, application]

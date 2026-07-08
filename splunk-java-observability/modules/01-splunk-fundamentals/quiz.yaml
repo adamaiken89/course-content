@@ -1,0 +1,119 @@
+- id: "1.1"
+  question: "What is the primary unit of search in Splunk?"
+  options:
+    a: "The log file on disk"
+    b: "The event"
+    c: "The index"
+    d: "The field"
+  answer: b
+  explanation: "Parsing turns raw data into events; events are what searches return. A file is not the unit of search, and an index is a container, not a result row."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "1.2"
+  question: "Which field always holds the ORIGINAL, unmodified text of a Splunk event?"
+  options:
+    a: "_time"
+    b: "_host"
+    c: "_raw"
+    d: "_sourcetype"
+  answer: c
+  explanation: "_raw is the untouched raw event text. _time is the timestamp, _host the producer machine, _sourcetype the format classification."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "1.3"
+  question: "In SPL, what is the first command of any search pipeline?"
+  options:
+    a: "stats"
+    b: "eval"
+    c: "search"
+    d: "table"
+  answer: c
+  explanation: "The search command is implicit and always first. All subsequent commands (stats, eval, table...) are chained with |."
+  difficulty: 1
+  tags: [concept]
+
+- id: "1.4"
+  question: "A Spring Boot app's logs must land in the 'checkout' index. Who performs parsing and storage?"
+  options:
+    a: "The universal forwarder"
+    b: "The HEC appender"
+    c: "The search head"
+    d: "The indexer"
+  answer: d
+  explanation: "Indexers parse (timestamp, line breaking, fields) and store data in buckets. Forwarders and HEC appenders only send data; search heads only query it."
+  difficulty: 2
+  tags: [concept]
+
+- id: "1.5"
+  question: "Which search returns events from BOTH the checkout and inventory indexes?"
+  options:
+    a: "index=checkout OR index=inventory"
+    b: "index=checkout AND index=inventory"
+    c: "index=checkout OR level=ERROR"
+    d: "index=checkout | index=inventory"
+  answer: a
+  explanation: "OR between two index= filters is correct. AND (b) requires one event in both indexes - impossible. (c) ORs against level instead. (d) chains two implicit searches, which is invalid."
+  difficulty: 2
+  tags: [application]
+
+- id: "1.6"
+  question: "Your teammate writes: index=checkout OR level=ERROR, meaning 'ERRORs from any index plus all checkout events'. Which is the correct version of that intent?"
+  options:
+    a: "(index=checkout OR level=ERROR)"
+    b: "index=checkout level=ERROR"
+    c: "index=checkout OR (index=* level=ERROR)"
+    d: "index=* level=ERROR"
+  answer: a
+  explanation: "Parentheses force the OR grouping. Without them AND binds tighter and semantics get confusing. (b) is AND - checkout events that are also ERROR. (d) drops the checkout part."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "1.7"
+  question: "Which is a valid explanation for why Splunk is used over grep for production log analysis?"
+  options:
+    a: "Grep cannot search multiple files"
+    b: "Splunk breaks multi-line stacktraces into single searchable events and filters by time and fields"
+    c: "Splunk stores data in a relational schema"
+    d: "grep is a paid product"
+  answer: b
+  explanation: "Splunk's value: time-bounded search, correct event breaking, field extraction, cross-node search. grep handles files serially with no field model and no time index."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "1.8"
+  question: "A team logs full request bodies at INFO for 500 req/s. What is the most likely consequence on a volume-licensed Splunk deployment?"
+  options:
+    a: "Faster search performance"
+    b: "Indexed volume and license cost grow sharply"
+    c: "No impact, logging is free"
+    d: "The search head crashes"
+  answer: b
+  explanation: "Splunk is licensed by indexed GB/day. Storing payload bytes at INFO is the classic license-cost driver for API teams."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "1.9"
+  question: "A 15-line Java stacktrace in a log file. How does Splunk typically treat it?"
+  options:
+    a: "As 15 separate events, one per line"
+    b: "It cannot be indexed"
+    c: "As a single event if multi-line breaking is configured for that sourcetype"
+    d: "As one event per word"
+  answer: c
+  explanation: "Line breaking config in parsing decides this. Stacktraces are usually treated as one multi-line event so the exception stays whole and searchable."
+  difficulty: 2
+  tags: [concept]
+
+- id: "1.10"
+  question: "Which pair correctly matches a Java logging concept to its Splunk object?"
+  options:
+    a: "MDC key → index"
+    b: "logback.xml → sourcetype"
+    c: "log statement → event"
+    d: "pod name → index"
+  answer: c
+  explanation: "One log statement becomes one event (or one block). MDC keys map to fields, logback.xml configures appenders, pod name maps to host."
+  difficulty: 3
+  tags: [scenario]

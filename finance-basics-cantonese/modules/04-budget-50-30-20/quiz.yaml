@@ -1,0 +1,137 @@
+- id: '4.1'
+  question: 50/30/20 規則嘅 3 個類別係咩?
+  options:
+    a: 現金/股票/債券
+    b: 必要/想要/投資
+    c: 住屋/食物/儲蓄
+    d: 50% Needs + 30% Wants + 20% 儲蓄
+  answer: d
+  explanation: '哈佛教授 Elizabeth Warren 提出嘅 50/30/20 規則: 50% 必要支出 (Needs), 30% 想要支出
+    (Wants), 20% 儲蓄/還債。其他選項唔係呢個規則。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.2'
+  question: 「預算」最常見嘅誤解係咩?
+  options:
+    a: 預算一定令你慳到好多錢
+    b: 預算係會計師先識做嘅嘢
+    c: 預算係有錢人先需要嘅
+    d: 預算係限制使錢, 等於冇樂趣
+  answer: d
+  explanation: 預算 = 知道錢去咗邊, 唔係限制使錢。50/30/20 預留 30% 畀 wants (外食/旅行/娛樂), 即係自由使嘅錢。低/中/高收入都應該做預算。
+  difficulty: 1
+  tags:
+  - concept
+  - misconception
+- id: '4.3'
+  question: 點分辨 Needs 同 Wants?
+  options:
+    a: 貴嘅係 Wants, 平嘅係 Needs
+    b: 「冇咗會唔會即刻出問題?」會 = Need, 唔會 = Want
+    c: 必需品 = Needs, 奢侈品 = Wants
+    d: 老人家嗰啲 = Needs, 年青人嗰啲 = Wants
+  answer: b
+  explanation: '判斷方法: 「如果唔使呢樣嘢, 我嘅生活會唔會即刻出問題?」會 = Need; 唔會 = Want。Example: 「我需要 Starbucks
+    返工」— 唔係, 你需要咖啡因, 茶可以代。Common trap: 用「必需品 vs 奢侈品」會混淆 (e.g. 貴但必要嘅醫療)。'
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '4.4'
+  question: 你月入 $30,000, 跟 50/30/20, 儲蓄金額應該幾多?
+  options:
+    a: $3,000
+    b: $6,000
+    c: $9,000
+    d: $15,000
+  answer: b
+  explanation: 30,000 × 20% = 6,000。Option a 係 10%, c 係 30% (Wants), d 係 50% (Needs)。
+  difficulty: 2
+  tags:
+  - calculation
+- id: '4.5'
+  question: 「先 pay 自己」嘅意思係?
+  options:
+    a: 出糧後即時將儲蓄部分自動轉去獨立戶口, 然後先使剩低
+    b: 先處理自己嘅慾望
+    c: 先交稅
+    d: 先買自己鍾意嘅嘢
+  answer: a
+  explanation: 「先 pay 自己」意思係每月出糧後即時將部分 (例如 20%) 自動轉去獨立儲蓄戶口, 然後用剩低嘅使。呢個方法將儲蓄自動化, 確保儲蓄一定做到,
+    唔係「用到最後先儲 (通常儲唔落)」。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '4.6'
+  question: 你月入 $20,000, 跟 50/30/20 發現 Needs 已經 75% ($15,000)。你應該?
+  options:
+    a: '調整 root cause: 搬屋減租 / 改煮飯 / 改公共交通, 等 needs 回到 50% 範圍'
+    b: 即刻借貸填補缺口
+    c: 放棄 50/30/20, 因為唔啱你
+    d: 削減 wants 同儲蓄去平衡
+  answer: a
+  explanation: 50/30/20 係 reference, 唔係死規則。當 actual needs 75%, 反映生活成本過高, 要解決 root
+    cause (搬屋/煮飯/交通), 而非放棄規則。Option c 係逃避, b 會陷入債務, d 會令儲蓄受壓。
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '4.7'
+  question: 零基預算 vs 50/30/20, 以下邊個正確?
+  options:
+    a: 零基預算適合懶人
+    b: 零基預算失敗率低, 因為更仔細
+    c: 50/30/20 失敗率低, 因為簡單 + 可自動化
+    d: 兩者失敗率一樣
+  answer: c
+  explanation: '50/30/20 只需 5 分鐘計劃, 配合自動轉賬, 失敗率低。零基預算每月 30-60 分鐘, 太花時間, 失敗率高。預算法則:
+    自動化 + 簡單先可持續。'
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '4.8'
+  question: 預算追蹤嘅最低門檻方法係?
+  options:
+    a: 請會計師每月 review
+    b: 信用卡月結單 + 簡單 spreadsheet
+    c: 每日 ATM 提款睇戶口
+    d: 裝 3 個理財 App 自動追蹤
+  answer: b
+  explanation: 信用卡月結單已分類好大部分支出, 你只需 add 幾個關鍵字 (e.g. 「外食/訂閱」) 同計總和。最低成本、最低學習成本、適合大部分人。Option
+    a 太貴, c 太隨意, d 要學埋幾個 App。
+  difficulty: 1
+  tags:
+  - concept
+  - application
+- id: '4.9'
+  question: 預算嘅 30% Wants 包括以下邊啲?
+  options:
+    a: 外食、旅行、訂閱服務、娛樂、新衫
+    b: 應急錢、投資、退休
+    c: 信用卡還款、貸款、利息
+    d: 住屋租金、食物、交通
+  answer: a
+  explanation: 'Wants 30% 包括: 外食、旅行、訂閱 (Netflix/Spotify)、娛樂 (戲/酒吧)、新衫/化妝品等「想要」但非必要嘅嘢。Option
+    b 係儲蓄, c 係還債, d 係 Needs。'
+  difficulty: 2
+  tags:
+  - terminology
+- id: '4.10'
+  question: 你跟 50/30/20 兩個月, 發現儲蓄做到 20% 但每個月都「恰好」用晒 wants 30%, 一蚊都冇剩。最可能嘅原因?
+  options:
+    a: 你應該停咗預算
+    b: 你太成功, 預算完美
+    c: 你嘅 Wants 預算太少, 應調整 25/35/20 或加儲蓄目標
+    d: 你應該增加 wants 到 40%
+  answer: c
+  explanation: 「恰好用晒 wants 30%」反映 wants 預算太緊, 容易超支。應根據自己 lifestyle 調整, 例如 25% Needs
+    (住屋高) + 35% Wants + 20% 儲蓄 + 20% 其他。預算係 reference, 唔係死規則, 要根據實際彈性調整。Option a 係放棄,
+    b 誤判形勢, d 會犧牲儲蓄。
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+

@@ -1,0 +1,153 @@
+- id: '9.1'
+  question: What does a Zustand selector function do?
+  options:
+    b: Maps full store state to a partial slice for subscription
+    a: Modifies store state directly
+    c: Creates a new store instance
+    d: Defines the shape of state for TypeScript
+  answer: b
+  explanation: A selector receives the full store state and returns a slice. useStore
+    subscribes to that slice — component re-renders only when returned value changes.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.2'
+  question: What is the default equality function Zustand uses to compare selector
+    results?
+  options:
+    c: Object.is
+    a: deepEqual
+    b: shallowEqual
+    d: ===
+  answer: c
+  explanation: Zustand uses Object.is (same-value-zero equality) by default. Use shallow
+    for object/array selectors.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.3'
+  question: Component A uses useStore((s) => s.user.name). Component B uses useStore((s)
+    => s.user.email). Store updates user.email. What happens?
+  options:
+    a: Only B re-renders
+    b: Both A and B re-render
+    c: Only A re-renders
+    d: Neither re-renders
+  answer: a
+  explanation: A's selector returns name (unchanged) → Object.is passes → skip. B's
+    selector returns email (changed) → Object.is fails → re-render. Each subscription
+    is independent.
+  difficulty: 1
+  tags:
+  - concept
+- id: '9.4'
+  question: 'useStore((s) => ({ a: s.a, b: s.b })) re-renders on every state change.
+    Why?'
+  options:
+    c: The selector creates a new object reference each time — Object.is sees different
+      reference
+    a: Object.is compares strings, not objects
+    b: Zustand cannot handle object selectors
+    d: The store must use immer middleware for objects
+  answer: c
+  explanation: 'Every call creates a new {} object. Object.is compares references
+    → always different → always re-render. Fix: add shallow equality as second argument
+    or use per-field selectors.'
+  difficulty: 2
+  tags:
+  - application
+  - concept
+- id: '9.5'
+  question: Which equality function fixes object selectors in Zustand?
+  options:
+    d: shallow
+    a: reactFastCompare
+    b: deepEqual
+    c: Object.assign
+  answer: d
+  explanation: shallow compares each key/value pair with Object.is. If all values
+    equal, returns true → skip re-render. Import from 'zustand/shallow'.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.6'
+  question: A component reads s.user.preferences.theme. Which selector is correct?
+  options:
+    a: const theme = useStore((s) => s.user.preferences.theme)
+    b: const user = useStore((s) => s.user); const theme = user.preferences.theme
+    c: const theme = useStore((s) => s.user).preferences.theme
+    d: 'const theme = useStore((s) => ({ theme: s.user.preferences.theme }), shallow)'
+  answer: a
+  explanation: 'Directly select the deep property. Option A and C subscribe to entire
+    user object — any user field change re-renders. Option D creates unnecessary object.
+    Option B is minimal: subscribes only to theme.'
+  difficulty: 2
+  tags:
+  - application
+  - comparison
+- id: '9.7'
+  question: When should you use useShallow over passing shallow as the equality function?
+  options:
+    a: When the selector is defined inline and returns an object
+    b: When performance is critical and every microsecond matters
+    c: When the store has more than 10 fields
+    d: When using TypeScript strict mode
+  answer: a
+  explanation: useShallow wraps selector with useMemo to stabilize selector reference
+    across renders. This prevents unnecessary re-subscriptions when inline arrow functions
+    create new references each render. Both behave identically for stable selector
+    references.
+  difficulty: 2
+  tags:
+  - comparison
+  - concept
+- id: '9.8'
+  question: A dashboard has 50 components using fine-grained selectors. Store updates
+    10 times per second. How does Zustand handle selector evaluation?
+  options:
+    d: Runs all 50 selectors on each update, compares results with Object.is
+    a: Runs only selectors for components currently visible
+    b: Batches selectors and runs once per animation frame
+    c: Skips selector eval if component has not mounted yet
+  answer: d
+  explanation: Zustand iterates all subscribers on each state change, runs each selector,
+    compares result via Object.is. For 50 simple selectors this completes in < 0.05ms.
+    The bottleneck is React re-render, not selector eval.
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '9.9'
+  question: Which is the correct way to create a memoized composed selector?
+  options:
+    b: Create a caching wrapper that recomputes only when input selectors return new
+      values
+    a: const select = (s) => heavyComputation(s.items, s.filter)
+    c: Use Object.assign to freeze selector results
+    d: Imported memo from React and wrap the component
+  answer: b
+  explanation: Memoized selectors cache results and recompute only when inputs change.
+    Implement via useMemo in component, createSelector from reselect, or manual caching
+    wrapper. Option A recomputes every state change — defeats memoization.
+  difficulty: 3
+  tags:
+  - application
+  - concept
+- id: '9.10'
+  question: A team migrates from Context to Zustand but keeps using coarse selectors
+    (extracting entire state objects). What outcome?
+  options:
+    b: App performance matches Context — unnecessary re-renders on any store change
+    a: Performance improves dramatically because Zustand is faster than Context
+    c: App breaks because Zustand requires fine selectors
+    d: Selectors auto-optimize via Zustand's internal memoization
+  answer: b
+  explanation: Coarse selectors (extracting objects) negate Zustand's advantage. Every
+    change creates new object reference → Object.is fails → re-render. Same symptom
+    as Context cascade. Selectors only help when used with fine granularity or shallow
+    equality.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+

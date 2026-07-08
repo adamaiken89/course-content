@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "錢嘅三大功能係 {交換媒介}、{價值尺度} 同 {價值儲存}。"
+  answer: "交換媒介、價值尺度、價值儲存"
+  explanation: "任何嘢做到呢三個功能, 我哋就當佢係錢。少一個都唔算完整嘅錢(例如黃幣做到尺度, 但唔流通)。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "法幣 (Fiat money) 嘅拉丁文意思係「let it be done」(就係咁決定), 即係 {政府話呢張紙值幾多就值幾多}, 唔再靠 {黃金} 做後盾。"
+  answer: "政府話呢張紙值幾多就值幾多、黃金"
+  explanation: "1971 年美元脫離金本位之後, 全球主要貨幣都係法幣。法幣靠政府信用 hold 住, 唔可以兌換黃金。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.3"
+  question: "中國宋朝嘅 {交子} 係世界上最早嘅紙幣, 佢靠 {政府/商號背書} 先流通到。"
+  answer: "交子、政府/商號背書"
+  explanation: "紙幣本身只係紙, 冇內在價值, 靠發行者(政府或商號)信用先流通。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "辛巴威 2008 年嘅通脹率高達 89.7 sextillion percent, 主因係 {政府大量印銀紙, 法幣信用崩潰}。"
+  answer: "政府大量印銀紙, 法幣信用崩潰"
+  explanation: "法幣一旦政府信用崩潰, 鈔票就會極速貶值, 嚴重嘅情況係一張幾億都買唔到一粒米。"
+  difficulty: 1
+  tags: [concept, scenario]
+
+- id: "c.5"
+  question: "錢嘅根基係 {信任}, 唔係紙、唔係金、唔係銀, 係 {人與人之間嘅共識}。"
+  answer: "信任、人與人之間嘅共識"
+  explanation: "錢從來都唔係靠「實物」, 靠嘅係「大家都肯收」。呢個就係錢嘅根基。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "影響兩種法幣之間匯率嘅因素包括 {通脹差}、{利率差} 同 {貿易順逆差} 等。"
+  answer: "通脹差、利率差、貿易順逆差"
+  explanation: "匯率受基本經濟因素影響, 後面課程會詳細講。呢個 module 只需要知道唔同國家嘅法幣匯率會郁。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "Bitcoin 暫時仲未完全做到「{價值尺度}」嘅功能, 因為價格 {太波動}, 商戶唔肯用 BTC 嚟訂價。"
+  answer: "價值尺度、太波動"
+  explanation: "Bitcoin 已做到交換媒介同價值儲存, 但因為價格波動太大(±10%/日), 唔適合做穩定計價單位。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.8"
+  question: "全球外匯市場每日交易量約 {7 萬億美元}, 係全球最大嘅金融市場, 比股票市場大幾倍。"
+  answer: "7 萬億美元"
+  explanation: "外匯市場交易量主要來自央行、銀行、跨國企業、投機者, 每日約 7 萬億美元(2022 BIS 數據)。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.9"
+  question: "儲蓄嘅時候, 應該 {分散喺現金、戶口、定期}, 平衡 {流動性、安全、回報} 三方面。"
+  answer: "分散喺現金、戶口、定期、流動性、安全、回報"
+  explanation: "唔應該 All-in 一種儲蓄方式。現金流動性高但零回報; 定期回報高但鎖住; 戶口中間。三者平衡至合理。"
+  difficulty: 3
+  tags: [application, scenario]
+
+- id: "c.10"
+  question: "錢嘅本質係 {共識}, 唔係 {紙/金屬/電子} 本身。所以 HKD 紙幣去到北極唔再係錢, 因為 {當地人唔接受}。"
+  answer: "共識、紙/金屬/電子、當地人唔接受"
+  explanation: "錢 = 大家都肯收嘅嘢。一旦某個 group 唔收, 喺嗰個 group 裏面就唔再係錢。"
+  difficulty: 3
+  tags: [application]

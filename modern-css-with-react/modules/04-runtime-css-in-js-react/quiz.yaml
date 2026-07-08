@@ -1,0 +1,168 @@
+- id: '4.1'
+  question: How does runtime CSS-in-JS apply styles to the DOM?
+  options:
+    d: Injects <style> tags at runtime with generated class names
+    a: Generates inline styles on each element
+    b: Modifies external stylesheet files
+    c: Uses CSS Shadow DOM
+  answer: d
+  explanation: Runtime CSS-in-JS parses template literals, generates unique class
+    names, and injects corresponding <style> rules into the document head.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.2'
+  question: Approximately how large is the styled-components runtime library (gzip)?
+  options:
+    a: 12-15 kB
+    b: 1-2 kB
+    c: 5-8 kB
+    d: 50+ kB
+  answer: a
+  explanation: styled-components runtime is ~14 kB gzip. This is the style injection
+    engine — not styles themselves. Ships with the app regardless of how many styled
+    components exist.
+  difficulty: 1
+  tags:
+  - concept
+- id: '4.3'
+  question: 'In Next.js App Router, a styled-components component needs:'
+  options:
+    c: '''use client'' directive at the top'
+    a: Nothing special — works automatically
+    b: A babel plugin only
+    d: Custom webpack config only
+  answer: c
+  explanation: Runtime CSS-in-JS uses createContext, hooks, and DOM APIs — unavailable
+    in RSC. Every styled component requires 'use client', forcing it into the client
+    bundle.
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.4'
+  question: What problem occurs when runtime CSS-in-JS is used without SSR configuration?
+  options:
+    b: FOUC — Flash of Unstyled Content
+    a: Styles fail to render entirely
+    c: Server crashes
+    d: Reduced TypeScript type checking
+  answer: b
+  explanation: Server generates different class names than client (no StyleSheetManager).
+    Initial HTML has no styles → flash until client JS injects them.
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.5'
+  question: How does ThemeProvider pass theme to components?
+  options:
+    c: React Context
+    a: CSS custom properties on root
+    b: Global singleton
+    d: Prop drilling
+  answer: c
+  explanation: ThemeProvider wraps React Context. Theme object accessible via props.theme
+    in styled components. Changing theme re-renders all consumers via Context.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.6'
+  question: Why does runtime CSS-in-JS's style tag grow unbounded with prop combinations?
+  options:
+    b: A and B
+    a: Each unique props combination generates a new CSS rule
+    c: Old rules are never garbage collected
+    d: Styles are duplicated on every render
+  answer: b
+  explanation: styled-components creates new classes per unique prop combination.
+    Old classes remain in the style tag — never removed or deduplicated. Accumulates
+    over session.
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.7'
+  question: A team uses styled-components for 200 components. Approximately how much
+    of their JS bundle is the CSS runtime?
+  options:
+    c: ~14 kB (library) + CSS strings in JS
+    a: 0 kB — all styles are extracted
+    b: ~200 kB (2 kB per component)
+    d: CSS is never in the JS bundle
+  answer: c
+  explanation: ~14 kB for runtime library. CSS strings per component add more. With
+    CSS Modules, those strings would be in separate CSS files at zero JS cost.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '4.8'
+  question: When would runtime CSS-in-JS still be the right choice in 2026?
+  options:
+    d: Existing 500-component codebase with styled-components
+    a: Greenfield RSC-first Next.js app
+    b: New component library for 10 external apps
+    c: Static site with no dynamic theming
+  answer: d
+  explanation: Migration cost of rewriting 500 components outweighs runtime tax. New
+    projects (A, C, D) benefit from zero-cost approaches (CSS Modules, Tailwind, Vanilla
+    Extract).
+  difficulty: 3
+  tags:
+  - scenario
+- id: '4.9'
+  question: What is the RUNTIME bundle cost of Emotion vs styled-components?
+  options:
+    d: Emotion ~11 kB, styled-components ~14 kB
+    a: Identical
+    b: styled-components ~7 kB, Emotion ~20 kB
+    c: Both ~5 kB
+  answer: d
+  explanation: Emotion is slightly smaller (~11 kB gzip) than styled-components (~14
+    kB). Both face same fundamental runtime cost and RSC incompatibility.
+  difficulty: 1
+  tags:
+  - comparison
+- id: '4.10'
+  question: Can a React component library built with styled-components be used without
+    styled-components as a dependency?
+  options:
+    b: No — ThemeProvider and styled runtime required
+    a: Yes — styles are self-contained
+    c: Yes — but only in development
+    d: No — but Emotion can substitute
+  answer: b
+  explanation: Library consumers must install styled-components as a peer dependency.
+    ThemeProvider must wrap their app. This is the main argument against runtime CSS-in-JS
+    for shared libraries.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '4.11'
+  question: A team has 800 styled-components. The CTO wants to migrate to CSS Modules.
+    What's the recommended approach?
+  options:
+    a: Incremental — new components use CSS Modules, replace old components during
+      feature work
+    b: Full rewrite — convert all 800 in one sprint
+    c: Keep styled-components — migration cost outweighs benefit at 800 components
+    d: Convert to Tailwind instead — it's faster to write
+  answer: a
+  explanation: At 800 components, incremental migration is the only practical path.
+    Stop new styled-components usage. Replace leaf components first during feature
+    work. Extract design tokens to CSS custom properties as a bridge.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '4.12'
+  question: In which scenario is runtime CSS-in-JS the WRONG choice?
+  options:
+    a: New Next.js App Router app with RSC as primary architecture
+    b: Existing 500-component codebase using styled-components
+    c: Electron desktop app with no RSC concerns
+    d: Rapid prototype with no performance constraints
+  answer: a
+  explanation: Runtime CSS-in-JS forces 'use client' on every styled component, defeating
+    RSC benefits. In a new App Router app, choose zero-runtime approaches (Tailwind,
+    CSS Modules, Vanilla Extract).
+  difficulty: 2
+  tags:
+  - scenario
+

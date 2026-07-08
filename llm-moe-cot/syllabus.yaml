@@ -1,0 +1,190 @@
+subject: "大型語言模型進階 — Transformer、MoE 與思維鏈"
+language: yue
+time_budget_hours: 55
+target_level: advanced
+domain: "LLM, Mixture of Experts, Chain of Thought"
+prerequisites:
+  - basic programming knowledge
+  - basic probability & statistics
+learning_objectives:
+  - "Understand transformer architecture in depth — attention, normalization, FFN layers"
+  - "Explain emergent abilities, scaling laws, and alignment in LLMs"
+  - "Design and analyse Mixture-of-Experts architectures — routing, load balancing, expert specialization"
+  - "Understand Chain-of-Thought reasoning mechanisms — why it works, when it fails"
+  - "Diagnose unexpected LLM app behaviour using theoretical understanding of model internals"
+  - "Stay current with frontier research in sparse models and reasoning"
+
+modules:
+  - id: 1
+    name: "語言模型係乜 — 由 n-gram 到 LLM"
+    time_hours: 1.5
+    prerequisites: []
+    topics: [language models, n-gram, neural LM, what makes LLM different]
+
+  - id: 2
+    name: "Neural Network 基礎 — LLM 必備"
+    time_hours: 1.5
+    prerequisites: [1]
+    topics: [deep learning basics, backprop, embeddings, sequence modeling]
+
+  - id: 3
+    name: "Attention 機制"
+    time_hours: 1.5
+    prerequisites: [2]
+    topics: [attention, self-attention, scaled dot-product, multi-head, causal masking]
+
+  - id: 4
+    name: "Transformer 架構"
+    time_hours: 1.5
+    prerequisites: [3]
+    topics: [encoder-decoder, positional encoding, layer norm, residual connections]
+
+  - id: 5
+    name: "Decoder-only 架構"
+    time_hours: 1.5
+    prerequisites: [4]
+    topics: [GPT family, autoregressive, causal LM, KV cache]
+
+  - id: 6
+    name: "Tokenization 同 Embedding"
+    time_hours: 1.5
+    prerequisites: [2]
+    topics: [BPE, WordPiece, SentencePiece, vocab construction, embedding matrix]
+
+  - id: 7
+    name: "Pretraining 目標"
+    time_hours: 1.5
+    prerequisites: [5]
+    topics: [next token prediction, masked LM, CLM, perplexity, loss landscape]
+
+  - id: 8
+    name: "Layer Norm 同 Residual Connection"
+    time_hours: 1.5
+    prerequisites: [4]
+    topics: [pre-norm vs post-norm, residual stream hypothesis, gradient flow]
+
+  - id: 9
+    name: "Multi-Head Attention 深入探討"
+    time_hours: 1.5
+    prerequisites: [3, 8]
+    topics: [attention head specialization, head importance, multi-query/grouped-query attention]
+
+  - id: 10
+    name: "FFN Layer 同 Activation 函數"
+    time_hours: 1.5
+    prerequisites: [8]
+    topics: [SwiGLU, GeGLU, FFN key-value memory, knowledge storage]
+
+  - id: 11
+    name: "位置編碼"
+    time_hours: 1.5
+    prerequisites: [4]
+    topics: [sinusoidal PE, RoPE, ALiBi, relative bias, rotary mechanics, context extension]
+
+  - id: 12
+    name: "縮放定律"
+    time_hours: 1.5
+    prerequisites: [7]
+    topics: [Kaplan scaling, Chinchilla optimal, compute-optimal training, irreducible loss]
+
+  - id: 13
+    name: "湧現能力"
+    time_hours: 1.5
+    prerequisites: [12]
+    topics: [emergence vs grokking, phase transitions, in-context learning, task vectors]
+
+  - id: 14
+    name: "Alignment、RLHF 同 DPO"
+    time_hours: 1.5
+    prerequisites: [7]
+    topics: [RLHF pipeline, reward model, PPO, DPO, KTO, preference tuning]
+
+  - id: 15
+    name: "Evaluation & Benchmarks"
+    time_hours: 1.5
+    prerequisites: [13, 14]
+    topics: [benchmark design, contamination, MMLU, HumanEval, calibration]
+
+  - id: 16
+    name: "MoE Motivation — Why Sparse?"
+    time_hours: 1.5
+    prerequisites: [10, 12]
+    topics: [dense vs sparse, MoE intuition, capacity factor, why MoE scales better]
+
+  - id: 17
+    name: "MoE 架構"
+    time_hours: 1.5
+    prerequisites: [16]
+    topics: [router network, top-k gating, expert networks, token choice vs expert choice]
+
+  - id: 18
+    name: "MoE Load Balancing"
+    time_hours: 1.5
+    prerequisites: [17]
+    topics: [auxiliary loss, importance loss, load loss, z-loss, expert dropping, batch priority routing]
+
+  - id: 19
+    name: "MoE 入面嘅專家專門化"
+    time_hours: 1.5
+    prerequisites: [17, 18]
+    topics: [domain specialization, linguistic specialization, expert overlap, knowledge locality]
+
+  - id: 20
+    name: "MoE 訓練動態"
+    time_hours: 1.5
+    prerequisites: [18, 19]
+    topics: [router collapse, expert deadness, gradient noise, initialization, MoE-specific optimizer tuning]
+
+  - id: 21
+    name: "MoE 推理同部署"
+    time_hours: 1.5
+    prerequisites: [20]
+    topics: [memory bandwidth, expert parallelism, dynamic batching, quantization for MoE, speculative decoding]
+
+  - id: 22
+    name: "MoE 變種與稀疏模型"
+    time_hours: 1.5
+    prerequisites: [21]
+    topics: [soft MoE, memory-augmented MoE, Mixture of Attention Heads, Switch Transformer, DeepSeekMoE]
+
+  - id: 23
+    name: "思維鏈 — 動機"
+    time_hours: 1.5
+    prerequisites: [13]
+    topics: [why reasoning needs explicit steps, CoT as scratchpad, logical decomposition, faithfulness]
+
+  - id: 24
+    name: "思維鏈 — 提示策略"
+    time_hours: 1.5
+    prerequisites: [23]
+    topics: [zero-shot CoT, few-shot CoT, Auto-CoT, chain-of-thought via latent space, prompt sensitivity]
+
+  - id: 25
+    name: "CoT — 內部機制"
+    time_hours: 1.5
+    prerequisites: [24]
+    topics: [mechanistic interpretability of CoT, induction heads, reasoning circuits, answer extraction]
+
+  - id: 26
+    name: "超越 Chain-of-Thought"
+    time_hours: 1.5
+    prerequisites: [25]
+    topics: [Tree-of-Thoughts, Graph-of-Thoughts, Self-Consistency, ReAct, cumulative reasoning]
+
+  - id: 27
+    name: "推理架構"
+    time_hours: 1.5
+    prerequisites: [25]
+    topics: [implicit vs explicit reasoning, inference-time compute, process reward models, STaR]
+
+  - id: 28
+    name: "LLM 應用行為"
+    time_hours: 1.5
+    prerequisites: [15, 26]
+    topics: [probabilistic output, hallucination causes, prompt brittleness, safety guards, why app behaviour can surprise]
+
+  - id: 29
+    name: "前沿與未來方向"
+    time_hours: 1.5
+    prerequisites: [22, 27, 28]
+    topics: [test-time compute scaling, multimodal MoE, reasoning models (o1, R1), agentic systems]

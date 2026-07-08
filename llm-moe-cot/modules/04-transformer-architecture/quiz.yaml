@@ -1,0 +1,131 @@
+- id: '4.1'
+  question: Transformer encoder block 有邊兩個 main sub-layers？
+  options:
+    a: Multi-Head Self-Attention + FFN
+    b: Cross-Attention + FFN
+    c: Masked Self-Attention + Cross-Attention
+    d: Self-Attention + Cross-Attention
+  answer: a
+  explanation: Encoder = self-attention → add&norm → FFN → add&norm。Decoder 先有 cross-attention
+    同 masked attention。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.2'
+  question: Encoder 嘅 self-attention 係邊種？
+  options:
+    c: Bidirectional — attend to all positions
+    a: Causal (masked) — only attend to left
+    b: Cross-attention — attend to decoder
+    d: Sparse attention
+  answer: c
+  explanation: Encoder 冇 causal mask，每個 token 可以 attend 到 sequence 所有 tokens（前後包括自己）。啱理解任務。
+  difficulty: 1
+  tags:
+  - concept
+- id: '4.3'
+  question: Decoder 嘅 cross-attention 入面，Q, K, V 分別來自邊度？
+  options:
+    a: Q=decoder, K=encoder, V=encoder
+    b: Q=encoder, K=decoder, V=decoder
+    c: Q=encoder, K=encoder, V=decoder
+    d: Q=decoder, K=decoder, V=encoder
+  answer: a
+  explanation: 'Cross-attention: Q = decoder representation（target side, 想 gen 嘅嘢），K,
+    V = encoder output（source side, input info）。Decoder 從 encoder 提取相關 info。'
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.4'
+  question: Residual connection 嘅主要作用係乜？
+  options:
+    a: 提供 gradient shortcut 俾前面層，解決 vanishing gradient
+    b: 增加模型 capacity
+    c: 做 normalization
+    d: 增加 non-linearity
+  answer: a
+  explanation: 'Residual: x + Sublayer(x)。Gradient ∂L/∂x = 1 + ∂Sublayer/∂x — identity
+    path 嘅 gradient = 1，確保深層 gradient 唔會 vanish。'
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.5'
+  question: LayerNorm 同 BatchNorm 嘅核心分別係乜？
+  options:
+    c: LayerNorm normalize over features per token; BatchNorm normalize over batch
+    a: LayerNorm 用喺 CV, BatchNorm 用喺 NLP
+    b: LayerNorm 冇 learnable parameters
+    d: 冇分別
+  answer: c
+  explanation: 'LayerNorm per token: normalize features。BatchNorm per feature: normalize
+    over batch。NLP 用 LayerNorm 因為 sequence length 可變，batch statistics 唔穩定。'
+  difficulty: 2
+  tags:
+  - comparison
+- id: '4.6'
+  question: Self-attention 係 permutation invariant — 呢個性質點解需要 positional encoding？
+  options:
+    b: 因為 shuffle tokens 後 attention output 一樣 → model 分唔到「我打你」vs「你打我」
+    a: 唔需要，self-attention 自動 capture 位置
+    c: Positional encoding 只係 for visualization
+    d: 為咗加快 training
+  answer: b
+  explanation: Set operation — {我, 打, 你} 同 {你, 打, 我} 嘅 token set 一樣，permutation invariant
+    attention output 會一樣。Positional encoding 加入 order info。
+  difficulty: 1
+  tags:
+  - concept
+- id: '4.7'
+  question: Sinusoidal positional encoding 嘅一個優點係乜？
+  options:
+    b: 可以 extrapolate 到未見過嘅 sequence length
+    a: 需要更多參數
+    c: 只 support 固定長度
+    d: 快過 learned PE
+  answer: b
+  explanation: Sinusoidal PE 係 deterministic function of position — 任何 pos 都有對應嘅 encoding，唔受
+    training length 限制。Learned PE 只 support 見過嘅 positions。
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.8'
+  question: RoPE (Rotary Position Embedding) 嘅工作方式係？
+  options:
+    d: 將位置信息旋轉注入 Q, K vectors，自然 encoding 相對位置
+    a: 將 position embedding 加落 input
+    b: 用 learnable MLP 預測位置
+    c: 用 convolution encoding 位置
+  answer: d
+  explanation: RoPE 對 Q, K 做 rotation transformation — dot product (RoPE(q), RoPE(k))
+    自然 encode 咗 q 同 k 嘅相對位置。遠距離 tokens 嘅 attention weight 自然衰減。Llama, Mistral, DeepSeek
+    都用。
+  difficulty: 3
+  tags:
+  - concept
+- id: '4.9'
+  question: Autoregressive decoding 嘅每步 forward pass 有大量重複計算 — 邊個 optimisation 解決呢個問題？
+  options:
+    d: KV cache — cache 已計算嘅 K, V matrices
+    a: Gradient checkpointing
+    b: Flash Attention
+    c: Pruning
+  answer: d
+  explanation: 每 decode 一個 token，之前 tokens 嘅 K, V 唔使重新計 — cache 住。新 token 只需計自己嘅 K,
+    V 同做 attention over cached + new。MQA/GQA (mod 3) 係針對 KV cache size 嘅 further optimisation。
+  difficulty: 3
+  tags:
+  - application
+- id: '4.10'
+  question: Decoder-only 架構同 encoder-decoder 嘅主要分別係乜？
+  options:
+    b: Decoder-only 冇 cross-attention 層
+    a: Decoder-only 用 bi-directional attention
+    c: Decoder-only 唔使 positional encoding
+    d: Decoder-only 冇 FFN
+  answer: b
+  explanation: Decoder-only = stacked decoder blocks，冇 encoder → 冇 cross-attention。所有
+    attention 係 causal self-attention。GPT 系列係 decoder-only。
+  difficulty: 2
+  tags:
+  - comparison
+

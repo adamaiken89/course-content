@@ -1,0 +1,114 @@
+- type: mcq
+  question: A bond trades below par. Its coupon rate versus yield relationship?
+  options:
+    b: Coupon < yield
+    a: Coupon > yield
+    c: Equal
+    d: Undefined
+  answer: b
+  explanation: 'Discount price implies the market demands more than the coupon pays: yield exceeds coupon.'
+  difficulty: 2
+  tags:
+  - calculation
+  id: cum.1
+  source_modules:
+  - 1
+- type: mcq
+  question: Which cash-flow feature most complicates bond pricing math?
+  options:
+    c: Embedded options like calls changing expected life
+    a: Ticker symbols
+    b: Settlement currency
+    d: ISIN length
+  answer: c
+  explanation: Calls/puts make cash flows path-dependent, requiring scenario or OAS pricing instead of
+    a single discounting.
+  difficulty: 2
+  tags:
+  - concept
+  id: cum.2
+  source_modules:
+  - 2
+- type: cloze
+  question: Government bonds anchor the {risk-free curve} used to discount every other asset class.
+  answer: risk-free curve
+  difficulty: 1
+  tags:
+  - terminology
+  id: cum.3
+  source_modules:
+  - 3
+- type: tf
+  statement: Corporate spread compensates investors for credit risk beyond the government benchmark.
+  answer: true
+  explanation: Spread = compensation for default/credit migration risk over the sovereign curve.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.4
+  source_modules:
+  - 4
+- type: mcq
+  question: 'Review fixed-income module 1: which statement reflects the module''s core guidance?'
+  options:
+    a: Apply the documented pattern with its stated tradeoffs
+    b: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: a
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.5
+  source_modules:
+  - 1
+- type: mcq
+  question: 'Review fixed-income module 2: which statement reflects the module''s core guidance?'
+  options:
+    d: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    b: Patterns never have costs
+    c: Always rewrite existing code first
+  answer: d
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.6
+  source_modules:
+  - 2
+- type: mcq
+  question: 'Review fixed-income module 3: which statement reflects the module''s core guidance?'
+  options:
+    b: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: b
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.7
+  source_modules:
+  - 3
+- type: mcq
+  question: 'Review fixed-income module 4: which statement reflects the module''s core guidance?'
+  options:
+    a: Apply the documented pattern with its stated tradeoffs
+    b: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: a
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.8
+  source_modules:
+  - 4

@@ -1,0 +1,60 @@
+- id: "c.1"
+  question: "GIN indexes store an inverted map of {element} to the rows that contain them."
+  answer: element
+  explanation: "Expanded keys point back to source rows, enabling containment probes."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "For jsonb, the {path}_ops opclass trades key-existence queries for a smaller index."
+  answer: path
+  explanation: "jsonb_path_ops indexes whole paths at the cost of ? support."
+  difficulty: 2
+  tags: [comparison]
+- id: "c.3"
+  question: "Full-text search index stores a {tsvector} per row under GIN."
+  answer: tsvector
+  explanation: "The lexeme list is the element set GIN expands."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.4"
+  question: "pg_trgm splits strings into {trigram}s to serve ILIKE '%...%' fast."
+  answer: trigram
+  explanation: "Three-character runs become the indexed elements."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.5"
+  question: "GiST indexes support {nearest-neighbour} ordering with the <-> operator."
+  answer: nearest-neighbour
+  explanation: "Distance-based ORDER BY LIMIT k reads rows in index order."
+  difficulty: 2
+  tags: [concept]
+- id: "c.6"
+  question: "BRIN describes each block range with a stored {min/max} summary."
+  answer: min/max
+  explanation: "Range min/max per ~128-page range lets the planner skip non-matching ranges."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "Range-overlap containment (&&) and EXCLUDE constraints both use the {GiST} index type."
+  answer: GiST
+  explanation: "GiST operators implement overlap and containment for range types."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.8"
+  question: "Hash indexes support {equality} only and gained WAL crash safety in PG10."
+  answer: equality
+  explanation: "The hash opclass offers no range or ordering support."
+  difficulty: 1
+  tags: [concept]
+- id: "c.9"
+  question: "Choose {BRIN} when rows arrive append-only and range queries always sweep large slices."
+  answer: BRIN
+  explanation: "Sorted append data keeps block-range summaries exclusive and prunable."
+  difficulty: 3
+  tags: [scenario]
+- id: "c.10"
+  question: "A table storing interval ranges queried for overlap and closest-to-a-point should use {GiST} index."
+  answer: GiST
+  explanation: "Handles both &&-overlap and <->-nearest operators."
+  difficulty: 2
+  tags: [scenario]

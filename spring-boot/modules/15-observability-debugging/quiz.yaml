@@ -1,0 +1,119 @@
+- id: "15.1"
+  question: What does k8s do when Actuator health/readiness returns DOWN but liveness stays UP?
+  options:
+    a: Restarts the pod to clear the failure
+    b: Stops routing traffic to the pod but does not restart it
+    c: Deletes the pod and the Deployment
+    d: Ignores the signal until liveness also fails
+  answer: b
+  explanation: Readiness DOWN means the pod is alive but not ready for traffic, so the scheduler stops sending requests without killing it. Liveness failure is what triggers a restart, since it means the process is wedged.
+  difficulty: 1
+  tags: [terminology, scenario]
+
+- id: "15.2"
+  question: A custom class implements HealthIndicator. How does its status reach /actuator/health?
+  options:
+    a: It must be registered manually in a WebMvcConfigurer
+    b: Boot calls it only after the health endpoint is hit twice
+    c: As a @Component it is discovered and folded into the aggregate health result
+    d: It replaces the built-in disk and DB health indicators
+  answer: c
+  explanation: Any @Component implementing HealthIndicator is auto-discovered by Actuator and its UP or DOWN state joins the aggregate health response. It augments built-in indicators, it does not replace them.
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "15.3"
+  question: What is the main benefit of the Observation API over separate Timer and span instrumentation?
+  options:
+    a: One instrumentation point federates to both metrics and traces, so the two cannot drift
+    b: It doubles the resolution of captured latency percentiles
+    c: It removes the need for a metrics registry
+    d: It only instruments controller methods
+  answer: a
+  explanation: One observation produces a metric timer and a span through the OTel bridge from a single code point, so names, tags, and coverage stay consistent. Separate manual instrumentation drifts apart.
+  difficulty: 1
+  tags: [concept, terminology]
+
+- id: "15.4"
+  question: How do logs get correlated to a trace in Boot 4 structured logging?
+  options:
+    a: The log message text includes the full parent span
+    b: Every log line must carry the request URL as a key
+    c: The application writes traceId to a separate file
+    d: Boot injects traceId and spanId into MDC so each JSON log line carries them
+  answer: d
+  explanation: With tracing on the classpath, the bridge populates MDC with traceId and spanId, and the JSON encoder emits them on every line. Searching a traceId returns the whole request's logs.
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "15.5"
+  question: Which statement about metrics, traces, and logs is correct?
+  options:
+    a: All three can be keyed on the same traceId
+    b: Metrics aggregate, traces map one request, logs carry details
+    c: Traces replace metrics for capacity planning
+    d: Logs are sufficient for debugging latency outliers
+  answer: b
+  explanation: Each signal answers a different question. Metrics summarize the fleet, traces reconstruct one request's path, and logs hold per-request detail. They are correlated, not interchangeable.
+  difficulty: 2
+  tags: [comparison, concept]
+
+- id: "15.6"
+  question: How does a trace continue across a service boundary in Boot 4?
+  options:
+    a: The outbound HTTP client propagates the W3C traceparent header
+    b: Both services must share a database for the traceId
+    c: The tracing bridge re-generates a new traceId per service
+    d: The client sends the traceId in the Authorization header
+  answer: a
+  explanation: The micrometer-tracing-bridge-otel propagates traceparent on outbound calls such as RestClient, so the receiving service continues the same trace. A new traceId per service would break correlation.
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "15.7"
+  question: An outage is narrowed to a service method, but its log level is INFO. What changes the level without a restart?
+  options:
+    a: Redeploy the jar with a DEBUG flag
+    b: Reboot the application after editing logback.xml
+    c: POST a configuredLevel of DEBUG to /actuator/loggers/{name}
+    d: Set the level via a heap dump analysis
+  answer: c
+  explanation: The loggers endpoint reads and sets logger levels at runtime through POST /actuator/loggers/{name} with a configuredLevel body. No restart and no redeploy are needed.
+  difficulty: 1
+  tags: [scenario, terminology]
+
+- id: "15.8"
+  question: An @Async worker logs rows but its lines have no traceId while the handler's lines do. Why?
+  options:
+    a: The logging framework drops MDC on the first async call
+    b: The hand-spawned virtual thread starts with empty thread-locals, so MDC is empty
+    c: traceId is only written after the worker completes
+    d: The worker logs to a different appender
+  answer: b
+  explanation: A virtual thread you create yourself starts with empty thread-locals, so MDC context does not carry over. Re-apply it with a ContextSnapshot at the hand-off, as in module 11.
+  difficulty: 3
+  tags: [scenario, concept]
+
+- id: "15.9"
+  question: A memory spike appears at 3 AM and the pod is about to be recycled. Which endpoint captures evidence first?
+  options:
+    a: GET /actuator/heapdump to download an .hprof for offline analysis
+    b: GET /actuator/info to read the build number
+    c: POST /actuator/loggers to raise memory logging
+    d: GET /actuator/metrics to list meter names only
+  answer: a
+  explanation: GET /actuator/heapdump streams an .hprof snapshot you can profile later. The info endpoint shows version metadata, not memory, and the pod would be gone once recycled.
+  difficulty: 1
+  tags: [scenario, terminology]
+
+- id: "15.10"
+  question: A request timer is tagged with orderId. What is the consequence?
+  options:
+    a: No consequence, tags are always free
+    b: It only affects the log output size
+    c: Each order creates a new time series, driving cardinality and storage up
+    d: It doubles the latency captured per request
+  answer: c
+  explanation: A label per order means a new never-reused time series per order, which explodes cardinality and storage. Entity identifiers belong in MDC and spans, not metric labels.
+  difficulty: 3
+  tags: [concept, scenario]

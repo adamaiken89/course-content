@@ -1,0 +1,48 @@
+- id: c.1
+  question: MoE 嘅 expert specialisation 係 {emergent, 唔係 pre-assigned} 嘅。Router 會學習將
+    {similar tokens} 送去同一個 expert。
+  answer: emergent, 唔係 pre-assigned / similar tokens
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: 喺 knowledge locality 嘅角度，expert 嘅 up-projection 係 {keys}（要匹配嘅 patterns）而
+    down-projection 係 {values}（要輸出嘅 knowledge）。
+  answer: keys / values
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: Low router entropy 表示 router {confident} 應該用邊個 expert — 係 {clean specialisation}
+    嘅跡象。
+  answer: confident / clean specialisation
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: Domain specialisation 表示某啲 experts 會處理來自特定 {knowledge domains} 嘅 tokens，例如
+    code、math 或者 biology。
+  answer: knowledge domains
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: DeepSeekMoE 用 {shared 'catch-all' experts} 加埋 specialised experts 嚟處理
+    overlapping specialisation。
+  answer: shared 'catch-all' experts
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: Token routing entropy 量度緊同一個 {document/sentence} 嘅 tokens 被 route 去幾多個唔同嘅
+    {experts}。
+  answer: document/sentence / experts
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: 當 specialisation 夠 clean 嘅時候，淨係 fine-tune {domain-relevant} experts 會比
+    {full model} fine-tuning 平。
+  answer: domain-relevant / full model
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: Linguistic specialisation 表示某啲 experts 會處理特定嘅 {languages} — 例如 Romance
+    languages 同 CJK。
+  answer: languages
+  difficulty: 2
+  tags: []

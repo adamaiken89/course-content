@@ -1,0 +1,134 @@
+- id: '20.1'
+  question: Age-Based Rule 嘅經典公式?
+  options:
+    a: 股 % = 100 + 年齡
+    b: 股 % = 100 - 年齡
+    c: 股 % = 年齡 / 100
+    d: 股 % = 50% (固定)
+  answer: b
+  explanation: 股 % = 100 - 年齡。30 歲 → 70% 股 + 30% 債。簡單易記嘅傳統規則。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '20.2'
+  question: Bogle 修訂嘅現代 Age-Based Rule?
+  options:
+    a: 50% 固定
+    b: 200 - 年齡 × 2
+    c: 100 - 年齡
+    d: 110 - 年齡 (現代人壽命長)
+  answer: d
+  explanation: Bogle 修訂為 110 - 年齡, 因現代人壽命長, 需要更多增長。30 歲 → 80% 股。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '20.3'
+  question: Strategic vs Tactical Asset Allocation 嘅分別?
+  options:
+    a: Strategic 固定比例, Tactical 短期調整
+    b: Strategic 短炒, Tactical 長揸
+    c: Strategic 用 ETF, Tactical 用股票
+    d: Strategic 美國, Tactical 國際
+  answer: a
+  explanation: SAA 設定固定比例長期維持 (簡單穩定), TAA 短期調整比例 (可能 capture 機會, 但 timing 90% 失敗)。
+  difficulty: 1
+  tags:
+  - terminology
+  - comparison
+- id: '20.4'
+  question: Rebalancing 兩種主要方法?
+  options:
+    a: Calendar-based 定期 + Threshold-based 閾值
+    b: 買入法 + 賣出法
+    c: 手動 + 自動
+    d: 上半年 + 下半年
+  answer: a
+  explanation: Calendar-based 半年/1 年 rebalance 1 次, Threshold-based drift 過 ±5% 先做。混合方案最常見。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '20.5'
+  question: 60/40 組合 1 年後股升 20%, 債升 5%。要 rebalance 返 60/40, 要做咩?
+  options:
+    a: 全部賣出再分
+    b: 唔使做
+    c: 再買多啲股
+    d: 賣出部分股, 買入部分債
+  answer: d
+  explanation: 原本 60/40 = $60 + $40 = $100。1 年後 $72 + $42 = $114。Rebalance 60/40 =
+    $68.4 股 + $45.6 債, 即係賣 $3.6 股 + 買 $3.6 債。
+  difficulty: 2
+  tags:
+  - calculation
+  - application
+- id: '20.6'
+  question: Glide Path 嘅 3 段?
+  options:
+    a: 牛市/熊市/震盪
+    b: 嬰兒/少年/成年
+    c: 累積期 (高股) / 過渡期 (慢慢減) / 提取期 (低波動)
+    d: 短期/中期/長期
+  answer: c
+  explanation: 'Glide Path 3 段: 累積期 80-90% 股 (高增長), 過渡期 5-10 年慢慢減, 提取期 30-50% 股 (保本)。'
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '20.7'
+  question: Goal-Based 配置嘅 3 罐子法, 短期罐 (0-2 年) 配置?
+  options:
+    a: 80% 股 + 20% 債
+    b: 60/40
+    c: 100% 現金 / MMF / 短債 (低波動)
+    d: 100% 股
+  answer: c
+  explanation: 短期罐目標係流動性同保本, 100% 現金/MMF/短債。中期 40/60, 長期 80/20。
+  difficulty: 1
+  tags:
+  - terminology
+  - application
+- id: '20.8'
+  question: MPF 預設投資 (DIS) 嘅 Glide Path?
+  options:
+    a: 由 80% 股降到 20% 股, 隨年齡
+    b: 100% 股
+    c: 由 20% 股升到 80% 股
+    d: 固定 60/40
+  answer: a
+  explanation: MPF DIS 嘅核心累積基金隨年齡由約 60% 股逐步降到 64 歲約 20% 股, 自動 rebalance, 適合唔想煩嘅人。
+    實際起點係約 60% 股 (唔係 80%), 四個選項入面只有 a 描述到「隨年齡由高股降到低股」嘅方向。
+  difficulty: 1
+  tags:
+  - terminology
+  - application
+- id: '20.9'
+  question: 你覺得 2024 年股市會跌, 將股比例由 60% 減到 40%。呢個係?
+  options:
+    a: Strategic Asset Allocation
+    b: Tactical Asset Allocation (Market Timing)
+    c: Goal-Based 配置
+    d: Glide Path 過渡
+  answer: b
+  explanation: 短期調整比例 (40% 股) 基於市場預期, 屬於 TAA / Market Timing。90% 失敗率, 一般散戶唔建議。
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '20.10'
+  question: 你組合 5 年無 rebalance, 而家 85% 股 15% 債。最大問題係?
+  options:
+    a: 組合回報會跌
+    b: 組合 drift 違反原本風險預算, σ 升至 ~15%, 心理上可能 cover 唔到
+    c: 會被政府罰款
+    d: 冇問題, 反正股會升
+  answer: b
+  explanation: 原本 60/40 預期 σ ~10%, 而家 ~15%。心理上可能 cover 唔到, 跌 30% 就會斬倉。應該 rebalance
+    返 60/40, 紀律執行。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+

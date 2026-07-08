@@ -1,0 +1,140 @@
+- id: '14.1'
+  question: 'Treasury settlement standard since 2017:'
+  options:
+    c: T+1
+    a: T+0
+    b: T+2
+    d: T+3
+  answer: c
+  explanation: Treasuries moved to T+1 in 2017. Corporates and munis followed to T+1
+    in 2024.
+  difficulty: 1
+  tags:
+  - terminology
+  - settlement
+- id: '14.2'
+  question: 'DVP ensures:'
+  options:
+    b: Simultaneous exchange of securities and cash
+    a: Payment before delivery
+    c: Delivery before payment
+    d: Net settlement at month end
+  answer: b
+  explanation: 'DVP: both legs settle simultaneously. No principal risk.'
+  difficulty: 1
+  tags:
+  - terminology
+  - settlement
+- id: '14.3'
+  question: 'A settlement fail is:'
+  options:
+    d: Failure to deliver securities or cash on settlement date
+    a: Trade rejected by exchange
+    b: Bond default
+    c: Custodian bankruptcy
+  answer: d
+  explanation: 'Fail: seller doesn''t deliver or buyer doesn''t pay on settlement
+    date. Incurs penalty.'
+  difficulty: 2
+  tags:
+  - terminology
+  - settlement
+- id: '14.4'
+  question: Which entity clears US Treasury and agency MBS trades?
+  options:
+    a: FICC
+    b: Euroclear
+    c: LCH
+    d: CME
+  answer: a
+  explanation: FICC (Fixed Income Clearing Corp) — subsidiary of DTCC. Clears Treasuries
+    and agency MBS.
+  difficulty: 2
+  tags:
+  - terminology
+  - clearing
+- id: '14.5'
+  question: 'US corporate bonds are held in book-entry form at:'
+  options:
+    b: DTC
+    a: Fedwire
+    c: Euroclear
+    d: Federal Reserve
+  answer: b
+  explanation: DTC (Depository Trust Company) holds corporate, muni, and agency bonds
+    in book-entry form.
+  difficulty: 2
+  tags:
+  - terminology
+  - custody
+- id: '14.6'
+  question: 'Global custodian BNY Mellon''s role includes:'
+  options:
+    d: Settlement, safekeeping, income collection, FX
+    a: Setting interest rates
+    b: Underwriting new bonds
+    c: Credit rating
+  answer: d
+  explanation: 'Custodians: settlement, safekeeping, coupon collection, corporate
+    actions, FX, reporting.'
+  difficulty: 2
+  tags:
+  - terminology
+  - custody
+- id: '14.7'
+  question: Private bank client fails to deliver $20M Treasuries for 3 days. Fail
+    penalty rate = 2%. Approximate penalty?
+  options:
+    a: $3,333
+    b: $10,000
+    c: $400,000
+    d: $20,000
+  answer: a
+  explanation: Penalty = $20M × 2% × 3/360 = $20M × 0.000167 = $3,333
+  difficulty: 2
+  tags:
+  - calculation
+  - settlement
+- id: '14.8'
+  question: 'Principal risk in settlement is the risk that:'
+  options:
+    c: One party delivers but counterparty does not
+    a: Bond price changes before settlement
+    b: Custodian goes bankrupt
+    d: Interest rates rise
+  answer: c
+  explanation: 'Principal risk: one leg settles, other doesn''t. DVP eliminates this
+    by making exchange simultaneous.'
+  difficulty: 2
+  tags:
+  - terminology
+  - risk
+- id: '14.9'
+  question: 'Collateral transformation means:'
+  options:
+    b: Converting available assets into acceptable collateral type via swap/repo
+    a: Selling collateral at a loss
+    c: Writing off bad collateral
+    d: Increasing haircut
+  answer: b
+  explanation: 'Collateral transformation: convert sub-eligible assets into required
+    form (e.g., corporate bonds → Treasuries via repo).'
+  difficulty: 3
+  tags:
+  - terminology
+  - collateral
+- id: '14.10'
+  question: 'Physical bond certificates are now:'
+  options:
+    a: Rare — mostly book-entry electronic
+    b: Standard for all bonds
+    c: Required for Treasuries
+    d: Used for repo
+  answer: a
+  explanation: Book-entry electronic is standard. Physical certificates still exist
+    for some munis but increasingly rare.
+  difficulty: 1
+  tags:
+  - terminology
+  - settlement
+

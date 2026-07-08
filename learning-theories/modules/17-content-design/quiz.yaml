@@ -1,0 +1,126 @@
+- id: '17.1'
+  question: 'The ''concrete first'' principle means content should start with:'
+  options:
+    a: A real-world problem the learner has likely faced
+    b: The formal definition
+    c: The history of the concept
+    d: A list of key terms
+  answer: a
+  explanation: Concrete scenario before abstract definition. Problem → motivation → concept.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '17.2'
+  question: Why should content introduce only 1-2 new concepts per ~15 minutes?
+  options:
+    b: Working memory capacity is limited to ~4 chunks
+    a: It makes writing easier
+    c: Learners get bored with more
+    d: It's a tradition
+  answer: b
+  explanation: WM capacity limits how much new information can be processed simultaneously. More concepts
+    = overload = no encoding.
+  difficulty: 2
+  tags:
+  - concept
+- id: '17.3'
+  question: 'According to the module, the STRONGEST engagement mechanism is:'
+  options:
+    c: Generate (produce answer before seeing it)
+    a: Think question
+    b: Cloze (fill-in-the-blank)
+    d: Highlighting
+  answer: c
+  explanation: Generation forces full retrieval with no cues — the strongest encoding mechanism.
+  difficulty: 2
+  tags:
+  - concept
+- id: '17.4'
+  question: 'Content should provide immediate feedback after exercises because:'
+  options:
+    d: Immediate feedback links the error to the correction while the trace is active
+    a: It makes the content longer
+    b: Learners prefer immediate answers
+    c: It's easier to write
+  answer: d
+  explanation: 'Error-driven learning: immediate feedback strengthens the error-correction link.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '17.5'
+  question: Which evaluation checklist item is MOST commonly missing in typical educational content?
+  options:
+    a: Includes active engagement (not just passive reading)
+    b: Uses correct grammar
+    c: Has a cover page
+    d: Uses professional formatting
+  answer: a
+  explanation: Most content is passive (text to read). Active engagement (cloze, predict, generate) is
+    rare but critical for learning.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '17.6'
+  question: A tutorial on databases starts with 'A database is a structured collection of data.' This
+    violates which principle?
+  options:
+    b: Concrete first
+    a: Feedback built-in
+    c: Structure reveals
+    d: No principles violated
+  answer: b
+  explanation: 'Starts with abstract definition. Better: ''You run an online store. Customer orders arrive
+    every minute. You need to store and query them...'''
+  difficulty: 2
+  tags:
+  - scenario
+- id: '17.7'
+  question: A comparison table is an example of which content design principle?
+  options:
+    c: Structure reveals
+    a: Concrete first
+    b: One concept at a time
+    d: Feedback built-in
+  answer: c
+  explanation: Tables reveal structural relationships (similarities and differences) visually.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '17.8'
+  question: 'The ''predict'' exercise pattern works by:'
+  options:
+    d: Creating a prediction error signal when the outcome is revealed
+    a: Adding more text
+    b: Testing prior knowledge
+    c: Encouraging discussion
+  answer: d
+  explanation: Prediction → outcome → gap (or match) = prediction error signal, which drives learning.
+  difficulty: 2
+  tags:
+  - concept
+- id: '17.9'
+  question: 'A student creates study notes by copying the textbook into a notebook. This content design
+    issue is:'
+  options:
+    a: No active engagement — copying is shallow processing
+    b: Too long
+    c: Too detailed
+    d: Good — rewriting helps
+  answer: a
+  explanation: 'Copying is shallow encoding. Better: close book, recall from memory, check, fill gaps.'
+  difficulty: 2
+  tags:
+  - scenario
+- id: '17.10'
+  question: Which engagement mechanism relies on error detection and correction?
+  options:
+    b: Error-spot
+    a: Cloze
+    c: Predict
+    d: Think
+  answer: b
+  explanation: Error-spotting presents a plausible wrong solution — learner detects the error, which forces
+    model comparison and update.
+  difficulty: 1
+  tags:
+  - terminology

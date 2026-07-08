@@ -1,0 +1,114 @@
+- id: "cum.1"
+  type: mcq
+  source_modules: [25, 26, 27, 28]
+  question: "Future Value Annuity 公式 FV = PMT × [(1+r)ⁿ - 1] / r 嘅意思?"
+  options:
+    a: "未來提取金額"
+    b: "每年供款 PMT, n 年後累積本金 + 利息"
+    c: "現值"
+    d: "每年利息"
+  answer: b
+  explanation: "FV Annuity = 每年供款 PMT, 年回報 r, n 年後嘅終值。包括本金 + 利息 (複利)。"
+  difficulty: 1
+  tags: [formula, terminology]
+
+- id: "cum.2"
+  type: mcq
+  source_modules: [25, 26, 27, 28]
+  question: "Trinity Study 顯示 4% 提取率 + 50/50 股債 30 年成功率?"
+  options:
+    a: "65%"
+    b: "85%"
+    c: "95%"
+    d: "100%"
+  answer: c
+  explanation: "Trinity Study: 4% 提取率 + 50/50 股債, 30 年成功率約 95%。高股票比例 (50-75% 股) 嘅組合同樣有 95% 或以上, 但 100% 債券組合就低好多 (約 20%), 唔好淨靠債券退休。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "cum.3"
+  type: cloze
+  source_modules: [25, 26, 27, 28]
+  question: "3 大退休風險: {Longevity 風險} (長壽)、{Sequence of Returns 風險} (序列)、{Inflation 風險} (通脹)。"
+  answer: "Longevity 風險、Sequence of Returns 風險、Inflation 風險"
+  explanation: "對沖: 年金 (長壽) + 動態提款 (序列) + TIPS/股票 (通脹)。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "cum.4"
+  type: tf
+  source_modules: [25, 26, 27, 28]
+  statement: "Loss Aversion 指蝕錢嘅痛感大過賺錢嘅開心 (約 2-2.5 倍), 常見投資表現係贏嘅倉短, 輸嘅倉長。"
+  answer: true
+  explanation: "對。Loss Aversion 指蝕錢嘅痛感約係賺錢開心嘅 2-2.5 倍, 令投資者賺少少就急住鎖定利潤 (贏嘅倉短), 蝕咗反而死揸唔放等返家鄉 (輸嘅倉長), 即 disposition effect。"
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "cum.5"
+  type: tf
+  source_modules: [25, 26, 27, 28]
+  statement: "Sunk Cost 謬誤指因為已經投資所以要繼續投資, 即使現時理性分析唔應該再投。"
+  answer: true
+  explanation: "對。Sunk Cost 係過去, 唔影響未來決策。應該由零分析, 問「如果今日先有呢個倉, 會唔會再投」。"
+  difficulty: 1
+  tags: [concept, terminology]
+
+- id: "cum.6"
+  type: mcq
+  source_modules: [25, 26, 27, 28]
+  question: "Ponzi Scheme 嘅運作?"
+  options:
+    a: "用後期投資者嘅錢付前期回報, 無真實業務"
+    b: "真實業務盈利派息"
+    c: "IPO 上市集資"
+    d: "政府發行債券"
+  answer: a
+  explanation: "Ponzi = 用後期投資者嘅錢付前期「回報」, 冇真實業務。例子: Madoff ($65B), OneCoin ($4B), PlusToken (中國)。後加入者全蝕。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "cum.7"
+  type: cloze
+  source_modules: [25, 26, 27, 28]
+  question: "{4% Rule} 提取 + {50/50 股債} 30 年成功率 {95%}。動態提款 (Guyton-Klinger) 抗 {序列風險}。"
+  answer: "4% Rule、50/50 股債、95%、序列風險"
+  explanation: "動態提款規則: 提取率規則 + 資本消耗規則雙重保險。"
+  difficulty: 2
+  tags: [formula, concept]
+
+- id: "cum.8"
+  type: mcq
+  source_modules: [25, 26, 27, 28]
+  question: "Guyton-Klinger 規則包含?"
+  options:
+    a: "只用 4% Rule"
+    b: "提取率規則 + 資本消耗規則"
+    c: "只買股票"
+    d: "只買債券"
+  answer: b
+  explanation: "Guyton-Klinger 雙重保險: 提取率規則 (按回報調整提取) + 資本消耗規則 (組合過低強制減提取)。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "cum.9"
+  type: tf
+  source_modules: [25, 26, 27, 28]
+  statement: "Herding 羊群效應指獨立分析後作決定, 唔受他人影響。"
+  answer: false
+  explanation: "錯。Herding = 跟風別人決策, 獨立分析不足。FOMO 入市、FUD 出市、跟 KOL 買都係羊群效應表現。社交媒體進一步放大。"
+  difficulty: 1
+  tags: [concept, misconception]
+
+- id: "cum.10"
+  type: mcq
+  source_modules: [25, 26, 27, 28]
+  question: "以下邊個係 Scam 訊號?"
+  options:
+    a: "低費 ETF"
+    b: "保本 + 高回報 + 限時優惠 + Insider Info"
+    c: "分散投資"
+    d: "SFC 持牌"
+  answer: b
+  explanation: "Scam 訊號: (1) 保本高回報 (唔可能), (2) 限時壓力銷售, (3) Insider Info 多數假, (4) 不透明策略。應該查 SFC 持牌名單。"
+  difficulty: 2
+  tags: [scenario, application]

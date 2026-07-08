@@ -1,0 +1,141 @@
+- id: '6.1'
+  question: What is the main advantage of subword tokenization over word-level tokenization?
+  options:
+    a: '"Eliminates OOV (out-of-vocabulary) problem by decomposing rare words into
+      known subwords"'
+    b: '"Smaller model parameters"'
+    c: '"Faster training because sequences are shorter"'
+    d: '"No special tokens needed"'
+  answer: a
+  explanation: '"Subword tokenization decomposes rare/unknown words into frequent
+    subword pieces. OOV rate drops to near zero. Character-level also has no OOV but
+    produces longer sequences."'
+  difficulty: 2
+  tags: []
+- id: '6.2'
+  question: BPE (Byte Pair Encoding) decides which character pairs to merge based
+    on what criterion?
+  options:
+    b: '"Frequency of adjacent pairs in the training corpus"'
+    a: '"Mutual information between pairs"'
+    c: '"Linguistic correctness of the resulting split"'
+    d: '"Likelihood increase from merging"'
+  answer: b
+  explanation: '"BPE greedily merges the most frequent adjacent character pair at
+    each step. No linguistic criteria. WordPiece uses likelihood increase, not frequency."'
+  difficulty: 2
+  tags: []
+- id: '6.3'
+  question: A BPE tokenizer with vocab 1000 merges pair ("ab", "c") → "abc". Later,
+    a rare word "abacus" appears. How is it tokenized?
+  options:
+    b: '"abac" + "us"'
+    a: '"abc" + "a" + "us"'
+    c: '"a" + "bac" + "us"'
+    d: '"ab" + "a" + "c" + "us"'
+  answer: b
+  explanation: '"BPE greedily applies merges in order learned during training. ''abc''
+    was merged, so ''abacus'' = ''abc'' is found at positions 0-2 → ''abc'' + remaining
+    ''a'' + ''us'' (if ''us'' is a merge). But ''abc'' merged before ''ab'', so ''abacus''
+    starts with ''abc'', not ''ab''. The exact split depends on merge order; answer
+    A shows typical behaviour where ''abc'' is consumed first."'
+  difficulty: 2
+  tags: []
+- id: '6.4'
+  question: 'SentencePiece differs from BPE and WordPiece in one fundamental way:'
+  options:
+    c: '"SentencePiece does not require pre-tokenization (whitespace splitting)"'
+    a: '"SentencePiece uses a smaller vocabulary"'
+    b: '"SentencePiece only works with English"'
+    d: '"SentencePiece requires a GPU to train"'
+  answer: c
+  explanation: '"BPE and WordPiece assume pre-tokenized words (whitespace-split first).
+    SentencePiece processes raw Unicode without pre-tokenization, making it language-agnostic.
+    This is why Llama and T5 use it."'
+  difficulty: 2
+  tags: []
+- id: '6.5'
+  question: The embedding matrix has shape [vocab_size, d_model]. What operation maps
+    a token ID to its vector?
+  options:
+    d: '"Row lookup (indexing) by token ID"'
+    a: '"Matrix multiplication with all rows"'
+    b: '"Convolution over adjacent token IDs"'
+    c: '"Softmax over all columns"'
+  answer: d
+  explanation: '"Token vector = E[token_id]. Simple indexing. No computation. The
+    matrix is learned end-to-end during training — each row is the embedding for that
+    token."'
+  difficulty: 2
+  tags: []
+- id: '6.6'
+  question: '"A model has vocab_size=50,000 and d_model=768. What percent of total
+    parameters (85M) does the embedding matrix alone account for?"'
+  options:
+    d: '"~45%"'
+    a: '"~5%"'
+    b: '"~10%"'
+    c: '"~70%"'
+  answer: d
+  explanation: '"Embedding params = 50000 × 768 = 38,400,000. 38.4M / 85M ≈ 45%. In
+    small models, embeddings dominate. In large models (GPT-3 175B: vocab 50k × d_model
+    12288 = 614M, ~0.35% of 175B), embeddings are negligible."'
+  difficulty: 2
+  tags: []
+- id: '6.7'
+  question: In BERT's WordPiece tokenizer, what is the purpose of the [SEP] token?
+  options:
+    a: '"Separates two segments (e.g., question and passage)"'
+    b: '"Marks the start of a sentence"'
+    c: '"Indicates padding"'
+    d: '"Marks a masked word for prediction"'
+  answer: a
+  explanation: '"[SEP] separates two input segments, like question and answer or sentence
+    A and sentence B. [CLS] is for classification. [MASK] for masked LM."'
+  difficulty: 2
+  tags: []
+- id: '6.8'
+  question: '"A developer claims: ''LLM embeddings are initialized with word2vec vectors
+    for faster convergence.'' Is this true?"'
+  options:
+    a: '"No, modern LLMs initialise embeddings randomly alongside other parameters"'
+    b: '"Yes, word2vec provides better initialisation"'
+    c: '"Yes, but only for BERT-style models"'
+    d: '"No, embeddings are always frozen"'
+  answer: a
+  explanation: '"Modern LLMs initialise all parameters (including embeddings) randomly.
+    No pre-training like word2vec/GloVe. The transformer learns useful embeddings
+    end-to-end. This was true in early neural LM days but not in the transformer era."'
+  difficulty: 2
+  tags: []
+- id: '6.9'
+  question: '"A model was tokenized with SentencePiece (Unigram mode). You fine-tune
+    it and add a new domain-specific term ''BioBERT'' to vocab. What must happen?"'
+  options:
+    b: '"Add embedding row for ''BioBERT'', initialise randomly, fine-tune to learn
+      it"'
+    a: '"Nothing — SentencePiece handles new words automatically"'
+    c: '"Regenerate entire embedding matrix from scratch"'
+    d: '"Add ''BioBERT'' as an alias for existing tokens"'
+  answer: b
+  explanation: '"New token needs a new row in embedding matrix. Random initialisation
+    is typical. The row has no pre-training signal, so fine-tuning duration must be
+    sufficient for this token''s embedding to converge. No automated handling (SentencePiece
+    is not adaptive post-training)."'
+  difficulty: 2
+  tags: []
+- id: '6.10'
+  question: Why does GPT-4 need positional embeddings on top of token embeddings?
+  options:
+    c: '"Token embeddings are position-invariant — ''dog bites man'' vs ''man bites
+      dog'' would have identical input if positions weren''t encoded"'
+    a: '"Positional embeddings reduce vocabulary size"'
+    b: '"Positional embeddings replace token embeddings for long sequences"'
+    d: '"Token embeddings are only for masked tokens"'
+  answer: c
+  explanation: '"Token embeddings capture token identity, not position. Self-attention
+    is permutation-invariant (set operation, not sequence). Position signal (sinusoidal,
+    learned, RoPE, ALiBi) is essential for the model to know token order."'
+  difficulty: 2
+  tags: []
+

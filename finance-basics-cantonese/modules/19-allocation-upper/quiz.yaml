@@ -1,0 +1,131 @@
+- id: '19.1'
+  question: 組合預期回報嘅公式?
+  options:
+    a: E[Rp] = max(E[Ri])
+    b: E[Rp] = min(E[Ri])
+    c: E[Rp] = (E[R1] + E[R2]) / 2
+    d: E[Rp] = Σ wi × E[Ri] (加權平均)
+  answer: d
+  explanation: 組合預期回報 = Σ wi × E[Ri], 即各資產預期回報嘅加權平均。與相關性無關。
+  difficulty: 1
+  tags:
+  - formula
+  - concept
+- id: '19.2'
+  question: 60% 股 (10%) + 40% 債 (4%)。預期回報?
+  options:
+    a: 14%
+    b: 7.6%
+    c: 7.0%
+    d: 6.0%
+  answer: b
+  explanation: E[Rp] = 0.6×10% + 0.4×4% = 6% + 1.6% = 7.6%。
+  difficulty: 1
+  tags:
+  - calculation
+  - formula
+- id: '19.3'
+  question: 組合方差嘅 2 資產公式?
+  options:
+    a: σp² = (σ1 + σ2) / 2
+    b: σp² = σ1 × σ2
+    c: σp² = w1σ1 + w2σ2 (加權平均)
+    d: σp² = w1²σ1² + w2²σ2² + 2w1w2ρσ1σ2
+  answer: d
+  explanation: 組合方差涉及相關性 ρ。第三項 2w1w2ρσ1σ2 反映分散效果 (ρ 越低, 越低)。
+  difficulty: 1
+  tags:
+  - formula
+- id: '19.4'
+  question: 2 資產 ρ = -1, 組合 σp 嘅最細值?
+  options:
+    a: σ1 + σ2
+    b: 無限大
+    c: '|w1σ1 - w2σ2| (可達 0)'
+    d: 加權平均
+  answer: c
+  explanation: 完全負相關可以完美對沖, σp = |w1σ1 - w2σ2|。例如 w1=w2, σp=0 (零風險)。
+  difficulty: 2
+  tags:
+  - concept
+  - formula
+- id: '19.5'
+  question: Markowitz 效率前緣 (Efficient Frontier) 嘅意思?
+  options:
+    a: 最低風險嘅單一組合
+    b: 所有可能組合嘅集合
+    c: 喺同一風險下回報最高, 或同一回報下風險最低嘅組合曲線
+    d: 最高回報嘅單一組合
+  answer: c
+  explanation: 效率前緣係一條曲線, 上面嘅組合喺某風險下回報最高 (或某回報下風險最低), 唔可以再改善。曲線下嘅組合係劣等。
+  difficulty: 2
+  tags:
+  - concept
+  - terminology
+- id: '19.6'
+  question: 60% 股 + 40% 債 經典組合嘅關鍵?
+  options:
+    a: 股債低相關 (~0.0-0.3), 分散效果顯著
+    b: 60/40 係美國政府指定
+    c: 因為 6 × 4 = 24
+    d: 因為 60 + 40 = 100
+  answer: a
+  explanation: 股債相關性低, 組合 σ 低過個別加權平均, 達到分散效果。60/40 唔係神聖數字, 核心係低相關資產配對。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '19.7'
+  question: 2 隻科技股 (e.g. 騰訊 + 美團) 嘅典型 ρ?
+  options:
+    a: +0.1 (弱正相關)
+    b: +0.7-0.9 (強正相關)
+    c: 0.0 (無關)
+    d: -0.5 (中度負相關)
+  answer: b
+  explanation: 同類型/同行業股票 ρ 通常 0.7-0.9, 接近完全同步。分散效果有限。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '19.8'
+  question: 2022 年 60/40 組合跌 ~17%。原因?
+  options:
+    a: 通脹 + 加息, 股債齊跌, ρ 急升 (分散失效)
+    b: 政府禁止 60/40
+    c: 經紀佣金高
+    d: 組合本來就爛
+  answer: a
+  explanation: 2022 通脹 + 聯儲加息, 股債齊跌, 原本 ρ~0.1 急升到 ~0.5+, 分散失效, 組合跌幅接近純股。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '19.9'
+  question: Bogle 三罐子法包括邊 3 種?
+  options:
+    a: 美股 + 美國債 + 香港地產
+    b: 美股總市場 + 國際股 + 美國債
+    c: 科技 + 醫療 + 金融
+    d: 股 + 債 + 商品
+  answer: b
+  explanation: '三罐子: VTI (美股) + VXUS (國際股) + BND (美債), 簡單全球分散, 總費用 < 0.05%。'
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '19.10'
+  question: Markowitz 理論嘅限制?
+  options:
+    a: 假設常態分佈低估 extreme event, 過去 ρ 唔等於未來
+    b: 冇限制, 完美
+    c: 只適用於牛市
+    d: 只適用於股票
+  answer: a
+  explanation: Markowitz 假設常態分佈, 但 2008/2020 extreme event 證明 fat tail 重要。相關性會變 (尤其危機時升),
+    過去 ρ 唔等於未來。
+  difficulty: 2
+  tags:
+  - concept
+  - limitation
+

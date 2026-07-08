@@ -1,0 +1,109 @@
+- id: '12.1'
+  question: What is the primary benefit of jest.useFakeTimers()?
+  options:
+    b: Deterministic control over time-dependent code
+    a: Faster test execution
+    c: Automatic mock cleanup
+    d: Better error messages
+  answer: b
+  explanation: Fake timers give deterministic control. Tests do not wait for real time. advanceTimersByTime
+    moves time forward exactly and instantly.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.2'
+  question: A debounce delays API calls by 300ms. How do you test it without waiting 300ms?
+  options:
+    c: Use jest.useFakeTimers + advanceTimersByTime(300)
+    a: Increase the debounce delay to make the test faster
+    b: Remove the debounce in tests
+    d: Use setTimeout with a shorter delay in test env
+  answer: c
+  explanation: Fake timers advance instantly. The debounce runs its full logic (300ms timer), but the
+    test moves time forward without real waiting.
+  difficulty: 1
+  tags:
+  - application
+- id: '12.3'
+  question: How do you test that a search component discards results from a stale request?
+  options:
+    a: Control response timing via MSW — delay old response, resolve new one first
+    b: Assert the last request always returns first
+    c: This cannot be tested
+    d: Assert all requests complete
+  answer: a
+  explanation: MSW can delay responses. Make the old response resolve after the new one. Assert the component
+    shows only the new result — proving it discarded the stale old result.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '12.4'
+  question: What is the correct assertion pattern for async content that may take time to appear?
+  options:
+    d: await screen.findByText(/expected/i)
+    a: screen.getByText(/expected/i)
+    b: setTimeout(() => screen.getByText(/expected/i), 1000)
+    c: screen.queryByText(/expected/i)
+  answer: d
+  explanation: findByText retries until the element appears or times out. getByText throws immediately
+    if not found. setTimeout is unreliable.
+  difficulty: 1
+  tags:
+  - application
+- id: '12.5'
+  question: A component uses Suspense with a fallback. How do you test the fallback content?
+  options:
+    a: Render with Suspense wrapper, assert fallback content is visible
+    b: Cannot test Suspense fallback
+    c: Mock the lazy component
+    d: Test the fallback component separately
+  answer: a
+  explanation: Wrap the lazy component in Suspense in the test, render, and assert the fallback content.
+    This tests the actual Suspense behavior.
+  difficulty: 2
+  tags:
+  - application
+- question: A search box fires a request per keystroke; slow responses can resolve after newer ones. How
+    do you test the stale-response overwrite?
+  options:
+    a: Remove debouncing so it never happens
+    b: 'Use fake timers + deferred promises: resolve the later request first and assert the UI shows the
+      newest query''s result'
+    c: Sleep 5 seconds after typing
+    d: Only test the happy path
+  answer: b
+  explanation: Deferred promises give explicit control over resolution order; fake timers advance debounce
+    deterministically — together they expose the race.
+  difficulty: 3
+  tags:
+  - scenario
+  - calculation
+  id: '12.6'
+- question: Why does real setTimeout make a race-condition test flaky while fake timers do not?
+  options:
+    a: setTimeout is banned in tests
+    b: Real timers depend on wall-clock scheduling that varies run-to-run; fake timers jump time deterministically
+    c: Fake timers run code faster on CPU
+    d: They don't — both are equally flaky
+  answer: b
+  explanation: Fake timers let the test advance exactly the needed milliseconds synchronously, removing
+    scheduler nondeterminism from the equation.
+  difficulty: 2
+  tags:
+  - concept
+  id: '12.7'
+- question: Under React 18 concurrent rendering, which pairing needs act()/assertion care because updates
+    may interleave?
+  options:
+    a: A transition-wrapped list update racing with a high-priority input update
+    b: Two console.logs
+    c: Static CSS class names
+    d: A pure function call
+  answer: a
+  explanation: Transitions are interruptible; input updates can land mid-render of the transition. Tests
+    must flush both priority lanes explicitly.
+  difficulty: 3
+  tags:
+  - scenario
+  - concept
+  id: '12.8'

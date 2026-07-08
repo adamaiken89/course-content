@@ -1,0 +1,136 @@
+- id: '15.1'
+  question: Which prompt pattern is best for complex analysis tasks (e.g., security
+    audit)?
+  options:
+    a: Chain-of-Thought (step-by-step analysis)
+    b: Minimal prompt ('is this secure?')
+    c: Few-shot with irrelevant examples
+    d: Role prompting as Junior Developer
+  answer: a
+  explanation: CoT forces step-by-step analysis. +20-40% accuracy for complex tasks.
+    'Minimal prompt' leads to superficial answers.
+  difficulty: 1
+  tags:
+  - application
+- id: '15.2'
+  question: How many examples (shots) are optimal for code generation tasks?
+  options:
+    c: 1-3
+    a: 10+
+    b: 0 — examples hurt performance
+    d: Exactly 5
+  answer: c
+  explanation: 1 shows format. 2 shows variation. 3 shows edge cases. Beyond 3 = diminishing
+    returns and token waste.
+  difficulty: 1
+  tags:
+  - procedure
+- id: '15.3'
+  question: What role would you assign for finding performance bottlenecks?
+  options:
+    c: Performance Engineer
+    a: Security Auditor
+    b: Technical Writer
+    d: Junior Developer
+  answer: c
+  explanation: Performance Engineer focuses on bottlenecks, optimization, profiling.
+    Right role → right perspective.
+  difficulty: 1
+  tags:
+  - application
+- id: '15.4'
+  question: What is 'task overflow' anti-pattern?
+  options:
+    a: Multiple unrelated tasks in same prompt — each gets half attention
+    b: One task per session — best practice
+    c: Giving agent too few tasks
+    d: Agent completing tasks too quickly
+  answer: a
+  explanation: Multiple tasks in one session = context pollution. Each task gets partial
+    attention. Separate into sequential sessions.
+  difficulty: 1
+  tags:
+  - concept
+- id: '15.5'
+  question: When is Chain-of-Thought NOT worth the extra tokens?
+  options:
+    d: Simple tasks (rename, typo fix, boilerplate)
+    a: Security audit
+    b: Complex logic
+    c: Multi-step analysis
+  answer: d
+  explanation: CoT overhead 100-300 tokens. No benefit for trivial work where answer
+    is obvious.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '15.6'
+  question: What is the token cost of a combined pattern (role + CoT + few-shot +
+    verification)?
+  options:
+    b: 200-400 tokens — saves 1000+ by preventing wrong direction
+    a: 50-100 tokens
+    c: 2000+ tokens — not worth it
+    d: 0 tokens — free
+  answer: b
+  explanation: 200-400 tokens setup cost. Prevents one wrong-direction iteration (1000+
+    tokens). Net positive for complex tasks.
+  difficulty: 2
+  tags:
+  - concept
+- id: '15.7'
+  question: What's the problem with 'Fix the same bug as last time'?
+  options:
+    b: Agent doesn't have memory across sessions without context
+    a: Agent remembers last session — redundant
+    c: Bug was already fixed
+    d: Too specific
+  answer: b
+  explanation: Agent sessions are stateless. 'Same as last time' = no information.
+    Always describe the bug.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '15.8'
+  question: What happens when you change task scope mid-session (e.g., 'forget search,
+    add filters')?
+  options:
+    d: Half-done search work pollutes context for filter task
+    a: Agent smoothly switches focus
+    b: Nothing — agent handles scope changes well
+    c: Agent resets automatically
+  answer: d
+  explanation: Previous task's context (partial code, decisions, mess) stays in context.
+    Pollution degrades new task quality.
+  difficulty: 2
+  tags:
+  - concept
+- id: '15.9'
+  question: 'Which pattern combination is best for: ''Audit this API endpoint and
+    write tests for vulnerabilities''?'
+  options:
+    a: Role (Security Auditor) + CoT (trace inputs → check vulnerabilities → write
+      tests)
+    b: 'Minimal: ''Write tests'''
+    c: Only few-shot (test examples)
+    d: Role (Junior Developer) for simple tests
+  answer: a
+  explanation: Security Auditor role gives right perspective. CoT ensures thorough
+    analysis before writing tests. Two patterns for two subtasks (audit + test).
+  difficulty: 3
+  tags:
+  - scenario
+- id: '15.10'
+  question: What's the effect of 'over-constraining' a prompt?
+  options:
+    b: Agent has no room to apply judgment or leverage codebase patterns
+    a: Agent produces more creative solutions
+    c: Agent works faster
+    d: No effect — more constraints always better
+  answer: b
+  explanation: 'Over-constraining: spec is longer than you''d write = wasted tokens
+    + agent can''t use its strengths. Provide patterns, not line-by-line.'
+  difficulty: 3
+  tags:
+  - concept
+

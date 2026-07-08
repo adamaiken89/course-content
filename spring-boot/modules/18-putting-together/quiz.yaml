@@ -1,0 +1,119 @@
+- id: "18.1"
+  question: "The migration discipline 'one axis per change' means each PR should"
+  options:
+    a: "change exactly one kind of thing - the HTTP client or the build layout - so a failure names one suspect"
+    b: "bundle the Boot upgrade with the architecture split to save CI time"
+    c: "change nothing in production code, only tests"
+    d: "upgrade every dependency in a single commit"
+  answer: a
+  explanation: "One axis per change keeps failures attributable - a red build points at exactly what changed. Bundled changes make every failure ambiguous and rollback all-or-nothing."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "18.2"
+  question: "Which target shape does the M1 config milestone produce?"
+  options:
+    a: "public mutable fields bound by setter"
+    b: "a private immutable record bound by constructor"
+    c: "entries in the spring.factories file"
+    d: "an untyped Map of property values"
+  answer: b
+  explanation: "M1 replaces public-field mutable beans with private immutable records bound by constructor - the Boot 4 modular config style - and deletes spring.factories leftovers."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "18.3"
+  question: "The M2 milestone splits the TeamPay build using which Maven capability?"
+  options:
+    a: "a single module with many source folders"
+    b: "a composite Gradle build"
+    c: "a multi-module reactor where api builds before impl"
+    d: "one fat jar assembled from all sources"
+  answer: c
+  explanation: "M2 uses a Maven multi-module reactor - api builds first and impl depends only on api - so the direction of dependencies is verifiable at build time."
+  difficulty: 1
+  tags: [concept]
+
+- id: "18.4"
+  question: "Which legacy smell does the M3 JSpecify pass target?"
+  options:
+    a: "public-field configuration beans"
+    b: "untyped Map DTOs"
+    c: "monolithic controllers"
+    d: "missing null annotations across the API boundary"
+  answer: d
+  explanation: "M3 applies module 08 - package-info with NullMarked plus NullAway - so null edges on the API surface fail at compile time instead of as production NPEs."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "18.5"
+  question: "Which statement best describes a valid acceptance criterion for a milestone?"
+  options:
+    a: "a concrete observable outcome such as startup logs showing the legacy auto-config source is gone"
+    b: "any test that passes locally"
+    c: "a task marked done in the ticket system"
+    d: "a code review approval from a senior engineer"
+  answer: a
+  explanation: "A gate must be observable - startup logs, build output, or a documented 403 - so anyone can verify the milestone finished without interpretation."
+  difficulty: 2
+  tags: [concept]
+
+- id: "18.6"
+  question: "Which module supplies the pattern for the M4 RestTemplate to RestClient swap?"
+  options:
+    a: "12 - Spring Security 7"
+    b: "16 - HTTP clients and versioning"
+    c: "13 - testing slices"
+    d: "08 - JSpecify null safety"
+  answer: b
+  explanation: "Module 16 covers RestClient and HTTP Service Clients - M4 replaces the FX partner call with a typed exchange interface backed by RestClient."
+  difficulty: 1
+  tags: [comparison]
+
+- id: "18.7"
+  question: "A teammate wants to merge the Boot 4 bump and the Maven split into one PR. Best response?"
+  options:
+    a: "merge - fewer PRs means less risk"
+    b: "upgrade first, then split the build next release"
+    c: "split them - one axis per change keeps failures isolated and each PR revertible"
+    d: "write tests first and merge everything later"
+  answer: c
+  explanation: "Bundling a version bump with a module split makes a broken build ambiguous - framework bug or layout bug. One axis per change keeps each PR revertible on its own."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "18.8"
+  question: "How does a team verify during M1 that Boot 4 modular auto-configuration runs instead of the legacy path?"
+  options:
+    a: "check the pom file version number"
+    b: "delete spring.factories and hope"
+    c: "grep for old class names in the IDE"
+    d: "inspect startup logs for the new configuration properties binding and the missing legacy auto-config warnings"
+  answer: d
+  explanation: "Startup logs are the observable gate - they show the modular binding and stop the legacy auto-configuration warnings, proving the config source actually switched paths."
+  difficulty: 2
+  tags: [concept]
+
+- id: "18.9"
+  question: "TeamPay wants GraphQL. In which scope is it justified per the capstone M5 milestone?"
+  options:
+    a: "every REST endpoint, including writes"
+    b: "only the aggregating dashboard read that joins trades across four services, keeping REST for CRUD"
+    c: "only internal services, never external consumers"
+    d: "replacing the REST API entirely"
+  answer: b
+  explanation: "GraphQL pays off where clients need flexible projections - the dashboard join. CRUD and writes keep REST since the schema, resolvers, and security surface would buy nothing there."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "18.10"
+  question: "Which check best catches a controller that leaks transaction control during the M9 architecture milestone?"
+  options:
+    a: "a unit test that mocks the repository"
+    b: "a load test under heavy traffic"
+    c: "a Spring Modulith or ArchUnit rule that flags transaction annotations outside the service boundary"
+    d: "a pull request review note"
+  answer: c
+  explanation: "Transaction ownership is an architecture invariant - an automated Modulith or ArchUnit rule fails the build deterministically instead of depending on a reviewer noticing."
+  difficulty: 3
+  tags: [scenario]

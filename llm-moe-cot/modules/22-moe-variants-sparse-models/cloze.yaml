@@ -1,0 +1,43 @@
+- id: c.1
+  question: Switch Transformer 用 {top-1} routing，可以 scale 到 {2048 experts}。
+  answer: top-1 / 2048 experts
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: DeepSeekMoE 用 {64 個 fine-grained} experts 加埋每個 token 都會激活嘅 {shared experts}。
+  answer: 64 個 fine-grained / shared experts
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: Shared experts 處理 {universal patterns}（syntax、基本 knowledge），令 routed experts
+    可以喺 niche domains {specialise}。
+  answer: universal patterns / specialise
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: Soft MoE 消滅咗 {discrete routing} — 每個 expert slot 收到所有 tokens 嘅 {soft weighted
+    combination}。
+  answer: discrete routing / soft weighted combination
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: Soft MoE 嘅一個缺點係 {每個 slot 更高 compute}，因為所有 tokens 同 {所有 slots} 互動。
+  answer: 每個 slot 更高 compute / 所有 slots
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: DeepSeekMoE 嘅 device-level aux loss 防止 tokens {集中喺一個 GPU device 度}。
+  answer: 集中喺一個 GPU device 度
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: MoA（Mixture of Attention Heads）將 MoE 應用喺 {attention heads} 而唔係 {FFN layers}。
+  answer: attention heads / FFN layers
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: Fine-grained experts 實現 {smoother knowledge distribution} 同 {finer-grained}
+    token-expert combination。
+  answer: smoother knowledge distribution / finer-grained
+  difficulty: 2
+  tags: []

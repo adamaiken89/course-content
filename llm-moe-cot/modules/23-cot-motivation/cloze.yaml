@@ -1,0 +1,41 @@
+- id: c.1
+  question: 喺標準 forward pass 入面，模型有 {fixed layers} 去計算所有 reasoning steps。冇 {scratch space} 嚟放 intermediate
+    results。
+  answer: fixed layers / scratch space
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: Chain-of-thought 透過將中間計算 {externalising 到 generated tokens} 嚟解決 scratchpad 問題。
+  answer: externalising 到 generated tokens
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: Faithfulness 問模型嘅 {reasoning steps} 係咪真係導致佢嘅 {final answer}，定係佢哋只係 {post-hoc rationalisation}。
+  answer: reasoning steps / final answer / post-hoc rationalisation
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: 喺 post-hoc rationalisation 入面，模型 {implicitly} 計算答案，然後生成睇落合理嘅 reasoning steps 嚟 justify 個答案。
+  answer: implicitly
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: Anti-faithfulness 發生喺模型生成 {correct answers} 但 reasoning steps 係 {incorrect or perturbed} 嘅時候。
+  answer: correct answers / incorrect or perturbed
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: CoT 將 {implicit} reasoning 轉做 {explicit} 文字，利用模型 text-generation 嘅強項。
+  answer: implicit / explicit
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: Length bias in CoT 意思係 {越長嘅 reasoning chains 越容易出錯}。
+  answer: 越長嘅 reasoning chains 越容易出錯
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: CoT 提示入面，模型將中間步驟寫成 {visible tokens}，等後續計算可以引用之前嘅結果。
+  answer: visible tokens
+  difficulty: 2
+  tags: []

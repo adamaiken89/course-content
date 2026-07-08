@@ -1,0 +1,110 @@
+- id: "14.1"
+  question: "What is the batch engine's core data structure?"
+  options:
+    a: "A shared success flag per batch"
+    b: "A per-item ledger mapping each application id to its own outcome"
+    c: "A queue of promises awaiting one master promise"
+    d: "A single list stored in the query cache"
+  answer: b
+  explanation: "Independent items need independent outcome slots; batch status derives from the ledger."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "14.2"
+  question: "One application in the batch is rejected by the server. What happens to the others?"
+  options:
+    a: "The whole batch aborts and re-queues"
+    b: "The rejection throws and stops the loop"
+    c: "A global 'failed' banner replaces everything"
+    d: "They keep settling independently; only the rejected item records a failure"
+  answer: d
+  explanation: "Per-item settlement means one rejection is data about one item, never a control-flow abort."
+  difficulty: 2
+  tags: [concept, scenario]
+- id: "14.3"
+  question: "Why does submit use bounded parallelism (mapLimit 3) instead of firing all items at once?"
+  options:
+    a: "All-at-once storms the server connection pool and buys no latency win; a small lane count saturates a round-trip without melting the pool"
+    b: "Serial is faster because it avoids contention"
+    c: "The server always rejects concurrent writes"
+    d: "Three is the largest number the JSON encoder supports"
+  answer: a
+  explanation: "The server write path serializes anyway; a few lanes give throughput and fairness without a connection storm."
+  difficulty: 3
+  tags: [formula, scenario]
+- id: "14.4"
+  question: "What does the validation gate do with a draft that fails local zod validation (m4)?"
+  options:
+    a: "It lets the server 422 reject that item during submit"
+    b: "It silently drops the draft"
+    c: "It marks the item blocked with mapped field errors, never firing a submit"
+    d: "It converts the error into a network failure"
+  answer: c
+  explanation: "Blocked items sit in the ledger with their errors; fixing requeues only that item."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "14.5"
+  question: "A batch of 5 settles with 4 successes and 1 failure. The rollup status is:"
+  options:
+    a: "done"
+    b: "partial"
+    c: "failed"
+    d: "retrying"
+  answer: b
+  explanation: "Some ok and some bad is the honest middle state; done requires zero bad, failed requires zero ok."
+  difficulty: 2
+  tags: [calculation, scenario]
+- id: "14.6"
+  question: "When retryFailed resubmits the failed items, which runId does it reuse?"
+  options:
+    a: "The original runId"
+    b: "A fresh random uuid"
+    c: "The itemId"
+    d: "A server-issued token"
+  answer: a
+  explanation: "Same runId lets the server dedupe by (runId, itemId) and return stored outcomes for already-landed writes."
+  difficulty: 2
+  tags: [concept, scenario]
+- id: "14.7"
+  question: "The idempotency key for one batch submission is:"
+  options:
+    a: "The itemId alone"
+    b: "The draft's payload hash"
+    c: "The session token"
+    d: "The composite (runId, itemId)"
+  answer: d
+  explanation: "The pair names one logical submission, so replaying it cannot manufacture a second write."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "14.8"
+  question: "A retry arrives for a (runId, itemId) pair the server already settled. What does the server return?"
+  options:
+    a: "An error telling the client to pick a new runId"
+    b: "A duplicate record plus a warning"
+    c: "The stored outcome, without re-processing"
+    d: "Nothing — the request hangs"
+  answer: c
+  explanation: "Dedupe means replay is safe and cheap: the server answers from its ledger, not the write path."
+  difficulty: 1
+  tags: [concept, formula]
+- id: "14.9"
+  question: "The server commits Math, but the response is lost on the wire. What should the client settle and why?"
+  options:
+    a: "failed(remote); retry with the same runId makes the server return the stored ok — one enrollment, no duplicate"
+    b: "success; the write probably landed"
+    c: "queued; hold the item in limbo"
+    d: "blocked; require manual field edits"
+  answer: a
+  explanation: "A lost response is a settlement state; the idempotent retry converts it to success without duplication."
+  difficulty: 3
+  tags: [scenario, application]
+- id: "14.10"
+  question: "When is a server-side batch endpoint (one calls[] bundle) the right choice over client-parallel submission?"
+  options:
+    a: "Whenever there are more than three items"
+    b: "When the write must be atomic — all-or-nothing by nature, like payments"
+    c: "When the client wants per-item progress"
+    d: "When items have independent per-item rule checks"
+  answer: b
+  explanation: "Atomic-by-law writes belong on the server's transaction; independent-by-nature items stay client-ledger."
+  difficulty: 3
+  tags: [comparison, scenario]

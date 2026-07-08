@@ -1,0 +1,60 @@
+- id: "c.1"
+  question: "In INSERT ... ON CONFLICT DO UPDATE, the alias { excluded } holds the row that would have been inserted."
+  answer: "excluded"
+  explanation: "excluded exposes the proposed new values to the SET clause of the DO UPDATE branch."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "ON CONFLICT arbitrates through a { unique } or exclusion { constraint }, not through application logic."
+  answer: "unique; constraint"
+  explanation: "The constraint is what the conflict resolution identifies; no matching constraint means a runtime error."
+  difficulty: 1
+  tags: [concept]
+- id: "c.3"
+  question: "A conflict target lists the column name, but you may not { update } that conflict column itself in DO UPDATE."
+  answer: "update"
+  explanation: "SET sku = excluded.sku where sku is the conflict column is rejected by the parser."
+  difficulty: 1
+  tags: [concept]
+- id: "c.4"
+  question: "The clause that returns the row actually written by the upsert is { RETURNING }."
+  answer: "RETURNING"
+  explanation: "RETURNING returns inserted rows only; a DO NOTHING conflict returns no row."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.5"
+  question: "Data-modifying CTEs chain inserts by passing { RETURNING } ids into the next WITH query in the same statement."
+  answer: "RETURNING"
+  explanation: "RETURNING hands the freshly inserted id to the parent or child insert for single-transaction writes."
+  difficulty: 2
+  tags: [application]
+- id: "c.6"
+  question: "MERGE matches source rows to target rows using its { ON } clause, typically on a unique column."
+  answer: "ON"
+  explanation: "The ON clause is the join key; for safe locking the join condition should be unique on both sides."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "MERGE can perform insert, update, { delete }, or do-nothing per branch based on whether source and target rows more."
+  answer: "delete"
+  explanation: "The MATCHED branch can delete the target row, which ON CONFLICT cannot do at all."
+  difficulty: 1
+  tags: [concept]
+- id: "c.8"
+  question: "MERGE arrived in PostgreSQL { 15 }; it gained RETURNING in PG { 17 } and a core rewrite in PG 18."
+  answer: "15; 17"
+  explanation: "Version markers matter: a PG14 instance has no MERGE at all."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.9"
+  question: "For a single-row idempotent upsert, { ON CONFLICT } is the idiomatic compact tool; MERGE shines with multiple branches and a join source."
+  answer: "ON CONFLICT"
+  explanation: "ON CONFLICT locks one row and needs no source join; MERGE spreads locks wider but branches per scenario."
+  difficulty: 2
+  tags: [comparison]
+- id: "c.10"
+  question: "Postgres 19's INSERT ... ON CONFLICT DO { SELECT } returns the existing row without writing a dead version, supporting atomic get-or-create."
+  answer: "SELECT"
+  explanation: "DO SELECT reads the matched row rather than rewriting it, so no dead tuple and roughly 4x faster than DO UPDATE no-ops."
+  difficulty: 2
+  tags: [concept]

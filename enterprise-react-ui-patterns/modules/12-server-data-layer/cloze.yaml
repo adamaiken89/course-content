@@ -1,0 +1,54 @@
+- id: "c.121"
+  question: "The query cache is keyed by {identity}, so the same key shares one in-flight promise."
+  answer: "identity"
+  explanation: "Keys describe the domain/view identity, not the result."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.122"
+  question: "Dedupe-in-flight ensures two subscribers for the same key share one {promise}."
+  answer: "promise"
+  explanation: "The cache fetches once, both components observe the resolution."
+  difficulty: 1
+  tags: [concept]
+- id: "c.123"
+  question: "Stale-while-revalidate serves cached {stale} data while a {background} refetch replaces it."
+  answer: "stale, background"
+  explanation: "First paint from cache; silent replenish avoids spinner flashes."
+  difficulty: 2
+  tags: [concept, process]
+- id: "c.124"
+  question: "Invalidate keys you {can't} compute; optimistically set rows you {can}."
+  answer: "can't, can"
+  explanation: "Computable new shapes patch instantly; the rest refetch."
+  difficulty: 2
+  tags: [process]
+- id: "c.125"
+  question: "An SSE push is merged into the cache as an {upsert}, patching touched rows rather than replacing the world."
+  answer: "upsert"
+  explanation: "Insert-or-update per id; untouched rows untouched."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.126"
+  question: "A 60-event SSE burst is {coalesced} by a throttle so one state transition results."
+  answer: "coalesced"
+  explanation: "Bursts merge into one patch before React paints."
+  difficulty: 2
+  tags: [process]
+- id: "c.127"
+  question: "Server truth lives in the query {cache}; client-authored truth lives in {zustand}."
+  answer: "cache, zustand"
+  explanation: "Crossing the seam reproduces refetch storms or stale stores."
+  difficulty: 2
+  tags: [comparison]
+- id: "c.128"
+  question: "An optimistic cache write rejected by the server requires a {rollback} path."
+  answer: "rollback"
+  explanation: "Optimism without rollback is lying to the UI (m14 engine detail)."
+  difficulty: 2
+  tags: [concept]
+- id: "c.129"
+  question: "TanStack Query is a {cache} with a lifecycle, not merely nicer fetch."
+  answer: "cache"
+  explanation: "Its value is dedupe, invalidation, and push merge — not request syntax."
+  difficulty: 1
+  tags: [misconception]

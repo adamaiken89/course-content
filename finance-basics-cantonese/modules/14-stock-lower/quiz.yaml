@@ -1,0 +1,136 @@
+- id: '14.1'
+  question: EPS 嘅計算公式係?
+  options:
+    a: EPS = 總資產 / 流通股數
+    b: EPS = 派息 / 流通股數
+    c: EPS = 股價 / 流通股數
+    d: EPS = 淨利潤 / 流通股數
+  answer: d
+  explanation: EPS (Earnings Per Share) = 淨利潤 / 流通股數, 反映 1 股賺幾多。
+  difficulty: 1
+  tags:
+  - terminology
+  - formula
+- id: '14.2'
+  question: 股價 $50, EPS $5, 預測下年 EPS $6.5。Trailing P/E 同 Forward P/E 分別係?
+  options:
+    a: Trailing 10, Forward 13
+    b: Trailing 8, Forward 12
+    c: Trailing 5, Forward 7.7
+    d: Trailing 10, Forward 7.7
+  answer: d
+  explanation: Trailing = 50/5 = 10 (過去 EPS)。Forward = 50/6.5 ≈ 7.7 (預測 EPS)。市場預期盈利升
+    30% (6.5/5-1)。
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '14.3'
+  question: P/E Ratio 嘅解讀最準確?
+  options:
+    a: P/E 越低, 公司越好
+    b: P/E 反映以當前盈利計, 幾年回本
+    c: P/E 同公司規模成正比
+    d: P/E 越高, 股價越平
+  answer: b
+  explanation: P/E = 股價 / EPS, 數字上即係「以 EPS 派息, 幾年回本」(假設盈利不變)。P/E 10 = 10 年, P/E 20
+    = 20 年。但唔同行業標準唔同。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '14.4'
+  question: 邊種行業 P/B Ratio 最有參考價值?
+  options:
+    a: 軟件公司
+    b: 互聯網平台
+    c: 銀行
+    d: 品牌消費品
+  answer: c
+  explanation: P/B 適合重資產、高槓桿行業 (銀行、保險、地產)。軟件 / 互聯網 / 品牌主要價值係無形資產, 賬面低, P/B 冇意義。
+  difficulty: 2
+  tags:
+  - terminology
+  - application
+- id: '14.5'
+  question: 你見到一隻股股息率 12%, 同業平均 4%。你會點睇?
+  options:
+    a: 即刻買, 高息好
+    b: 警惕, 可能係派息陷阱 (股價大跌或準備削減派息)
+    c: 同業錯, 應該買
+    d: Yield 同股價無關
+  answer: b
+  explanation: 高到不正常嘅 Yield 通常代表 (1) 股價大跌 (分母縮), (2) 公司削減派息, 或 (3) 不可持續。應該 check Payout
+    Ratio 同過往派息穩定性。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '14.6'
+  question: 你 1 年前用 $250 買騰訊, 而家 $300, 期內收 $5 息。Capital Gain % 同 Total Return 分別係?
+  options:
+    a: Capital Gain 10%, Total Return 12%
+    b: Capital Gain 16.7%, Total Return 18.7%
+    c: Capital Gain 20%, Total Return 22%
+    d: Capital Gain 25%, Total Return 27%
+  answer: c
+  explanation: Capital Gain = (300-250)/250 = 20%。Dividend Yield = 5/250 = 2%。Total
+    Return = 20% + 2% = 22%。
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '14.7'
+  question: PEG Ratio = 0.8 嘅意思係?
+  options:
+    a: 增長率對 P/E 嚟講合理偏低, 可能平
+    b: P/E 80, 股價好貴
+    c: 增長率 80%, 好快
+    d: P/E 0.8, 股價平
+  answer: a
+  explanation: PEG = P/E / 增長率%。PEG < 1 代表 P/E 對唔起高增長, 算平。PEG > 2 代表貴。
+  difficulty: 2
+  tags:
+  - concept
+  - formula
+- id: '14.8'
+  question: 你揀到 A 股 P/E 30, 增長 30%/年。B 股 P/E 30, 增長 10%/年。邊個抵買?
+  options:
+    a: A 同 B 一樣, P/E 一樣
+    b: A 抵, PEG 1 (合理), B 貴, PEG 3
+    c: B 抵, P/E 一樣但增長慢代表穩定
+    d: 兩個都唔好, P/E 30 太貴
+  answer: b
+  explanation: PEG A = 30/30 = 1 (合理), PEG B = 30/10 = 3 (貴)。P/E 一樣, 但 A 增長快, 估值合理。
+  difficulty: 3
+  tags:
+  - calculation
+  - application
+- id: '14.9'
+  question: 你睇到隻科技股 P/E 5, 應該點做?
+  options:
+    a: 警惕, 科技股 P/E 5 唔正常, 可能盈利即將大跌或 value trap
+    b: 加碼, 越平越好
+    c: P/E 同行業無關
+    d: 即刻買, 平
+  answer: a
+  explanation: 科技股 P/E 5 異常, 反映市場預期盈利會大跌。應該 check (1) 盈利是否一次性, (2) 行業整體情況, (3) 過往盈利走勢。唔好盲追低
+    P/E。
+  difficulty: 2
+  tags:
+  - concept
+  - misconception
+- id: '14.10'
+  question: 以下邊個做法最正確?
+  options:
+    a: 結合 P/E + 增長率 (PEG) + 行業特性 + 盈利質量
+    b: 睇 P/B 適用所有行業
+    c: 睇 P/E 就夠
+    d: 永遠買 P/E 最低嘅股
+  answer: a
+  explanation: 估值係綜合判斷, 包括 P/E、增長率、行業、盈利質量、現金流、ROE。單一指標誤導。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+

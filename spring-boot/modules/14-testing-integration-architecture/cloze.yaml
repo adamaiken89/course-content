@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: A test annotated {@SpringBootTest} boots the real ApplicationContext to verify the assembled wiring.
+  answer: "@SpringBootTest"
+  explanation: Full-context tests load every bean, property binding, and filter; use them only when wiring is the subject.
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: Testcontainers spins a real Docker {postgres} for persistence tests instead of a fake in-memory dialect.
+  answer: Postgres
+  explanation: Real Postgres implements the SQL semantics you ship, so locking and JSONB behave as they will in production.
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: H2 is acceptable only as a {smoke} test that the context loads, never for asserting SQL behavior.
+  answer: smoke
+  explanation: H2 certifies H2 semantics. Boot smoke tests are fine; any SQL assertion must run against real Postgres.
+  difficulty: 2
+  tags: [concept, process]
+
+- id: "c.4"
+  question: Spring Data validates repository query methods at {build} time, so a typo fails before deployment.
+  answer: build
+  explanation: Build-time query processing from module 02 catches derived-query typos and property mismatches before the first request.
+  difficulty: 2
+  tags: [concept, process]
+
+- id: "c.5"
+  question: In Spring Cloud Contract the producer publishes a {stub jar} that consumers test against through the stub-runner.
+  answer: stub jar
+  explanation: The stub jar is the shared artifact that enforces the agreed API shape on both sides of the service boundary.
+  difficulty: 2
+  tags: [terminology, process]
+
+- id: "c.6"
+  question: WireMock is a lighter {test double} with hand-written stubs but no shared contract and no producer verification.
+  answer: test double
+  explanation: WireMock suits the simple simulated-endpoint case. It cannot verify the producer or share a versioned contract.
+  difficulty: 2
+  tags: [concept, comparison]
+
+- id: "c.7"
+  question: ArchUnit {architecture} rules run as plain JUnit tests that fail the build on a package dependency violation.
+  answer: architecture
+  explanation: ArchUnit enforces hexagon and module boundaries from modules 09 and 10 automatically on every commit.
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.8"
+  question: The test {pyramid} puts many fast unit tests at the base and the fewest slow full-context tests at the top.
+  answer: pyramid
+  explanation: Matching test cost to value keeps coverage per second high; full-context tests sit at the expensive top.
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.9"
+  question: A {static @Container} field makes the Testcontainers extension start one container per test class.
+  answer: static @Container
+  explanation: Static containers are started once before the class and stopped after, avoiding per-method container churn.
+  difficulty: 3
+  tags: [terminology, process]
+
+- id: "c.10"
+  question: Enable {parallel} Testcontainers execution and local container reuse to keep the integration suite fast.
+  answer: parallel
+  explanation: Parallel class execution plus reuse of pulled images cuts wall-clock time without dropping the real-DB guarantee.
+  difficulty: 3
+  tags: [concept, process]

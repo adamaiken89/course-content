@@ -1,0 +1,77 @@
+- id: c.1
+  question: LayerNorm computes {μ} and {σ} across the feature dimension. Output =
+    γ ⊙ (x - μ) / σ + {β}.
+  answer: μ
+  explanation: μ = mean, σ = std. γ (scale) and β (shift) are learned parameters.
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: In {pre-norm} placement, LayerNorm is applied before the sublayer. In
+    {post-norm}, LayerNorm is applied after the sublayer addition.
+  answer: pre-norm
+  explanation: Pre-norm stabilises training. Post-norm needs warm-up.
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: 'Residual connection gradient formula: ∂L/∂x = ∂L/∂output × (1 + {∂Sublayer/∂x}).
+    The ''{1}'' term lets gradient bypass the sublayer.'
+  answer: ∂Sublayer/∂x
+  explanation: This identity connection is why very deep networks can train.
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: According to the residual stream hypothesis, attention layers {read} from
+    the stream and {write} back. FFN layers {read}, {transform}, and {write} back.
+    The stream is {additive}.
+  answer: read
+  explanation: Each layer adds a delta. Residual stream accumulates contributions.
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: Post-norm transformers need {warm-up} — a learning rate ramp over thousands
+    of steps. Pre-norm eliminates this requirement.
+  answer: warm-up
+  explanation: Post-norm activations can explode early without careful LR schedule.
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: LayerNorm is preferred over BatchNorm in transformers because it has no
+    {batch} dependence. BatchNorm requires consistent {batch size} and can't handle
+    variable {sequence lengths}.
+  answer: batch
+  explanation: LayerNorm normalises per-token across features. Batch-dependent normalisation
+    fails for transformers.
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: Raw residual stream magnitude {grows} with depth because each layer {adds}
+    Sublayer(x) but never {subtracts}.
+  answer: grows
+  explanation: Pre-norm re-normalises before each sublayer read, but the raw stream
+    accumulates additively.
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: Without residual connections, gradient must flow through the product of
+    {∂Sublayer/∂x} across all layers. In deep networks, this product tends to {vanish}
+    or {explode}. Residuals add a {+1} term to prevent this.
+  answer: ∂Sublayer/∂x
+  explanation: The residual identity path is the gradient superhighway.
+  difficulty: 2
+  tags: []
+- id: c.9
+  question: The learned parameters in LayerNorm are {γ} (scale) and {β} (shift). Without
+    them, output is always {zero mean} {unit variance}.
+  answer: γ
+  explanation: Learned scale/shift give model flexibility to undo normalisation where
+    needed.
+  difficulty: 2
+  tags: []
+- id: c.10
+  question: '{Post-norm} can achieve slightly lower converged loss with perfect tuning.
+    But {pre-norm} is the practical standard because it trains {reliably} without
+    special hyperparameter care.'
+  answer: Post-norm
+  explanation: 'Tradeoff: asymptotic performance vs training stability.'
+  difficulty: 2
+  tags: []

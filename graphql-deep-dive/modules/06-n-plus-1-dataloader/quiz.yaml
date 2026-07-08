@@ -1,0 +1,130 @@
+- id: '6.1'
+  question: How many database queries execute in classic N+1 with 20 parent records
+    and 1 nested resolver?
+  options:
+    a: '21'
+    b: '1'
+    c: '20'
+    d: '400'
+  answer: a
+  explanation: '1 query for parent records + 20 queries (one per child) = 21. With
+    DataLoader: 2 queries (parent + batched child).'
+  difficulty: 2
+  tags: []
+- id: '6.2'
+  question: What mechanism does DataLoader use to group load() calls into a batch?
+  options:
+    b: process.nextTick / Promise queue within same event-loop tick
+    a: setTimeout with 0ms delay
+    c: WebSocket message aggregation
+    d: Database trigger
+  answer: b
+  explanation: DataLoader queues load() calls, then flushes batch on next tick via
+    enqueued microtask. All load() calls in same tick resolve together.
+  difficulty: 2
+  tags: []
+- id: '6.3'
+  question: Batch function receives keys [3, 1, 2]. DB returns [{id:1}, {id:2}, {id:3}].
+    What does loader return?
+  options:
+    b: '[{id:3}, {id:1}, {id:2}]'
+    a: '[{id:1}, {id:2}, {id:3}]'
+    c: null — order mismatch error
+    d: Error — key 3 not found
+  answer: b
+  explanation: Batch function must return values in same order as input keys. Input
+    was [3,1,2], so output must be [val_for_3, val_for_1, val_for_2]. DB returned
+    DB order; batch function must reorder.
+  difficulty: 2
+  tags: []
+- id: '6.4'
+  question: What is correct DataLoader cache scope?
+  options:
+    c: Per-request (new instance per GraphQL execution)
+    a: Application-wide singleton
+    b: Per-session (WebSocket connection lifetime)
+    d: No cache — DataLoader only batches
+  answer: c
+  explanation: Per-request is correct. Prevents data leaking between users and avoids
+    memory leaks. Each GraphQL request gets fresh loaders.
+  difficulty: 2
+  tags: []
+- id: '6.5'
+  question: Mutation updates user email. After mutation, userLoader.load(id) still
+    returns old email. What is wrong?
+  options:
+    d: Must call userLoader.clear(id) after mutation
+    a: DataLoader cache is immutable — must create new loader
+    b: Must restart server
+    c: Batch function caches DB results internally
+  answer: d
+  explanation: DataLoader cache stores first-fetched value. After mutation, call clear(id)
+    to remove cached entry. Next load() fetches fresh data.
+  difficulty: 2
+  tags: []
+- id: '6.6'
+  question: Resolver calls postLoader.load(id) in a for-loop with 'await'. How many
+    batches execute for 5 IDs?
+  options:
+    a: 5 batches — each await yields, next tick creates new batch
+    b: 1 batch — all load() calls collected
+    c: 0 batches — for-loop is synchronous
+    d: Depends on batch function speed
+  answer: a
+  explanation: await yields control, allowing DataLoader to flush each load() as separate
+    batch. Use loadMany(ids) to collect all keys before any await. Or collect calls
+    without await in between.
+  difficulty: 2
+  tags: []
+- id: '6.7'
+  question: Team resolver knows memberIds from JOIN. How to prevent member resolvers
+    from re-fetching?
+  options:
+    a: Use userLoader.prime(memberId, memberData) for each member
+    b: Set global variable with member data
+    c: Skip resolver — return data from parent
+    d: Use different batch function
+  answer: a
+  explanation: 'Cache priming: userLoader.prime(id, value) pre-populates cache. Resolver
+    calls userLoader.load(id) hit cache, no DB query.'
+  difficulty: 2
+  tags: []
+- id: '6.8'
+  question: What does loadMany() do differently from multiple load() calls?
+  options:
+    b: It loads all keys in single batch without awaiting between
+    a: It does the same but returns array
+    c: It bypasses the cache
+    d: It throws on first error
+  answer: b
+  explanation: loadMany(ids) calls load() for each key synchronously — all queued
+    in same tick. Multiple load() with await between create separate batches.
+  difficulty: 2
+  tags: []
+- id: '6.9'
+  question: 'Schema: Team has members (User[]). User has manager (User). Without DataLoader,
+    1 team query + 10 members + each member loads manager. How many queries?'
+  options:
+    c: '21'
+    a: '1'
+    b: '11'
+    d: '12'
+  answer: c
+  explanation: '1 team + 10 members + 10 manager lookups (each member loads manager)
+    = 21. With DataLoader: 1 + 1 (batched members) + 1 (batched managers) = 3.'
+  difficulty: 2
+  tags: []
+- id: '6.10'
+  question: Two GraphQL requests arrive simultaneously. Each creates own DataLoader
+    instances. Both need to load user id=1. How many DB queries for user 1?
+  options:
+    d: 2 — each request has its own cache
+    a: 1 — DataLoader deduplicates across requests
+    b: 0 — user is in global cache
+    c: Depends on DB connection pooling
+  answer: d
+  explanation: Per-request cache means each request independently fetches user id=1.
+    2 separate batched queries. Cross-request caching would leak data.
+  difficulty: 2
+  tags: []
+

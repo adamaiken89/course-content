@@ -1,0 +1,141 @@
+- id: '12.1'
+  question: Which moving average responds faster to recent price changes?
+  options:
+    a: 50-day SMA
+    b: 50-day EMA
+    c: 200-day SMA
+    d: They respond identically
+  answer: b
+  explanation: EMA weights recent prices more heavily, making it more responsive than
+    SMA of same period. A 50-day EMA reacts faster to new price data than a 50-day
+    SMA.
+  difficulty: 1
+  tags:
+  - concept
+- id: '12.2'
+  question: What does a golden cross signal?
+  options:
+    a: 50-day SMA crosses below 200-day SMA — bearish
+    b: 50-day SMA crosses above 200-day SMA — bullish
+    c: Price crosses above 200-day SMA — bullish
+    d: 20-day EMA crosses below 50-day SMA — bearish
+  answer: b
+  explanation: Golden cross = 50-day SMA crossing above 200-day SMA. Signals potential
+    shift to bull market. Both averages should be sloping upward for valid signal.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.3'
+  question: In a head and shoulders top pattern, what confirms the reversal?
+  options:
+    a: Head formation completes
+    b: Right shoulder forms
+    c: Price breaks below the neckline
+    d: Left shoulder forms
+  answer: c
+  explanation: Head and shoulders is confirmed when price breaks below the neckline
+    (support connecting the two troughs). Without neckline break, it's a potential
+    pattern, not confirmed.
+  difficulty: 2
+  tags:
+  - pattern
+- id: '12.4'
+  question: After 4-month uptrend, stock forms double top at $80 with valley at $72.
+    Price breaks below $72 on high volume. What is the measured move target?
+  options:
+    a: $64
+    b: $72
+    c: $80
+    d: $88
+  answer: a
+  explanation: Target = valley - (peak - valley) = $72 - ($80 - $72) = $72 - $8 =
+    $64. The pattern height ($8) is projected downward from the breakout level.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '12.5'
+  question: Which pattern is a continuation pattern, not a reversal pattern?
+  options:
+    a: Head and shoulders
+    b: Double top
+    c: Flag
+    d: Double bottom
+  answer: c
+  explanation: Flags are continuation patterns — they consolidate after a sharp move
+    (flagpole) then continue in the same direction. H&S and double top/bottom are
+    reversal patterns.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.6'
+  question: 'A doji candlestick pattern indicates:'
+  options:
+    a: Market indecision
+    b: Strong selling pressure
+    c: Strong buying pressure
+    d: Trend continuation
+  answer: a
+  explanation: Doji forms when open and close are nearly equal, with long wicks showing
+    both buyers and sellers were active. It indicates indecision and potential trend
+    change.
+  difficulty: 1
+  tags:
+  - concept
+- id: '12.7'
+  question: Which candlestick pattern signals bullish reversal after a downtrend?
+  options:
+    a: Shooting star
+    b: Bearish engulfing
+    c: Hammer
+    d: Doji at resistance
+  answer: c
+  explanation: Hammer has small body at top with long lower wick. Forms during downtrend
+    and signals buyers stepping in to push price up from lows. Bullish reversal.
+  difficulty: 2
+  tags:
+  - pattern
+- id: '12.8'
+  question: A golden cross forms but both MAs still slope downward. What does this
+    suggest?
+  options:
+    a: Valid golden cross — strong buy signal
+    b: Whipsaw — likely false signal
+    c: Accelerating downtrend
+    d: Sideways market
+  answer: b
+  explanation: Valid golden cross requires both MAs sloping upward after the cross,
+    confirming emerging uptrend. If both declining, it's a whipsaw — price likely
+    to reverse back down.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '12.9'
+  question: 'A stock in downtrend forms a doji at a known support level on high volume.
+    The next candle is a long green candle closing above the doji''s high. This setup
+    suggests:'
+  options:
+    a: Bullish reversal
+    b: Continuation of downtrend
+    c: Bearish continuation
+    d: Indecision — no signal
+  answer: a
+  explanation: 'Three-part bullish reversal: (1) doji at support = sellers losing
+    control, (2) high volume = conviction, (3) green candle above doji''s high = confirmation.
+    Anticipate move up.'
+  difficulty: 3
+  tags:
+  - scenario
+- id: '12.10'
+  question: A stock at $150 has rallied 25% above its 50-day SMA. What does this suggest?
+  options:
+    a: Strong trend — add to position
+    b: Stock is extended — likely to pull back
+    c: Moving average will catch up
+    d: No significance
+  answer: b
+  explanation: Price far above MA (20%+) indicates extended move. Mean reversion likely
+    — price tends to revert toward moving average. Risk of pullback increases with
+    distance from MA.
+  difficulty: 2
+  tags:
+  - concept

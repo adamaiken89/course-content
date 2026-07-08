@@ -1,0 +1,133 @@
+- id: '11.1'
+  question: What percentage of common agent bugs are caught by typecheck + lint +
+    test?
+  options:
+    b: ~80%
+    a: ~40%
+    c: ~100%
+    d: ~20%
+  answer: b
+  explanation: About 80%. Typecheck (~40%), lint (~10%), tests (~30%). Remaining 20%
+    need human review (logic errors, design issues).
+  difficulty: 1
+  tags:
+  - concept
+- id: '11.2'
+  question: What is the recommended verification gate order?
+  options:
+    c: Typecheck → Lint → Related Tests → Build
+    a: Tests → Lint → Typecheck → Build
+    b: Build → Tests → Lint → Typecheck
+    d: All at once
+  answer: c
+  explanation: Fastest gates first. Typecheck (<5s) → Lint (<5s) → Related tests (10-60s)
+    → Build (30-120s). Fail fast, fail cheap.
+  difficulty: 1
+  tags:
+  - procedure
+- id: '11.3'
+  question: Why should you run related tests (not full suite) during agent iteration?
+  options:
+    c: Speed — related tests take seconds, full suite may take minutes
+    a: Full suite is run by CI
+    b: Related tests are more accurate
+    d: Full suite is not available locally
+  answer: c
+  explanation: Fast verification keeps agent loop tight. Full suite runs in CI. Related
+    tests catch relevant regressions quickly.
+  difficulty: 1
+  tags:
+  - concept
+- id: '11.4'
+  question: In test-first agentic workflow, who writes the test?
+  options:
+    b: You — test encodes your intent as executable spec
+    a: Agent — it writes both test and implementation
+    c: CI pipeline
+    d: Either, doesn't matter
+  answer: b
+  explanation: You write test. Test = executable spec encoding YOUR intent. Agent
+    implements to spec. If agent writes test too, assumptions may be wrong.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '11.5'
+  question: What should agent do when a gate fails repeatedly (3+ attempts)?
+  options:
+    d: Stop and report to human
+    a: Skip the gate and continue
+    b: Modify tests to match output
+    c: Try the same fix again
+  answer: d
+  explanation: After 3 failures, something is fundamentally wrong. Wrong approach,
+    misunderstanding, or unusual setup. Investigate, don't brute force.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '11.6'
+  question: Which gate catches the MOST bugs?
+  options:
+    d: Typecheck
+    a: Lint
+    b: Build
+    c: Full test suite
+  answer: d
+  explanation: Typecheck catches ~40% of bugs — type mismatches, missing properties,
+    wrong arguments. Fastest gate with highest catch rate.
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.7'
+  question: What anti-pattern should you guard against in verification prompts?
+  options:
+    a: Agent disabling gates or applying workarounds
+    b: Agent running gates automatically
+    c: Agent reporting gate failures
+    d: Agent re-running gates after fixing
+  answer: a
+  explanation: 'Guards needed: prevent agent from skipping gates, modifying tests
+    to match broken code, or applying superficial workarounds.'
+  difficulty: 2
+  tags:
+  - application
+- id: '11.8'
+  question: Project has no tests. What gates should be used as minimum?
+  options:
+    b: Typecheck + Lint — catches ~50% of agent bugs
+    a: No gates — project isn't ready
+    c: Only build
+    d: Manual review only
+  answer: b
+  explanation: Typecheck + lint together catch ~50% of common agent bugs. Fast, no
+    setup overhead. Add tests gradually.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '11.9'
+  question: Agent writes code that fails typecheck. Error says 'Property X does not
+    exist on type Y.' What should agent do?
+  options:
+    a: Read the error, fix the actual type mismatch
+    b: Use // @ts-ignore
+    c: Ask you what to do
+    d: Ignore and present diff anyway
+  answer: a
+  explanation: Fix root cause. 'as any' or @ts-ignore treats symptom. Understand the
+    type and fix properly.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '11.10'
+  question: What makes tests better specs than natural language?
+  options:
+    a: Tests are executable, unambiguous, and permanent (regression safety)
+    b: Tests are shorter
+    c: Tests run faster than reading
+    d: Tests don't need review
+  answer: a
+  explanation: Tests = executable specs. They never misinterpret, they verify automatically,
+    and they stay as regression protection.
+  difficulty: 3
+  tags:
+  - concept
+

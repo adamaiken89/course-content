@@ -1,0 +1,72 @@
+- id: c.1
+  question: 'Complete: Prompt templates must encode five dimensions: role, format,
+    difficulty, {constraints}, and quality rules.'
+  answer: constraints
+  explanation: Constraints include answer distribution (not same letter repeatedly),
+    distractor rules (plausibility requirements), and topic coverage enforcement.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 'Complete: Multi-shot examples define the {quality bar}. Low-quality examples
+    produce low-quality output.'
+  answer: quality bar
+  explanation: The model learns the expected quality from examples. Curate examples
+    as carefully as the content you want to generate.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: 'Complete: Pass@k generates {k} candidates, scores them, and returns the
+    {best} one.'
+  answer: k, best
+  explanation: k=3-5 is optimal. Higher k costs more tokens; quality improvement diminishes
+    beyond k=5.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: 'Complete: The quality scoring dimension for factual correctness has weight
+    {40%} in the Pass@k scoring function.'
+  answer: 40%
+  explanation: Factual correctness is the most important dimension. Distractor plausibility
+    is 25%, clarity 15%, difficulty match 10%, answer distribution 10%.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.5
+  question: 'Complete: {Structured} output schemas (YAML/JSON) enforce consistency
+    in AI-generated learning content.'
+  answer: Structured
+  explanation: Structured schemas make output parseable and validateable. They force
+    the model to include all required fields in the expected format.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.6
+  question: 'Complete: If multi-shot examples all have answer = A, the model will
+    over-index on answer {A}. Examples need {uniform} answer distribution.'
+  answer: A, uniform
+  explanation: The model learns spurious patterns from examples — including answer
+    position. Uniform distribution prevents position bias.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: 'Complete: The role "expert {educator}" primes the model''s behavior and
+    activates teaching standards in the generated content.'
+  answer: educator
+  explanation: Role definition shapes the model's latent distribution. Expert educator
+    activates pedagogical awareness and clarity standards.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.8
+  question: 'Complete: Schema validation catches {missing} fields and invalid values
+    before content enters the question bank.'
+  answer: missing
+  explanation: The validator checks required fields exist and have valid values (answer
+    in A-D, difficulty in 1-3). It rejects malformed content early.
+  difficulty: 2
+  tags:
+  - concept

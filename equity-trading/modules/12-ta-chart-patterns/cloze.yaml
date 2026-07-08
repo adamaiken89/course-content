@@ -1,0 +1,60 @@
+- id: c.1
+  question: The {blank} moving average gives more weight to recent prices, making it more responsive than SMA.
+  answer: exponential
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: A golden cross occurs when the 50-day SMA crosses {blank} the 200-day SMA.
+  answer: above
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: A death cross occurs when the 50-day SMA crosses {blank} the 200-day SMA.
+  answer: below
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: The {blank} is the support level connecting the two troughs in a head and shoulders pattern.
+  answer: neckline
+  difficulty: 2
+  tags:
+  - pattern
+- id: c.5
+  question: Flags are {blank} patterns, while head and shoulders is a {blank} pattern.
+  answer: continuation, reversal
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.6
+  question: The measured move target for a double top is calculated by subtracting pattern {blank} from the breakout level.
+  answer: height
+  difficulty: 2
+  tags:
+  - calculation
+- id: c.7
+  question: A {blank} candlestick has small body at top with long lower wick, signaling bullish reversal after downtrend.
+  answer: hammer
+  difficulty: 1
+  tags:
+  - pattern
+- id: c.8
+  question: A {blank} candlestick has small body at bottom with long upper wick, signaling bearish reversal after uptrend.
+  answer: shooting star
+  difficulty: 2
+  tags:
+  - pattern
+- id: c.9
+  question: A {blank} forms when open and close are nearly equal, indicating market indecision.
+  answer: doji
+  difficulty: 1
+  tags:
+  - pattern
+- id: c.10
+  question: When price is 20% or more above its moving average, the stock is considered {blank} and likely to pull back.
+  answer: extended
+  difficulty: 3
+  tags:
+  - concept

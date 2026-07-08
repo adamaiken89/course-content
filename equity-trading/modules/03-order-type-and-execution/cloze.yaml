@@ -1,0 +1,70 @@
+- id: c.1
+  question: Market orders guarantee {execution} but not {price}. Limit orders guarantee
+    {price} but not {execution}.
+  answer: execution
+  difficulty: 1
+  tags:
+  - concept
+- id: c.2
+  question: The difference between best ask and best bid is called the {spread}. Crossing
+    it costs the difference between {bid} and {ask}.
+  answer: spread
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: A stop-loss order becomes a {market order} when price hits the stop level.
+    A stop-limit order becomes a {limit order}.
+  answer: market order
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: Stop-loss orders do NOT protect against {overnight gaps}. A stock closing
+    at $50 with a $48 stop can open at $42, filling at {.$42}.
+  answer: overnight gaps
+  difficulty: 2
+  tags:
+  - scenario
+- id: c.5
+  question: An iceberg order shows only a portion of the total order size, called
+    the {peak}. After each peak fills, a new {peak} is revealed.
+  answer: peak
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: IOC stands for {Immediate-or-Cancel}. It fills available shares and cancels
+    the {rest}. FOK stands for {Fill-or-Kill} and requires {full} fill or cancel.
+  answer: Immediate-or-Cancel
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.7
+  question: Limit orders that sit on the book {add} liquidity and earn a {maker rebate}.
+    Market orders {remove} liquidity and pay a {taker fee}.
+  answer: add
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: Level 1 data shows only the {best bid} and {best ask}. Level 2 shows {depth}
+    at multiple price levels.
+  answer: best bid
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.9
+  question: A large market order that consumes multiple ask levels is said to {walk
+    the book}. The total cost above the best ask is {slippage}.
+  answer: walk the book
+  difficulty: 2
+  tags:
+  - concept
+- id: c.10
+  question: NBBO stands for {National Best Bid and Offer} — the best available price
+    across all {exchanges}.
+  answer: National Best Bid and Offer
+  difficulty: 2
+  tags:
+  - terminology

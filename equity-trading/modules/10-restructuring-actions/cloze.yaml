@@ -1,0 +1,67 @@
+- id: c.1
+  question: A 4:1 forward split multiplies shares by {blank} and divides price by
+    the same factor.
+  answer: '4'
+  difficulty: 1
+  tags:
+  - calculation
+- id: c.2
+  question: In a {blank} split, share count decreases and price increases proportionally.
+  answer: reverse
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: After a stock split, total market capitalization is {blank}.
+  answer: unchanged
+  difficulty: 1
+  tags:
+  - concept
+- id: c.4
+  question: Share buybacks reduce shares outstanding, which {blank} earnings per share.
+  answer: increases
+  difficulty: 1
+  tags:
+  - concept
+- id: c.5
+  question: '{blank} offer deferred tax treatment for shareholders, while {blank}
+    are taxable immediately.'
+  answer: Buybacks, dividends
+  difficulty: 2
+  tags:
+  - comparison
+- id: c.6
+  question: A spin-off distributes shares of a subsidiary to existing shareholders,
+    often on a {blank} basis.
+  answer: tax-free
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.7
+  question: The {blank} discount describes when a conglomerate's total market value
+    is less than sum of its individual parts.
+  answer: conglomerate
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: In a rights issue, the {blank} date marks when stock trades without rights
+    attached.
+  answer: ex-rights
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.9
+  question: If a shareholder ignores a rights issue, their ownership percentage is
+    {blank}.
+  answer: diluted
+  difficulty: 2
+  tags:
+  - concept
+- id: c.10
+  question: '{blank} stock tracks division performance without creating a legally
+    separate company.'
+  answer: Tracking
+  difficulty: 3
+  tags:
+  - terminology

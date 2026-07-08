@@ -1,0 +1,60 @@
+- id: "c.1"
+  question: "For edge-minted client-visible order rows, {uuidv7} keeps index inserts append-like."
+  answer: "uuidv7"
+  explanation: "uuidv7 ids are time-ordered and distributable; new rows land at the B-tree edge instead of random positions."
+  difficulty: 1
+  tags: [concept]
+- id: "c.2"
+  question: "For dense server-minted rows like order_lines and ledger, a {bigint identity} key is narrower than a UUID and joins cheaply."
+  answer: "bigint identity"
+  explanation: "An 8-byte identity key beats a 16-byte UUID for dense, joined, counted rows."
+  difficulty: 2
+  tags: [comparison]
+- id: "c.3"
+  question: "The composite index `(customer_id, created_at {DESC})` covers the newest-first customer order list lookups."
+  answer: "DESC"
+  explanation: "Matching the ORDER BY direction lets the index serve order directly without a Sort node."
+  difficulty: 2
+  tags: [concept]
+- id: "c.4"
+  question: "A partial index `WHERE status = 'pending'` keeps the worker pool's claim probe tiny and orderable."
+  answer: "pending"
+  explanation: "Only the contended subset is indexed, so the SKIP LOCKED claim inner query walks a small ordered set."
+  difficulty: 2
+  tags: [scenario]
+- id: "c.5"
+  question: "In a report, per-aggregate conditions come from the {FILTER} clause, e.g. count(*) FILTER (WHERE status = 'cancelled')."
+  answer: "FILTER"
+  explanation: "FILTER restricts one aggregate without adding a separate WHERE pass; pairs with window rankings in the same scan."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.6"
+  question: "The tuning loop's diagnosis of Filter-on-Scan says: no {index} served the predicate."
+  answer: "index"
+  explanation: "A Filter under a Seq Scan means row-level filtering after a full scan — index the predicate so the scan shrinks."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "Nightly updates leave {dead tuples} that a fillfactor and VACUUM recycle; without them the heap bloats."
+  answer: "dead tuples"
+  explanation: "Every update makes a new row version; old ones bloat until VACUUM reclaims them; in-page fillfactor enables cheap HOT chains."
+  difficulty: 2
+  tags: [concept]
+- id: "c.8"
+  question: "REPACK CONCURRENTLY needs disk space close to the {table size} on the same tablespace."
+  answer: "table size"
+  explanation: "It builds a shadow copy to avoid blocking, so budget headroom before scheduling it nightly."
+  difficulty: 3
+  tags: [scenario]
+- id: "c.9"
+  question: "A reappearing {Sort} node signals the query's ORDER BY does not align with the index prefix."
+  answer: "Sort"
+  explanation: "Align ORDER BY direction/columns to the index, or accept the cheaper sort the planner chose."
+  difficulty: 3
+  tags: [concept]
+- id: "c.10"
+  question: "Without {SKIP LOCKED}, contended worker claims queue behind the same rows and effectively hang."
+  answer: "SKIP LOCKED"
+  explanation: "SKIP LOCKED lets each worker skip claimed rows and grab the next, keeping the pump moving."
+  difficulty: 1
+  tags: [concept]

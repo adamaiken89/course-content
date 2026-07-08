@@ -1,0 +1,138 @@
+- id: '35.1'
+  question: What is the bundle size and dependency count of react-colorful?
+  options:
+    a: 3KB gzipped, zero dependencies
+    b: 10KB, depends on color-convert
+    c: 15KB, depends on react-color
+    d: 1KB, depends on tinycolor2
+  answer: a
+  explanation: react-colorful is 3KB gzipped with zero external dependencies. This
+    makes it the smallest React color picker library.
+  difficulty: 1
+  tags:
+  - architecture
+- id: '35.2'
+  question: Which component would you use for picking colors with alpha channel support?
+  options:
+    c: HexAlphaColorPicker or RgbaStringColorPicker
+    a: HexColorPicker
+    b: HslColorPicker
+    d: RgbColorPicker
+  answer: c
+  explanation: 'HexAlphaColorPicker outputs #rrggbbaa. RgbaStringColorPicker outputs
+    rgba(r, g, b, a). Standard HexColorPicker does not support alpha.'
+  difficulty: 1
+  tags:
+  - models
+- id: '35.3'
+  question: How does react-colorful support custom theming?
+  options:
+    b: CSS custom properties (--r, --g, --b, --h, --s, --l) reflecting current color
+    a: Styling prop with CSS-in-JS objects
+    c: Inline style overrides via defaultStyles prop
+    d: Theme context provider wrapper
+  answer: b
+  explanation: react-colorful exposes CSS variables (--r, --g, --b, --h, --s, --l)
+    that update live with current color. Use them in CSS selectors on picker class.
+  difficulty: 2
+  tags:
+  - styling
+- id: '35.4'
+  question: Why must react-colorful components have a Client boundary ('use client')?
+  options:
+    b: Picker requires browser APIs (pointer events, DOM measurements) for drag interaction
+    a: Library has not been updated for React 19
+    c: Server Components cannot import any npm packages
+    d: CSS variables only work in browser
+  answer: b
+  explanation: Color picker needs pointer/mouse/touch events and DOM element measurements
+    for saturation square and hue slider interaction. Server Components have no browser
+    API access.
+  difficulty: 2
+  tags:
+  - react
+  - server-components
+- id: '35.5'
+  question: What keyboard interactions does react-colorful support?
+  options:
+    d: Arrow keys for hue and saturation adjustment, Tab between controls
+    a: Only mouse and touch input
+    b: Number input fields for exact color values
+    c: Voice commands
+  answer: d
+  explanation: Arrow keys adjust hue (left/right) and saturation (up/down). Tab moves
+    focus between saturation area and hue slider. ARIA labels on interactive elements.
+  difficulty: 1
+  tags:
+  - accessibility
+- id: '35.6'
+  question: How does React Compiler optimize color picker onChange handlers?
+  options:
+    c: Auto-memoizes onChange callback, preventing unnecessary re-renders during drag
+    a: Compiler skips re-render for all color changes
+    b: Compiler moves color calculations to Web Worker
+    d: Compiler debounces onChange calls
+  answer: c
+  explanation: onChange fires many times per second during color picker drag. React
+    Compiler automatically memoizes the handler and derived values, reducing re-render
+    work.
+  difficulty: 2
+  tags:
+  - react
+  - compiler
+- id: '35.7'
+  question: Which approach outputs color as RGB object from react-colorful?
+  options:
+    b: All of the above
+    a: HexColorPicker with hexToRgb conversion
+    c: RgbColorPicker component outputs { r, g, b }
+    d: HslColorPicker with hslToRgb conversion
+  answer: b
+  explanation: RgbColorPicker directly outputs { r, g, b }. HexColorPicker output
+    can be converted via hexToRgb utility. HslColorPicker output can be converted
+    via hslToRgb.
+  difficulty: 2
+  tags:
+  - conversion
+- id: '35.8'
+  question: What design pattern is illustrated by the ThemeColorPicker with presets?
+  options:
+    d: Wrapper — compose preset grid and custom picker with unified interface
+    a: Facade — simplify complex color model API
+    b: Adapter — convert hex to RGB behind the scenes
+    c: Strategy — swap picker variant at runtime
+  answer: d
+  explanation: Wrapper composes preset selection and custom picker behind single ThemeColorPicker
+    component with consistent value/onChange API. Consumers do not manage tab state.
+  difficulty: 2
+  tags:
+  - pattern
+- id: '35.9'
+  question: What is the react-colorful approach to color format conversion?
+  options:
+    a: Library does not include conversion utilities — use small custom helpers
+    b: Built-in convert() method on picker instance
+    c: Conversion via external color-convert peer dependency
+    d: Automatic conversion based on output component variant
+  answer: a
+  explanation: react-colorful provides pickers for each format but no cross-format
+    conversion. Write small hexToRgb, rgbToHsl helpers (~10 lines each) when needed.
+  difficulty: 2
+  tags:
+  - utilities
+- id: '35.10'
+  question: When should you choose react-colorful over a native input type='color'?
+  options:
+    a: When you need custom styling, preset colors, alpha channel, or exact color
+      model control
+    b: Always — react-colorful is always better
+    c: Only for mobile applications
+    d: When bundle size is not a concern
+  answer: a
+  explanation: 'Native input type=''color'' is 0KB but limited: no alpha, no HSL/HSV,
+    no custom styling, small palette preview. react-colorful excels when app needs
+    branded picker or specific color model.'
+  difficulty: 2
+  tags:
+  - trade-off
+

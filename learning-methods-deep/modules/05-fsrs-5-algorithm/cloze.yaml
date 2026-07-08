@@ -1,0 +1,90 @@
+- id: c.1
+  question: 'Complete: FSRS-5 separates two memory variables: {Stability} tracks memory
+    strength, while {Difficulty} tracks item inherent difficulty.'
+  answer: Stability, Difficulty
+  explanation: Stability is how long until R ≈ 0.9. Difficulty is how hard the item
+    is to remember. SM-2 conflated these into ease factor.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 'Complete: FSRS-5 has {21} w-parameters that control all scheduling equations,
+    optimized via maximum likelihood estimation.'
+  answer: '21'
+  explanation: Parameters w[0]-w[20] cover initial stability, difficulty, recall growth,
+    forget decay, short-term memory, and rating modifiers.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: 'Complete: The four states in FSRS-5 are: New, Learning, {Review}, and
+    Relearning.'
+  answer: Review
+  explanation: Review is the normal long-term state. New cards enter Review after
+    first successful recall. Forgotten cards go to Relearning then back to Review.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: 'Complete: The retrievability function R(t) = (1 + FACTOR * t / S)^{DECAY}
+    uses {power-law} forgetting, not exponential.'
+  answer: power-law
+  explanation: FSRS-5 uses power-law forgetting (controlled by DECAY = -w[20]) which
+    better fits actual forgetting data than SM-2's exponential decay assumption.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: 'Complete: By definition, when elapsed_days equals stability, retrievability
+    is {0.9}.'
+  answer: '0.9'
+  explanation: Stability is defined as the interval at which R ≈ 90%. This is built
+    into the FACTOR and DECAY computation.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: 'Complete: The next recall stability equation encodes {desirable difficulty}:
+    lower R (harder recall) gives bigger stability increases.'
+  answer: desirable difficulty
+  explanation: The term exp((1-R)*w[10]) - 1 means more effortful retrievals produce
+    stronger memory consolidation — built into the math.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: 'Complete: Linear damping ensures that cards with difficulty close to
+    {10} change less per rating — extreme difficulty is stable.'
+  answer: '10'
+  explanation: The damping factor (10-D)/9 approaches 0 as D approaches 10, so very
+    hard cards barely change difficulty from single ratings.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: 'Complete: Mean reversion pulls difficulty back toward {initial difficulty
+    (w[4])} over multiple ratings, preventing permanent damage.'
+  answer: initial difficulty (w[4])
+  explanation: 'w[7] controls the mean reversion weight: difficulty gradually drifts
+    back toward default, so occasional bad ratings don''t permanently scar difficulty.'
+  difficulty: 3
+  tags:
+  - concept
+- id: c.9
+  question: 'Complete: After forgetting, residual stability is computed by {_next_forget_stability},
+    taking the min of long-term and short-term models.'
+  answer: _next_forget_stability
+  explanation: S' = min(S_long, S_short). S_long incorporates difficulty, previous
+    stability, and retrievability. S_short is a simple decay of previous stability.
+  difficulty: 3
+  tags:
+  - process
+- id: c.10
+  question: 'Complete: The {short-term stability} formula (w[17], w[18], w[19]) applies
+    when elapsed_days < 1, modeling within-day memory dynamics.'
+  answer: short-term stability
+  explanation: Reviews within 24 hours operate on different memory mechanisms (short-term
+    consolidation) than inter-day reviews. Different w-parameters handle this.
+  difficulty: 2
+  tags:
+  - terminology

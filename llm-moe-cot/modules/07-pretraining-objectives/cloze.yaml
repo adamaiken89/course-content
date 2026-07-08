@@ -1,0 +1,86 @@
+- id: c.1
+  question: Causal LM predicts {next token} given previous tokens. Training uses {teacher
+    forcing} to provide ground-truth context.
+  answer: next token
+  explanation: Without teacher forcing, errors from early positions compound and training
+    destabilises.
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: BERT selects {15%} of tokens for masking. Of these, 80% become [{MASK}],
+    10% become random tokens, 10% unchanged. This noise prevents mismatch between
+    pretraining and {fine-tuning}.
+  answer: 15%
+  explanation: The 80/10/10 split ensures model uses context robustly, not just the
+    [MASK] signal.
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: CLM computes loss over {all} token positions. MLM computes loss over {15%}
+    of positions (the masked ones). CLM thus provides {denser} training signal per
+    forward pass.
+  answer: all
+  explanation: Dense signal from CLM is one reason decoder-only architectures scale
+    better.
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: Perplexity = {exp(loss)}. PPL of 1.0 means {perfect prediction}. PPL of
+    {vocab_size} means random guessing.
+  answer: exp(loss)
+  explanation: Perplexity measures average branching factor. Exponential of cross-entropy
+    loss.
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: Teacher forcing feeds {ground-truth} tokens as input during training.
+    At inference, model feeds its {own predictions} back as input — this is called
+    {autoregressive generation}.
+  answer: ground-truth
+  explanation: The discrepancy between training (clean context) and inference (model's
+    own, noisier context) is called exposure bias.
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: 'Overfitting signature: training loss {drops} while validation loss {rises}.
+    Normal convergence: both decrease with small {gap}.'
+  answer: drops
+  explanation: Validation loss rising while training loss still falling is classic
+    overfitting pattern.
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: PPL cannot be fairly compared across different {tokenizers}. Finer tokenization
+    produces {lower} PPL artificially because each token carries less information.
+  answer: tokenizers
+  explanation: More tokens per word → less uncertainty per token → artificially lower
+    PPL. Always compare PPL within same tokenizer.
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: 'T5 uses {span corruption} objective: random {spans} of tokens are replaced
+    with sentinel tokens. Model reconstructs the original spans. This combines strengths
+    of {CLM} and {MLM}.'
+  answer: span corruption
+  explanation: Span corruption is generative (like CLM) but uses bidirectional context
+    (like MLM). T5 fills the gap between GPT and BERT.
+  difficulty: 2
+  tags: []
+- id: c.9
+  question: In causal LM, loss = -∑ log P(x_t | x_<t). For each position t, model
+    predicts token t using only tokens {less than t}. This is also called {autoregressive}
+    modeling.
+  answer: less than t
+  explanation: Autoregressive means 'regressing on past values'. Each prediction depends
+    only on earlier tokens.
+  difficulty: 2
+  tags: []
+- id: c.10
+  question: Loss spikes during training often indicate {bad data batches} or {learning
+    rate too high}. If model recovers quickly, it's usually {not a problem}. Persistent
+    spikes signal {training instability}.
+  answer: bad data batches
+  explanation: Training loss curves should be monitored for diagnostic signals. Single
+    spikes are often harmless; loss not recovering indicates fundamental issue.
+  difficulty: 2
+  tags: []

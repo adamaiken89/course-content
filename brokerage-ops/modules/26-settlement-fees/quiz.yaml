@@ -1,0 +1,120 @@
+- id: '26.1'
+  question: What is the core difference between DVP (Delivery Versus Payment) and FOP (Free of Payment)?
+  options:
+    a: DVP is for domestic markets; FOP is for international markets
+    b: DVP requires cash and securities to exchange simultaneously; FOP transfers securities only with no cash involved
+    c: DVP is used by buyers; FOP is used by sellers
+    d: They function identically — only the fee rates differ
+  answer: b
+  explanation: DVP means delivery versus payment — no cash, no delivery. FOP transfers securities ownership only, with cash handled outside the settlement system, used for collateral transfers and internal transfers.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '26.2'
+  question: How does RVP (Receive Versus Payment) work?
+  options:
+    a: Deliver securities upon receiving payment
+    b: Transfer securities free of payment
+    c: Pay upon receiving securities — no securities, no payment
+    d: Identical to DVP, just for the buy side
+  answer: c
+  explanation: RVP protects the seller — payment occurs only on receiving the securities. DVP protects the buyer (no cash, no delivery). FOP involves no cash at all.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '26.3'
+  question: Which scenario is an appropriate use of FOP (Free of Payment)?
+  options:
+    a: An institutional client buying shares with settlement cash
+    b: A client selling a position to raise cash
+    c: Any buy/sell equity trade
+    d: Collateral transfer, corporate actions (stock split/spinoff), internal account transfers
+  answer: d
+  explanation: FOP suits no-cash-exchange scenarios — collateral transfers, corporate actions, internal transfers. For buy/sell trades FOP means cash flow is not managed by the settlement system, leaving the broker with credit risk.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '26.4'
+  question: What is the basis for calculating the SEC Section 31 fee?
+  options:
+    a: Sell-side transaction value
+    b: Buy-side transaction value
+    c: Number of shares traded, regardless of value
+    d: Number of trades
+  answer: a
+  explanation: 'The SEC Section 31 fee is charged on sell-side transaction value (2024: ~$0.000008 per USD of volume) and funds SEC regulatory operations. The FINRA TAF is per share with a per-trade cap.'
+  difficulty: 2
+  tags:
+  - terminology
+- id: '26.5'
+  question: After a settlement failure, when does NSCC initiate the buy-in process?
+  options:
+    a: T+1, same day as the fail
+    b: Beyond T+5 — forced repurchase in the market, with the price difference and penalties charged to the defaulting party
+    c: T+2, immediately after the fail
+    d: At the broker's discretion
+  answer: b
+  explanation: CNS allows short-term open fails (typically T+1~T+5). Beyond T+5 NSCC forcibly buys the securities in the market and charges the difference plus penalties to the defaulting party.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '26.6'
+  question: 'A 1M-share block is allocated to 50 accounts. During migration, one account''s DVP/RVP flag is accidentally cleared and it defaults to FOP. What happens?'
+  options:
+    a: The trade settles normally with no impact
+    b: DTCC rejects the entire trade
+    c: DTC transfers securities only — no cash settlement is triggered, the seller is not paid, and the broker must advance funds
+    d: The SEC receives an automatic alert
+  answer: c
+  explanation: FOP transfers ownership only. The buyer gets shares but no payment flows, so if the broker already paid the seller it is effectively lending to the buyer — credit risk. Operations must correct the instruction on T+1 and request DTC reprocessing.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '26.7'
+  question: In the maker-taker exchange fee model, how are fees charged?
+  options:
+    a: The maker may receive a rebate; the taker pays a fee
+    b: The maker pays a fee; the taker receives a rebate
+    c: Both sides pay the same fee
+    d: Exchange fees are banned under Reg NMS
+  answer: a
+  explanation: Providing liquidity (maker) may earn a rebate (e.g. −$0.001/share); taking liquidity (taker) pays a fee (e.g. $0.003/share). Structures vary by exchange — NYSE Arca vs IEX differ significantly.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '26.8'
+  question: 'A brokerage sells 1M shares of AAPL @ $200. SEC Section 31 fee ≈ $0.000008 per USD of sell-side volume and FINRA TAF ≈ $0.0000025/share. What is the total regulatory fee?'
+  options:
+    a: $1,600
+    b: $2.50
+    c: $8,000
+    d: $1,602.50
+  answer: d
+  explanation: SEC fee = $200M × 0.000008 = $1,600 (sell side only). FINRA TAF = 1M × 0.0000025 = $2.50 (cap ~$7.99). Total = $1,602.50.
+  difficulty: 3
+  tags:
+  - calculation
+- id: '26.9'
+  question: Why do institutional clients generally prefer the commission + net pricing model over spread markup?
+  options:
+    a: It looks cheaper because no commission is listed
+    b: It is fully transparent — clients must be able to prove best execution to regulators
+    c: It settles faster
+    d: It reduces the SEC Section 31 fee
+  answer: b
+  explanation: Commission + net execution at the market price plus an explicit per-trade commission is transparent and MiFID II/best-execution compliant. Spread markup hides the broker's revenue inside the spread, making execution price hard to verify — FINRA/SEC have penalized markup overcharging.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '26.10'
+  question: What is the correct escalation of settlement failure consequences over time?
+  options:
+    a: Buy-in at T+1, regulatory notification at T+5
+    b: No consequences until T+30
+    c: Open fail at T+1~T+2, NSCC mandatory close-out at T+3~T+4, buy-in at T+5, regulatory notification and capital charges beyond T+5
+    d: All fails automatically settle in the next CNS cycle
+  answer: c
+  explanation: An open fail at T+1~T+2 forces the broker to allocate internal capital; T+3~T+4 NSCC close-out begins; T+5 buy-in executes; beyond T+5 FINRA/SEC notification plus increased capital charges.
+  difficulty: 2
+  tags:
+  - concept

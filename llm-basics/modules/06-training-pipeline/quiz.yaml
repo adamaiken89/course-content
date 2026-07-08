@@ -1,0 +1,115 @@
+- id: '6.1'
+  question: LLM 訓練嘅三階段係？
+  options:
+    a: Pretraining → Instruction Tuning → Alignment
+    b: Train → Validate → Test
+    c: Data → Model → Deploy
+    d: Encoder → Decoder → Output
+  answer: a
+  explanation: 三階段：pretraining（學語言同知識）、instruction tuning（學跟指示）、alignment（學人類偏好）。
+  difficulty: 1
+  tags:
+  - process
+- id: '6.2'
+  question: Pretraining 嘅 training signal 係乜？
+  options:
+    a: 人類 feedback
+    b: Next token prediction
+    c: Instruction-response pairs
+    d: Accuracy score
+  answer: b
+  explanation: Pretraining 用同一個 training objective — 俾上文，預測下一個字。全部 training data 都係
+    text，唔需要人類標注。
+  difficulty: 1
+  tags:
+  - concept
+- id: '6.3'
+  question: Instruction tuning 嘅主要目的係？
+  options:
+    a: 增加模型知識
+    b: 減少 hallucination
+    c: 教模型跟指示嘅 format
+    d: 加快 inference
+  answer: c
+  explanation: Base model 已經有知識但唔識「答問題」格式。Instruction tuning 只係教 format — 將學到嘅知識 map
+    到 instruction-response 格式。
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.4'
+  question: RLHF 嘅全名係？
+  options:
+    a: Recurrent Learning with Human Feedback
+    b: Real-time Language Human Filter
+    c: Randomized Learning and Human Fine-tuning
+    d: Reinforcement Learning from Human Feedback
+  answer: d
+  explanation: RLHF = Reinforcement Learning from Human Feedback。用人類偏好做 reward signal
+    去 alignment 模型。
+  difficulty: 2
+  tags:
+  - terminology
+- id: '6.5'
+  question: Alignment 嘅 HHH 原則係邊三個？
+  options:
+    a: Helpful, Honest, Harmless
+    b: High-quality, High-speed, High-volume
+    c: Human-like, Holistic, Hierarchical
+    d: Heuristic, Hybrid, Harmonized
+  answer: a
+  explanation: HHH = Helpful（有用）、Honest（誠實）、Harmless（無害）。Alignment 就係令模型符合呢三個原則。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.6'
+  question: Instruction tuning 需要幾多 data 相對 pretraining？
+  options:
+    a: 大約相同
+    b: 少好多（幾千到幾萬個 examples）
+    c: 多好多
+    d: 完全唔需要 data
+  answer: b
+  explanation: Pretraining 用幾兆 tokens，instruction tuning 只需幾千到幾萬個 examples。因為 base
+    model 已經有晒知識，只係要學 output format。
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.7'
+  question: RLHF 嘅三步係？
+  options:
+    a: Collect data → Train model → Deploy
+    b: Pretrain → Instruct → Align
+    c: Human compare → Train reward model → RL training
+    d: Tokenize → Embed → Attend
+  answer: c
+  explanation: 第一步：人類比較 outputs。第二步：用比較數據 train reward model。第三步：用 RL optimize 模型產生高分
+    output。
+  difficulty: 3
+  tags:
+  - process
+- id: '6.8'
+  question: 最影響 LLM 能力嘅階段係？
+  options:
+    a: Instruction tuning
+    b: Alignment
+    c: 三個一樣重要
+    d: Pretraining
+  answer: d
+  explanation: 模型嘅知識同 reasoning 能力嚟自 pretraining。Instruction tuning 同 alignment 只係改變
+    presentation 同 safety。如果 base model 唔識解數學題，後面點 tune 都冇用。
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.9'
+  question: DPO 同 RLHF 嘅主要分別係？
+  options:
+    a: DPO 唔需要 reward model
+    b: DPO 用更多 data
+    c: DPO 更快但 less effective
+    d: DPO 唔可以用於 alignment
+  answer: a
+  explanation: DPO（Direct Preference Optimization）直接用偏好數據 training，唔需要 train 一個 separate
+    reward model。更簡單但近年證明效果同 RLHF 差唔多。
+  difficulty: 3
+  tags:
+  - comparison

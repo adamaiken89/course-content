@@ -1,0 +1,138 @@
+- id: '7.1'
+  question: What is the primary problem with CSS override in React component composition?
+  options:
+    b: Specificity accumulation → later overrides need more specificity
+    a: Performance — multiple class names are slow
+    c: Components don't accept className in React
+    d: CSS override causes re-renders
+  answer: b
+  explanation: Each override adds specificity (or !important). Deep nesting eventually
+    produces unchangeable rules or !important wars. Props avoid this entirely.
+  difficulty: 1
+  tags:
+  - concept
+- id: '7.2'
+  question: Where is !important in CSS actually acceptable?
+  options:
+    b: Utility classes that must always win (Tailwind ! prefix)
+    a: Component base styles
+    c: Component variant styles
+    d: Every component override
+  answer: b
+  explanation: '!important is acceptable for utility classes, accessibility overrides,
+    and third-party widget overrides. Never in component CSS intended to be overridden.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.3'
+  question: What's the correct way to customize a component's padding in React?
+  options:
+    a: 'Component prop: <Button padding="lg" />'
+    b: 'CSS: .parent .component { padding: 20px; }'
+    c: 'Inline style override: style={{ padding: ''20px'' }}'
+    d: BEM modifier class
+  answer: a
+  explanation: Explicit prop API communicates available options. TypeScript validates.
+    No specificity involved. Autocomplete discovers available padding values.
+  difficulty: 1
+  tags:
+  - application
+- id: '7.4'
+  question: 'Two components deep: grandparent .page, parent .card, child .button.
+    CSS: .card .button { padding: 12px; } .page .card .button { padding: 16px; }.
+    What''s the problem?'
+  options:
+    c: Grandparent override relies on intermediate DOM structure
+    a: Nothing — specificity correctly cascades
+    b: Padding values should be in JavaScript
+    d: Both rules have same specificity
+  answer: c
+  explanation: 'Override is coupled to DOM nesting depth. If .card stops containing
+    .button, both overrides break. Prop-based: <Button size="md"> is decoupled from
+    DOM structure.'
+  difficulty: 3
+  tags:
+  - scenario
+- id: '7.5'
+  question: How does styled(Component) avoid the specificity problem?
+  options:
+    a: It generates a new unique class — no specificity fight with base class
+    b: It adds !important to all rules
+    c: It removes the base component's styles
+    d: It only works with inline styles
+  answer: a
+  explanation: styled(Component) generates a new CSS class for the extension. Both
+    base and extension classes apply to the element. CSS cascade resolves by source
+    order within generated stylesheet, not by selector specificity.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.6'
+  question: 'A team adds .page .submit-btn { background: red !important; } to override
+    Button. Next dev can''t change it. What''s the fix?'
+  options:
+    b: Add variant prop to Button and remove CSS override
+    a: Add another !important with higher specificity
+    c: Use inline style
+    d: Remove Button's CSS file
+  answer: b
+  explanation: Prop variant removes the need for CSS override entirely. Button declares
+    its API; consumers choose variant. No specificity war.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '7.7'
+  question: Which customization method preserves component encapsulation?
+  options:
+    d: Component prop API
+    a: .parent .component { ... }
+    b: '!important override'
+    c: Deep nesting with :where()
+  answer: d
+  explanation: Props are the public API. CSS selectors reaching into a component's
+    internal structure violate encapsulation — the component owns its DOM, not the
+    consumer.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.8'
+  question: What's the Tailwind equivalent of CSS override antipattern?
+  options:
+    c: Stacking conflicting utilities in className without twMerge
+    a: Using twMerge to combine classes
+    b: Using @apply in component CSS
+    d: Using variant props
+  answer: c
+  explanation: className="px-4 px-6" produces CSS source-order-dependent behavior.
+    One "overrides" the other unpredictably. twMerge resolves this.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '7.9'
+  question: A component library's Button uses CSS Modules. Consumers need to change
+    padding. Correct approach?
+  options:
+    a: Consumer passes className prop; component merges via clsx
+    b: 'Consumer adds :global(.button) { padding: 20px !important; }'
+    c: Consumer edits the component's .module.css file
+    d: Consumer copies the Button code and modifies
+  answer: a
+  explanation: 'Button should accept className and merge: className={clsx(styles.button,
+    className)}. Consumer passes className with twMerge for conflict resolution.'
+  difficulty: 2
+  tags:
+  - application
+- id: '7.10'
+  question: What's the test that reveals CSS override problems?
+  options:
+    d: Visual regression — component looks different in different contexts
+    a: Unit test — component renders without error
+    b: TypeScript — prop types validate
+    c: Bundle analysis — CSS file size
+  answer: d
+  explanation: Visual regression tests catch unintended style changes caused by cascade.
+    If Button looks different in Page vs Popup due to cascade, VRT reveals it.
+  difficulty: 2
+  tags:
+  - scenario
+

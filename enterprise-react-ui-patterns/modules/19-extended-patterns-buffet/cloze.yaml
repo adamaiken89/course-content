@@ -1,0 +1,54 @@
+- id: "c.191"
+  question: "Autosave is a {debounced} store write: keystrokes coalesce into one settled value that lands in the draft store plus {localStorage} persistence."
+  answer: "debounced, localStorage"
+  explanation: "Save-per-keystroke defeats the point; persistence (m5) makes the close-the-tab path hold."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.192"
+  question: "Autosave must never write into the query {cache} — drafts are client-authored truth and the cache must only claim what the server can back."
+  answer: "cache"
+  explanation: "The m12 query cache holds server truth; a committed-looking draft in it would be a lie (m15/m18 discipline)."
+  difficulty: 2
+  tags: [concept]
+- id: "c.193"
+  question: "The offline queue flushes in {dependency} order — a parent application lands before the cohort choice that references its id — each item settling in the m14 ledger."
+  answer: "dependency"
+  explanation: "A topological sort over payload references makes the m13 parent/child rule mechanical; chronological order alone corrupts the linkage."
+  difficulty: 2
+  tags: [concept, process]
+- id: "c.194"
+  question: "Queue replays after a tab crash are deduped server-side by the {idempotency} key `runId:itemId`, making an offline write eventually exactly once."
+  answer: "idempotency"
+  explanation: "m17 keys mean the flush re-sends the same intent, never a duplicate; this holds only if the backend dedupes on the key."
+  difficulty: 2
+  tags: [process, concept]
+- id: "c.195"
+  question: "Undo is a command pattern: each action is an apply/{invert} pair created at action time, so the stack rolls back exactly the last action, not a whole past instant."
+  answer: "invert"
+  explanation: "The invert closes over the pre-action value; snapshot undo can only jump back to one saved render."
+  difficulty: 2
+  tags: [terminology, concept]
+- id: "c.196"
+  question: "The undo/redo stack is module-{local} state scoped to the current draft — it must not survive navigation, unlike the persisted offline queue."
+  answer: "local"
+  explanation: "High-frequency, single-screen state with no cross-screen consumer doesn't belong in zustand; persistence is reserved for shapes that must outlive a tab."
+  difficulty: 2
+  tags: [concept, comparison]
+- id: "c.197"
+  question: "Multi-tab sync uses a {BroadcastChannel} with last-writer-wins ranked by a per-tab {serial}, so one tab's stale hydrate is rejected like any m17 stale response."
+  answer: "BroadcastChannel, serial"
+  explanation: "The serial is version arithmetic applied tab-to-tab; the higher writer wins, the lower message is dropped."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.198"
+  question: "Only one tab submits because a {latch} ticket is granted — and it is an {ephemeral} lease with a timeout, not a persisted lock, so a dead tab cannot deadlock the workflow."
+  answer: "latch, ephemeral"
+  explanation: "Storage must persist (offline queue); the latch must die with the tab. Release on unload plus a lease timeout keeps the lock re-acquirable."
+  difficulty: 3
+  tags: [concept, process]
+- id: "c.199"
+  question: "The micro-assembly is safe because m15 emits typed {drafts}, m14 mints the run key and owns the ledger, m13 keeps options live, and m17 makes the loop re-run exactly {once}."
+  answer: "drafts, once"
+  explanation: "Each module hands its result to the next through agreed seams — import, batch, refetch, resubmit — with no module re-implementing another."
+  difficulty: 3
+  tags: [process, concept]

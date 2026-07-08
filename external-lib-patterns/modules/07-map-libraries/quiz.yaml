@@ -1,0 +1,146 @@
+- id: '7.1'
+  question: Which map library renders markers as WebGL (not DOM elements)?
+  options:
+    a: MapLibre GL JS
+    b: Leaflet
+    c: Google Maps
+    d: OpenLayers
+  answer: a
+  explanation: MapLibre uses WebGL for all rendering — markers, lines, polygons are
+    drawn on GPU. Leaflet creates DOM elements per marker (performance limit with
+    thousands of markers).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '7.2'
+  question: What is the primary performance limitation of Leaflet with 10k+ markers?
+  options:
+    c: 10k+ DOM elements cause scroll jank and memory pressure
+    a: Network tile downloads
+    b: Leaflet cannot load more than 5k markers
+    d: Tile rendering becomes slow
+  answer: c
+  explanation: Leaflet creates DOM elements (div or img) for each marker. 10k DOM
+    nodes causes slow rendering, scrolling jank, and high memory usage. MapLibre's
+    WebGL rendering avoids DOM overhead.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.3'
+  question: In map lifecycle React hook, when should map.remove() be called?
+  options:
+    a: In useEffect cleanup — before component unmount
+    b: On every re-render
+    c: map.remove() is not needed — garbage collection handles it
+    d: On window resize
+  answer: a
+  explanation: Map instances hold WebGL contexts, tile cache, and event listeners.
+    Without cleanup in useEffect return, multiple map instances accumulate on re-renders,
+    causing memory leaks.
+  difficulty: 1
+  tags:
+  - application
+- id: '7.4'
+  question: MapInstance.getNative() exposes underlying library instance. When is this
+    acceptable?
+  options:
+    b: For library-specific features not covered by MapInstance interface, with clear
+      documentation that it is migration liability
+    a: Never — defeats abstraction
+    c: Always — full library access is expected
+    d: Only in development builds
+  answer: b
+  explanation: getNative() is escape hatch for features not in MapInstance interface
+    (e.g., MapLibre 3D terrain, Leaflet heatmap plugin config). Document usage and
+    limit to unavoidable cases.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.5'
+  question: You need 100 markers with popups on a map page. Which library choice is
+    appropriate?
+  options:
+    b: Both A and B work; Leaflet is simpler for this scale
+    a: MapLibre — performance headroom
+    c: Leaflet — lightweight, DOM handles 100 markers fine
+    d: No library — static map image
+  answer: b
+  explanation: 100 markers is well within Leaflet's capability. Leaflet is lighter
+    bundle and simpler API. MapLibre's WebGL is unnecessary. Abstraction lets you
+    start with Leaflet, upgrade to MapLibre if data grows.
+  difficulty: 2
+  tags:
+  - application
+- id: '7.6'
+  question: How does MapLibre handle heatmap rendering differently from Leaflet?
+  options:
+    a: MapLibre has native heatmap layer type (WebGL); Leaflet requires a third-party
+      plugin
+    b: Both render heatmaps identically
+    c: MapLibre cannot render heatmaps
+    d: Leaflet has built-in heatmap; MapLibre requires plugin
+  answer: a
+  explanation: MapLibre supports heatmap as built-in layer type via WebGL fragment
+    shaders. Leaflet heatmap requires external plugin (Leaflet.heat). Abstraction
+    should include plugin registration in map factory.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '7.7'
+  question: 50k GPS points must display on map with clustering. Best approach?
+  options:
+    d: MapLibre with built-in GeoJSON clustering
+    a: Leaflet with MarkerCluster plugin
+    b: Static PNG map
+    c: Load all points as individual markers
+  answer: d
+  explanation: MapLibre's WebGL + built-in clustering handles 50k points efficiently.
+    Leaflet MarkerCluster would create many DOM cluster elements, causing performance
+    issues. MapLibre clustering is native and GPU-accelerated.
+  difficulty: 2
+  tags:
+  - application
+- id: '7.8'
+  question: What is viewport filtering used for?
+  options:
+    d: Filtering data points that are outside current map view, reducing render load
+    a: Applying CSS filters to map tiles
+    b: Client-side search within map bounds
+    c: Restricting user pan range
+  answer: d
+  explanation: Viewport filtering only renders data within current map bounds. Essential
+    for 100k+ datasets where even WebGL struggles. Paired with viewport-based API
+    queries for server-side filtering.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '7.9'
+  question: How should tile provider switching (OpenStreetMap → Mapbox) be handled?
+  options:
+    c: Change in MapConfig.style — MapLibre uses GL JSON, Leaflet uses tile URL template
+    a: Each tile provider requires separate map implementation
+    b: Cannot switch tile providers after initialization
+    d: Tile provider is not a map concern
+  answer: c
+  explanation: MapConfig.style abstracts tile source. MapLibre accepts GL style URL/JSON.
+    Leaflet accepts tile URL template. Provider change = config change. Wrapper passes
+    config to respective library's style mechanism.
+  difficulty: 2
+  tags:
+  - application
+- id: '7.10'
+  question: A map wrapper uses only the intersection of MapLibre and Leaflet features.
+    What limitation?
+  options:
+    b: Cannot use MapLibre 3D terrain, heatmap, or custom GL layers through wrapper
+    a: Maps will not render
+    c: Bundle size doubles
+    d: No limitation — intersection covers all use cases
+  answer: b
+  explanation: Lowest-common-denominator abstraction misses MapLibre's advanced features
+    (3D terrain, custom GL layers, satellite imagery). Wrapper must provide getNative()
+    or optional advanced config for library-specific features.
+  difficulty: 3
+  tags:
+  - concept
+

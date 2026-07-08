@@ -1,0 +1,133 @@
+- id: '6.1'
+  question: 'Dual coding theory proposes that information can be processed in two systems:'
+  options:
+    a: Verbal and imagery
+    b: Short-term and long-term
+    c: Conscious and unconscious
+    d: Semantic and episodic
+  answer: a
+  explanation: 'Paivio''s theory: verbal system (words) and imagery system (pictures, sounds) are separate
+    but interconnected.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.2'
+  question: Why are pictures remembered better than words?
+  options:
+    b: Both B and C
+    a: Pictures are larger in memory
+    c: Pictures automatically engage dual coding — the image itself plus the label
+    d: Words are processed in only one system
+  answer: b
+  explanation: Pictures auto-trigger dual coding (image + verbal label). Words are primarily verbal only.
+    Pictures are also more distinctive.
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.3'
+  question: A slide shows a complex diagram of a cell with 40 unlabeled parts. Which Mayer principle is
+    violated?
+  options:
+    c: Both B and C
+    a: Multimedia principle
+    b: Spatial contiguity
+    d: Signaling
+  answer: c
+  explanation: Unlabeled parts violate spatial contiguity (labels not near elements) AND signaling (no
+    highlighting of key elements).
+  difficulty: 2
+  tags:
+  - application
+- id: '6.4'
+  question: According to Mayer's coherence principle, what should be removed from instructional materials?
+  options:
+    d: Extraneous words, pictures, and sounds
+    a: All diagrams
+    b: All text
+    c: Everything not in bullet points
+  answer: d
+  explanation: 'Coherence principle: remove material that doesn''t support the learning goal. Extra content
+    increases extraneous load.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.5'
+  question: 'A student studies by drawing diagrams from memory, then checking accuracy. This technique
+    combines:'
+  options:
+    a: Dual coding + retrieval practice
+    b: Spacing + interleaving
+    c: Elaboration + massed practice
+    d: Highlighting + re-reading
+  answer: a
+  explanation: Drawing from memory forces retrieval (pulling info from LTM) AND dual coding (creating
+    visual representation of verbal info).
+  difficulty: 2
+  tags:
+  - application
+- id: '6.6'
+  question: Which of the following is an example of the 'split-attention effect' in multimedia learning?
+  options:
+    b: A diagram on one page with its legend on another page
+    a: A diagram with labels embedded in the image
+    c: A narrated animation
+    d: A self-paced tutorial
+  answer: b
+  explanation: 'Split attention: learner must hold diagram in WM while searching for legend. Integrate
+    labels into the diagram.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.7'
+  question: 'For abstract concepts that are hard to visualize, the best dual coding approach is:'
+  options:
+    c: Use metaphors, hierarchies, or flowcharts to represent structure
+    a: Skip visuals — text only works better
+    b: Add decorative images for visual interest
+    d: Use only verbal explanations
+  answer: c
+  explanation: Even abstract ideas benefit from visual organization. Metaphors, tree diagrams, and flowcharts
+    convey relationships structurally.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '6.8'
+  question: 'A student creates a study guide with: (1) text summary, (2) labeled diagram, (3) table comparing
+    related concepts. How many encoding systems are engaged?'
+  options:
+    d: 2 — verbal (text) and imagery (diagram, table structure)
+    a: 1 — all are text
+    b: 3 — one per format
+    c: 0 — study guides don't engage encoding
+  answer: d
+  explanation: Text = verbal. Diagram + table = imagery (structural/visual). Two systems engaged = dual
+    coding benefit.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '6.9'
+  question: 'Animated diagrams are often inferior to static diagrams because:'
+  options:
+    a: Animations can be too fast, and learners can't control pacing
+    b: Animations are harder to create
+    c: Static diagrams are always more colorful
+    d: Animations use less WM
+  answer: a
+  explanation: Transient information (video/animation) disappears. Learners can't pause and reflect. Learner-paced
+    static diagrams allow self-regulation.
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.10'
+  question: Which combination produces the strongest memory trace according to dual coding theory?
+  options:
+    b: Seeing a labeled diagram AND explaining it in your own words
+    a: Reading text silently
+    c: Listening to an audio recording
+    d: Copying text by hand
+  answer: b
+  explanation: Labeled diagram = dual coding (visual + verbal label). Explaining in your own words = elaboration.
+    Two powerful mechanisms combined.
+  difficulty: 3
+  tags:
+  - scenario

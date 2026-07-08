@@ -1,0 +1,91 @@
+- id: '14.1'
+  question: 邊個最好描述 LLMs 中嘅 alignment problem？
+  options:
+    d: Pre-trained LM 生成合理但可能有害/無用嘅文字
+    a: Model 記住 training data 而唔係泛化
+    b: Model 無法處理長 context inputs
+    c: Attention weights 喺推理時 drift
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '14.2'
+  question: RLHF pipeline 嘅正確順序係？
+  options:
+    b: SFT → Reward Model → PPO
+    a: PPO → SFT → Reward Model
+    c: Reward Model → PPO → SFT
+    d: SFT → PPO → Reward Model
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '14.3'
+  question: Preference-based reward model training 用咩 loss function？
+  options:
+    c: Bradley-Terry pairwise loss
+    a: Cross-entropy loss
+    b: Contrastive loss
+    d: Triplet margin loss
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '14.4'
+  question: 點解 PPO optimisation 要包括對 SFT model 嘅 KL penalty？
+  options:
+    a: 防止 policy 利用 RM 缺陷 (reward hacking)
+    b: 防止災難性遺忘 pre-training data
+    c: 減少生成嘅計算成本
+    d: 鼓勵多樣化回應
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '14.5'
+  question: DPO 相比 RLHF 嘅關鍵創新係乜？
+  options:
+    a: 用 policy ratio 表示 reward，消除 reward model
+    b: 用更好 hyperparameters 嘅 PPO
+    c: 用單一 responses 而唔係 pairs 訓練
+    d: 需要 10 倍更多 preference data
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '14.6'
+  question: 邊種 alignment method 用 binary (好/壞) feedback 而唔係 pairwise comparisons？
+  options:
+    b: KTO
+    a: DPO
+    c: RLHF
+    d: ORPO
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '14.7'
+  question: Reward over-optimisation (Gao 2023) 會發生咩事？
+  options:
+    c: RM score 增加但 human rating 最終下降
+    a: RM score 同 human rating 都無限增加
+    b: Model 無法生成任何回應
+    d: KL divergence 變零
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '14.8'
+  question: DPO 相比 RLHF 嘅一個限制係：
+  options:
+    d: 缺乏 online exploration — 無法從當前 policy 收集 preferences
+    a: 需要更多 compute 俾 reward model
+    b: 只 work 得 pairwise comparisons，唔得 binary feedback
+    c: 最後階段需要 PPO
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '14.9'
+  question: Alignment 同 safety 有咩分別？
+  options:
+    a: Alignment 令 model 跟從意圖；safety 防止傷害
+    b: 佢哋同義
+    c: Safety 需要 reward model；alignment 唔需要
+    d: Alignment 係 safety 嘅子集
+  answer: a
+  difficulty: 2
+  tags: []
+

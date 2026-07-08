@@ -1,0 +1,145 @@
+- id: '3.1'
+  question: A market order guarantees which of the following?
+  options:
+    a: Fill price
+    b: No slippage
+    c: Best price over 1 hour
+    d: Execution
+  answer: d
+  explanation: Market orders guarantee execution (someone will fill you). They do
+    NOT guarantee price — slippage occurs when liquidity is thin.
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.2'
+  question: Best bid is $25.00 × 300, best ask is $25.05 × 100. You place a market
+    buy for 500 shares. What happens?
+  options:
+    a: All 500 fill at $25.00
+    b: All 500 fill at $25.05
+    c: 100 fill at $25.05, 300 at $25.10, 100 at $25.15
+    d: Order is rejected — insufficient liquidity
+  answer: c
+  explanation: 'Market buy walks the book. 100 fill at $25.05 (top ask). Then consumes
+    next ask levels. If next asks are $25.10(300), $25.15(200), the walk continues.
+    Note: answer presumes hypothetical depth after top level.'
+  difficulty: 2
+  tags:
+  - scenario
+- id: '3.3'
+  question: A stop-loss order at $45 becomes what when triggered?
+  options:
+    a: Market order
+    b: Limit order at $45
+    c: Canceled
+    d: Iceberg order
+  answer: a
+  explanation: Stop-loss becomes a MARKET order upon trigger. Stop-limit becomes a
+    LIMIT order. The 'loss' is a misnomer — it triggers, doesn't guarantee fill at
+    stop price.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.4'
+  question: A stock closes at $52 on Friday. Your stop-loss is $50. The stock opens
+    at $45 on Monday due to overnight news. What fill price do you expect?
+  options:
+    a: $50
+    b: Between $45 and $50
+    c: $45
+    d: Order doesn't trigger because open is below $50
+  answer: c
+  explanation: Stop triggers at best available price. Open is $45, no continuous trading
+    at $50 occurred. Stop-loss provides NO protection against overnight gaps — only
+    intra-day continuous trading.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '3.5'
+  question: Why would a trader choose an IOC order over a market order?
+  options:
+    a: IOC fills at better price
+    b: IOC avoids walking the book for large orders
+    c: IOC is only for options, not equities
+    d: IOC guarantees full fill
+  answer: b
+  explanation: IOC fills what's available immediately at the limit price, cancels
+    the rest. This prevents the order from walking the book through multiple price
+    levels. Good for large orders in thin books.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '3.6'
+  question: What does 'maker rebate' refer to in equity markets?
+  options:
+    a: Rebate for high-volume traders
+    b: Discount on exchange membership
+    c: Refund for cancelled orders
+    d: Fee paid to orders that add liquidity (limit orders)
+  answer: d
+  explanation: Maker rebate ~$0.003/share paid to limit orders that add liquidity
+    to the book. Takers (market orders) pay ~$0.003/share. This maker-taker model
+    incentivizes liquidity provision.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '3.7'
+  question: An iceberg order shows 500 shares visible, total size 5,000. After the
+    500 visible shares fill, what happens?
+  options:
+    a: Order is canceled
+    b: Another 500 shares become visible
+    c: Full 5,000 appears
+    d: Order converts to market order
+  answer: b
+  explanation: Iceberg replenishes the visible peak. After each 500 fills, another
+    500 appears on the book. Total 5,000 stays hidden until fully filled. This prevents
+    revealing large size.
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.8'
+  question: Level 2 data shows bid 10,000 @ $30.00 and ask 200 @ $30.05. You sell
+    5,000 shares market order. What's your approximate fill?
+  options:
+    a: 5,000 @ $30.00
+    b: 5,000 @ $30.05
+    c: 200 @ $30.05, 4,800 @ $30.00
+    d: 5,000 @ $30.025
+  answer: a
+  explanation: Market sell order hits the bid side. Best bid is 10,000 @ $30.00 —
+    sufficient size for 5,000 shares. All fill at $30.00. No slippage because bid
+    depth covers order size.
+  difficulty: 2
+  tags:
+  - scenario
+  - calculation
+- id: '3.9'
+  question: Which order type requires the FULL order size to be available immediately
+    or the order is entirely canceled?
+  options:
+    a: IOC (Immediate-or-Cancel)
+    b: FOK (Fill-or-Kill)
+    c: Market order
+    d: Stop-limit
+  answer: b
+  explanation: FOK requires full immediate fill or nothing. IOC fills what's available
+    and cancels rest. FOK is stricter — used when trader requires certainty of full
+    execution size.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.10'
+  question: Spread is $0.03. You buy 100 shares at ask ($50.05) and immediately sell
+    at bid ($50.02). What's your round-trip cost?
+  options:
+    a: $0.03
+    b: $3.00
+    c: $5.00
+    d: $0.50
+  answer: b
+  explanation: Spread = $50.05 - $50.02 = $0.03. Total cost = $0.03 × 100 shares =
+    $3.00. This is the minimum cost of a round-trip trade. Plus commissions/fees.
+  difficulty: 2
+  tags:
+  - calculation

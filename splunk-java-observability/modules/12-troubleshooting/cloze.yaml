@@ -1,0 +1,84 @@
+- id: c.1
+  question: The first step of error triage is to pick an {index} and a {sourcetype} before hunting for the error line.
+  answer: index, sourcetype
+  explanation: 'Triage works inward: index removes other apps, sourcetype removes non-application logs, then you narrow time and filter for the error level.'
+  difficulty: 1
+  tags:
+  - triage
+  - index
+  - sourcetype
+- id: c.2
+  question: In the eval `is_err=if(level="ERROR",1,0)`, sum counts the {errors} and count counts the {total}.
+  answer: errors, total
+  explanation: Each event becomes a 1 or 0; sum(is_err) is the error count and count is the denominator, so the rate is internally consistent.
+  difficulty: 1
+  tags:
+  - eval
+  - stats
+  - error-rate
+- id: c.3
+  question: A Java stacktrace is captured by Splunk as a single multi-line {event}.
+  answer: event
+  explanation: Splunk preserves the internal newlines of a log entry, so the exception and its stack frames stay together for one rex extraction.
+  difficulty: 1
+  tags:
+  - stacktrace
+  - events
+- id: c.4
+  question: '`sort -count` sorts the {count} field in {descending} order, so the top exception lands first.'
+  answer: count, descending
+  explanation: The dash before count is part of the sort syntax meaning descending; no space is required between the dash and the field name.
+  difficulty: 1
+  tags:
+  - sort
+  - top-errors
+- id: c.5
+  question: "The rex pattern `(?<exception>[^\r\n]+)` after Exception: captures the exception {message}."
+  answer: message
+  explanation: "The character class [^\r\n]+ matches everything up to the end of the first line, which is where the exception message lives."
+  difficulty: 2
+  tags:
+  - rex
+  - stacktrace
+- id: c.6
+  question: A {trace_id} links events across services, and sort _time rebuilds the request journey in chronological order.
+  answer: trace_id
+  explanation: Sorting by _time replays the request across the gateway, order service, payments, and database, localizing the failing hop.
+  difficulty: 2
+  tags:
+  - trace-id
+  - correlation
+- id: c.7
+  question: 'Drill-down workflow: find the worst {endpoint} on the timechart, then filter with where duration_ms greater than {1000}.'
+  answer: endpoint, 1000
+  explanation: First identify the climbing endpoint from timechart avg(duration_ms), then isolate its slow requests to inspect individual trace_ids.
+  difficulty: 2
+  tags:
+  - timechart
+  - latency
+  - drill-down
+- id: c.8
+  question: A baseline comparison splits the same search into today and {past} buckets to detect a regression.
+  answer: past
+  explanation: Running one search over a window and bucketing by relative_time lets you compare today against the previous period numerically.
+  difficulty: 2
+  tags:
+  - baseline
+  - regression
+- id: c.9
+  question: Troubleshoot Splunk itself by searching the {_internal} index with log_level=ERROR.
+  answer: _internal
+  explanation: The _internal index holds Splunk's own logs, so it is the right place to look when the tool itself misbehaves.
+  difficulty: 3
+  tags:
+  - internal
+  - splunk
+- id: c.10
+  question: A common anti-pattern is trusting a {dashboard} before checking the raw events behind it.
+  answer: dashboard
+  explanation: Dashboards may be stale or built on a different search; always verify the source search, time range, and raw _raw samples first.
+  difficulty: 3
+  tags:
+  - anti-pattern
+  - dashboard
+  - verification

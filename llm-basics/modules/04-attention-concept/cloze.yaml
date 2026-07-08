@@ -1,0 +1,59 @@
+- id: c.1
+  question: Attention 嘅三步（概念上）：計{相關度} → {softmax} → {weighted sum}。
+  answer: 相關度，softmax，weighted sum
+  explanation: 呢三步係 attention 嘅核心運算，無論幾複雜嘅 attention variant 都係呢個基礎。
+  difficulty: 2
+  tags:
+  - process
+- id: c.2
+  question: Self-attention 嘅 query、key、value 全部嚟自{同一個 source} — 即係{句子本身}。
+  answer: 同一個 source，句子本身
+  explanation: 呢個係 self-attention 同 cross-attention 嘅分別。Cross-attention 嘅 query/key/value
+    可以嚟自唔同 source。
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.3
+  question: Attention 嘅運算 complexity 係{O(n²)}，因為每個字要同全部{其他字}計相關度。
+  answer: O(n²)，其他字
+  explanation: 呢個係 attention 嘅主要限制 — 長句子處理成本好高。
+  difficulty: 1
+  tags:
+  - concept
+- id: c.4
+  question: Multi-head attention 用多組唔同嘅{參數}去 capture 唔同類型嘅{關係}。
+  answer: 參數，關係
+  explanation: 不同 heads 學會關注唔同嘅 linguistic feature，令模型更全面。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: Attention 本身唔知字嘅{位置順序}，所以一定要加{positional encoding}。
+  answer: 位置順序，positional encoding
+  explanation: 呢個係 attention 嘅 fundamental limitation — 冇位置資訊，「我愛你」同「你愛我」喺 attention
+    入面睇落一樣。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: Attention 出現之前主流方法係{RNN}，佢嘅問題包括{長距離資訊} fade out 同唔可以{parallel}運算。
+  answer: RNN，長距離資訊，parallel
+  explanation: RNN 逐個字行，資訊會慢慢 fade，而且每個 step 要等前一個 step 完成。
+  difficulty: 1
+  tags:
+  - comparison
+- id: c.7
+  question: Attention 嘅運算步驟：計{相關度} → {softmax} → {weighted sum}，而呢啲步驟可以{parallel}做。
+  answer: 相關度，softmax，weighted sum，parallel
+  explanation: 所有字同時同所有字計相關度 — 唔洗逐個字行，呢個係 attention 對 RNN 嘅 key advantage。
+  difficulty: 2
+  tags:
+  - process
+- id: c.8
+  question: Self-attention 令每個字有一個{context-aware}嘅 representation — 「佢₁」同「佢₂」會唔同，因為
+    {context}唔同。
+  answer: context-aware，context
+  explanation: 冇 attention 之前每個字嘅 embedding 係 static；attention 令 representation 隨 context 改變。
+  difficulty: 2
+  tags:
+  - concept

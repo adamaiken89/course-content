@@ -1,0 +1,110 @@
+- id: "9.1"
+  question: "In the module's Layout & Container Composition pattern, what does the AppShell own?"
+  options:
+    a: "Data fetching, validation, and form state for the routed page"
+    b: "The placement of every button on the page"
+    c: "Repeated chrome: header, nav rail, main outlet, banner slot"
+    d: "The store schema that pages use"
+  answer: c
+  explanation: "The shell owns chrome — header, NavRail, main outlet, and slots like the banner. Pages own content and containers own data (module 1). Fetching (a) and store schema (d) belong to data layers, not the shell."
+  difficulty: 1
+  tags: [terminology]
+- id: "9.2"
+  question: "Why does copying a `<div className=\"page\">` wrapper and a header into every page fail as the app grows?"
+  options:
+    a: "Because divs are not semantic HTML"
+    b: "Because shared chrome changes become an N-page refactor and rhythm drifts"
+    c: "Because CSS cannot style duplicated class names"
+    d: "Because routing stops working past a few pages"
+  answer: b
+  explanation: "Duplicated chrome means every change (nav rail, banner, max width) is edited N times, and each page encodes its own width and gutters so spacing drifts. A single shell centralizes those decisions."
+  difficulty: 1
+  tags: [concept]
+- id: "9.3"
+  question: "A slot prop like `headerActions` in AppShell lets a page do what without what?"
+  options:
+    a: "Inject its own buttons without owning the header frame"
+    b: "Restyle the header with its own classes"
+    c: "Hide the header entirely"
+    d: "Fetch its own user data"
+  answer: a
+  explanation: "Slots (module 1) are injection points: the page supplies content, the shell supplies the frame. The page stays ignorant of header layout — it cannot restyle or unframe it (b, c), and data still comes from the store (d)."
+  difficulty: 1
+  tags: [concept]
+- id: "9.4"
+  question: "The impersonation banner appears under the header whenever an agent acts as a student. Where does it live?"
+  options:
+    a: "Inside every page, above the first heading"
+    b: "In the store, rendered by whichever page is active"
+    c: "Inside the batch review modal"
+    d: "In the shell's banner slot, reading a shell-level session flag"
+  answer: d
+  explanation: "The shell owns the banner slot and reads the impersonation flag from session state (module 6). Pages never know about the banner — they neither reserve space nor fetch session data. Options a-c scatter layout back across pages."
+  difficulty: 1
+  tags: [application]
+- id: "9.5"
+  question: "The NavRail collapse toggle must set which attribute so screen readers announce the expanded state?"
+  options:
+    a: "aria-label"
+    b: "aria-current"
+    c: "aria-expanded"
+    d: "aria-live"
+  answer: c
+  explanation: "aria-expanded tells assistive tech whether the disclosure is open. aria-current marks the active route, aria-label names the button, aria-live announces region changes — each a different job."
+  difficulty: 2
+  tags: [terminology]
+- id: "9.6"
+  question: "Changing the whole app's content width should be a one-token edit. What makes that true?"
+  options:
+    a: "A width constant in every page component"
+    b: "A CSS custom property like `--content-max`, consumed by one PageContainer"
+    c: "A build-time variable applied by the bundler"
+    d: "A page-level media query in each route"
+  answer: b
+  explanation: "Spacing rhythm lives in tokens consumed by shared containers (PageContainer). One declaration site, no drift. Copying a constant into every page (a, d) recreates the duplication problem, and (c) is irrelevant."
+  difficulty: 2
+  tags: [application]
+- id: "9.7"
+  question: "A developer makes ApplicationsTable render `<section className=\"page\">` with its own max-width, and wraps it in PageContainer again at call sites. What is wrong?"
+  options:
+    a: "Sections are block-level and cannot contain tables"
+    b: "PageContainer will throw a nesting error"
+    c: "The table is now single-width and not reusable at other context widths"
+    d: "Nothing — wrappers are harmless"
+  answer: c
+  explanation: "A data container that wraps itself in page chrome suffers container acquisition: layout bakes into the data unit, so a second use (narrow, modal, archived side panel) fights its own wrapper and can never size to context. Layout belongs to shell and PageContainer only."
+  difficulty: 2
+  tags: [scenario]
+- id: "9.8"
+  question: "The rail-collapsed flag lives in NavRail's useState, but the impersonation banner flag lives in a zustand store. Why the different homes?"
+  options:
+    a: "Either store would work; the choice is stylistic"
+    b: "Because one flag is private UI state and the other is written on one screen and read across screens"
+    c: "Because zustand cannot hold booleans used locally"
+    d: "Because useState cannot hold session data"
+  answer: b
+  explanation: "Collapse is private to the shell (local state, module 2's read-mostly rule); the banner flag is set at login and read by the shell on every screen, so it is cross-screen state that earns a store. The distinction is reach, not style."
+  difficulty: 2
+  tags: [scenario]
+- id: "9.9"
+  question: "In the test that checks the impersonation banner, why assert on the banner's slot content rather than only `getByRole('banner')`?"
+  options:
+    a: "Roles are never asserted in RTL"
+    b: "getByRole('banner') also matches the page title"
+    c: "The browser's implicit banner landmark can also match, producing a false pass"
+    d: "Slot content is not rendered in jsdom"
+  answer: c
+  explanation: "A `<header>` at the top of a document carries the implicit banner landmark, so the role check alone can pass whether or not the shell's banner slot rendered — a false positive. Assert the slot text (the impersonation notice) to actually test the shell's banner seam."
+  difficulty: 3
+  tags: [scenario]
+- id: "9.10"
+  question: "The product adds a reviewer shell (wide content, impersonation bar always on) beside the student shell. Which reuse claim is correct?"
+  options:
+    a: "Shells vary, but PageContainer, EmptyState, and data containers are shared across both"
+    b: "Each shell needs its own EmptyState because the data differs"
+    c: "The student shell can be deleted because PageContainer covers everything"
+    d: "Data containers must fork per shell or they break layout"
+  answer: a
+  explanation: "Multi-shell means shell variants (reviewer vs student chrome scope) while the presentational units and data containers stay identical and reusable — the same 'grades card' works in both portals. Data containers must never care which shell hosts them."
+  difficulty: 3
+  tags: [scenario]

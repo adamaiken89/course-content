@@ -1,0 +1,119 @@
+- id: "4.1"
+  question: Which behavior distinguishes RANK from DENSE_RANK when two rows tie?
+  options:
+    a: RANK leaves gaps; DENSE_RANK does not
+    b: DENSE_RANK leaves gaps; RANK does not
+    c: both leave gaps
+    d: neither leaves gaps
+  answer: a
+  explanation: RANK uses competition style (1,1,3); DENSE_RANK removes the gap (1,1,2).
+  difficulty: 1
+  tags: [comparison]
+
+- id: "4.2"
+  question: A window with no PARTITION BY treats the result set as what?
+  options:
+    a: no window
+    b: one partition
+    c: a partition per first column
+    d: a sort error
+  answer: b
+  explanation: No PARTITION BY means a single partition across all rows — the whole result is the window.
+  difficulty: 1
+  tags: [terminology]
+
+- id: "4.3"
+  question: What is the default frame of a window function with ORDER BY?
+  options:
+    a: the entire partition
+    b: ROWS BETWEEN 1 PRECEDING AND CURRENT ROW
+    c: RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+    d: ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+  answer: c
+  explanation: Default is RANGE UNBOUNDED PRECEDING to CURRENT ROW — RANGE includes all tied rows at current key.
+  difficulty: 2
+  tags: [concept]
+
+- id: "4.4"
+  question: Which function reads a value from a row that appears EARLIER in the window?
+  options:
+    a: LEAD
+    b: FIRST_VALUE
+    c: NTILE
+    d: LAG
+  answer: d
+  explanation: LAG looks backward; LEAD forward, both with optional offset and default.
+  difficulty: 1
+  tags: [terminology]
+
+- id: "4.5"
+  question: A 30-day moving average should use which frame?
+  options:
+    a: ROWS BETWEEN 29 PRECEDING AND CURRENT ROW
+    b: RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+    c: ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+    d: ROWS BETWEEN 1 PRECEDING AND CURRENT ROW
+  answer: a
+  explanation: ROWS BETWEEN 29 PRECEDING AND CURRENT ROW counts exactly 30 physical rows; RANGE semantics differ on ties.
+  difficulty: 2
+  tags: [scenario]
+
+- id: "4.6"
+  question: Which SQL correctly shows the running total of total by customer in date order?
+  options:
+    a: sum(total) OVER ()
+    b: sum(total) OVER (PARTITION BY customer_id ORDER BY created_at)
+    c: sum(total) GROUP BY customer_id
+    d: sum(total) OVER (ORDER BY customer_id)
+  answer: b
+  explanation: PARTITION BY splits customers (one running total each); ORDER BY created_at defines "up to now".
+  difficulty: 2
+  tags: [scenario]
+
+- id: "4.7"
+  question: Why does WHERE total - lag(...) OVER ... fail on the same SELECT?
+  options:
+    a: lag is not valid on aggregates
+    b: arithmetic on window output is forbidden
+    c: WHERE runs before window functions are computed
+    d: it fails only on big tables
+  answer: c
+  explanation: Windows are computed after WHERE; filter on them in an outer query (subquery or CTE).
+  difficulty: 3
+  tags: [concept]
+
+- id: "4.8"
+  question: What does NTILE(4) do?
+  options:
+    a: returns the 4th row of the partition
+    b: sums the top 4 rows
+    c: drops ties to exactly 4 rows
+    d: labels rows with a bucket 1..4, as evenly as possible
+  answer: d
+  explanation: NTILE(n) assigns each row a bucket number 1..n, balancing sizes lexicographically.
+  difficulty: 2
+  tags: [terminology]
+
+- id: "4.9"
+  question: Which plan node represents window-function execution in EXPLAIN?
+  options:
+    a: WindowAgg
+    b: HashAggregate
+    c: WindowScan
+    d: Limit
+  answer: a
+  explanation: EXPLAIN shows WindowAgg — usually fed by a Sort on the partition/order key.
+  difficulty: 1
+  tags: [terminology]
+
+- id: "4.10"
+  question: A partition-key index (customer_id, created_at) can remove which node from a window plan?
+  options:
+    a: Hash Join
+    b: Sort
+    c: Aggregate
+    d: Limit
+  answer: b
+  explanation: Reading the index in (partition, order) key order yields rows already sorted for the window, dropping the Sort.
+  difficulty: 3
+  tags: [concept]

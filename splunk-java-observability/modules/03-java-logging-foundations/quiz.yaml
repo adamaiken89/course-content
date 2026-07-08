@@ -1,0 +1,119 @@
+- id: "3.1"
+  question: "What is SLF4J?"
+  options:
+    a: "A specific logging backend like Logback"
+    b: "A Splunk ingestion client library"
+    c: "A logging facade/abstraction that delegates to a backend chosen at runtime"
+    d: "A log file format for structured output"
+  answer: c
+  explanation: "SLF4J is a facade. App code logs through its API only; the backend (Logback, Log4j2, JUL) is selected from the classpath. It is not itself a backend."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "3.2"
+  question: "Which logging backend does spring-boot-starter-logging bring in by default?"
+  options:
+    a: "logback-classic"
+    b: "log4j2-core"
+    c: "java.util.logging"
+    d: "SLF4J is the backend itself"
+  answer: a
+  explanation: "Spring Boot defaults to SLF4J + Logback via spring-boot-starter-logging. To use Log4j2 you must swap in spring-boot-starter-log4j2."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "3.3"
+  question: "The root logger threshold is INFO. Which message is emitted?"
+  options:
+    a: "log.trace(\"entry point reached\")"
+    b: "log.warn(\"payment retry scheduled\")"
+    c: "log.debug(\"cache hit for key {}\", key)"
+    d: "Both TRACE and DEBUG messages"
+  answer: b
+  explanation: "A message is emitted only when its level >= threshold. INFO threshold emits INFO, WARN, and ERROR; TRACE and DEBUG are dropped."
+  difficulty: 1
+  tags: [concept]
+
+- id: "3.4"
+  question: "In a Logback pattern layout, what does %X{requestId} do?"
+  options:
+    a: "Prints a random hex id for the log line"
+    b: "Escapes XML entities in the message"
+    c: "Prints the number of live threads"
+    d: "Prints the value of the MDC key requestId for the current thread"
+  answer: d
+  explanation: "%X{key} renders the value of that MDC key on the current thread. If the key is absent it prints nothing (or the default), not a random id."
+  difficulty: 1
+  tags: [concept]
+
+- id: "3.5"
+  question: "Which statement about java.util.logging (JUL) levels versus SLF4J levels is a real trap?"
+  options:
+    a: "JUL orders levels as SEVERE > WARNING > INFO > FINE > FINER > FINEST, while SLF4J uses TRACE < DEBUG < INFO < WARN < ERROR; assuming one shared ladder silently changes filtering"
+    b: "JUL and SLF4J have identical level names and ordering"
+    c: "JUL has no ERROR equivalent"
+    d: "SLF4J's OFF level sorts below TRACE"
+  answer: a
+  explanation: "The ladders differ. slf4j-jdk14 maps SEVERE to ERROR and FINE to DEBUG, but JUL's numeric order does not match SLF4J's, so ported code can filter differently than expected."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "3.6"
+  question: "What is the conventional Spring Boot file for custom Logback configuration?"
+  options:
+    a: "log4j2.yaml"
+    b: "logback-spring.xml"
+    c: "application.properties only"
+    d: "slf4j.properties"
+  answer: b
+  explanation: "Spring Boot reads logback-spring.xml (the Spring-aware variant of logback.xml). Log4j2 uses its own files; SLF4J has no config file of its own."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "3.7"
+  question: "What is the scope of an MDC value?"
+  options:
+    a: "Process-wide across all threads"
+    b: "Logger-wide for one logger only"
+    c: "Thread-local: visible to all log statements on that thread until cleared"
+    d: "Sticky across the whole thread pool forever"
+  answer: c
+  explanation: "MDC is backed by a thread-local map. It dies with the thread unless copied; leaking it across pooled threads (no clear) is the classic bug."
+  difficulty: 2
+  tags: [concept]
+
+- id: "3.8"
+  question: "Why is log.info(\"user {} paid {}\", userId, amount) better than string concatenation?"
+  options:
+    a: "It produces JSON output automatically"
+    b: "It is shorter to type"
+    c: "It avoids MDC lookups"
+    d: "String formatting is deferred and never built when the level is disabled"
+  answer: d
+  explanation: "Parameterized logging only formats the message if the level passes the threshold. Concatenation builds the string unconditionally — a cost that Splunk never even sees."
+  difficulty: 2
+  tags: [application]
+
+- id: "3.9"
+  question: "A senior dev wants DEBUG-level tuning for just the com.myco.orders package, without touching code. Which approach?"
+  options:
+    a: "Change every log call in the package to a new level"
+    b: "Set logging.level.com.myco.orders=DEBUG in application.yml (or the logger block in logback-spring.xml)"
+    c: "Set -Dslf4j.level=DEBUG globally and hope it applies per package"
+    d: "Recompile the package with DEBUG assertions enabled"
+  answer: b
+  explanation: "Named loggers inherit package structure, so a per-package threshold is a config-only change, applied at runtime. Global JVM-level flags do not do per-package tuning."
+  difficulty: 3
+  tags: [application]
+
+- id: "3.10"
+  question: "You add an AsyncAppender to protect request latency under load. What must you configure so the app neither blocks nor exhausts memory?"
+  options:
+    a: "A bounded queue with a discard (never-block) policy for low-priority events"
+    b: "A second file appender for WARN only"
+    c: "A larger web server thread pool"
+    d: "Nothing; async appenders are safe by default"
+  answer: a
+  explanation: "Bounded queue + discard policy is the contract: when full, cheap lines (TRACE/DEBUG) are dropped instead of blocking the app thread or growing the queue into an OOM."
+  difficulty: 3
+  tags: [scenario]

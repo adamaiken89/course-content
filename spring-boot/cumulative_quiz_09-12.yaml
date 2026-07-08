@@ -1,0 +1,109 @@
+- id: "cum.21"
+  type: mcq
+  question: "In Boot 4, how do module boundaries and ports-and-adapters combine for dependency control?"
+  options:
+    a: "Modulith rules govern compile-time imports while port interfaces govern runtime dependency direction"
+    b: "Ports and adapters remove the need for any module boundaries"
+    c: "Module boundaries only matter inside a single module"
+    d: "Both replace the need for dependency inversion"
+  answer: a
+  source_modules: [9, 10]
+  explanation: "Modularization (module 10) fixes which classes may import which at compile time; the hexagon (module 9) points runtime dependencies inward through ports. Orthogonal and complementary - a module boundary can host a port with its adapters."
+  difficulty: 1
+  tags: [cross-module, synthesis]
+
+- id: "cum.22"
+  type: mcq
+  question: "In a multi-module reactor, two modules both provide a different implementation of an api interface. How does a consuming service pick one cleanly?"
+  options:
+    a: "by relying on the order the modules build in the reactor"
+    b: "by including only one module's package in the import"
+    c: "with @Primary or @Qualifier on the implementation beans"
+    d: "by excluding the other module from the classpath at runtime"
+  answer: c
+  source_modules: [10, 11]
+  explanation: "Module 10 sets the api/impl boundary; module 11 says the ambiguity is resolved with @Primary or @Qualifier, never build order or package tricks - that would couple wiring to reactor layout."
+  difficulty: 2
+  tags: [cross-module, synthesis]
+
+- id: "cum.23"
+  type: mcq
+  question: "A stateless API without sessions posts to /orders and every request returns 403. Spring Security 7 defaults make which cause most likely?"
+  options:
+    a: "CORS headers are missing for the browser origin"
+    b: "the authenticated user lacks the ORDER_WRITE authority"
+    c: "the request carries no Authorization Bearer header"
+    d: "CSRF protection is enabled by default and now applies to API endpoints too"
+  answer: d
+  source_modules: [12]
+  explanation: "Spring Security 7 enables CSRF for ALL endpoints, APIs included, by default - the source of 403 surprises. Stateless token flows must disable CSRF deliberately and rely on a SecurityContextRepository."
+  difficulty: 3
+  tags: [misconception]
+
+- id: "cum.24"
+  type: mcq
+  question: "A singleton service constructor-injects a prototype-scoped bean. What instance does the service actually hold?"
+  options:
+    a: "a fresh prototype instance on every method call"
+    b: "one instance resolved at startup, shared for the singleton's lifetime"
+    c: "a proxy that fails on first use"
+    d: "nothing - the context fails to start over the scope mismatch"
+  answer: b
+  source_modules: [11]
+  explanation: "The singleton resolves the prototype exactly once at construction and keeps it - the prototype-in-singleton pitfall. Reach for ObjectProvider or @Lookup when a fresh instance per call is needed."
+  difficulty: 1
+  tags: [misconception]
+
+- id: "cum.25"
+  type: cloze
+  question: "Boot 4 schedules @Async work on virtual threads by default, but thread-local MDC data does not travel onto the virtual thread unless the task carries a {blank}."
+  answer: "ContextSnapshot"
+  source_modules: [11]
+  explanation: "Virtual threads do not inherit thread-locals the way platform threads do. ContextSnapshot captures and propagates the diagnostic context onto the worker, so logs stay correlated."
+  difficulty: 2
+  tags: [recall]
+
+- id: "cum.26"
+  type: cloze
+  question: "A thin admin CRUD service with one repository implementation and no test double is the textbook case to {blank} ports entirely and let a transactional script shape the code."
+  answer: "skip"
+  source_modules: [9]
+  explanation: "A port with one thin implementation is decoration. YAGNI says hold off until a real second implementation or a test double earns the indirection."
+  difficulty: 1
+  tags: [recall]
+
+- id: "cum.27"
+  type: cloze
+  question: "A parent POM steers dependency versions for every module by declaring the Boot BOM in {blank}; child modules then write plain dependencies without version numbers."
+  answer: "dependencyManagement"
+  source_modules: [10]
+  explanation: "Plain dependencies plus a parent-side BOM keeps versions in one place. Putting version numbers in every module's dependency block re-introduces the drift the BOM exists to kill."
+  difficulty: 2
+  tags: [recall]
+
+- id: "cum.28"
+  type: tf
+  statement: "In Spring Security 7, CSRF protection is on for API endpoints by default and a stateless token flow must disable it consciously."
+  answer: true
+  source_modules: [12]
+  explanation: "Correct - Security 7 flipped CSRF on for all endpoints. Token flows without sessions get no CSRF benefit, so the disable is a deliberate, documented decision, not an omission."
+  difficulty: 1
+  tags: [recall]
+
+- id: "cum.29"
+  type: tf
+  statement: "@Lazy on one constructor argument permanently solves a circular dependency, so the cycle needs no further design work."
+  answer: false
+  source_modules: [11]
+  explanation: "@Lazy only defers resolution - it papers over the cycle. A constructor cycle usually signals a design smell worth breaking by extracting an interface or reworking ownership."
+  difficulty: 2
+  tags: [misconception]
+
+- id: "cum.30"
+  type: tf
+  statement: "A JPA @Entity class may live in the domain core as long as it implements no Spring interfaces."
+  answer: false
+  source_modules: [9]
+  explanation: "@Entity is persistence detail and stays in the JPA adapter. The domain core holds plain Java models; the adapter maps between the annotated entity and the core model."
+  difficulty: 3
+  tags: [misconception]

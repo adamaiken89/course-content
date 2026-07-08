@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: A DTO decouples the {wire contract} from the persistence model so entities never leak onto the API."
+  answer: "wire contract"
+  explanation: "The DTO owns the shape clients consume while the entity owns table layout, letting each change independently"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: MapStruct generates mapper implementations at compile time because it is an {annotation processor}."
+  answer: "annotation processor"
+  explanation: "The processor reads @Mapper interfaces during the build and writes plain Java implementation classes"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.3"
+  question: "Complete: Setting componentModel to {spring} makes the generated mapper an injectable Spring bean."
+  answer: spring
+  explanation: "The generated class receives Spring component annotations so constructor injection works normally"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Complete: A record target is built through its canonical {constructor} because records have no setters."
+  answer: constructor
+  explanation: "MapStruct calls the canonical constructor with mapped values in argument order"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "Complete: To keep an existing value when the source is null, set the target strategy to {IGNORE}."
+  answer: IGNORE
+  explanation: "NullValuePropertyMappingStrategy.IGNORE stops a null source from overwriting a present target field"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "Complete: The default NullValuePropertyMappingStrategy is {SET}, so a null source replaces the target value."
+  answer: SET
+  explanation: "SET writes null over the target by default, which is why PATCH mappings must opt into IGNORE"
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.7"
+  question: "Complete: A bidirectional entity mapping needs an {ignore} on one back-reference to stop stack overflow."
+  answer: ignore
+  explanation: "Ignoring one side breaks the cyclic recursion in the generated code"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "Complete: ReportingPolicy.{ERROR} makes an unmapped target property fail the build in CI."
+  answer: ERROR
+  explanation: "The strict policy upgrades the default WARN report so API drift breaks the pipeline"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.9"
+  question: "Complete: Unlike ModelMapper reflection, a MapStruct mapper has zero {runtime} overhead because code is generated."
+  answer: runtime
+  explanation: "Generated assignments run directly while reflection pays lookup cost on every call"
+  difficulty: 3
+  tags: [comparison]
+
+- id: "c.10"
+  question: "Complete: In DGS 12 the Jackson {Jackson3DgsJsonMapperAdapter} serializes mapper-produced records through Jackson 3."
+  answer: Jackson3DgsJsonMapperAdapter
+  explanation: "The adapter plugs the Jackson 3 backend into the DgsJsonMapper abstraction"
+  difficulty: 1
+  tags: [terminology]

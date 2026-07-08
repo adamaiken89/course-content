@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: Boot 4 splits the monolithic autoconfigure jar into small, focused modules under the {org.springframework.boot.modules} namespace.
+  answer: org.springframework.boot.modules
+  explanation: The split packages one auto-configuration topic per module, so the classpath carries only what the app needs.
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: The two supported embedded servlet containers in Boot 4 are Tomcat 11 and {Jetty} 12.
+  answer: Jetty
+  explanation: Undertow was removed because it never achieved Servlet 6.1 compatibility.
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: A null source value in PropertyMapper is skipped unless you call {.always()} to force the mapping.
+  answer: .always()
+  explanation: The default is now an explicit no-op for nulls; .always() restores the old implicit copy behavior.
+  difficulty: 2
+  tags: [concept, process]
+
+- id: "c.4"
+  question: Binding @ConfigurationProperties to public mutable {fields} was removed; constructors and accessors are the supported storage.
+  answer: fields
+  explanation: Immutable property storage keeps configuration predictable and validates it at construction time.
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: RestTemplate auto-configuration became {opt-in} in Boot 4, pushing RestClient forward as the default client.
+  answer: opt-in
+  explanation: The fallback bean vanishes if not explicitly requested, which is why existing RestTemplate call sites break on upgrade.
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "c.6"
+  question: The automated tool whose Boot 4 recipe rewrites imports, deprecated signatures, and property names is {OpenRewrite}.
+  answer: OpenRewrite
+  explanation: OpenRewrite applies mechanical changes in a branch so the diff stays small and attributable.
+  difficulty: 1
+  tags: [terminology, process]
+
+- id: "c.7"
+  question: Spring Data now validates and binds repository query methods at {build} time instead of the first request.
+  answer: build
+  explanation: Derived query typos and parameter mismatches surface as compile failures rather than runtime 500s.
+  difficulty: 2
+  tags: [concept, process]
+
+- id: "c.8"
+  question: Spring Framework 7 ships real JPMS {module-info} descriptors alongside the Boot autoconfigure modules.
+  answer: module-info
+  explanation: JPMS descriptors make the framework modules first-class modules on the module path.
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.9"
+  question: Controller-level behavior changes like the new CSRF default are best flipped via {application.properties} switches before code changes.
+  answer: application.properties
+  explanation: Property-driven flips make behavior changes visible and revertible without a deploy.
+  difficulty: 2
+  tags: [concept, process]
+
+- id: "c.10"
+  question: Adopting modular starters should be its own change, in a separate commit from the version bump, because it touches the classpath {footprint}.
+  answer: footprint
+  explanation: Keeping the version change and the footprint change separate makes regressions attributable.
+  difficulty: 2
+  tags: [concept, comparison]

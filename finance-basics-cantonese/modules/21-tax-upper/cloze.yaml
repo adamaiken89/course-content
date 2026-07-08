@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "香港薪俸稅 {兩種計法}: {累進稅率 2-17%} 同 {標準稅率 15%}, {取較低者} 計稅。"
+  answer: "兩種計法、累進稅率 2-17%、標準稅率 15%、取較低者"
+  explanation: "兩種計法並存, 自動取較低。累進適合中產, 標準適合超高收入。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "2024/25 累進稅率 5 級: 2% / {6%} / {10%} / {14%} / {17%}。標準稅率 15%。"
+  answer: "6%、10%、14%、17%"
+  explanation: "5 級累進, 邊際稅率隨收入升。"
+  difficulty: 2
+  tags: [terminology, formula]
+
+- id: "c.3"
+  question: "2024/25 基本個人免稅額 {$132,000}, 已婚 {$264,000}, 供養 60+ 父母 (同住) 額外 {$50,000}。"
+  answer: "$132,000、$264,000、$50,000"
+  explanation: "免稅額只適用累進稅率, 標準稅率唔再扣 (但 MPF 仍可扣)。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "MPF 強制性供款: {僱主 5% + 僱員 5%}, 上限 {$1,500/月} (即 $18,000/年) 各。法定提取年齡 {65 歲}。"
+  answer: "僱主 5% + 僱員 5%、$1,500/月、65 歲"
+  explanation: "MPF 強制性, 唔可以唔供。提取年齡 65 歲 (或特定條件提早)。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "MPF 強制性僱員供款可 {扣減薪俸稅}, 上限 {$18,000/年}。"
+  answer: "扣減薪俸稅、$18,000/年"
+  explanation: "僱員 MPF 供款算稅務扣除, 標準稅率同累進都可用, 上限 $18,000。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.6"
+  question: "TVC (Tax-deductible Voluntary Contributions) 自願性供款, 可 {扣減薪俸稅或利得稅}, 上限 {$60,000/年}, 適合 {高收入人士節稅}。"
+  answer: "扣減薪俸稅或利得稅、$60,000/年、高收入人士節稅"
+  explanation: "TVC 同強制性 MPF 分開, 額外扣稅額。提取免稅。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.7"
+  question: "供 TVC $60,000 × {15-17%} 邊際稅率 = 每年慳稅 {$9,000-10,200}。"
+  answer: "15-17%、$9,000-10,200"
+  explanation: "高收入人士邊際 17% (累進) 或 15% (標準), TVC 扣稅效益顯著。"
+  difficulty: 3
+  tags: [calculation, concept]
+
+- id: "c.8"
+  question: "MPF 揀基金策略: {年輕 (20-40 歲) 揀股票基金} (高回報), {中年 (40-55 歲) 揀混合基金}, {接近退休 (55-65 歲) 慢慢轉保證基金}。"
+  answer: "年輕 (20-40 歲) 揀股票基金、中年 (40-55 歲) 揀混合基金、接近退休 (55-65 歲) 慢慢轉保證基金"
+  explanation: "Glide Path 策略, 隨退休接近降低風險。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.9"
+  question: "居所貸款利息扣除, 上限 {$100,000/年}, 限 {20 年}。"
+  answer: "$100,000/年、20 年"
+  explanation: "自住物業按揭利息可扣稅, 上限 $100,000/年, 20 年內。出租物業唔適用。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.10"
+  question: "認可慈善捐款扣除, 上限 {入息 35%}。"
+  answer: "入息 35%"
+  explanation: "慈善捐款可扣稅, 上限入息 35%。受惠機構須屬認可名單。"
+  difficulty: 2
+  tags: [terminology]

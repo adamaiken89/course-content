@@ -1,0 +1,72 @@
+- id: c.1
+  question: 'Sharpe ratio = (r_p - {r_f}) / {σ_p}. Higher Sharpe means better {risk-adjusted}
+    return. Sharpe above {1} is good.'
+  answer: '[''r_f'', ''σ_p'', ''risk-adjusted'', ''1'']'
+  difficulty: 2
+  tags:
+  - formula
+- id: c.2
+  question: Efficient frontier shows portfolios with {maximum} return for each {risk}
+    level. Portfolios below frontier are {suboptimal}.
+  answer: '[''maximum'', ''risk'', ''suboptimal'']'
+  difficulty: 2
+  tags:
+  - concept
+- id: c.3
+  question: Tangency portfolio has highest {Sharpe ratio}. Combine with risk-free asset
+    to get {Capital Market Line}.
+  answer: '[''Sharpe ratio'', ''Capital Market Line'']'
+  difficulty: 2
+  tags:
+  - concept
+- id: c.4
+  question: 'Kelly criterion: f* = ({p} × b - {q}) / b. Full Kelly maximizes long-term
+    {growth rate} but can cause large {drawdowns}.'
+  answer: '[''p'', ''q'', ''growth rate'', ''drawdowns'']'
+  difficulty: 2
+  tags:
+  - formula
+- id: c.5
+  question: Many traders use {half-Kelly} or {quarter-Kelly} to reduce {variance}
+    while preserving most growth.
+  answer: '[''half-Kelly'', ''quarter-Kelly'', ''variance'']'
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: 'Fixed percentage sizing: bet {1-2%} of capital per trade. This prioritizes
+    {survival} over maximum growth.'
+  answer: '[''1-2%'', ''survival'']'
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: Rebalancing restores target {weights}. It sells {winners} and buys {losers},
+    creating {rebalancing alpha}.
+  answer: '[''weights'', ''winners'', ''losers'', ''rebalancing alpha'']'
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: 'Portfolio weights must sum to {1}. Drift changes {risk profile}. Rebalancing
+    methods: {calendar}, {threshold}, {hybrid}.'
+  answer: '[''1'', ''risk profile'', ''calendar'', ''threshold'', ''hybrid'']'
+  difficulty: 2
+  tags:
+  - concept
+- id: c.9
+  question: '60/40 portfolio drifts to 65/35 after stocks rally. If stocks correct
+    20%, rebalanced portfolio loses {less} than drifted one. Rebalancing locks in
+    {gains}.'
+  answer: '[''less'', ''gains'']'
+  difficulty: 2
+  tags:
+  - scenario
+- id: c.10
+  question: 'Portfolio A: 15% return, 20% σ, r_f = 3%. Sharpe = {0.60}. Portfolio B:
+    10% return, 8% σ, same r_f. Sharpe = {0.875}. Portfolio {B} has better risk-adjusted
+    return.'
+  answer: '[''0.60'', ''0.875'', ''B'']'
+  difficulty: 2
+  tags:
+  - calculation

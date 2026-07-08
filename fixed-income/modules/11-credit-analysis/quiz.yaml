@@ -1,0 +1,137 @@
+- id: '11.1'
+  question: Debt/EBITDA of 5.5x is typical for which credit category?
+  options:
+    a: High yield
+    b: AAA
+    c: A
+    d: Treasury
+  answer: a
+  explanation: 'IG: Debt/EBITDA < 2.5-3x. HY: 3-6x. 5.5x falls in HY range.'
+  difficulty: 1
+  tags:
+  - terminology
+  - ratios
+- id: '11.2'
+  question: 'EBITDA/Interest = interest coverage ratio. IG typically above:'
+  options:
+    d: 8x
+    a: 3x
+    b: 2x
+    c: 15x
+  answer: d
+  explanation: IG interest coverage > 8x typically. Below 3x is distressed.
+  difficulty: 2
+  tags:
+  - terminology
+  - ratios
+- id: '11.3'
+  question: 'Fallen angel is a bond:'
+  options:
+    a: Downgraded from IG to HY
+    b: Upgraded from HY to IG
+    c: Called by issuer
+    d: Matured
+  answer: a
+  explanation: 'Fallen angel: IG to HY downgrade. Triggers forced selling by IG-only
+    mandates.'
+  difficulty: 1
+  tags:
+  - terminology
+  - credit
+- id: '11.4'
+  question: 'Cross-default provision means:'
+  options:
+    c: Default on one obligation is default on all
+    a: Bonds are cross-collateralized
+    b: Two different currencies
+    d: Swap counterparty defaults
+  answer: c
+  explanation: 'Cross-default: default on any debt instrument triggers default on
+    all under same indenture.'
+  difficulty: 2
+  tags:
+  - terminology
+  - covenants
+- id: '11.5'
+  question: 'Company: Debt $8B, EBITDA $1.6B, Interest $400M. Debt/EBITDA?'
+  options:
+    b: 5.0x
+    a: 2.0x
+    c: 4.0x
+    d: 8.0x
+  answer: b
+  explanation: $8B / $1.6B = 5.0x. High leverage — likely HY.
+  difficulty: 1
+  tags:
+  - calculation
+  - ratios
+- id: '11.6'
+  question: 'Company: Debt $4B, EBITDA $1.2B, Interest $150M. EBITDA/Interest?'
+  options:
+    c: 8x
+    a: 6x
+    b: 10x
+    d: 12x
+  answer: c
+  explanation: $1.2B / $150M = 8.0x. Borderline IG coverage.
+  difficulty: 1
+  tags:
+  - calculation
+  - ratios
+- id: '11.7'
+  question: 'Rising star is:'
+  options:
+    a: HY to IG upgrade
+    b: A tech company IPO
+    c: Bond with above-market coupon
+    d: TIPS with inflation adjustment
+  answer: a
+  explanation: 'Rising star: upgraded from HY to IG. New buyer base enters → price
+    rally.'
+  difficulty: 2
+  tags:
+  - terminology
+  - credit
+- id: '11.8'
+  question: 'Private bank client wants highest recovery in default. Recommend:'
+  options:
+    b: Senior secured bond
+    a: Subordinated unsecured bond
+    c: Preferred stock
+    d: Convertible bond
+  answer: b
+  explanation: 'Senior secured: highest priority. Collateral-backed. Recovery 50-80%.
+    Subordinated: 10-30%.'
+  difficulty: 1
+  tags:
+  - scenario
+  - private-bank
+- id: '11.9'
+  question: 'A distressed exchange is considered:'
+  options:
+    d: Technical default (bondholders accept worse terms)
+    a: Normal refinancing
+    b: Rating upgrade event
+    c: Merger arbitrage
+  answer: d
+  explanation: 'Distressed exchange: bondholders swap bonds at less-favorable terms.
+    Credit event — often treated as default.'
+  difficulty: 2
+  tags:
+  - terminology
+  - credit-events
+- id: '11.10'
+  question: Which industry typically has highest leverage tolerance?
+  options:
+    b: Utilities
+    a: Technology
+    c: Energy
+    d: Pharmaceuticals
+  answer: b
+  explanation: 'Utilities: stable cash flows, regulated returns → can support higher
+    leverage (3-5x). Tech: low debt typically.'
+  difficulty: 3
+  tags:
+  - scenario
+  - sectors
+

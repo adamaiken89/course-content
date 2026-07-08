@@ -1,0 +1,120 @@
+- id: cum.31
+  type: mcq
+  source_modules:
+  - 14
+  question: "Which join needs both inputs pre-sorted and walks them in lockstep?"
+  options:
+    a: "Nested Loop"
+    b: "Hash Join"
+    c: "Merge Join"
+    d: "Bitmap Heap Scan"
+  answer: c
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.32
+  type: mcq
+  source_modules:
+  - 15
+  question: "Default autovacuum threshold on a 10M-row table fires after roughly how many dead tuples?"
+  options:
+    a: "500"
+    b: "20,000"
+    c: "2,000,000"
+    d: "10,000,000"
+  answer: c
+  difficulty: 2
+  tags:
+  - cross-module
+  - synthesis
+- id: cum.33
+  type: mcq
+  source_modules:
+  - 16
+  question: "Which EXPLAIN option reports per-node optimizer memory usage?"
+  options:
+    a: "MEMORY"
+    b: "SERIALIZE"
+    c: "BUFFERS"
+    d: "VERBOSE"
+  answer: a
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.34
+  type: mcq
+  source_modules:
+  - 15
+  question: "CREATE STATISTICS fixes planner overestimates when two WHERE columns are heavily what?"
+  options:
+    a: "Independent"
+    b: "Sparse"
+    c: "All NULL"
+    d: "Correlated"
+  answer: d
+  difficulty: 3
+  tags:
+  - cross-module
+  - scenario
+- id: cum.35
+  type: cloze
+  source_modules:
+  - 14
+  question: "The {work_mem} parameter is the in-memory budget a hash operation gets before spilling."
+  answer: work_mem
+  difficulty: 2
+  tags:
+  - cross-module
+  - terminology
+- id: cum.36
+  type: cloze
+  source_modules:
+  - 15
+  question: "The autovacuum threshold formula includes scale_factor times {reltuples}."
+  answer: reltuples
+  difficulty: 2
+  tags:
+  - cross-module
+  - formula
+- id: cum.37
+  type: cloze
+  source_modules:
+  - 16
+  question: "MERGE gained a {returning} clause in PostgreSQL 17."
+  answer: returning
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.38
+  type: tf
+  source_modules:
+  - 13
+  statement: "BRIN indexes are best for append-only, huge, sequentially-scanned tables."
+  answer: true
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.39
+  type: tf
+  source_modules:
+  - 14
+  statement: "A cost estimate more than 10x the actual row count usually signals stale statistics."
+  answer: true
+  difficulty: 2
+  tags:
+  - cross-module
+  - synthesis
+- id: cum.40
+  type: tf
+  source_modules:
+  - 16
+  statement: "Incremental sort was newly introduced in PostgreSQL 17."
+  answer: false
+  difficulty: 2
+  tags:
+  - cross-module
+  - misconception

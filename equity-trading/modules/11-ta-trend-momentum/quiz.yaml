@@ -1,0 +1,141 @@
+- id: '11.1'
+  question: An uptrend is defined by which price structure?
+  options:
+    a: Higher highs and higher lows
+    b: Lower highs and lower lows
+    c: Higher highs and lower lows
+    d: Equal highs and equal lows
+  answer: a
+  explanation: Uptrend = series of higher highs and higher lows. Each peak and trough
+    exceeds the prior one. This structure shows sustained buying pressure.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.2'
+  question: When a support level breaks, it often becomes which of the following?
+  options:
+    a: A stronger support level
+    b: A new resistance level
+    c: A trendline
+    d: A volume confirmation
+  answer: b
+  explanation: This is role reversal (polarity principle). Once sellers push price
+    below support, that level becomes resistance as former buyers look to exit at
+    breakeven.
+  difficulty: 1
+  tags:
+  - concept
+- id: '11.3'
+  question: A trader sees price making higher highs but volume declining on each new
+    high. What does this suggest?
+  options:
+    a: Strong uptrend confirmation
+    b: Volume divergence — trend weakening
+    c: Accumulation by institutions
+    d: Perfect time to add to position
+  answer: b
+  explanation: Declining volume on rising prices = divergence. Each new high attracts
+    fewer buyers. Trend is losing conviction and may reverse. This is a bearish warning.
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.4'
+  question: How many touch points confirm a valid trendline?
+  options:
+    a: '1'
+    b: '2'
+    c: '3'
+    d: '4'
+  answer: c
+  explanation: Connect at least 2 swing points to draw. Third touch confirms the trendline
+    as valid. More touches = stronger trendline.
+  difficulty: 2
+  tags:
+  - technique
+- id: '11.5'
+  question: A stock breaks below support on very low volume. What is the most likely
+    interpretation?
+  options:
+    a: Confirmed breakdown — sell immediately
+    b: Possible fakeout — price may snap back
+    c: Strong selling pressure
+    d: Institutional distribution
+  answer: b
+  explanation: Low-volume breakdown suggests lack of selling conviction. Often a fakeout
+    (bear trap). Price frequently recovers. Wait for high-volume confirmation or retest
+    before acting.
+  difficulty: 2
+  tags:
+  - technique
+- id: '11.6'
+  question: What happens to support and resistance levels when they are breached on
+    very high volume?
+  options:
+    a: The breakout is more reliable
+    b: The breakout is less reliable
+    c: Support/resistance become irrelevant
+    d: Volume has no effect on breakout validity
+  answer: a
+  explanation: High-volume breakouts signal conviction and are more reliable. They
+    indicate genuine shift in supply/demand balance rather than noise or manipulation.
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.7'
+  question: A stock rallies for 3 months. On the final up-day, volume spikes to 4x
+    average. What does climax volume suggest?
+  options:
+    a: Continuation of uptrend
+    b: Trend exhaustion — potential reversal
+    c: Healthy accumulation
+    d: Increased liquidity
+  answer: b
+  explanation: Climax volume after prolonged trend suggests everyone who wanted to
+    buy has bought. Remaining demand exhausted. Often marks a top, especially if price
+    stalls after the spike.
+  difficulty: 3
+  tags:
+  - concept
+- id: '11.8'
+  question: Which price levels act as psychological support/resistance?
+  options:
+    a: Fibonacci levels only
+    b: Previous day's open
+    c: Round numbers ($50, $100)
+    d: 52-week high only
+  answer: c
+  explanation: Round numbers act as psychological S/R because traders cluster limit
+    orders at these levels. $100, $50, $20 are common examples. Institutions also
+    use round numbers for program trading.
+  difficulty: 1
+  tags:
+  - concept
+- id: '11.9'
+  question: Stock makes lower highs for 2 months, then makes a higher high. Trend
+    status?
+  options:
+    a: Downtrend confirmed
+    b: Possible trend change — needs follow-through
+    c: Still downtrend regardless
+    d: Sideways market
+  answer: b
+  explanation: One higher high alone does not confirm uptrend. Need sequence of higher
+    highs AND higher lows. It's a warning that downtrend may be ending. Watch for
+    higher low next.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '11.10'
+  question: 'A steep trendline is more likely to break than a shallow one because:'
+  options:
+    a: Steep trends are unsustainable and revert faster
+    b: Shallow trends have more buyers
+    c: Steep trends attract more sellers
+    d: Volume is lower in steep trends
+  answer: a
+  explanation: Steep trendlines represent rapid price movement that is unsustainable.
+    Mean reversion forces act more strongly. Shallow, gradual trends tend to last
+    longer and break later.
+  difficulty: 3
+  tags:
+  - concept

@@ -1,0 +1,119 @@
+- id: "6.1"
+  question: "In an impersonating session, the officer who logged in is called the ______, and the person whose data the session serves is the ______."
+  options:
+    a: "actor, viewer"
+    b: "actor, actingAs"
+    c: "actingAs, actor"
+    d: "owner, delegate"
+  answer: b
+  explanation: "The officer who logged in keeps privileges and audit blame and is the actor; the user whose view and data the session serves is the actingAs identity. A session asserts both."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "6.2"
+  question: "Why does swapping the user id into a fetch query param fail as an impersonation mechanism?"
+  options:
+    a: "Query params make the response slower"
+    b: "The UI stops rendering the banner"
+    c: "The server authorizes by token, not by a client-supplied id, so the scope is either wrong or forgeable"
+    d: "The mock server rejects numeric-only ids"
+  answer: c
+  explanation: "Authorization and scope come from the session token. A query param the client can forge either returns the wrong data or lets any user claim any owner id. The identity contract must live server-side."
+  difficulty: 2
+  tags: [concept]
+
+- id: "6.3"
+  question: "Kumar impersonates Jane and saves a grade edit. The mock server records the mutation. Which pair makes the audit log complete?"
+  options:
+    a: "only Jane's id, because her data was edited"
+    b: "only Kumar's id, because he owns the token"
+    c: "neither, since impersonation is off the record by design"
+    d: "actorId Kumar plus actedOnBehalfOf Jane"
+  answer: d
+  explanation: "A complete impersonation audit keeps both identities: who acted (actor) and on whose behalf (actingAs). Recording only one side makes the justification for the change unanswerable."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "6.4"
+  question: "GET /me on a normal, non-impersonating session returns which shape?"
+  options:
+    a: "{ actor: null, actingAs: null }"
+    b: "{ actor: null, actingAs: 'officer-42' }"
+    c: "{ actor: 'officer-42', actingAs: 'officer-42' }"
+    d: "{ actor: 'officer-42', actingAs: null }"
+  answer: d
+  explanation: "The actor is whoever holds the token; actingAs null is the single marker of a normal session. Only a non-null actingAs expresses impersonation."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "6.5"
+  question: "Why is impersonation identity a genuinely earned zustand store use case?"
+  options:
+    a: "Because it must persist across page reloads"
+    b: "Because it is app-level, cross-screen, and read at high frequency by banner, fetches, guards, and mutation handlers"
+    c: "Because zustand is required for every fetch in this course"
+    d: "Because the draft store needs a sibling store"
+  answer: b
+  explanation: "The scope/frequency rubric says app-level state read by many unrelated consumers on every render path belongs in an external store. Impersonation's banner, data hooks, guards, and audit stamps all read actingAs and actor. Draft data stays in its own store."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "6.6"
+  question: "Why is the impersonation banner deliberately non-dismissable?"
+  options:
+    a: "Because a dismissable banner lets a distracted officer forget they are inside another user's data"
+    b: "Because the banner contains the exit action"
+    c: "Because students must never see officer UI"
+    d: "Because the banner is part of the mock server"
+  answer: a
+  explanation: "The banner's job is to keep both identities visible at all times. If it can be hidden while the session still acts with student scope, the UI stops being a truthful identity display — the exact failure impersonation exists to prevent."
+  difficulty: 2
+  tags: [concept]
+
+- id: "6.7"
+  question: "In multi-level impersonation (officer to reviewer to student), what does the banner show and what does the audit keep?"
+  options:
+    a: "The banner shows the actor; the audit keeps only the leaf"
+    b: "The banner shows the whole chain; the audit shows nothing"
+    c: "The banner shows the actor and the chain replaces actingAs"
+    d: "The banner shows the deepest actingAs identity; the audit keeps the full chain"
+  answer: d
+  explanation: "The user needs to know whose view they are in right now, so the banner shows the leaf (deepest actingAs). Accountability needs the whole path, so the audit log keeps the chain of every hop."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "6.8"
+  question: "Which of the following must the client NEVER rely on to decide whose data to show?"
+  options:
+    a: "The actingAs field returned by GET /me"
+    b: "The impersonation token it attached to the request"
+    c: "A user id it injects into a query string"
+    d: "The actor id stored by the session layer"
+  answer: c
+  explanation: "A client-supplied id in a query string is both forgeable and ignored by the server. The server derives scope from the token; the client only displays what /me and the token establish."
+  difficulty: 1
+  tags: [concept]
+
+- id: "6.9"
+  question: "The exit handler clears actingAs in the store but skips switchSession(actor, null). What does the next data fetch return?"
+  options:
+    a: "The officer's own data, because the store cleared"
+    b: "The student's data, because the token still asserts impersonation"
+    c: "An error, because actingAs is null"
+    d: "Both datasets merged"
+  answer: b
+  explanation: "The server trusts the token, not the client UI. Until switchSession completes and the new token is stored, every fetch keeps the impersonation scope. The UI must never be the authority: finish the server switch before clearing store state."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "6.10"
+  question: "Which test best proves the impersonation server contract from the frontend's side?"
+  options:
+    a: "A snapshot of the banner component"
+    b: "A Playwright test that logs in as the student directly"
+    c: "An MSW contract test that GET /me returns actingAs while impersonating"
+    d: "A unit test of the exit reducer"
+  answer: c
+  explanation: "MSW defines the contract (per m3), so the test that GET /me returns the dual identity is the contract test. The banner snapshot is structural-only, and the full journey belongs to Playwright, not to direct student logins."
+  difficulty: 1
+  tags: [scenario]

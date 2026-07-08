@@ -1,0 +1,120 @@
+- id: '20.1'
+  question: In a FIX Execution Report (35=8), which field indicates the quantity filled in this particular execution?
+  options:
+    a: Tag 14 (CumQty)
+    b: Tag 32 (LastShares)
+    c: Tag 151 (LeavesQty)
+    d: Tag 31 (LastPx)
+  answer: b
+  explanation: Tag 32=LastShares is the quantity filled in this execution. CumQty (14) is cumulative filled, LeavesQty (151) is remaining, LastPx (31) is this fill's price.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '20.2'
+  question: In a FIX Execution Report, what is the difference between ExecType=1 (Partial Fill) and ExecType=2 (Fill)?
+  options:
+    a: ExecType=1 means rejected, ExecType=2 means accepted
+    b: ExecType=1 means partially filled (LeavesQty > 0), ExecType=2 means fully filled (LeavesQty = 0)
+    c: ExecType=1 means buy, ExecType=2 means sell
+    d: No practical difference, just version numbering
+  answer: b
+  explanation: ExecType=1 (Partial Fill) means the order is partially filled with remaining quantity (LeavesQty > 0). ExecType=2 (Fill) means fully filled (LeavesQty = 0). ExecType=0=New, F=Trade Cancel, 8=Rejected.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '20.3'
+  question: An order receives 3 Execution Reports, then OrdStatus=2 (Filled) and LeavesQty=0. Which field's value should equal the original order quantity?
+  options:
+    a: Tag 14 (CumQty)
+    b: Tag 32 (LastShares)
+    c: Tag 151 (LeavesQty)
+    d: Tag 17 (ExecID)
+  answer: a
+  explanation: When an order is fully filled, CumQty (cumulative fill) should equal the original order quantity. LeavesQty=0 means no remaining quantity. LastShares only contains the most recent fill.
+  difficulty: 2
+  tags:
+  - concept
+- id: '20.4'
+  question: 'Brokerage EMS receives 50K MSFT limit buy. NYSE shows 15K @ $449.95, NASDAQ shows 20K @ $449.95, ARCA shows 12K @ $449.96. What is the most reasonable SOR routing strategy?'
+  options:
+    a: Send all 50K to NYSE, let it absorb
+    b: Send all 50K to NASDAQ since it shows the most liquidity
+    c: 'Split: 15K to NYSE, 20K to NASDAQ, 15K to ARCA'
+    d: Wait until a single venue shows 50K liquidity
+  answer: c
+  explanation: SOR splits based on each venue's displayed depth. NYSE has 15K, NASDAQ 20K, ARCA 12K (so 15K is the practical cap). Sending all 50K to one venue causes price impact; waiting violates best execution obligation.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '20.5'
+  question: When LeavesQty is not 0 but the EMS stops sending subsequent Execution Reports, what is the most likely cause?
+  options:
+    a: The order was rejected by the venue
+    b: The order fully filled but the last report was lost
+    c: System error — the OMS should cancel immediately
+    d: Remaining quantity cannot be filled at the price, so the order stays on the EMS order book
+  answer: d
+  explanation: LeavesQty > 0 means unfilled quantity remains. If no counterparty matches at the given price, the order rests on the EMS/exchange book until cancelled or the price condition is met. Rejection and full fill would carry distinct ExecType values.
+  difficulty: 2
+  tags:
+  - concept
+- id: '20.6'
+  question: The brokerage's in-house Dark Pool LX internally crosses 30K MSFT. What price condition must the fill satisfy?
+  options:
+    a: Must equal the NBBO mid-point
+    b: Must not be worse than NBBO (price improvement above NBBO is allowed, but cannot be worse)
+    c: Any price is fine because it is an internal trade
+    d: Must equal the previous trade's fill price
+  answer: b
+  explanation: Best execution duty requires dark pool fills not to be worse than NBBO. Price improvement (better than NBBO) is allowed. Pricing that deviates below NBBO may constitute a best execution violation.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '20.7'
+  question: A trader needs to execute a pair of arbitrage trades simultaneously on NYSE and NASDAQ. Which SOR setting is best?
+  options:
+    a: Enable SOR auto-routing (let the system decide venues)
+    b: Use the Dark Pool for all orders
+    c: Send orders to the broker for manual handling
+    d: Disable SOR, use DMA to directly specify each child order's target venue
+  answer: d
+  explanation: Arbitrage needs precise control over each child order's target venue and timing. SOR auto-routing would interfere with the arbitrage execution. DMA gives the trader direct venue control.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '20.8'
+  question: In a FIX Execution Report, why is each fill assigned a unique ExecID (tag 17)?
+  options:
+    a: It uniquely identifies each fill so the OMS can correlate multiple partial fills for the same order
+    b: It identifies the order's ultimate client
+    c: It indicates the venue's matching engine identifier
+    d: It stores the cumulative filled quantity
+  answer: a
+  explanation: ExecID must be unique and different per fill. During partial fill sequencing the OMS correlates multiple Execution Reports using ClOrdID + ExecID, tracking CumQty and LeavesQty across each fill.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '20.9'
+  question: In a FIX Execution Report, LastLiquidityInd (tag 851)=2 indicates what about this fill?
+  options:
+    a: The order added liquidity (maker)
+    b: The order is in crossing-only mode
+    c: The order removed liquidity (taker)
+    d: The order was rejected for insufficient liquidity
+  answer: c
+  explanation: 'LastLiquidityInd (851): 1=Added Liquidity (Maker), 2=Removed Liquidity (Taker), 4=Crossed (dark pool cross). Value 2 means the fill took liquidity from the visible book.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '20.10'
+  question: 'A 50K order fills in three prints: 15K @ $449.95, 20K @ $449.95, 15K @ $449.96. What is AvgPx (tag 6)?'
+  options:
+    a: $449.951
+    b: $449.952
+    c: $449.953
+    d: $449.955
+  answer: c
+  explanation: AvgPx = (15K x 449.95 + 20K x 449.95 + 15K x 449.96) / 50K = $449.953. It is the volume-weighted average across all fills, not simply the last fill price.
+  difficulty: 3
+  tags:
+  - calculation

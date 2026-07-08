@@ -1,0 +1,60 @@
+- id: c.1
+  question: An uptrend is defined by a series of higher highs and higher {blank}.
+  answer: lows
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: A {blank} is defined by lower highs and lower lows.
+  answer: downtrend
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: When a support level breaks, it often becomes a new {blank} level.
+  answer: resistance
+  difficulty: 1
+  tags:
+  - concept
+- id: c.4
+  question: The {blank} principle states that broken support becomes resistance and broken resistance becomes support.
+  answer: polarity
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: Support and resistance are {blank}, not exact lines.
+  answer: zones
+  difficulty: 1
+  tags:
+  - technique
+- id: c.6
+  question: Volume should {blank} price action. If price rises but volume falls, this is called divergence.
+  answer: confirm
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: Price making higher highs while volume makes lower highs is called volume {blank}.
+  answer: divergence
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.8
+  question: A spike in volume after a prolonged trend is called {blank} volume and suggests exhaustion.
+  answer: climax
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.9
+  question: A breakout on {blank} volume is more reliable than a breakout on {blank} volume.
+  answer: high, low
+  difficulty: 2
+  tags:
+  - technique
+- id: c.10
+  question: A low-volume break below support is often a {blank} and price may snap back.
+  answer: fakeout
+  difficulty: 2
+  tags:
+  - terminology

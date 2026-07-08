@@ -1,0 +1,135 @@
+- id: '8.1'
+  question: Over which dimension does Layer Normalization compute mean and variance?
+  options:
+    a: Feature dimension (per token)
+    b: Batch dimension
+    c: Sequence length dimension
+    d: Attention head dimension
+  answer: a
+  explanation: LayerNorm computes μ and σ across the feature dimension for each token
+    independently. No batch dependence, unlike BatchNorm.
+  difficulty: 2
+  tags: []
+- id: '8.2'
+  question: What are the learned parameters in LayerNorm?
+  options:
+    c: γ (scale) and β (shift)
+    a: μ and σ
+    b: W_Q and W_K
+    d: Learning rate and momentum
+  answer: c
+  explanation: After normalizing to zero-mean unit-variance, LayerNorm applies learned
+    γ (multiplicative scale) and β (additive shift). μ and σ are computed from input,
+    not learned.
+  difficulty: 2
+  tags: []
+- id: '8.3'
+  question: A transformer uses BatchNorm instead of LayerNorm. Validation loss fluctuates
+    wildly. Most likely cause?
+  options:
+    a: Batch statistics are noisy, especially with small or variable-sized batches
+    b: Training set too small
+    c: Learning rate too high
+    d: Vocabulary too large
+  answer: a
+  explanation: BatchNorm depends on batch statistics. Transformer batches have variable
+    sequence lengths (padding) and often small per-device batch sizes. This makes
+    BatchNorm statistics noisy and unstable. LayerNorm has no batch dependence.
+  difficulty: 2
+  tags: []
+- id: '8.4'
+  question: Which placement is used in GPT-3 and Llama?
+  options:
+    c: Pre-norm — LayerNorm before sublayer
+    a: Post-norm — LayerNorm after sublayer addition
+    b: No LayerNorm at all
+    d: BatchNorm after attention
+  answer: c
+  explanation: All modern LLMs use pre-norm (LayerNorm before attention/FFN). Post-norm
+    was original Transformer but proved unstable for deep models.
+  difficulty: 2
+  tags: []
+- id: '8.5'
+  question: Why does residual connection enable training very deep models?
+  options:
+    b: 'Creates gradient shortcut: ∂L/∂x = ∂L/∂output × (1 + ∂Sublayer/∂x)'
+    a: Reduces parameter count per layer
+    c: Doubles the learning rate
+    d: Eliminates the need for LayerNorm
+  answer: b
+  explanation: The '1' in the gradient formula lets gradient bypass the sublayer entirely.
+    Even if sublayer gradients vanish, gradient still flows through residual path.
+  difficulty: 2
+  tags: []
+- id: '8.6'
+  question: According to the residual stream hypothesis, what do attention and FFN
+    layers do?
+  options:
+    a: Attention moves information between positions; FFN computes and writes back
+      to shared stream
+    b: Both write to a shared parameter matrix
+    c: Both read-only from fixed embeddings
+    d: FFN passes information between tokens; attention computes per-token features
+  answer: a
+  explanation: Attention reads from the residual stream, moves info between positions,
+    writes back. FFN reads, transforms, writes back. Stream accumulates additive contributions
+    from all layers.
+  difficulty: 2
+  tags: []
+- id: '8.7'
+  question: A 24-layer pre-norm transformer with post-norm setup diverges after 10k
+    steps. What is cheapest fix?
+  options:
+    b: Switch to pre-norm (LayerNorm before sublayer)
+    a: Increase vocab size
+    c: Double d_model
+    d: Remove residual connections
+  answer: b
+  explanation: Switching to pre-norm is a minimal code change (move LayerNorm position)
+    and stabilises training. Post-norm requires warm-up and careful init — pre-norm
+    works without these.
+  difficulty: 2
+  tags: []
+- id: '8.8'
+  question: 'Residual connection formula: output = x + Sublayer(x). If ∂Sublayer/∂x
+    = -0.5 at a given layer, what is ∂output/∂x?'
+  options:
+    d: '0.5'
+    a: '-0.5'
+    b: '1.5'
+    c: '1.0'
+  answer: d
+  explanation: ∂output/∂x = 1 + ∂Sublayer/∂x = 1 + (-0.5) = 0.5. Even with negative
+    sublayer gradient, residual still carries 0.5 gradient — barrier never zeroes
+    out.
+  difficulty: 2
+  tags: []
+- id: '8.9'
+  question: Why does raw residual stream magnitude grow monotonically with depth?
+  options:
+    d: Each layer adds Sublayer(x) to x but never subtracts — accumulation is additive
+    a: Attention always increases magnitude
+    b: LayerNorm scales up each layer's output
+    c: It doesn't — residuals cancel out
+  answer: d
+  explanation: 'Residual scheme is additive: x_{k+1} = x_k + Sublayer(x_k). Each layer
+    adds a delta. No mechanism subtracts from the stream, so magnitude grows with
+    depth.'
+  difficulty: 2
+  tags: []
+- id: '8.10'
+  question: Post-norm was original (Vaswani et al., 2017). Pre-norm is standard now.
+    What tradeoff explains why post-norm isn't always abandoned?
+  options:
+    b: Post-norm can achieve slightly lower converged loss with perfect hyperparameter
+      tuning
+    a: Post-norm trains 2x faster
+    c: Post-norm uses less memory
+    d: Post-norm eliminates need for residuals
+  answer: b
+  explanation: Post-norm can reach lower loss asymptote when carefully tuned (warm-up,
+    init, LR). But pre-norm's consistent training stability makes it the practical
+    default.
+  difficulty: 2
+  tags: []
+

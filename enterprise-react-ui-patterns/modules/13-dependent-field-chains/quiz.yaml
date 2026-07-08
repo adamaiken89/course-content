@@ -1,0 +1,110 @@
+- id: "13.1"
+  question: "What structure models dependent fields better than per-select useEffect?"
+  options:
+    a: "A schema-driven dependency DAG with derived resolution"
+    b: "A single effect watching all values"
+    c: "Nested ternaries in render"
+    d: "A global promise array"
+  answer: a
+  explanation: "The DAG centralizes deps/reset/refetch edges; effects couple fields invisibly."
+  difficulty: 2
+  tags: [concept, comparison]
+- id: "13.2"
+  question: "In a cascade, what must happen to child values when a parent changes?"
+  options:
+    a: "They persist to speed re-entry"
+    b: "They re-render only"
+    c: "They reset via the dependency map"
+    d: "They stay valid"
+  answer: c
+  explanation: "Reset clears stale children; their hidden errors clear with them."
+  difficulty: 2
+  tags: [concept, scenario]
+- id: "13.3"
+  question: "Why is AbortController alone insufficient to fix the stale option race?"
+  options:
+    a: "It doesn't free memory"
+    b: "Abort is best-effort; a near-resolved response may still land"
+    c: "It re-renders on each signal"
+    d: "It blocks the request-id counter"
+  answer: b
+  explanation: "The request-id guard on resolution is the contract; Abort is optimization."
+  difficulty: 2
+  tags: [concept, misconception]
+- id: "13.4"
+  question: "An option request guard compares `my === writer.id` on resolution. What does that protect against?"
+  options:
+    a: "A retried authentication request"
+    b: "A duplicate zod parse"
+    c: "A slow cache hit"
+    d: "A stale response overwriting a newer selection"
+  answer: d
+  explanation: "Only the newest selection id may paint the list; older resolves are dropped."
+  difficulty: 3
+  tags: [scenario, concept]
+- id: "13.5"
+  question: "When should remote field validation run?"
+  options:
+    a: "On touch/blur, debounced, flushed on blur"
+    b: "On every keystroke"
+    c: "Only on submit"
+    d: "Once per mount"
+  answer: a
+  explanation: "Type-ahead validation storms the network; touch/blur with flush is deterministic."
+  difficulty: 2
+  tags: [concept, scenario]
+- id: "13.6"
+  question: "Cohort was 'valid' under the old program. The program changes. What must happen?"
+  options:
+    a: "Nothing — validity persists per field"
+    b: "The cohort stays valid by default"
+    c: "Chain revalidation re-runs children under new deps"
+    d: "Only submit re-checks"
+  answer: c
+  explanation: "A valid cohort under old deps is meaningless under new ones; revalidateChain re-runs them."
+  difficulty: 3
+  tags: [scenario, application]
+- id: "13.7"
+  question: "Which React 19 tool keeps the program-swap cascade from blocking the select?"
+  options:
+    a: "useDeferredValue"
+    b: "useTransition"
+    c: "useSyncExternalStore"
+    d: "useImperativeHandle"
+  answer: b
+  explanation: "The cascade swap is a transition — the select responds immediately, options hydrate after."
+  difficulty: 2
+  tags: [react-19, formula]
+- id: "13.8"
+  question: "The option-load version counters should live in:"
+  options:
+    a: "Module-level refs — written frequently, read by guards only"
+    b: "zustand state, to persist across screens"
+    c: "React state, to re-render on write"
+    d: "LocalStorage"
+  answer: a
+  explanation: "A version is a sync guard, not UI truth; refs avoid needless renders."
+  difficulty: 2
+  tags: [concept, comparison]
+- id: "13.9"
+  question: "Where do the option lists (cohorts for program X) belong?"
+  options:
+    a: "In the draft store alongside field values"
+    b: "In component useMemo"
+    c: "In the URL"
+    d: "In the query cache keyed by dependency values"
+  answer: d
+  explanation: "Server truth, keyed by deps → cache; refetches on dependency change come free."
+  difficulty: 2
+  tags: [concept, comparison]
+- id: "13.10"
+  question: "A server-driven fields schema would replace what part of the client DAG map?"
+  options:
+    a: "The drag-and-drop layout"
+    b: "The dependsOn/reset/requiredWhen edges served as config"
+    c: "The zod validation entirely"
+    d: "The MSW wire fixtures"
+  answer: b
+  explanation: "The DAG edges become server config; the client applies them, no drift of rules."
+  difficulty: 3
+  tags: [comparison, application]

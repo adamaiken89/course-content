@@ -1,0 +1,174 @@
+- id: '8.1'
+  question: What does the React 19 compiler automatically optimize?
+  options:
+    b: Memoization of values and components, reducing unnecessary re-renders
+    a: Bundle size and code splitting
+    c: API call caching
+    d: TypeScript type checking
+  answer: b
+  explanation: The React 19 compiler automatically memoizes values and components.
+    This means useMemo, useCallback, and React.memo are mostly unnecessary for performance.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.2'
+  question: A team uses React.memo on every component. React 19 compiler ships. What
+    should they do?
+  options:
+    b: Remove memo wrappers where tests prove they are unnecessary
+    a: Keep all memo wrappers — they are harmless
+    c: React.memo is still required in React 19
+    d: Rewrite all components without memo
+  answer: b
+  explanation: Use tests to prove which memo wrappers are unnecessary. If removing
+    memo does not break tests, the memo was redundant. Remove with confidence.
+  difficulty: 1
+  tags:
+  - concept
+- id: '8.3'
+  question: What should you test about memoization behavior in React 19?
+  options:
+    a: Nothing — memoization is an implementation detail, test rendering output
+    b: Assert that components do not re-render when props are unchanged
+    c: Assert that useCallback returns stable references
+    d: Count the number of renders in a test
+  answer: a
+  explanation: Memoization is an optimization detail. Tests should verify rendering
+    output (what user sees), not re-render count or reference stability. The compiler
+    handles optimization.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.4'
+  question: How do you detect unnecessary useCallback via tests?
+  options:
+    c: Remove useCallback — if all tests still pass, it was unnecessary
+    a: Profile component render count
+    b: Lint rules catch unnecessary useCallback
+    d: Run a performance audit
+  answer: c
+  explanation: 'The definitive test: remove the hook and run tests. If tests pass,
+    the hook was unnecessary. Tests verify behavior, not implementation. Use this
+    as a safe removal strategy.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.5'
+  question: A component uses useEffect to derive total from items prop. What is the
+    better pattern?
+  options:
+    d: 'Derive the value directly: const total = items.reduce(...)'
+    a: Keep useEffect — it is the standard React pattern
+    b: Use useMemo instead of useEffect
+    c: Store total in a state manager
+  answer: d
+  explanation: Deriving state from props with useEffect is an anti-pattern. The derived
+    value should be computed directly. useEffect introduces unnecessary complexity
+    and a stale dependency risk.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.6'
+  question: How do you test useTransition behavior?
+  options:
+    d: Simulate user input and assert on rendered UI (spinner appears during transition)
+    a: Assert on isPending value directly
+    b: useTransition cannot be tested
+    c: Mock the transition function
+  answer: d
+  explanation: 'Test the visible behavior: type in search input, assert spinner appears.
+    Testing isPending directly couples tests to implementation. User-facing behavior
+    is the contract.'
+  difficulty: 2
+  tags:
+  - application
+- id: '8.7'
+  question: A test for useEffect passes when userId is '1', fails when rerendered
+    with userId '2'. What does this reveal?
+  options:
+    c: useEffect is missing userId in its dependency array
+    a: Test is flaky — unrelated to code
+    b: The mock API returns same data for both IDs
+    d: Component does not accept userId prop
+  answer: c
+  explanation: When the test passes on first render but fails on rerender with new
+    props, the useEffect likely has a missing dependency. It runs on mount but does
+    not re-run when userId changes.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '8.8'
+  question: What is the advanced tester's approach to React 19's compiler?
+  options:
+    b: Remove implementation-detail tests (render count, memo assertions) that the
+      compiler makes irrelevant
+    a: Ignore it — tests stay the same
+    c: Add tests for compiler optimization correctness
+    d: Downgrade to React 18
+  answer: b
+  explanation: The compiler makes some tests obsolete. Tests that assert on memoization
+    behavior (render count, callback stability) are now testing implementation details.
+    Remove them. Focus tests on behavior.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.9'
+  question: When should you still use useMemo in React 19?
+  options:
+    a: For referential stability in specific cases the compiler cannot infer
+    b: Never — compiler handles everything
+    c: For all computed values
+    d: Only in Server Components
+  answer: a
+  explanation: The compiler handles most memoization automatically. Rare edge cases
+    where referential stability is critical may still need useMemo. These should be
+    the exception, not the default.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.10'
+  question: A codebase has 50 useCallbacks. How do you determine which to remove?
+  options:
+    d: Remove one at a time, run tests. If tests pass, keep removal
+    a: Remove all 50 at once and run tests
+    b: Keep all — they are harmless
+    c: Use a regex to find and replace all with inline functions
+  answer: d
+  explanation: Remove each useCallback individually and run tests. If tests pass,
+    the removal is safe. This incremental approach minimizes risk and builds confidence
+    in test coverage.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '8.11'
+  question: Why must you suppress console.error when testing ErrorBoundary?
+  options:
+    c: React logs caught errors to console.error — without suppression, test output
+      is polluted
+    a: console.error crashes the test runner
+    b: ErrorBoundary does not work without suppression
+    d: Vitest requires all console methods to be mocked
+  answer: c
+  explanation: React logs all errors caught by ErrorBoundary to console.error. This
+    is for debugging, not failure. Suppress with `jest.spyOn(console, 'error').mockImplementation(()
+    => {})` and restore in afterEach.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.12'
+  question: How do you test that an ErrorBoundary recovers after the error source
+    is fixed?
+  options:
+    a: Render with broken child, assert error UI shown, rerender with working child,
+      assert working UI shown
+    b: Error recovery cannot be tested
+    c: Only test the fallback UI renders
+    d: Use a mock ErrorBoundary that always recovers
+  answer: a
+  explanation: Rerender the ErrorBoundary with different children. First render throws
+    (error UI), second render works (normal UI). This tests the recovery path where
+    the error condition is resolved.
+  difficulty: 2
+  tags:
+  - application
+

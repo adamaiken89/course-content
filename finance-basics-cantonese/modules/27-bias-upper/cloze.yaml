@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Anchoring 效應指 {過度依賴第一個信息, 後續判斷被呢個錨點影響}, 例如 {買入價錨定, 跌咗仍覺平} 或 {歷史高位錨定, 跌咗仍覺貴}。"
+  answer: "過度依賴第一個信息, 後續判斷被呢個錨點影響、買入價錨定, 跌咗仍覺平、歷史高位錨定, 跌咗仍覺貴"
+  explanation: "避開: 睇基本面, 唔睇歷史價; 重新分析; 寫投資 thesis。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.2"
+  question: "Confirmation Bias = {選擇性搵支持, 忽略反對證據}。投資表現: {朋友推薦就買, 只睇利好新聞}。"
+  answer: "選擇性搵支持, 忽略反對證據、朋友推薦就買, 只睇利好新聞"
+  explanation: "避開: 主動搜反對觀點, 預先定止蝕, 找 Devil's Advocate。"
+  difficulty: 2
+  tags: [terminology, scenario]
+
+- id: "c.3"
+  question: "Overconfidence = {高估自己知識同能力, 低估風險}。研究: {男性交易頻率高 50%, 回報卻低過市場}。"
+  answer: "高估自己知識同能力, 低估風險、男性交易頻率高 50%, 回報卻低過市場"
+  explanation: "90% 主動基金 15 年跑輸指數, 但 80% 投資者自認跑贏。"
+  difficulty: 2
+  tags: [terminology, research]
+
+- id: "c.4"
+  question: "Availability Heuristic = {憑容易記起嘅例子判斷概率, 忽略實際頻率}。媒體 {聳動標題獲更多 click, 沉悶資訊被忽略}。"
+  answer: "憑容易記起嘅例子判斷概率, 忽略實際頻率、聳動標題獲更多 click, 沉悶資訊被忽略"
+  explanation: "避開: 睇數據唔睇故事, 寫投資 checklist, 限制睇新聞時間。"
+  difficulty: 2
+  tags: [terminology, scenario]
+
+- id: "c.5"
+  question: "通用防禦方法: {Decision Log 記錄決策}、{Pre-mortem 預先設想失敗}、{Sounding Board 搵朋友挑戰}、{統計思維 問 base rate}。"
+  answer: "Decision Log 記錄決策、Pre-mortem 預先設想失敗、Sounding Board 搵朋友挑戰、統計思維 問 base rate"
+  explanation: "4 個 Bias 互動, 通用防禦多管齊下。"
+  difficulty: 3
+  tags: [concept, application]
+
+- id: "c.6"
+  question: "Pre-mortem 步驟: {假設一年後蝕 50%}, 問 {你而家會點}, {預先準備退場策略}。"
+  answer: "假設一年後蝕 50%、你而家會點、預先準備退場策略"
+  explanation: "Pre-mortem 係決策前嘅壓力測試, 識別潛在失敗原因。"
+  difficulty: 2
+  tags: [terminology, application]
+
+- id: "c.7"
+  question: "{研究愈多} 反而 {Confirmation Bias 愈強} (愈搵到支持自己嘅證據)。解決: 強制自己搵 {反對證據}。"
+  answer: "研究愈多、Confirmation Bias 愈強、反對證據"
+  explanation: "主動搵反對觀點, 唔好只研究支持, 平衡睇法。"
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "c.8"
+  question: "朋友靠 NVDA 賺 3 倍叫你買, 警惕 4 個 Bias: {Anchoring} (朋友 entry price 唔係 reference)、{Confirmation} (賺咗自然 support)、{Overconfidence} (1 次成功唔代表眼光好)、{Availability} (聳動案例容易記住)。"
+  answer: "Anchoring、Confirmation、Overconfidence、Availability"
+  explanation: "應該自己研究, 設止蝕, 唔 FOMO。"
+  difficulty: 3
+  tags: [scenario, application]
+
+- id: "c.9"
+  question: "{被動投資} (買 ETF) 係避開 Overconfidence 嘅 {最簡單方法}, 因為 {大部分人跑輸指數, 直接買指數就肯定跑贏自己}。"
+  answer: "被動投資 (買 ETF)、最簡單方法、大部分人跑輸指數, 直接買指數就肯定跑贏自己"
+  explanation: "SPIVA 數據 90% 主動跑輸, 揀 ETF 跑贏自己嘅機率 > 80%。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.10"
+  question: "矽谷銀行 2023 倒閉 4 個 Bias 互動: {Anchoring} (30 年安全歷史)、{Confirmation} (同業話放心)、{Overconfidence} (研究過唔會倒)、{Availability} (媒體報穩陣)。結果: {48 小時內擠提倒閉}。"
+  answer: "Anchoring、Confirmation、Overconfidence、Availability、48 小時內擠提倒閉"
+  explanation: "Bias 互動強化, 通用防禦多管齊下。"
+  difficulty: 3
+  tags: [scenario, application]

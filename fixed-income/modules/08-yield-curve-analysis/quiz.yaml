@@ -1,0 +1,140 @@
+- id: '8.1'
+  question: 'Inverted yield curve means:'
+  options:
+    a: Short-term yields > long-term yields
+    b: Long-term yields > short-term yields
+    c: All yields equal
+    d: Yields are negative
+  answer: a
+  explanation: 'Inverted: short rates > long rates. Historically precedes recession.'
+  difficulty: 1
+  tags:
+  - terminology
+  - yield-curve
+- id: '8.2'
+  question: Expectations theory says 10yr yield = ?
+  options:
+    d: Average of expected future short rates over 10 years
+    a: Current 10yr inflation
+    b: Fed funds rate
+    c: 10yr corporate yield
+  answer: d
+  explanation: Long-term yield = average of expected future short-term rates over
+    same period.
+  difficulty: 2
+  tags:
+  - terminology
+  - theory
+- id: '8.3'
+  question: 'Liquidity preference theory explains normal upward slope by:'
+  options:
+    a: Investors require term premium for longer bonds
+    b: Supply/demand per maturity segment
+    c: Government issues more short-term debt
+    d: Inflation expectations are constant
+  answer: a
+  explanation: Investors prefer shorter bonds (no price risk). Must pay premium to
+    hold longer bonds → upward slope.
+  difficulty: 2
+  tags:
+  - terminology
+  - theory
+- id: '8.4'
+  question: 1yr spot = 2%, 2yr spot = 3%. 1yr forward rate 1yr from now?
+  options:
+    b: 4.01%
+    a: 3.00%
+    c: 2.50%
+    d: 5.00%
+  answer: b
+  explanation: (1.03)^2 / (1.02) - 1 = 1.0609/1.02 - 1 = 1.0401 - 1 = 4.01%
+  difficulty: 2
+  tags:
+  - calculation
+  - forward-rates
+- id: '8.5'
+  question: 'Curve steepening means:'
+  options:
+    b: Long rates rise relative to short rates
+    a: Long rates fall relative to short rates
+    c: All rates move equally
+    d: Curve inverts
+  answer: b
+  explanation: 'Steepening: gap between long and short yields widens. Long up more
+    / short down more.'
+  difficulty: 2
+  tags:
+  - terminology
+  - yield-curve
+- id: '8.6'
+  question: 'A flat yield curve most likely signals:'
+  options:
+    a: Transition or uncertainty period
+    b: Rapid economic growth
+    c: Deflation
+    d: Currency crisis
+  answer: a
+  explanation: Flat curve = markets uncertain about direction. Often between normal
+    and inversion. Transition phase.
+  difficulty: 2
+  tags:
+  - scenario
+  - yield-curve
+- id: '8.7'
+  question: Private bank client sees 2yr = 4.5%, 10yr = 3.8%. What is this signal?
+  options:
+    c: Recession warning — yield curve inverted
+    a: Bullish for stocks — growth ahead
+    b: No signal
+    d: Inflation accelerating
+  answer: c
+  explanation: Inversion (2yr > 10yr) = historically reliable recession indicator.
+    Client should consider defensive positioning.
+  difficulty: 2
+  tags:
+  - scenario
+  - private-bank
+- id: '8.8'
+  question: 'Market segmentation theory says yield curve shape determined by:'
+  options:
+    b: Supply/demand within each maturity segment independently
+    a: Expected future rates only
+    c: Term premium only
+    d: Central bank policy only
+  answer: b
+  explanation: Different investor types operate in different maturities. Supply/demand
+    within each segment determines rates there.
+  difficulty: 2
+  tags:
+  - terminology
+  - theory
+- id: '8.9'
+  question: 'Swap spread is typically positive because:'
+  options:
+    d: Swap rate reflects AA bank credit, Treasury rate reflects risk-free
+    a: Swap rate < Treasury rate
+    b: Swaps have no counterparty risk
+    c: Treasuries have credit risk
+  answer: d
+  explanation: Swap spread = swap rate - Treasury rate. Positive because swap includes
+    bank credit risk. Treasury = risk-free.
+  difficulty: 3
+  tags:
+  - terminology
+  - swaps
+- id: '8.10'
+  question: 'Client: ''I''ll lend for 5 years if I get 50bp more than rolling 3-month
+    T-Bills.'' Which theory explains this?'
+  options:
+    c: Liquidity preference theory
+    a: Expectations theory
+    b: Market segmentation theory
+    d: Modern portfolio theory
+  answer: c
+  explanation: 'Liquidity premium: investor requires extra yield (term premium) to
+    hold longer bond vs rolling short-term investments.'
+  difficulty: 2
+  tags:
+  - scenario
+  - theory
+

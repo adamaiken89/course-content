@@ -1,0 +1,131 @@
+- id: '23.1'
+  question: 保險嘅核心原理係?
+  options:
+    a: 運氣
+    b: 賭博
+    c: 大數法則 (集中風險, 攤分成本)
+    d: 投資回報
+  answer: c
+  explanation: 保險 = 大數法則, 1 個人風險難預測, 1 萬人可估算, 集中風險攤分成本。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '23.2'
+  question: 保費結構包括以下邊幾部分?
+  options:
+    a: 行政費用 + 佣金
+    b: 純保費 + 行政費用 + 利潤 + 風險準備
+    c: 只有純保費
+    d: 純保費 + 投資回報
+  answer: b
+  explanation: 保費 = 純保費 (60-80%) + 行政費用 (15-25%) + 利潤 (5-10%) + 風險準備 (5-10%)。
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '23.3'
+  question: 30 歲, $1M 保額, Term vs Whole Life 邊個平?
+  options:
+    a: Term 平 ($1,500/年) vs Whole 貴 ($30,000-50,000/年)
+    b: 一樣
+    c: Whole 平
+    d: 視乎公司
+  answer: a
+  explanation: Term 純保障, 年保費 $1,500 左右。Whole 含投資成分, 年保費 $30,000-50,000, 貴 20-30 倍。
+  difficulty: 1
+  tags:
+  - comparison
+  - terminology
+- id: '23.4'
+  question: Whole Life 人壽保險含咩額外成分?
+  options:
+    a: 冇額外
+    b: 投資成分 (現金價值)
+    c: 醫療保障
+    d: 車禍保障
+  answer: b
+  explanation: Whole Life 除咗人壽保障, 仲有投資成分累積為現金價值, 退保可取回。但 IRR 通常只 2-4%, 唔及 ETF 投資。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '23.5'
+  question: 自願醫保 VHIS 嘅扣稅優惠?
+  options:
+    a: $60,000/人/年
+    b: 無扣稅
+    c: $18,000/人/年
+    d: $8,000/人/年
+  answer: d
+  explanation: VHIS 保費可扣減薪俸稅 / 利得稅, 上限 $8,000/人/年 (包括自己 + 受養人)。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '23.6'
+  question: 點解永遠要自己買自願醫保, 唔好依賴公司團體醫療?
+  options:
+    a: 公司團體貴啲
+    b: 公司團體只限在職, 離職後失效; 自願醫保終身保證續保
+    c: 公司團體唔包住院
+    d: 自願醫保有回贈
+  answer: b
+  explanation: 公司團體醫療只限在職期間, 失業/轉工/退休就冇。自願醫保 VHIS 保證續保至 100 歲, 終身保障。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '23.7'
+  question: 儲蓄保 (Endowment) 嘅內部回報率 IRR 通常幾多?
+  options:
+    a: 2-4%
+    b: 7-8%
+    c: 10-15%
+    d: 0-1%
+  answer: a
+  explanation: 儲蓄保 IRR 通常 2-4%, 遠低過 ETF/股票長期 7-8%。鎖定 20+ 年, 提前退保蝕晒。唔適合當投資工具。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '23.8'
+  question: 點解唔應該買儲蓄保當投資?
+  options:
+    a: 儲蓄保違法
+    b: 儲蓄保唔包人壽
+    c: 儲蓄保要扣稅
+    d: 儲蓄保 IRR 太低, 鎖定太耐, 唔靈活; 應該純 Term + 純 ETF
+  answer: d
+  explanation: '儲蓄保 IRR 2-4% 蝕緊; 壽險部分成本高過 Term; 鎖定 20+ 年唔靈活。正解: Term + ETF 分開做。'
+  difficulty: 2
+  tags:
+  - concept
+  - misconception
+- id: '23.9'
+  question: 你 30 歲, 家庭支柱, 月入 $50,000, 老婆 + 1 歲 BB。應該先買咩?
+  options:
+    a: Term 壽險 + 自願醫保 VHIS + 危疾保險
+    b: 只買儲蓄保
+    c: 咩都唔買
+    d: 10 份儲蓄保
+  answer: a
+  explanation: '家庭支柱保障優先: Term 壽險 (保家庭收入) + 自願醫保 (醫療) + 危疾 (大病收入歸零)。先保障後投資。'
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '23.10'
+  question: '保額計算: 30 歲家庭支柱, 年家庭開支 $400,000, BB 仲有 18 年大, 應買幾大 Term 壽險?'
+  options:
+    a: $0 (唔需要)
+    b: $1M (基本)
+    c: $5-10M (撐到 BB 大 + 通脹 + 應急)
+    d: $100M (過度)
+  answer: c
+  explanation: $400k × 18 = $7.2M 純基本 + 通脹 3%/年 + 應急 30% + 還債 = $10M 左右屬合理範圍。
+  difficulty: 3
+  tags:
+  - calculation
+  - application
+

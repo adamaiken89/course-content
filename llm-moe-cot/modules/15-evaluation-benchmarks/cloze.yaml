@@ -1,0 +1,44 @@
+- id: c.1
+  question: 無標準化 benchmark 嘅話，模型宣稱係 {anecdotal} 同 {unreliable} 嘅。
+  answer: anecdotal / unreliable
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: 污染檢測用 {n-gram overlap}、{perplexity checks} 同 {temporal separation}。
+  answer: n-gram overlap / perplexity checks / temporal separation
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: Benchmark 生命週期：{Release} → 人類 baseline → 模型進展 → {Saturation} → 取代。
+  answer: Release / Saturation
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: Calibration 量度 {model confidence} 同 {actual accuracy} 之間嘅 alignment。LLM
+    傾向 {overconfident}。
+  answer: model confidence / actual accuracy / overconfident
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: LLM-as-Judge 評估有已知 bias：{position} bias、{verbosity} bias 同 self-enhancement
+    bias。
+  answer: position / verbosity
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: Arena Elo 用 {anonymous human preference} 投票，嚟自模型之間嘅 {pairwise battles}。
+  answer: anonymous human preference / pairwise battles
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: MMLU-Pro 透過加更難嘅 distractors 同用 {10 choices} 取代 4 個 choices 嚟解決 MMLU 嘅
+    {saturation}。
+  answer: 10 choices / saturation
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: Benchmark 限制包括：{hacking}（根據 benchmark 格式 fine-tune）、{narrow focus} 同 {static
+    datasets}。
+  answer: hacking / narrow focus / static datasets
+  difficulty: 2
+  tags: []

@@ -1,0 +1,60 @@
+- id: c.1
+  question: '{Anchoring} bias causes traders to fixate on a reference price like purchase price rather than current market value.'
+  answer: Anchoring
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: '{Overconfidence} causes excessive trading. Barber & Odean found this cost investors {2.65%} annually.'
+  answer: Overconfidence
+  difficulty: 1
+  tags:
+  - concept
+- id: c.3
+  question: '{Confirmation} bias means investors seek confirming evidence and ignore {contradictory} information.'
+  answer: Confirmation
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: '{Recency} bias means overweighting {recent} events when making decisions. This caused investors to {avoid stocks} after the 2008 crash.'
+  answer: Recency
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: '{Herding} describes following the crowd rather than conducting {independent} analysis. It inflates bubbles in assets like crypto and {dot-com} stocks.'
+  answer: Herding
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.6
+  question: The {disposition} effect means selling {winners} too early and holding {losers} too long. It costs investors {3-4%} annually.
+  answer: disposition
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: Prospect theory says losses hurt approximately {2x} more than equivalent gains feel good. This is called {loss aversion}.
+  answer: 2x
+  difficulty: 1
+  tags:
+  - concept
+- id: c.8
+  question: Prospect theory has an {S-shaped} value function — concave for {gains} (risk-averse) and convex for {losses} (risk-seeking).
+  answer: S-shaped
+  difficulty: 2
+  tags:
+  - concept
+- id: c.9
+  question: '{Reference dependence} means traders evaluate outcomes relative to {purchase price} rather than absolute wealth. This is a key component of {prospect theory}.'
+  answer: Reference dependence
+  difficulty: 2
+  tags:
+  - concept
+- id: c.10
+  question: '{Diminishing sensitivity} means the difference between $0 and $100 feels bigger than the difference between $900 and ${1000}.'
+  answer: Diminishing sensitivity
+  difficulty: 3
+  tags:
+  - concept

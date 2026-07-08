@@ -1,0 +1,73 @@
+- id: c.1
+  answer: actions
+  explanation: The schedule decides when the base search runs; actions are the notification steps taken when the alert fires.
+  difficulty: 1
+  tags:
+  - alert-anatomy
+  question: A Splunk alert combines a saved search, a schedule, a trigger condition, and {actions}.
+- id: c.2
+  answer: Scheduled, real-time
+  explanation: Scheduled alerts are cheap and run on a timer; real-time alerts are continuously evaluated and cost more.
+  difficulty: 1
+  tags:
+  - alert-types
+  question: '{Scheduled} alerts run a search on a cron cadence, while {real-time} alerts evaluate events continuously as they index.'
+- id: c.3
+  answer: secondary search
+  explanation: The trigger condition lives in the secondary search; if it returns results, the alert fires.
+  difficulty: 2
+  tags:
+  - trigger-condition
+  question: A scheduled alert's base search gathers events, then a {secondary search} evaluates them to decide whether to fire.
+- id: c.4
+  answer: result
+  explanation: Per search means one fire per window; per result means a fire for each matching event.
+  difficulty: 1
+  tags:
+  - trigger-condition
+  question: Firing can be once per search or once per {result}, depending on how strict you need the alert to be.
+- id: c.5
+  answer: time period
+  explanation: Throttling is separate from the trigger condition and caps how often you are paged after the first fire.
+  difficulty: 2
+  tags:
+  - throttling
+  question: Throttling suppresses repeated alerts for a {time period}, optionally keyed by a field value such as service.
+- id: c.6
+  answer: incomplete, search peer
+  explanation: Events on a down peer are never evaluated, creating coverage gaps that a scheduled alert would avoid.
+  difficulty: 3
+  tags:
+  - real-time
+  - ha
+  question: Per-result real-time alerting is {incomplete} in a high-availability deployment if a {search peer} is down.
+- id: c.7
+  answer: -30m
+  explanation: Running later on an older window lets straggling events get indexed before the search executes.
+  difficulty: 2
+  tags:
+  - scheduling
+  - indexing-lag
+  question: For an hourly alert in a distributed deployment, schedule the run at :30 with earliest `-90m` and latest {(-30m)} to absorb indexing lag.
+- id: c.8
+  answer: time window
+  explanation: A 20-minute schedule should search the last 20 minutes so no events fall between runs.
+  difficulty: 1
+  tags:
+  - scheduling
+  question: Coordinate the schedule frequency with the search {time window} to avoid gaps and overlaps between runs.
+- id: c.9
+  answer: earliest
+  explanation: Embedding the range makes the saved search time-correct per run and robust to UI edits.
+  difficulty: 2
+  tags:
+  - scheduling
+  question: Scheduled searches should embed {earliest} and latest in the SPL rather than relying on the UI time range.
+- id: c.10
+  answer: symptom, SLO, runbook
+  explanation: Meaningful thresholds fire less often and runbook links make each alert actionable, stopping pager noise.
+  difficulty: 3
+  tags:
+  - alert-fatigue
+  - best-practice
+  question: Alert fatigue drops when you alert on {symptom}-based {SLO} thresholds such as error rate and latency, and attach {runbook} links.

@@ -1,0 +1,139 @@
+- id: '4.1'
+  question: Baa3 rating from Moody's corresponds to which S&P rating?
+  options:
+    a: BBB-
+    b: BB+
+    c: BBB+
+    d: AA-
+  answer: a
+  explanation: Baa3 (Moody's) = BBB- (S&P). Both lowest IG tier.
+  difficulty: 1
+  tags:
+  - terminology
+  - ratings
+- id: '4.2'
+  question: Minimum IG rating in S&P scale?
+  options:
+    c: BBB-
+    a: A-
+    b: BB+
+    d: BBB+
+  answer: c
+  explanation: BBB- = lowest IG. BB+ and below = high yield.
+  difficulty: 1
+  tags:
+  - terminology
+  - ratings
+- id: '4.3'
+  question: Which covenant prevents issuer from taking additional secured debt?
+  options:
+    c: Negative pledge covenant
+    a: Affirmative covenant
+    b: Cross-default covenant
+    d: Dividend restriction
+  answer: c
+  explanation: 'Negative pledge: issuer cannot pledge assets as collateral for new
+    debt without equally securing existing bondholders.'
+  difficulty: 2
+  tags:
+  - terminology
+  - covenants
+- id: '4.4'
+  question: Recovery expectation for senior unsecured bond in default?
+  options:
+    a: 30-50%
+    b: 70-80%
+    c: 0-10%
+    d: 100%
+  answer: a
+  explanation: Senior unsecured typically recovers 30-50% of face. Senior secured
+    higher (collateral), subordinated lower.
+  difficulty: 2
+  tags:
+  - terminology
+  - recovery
+- id: '4.5'
+  question: Credit spread widens. Which macro condition likely caused it?
+  options:
+    a: Recession fears
+    b: Strong GDP growth
+    c: Fed cutting rates
+    d: Stable inflation
+  answer: a
+  explanation: Recession fears → risk aversion → investors demand higher premium for
+    credit risk → spreads widen.
+  difficulty: 2
+  tags:
+  - scenario
+  - spreads
+- id: '4.6'
+  question: Corporate bond yields 6.5%, Treasury yields 4.2%. Credit spread?
+  options:
+    b: 2.3%
+    a: 1.3%
+    c: 4.2%
+    d: 6.5%
+  answer: b
+  explanation: 6.5% - 4.2% = 2.3% = 230bp. Spread reflects credit + liquidity premium.
+  difficulty: 1
+  tags:
+  - calculation
+  - spreads
+- id: '4.7'
+  question: 'Private bank client: ''Why did my IG bond fund lose value even though
+    no bonds defaulted?'''
+  options:
+    d: Credit spreads widened due to market stress
+    a: Bond fund fees increased
+    b: Coupon rate decreased
+    c: Maturity shortened
+  answer: d
+  explanation: Spread widening = higher yield = lower price, even without defaults.
+    Common in market stress.
+  difficulty: 2
+  tags:
+  - scenario
+  - private-bank
+- id: '4.8'
+  question: 'Make-whole call provision means issuer:'
+  options:
+    b: Must pay PV of remaining cash flows if called early
+    a: Can call bond at par anytime
+    c: Cannot call bond ever
+    d: Must replace with new issue at same rate
+  answer: b
+  explanation: 'Make-whole: issuer pays PV of remaining coupons + principal at Treasury
+    rate + spread. Expensive for issuer.'
+  difficulty: 2
+  tags:
+  - terminology
+  - corporate
+- id: '4.9'
+  question: Bond downgraded from BBB- to BB+. Immediate effect?
+  options:
+    b: Price likely falls (many IG mandates forced to sell)
+    a: Price rises (higher yield attractive)
+    c: No change
+    d: Bond is called
+  answer: b
+  explanation: 'Fallen angel: forced selling by IG-only mandates → price drops. Often
+    overshoots → opportunity for HY buyers.'
+  difficulty: 3
+  tags:
+  - scenario
+  - ratings
+- id: '4.10'
+  question: Which capital structure tier has highest recovery in bankruptcy?
+  options:
+    d: Senior secured notes
+    a: Subordinated debentures
+    b: Preferred stock
+    c: Junior subordinated notes
+  answer: d
+  explanation: Senior secured = first claim on collateral assets. Highest recovery.
+    Subordinated = last among bonds.
+  difficulty: 2
+  tags:
+  - terminology
+  - capital-structure
+

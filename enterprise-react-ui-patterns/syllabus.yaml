@@ -1,0 +1,114 @@
+subject: "Enterprise React UI Patterns"
+language: en
+time_budget_hours: 22
+target_level: advanced
+domain: "enterprise-react-ui-patterns"
+prerequisites: [react, typescript, testing]
+learning_objectives:
+  - "Architect a client-only React 19 app as composable containers with owned state, not component soup"
+  - "Choose where state lives (useState / lifted / context / zustand / server cache) from measurable conditions"
+  - "Apply testing as a companion vocabulary across layers, with snapshot and E2E boundaries"
+  - "Derive end-to-end TypeScript safety from shared zod schemas"
+  - "Build session, impersonation, and workflow-modal flows over a typed mock server contract"
+  - "Compose application shell and layout containers with owned focus and accessibility"
+  - "Build performant tracker grids and large-data UI with virtualization and deferral"
+  - "Engineer dependent fields, batch submission, and CSV import with validation and rollback"
+  - "Reconcile async races and design error UX with boundaries, retries, and offline messaging"
+  - "Assemble extended patterns: autosave, offline queue, undo, and micro-stitched composition"
+
+modules:
+  - id: 1
+    name: "Composition Architecture"
+    time_hours: 1.2
+    prerequisites: []
+    topics: [composition, container-pattern, react-19]
+  - id: 2
+    name: "State Management Selection"
+    time_hours: 1.3
+    prerequisites: [1]
+    topics: [state, architecture, zustand]
+  - id: 3
+    name: "Testing as Companion"
+    time_hours: 1.2
+    prerequisites: [1, 2]
+    topics: [testing, snapshot, e2e]
+  - id: 4
+    name: "Schema-First Type Safety"
+    time_hours: 1.3
+    prerequisites: [1]
+    topics: [zod, typescript, validation, i18n]
+  - id: 5
+    name: "Session & Auth Lifecycle"
+    time_hours: 1.2
+    prerequisites: [3, 4]
+    topics: [auth, session, token, react-19]
+  - id: 6
+    name: "Impersonation Flow"
+    time_hours: 1.1
+    prerequisites: [5]
+    topics: [impersonation, contract, security]
+  - id: 7
+    name: "Modal & Dialog Ownership"
+    time_hours: 1.2
+    prerequisites: [5, 6]
+    topics: [modal, focus-trap, keyboard, a11y]
+  - id: 8
+    name: "Workflow-Driven Modal"
+    time_hours: 1.3
+    prerequisites: [7]
+    topics: [modal, state-machine, unsaved-changes]
+  - id: 9
+    name: "Layout & Container Composition"
+    time_hours: 1.0
+    prerequisites: [8]
+    topics: [layout, shell, css]
+  - id: 10
+    name: "Tracker Table & Grid"
+    time_hours: 1.2
+    prerequisites: [9]
+    topics: [table, pagination, url-state, useDeferredValue]
+  - id: 11
+    name: "Large-Data UI Performance"
+    time_hours: 1.3
+    prerequisites: [10]
+    topics: [virtualization, memoization, benchmark]
+  - id: 12
+    name: "Server Data Layer"
+    time_hours: 1.2
+    prerequisites: [10, 11]
+    topics: [tanstack-query, cache, sse]
+  - id: 13
+    name: "Dependent Field Chains"
+    time_hours: 1.4
+    prerequisites: [4, 12]
+    topics: [dependent-fields, remote-validation, useTransition, schema]
+  - id: 14
+    name: "Batch Update Engine"
+    time_hours: 1.3
+    prerequisites: [13]
+    topics: [batch, optimistic, rollback, useOptimistic]
+  - id: 15
+    name: "CSV Import & Bulk Entry"
+    time_hours: 1.3
+    prerequisites: [14]
+    topics: [csv, security, bulk, reporting]
+  - id: 16
+    name: "Accessible Complex Data Entry"
+    time_hours: 1.2
+    prerequisites: [13, 15]
+    topics: [a11y, live-region, keyboard-nav, focus]
+  - id: 17
+    name: "Async Races & Reconciliation"
+    time_hours: 1.2
+    prerequisites: [13, 14]
+    topics: [races, abort, serialization, stale-guards]
+  - id: 18
+    name: "Error UX & Recovery"
+    time_hours: 1.2
+    prerequisites: [16, 17]
+    topics: [error-boundary, retry, offline, recovery]
+  - id: 19
+    name: "Extended Patterns Buffet"
+    time_hours: 1.2
+    prerequisites: [17, 18]
+    topics: [autosave, offline-queue, undo, micro-assembly]

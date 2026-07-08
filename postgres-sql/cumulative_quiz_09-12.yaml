@@ -1,0 +1,120 @@
+- id: cum.21
+  type: mcq
+  source_modules:
+  - 10
+  question: "Which EXPLAIN observation indicates an index did NOT serve a predicate?"
+  options:
+    a: "Index Cond on the scan node"
+    b: "Filter on a Seq Scan node"
+    c: "Hash Join build phase"
+    d: "Index Only Scan"
+  answer: b
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.22
+  type: mcq
+  source_modules:
+  - 11
+  question: "With 100M rows and 8KB pages, what is a typical B-tree height?"
+  options:
+    a: "1"
+    b: "3 to 4"
+    c: "8 to 10"
+    d: "50"
+  answer: b
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.23
+  type: mcq
+  source_modules:
+  - 9
+  question: "Which clause gives the reliable claim-one-job-row pattern?"
+  options:
+    a: "FOR UPDATE SKIP LOCKED LIMIT 1"
+    b: "SELECT DISTINCT"
+    c: "READ UNCOMMITTED"
+    d: "GROUP BY id"
+  answer: a
+  difficulty: 3
+  tags:
+  - cross-module
+  - scenario
+- id: cum.24
+  type: mcq
+  source_modules:
+  - 12
+  question: "Which index feature adds columns for index-only scans without widening the B-tree key?"
+  options:
+    a: "NULLS NOT DISTINCT"
+    b: "An expression index"
+    c: "INCLUDE extra columns"
+    d: "A partial index"
+  answer: c
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.25
+  type: cloze
+  source_modules:
+  - 11
+  question: "A Heap-Only Tuple update avoids touching the {index} when no indexed column changes."
+  answer: index
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.26
+  type: cloze
+  source_modules:
+  - 9
+  question: "A deadlock reports SQLSTATE 40P01 and the application should retry the whole {transaction}."
+  answer: transaction
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.27
+  type: cloze
+  source_modules:
+  - 10
+  question: "A predicate shown as {Filter} on a scan node did not use an index."
+  answer: Filter
+  difficulty: 2
+  tags:
+  - cross-module
+  - process
+- id: cum.28
+  type: tf
+  source_modules:
+  - 9
+  statement: "FOR UPDATE row locks are released at the end of the statement."
+  answer: false
+  difficulty: 2
+  tags:
+  - cross-module
+  - misconception
+- id: cum.29
+  type: tf
+  source_modules:
+  - 12
+  statement: "The leading columns of a composite index should cover equality predicates, with range predicates last."
+  answer: true
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.30
+  type: tf
+  source_modules:
+  - 11
+  statement: "An ascending B-tree orders NULL values first by default."
+  answer: false
+  difficulty: 1
+  tags:
+  - cross-module
+  - misconception

@@ -1,0 +1,145 @@
+- id: '30.1'
+  question: What is the purpose of typePolicies in Apollo Client's InMemoryCache?
+  options:
+    a: 'Customizes cache behavior: keyFields for cache IDs, merge strategies for field
+      updates'
+    b: Defines GraphQL schema types for validation
+    c: Configures HTTP headers for GraphQL requests
+    d: Generates TypeScript types from GraphQL schema
+  answer: a
+  explanation: typePolicies configure per-type cache behavior. keyFields defines custom
+    cache ID (default __typename:id). merge controls how incoming data merges with
+    cached data (critical for pagination). read computes derived fields.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '30.2'
+  question: How does Apollo Client's normalized cache differ from React Query's document
+    cache?
+  options:
+    b: Normalized cache stores each entity once by ID. Document cache stores each
+      query response separately
+    a: No difference — both store query responses as-is
+    c: Apollo stores cache in IndexedDB. React Query stores in memory
+    d: Normalized cache is slower but more accurate
+  answer: b
+  explanation: 'Normalized cache: entities normalized by ID (User:123 stored once).
+    Two queries returning same user update single cache entry. Document cache: each
+    query response cached as blob — same user data duplicated across queries.'
+  difficulty: 1
+  tags:
+  - concept
+- id: '30.3'
+  question: What Apollo Client hook enables Suspense integration in React 19?
+  options:
+    c: useSuspenseQuery — throws promise to Suspense boundary
+    a: 'useQuery with suspense: true option'
+    b: useSuspenseQuery wraps useQuery internally
+    d: ApolloProvider handles Suspense automatically
+  answer: c
+  explanation: useSuspenseQuery throws promise during fetch, caught by parent Suspense
+    boundary. Component renders only when data available. No loading state in component.
+  difficulty: 2
+  tags:
+  - react19
+- id: '30.4'
+  question: How do you handle UNAUTHENTICATED errors globally in Apollo Client?
+  options:
+    a: Use onError link to intercept errors and redirect to login
+    b: Catch error in each useQuery's onError callback
+    c: Wrap ApolloProvider in error boundary
+    d: UNAUTHENTICATED errors are handled automatically
+  answer: a
+  explanation: onError link intercepts all GraphQL and network errors. Check err.extensions.code
+    === 'UNAUTHENTICATED' in onError link handler. Redirect to login page or refresh
+    token.
+  difficulty: 2
+  tags:
+  - pattern
+- id: '30.5'
+  question: What is the correct way to append paginated data in Apollo cache?
+  options:
+    b: Define merge function in typePolicies that combines existing and incoming arrays
+    a: Cache appends automatically — no configuration needed
+    c: Use cache.appendQuery for paginated fields
+    d: 'Set paginated: true in query options'
+  answer: b
+  explanation: 'typePolicies field merge function controls list merging. Example:
+    merge(existing = [], incoming) => [...existing, ...incoming]. Without custom merge,
+    Apollo replaces existing data with incoming.'
+  difficulty: 2
+  tags:
+  - pattern
+- id: '30.6'
+  question: What is the purpose of fragment composition in Apollo Client?
+  options:
+    d: Reusable field selections shared across queries — single source of truth for
+      data shape
+    a: Splits large queries into smaller network requests
+    b: Fragments are deprecated in Apollo Client v4
+    c: Fragments improve query performance by reducing payload
+  answer: d
+  explanation: Fragments define reusable field sets. Query includes fragment with
+    ...spread syntax. Change fragment definition → all queries using it update. Improves
+    maintainability of GraphQL document colocation.
+  difficulty: 1
+  tags:
+  - concept
+- id: '30.7'
+  question: When should you choose React Query over Apollo Client?
+  options:
+    b: REST or mixed REST/GraphQL APIs — React Query works with any async function
+    a: Apollo Client is always better for any React app
+    c: React Query only for REST APIs
+    d: React Query replaces Apollo Client for GraphQL too
+  answer: b
+  explanation: React Query is protocol-agnostic. Works with any async function (REST,
+    GraphQL, tRPC). Apollo Client is GraphQL-only. Use React Query for mixed or non-GraphQL
+    APIs. Use Apollo Client for GraphQL-heavy apps.
+  difficulty: 1
+  tags:
+  - concept
+- id: '30.8'
+  question: How does Apollo Client handle subscriptions (real-time data)?
+  options:
+    d: useSubscription hook with WebSocket link — receives pushed data from server
+    a: Subscriptions use polling — not real-time
+    b: Subscriptions require external library — not built into Apollo Client
+    c: Subscriptions work only with Apollo Server
+  answer: d
+  explanation: useSubscription listens to GraphQL subscription via WebSocket. Server
+    pushes data when events occur. Requires GraphQLWsLink or WebSocketLink for transport.
+    Built-in, no external library needed.
+  difficulty: 2
+  tags:
+  - api
+- id: '30.9'
+  question: What does cache.modify() do in Apollo Client?
+  options:
+    a: Modifies specific cached field values without refetch — used after mutations
+    b: Clears entire cache
+    c: Modifies GraphQL schema settings
+    d: Updates HTTP headers for next query
+  answer: a
+  explanation: 'cache.modify() updates specific cached fields directly. Pattern: cache.modify({
+    id: cache.identify(user), fields: { name: () => newName } }). Avoids refetch when
+    mutation result already known.'
+  difficulty: 2
+  tags:
+  - api
+- id: '30.10'
+  question: How does React 19 useTransition improve pagination UX with Apollo Client?
+  options:
+    c: Marks page state change as low priority — stale content visible during fetch,
+      no loading flash
+    a: useTransition speeds up GraphQL queries
+    b: useTransition replaces fetchMore for pagination
+    d: useTransition disables pagination buttons during fetch
+  answer: c
+  explanation: useTransition wraps page state update as non-urgent. React renders
+    stale page content while next page loads. Suspense handles loading. User sees
+    previous page until next page ready.
+  difficulty: 2
+  tags:
+  - react19
+

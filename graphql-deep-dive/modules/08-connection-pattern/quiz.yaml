@@ -1,0 +1,132 @@
+- id: '8.1'
+  question: Which fields are required in the Relay Connection PageInfo type?
+  options:
+    a: hasNextPage, hasPreviousPage, startCursor, endCursor
+    b: hasNextPage, hasPreviousPage
+    c: nextPage, previousPage
+    d: hasNextPage, totalCount, startCursor
+  answer: a
+  explanation: 'PageInfo requires four fields per Relay spec: hasNextPage, hasPreviousPage,
+    startCursor, endCursor. The cursor fields are nullable (may be null for empty
+    connections).'
+  difficulty: 2
+  tags: []
+- id: '8.2'
+  question: What does fetching 'first + 1' items achieve in cursor pagination?
+  options:
+    a: Determines hasNextPage without a separate COUNT query
+    b: Improves query performance
+    c: Reserves items for the next request
+    d: Prevents SQL injection
+  answer: a
+  explanation: Fetch one extra item. If we get first + 1 results, there are more pages.
+    Discard the extra. Avoids a separate expensive COUNT query for hasNextPage.
+  difficulty: 2
+  tags: []
+- id: '8.3'
+  question: 'Offset pagination: page 3, limit 10. Two items inserted before page 2
+    loads. What happens?'
+  options:
+    d: Page 3 now shows items 32-41, skipping items 21-22
+    a: No change — offsets are stable
+    b: Items inserted after page 3 have no effect
+    c: Server returns error
+  answer: d
+  explanation: Offsets shift when items are inserted earlier in the list. Item 22
+    becomes item 24, causing page 3 (offset 20-30) to skip the original items 21-22.
+  difficulty: 2
+  tags: []
+- id: '8.4'
+  question: Cursor points to user.id=42. New user with id=41 is inserted. Cursor still
+    returns data starting from where?
+  options:
+    a: User 42 — ID-based cursor is stable
+    b: User 43 — everything shifted
+    c: User 41 — cursor resets to first item
+    d: Empty — cursor invalidated
+  answer: a
+  explanation: ID-based cursor (`WHERE id > 42`) is unaffected by inserts before the
+    cursor. New user 41 goes before 42, so pagination remains stable.
+  difficulty: 2
+  tags: []
+- id: '8.5'
+  question: Which arguments does the Relay Connection spec define for forward pagination?
+  options:
+    b: first, after
+    a: page, limit
+    c: last, before
+    d: skip, take
+  answer: b
+  explanation: Forward pagination uses `first` (how many) and `after` (cursor to start
+    after). Backward uses `last` and `before`.
+  difficulty: 2
+  tags: []
+- id: '8.6'
+  question: 'Backward pagination: `last: 10, before: ''cursor_100''`. DB query sorts
+    DESC, fetches 11 rows, gets 11 rows. What happens next?'
+  options:
+    c: Discard last item, reverse remaining 10, return with hasPreviousPage=true
+    a: Return all 11 — hasPreviousPage is true
+    b: Discard first item (oldest), return 10 in ASC order
+    d: Return error — too many items
+  answer: c
+  explanation: Fetch last + 1 items DESC. 11 rows > 10 → hasPreviousPage=true. Keep
+    first 10 (closest to before cursor), reverse to ASC order, return as edges.
+  difficulty: 2
+  tags: []
+- id: '8.7'
+  question: 'Schema: `users(first: Int, after: String): UserConnection`. Client needs
+    total user count. Best approach?'
+  options:
+    d: Add totalCount field to UserConnection, can be approximate for large datasets
+    a: Compute totalCount from edges array length
+    b: Make separate count endpoint
+    c: Use pageInfo to infer total count
+  answer: d
+  explanation: Add totalCount to the Connection. Use approximate count for large datasets
+    (EXPLAIN estimate, counter). edges.length is only current page, not total.
+  difficulty: 2
+  tags: []
+- id: '8.8'
+  question: Slice-based cursor encodes array position. After 3 items inserted before
+    cursor position, cursor now points to wrong item. Best fix?
+  options:
+    b: Switch to ID-based cursors referencing entity primary key
+    a: Increase cursor encoding complexity
+    c: Re-fetch from start on every pagination
+    d: Use larger page sizes to reduce cursor sensitivity
+  answer: b
+  explanation: ID-based cursors reference the entity itself, not position. After insert,
+    the cursor still points to the same entity. This is the standard fix for unstable
+    cursors.
+  difficulty: 2
+  tags: []
+- id: '8.9'
+  question: 'Federated graph: Products subgraph has `reviews(first: Int, after: String)`.
+    Router queries 5 products. How many subgraph calls occur if each pagination hits
+    the reviews subgraph separately?'
+  options:
+    c: 5 — one per product, N+1 pagination
+    a: 1 — single batched call
+    b: 10 — two calls per product
+    d: 0 — reviews are embedded in product data
+  answer: c
+  explanation: 'Each product''s reviews resolver calls the reviews subgraph independently.
+    This is N+1 pagination. Solution: batch query with reviewsByProductIds or reference
+    resolver pattern.'
+  difficulty: 2
+  tags: []
+- id: '8.10'
+  question: What is the standard cursor encoding format in Relay?
+  options:
+    b: Base64-encoded string (commonly JSON or ID-based)
+    a: Plain text UUID
+    c: Hexadecimal hash
+    d: Unix timestamp
+  answer: b
+  explanation: Relay uses opaque base64-encoded strings. Common implementations encode
+    JSON like `base64({type, id})` or `base64("arrayconnection:N")`. Clients should
+    never parse cursor values.
+  difficulty: 2
+  tags: []
+

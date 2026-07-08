@@ -1,0 +1,143 @@
+- id: '14.1'
+  question: What does SPAC stand for?
+  options:
+    a: Strategic Public Acquisition Corporation
+    b: Special Purpose Acquisition Company
+    c: Secondary Public Asset Corporation
+    d: Structured Portfolio Acquisition Company
+  answer: b
+  explanation: SPAC = Special Purpose Acquisition Company. A shell company that raises
+    capital in its own IPO to acquire a private company.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '14.2'
+  question: A SPAC IPOs at $10/unit. A shareholder disagrees with the proposed acquisition.
+    What can they do?
+  options:
+    a: Nothing — the sponsor decides
+    b: Sell shares at market price only
+    c: Redeem shares for pro-rata trust value (typically ~$10)
+    d: Force the SPAC to liquidate immediately
+  answer: c
+  explanation: SPAC investors can redeem shares for trust value (~$10) if they don't
+    approve the target. This protects downside.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '14.3'
+  question: What is the primary advantage of a direct listing over a traditional IPO?
+  options:
+    a: Company raises more capital
+    b: No underwriters needed and no lock-up period
+    c: Higher first-day pop guaranteed
+    d: Only available for SPAC mergers
+  answer: b
+  explanation: Direct listing saves 3-7% underwriting fees, has no lock-up period,
+    and raises no new capital. Price discovered via opening cross.
+  difficulty: 1
+  tags:
+  - comparison
+- id: '14.4'
+  question: Which company famously used a direct listing instead of a traditional
+    IPO in 2018?
+  options:
+    a: Uber
+    b: Airbnb
+    c: Spotify
+    d: Rivian
+  answer: c
+  explanation: Spotify direct listed in 2018. It was well-capitalized and didn't need
+    new capital. Direct listing saved ~$50M+ in underwriting fees.
+  difficulty: 1
+  tags:
+  - concept
+- id: '14.5'
+  question: 'An ATM offering differs from a follow-on offering in that an ATM offering:'
+  options:
+    a: Issues shares at a single fixed price with discount
+    b: Requires SEC approval for each sale
+    c: Sells shares gradually into market at prevailing prices
+    d: Is only available for companies with market cap > $10B
+  answer: c
+  explanation: ATM = at-the-market. Shares sold incrementally at prevailing market
+    prices over days/weeks. No fixed discount, no single-day price drop.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '14.6'
+  question: Company announces $2B follow-on at 3% discount. Stock drops 6%. Which
+    is the BEST explanation?
+  options:
+    a: Market mispriced the stock
+    b: Dilution + signaling concerns outweigh the mechanical discount
+    c: The underwriter manipulated the price
+    d: Follow-on offerings always drop 6%
+  answer: b
+  explanation: FPO signals EPS dilution, potential signal management thinks stock
+    is fairly valued, and supply pressure. The 3% mechanical discount is small; the
+    6% drop reflects these concerns.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '14.7'
+  question: Underwriter oversells 15% of IPO shares using greenshoe. Stock price RISES
+    post-IPO. What happens?
+  options:
+    a: Underwriter exercises greenshoe, buys from issuer at IPO price
+    b: Underwriter lets greenshoe expire, buys in market
+    c: Underwriter returns shares to issuer
+    d: Underwriter forces issuer to buy back shares
+  answer: a
+  explanation: If price rises, underwriter exercises greenshoe — buys extra shares
+    from issuer at IPO price to cover short. Issuer sells total of 115% of original
+    offering.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '14.8'
+  question: Underwriter oversells 15% of IPO shares using greenshoe. Stock price DROPS
+    post-IPO. What happens?
+  options:
+    a: Underwriter exercises greenshoe, buys from issuer at IPO price
+    b: Underwriter lets greenshoe expire, buys in market to cover short
+    c: Underwriter must return shares to issuer
+    d: Underwriter forces issuer to buy back shares
+  answer: b
+  explanation: If price drops, underwriter does NOT exercise greenshoe — instead buys
+    in open market at lower price to cover short. This creates buying pressure that
+    stabilizes stock.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '14.9'
+  question: Which is a key difference between SPAC merger and traditional IPO?
+  options:
+    a: SPACs allow forward-looking projections in presentations; traditional IPOs
+      do not during quiet period
+    b: SPACs cannot raise capital; IPOs can
+    c: SPACs require SEC approval; IPOs do not
+    d: SPACs have lower dilution than traditional IPOs
+  answer: a
+  explanation: SPACs can use forward-looking projections when pitching target during
+    de-SPAC. Traditional IPOs cannot during 25-day quiet period. SPACs have HIGHER
+    dilution.
+  difficulty: 3
+  tags:
+  - comparison
+  - concept
+- id: '14.10'
+  question: If a SPAC fails to find a target within the specified time period, what
+    happens?
+  options:
+    a: Sponsors extend the deadline indefinitely
+    b: SPAC liquidates and trust proceeds returned to investors
+    c: SPAC converts to operating company
+    d: SEC investigates the sponsors
+  answer: b
+  explanation: SPACs typically have 2 years to find target. If unsuccessful, SPAC
+    liquidates and trust proceeds (typically ~$10/unit) returned to investors. Sponsors
+    lose their investment.
+  difficulty: 1
+  tags:
+  - concept

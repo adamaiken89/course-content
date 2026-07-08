@@ -1,0 +1,151 @@
+- id: '4.1'
+  question: At what level does MSW intercept network requests?
+  options:
+    b: Network level (intercepts fetch/XMLHttpRequest)
+    a: Module import level (replaces imported functions)
+    c: React component level (wraps components)
+    d: Build level (rewrites imports during compilation)
+  answer: b
+  explanation: MSW intercepts at the network level — fetch and XMLHttpRequest. This
+    decouples tests from the specific data fetching library used (fetch, axios, React
+    Query, tRPC all work).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.2'
+  question: A team switches from fetch to React Query for data fetching. With MSW,
+    what changes?
+  options:
+    c: Zero test changes — handlers work at the HTTP level
+    a: All tests must update their handlers
+    b: Handlers must be rewritten for React Query format
+    d: Tests need new setup for React Query mocking
+  answer: c
+  explanation: MSW intercepts HTTP requests regardless of which client library sends
+    them. Handlers match URLs, not import paths. The switch from fetch to React Query
+    is transparent to tests.
+  difficulty: 1
+  tags:
+  - concept
+- id: '4.3'
+  question: How should MSW handlers be organized for maintainability?
+  options:
+    d: One handler file per domain (users, products, auth), combined in a server setup
+      file
+    a: All handlers in a single file for easy discovery
+    b: Inline handlers inside each test file
+    c: Auto-generated from OpenAPI specs
+  answer: d
+  explanation: Domain-based organization (one file per domain) keeps handlers discoverable
+    and maintainable. The server setup file combines all handlers. This mirrors the
+    real API organization.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.4'
+  question: You need one test to return 500 from the user endpoint while other tests
+    use the default handler. What is the correct approach?
+  options:
+    a: Use server.use() inside the specific test to override the handler
+    b: Modify the default handler to return 500
+    c: Create a separate test file with different setup
+    d: Use jest.mock() for the failing test
+  answer: a
+  explanation: server.use() adds a one-shot override handler for a single test. resetHandlers()
+    restores the default after each test. This isolates the override without affecting
+    other tests.
+  difficulty: 2
+  tags:
+  - application
+- id: '4.5'
+  question: What problem does MSW solve that module-level mocks (jest.mock) do not?
+  options:
+    a: Tests are decoupled from data fetching implementation
+    b: Faster test execution
+    c: Easier to mock simple API responses
+    d: Better TypeScript support
+  answer: a
+  explanation: Module-level mocks couple tests to import paths and function names.
+    MSW couples tests to HTTP URLs — a stable boundary. Data fetching implementation
+    can change completely without affecting MSW tests.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '4.6'
+  question: The API URL changes from `/api/users/:id` to `/api/v2/users/:id`. What
+    is the most maintainable way to handle this?
+  options:
+    c: Define API paths as constants and import them in handlers
+    a: Find-and-replace all handler URL strings
+    b: Use regex patterns that match both URLs
+    d: Create an alias URL in the test setup
+  answer: c
+  explanation: API path constants centralize URL definitions. When the URL changes,
+    update one constant file. All handlers and tests (that import the constant) update
+    automatically.
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.7'
+  question: After each test, MSW handlers should be reset. What is the standard practice?
+  options:
+    a: afterEach(() => server.resetHandlers()) in setup file
+    b: Manually reset handlers after each test
+    c: MSW resets handlers automatically
+    d: Use separate server instances per test
+  answer: a
+  explanation: server.resetHandlers() in afterEach removes per-test overrides and
+    restores the default handlers. This prevents test isolation issues.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.8'
+  question: A developer writes a handler that always returns the same user regardless
+    of input. The test passes. What is the risk?
+  options:
+    b: Handler does not validate parameters — real API may return different data for
+      different inputs
+    a: No risk — handler is for testing only
+    c: Test is too slow because handler does unnecessary work
+    d: Handler will break in CI
+  answer: b
+  explanation: A handler that ignores parameters (URL params, query strings, request
+    body) can mask contract mismatches. The component might send wrong parameters,
+    but the test passes because the handler ignores them.
+  difficulty: 3
+  tags:
+  - concept
+- id: '4.9'
+  question: Why should API path strings be defined as constants rather than hardcoded
+    in handlers?
+  options:
+    d: URL changes require updating one file instead of every handler
+    a: Constants are faster at runtime
+    b: MSW requires constants for type safety
+    c: Hardcoded strings cause test flakiness
+  answer: d
+  explanation: When the API contract changes (e.g., version bump), centralizing URL
+    constants means one edit updates all handlers. This is a maintenance concern,
+    not a runtime concern.
+  difficulty: 1
+  tags:
+  - concept
+- id: '4.10'
+  question: 'You write a MSW handler returning `{ id: 1, name: ''John'' }`. The component
+    expects `{ id: 1, fullName: ''John'' }`. The test renders the component and asserts
+    existence of ''John''. What happens?'
+  options:
+    b: Test passes — MSW response has 'John' as name, component looks for fullName
+      — mismatch but test passes because text 'John' exists
+    a: Test fails — component cannot find the expected property
+    c: MSW throws an error — handler response does not match component expectation
+    d: Component renders nothing — data type mismatch
+  answer: b
+  explanation: The test passes because 'John' is in the rendered output (as `name`),
+    but the component is looking for `fullName` which does not exist. The test passes
+    for the wrong reason. This is why tests should check specific roles and labels,
+    not just text existence.
+  difficulty: 3
+  tags:
+  - scenario
+

@@ -1,0 +1,120 @@
+- id: '16.1'
+  question: In the compliance rule engine, what type of block do Priority 1 (highest priority) rules produce?
+  options:
+    a: Informational notice, does not block the order
+    b: Soft block, can be manually overridden
+    c: Hard block, not overrideable
+    d: Logged to audit trail only, no order flow impact
+  answer: c
+  explanation: Priority 1 rules (restricted list match, insider trading detection, KYC/AML incomplete) are hard blocks — the order is absolutely rejected, not overrideable. This satisfies mandatory regulatory requirements.
+  difficulty: 1
+  tags:
+  - concept
+- id: '16.2'
+  question: What is the MiFID II requirement for commission structure?
+  options:
+    a: Encourages bundled commission to simplify fee calculation
+    b: Requires unbundled commission — research fees separated from execution fees
+    c: Does not address commission structure, only trade reporting
+    d: Requires zero commission on all trades
+  answer: b
+  explanation: MiFID II requires asset managers to unbundle research fees from execution fees. Research must come from a separate research budget and be reported quarterly to clients. The OMS must check the client's research budget balance at pre-trade.
+  difficulty: 2
+  tags:
+  - concept
+- id: '16.3'
+  question: What is the pre-trade gate sequence?
+  options:
+    a: Route → Validate → Approve
+    b: Validate → Approve → Route
+    c: Approve → Route → Validate
+    d: Route → Approve → Validate
+  answer: b
+  explanation: 'Correct sequence: Validate (format, symbol lookup, mandatory fields) → Approve (compliance, credit, tax all pass, plus possible DUCO) → Route (send FIX 35=D to EMS). Each step must pass before the next.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '16.4'
+  question: Why is the compliance rule engine designed as event-driven rather than batch processing?
+  options:
+    a: Batch processing is faster for pre-trade checks
+    b: Event-driven requires less infrastructure
+    c: Regulators prohibit batch processing
+    d: Pre-trade checks must complete before order dispatch with sub-100ms latency, and one rule's output often feeds another rule's input
+  answer: d
+  explanation: Pre-trade checks must finish before the OMS dispatches the order, so each order triggers rule evaluation independently at event time. Batch processing cannot meet the latency budget and handles rule dependencies poorly.
+  difficulty: 2
+  tags:
+  - concept
+- id: '16.5'
+  question: In the rule engine, what is the difference between a hard block and a soft block?
+  options:
+    a: Hard block absolutely rejects the order (not overrideable); soft block lets the order proceed with manual approval or tagging
+    b: Hard block applies only to retail clients; soft block to institutional
+    c: Hard block is recorded in the audit trail; soft block is not
+    d: Hard block requires DUCO; soft block is automatic
+  answer: a
+  explanation: Hard block means the order is absolutely rejected, not overrideable. Soft block means the order can proceed but needs manual approval or tagging (e.g., watch list match, risk-based suitability fail, warning-only concentration).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '16.6'
+  question: When a non-US client opens an account with a brokerage to trade US equities, which tax form does the OMS need to validate?
+  options:
+    a: W-9
+    b: Form 1040
+    c: W-8 series (e.g., W-8BEN, W-8BEN-E)
+    d: K-1 form
+  answer: c
+  explanation: Non-US clients must provide W-8 series forms (W-8BEN for individuals, W-8BEN-E for entities). W-9 is for US clients. With no valid form on file, the OMS must assume 30% withholding.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '16.7'
+  question: During pre-trade, the OMS finds the client's W-8BEN form has expired. The client is a long-term partner with no prior tax issues. What should the OMS do?
+  options:
+    a: Hard block the order, require the client to update the form
+    b: Ignore the expiry, process the order
+    c: Soft block, send a warning but let the order through
+    d: Auto-extend the form validity
+  answer: a
+  explanation: An expired W-8 form means the broker cannot confirm the client's tax status. Proceeding risks incorrect withholding and regulatory exposure. Standard procedure is a hard block and notification to the client to update the form.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '16.8'
+  question: Which components make up the pre-trade fee estimate?
+  options:
+    a: Commission + slippage + market impact
+    b: Exchange fee + clearing fee + venue rebates only
+    c: Research fee + tax + interest
+    d: Commission + exchange fee + clearing fee + regulatory fee
+  answer: d
+  explanation: 'Fee Estimate = Commission + Exchange Fee + Clearing Fee + Regulatory Fee. Pre-trade fee calculation is a compliance requirement: MiFID II requires pre-trade cost disclosure.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '16.9'
+  question: An institutional order of 100,000 shares is charged an unbundled rate of $0.003/share. What is the estimated commission?
+  options:
+    a: $30
+    b: $300
+    c: $3,000
+    d: $100,000
+  answer: b
+  explanation: Commission = 100,000 × $0.003 = $300. Exchange and clearing fees are then added to reach the total fee estimate.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '16.10'
+  question: 'A pre-trade gate runs suitability (500ms), credit (300ms), and tax (200ms) checks serially — 1 second total. Traders complain it is too slow. How can latency be reduced?'
+  options:
+    a: Remove the tax check entirely
+    b: Move all checks post-trade
+    c: Run the three engines in parallel — total time becomes max(500, 300, 200) = 500ms — and add a fast path for simple orders
+    d: Use a slower but more accurate manual review process
+  answer: c
+  explanation: Running the three engines in parallel cuts total latency from the sum to the max (500ms). Additional options — a fast path that skips some checks for small, non-complex, cash-account orders, and caching frequent check results.
+  difficulty: 3
+  tags:
+  - application

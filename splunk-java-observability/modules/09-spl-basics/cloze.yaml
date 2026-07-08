@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "In Splunk, each event is a {row} and each extracted field is a {column}."
+  answer: "row"
+  explanation: "Events form the rows and fields form the columns of the results table you search over."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.2"
+  question: "The first command of any SPL search is implicitly {search}; later commands are chained with the {pipe} character (`|`)."
+  answer: "search"
+  explanation: "The search command runs first even when not typed; `|` feeds the result set to the next command."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Field names in SPL are {case-insensitive}, but field values are {case-sensitive} by default."
+  answer: "case-insensitive"
+  explanation: "LEVEL=ERROR and level=ERROR are equivalent, but level=error does not match a stored value of ERROR."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Wrapping words in double quotes, such as \"Connection refused\", matches an exact {phrase} in the raw event text."
+  answer: "phrase"
+  explanation: "Quoted terms search _raw for the exact phrase rather than treating each word separately."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "The single biggest performance lever in any Splunk search is the {time range}."
+  answer: "time range"
+  explanation: "Constraining earliest/latest lets Splunk skip old buckets entirely instead of scanning all time."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Splunk's {TSIDX} pre-filter checks index, sourcetype, and host plus the time range against a per-bucket {bloom filter} before decompressing rawdata."
+  answer: "TSIDX"
+  explanation: "The time-series index pre-filter skips buckets whose bloom filter shows no match for the constrained metadata."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "A {leading} wildcard (such as *ERROR*) defeats index and TSIDX lookup on that field and forces a raw scan."
+  answer: "leading"
+  explanation: "Prefix wildcards like checkout* can use the index; *ERROR* forces a scan because the index cannot match a term ending in ERROR."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "In SPL, {AND} binds tighter than OR, so index=a OR index=b level=ERROR parses as (index=a) OR (index=b AND level=ERROR)."
+  answer: "AND"
+  explanation: "Because AND binds tighter, the unparenthesized search does not mean what you intend — add parentheses around the OR group."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.9"
+  question: "The internal field {_raw} holds the full unparsed event text used for keyword and phrase matching."
+  answer: "_raw"
+  explanation: "_raw is the original event text; keyword and phrase searches match against it. Its companion _time stores the event timestamp."
+  difficulty: 3
+  tags: [terminology]
+
+- id: "c.10"
+  question: "Inside a scheduled search, always set {earliest} in the SPL itself so the run does not silently scan all time."
+  answer: "earliest"
+  explanation: "Scheduled alerts may not inherit the UI time picker, so embedding the time window in the SPL guarantees a bounded search."
+  difficulty: 3
+  tags: [application]

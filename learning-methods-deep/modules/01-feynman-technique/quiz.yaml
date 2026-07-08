@@ -1,0 +1,117 @@
+- id: '1.1'
+  question: What is the primary purpose of the Feynman Technique?
+  options:
+    a: To detect gaps in your own understanding by explaining simply
+    b: To improve public speaking and presentation skills
+    c: To teach others more effectively
+    d: To memorize facts faster
+  answer: a
+  explanation: The core purpose is gap detection for yourself. Simplification and
+    teaching are the *method*, not the goal.
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.2'
+  question: Which of the following is a reliable signal of a gap in understanding
+    during a Feynman explanation?
+  options:
+    a: The explanation is shorter than expected
+    b: The explanation uses jargon without defining it in plain language
+    c: The explanation includes multiple examples
+    d: The explanation takes longer than 5 minutes
+  answer: b
+  explanation: Jargon bridges — using technical terms as shortcuts — indicate the
+    speaker is relying on assumed knowledge rather than explaining from first principles.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.3'
+  question: Why does explaining to an imagined child work better for gap detection
+    than explaining to a peer?
+  options:
+    a: Children are more forgiving listeners
+    b: Children ask better questions
+    c: Peers share your jargon and assumptions, filling gaps unconsciously
+    d: Peer review is not a valid learning technique
+  answer: c
+  explanation: Peers unconsciously fill gaps because they share your vocabulary and
+    background assumptions. A child has none of that — any vagueness becomes immediately
+    visible.
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.4'
+  question: A learner explains DNS as 'translating domain names to IP addresses.'
+    When asked 'how does it find the IP?' they say 'it just looks it up.' Which gap
+    signal is present?
+  options:
+    a: Jargon bridge
+    b: No analogy
+    c: Edge-case blindness
+    d: Black box — the mechanism is skipped
+  answer: d
+  explanation: '''It just looks it up'' skips the entire resolution process (recursion,
+    caching, TTL, authoritative servers). The learner treats DNS as a black box.'
+  difficulty: 2
+  tags:
+  - scenario
+- id: '1.5'
+  question: In an AI-driven Feynman interaction, why is free-form explanation preferred
+    over multiple-choice questions for gap detection?
+  options:
+    a: Gaps often appear in the structure of reasoning, not in isolated facts — free-form
+      exposes reasoning structure
+    b: Free-form is faster to grade
+    c: Multiple-choice questions are harder to write
+    d: Free-form explanations are more fun for learners
+  answer: a
+  explanation: MCQs test isolated facts. Feynman gaps are structural — missing causal
+    links between things the learner DOES know. Only free-form explanation reveals
+    reasoning structure.
+  difficulty: 2
+  tags:
+  - application
+- id: '1.6'
+  question: A learner requires 6 refine cycles to produce a solid explanation of a
+    simple concept. What does this suggest?
+  options:
+    a: The concept is inherently difficult
+    b: The learner has weak initial understanding — cycle count is a proxy for gap
+      depth
+    c: The AI probes are too aggressive
+    d: The learner is not trying hard enough
+  answer: b
+  explanation: High cycle count for a simple concept indicates many gaps were present.
+    Cycle count is a measurable proxy for understanding depth — useful for tracking
+    progress.
+  difficulty: 3
+  tags:
+  - application
+- id: '1.7'
+  question: Which of the following is NOT one of the four steps in the Feynman Technique?
+  options:
+    a: Explain the concept in plain language
+    b: Identify gaps where understanding breaks down
+    c: Test others to see if they understand
+    d: Return to source material to refine understanding
+  answer: c
+  explanation: 'Testing others is not a Feynman step. The loop is: Choose → Explain
+    → Detect gap → Refine. Teaching is a possible side effect but not the purpose.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.8'
+  question: A learning tool developer wants to implement Feynman probing. Which AI
+    capability is most important?
+  options:
+    a: Factual accuracy checking against a knowledge base
+    b: Generating multiple-choice questions from the explanation
+    c: Summarizing the learner's explanation for review
+    d: Pattern matching for gap signals (jargon, black boxes, missing causality)
+  answer: d
+  explanation: Gap detection is about structural patterns in reasoning, not factual
+    correctness. Pattern matching for gap signals (jargon, black boxes, missing causality)
+    is the core capability needed.
+  difficulty: 3
+  tags:
+  - application

@@ -1,0 +1,115 @@
+- id: '2.1'
+  question: 點解文字要轉換成數字先入得落 LLM？
+  options:
+    a: 電腦同 transformer 只做數學運算
+    b: 文字太長，要壓縮
+    c: 數字比較靚
+    d: 文字會有 security 問題
+  answer: a
+  explanation: Transformer 入面全部係矩陣乘法、加法、softmax 等數學運算。電腦唔識文字，一定要轉成數字先可以處理。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.2'
+  question: Subword tokenization 嘅主要優勢係？
+  options:
+    a: 最快嘅 tokenization 方法
+    b: 處理 OOV（未見過嘅字）問題
+    c: vocab size 最細
+    d: 唔需要 training
+  answer: b
+  explanation: Subword 將罕見字拆成常見碎片，確保任何輸入都可以被 tokenize — 唔會有 out-of-vocabulary 問題。同時保持合理嘅
+    sequence length。
+  difficulty: 1
+  tags:
+  - concept
+- id: '2.3'
+  question: Embedding vector 嘅用途係？
+  options:
+    a: 壓縮文字
+    b: 加快運算速度
+    c: 將 token 嘅語義變成幾何位置
+    d: 加密文字
+  answer: c
+  explanation: Embedding 將每個 token 映射到一個 vector space，令語義相近嘅 token 有相近嘅 vectors。語義關係變成幾何關係。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.4'
+  question: LLM 嘅 embedding matrix 係點樣得返嚟㗎？
+  options:
+    a: 人 hand-craft 嘅
+    b: word2vec pre-train 嘅
+    c: random，唔使 train
+    d: 模型 training 嗰陣 end-to-end 學返嚟
+  answer: d
+  explanation: Embedding matrix 係模型嘅其中一層，一開始 random，然後同其他 layers 一齊用 gradient descent
+    更新。唔係 external pre-training。
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.5'
+  question: Character-level tokenization（逐個字做 token）嘅缺點係？
+  options:
+    a: Sequence 好長，失去 morphology 資訊
+    b: Vocab size 太大
+    c: 唔支援中文
+    d: OOV 問題嚴重
+  answer: a
+  explanation: Character-level 雖然 vocab 細，但 sequence 好長 — 每個字一個 token。而且 lose 咗 morphology
+    資訊（run/runs/running 完全冇 shared token），效率同學習都受影響。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '2.6'
+  question: 「國王」-「男人」+「女人」≈「皇后」呢個現象說明咗？
+  options:
+    a: 模型真係理解 royalty
+    b: Vector space 嘅幾何關係反映語義關係
+    c: 呢個係 random chance
+    d: Embedding 係 deterministic
+  answer: b
+  explanation: 呢個 analogy 唔係 understanding — 只係 vector space 入面嘅幾何關係。模型發現「國王」同「皇后」嘅
+    pattern 相似（royalty），「男人」同「女人」係 gender diff — 唔需要 understanding 都可以 capture 到呢個
+    pattern。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '2.7'
+  question: Word-level tokenization 嘅主要問題係？
+  options:
+    a: Sequence 太長
+    b: 太慢
+    c: Vocab 太大，永遠有 OOV
+    d: 唔支援數字
+  answer: c
+  explanation: Word-level vocab 可以有 500k+ tokens。即使咁大，仍然有未見過嘅詞（專有名詞、新詞）。而且 embedding
+    matrix 太大，記憶體唔夠。
+  difficulty: 1
+  tags:
+  - concept
+- id: '2.8'
+  question: 以下邊個唔係 tokenizer 選擇嘅實際影響？
+  options:
+    a: 唔同語言嘅 token 效率唔同
+    b: 影響模型對拼寫嘅敏感度
+    c: 影響模型嘅運算速度
+    d: 影響 output 嘅字型
+  answer: d
+  explanation: Tokenizer 唔會影響 output 嘅字型。佢影響嘅係語言公平性、拼寫敏感度、OOV 處理、同 security。
+  difficulty: 2
+  tags:
+  - scenario
+- id: '2.9'
+  question: Embedding matrix 嘅 shape 係？
+  options:
+    a: '[vocab_size, d_model]'
+    b: '[d_model, vocab_size]'
+    c: '[vocab_size, vocab_size]'
+    d: '[d_model, d_model]'
+  answer: a
+  explanation: Embedding matrix shape 係 [vocab_size, d_model]。Vocab_size 係 tokenizer
+    嘅詞彙量，d_model 係每個 token vector 嘅維度。
+  difficulty: 2
+  tags:
+  - terminology

@@ -1,0 +1,54 @@
+- id: "c.91"
+  question: "Complete: The {blank} is the single presentational component that owns repeated chrome — header, nav rail, main outlet, and the banner slot."
+  answer: "AppShell"
+  explanation: "AppShell centralizes layout; routed pages supply content only. Adding a nav rail or banner is one shell edit, not an N-page refactor."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.92"
+  question: "Complete: Slot props like headerActions let a page inject its own widgets without owning the {blank} around them."
+  answer: "frame"
+  explanation: "The slot is the injection point: the page supplies content, the shell supplies the frame. The page stays ignorant of header and rail layout, keeping the composition contract from module 1."
+  difficulty: 1
+  tags: [concept]
+- id: "c.93"
+  question: "Complete: {blank} is the shared container that enforces max-width, gutters, and scroll behavior so the spacing rhythm lives in one definition."
+  answer: "PageContainer"
+  explanation: "PageContainer owns the page frame's width and rhythm, so no page re-decides gutters. Changing the token (--content-max) changes every page at once."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.94"
+  question: "Complete: A page with no rows renders the shared {blank} component instead of inventing a per-page no-data message."
+  answer: "EmptyState"
+  explanation: "EmptyState is a presentational unit reused across pages (applications list, catalog, transcripts). One visual definition, consistent no-data feel, optional action slot."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.95"
+  question: "Complete: The NavRail collapse toggle announces its state with {blank}, so assistive technology knows whether the rail is open."
+  answer: "aria-expanded"
+  explanation: "aria-expanded is the disclosure state attribute. Without it, a 'Toggle nav' button gives screen-reader users no way to know whether the rail is collapsed."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.96"
+  question: "Complete: The module 6 impersonation banner lives in the shell's {blank} slot, so pages neither reserve space nor read session state."
+  answer: "banner"
+  explanation: "Shell-owned banner slot: the shell reads the impersonation flag and renders the notice once, and every page gets it without knowing it exists. Adding the banner becomes a shell-only change."
+  difficulty: 2
+  tags: [concept]
+- id: "c.97"
+  question: "Complete: Cross-screen shell flags like the impersonation banner belong in a {blank} store, while the rail-collapsed flag stays in local useState."
+  answer: "zustand"
+  explanation: "The distinction is reach (module 2): written at login, read on every screen — store; private to one shell component — local state. Never a server cache for UI layout flags."
+  difficulty: 2
+  tags: [concept]
+- id: "c.98"
+  question: "Complete: A data container that wraps itself in page chrome suffers {blank}: layout is baked into the unit, so it cannot size to a different context."
+  answer: "container acquisition"
+  explanation: "Container acquisition is the anti-pattern in Spot the Mistake: ApplicationsTable carries its own .page wrapper and max-width, so a second narrower use fights its own wrapper. Keep layout in shell and PageContainer."
+  difficulty: 3
+  tags: [concept]
+- id: "c.99"
+  question: "Complete: The multi-shell variant keeps PageContainer, EmptyState, and data containers identical while only the {blank} variants the scope of chrome."
+  answer: "shell"
+  explanation: "Reviewer shell and student shell differ in chrome (wide content, impersonation bar always on) but reuse the same containers. Data containers must never care which shell hosts them."
+  difficulty: 3
+  tags: [process]

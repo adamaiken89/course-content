@@ -1,0 +1,110 @@
+- id: "15.1"
+  question: "Which statistic does a column with an evenly-spread interval most rely on?"
+  options:
+    a: "the MCV list"
+    b: "histogram bounds"
+    c: "null_frac"
+    d: "avg_width"
+  answer: b
+  explanation: "Uniform data is well represented by histogram bucket bounds; MCV matters only for skewed common values."
+  difficulty: 1
+  tags: [concept]
+- id: "15.2"
+  question: "What does CREATE STATISTICS (dependencies) ON a, b fix?"
+  options:
+    a: "the correlation of a with the physical table order"
+    b: "gives avg_width budget to the planner"
+    c: "overestimated row counts when columns are correlated"
+    d: "replaces vacuum statistics"
+  answer: c
+  explanation: "Functional dependencies stop the planner multiplying per-column selectivities that overlap in reality."
+  difficulty: 2
+  tags: [concept]
+- id: "15.3"
+  question: "Autovacuum trigger defaults: how many dead tuples required before action on a 10M-row table?"
+  options:
+    a: "2M (50 + 0.2 × reltuples)"
+    b: "5000"
+    c: "200"
+    d: "just one page"
+  answer: a
+  explanation: "Threshold = 50 + 0.2 × 10M = 2,000,050 — slow for hot tables without lowering scale_factor."
+  difficulty: 2
+  tags: [scenario]
+- id: "15.4"
+  question: "What is correlation in pg_stats?"
+  options:
+    a: "how NULL values cluster together"
+    b: "statistical dependence between two different columns"
+    c: "fraction of rows in the most common value bin"
+    d: "order of column values vs physical heap order"
+  answer: d
+  explanation: "|corr| near 1 means the column is sorted on disk, which lowers estimated index page-fetch cost."
+  difficulty: 2
+  tags: [terminology]
+- id: "15.5"
+  question: "UPDATE without touching indexed columns and with page room triggers what kind of tuple?"
+  options:
+    a: "plain (non-HOT) update that rewrites the index"
+    b: "Heap-Only Tuple (HOT) that skips new index entries"
+    c: "a tuple that needs VACUUM FULL immediately"
+    d: "an aborted insertion"
+  answer: b
+  explanation: "HOT chains the new version in the same page, letting vacuum-by-page reclaim without index maintenance."
+  difficulty: 1
+  tags: [terminology]
+- id: "15.6"
+  question: "ANALYZE default sampling sample size and bucket count?"
+  options:
+    a: "30000 rows, 100 histogram buckets"
+    b: "100000 rows, 1000 buckets"
+    c: "1000 rows, 100 buckets"
+    d: "1% of table, 20 buckets"
+  answer: a
+  explanation: "default_statistics_target 100 gives 100 buckets; sample default 30k rows (adaptive)."
+  difficulty: 2
+  tags: [terminology]
+- id: "15.7"
+  question: "A correct index exists yet the planner chooses seq scan due to unrelated-correlated predicates. Best fix?"
+  options:
+    a: "force enable_indexscan = on"
+    b: "raise work_mem"
+    c: "create extended statistics and re-run ANALYZE"
+    d: "drop the index and re-create it with INCLUDE"
+  answer: c
+  explanation: "Cardinality is wrong from per-column independence, not from the index; extended stats fix the estimates."
+  difficulty: 3
+  tags: [scenario]
+- id: "15.8"
+  question: "Why does VACUUM not always shrink index file size back to near-clean?"
+  options:
+    a: "vacuum cannot release dead tuples from B-tree leaves"
+    b: "page reuse happens mostly; file shrinking needs VACUUM FULL/REPACK-style rewrite"
+    c: "WAL keeps the pre-vacuum version"
+    d: "autovacuum is paused on that table"
+  answer: b
+  explanation: "Routine vacuum recycles pages inside the file; shrinking the physical file requires a full rewrite."
+  difficulty: 2
+  tags: [concept]
+- id: "15.9"
+  question: "What does pg_stat_user_tables n_dead_tup indicate?"
+  options:
+    a: "total row count"
+    b: "rows waiting to be read by queries"
+    c: "aborted transaction count"
+    d: "old row versions awaiting vacuum save"
+  answer: d
+  explanation: "n_dead_tup counts versions no longer visible to any snapshot, awaiting VACUUM reclamation."
+  difficulty: 2
+  tags: [terminology]
+- id: "15.10"
+  question: "PG19 autovacuum change previewed in this course?"
+  options:
+    a: "autovacuum _has_ parallel workers processing the same table"
+    b: "autovacuum runs only at night"
+    c: "dead tuples no longer appear in statistics"
+    d: "vacuum became fully incremental across all versions"
+  answer: a
+  explanation: "PG19 adds parallel autovacuum to spread one table's vacuum across multiple workers."
+  difficulty: 3
+  tags: [comparison]

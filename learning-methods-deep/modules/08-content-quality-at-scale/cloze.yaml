@@ -1,0 +1,73 @@
+- id: c.1
+  question: 'Complete: A high-quality distractor tests a specific {misconception}.
+    A low-quality distractor is easy to {eliminate}.'
+  answer: misconception, eliminate
+  explanation: Common misconception distractors test real understanding gaps. Random
+    facts and obviously wrong options are easy to eliminate — they don't discriminate
+    understanding.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.2
+  question: 'Complete: AI output distribution mirrors {training data frequency}. Without
+    explicit enforcement, subtopics cluster.'
+  answer: training data frequency
+  explanation: AI generates questions weighted by how often subtopics appear in training
+    data. Rare but important subtopics get undercovered without explicit prompting.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.3
+  question: 'Complete: Difficulty {calibration} requires post-generation validation.
+    AI labeling alone is {unreliable}.'
+  answer: calibration, unreliable
+  explanation: AI may output a labeled-difficulty-3 question that is actually difficulty
+    1 (label bias). Validation must check actual difficulty against target.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.4
+  question: 'Complete: Batch generation is cheaper per {token} than individual API
+    calls for {n} questions.'
+  answer: token, n
+  explanation: Sending multiple generation requests in one API call reduces overhead
+    and per-token cost. Combine with caching for further savings.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: 'Complete: Content {diversity} at scale requires explicit topic distribution
+    enforcement and {scenario} rotation.'
+  answer: diversity, scenario
+  explanation: Without diversity enforcement, generated questions cluster around well-known
+    subtopics. Scenario banks with rotation prevent repetition.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: 'Complete: Distractor quality ranks: common {misconception} > partial truth
+    > related concept > {random} fact.'
+  answer: misconception, random
+  explanation: Common misconceptions test real gaps. Random facts are easy to eliminate
+    and don't discriminate understanding.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: 'Complete: A difficulty-3 question requires multi-step {reasoning} or transfer
+    to a {novel} scenario.'
+  answer: reasoning, novel
+  explanation: Difficulty 3 must not be answerable by memorization alone. If it can,
+    the label is unreliable and validation should reject it.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: 'Complete: {Caching} generated content by topic and difficulty avoids repeated
+    regeneration costs.'
+  answer: Caching
+  explanation: Cache keyed by topic:difficulty reuses previously generated content.
+    Fallback to static banks for low-value questions avoids generation entirely.
+  difficulty: 1
+  tags:
+  - terminology

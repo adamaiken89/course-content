@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "The N+1 problem arises because a child-field resolver runs once per parent {object}, issuing one query for each instance."
+  answer: object
+  explanation: "GraphQL executes fields per object, so a nested list of N rows produces N child queries plus the one parent query."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "A DataLoader collapses many queued loads into a single call to its batch function, a behavior known as {batching}."
+  answer: batching
+  explanation: "Batching turns N round trips into one round trip by collecting keys during the pass and flushing through one batch."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "When two resolvers in one pass request the same key, the DataLoader fetches it once thanks to key {deduplication}."
+  answer: deduplication
+  explanation: "The first-level cache inside the loader serves the same value to every resolver that asked for the key, so the batch sees it once."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.4"
+  question: "The {BatchLoader} variant returns a List that the framework zips positionally onto the input keys, so result order must match key order."
+  answer: BatchLoader
+  explanation: "Positional zipping misaligns values when rows come back reordered or missing, which is why order-sensitive loaders need the guarantee."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "The {MappedBatchLoader} variant returns a Map of keys to values, so reordered or absent results are handled safely by direct key lookup."
+  answer: MappedBatchLoader
+  explanation: "Dictionary-style loading attaches each value to its key, making it the safe default when ordering or presence cannot be guaranteed."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "A DGS field resolver obtains its request-scoped loader from the {DataFetchingEnvironment} and returns the future instead of blocking."
+  answer: DataFetchingEnvironment
+  explanation: "DGS exposes per-request loaders on the environment and lets the engine drain them at the pass boundary."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "A DataLoader used as a singleton across requests leaks cached results, so it must be scoped to the {request}."
+  answer: request
+  explanation: "Request scope guarantees a fresh cache per client and isolates data, while a singleton serves stale results across requests."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "Boot 4 enables virtual threads so blocking resolver IO no longer pins a platform thread, but the query count and summed {latency} remain, so DataLoader is still needed."
+  answer: latency
+  explanation: "Virtual threads keep the pool from starving without reducing the number of calls, so N round trips of latency persist without batching."
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.9"
+  question: "The batch size set on the loader is a cap on keys per {flush}, splitting very large passes into several bounded batches."
+  answer: flush
+  explanation: "The cap guards against oversized IN clauses rather than tuning speed, splitting a 45-key pass into several bounded batches."
+  difficulty: 3
+  tags: [terminology]
+
+- id: "c.10"
+  question: "DataLoader and virtual threads are complementary because one reduces the number of {queries} while the other makes each blocking wait cheap."
+  answer: queries
+  explanation: "Batching cuts database round trips themselves, while virtual threads absorb the blocking cost of whatever waits remain."
+  difficulty: 2
+  tags: [concept]

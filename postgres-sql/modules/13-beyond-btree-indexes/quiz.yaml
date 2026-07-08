@@ -1,0 +1,110 @@
+- id: "13.1"
+  question: "Structure of a GIN index: maps which side to which?"
+  options:
+    a: "element to the rows containing it"
+    b: "row to its elements"
+    c: "range to block ranges"
+    d: "hash to bucket chain"
+  answer: a
+  explanation: "GIN inverts: stores per-element posting lists pointing at rows, so 'is element present' becomes an index probe."
+  difficulty: 1
+  tags: [concept]
+- id: "13.2"
+  question: "Which SQL operator works only with jsonb_ops, not jsonb_path_ops?"
+  options:
+    a: "@>"
+    b: "#>"
+    c: "? (top-level key existence)"
+    d: "->>"
+  answer: c
+  explanation: "jsonb_ops indexes individual keys so key-existence can be probed; path_ops stores whole paths only, so lone-key membership is impossible."
+  difficulty: 2
+  tags: [comparison]
+- id: "13.3"
+  question: "For full-text search WHERE body @@ to_tsquery('cargo'), which index serves it?"
+  options:
+    a: "B-tree on body"
+    b: "GIN on to_tsvector('english', body)"
+    c: "BRIN on body"
+    d: "hash on body"
+  answer: b
+  explanation: "FTS matches lexemes inside the text — GIN over the range of each lexeme, per tsvector, is the designed index."
+  difficulty: 2
+  tags: [concept]
+- id: "13.4"
+  question: "Users search names via ILIKE '%wagon%'. What extension+index makes this fast?"
+  options:
+    a: "pg_trgm with a GIN index using gin_trgm_ops"
+    b: "hstore with GiST"
+    c: "pgcrypto with b-tree"
+    d: "btree_gin with gin_trgm_ops"
+  answer: a
+  explanation: "pg_trgm indexes the trigrams of a string so leading-wildcard LIKE becomes a trigram look-up."
+  difficulty: 2
+  tags: [terminology]
+- id: "13.5"
+  question: "Meeting room availability uses int4range conflict check. Which index enforces no double-booking?"
+  options:
+    a: "EXCLUDE USING gist (room WITH =, during WITH &&)"
+    b: "UNIQUE USING btree (room, during)"
+    c: "GIN on during"
+    d: "BRIN on room"
+  answer: a
+  explanation: "GiST supports range-overlap (&&) natively; an EXCLUDE constraint can then reject overlapping bookings atomically."
+  difficulty: 2
+  tags: [scenario]
+- id: "13.6"
+  question: "ORDER BY location <-> 'ORIGIN' LIMIT 10 needs 'closest first' without a full sort. Which index?"
+  options:
+    a: "GIN on location"
+    b: "hash on location"
+    c: "GiST on location"
+    d: "BRIN on location"
+  answer: c
+  explanation: "GiST returns rows in index order via the distance operator, driving order-by LIMIT k without a sort node."
+  difficulty: 3
+  tags: [concept]
+- id: "13.7"
+  question: "Append-only event_log, 800M rows, queried by created_at range. Best index pick?"
+  options:
+    a: "full GIN on the whole row"
+    b: "btree on a random id column"
+    c: "trgm index on message text"
+    d: "BRIN on created_at"
+  answer: d
+  explanation: "BRIN summarises each 128-page block range with min/max; append-only data stays sorted so ranges are prunable cheaply."
+  difficulty: 3
+  tags: [scenario]
+- id: "13.8"
+  question: "Since which version are hash indexes crash-safe (WAL-logged)?"
+  options:
+    a: "9.5"
+    b: "10"
+    c: "13"
+    d: "15"
+  answer: b
+  explanation: "PostgreSQL 10 made hash indexes WAL-logged and crash-safe; before that they were useful only as a niche."
+  difficulty: 2
+  tags: [concept]
+- id: "13.9"
+  question: "Which workload should NOT choose hash index?"
+  options:
+    a: "equality-only lookups on a static code table"
+    b: "primary key lookups, id = ?"
+    c: "range query AND price BETWEEN 10 AND 20"
+    d: "compile-time-fixed equality on a small warm table"
+  answer: c
+  explanation: "Hash supports only equality ( = ). Range and ordering each need b-tree/GiST/BRIN."
+  difficulty: 1
+  tags: [comparison]
+- id: "13.10"
+  question: "jsonb column explores via WHERE body @> '{\"cat\": true}'::jsonb. What does jsonb_path_ops gain over jsonb_ops?"
+  options:
+    a: "smaller index but loses key-existence (?) queries"
+    b: "supports more operators"
+    c: "queries match keys only"
+    d: "indexes both JSONB and relational columns"
+  answer: a
+  explanation: "path_ops stores full paths only — smaller and faster for @>/@@, but ?-style key-existence checks can no longer be served."
+  difficulty: 3
+  tags: [comparison]

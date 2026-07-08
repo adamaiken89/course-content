@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Splunk stores machine data as searchable {events} inside {indexes}."
+  answer: "events, indexes"
+  explanation: "Events are the unit of search; indexes are the storage containers holding them."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "The {_raw} field holds the original unmodified event text, while {_time} holds the event's timestamp."
+  answer: "_raw"
+  explanation: "_raw is the untouched original; _time is the parsed event time."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "In SPL, the {search} command is implicit as the first command of any pipeline."
+  answer: "search"
+  explanation: "The first command is always search, even when you don't type it."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.4"
+  question: "The {indexer} parses and stores data, while the {search head} runs queries and aggregates results."
+  answer: "indexer, search head"
+  explanation: "Indexers own storage and parsing; search heads fan out queries and aggregate."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "A {sourcetype} is a named classification of a data format that tells Splunk how to {parse} it."
+  answer: "sourcetype, parse"
+  explanation: "Sourcetype drives parsing rules: timestamp format, line breaking, field extraction."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "By default, adjacent search terms like `index=checkout level=ERROR` are joined by an implicit {AND}."
+  answer: "AND"
+  explanation: "Multiple terms mean all must match. Use OR explicitly, with parentheses for grouping."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.7"
+  question: "Splunk Enterprise is licensed by indexed {volume} per day, usually measured in {GB}."
+  answer: "volume, GB"
+  explanation: "License tracks indexed GB/day, so logging design directly affects cost."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "A 15-line Java stacktrace becomes a single {event} when multi-line {breaking} is configured for its sourcetype."
+  answer: "event, breaking"
+  explanation: "Line breaking config decides event boundaries; stacktraces should stay whole."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.9"
+  question: "Boolean precedence: {AND} binds tighter than {OR}; use parentheses to force grouping."
+  answer: "AND, OR"
+  explanation: "This precedence is why `index=a OR level=ERROR` without parens is often a mistake."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.10"
+  question: "In SPL, `|` pipes the event table into the next command; each event is a {row} and each field is a {column}."
+  answer: "row, column"
+  explanation: "The pipeline is a table transform: rows are events, columns are fields."
+  difficulty: 2
+  tags: [concept]

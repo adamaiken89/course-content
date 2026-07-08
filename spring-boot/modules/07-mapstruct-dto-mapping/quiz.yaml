@@ -1,0 +1,119 @@
+- id: "7.1"
+  question: "When does the MapStruct annotation processor generate the mapper implementation?"
+  options:
+    a: "At runtime on first injection"
+    b: "At compile time from the @Mapper interface"
+    c: "When the JVM starts"
+    d: "On each field access through reflection"
+  answer: b
+  explanation: "Processor reads the mapper interface during compilation and writes a plain Java implementation class before the build finishes"
+  difficulty: 1
+  tags: [concept]
+
+- id: "7.2"
+  question: "What does componentModel = spring do to a generated mapper?"
+  options:
+    a: "Makes it a Spring bean that services can inject"
+    b: "Switches the runtime to Spring reflection"
+    c: "Requires manual registration in XML"
+    d: "Forces the mapper to extend JpaRepository"
+  answer: a
+  explanation: "The generated class gets Spring component annotations, so constructor injection picks it up like any other bean"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "7.3"
+  question: "A record target has no setters. How does MapStruct build it?"
+  options:
+    a: "Reflection mutates private fields"
+    b: "A no-arg constructor is required first"
+    c: "The canonical constructor is called in argument order"
+    d: "It copies the source object by reference"
+  answer: c
+  explanation: "Records expose only the canonical constructor, which MapStruct calls with the mapped values in parameter order"
+  difficulty: 2
+  tags: [concept]
+
+- id: "7.4"
+  question: "Which knob protects an existing target value from being replaced by a null source during an update mapping?"
+  options:
+    a: "nullValueCheckStrategy = ALWAYS"
+    b: "NullValuePropertyMappingStrategy.IGNORE"
+    c: "unmappedTargetPolicy = IGNORE"
+    d: "subclassExhaustiveStrategy"
+  answer: b
+  explanation: "The property strategy governs null source values that would otherwise overwrite a target field under the default SET behavior"
+  difficulty: 3
+  tags: [concept]
+
+- id: "7.5"
+  question: "Customer maps orders and Order maps customer back. What happens when a cyclic graph hits the generated mapper?"
+  options:
+    a: "MapStruct detects the cycle and returns null"
+    b: "It maps one level then stops"
+    c: "The build fails with a cycle warning"
+    d: "It recurses until the stack overflows"
+  answer: d
+  explanation: "Without an ignore on one back-reference the generated code keeps mapping both directions of the cycle until the stack blows"
+  difficulty: 3
+  tags: [scenario]
+
+- id: "7.6"
+  question: "Which policy makes an unmapped target property fail the build?"
+  options:
+    a: "ReportingPolicy.ERROR"
+    b: "ReportingPolicy.IGNORE"
+    c: "NullValuePropertyMappingStrategy.SET"
+    d: "ReportingPolicy.WARN"
+  answer: a
+  explanation: "ERROR upgrades the default WARN report to a build failure so API drift is caught in CI"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "7.7"
+  question: "Why is MapStruct faster per mapping than ModelMapper?"
+  options:
+    a: "It caches reflection lookups in a static map"
+    b: "Generated code assigns fields directly with zero reflection"
+    c: "It skips null checks on every field"
+    d: "It runs on a parallel thread pool"
+  answer: b
+  explanation: "The compile-time implementation is plain assignments and constructors, while ModelMapper pays runtime reflection cost per call site"
+  difficulty: 2
+  tags: [comparison]
+
+- id: "7.8"
+  question: "An Order entity has customer.userName and you need OrderDto.customerName. How does @Mapping express the flatten?"
+  options:
+    a: "target = customerName, source = customer.userName"
+    b: "target = userName, source = customerName"
+    c: "target = customer.userName, source = customerName"
+    d: "No annotation needed, names auto-match"
+  answer: a
+  explanation: "The target leaf takes a dotted source path, so the nested entity property flattens into the top-level DTO field"
+  difficulty: 2
+  tags: [scenario]
+
+- id: "7.9"
+  question: "A DGS fetcher returns a record produced by a MapStruct mapper. What serializes it in DGS 12?"
+  options:
+    a: "The mapper itself"
+    b: "A custom DTO serializer"
+    c: "ModelMapper"
+    d: "The Jackson3DgsJsonMapperAdapter"
+  answer: d
+  explanation: "DGS 12 wires Jackson 3 through the DgsJsonMapper adapter, which turns the record canonical components into the GraphQL JSON response"
+  difficulty: 2
+  tags: [concept]
+
+- id: "7.10"
+  question: "A PATCH mapping uses no null strategy and the client omits shippingAddress. What does the persisted order get by default?"
+  options:
+    a: "The previous shippingAddress stays"
+    b: "A build error"
+    c: "shippingAddress becomes null, overwriting the stored value"
+    d: "A null check skips the property"
+  answer: c
+  explanation: "Default SET writes the null source over the target, so the omitted field is silently nulled unless IGNORE is configured"
+  difficulty: 3
+  tags: [scenario]

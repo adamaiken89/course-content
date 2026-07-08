@@ -1,0 +1,126 @@
+- id: cum.31
+  type: mcq
+  source_modules:
+  - 13
+  - 14
+  question: For a dashboard panel that flips when a token changes via drilldown, which binding pattern is appropriate?
+  options:
+    a: A fixed-time-range table over _internal
+    b: A single-value panel bound to $selected_service$ token
+    c: A saved search without tokens
+    d: A chart with hardcoded sourcetype in the search
+  answer: b
+  difficulty: 1
+  tags:
+  - synthesis
+- id: cum.32
+  type: mcq
+  source_modules:
+  - 14
+  question: Cron '30 * * * *' with earliest=-90m latest=-30m describes which alerting profile?
+  options:
+    a: Real-time alert triggered per event
+    b: Scheduled alert every hour, evaluating a 1h window ending 30m ago
+    c: Scheduled alert every 30 minutes over 90 minutes
+    d: A real-time trigger throttled to 30m
+  answer: b
+  difficulty: 2
+  tags:
+  - synthesis
+  - misconception
+- id: cum.33
+  type: mcq
+  source_modules:
+  - 15
+  question: Which best-practice lever reduces per-GB licensing cost while keeping key telemetry?
+  options:
+    a: Log everything then dedup at search
+    b: Store all fields as indexed metadata
+    c: Index high-volume chatty logs at a lower severity only
+    d: Route all levels to the same index
+  answer: c
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+  - misconception
+- id: cum.34
+  type: mcq
+  source_modules:
+  - 13
+  - 15
+  question: To spot a symptom (login failures) instead of an underlying cause, which single-value panel expression fits?
+  options:
+    a: '| stats count by cause'
+    b: '| timechart count(level=''ERROR'') by endpoint | sum'
+    c: '| stats dc(source) as login_failures'
+    d: '| rex field=_raw ''symptom=(?<symptom>\S+)'''
+  answer: b
+  difficulty: 3
+  tags:
+  - synthesis
+  - cross-module
+- id: cum.35
+  type: cloze
+  source_modules:
+  - 13
+  question: A dashboard layout authored in XML uses {blank} (UI widgets) inside a structured panel definition rather than raw search JSON.
+  answer: dashboard panels
+  explanation: Simple XML dashboards describe panels (chart/table/single-value) declaratively.
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.36
+  type: cloze
+  source_modules:
+  - 14
+  question: The {blank} time gap between the alert search window and now avoids partial-bucket evaluation on scheduled alerts.
+  answer: latest=-30m
+  explanation: latest=-30m leaves a 30-minute buffer for late-arriving events to be indexed.
+  difficulty: 2
+  tags:
+  - synthesis
+  - misconception
+- id: cum.37
+  type: cloze
+  source_modules:
+  - 16
+  question: In the capstone stack, the Spring Boot app ships JSON via HEC; search heads and dashboards consume it, and {blank} guards against overwhelming the HEC endpoint with bursts.
+  answer: batch_size_count/batch_size_bytes/batch_interval
+  explanation: The HEC appender buffers using count/bytes/interval to shape ingestion load.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: cum.38
+  type: tf
+  source_modules:
+  - 15
+  statement: Logging a full HTTP request body that may carry credentials violates the 'never log sensitive data' best practice.
+  answer: true
+  explanation: Credentials/emails must be redacted or omitted from logs entirely.
+  difficulty: 1
+  tags:
+  - recall
+  - misconception
+- id: cum.39
+  type: tf
+  source_modules:
+  - 13
+  statement: Drilldown binds a clicked panel value to a search token that then re-queries the same dashboard's charts.
+  answer: true
+  explanation: Drilldown sets tokens (e.g. $field$) to drive dependent searches.
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.40
+  type: tf
+  source_modules:
+  - 16
+  statement: The capstone stack can rely solely on search-time regex extraction for all fields, so INDEXED_EXTRACTIONS=JSON and indexed metadata are unnecessary.
+  answer: false
+  explanation: Production scale still needs index-time extraction for performance and TSIDX-backed field queries.
+  difficulty: 3
+  tags:
+  - synthesis
+  - misconception

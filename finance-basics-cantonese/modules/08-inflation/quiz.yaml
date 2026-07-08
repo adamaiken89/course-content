@@ -1,0 +1,129 @@
+- id: '8.1'
+  question: 乜嘢係通脹?
+  options:
+    a: 錢嘅購買力上升
+    b: 一般物價持續上升, 令錢購買力下降
+    c: 公司加人工
+    d: 股市上升
+  answer: b
+  explanation: 通脹 = 物價持續上升, 令同樣金額買到嘅嘢越嚟越少。唔係人工加 (嗰個係加薪), 唔係股市升 (嗰個係資產升值)。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.2'
+  question: 香港 CPI 嘅最大比重係乜?
+  options:
+    a: 住屋
+    b: 教育
+    c: 食物
+    d: 交通
+  answer: a
+  explanation: '香港 CPI 一籃子: 住屋 34% (最大)、食物 27%、交通 7%、醫療 7% 等。住屋比重大, 因為香港人 30-40% 收入用喺住屋。'
+  difficulty: 1
+  tags:
+  - terminology
+  - scenario
+- id: '8.3'
+  question: 定存 5%, 通脹 3%, 實質回報約幾多?
+  options:
+    a: 3%
+    b: 1.94%
+    c: 2%
+    d: 5%
+  answer: b
+  explanation: 實質 = (1.05 / 1.03) - 1 = 1.94%。用近似公式 名義-通脹 = 2%, 但 Fisher 精確公式係 1.94%。
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '8.4'
+  question: Rule of 72 用嚟估算乜?
+  options:
+    a: 投資回報倍增
+    b: 貸款審批時間
+    c: 通脹率
+    d: 幾多年後購買力減半
+  answer: d
+  explanation: Rule of 72 = 72 ÷ 通脹率%, 計算幾多年後錢嘅購買力減半。香港 3% 通脹 → 24 年減半。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.5'
+  question: 香港通脹 3%, 24 年後 $100 嘅購買力大約值幾多?
+  options:
+    a: $50
+    b: $25
+    c: $100
+    d: $75
+  answer: a
+  explanation: 'Rule of 72 計: 24 年後購買力減半, $100 變 $50。精確計: 100 / (1.03)²⁴ = $49.2,
+    接近 $50。'
+  difficulty: 2
+  tags:
+  - calculation
+- id: '8.6'
+  question: 邊個唔係通脹嘅成因?
+  options:
+    a: 需求拉動
+    b: 成本推動
+    c: 貨幣供應過多
+    d: 公司派息
+  answer: d
+  explanation: '通脹成因: 需求拉動 (錢追貨)、成本推動 (原料貴)、貨幣供應 (央行印錢)。公司派息係股東回報, 同通脹無關。'
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.7'
+  question: $100000 放床下底 10 年, 通脹 3%, 購買力剩幾多?
+  options:
+    a: $100,000
+    b: $74,000
+    c: $50,000
+    d: $30,000
+  answer: b
+  explanation: 100000 / (1.03)¹⁰ = $74,409。即 10 年後購買力蝕咗 26%。
+  difficulty: 2
+  tags:
+  - calculation
+- id: '8.8'
+  question: 以下邊個最能對沖通脹?
+  options:
+    a: 追蹤指數 ETF (e.g. 盈富 2800.HK)
+    b: 定期定存 3% 通脹 3%
+    c: 現金放床下底
+    d: 銀行活期存款
+  answer: a
+  explanation: 股票/指數 ETF 長期 7-10% 名義回報, 扣 2-3% 通脹, 實質正回報。現金/活期 0-0.5% 唔夠通脹, 實質負。定存打平。
+  difficulty: 2
+  tags:
+  - application
+  - scenario
+- id: '8.9'
+  question: 辛巴威 2008 年通脹 89 sextillion percent, 1 年後 $1 值幾多?
+  options:
+    a: $0.50
+    b: $0.10
+    c: 接近 $0
+    d: 一樣 $1
+  answer: c
+  explanation: '通脹率極高, Rule of 72: 72/(89×10²¹) ≈ 0 秒。$1 下一秒接近 0。法幣完全崩潰。'
+  difficulty: 3
+  tags:
+  - calculation
+  - scenario
+- id: '8.10'
+  question: 你阿媽 1990 年儲 $100 萬, 通脹平均 3%, 而家呢筆錢實質值幾多 (今日錢)?
+  options:
+    a: $100 萬
+    b: $70 萬
+    c: $50 萬
+    d: $30 萬
+  answer: d
+  explanation: '100 萬 ÷ (1.03)³⁵ ≈ $35.5 萬 (1990 到 2025 係 35 年)。最接近嘅選項係 d
+    ($30 萬)。Rule of 72: 72 ÷ 3 = 24 年購買力減半, 35 年已經蝕超過一半。如果只儲 30 年: 100 萬 ÷ (1.03)³⁰
+    ≈ $41 萬。'
+  difficulty: 3
+  tags:
+  - calculation
+  - scenario
+

@@ -1,0 +1,277 @@
+subject: Equity Trading Fundamentals
+language: en
+time_budget_hours: 36
+target_level: intermediate
+domain: equity-trading
+prerequisites: []
+learning_objectives:
+  - Define equity instruments and differentiate stock types
+  - Understand market structure, order types, and trading mechanics
+  - Value equities using multiples and DCF frameworks
+  - Analyze financial statements from a trader's perspective
+  - Apply technical analysis and risk management principles
+  - Navigate IPOs, corporate actions, and regulatory landscape
+  - Build and manage a diversified equity portfolio
+modules:
+  - id: 1
+    name: What Is Equity
+    time_hours: 1.5
+    prerequisites: []
+    topics:
+    - stock-definition
+    - common-vs-preferred
+    - shares-outstanding
+    - authorized-vs-issued
+    - market-cap
+  - id: 2
+    name: Stock Exchanges & Market Structure
+    time_hours: 1.5
+    prerequisites:
+    - 1
+    topics:
+    - exchange-types
+    - listing-tiers
+    - trading-hours
+    - dark-pools
+    - ATS
+  - id: 3
+    name: Order Types & Execution
+    time_hours: 1.5
+    prerequisites:
+    - 2
+    topics:
+    - market-orders
+    - limit-orders
+    - stop-orders
+    - iceberg
+    - spread
+    - order-book
+  - id: 4
+    name: Market Participants
+    time_hours: 1.5
+    prerequisites:
+    - 2
+    topics:
+    - retail
+    - institutional
+    - market-maker
+    - HFT
+    - block-trades
+    - liquidity
+  - id: 5
+    name: Trading Mechanics
+    time_hours: 1.5
+    prerequisites:
+    - 3
+    - 4
+    topics:
+    - settlement
+    - margin-trading
+    - short-selling
+    - circuit-breakers
+    - clearing
+  - id: 6
+    name: Equity Valuation — Multiples
+    time_hours: 1.5
+    prerequisites:
+    - 1
+    topics:
+    - PE-ratio
+    - PB-ratio
+    - EV-EBITDA
+    - PEG
+    - sector-comps
+    - forward-vs-trailing
+  - id: 7
+    name: Equity Valuation — DCF
+    time_hours: 1.5
+    prerequisites:
+    - 6
+    topics:
+    - FCF
+    - terminal-value
+    - WACC
+    - discounting
+    - sensitivity-analysis
+  - id: 8
+    name: Financial Statements for Trading
+    time_hours: 1.5
+    prerequisites:
+    - 6
+    topics:
+    - income-statement
+    - balance-sheet
+    - cash-flow
+    - key-ratios
+    - earnings-surprise
+  - id: 9
+    name: Dividends & Cash Actions
+    time_hours: 1.5
+    prerequisites:
+    - 1
+    topics:
+    - cash-dividends
+    - stock-dividends
+    - ex-date
+    - record-date
+    - dividend-capture
+  - id: 10
+    name: Restructuring Actions
+    time_hours: 1.5
+    prerequisites:
+    - 9
+    topics:
+    - stock-splits
+    - buybacks
+    - spin-offs
+    - rights-issues
+  - id: 11
+    name: TA — Trend & Momentum
+    time_hours: 1.5
+    prerequisites:
+    - 3
+    topics:
+    - trend
+    - support-resistance
+    - volume
+    - moving-averages
+  - id: 12
+    name: TA — Chart Patterns
+    time_hours: 1.5
+    prerequisites:
+    - 11
+    topics:
+    - chart-patterns
+    - candlestick
+    - breakout
+    - breakdown
+  - id: 13
+    name: IPO Process
+    time_hours: 1.5
+    prerequisites:
+    - 1
+    - 2
+    topics:
+    - underwriting
+    - book-building
+    - pricing
+    - greenshoe
+    - lock-ups
+  - id: 14
+    name: Alternative Listings & Secondaries
+    time_hours: 1.5
+    prerequisites:
+    - 13
+    topics:
+    - SPACs
+    - direct-listings
+    - follow-on
+    - ATM
+  - id: 15
+    name: Options Fundamentals
+    time_hours: 1.5
+    prerequisites:
+    - 1
+    - 3
+    topics:
+    - calls
+    - puts
+    - options-strategies
+    - pricing
+  - id: 16
+    name: Futures & Index Derivatives
+    time_hours: 1.5
+    prerequisites:
+    - 15
+    topics:
+    - futures
+    - SSF
+    - index-derivatives
+    - hedging
+    - leverage
+  - id: 17
+    name: Portfolio Theory
+    time_hours: 1.5
+    prerequisites:
+    - 6
+    - 8
+    topics:
+    - diversification
+    - efficient-frontier
+    - beta
+    - alpha
+  - id: 18
+    name: Portfolio Implementation
+    time_hours: 1.5
+    prerequisites:
+    - 17
+    topics:
+    - position-sizing
+    - kelly-criterion
+    - rebalancing
+    - sharpe-ratio
+  - id: 19
+    name: Risk Types & Measurement
+    time_hours: 1.5
+    prerequisites:
+    - 17
+    - 18
+    topics:
+    - VaR
+    - correlation-risk
+    - gap-risk
+    - drawdown
+    - stop-loss
+  - id: 20
+    name: Risk Mitigation
+    time_hours: 1.5
+    prerequisites:
+    - 19
+    topics:
+    - hedging-strategies
+    - portfolio-insurance
+    - stress-testing
+    - risk-limits
+  - id: 21
+    name: Market Efficiency
+    time_hours: 1.5
+    prerequisites:
+    - 17
+    topics:
+    - EMH-forms
+    - anomalies
+    - january-effect
+    - momentum
+    - value-premium
+  - id: 22
+    name: Behavioral Biases
+    time_hours: 1.5
+    prerequisites:
+    - 21
+    topics:
+    - anchoring
+    - overconfidence
+    - herding
+    - confirmation-bias
+    - disposition-effect
+    - prospect-theory
+  - id: 23
+    name: US Market Regulations
+    time_hours: 1.5
+    prerequisites:
+    - 2
+    - 4
+    topics:
+    - insider-trading
+    - market-manipulation
+    - Reg-NMS
+    - short-sale-rules
+  - id: 24
+    name: Global Compliance
+    time_hours: 1.5
+    prerequisites:
+    - 23
+    topics:
+    - MiFID-II
+    - best-execution
+    - compliance-programs

@@ -1,0 +1,133 @@
+- id: '14.1'
+  question: What is the biggest token waste hot spot?
+  options:
+    a: Reading full files when only few lines needed
+    b: Agent greeting messages
+    c: System instructions
+    d: Compression summaries
+  answer: a
+  explanation: Full file reads 300-800 tokens. Specifying line ranges reduces to 50-100
+    tokens. Biggest single source of waste.
+  difficulty: 1
+  tags:
+  - concept
+- id: '14.2'
+  question: How many tokens does 'show only diff, not full file' typically save?
+  options:
+    b: 50-97% depending on file size vs change size
+    a: 10-20%
+    c: 0% — same either way
+    d: Increases token usage
+  answer: b
+  explanation: If 5 lines changed in 200-line file, diff = 5 lines vs full file =
+    200 lines. 97% savings.
+  difficulty: 1
+  tags:
+  - application
+- id: '14.3'
+  question: What is the highest-ROI token investment?
+  options:
+    b: Spec writing and compression
+    a: Long greetings
+    c: Reading full files
+    d: Full test output
+  answer: b
+  explanation: 200 tokens of spec prevent 2000+ tokens of wrong direction. 500 tokens
+    of compression save 5000+ context space.
+  difficulty: 1
+  tags:
+  - concept
+- id: '14.4'
+  question: How can you reduce token waste from file reads?
+  options:
+    d: Specify exact line ranges instead of reading entire files
+    a: Read files only once
+    b: Never read files — guess the content
+    c: Read files in random order
+  answer: d
+  explanation: Exact line ranges (e.g., 'read lines 45-60') vs full file. 90% savings
+    with no information loss.
+  difficulty: 1
+  tags:
+  - procedure
+- id: '14.5'
+  question: What metrics should you track for token efficiency?
+  options:
+    a: Tokens per task, context usage at completion, compression frequency
+    b: Number of files in project
+    c: Lines of code written
+    d: Number of git commits
+  answer: a
+  explanation: 'Track: tokens per task, context at end, compression events, restarts
+    due to full context.'
+  difficulty: 2
+  tags:
+  - procedure
+- id: '14.6'
+  question: Agent output includes 'Here is the updated file:' followed by 200 lines
+    with 3 lines changed. What instruction would fix this?
+  options:
+    c: Show only the diff/changed lines, not the full file
+    a: Write better code
+    b: Use fewer lines
+    d: Nothing — this is optimal
+  answer: c
+  explanation: '''Show only diff'' instruction saves 97% of output tokens for this
+    response.'
+  difficulty: 2
+  tags:
+  - scenario
+- id: '14.7'
+  question: How much of a typical prompt is filler that can be cut?
+  options:
+    b: 30-50% (greetings, politeness, hedging)
+    a: 1-2%
+    c: 80-90%
+    d: 0% — every word is essential
+  answer: b
+  explanation: Greetings, please/thanks, hedging, repeated context. 'Fix this bug'
+    instead of 'Could you please help me fix this bug when you get a chance?'
+  difficulty: 2
+  tags:
+  - concept
+- id: '14.8'
+  question: What is the target for context usage at task completion?
+  options:
+    c: < 70% (room to continue or iterate)
+    a: 95%+ (maximize usage)
+    b: < 10% (never use context)
+    d: 50% exactly
+  answer: c
+  explanation: Under 70% means room for iteration, follow-up, or review without hitting
+    full context.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '14.9'
+  question: How many token-waste-free compression events per session is ideal?
+  options:
+    a: 1-3
+    b: 0 — never compress
+    c: 10+ — compress after every message
+    d: Only at session end
+  answer: a
+  explanation: 1-3 compressions per session balances context preservation vs overhead.
+    0 = degradation. >3 = over-compressing.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '14.10'
+  question: A task consistently requires 8000 tokens. After optimization, it's 5000.
+    What's the improvement?
+  options:
+    d: 37.5% reduction
+    a: 60% reduction
+    b: Token usage increased
+    c: No meaningful change
+  answer: d
+  explanation: '3000 tokens saved = 37.5% reduction. Compounds across multiple tasks:
+    10 tasks = 30,000 tokens saved.'
+  difficulty: 3
+  tags:
+  - calculation
+

@@ -1,0 +1,45 @@
+- id: c.1
+  question: Emergent abilities 係指喺細 model {唔存在} 但喺大 model {出現} 嘅 capabilities。
+  answer: 唔存在 / 出現
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: 喺 grokking 中，model 先 {記住} training data (loss 0)，然後突然 {泛化} 到 test data。
+  answer: 記住 / 泛化
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: Schaeffer (2023) 認為 emergence 係 {metric artifact} — 喺平滑嘅 model improvements
+    上用 discontinuous metrics (pass@1)。
+  answer: metric artifact
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: Induction heads 實現 {prefix-matching} circuit：attend 到當前 token 之前出現過嘅位置，然後預測
+    {嗰個 context 嘅下一個 token}。
+  answer: prefix-matching / 嗰個 context 嘅下一個 token
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: '{Function vector} 係 activation space 中編碼 ICL function 嘅方向。減走佢，model 就
+    {失去 ICL}。'
+  answer: Function vector / 失去 ICL
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: Task vector 由 {θ_finetuned - θ_base} 推導出嚟。將佢加到 base model 會加入 {嗰個 capability}。
+  answer: θ_finetuned - θ_base / 嗰個 capability
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: Model arithmetic 允許 task vectors 嘅 {組合} — 將多個 task vectors 加到 base model
+    可以令 model 獲得 multiple capabilities。
+  answer: 組合
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: Ganguli (2022) 顯示有啲 abilities 改善得 {平滑} (per-token accuracy)，而有啲喺 algorithmic
+    tasks 上顯示 {急劇} phase transitions。
+  answer: 平滑 / 急劇
+  difficulty: 2
+  tags: []

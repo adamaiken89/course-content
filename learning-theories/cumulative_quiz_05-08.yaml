@@ -1,0 +1,108 @@
+- id: cum.9
+  type: mcq
+  question: Which practice is a desirable difficulty rather than an undesirable one?
+  source_modules:
+  - 5
+  options:
+    a: Highlighting while reading a textbook
+    b: Re-reading the same passage four times
+    c: Forcing recall from memory before checking the answer
+    d: Removing all challenge to feel fluent
+  answer: c
+  explanation: Retrieval from memory with effort is a desirable difficulty — it strengthens storage and retrieval strength. Highlighting and re-reading feel fluent but produce weak learning.
+  difficulty: 2
+  tags:
+  - synthesis
+  - misconception
+- id: cum.10
+  type: mcq
+  question: A student studies statistics problems grouped by type for an hour. What change would most improve transfer?
+  source_modules:
+  - 8
+  options:
+    a: Study twice as many problems of each type
+    b: Interleave problem types within the session
+    c: Use only easier problems to build confidence
+    d: Skip practice entirely and re-read worked examples
+  answer: b
+  explanation: Interleaving forces discrimination between problem types, improving the ability to recognize which approach fits — key to transfer.
+  difficulty: 3
+  tags:
+  - cross-module
+  - synthesis
+- id: cum.11
+  type: cloze
+  question: 'Complete: The {testing} effect shows that actively recalling information produces more durable learning than simply re-studying it.'
+  answer: testing
+  explanation: Retrieval practice (the testing effect) strengthens memory more than restudying for equal time.
+  difficulty: 1
+  tags:
+  - recall
+  - cross-module
+  source_modules:
+  - 7
+- id: cum.12
+  type: mcq
+  question: A diagram of the water cycle is shown with labels while the narrator explains each stage aloud. Why does this illustrate dual coding?
+  source_modules:
+  - 6
+  options:
+    a: The content is coded in both a visual channel and a verbal channel
+    b: The learner is forced to recall the answer before seeing it
+    c: The two formats confirm the same single mental representation
+    d: Listening while looking doubles the total study time
+  answer: a
+  explanation: "Paivio's theory: combining a picture (visual) with narration (verbal) creates two linked codes, improving later retrieval."
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: cum.13
+  type: cloze
+  question: 'Paivio''s dual coding theory holds that memory improves when information is encoded in both {verbal} and visual channels.'
+  answer: verbal
+  explanation: The two channels are verbal (words, narration) and nonverbal-visual (images, diagrams); linking both strengthens traces.
+  difficulty: 1
+  tags:
+  - terminology
+  - recall
+  source_modules:
+  - 6
+- id: cum.14
+  type: tf
+  statement: Blocked practice beats interleaved practice for a later mixed exam because blocking builds stronger fluency.
+  answer: false
+  explanation: For a mixed exam where the problem type is unknown each question, interleaving improves discrimination and transfer despite feeling harder.
+  difficulty: 3
+  tags:
+  - misconception
+  - synthesis
+  source_modules:
+  - 8
+- id: cum.15
+  type: mcq
+  question: Which study method best simulates real test conditions?
+  source_modules:
+  - 7
+  options:
+    a: Re-reading the textbook passage three times
+    b: Self-quizzing from memory, then checking the answer
+    c: Making one neat summary and never revisiting it
+    d: Underlining every key sentence in a bright color
+  answer: b
+  explanation: Self-quizzing practises retrieval under test-like conditions — the mechanism behind the testing effect.
+  difficulty: 1
+  tags:
+  - application
+  - scenario
+- id: cum.16
+  type: tf
+  statement: A passage feels easy to re-read, which is a reliable sign that the material has been deeply processed and remembered.
+  answer: false
+  explanation: Fluency from re-reading is a misleading signal. Deep processing requires meaning-building and effortful retrieval, which often feel harder.
+  difficulty: 2
+  tags:
+  - misconception
+  - cross-module
+  source_modules:
+  - 5

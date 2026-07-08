@@ -1,0 +1,119 @@
+- id: '9.1'
+  question: What are the four phases of the Hook engagement cycle?
+  options:
+    a: Trigger, action, reward, investment
+    b: Learn, practice, test, review
+    c: Goal, plan, execute, evaluate
+    d: Input, process, output, feedback
+  answer: a
+  explanation: 'Hook cycle: trigger (notification/habit) → action (open app/review)
+    → reward (correct answer/streak increment) → investment (FSRS model update that
+    improves future calibration).'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.2'
+  question: Why does investment in the Hook cycle make the next trigger more effective?
+  options:
+    a: Investment directly triggers notifications
+    b: Investment creates switching cost — the user's time and effort improves the
+      tool
+    c: Investment makes the app more expensive to leave
+    d: Investment reduces the number of cards to review
+  answer: b
+  explanation: Each study session improves the FSRS-5 model, making future sessions
+    more calibrated. The learner's investment (time, effort) improves the tool — leaving
+    means losing that accumulated benefit.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.3'
+  question: What is the purpose of a streak freeze in streak mechanics?
+  options:
+    a: To punish missed days more severely
+    b: To double the streak count on good days
+    c: To cover occasional misses without breaking the streak, reducing shame
+    d: To freeze the streak at its current maximum indefinitely
+  answer: c
+  explanation: Streak freezes cover accidental misses (illness, travel, busy day).
+    They reduce the shame of breaking a streak — the primary reason learners quit
+    after missing one day.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.4'
+  question: Why does effort-attribution feedback outperform ability-attribution feedback?
+  options:
+    a: Effort-attribution takes less time to write
+    b: Ability-attribution requires knowing the learner's IQ
+    c: Effort-attribution is always more accurate
+    d: Effort is controllable — learners can choose to practice more. Ability is fixed
+      — failure implies 'not talented'
+  answer: d
+  explanation: Effort attribution builds growth mindset — the learner can improve
+    through practice. Ability attribution is fixed — when the learner fails, they
+    conclude 'I'm not smart enough,' which discourages persistence.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.5'
+  question: A learning app wants users to form a study habit. Which sequence of trigger
+    types is most effective?
+  options:
+    a: External (notifications, same time daily) → Internal (habit, automatic)
+    b: Internal → Contextual → External
+    c: Internal (habit) → External (notifications) — internal first is better
+    d: Random triggers — keeps users on their toes
+  answer: a
+  explanation: Start with fixed-time notifications to build the habit pattern (external).
+    Once the habit forms — the user opens the app automatically at that time — notifications
+    become optional (internal). Random times prevent habit formation.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '9.6'
+  question: Why is investment called the "invisible phase" of the Hook cycle in learning
+    tools?
+  options:
+    a: It requires no user action
+    b: It happens in the background — the FSRS model update is not visible to the
+      user
+    c: It only matters for paid subscriptions
+    d: It is too small to measure
+  answer: b
+  explanation: The algorithm update (stability/difficulty adjustment) happens invisibly.
+    Tools should make investment visible ("Your model is now 5% more accurate") to
+    create ownership and switching cost.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.7'
+  question: Which feedback dimension is MOST important for building a growth mindset
+    in learners?
+  options:
+    a: Timing — immediate feedback
+    b: Valence — always positive
+    c: Attribution — effort over ability
+    d: Specificity — detailed corrections
+  answer: c
+  explanation: Attribution determines how the learner interprets success and failure.
+    Effort attribution ("your practice is working") builds growth mindset; ability
+    attribution ("you're talented") makes failure feel like a fixed personal deficit.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.8'
+  question: In the FSRS-5 quality feedback scale, what does a quality rating of 2
+    mean?
+  options:
+    a: Effortless recall
+    b: Correct after hesitation
+    c: Complete blackout
+    d: Incorrect — easy to recall once reminded
+  answer: d
+  explanation: Quality 2 = incorrect but easy to recall once reminded — focus on retrieval
+    cues. Quality 1 is complete blackout (return to source). Quality 5 is effortless
+    (increase interval).
+  difficulty: 1
+  tags:
+  - terminology

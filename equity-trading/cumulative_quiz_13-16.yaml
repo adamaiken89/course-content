@@ -1,0 +1,100 @@
+- id: cum.31
+  type: mcq
+  source_modules:
+  - 13
+  question: In firm commitment underwriting, who bears unsold share risk?
+  options:
+    a: Issuer
+    b: Underwriter
+    c: Investors
+    d: SEC
+  answer: b
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.32
+  type: mcq
+  source_modules:
+  - 13
+  question: 'The greenshoe option allows the underwriter to:'
+  options:
+    a: Buy extra shares from the issuer to cover over-allotment short positions
+    b: Cancel the IPO at any time
+    c: Set the final price without the issuer
+    d: Short the stock freely after listing day
+  answer: a
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.33
+  type: cloze
+  source_modules:
+  - 14
+  question: SPAC IPO typically prices at  per unit, with proceeds held in {trust}.
+  answer: '10'
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.34
+  type: mcq
+  source_modules:
+  - 14
+  question: 'Unlike a traditional IPO, a direct listing:'
+  options:
+    a: Requires a large underwriting syndicate
+    b: Raises no new capital for the company
+    c: Mandates an insider lock-up for all shares
+    d: Prices shares through a Dutch auction
+  answer: b
+  difficulty: 2
+  tags:
+  - cross-module
+  - comparison
+- id: cum.35
+  type: mcq
+  source_modules:
+  - 15
+  question: 'A put option gives holder the right to:'
+  options:
+    a: Buy underlying at strike
+    b: Buy underlying at market
+    c: Sell underlying at strike
+    d: Sell underlying at market
+  answer: c
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.36
+  type: tf
+  source_modules:
+  - 15
+  statement: An American-style option may be exercised at any time before or on expiration.
+  answer: true
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.37
+  type: cloze
+  source_modules:
+  - 16
+  question: ES futures use a multiplier of  per index point.
+  answer: '50'
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.38
+  type: tf
+  source_modules:
+  - 16
+  statement: Futures contracts must always be settled by physical delivery of the underlying asset.
+  answer: false
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept

@@ -1,0 +1,115 @@
+- id: '8.1'
+  question: Chain of Thought (CoT) 係乜？
+  options:
+    a: 引導模型逐步思考，唔係直接俾答案
+    b: 將模型拆成多個 experts
+    c: Chain multiple models together
+    d: 將文字变成 token
+  answer: a
+  explanation: CoT = 將複雜問題 decompose 成多個簡單步驟，逐個解決，最後 combine。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.2'
+  question: Zero-shot CoT 最出名嘅 prompt 係？
+  options:
+    a: 'Answer the question:'
+    b: Let's think step by step.
+    c: Think carefully.
+    d: 'Use reasoning:'
+  answer: b
+  explanation: 「Let's think step by step」係最經典嘅 zero-shot CoT prompt。唔需要任何例子，加落問題後面就得。
+  difficulty: 1
+  tags:
+  - scenario
+- id: '8.3'
+  question: Self-consistency 係乜？
+  options:
+    a: 模型自己 check 自己答案
+    b: 同一答案用唔同方式表達
+    c: 問同一問題多次，majority vote 揀最 common 答案
+    d: 模型 consistency training
+  answer: c
+  explanation: 同一個問題用高 temperature 問多次，每個有唔同 reasoning path，然後 majority vote 揀最 common
+    答案。
+  difficulty: 2
+  tags:
+  - terminology
+- id: '8.4'
+  question: CoT 對邊類問題最有效？
+  options:
+    a: Fact recall（法國首都在邊）
+    b: Creative writing
+    c: Translation
+    d: 多步驟推理（數學、logic）
+  answer: d
+  explanation: CoT 對需要 decompose 嘅多步驟問題最有效。對 fact recall（直接揾答案）冇幫助，對 creative tasks
+    可能有反效果。
+  difficulty: 2
+  tags:
+  - scenario
+- id: '8.5'
+  question: CoT 嘅 fundamental limitation 係？
+  options:
+    a: 係 pattern matching 唔係真 reasoning
+    b: 太慢
+    c: 太貴
+    d: 只 work 喺英文
+  answer: a
+  explanation: CoT 提升 accuracy 但模型仍然係 pattern matching — 佢 learn 咗 generate 睇落合理嘅
+    steps，但唔係真正嘅 logical reasoning。
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.6'
+  question: Few-shot CoT 同 zero-shot CoT 嘅分別係？
+  options:
+    a: Few-shot 用更多 tokens
+    b: Few-shot 俾 examples，zero-shot 唔俾
+    c: Zero-shot 更準確
+    d: 冇分別
+  answer: b
+  explanation: 'Zero-shot CoT: 直接加「Let''s think step by step」。Few-shot CoT: 俾 2-3
+    個 reasoning examples 先問新問題。'
+  difficulty: 1
+  tags:
+  - comparison
+- id: '8.7'
+  question: 點解 CoT 有效？
+  options:
+    a: 模型終於開始思考
+    b: 減少 models 嘅 bias
+    c: 俾更多 thinking budget，每步 error 更細
+    d: CoT 其實冇效
+  answer: c
+  explanation: CoT 俾模型更多 tokens 去 generate intermediate steps。每一步嘅 conditional probability
+    比一次過預測最終答案更準確。
+  difficulty: 3
+  tags:
+  - concept
+- id: '8.8'
+  question: CoT 嘅最危險 case 係？
+  options:
+    a: 模型 refuse 答問題
+    b: CoT 太長
+    c: CoT generate 唔到 steps
+    d: Steps 睇落合理但 final answer 錯
+  answer: d
+  explanation: 最危險係 convincing but wrong — steps 睇落好 logical，但中間有 subtle error，final
+    answer 錯。用家見 steps 合理就信答案。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '8.9'
+  question: Self-consistency 喺邊種情況最有用？
+  options:
+    a: 多種 possible reasoning paths 嘅問題
+    b: Deterministic 計算
+    c: Fact recall
+    d: Single step 問題
+  answer: a
+  explanation: Self-consistency 最有效係當有多條 possible reasoning paths — 唔同 paths converge
+    到同一答案，你對答案更有信心。
+  difficulty: 3
+  tags:
+  - concept

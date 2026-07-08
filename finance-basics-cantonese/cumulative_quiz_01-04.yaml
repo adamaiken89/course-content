@@ -1,0 +1,114 @@
+- id: "cum.1"
+  type: mcq
+  source_modules: [1, 2, 3, 4]
+  question: "以下邊樣唔係錢嘅三大功能?"
+  options:
+    a: "交換媒介"
+    b: "價值尺度"
+    c: "價值儲存"
+    d: "通脹對沖"
+  answer: d
+  explanation: "錢嘅三大功能: 交換媒介、價值尺度、價值儲存。通脹對沖係資產嘅特性, 唔係錢嘅功能。"
+  difficulty: 2
+  tags: [cross-module, recall]
+
+- id: "cum.2"
+  type: mcq
+  source_modules: [1, 2, 3, 4]
+  question: "淨收入 = ?"
+  options:
+    a: "收入 + 支出"
+    b: "收入 - 支出"
+    c: "收入 × 支出"
+    d: "收入 ÷ 支出"
+  answer: b
+  explanation: "淨收入 = 收入 - 支出。健康財務指標: 淨收入 > 0 (有儲蓄), 月儲蓄率 20%+ 為佳。"
+  difficulty: 1
+  tags: [formula, calculation]
+
+- id: "cum.3"
+  type: cloze
+  source_modules: [1, 2, 3, 4]
+  question: "50/30/20 預算規則: {50%} Needs, {30%} Wants, {20%} 儲蓄。"
+  answer: "50%、30%、20%"
+  explanation: "50% 必要支出 (住屋/食物/交通), 30% 想要 (娛樂/外食), 20% 儲蓄還債。"
+  difficulty: 1
+  tags: [terminology, recall]
+
+- id: "cum.4"
+  type: tf
+  source_modules: [1, 2, 3, 4]
+  statement: "應急錢應該等於 3-6 個月生活費, 放喺活期戶口或 MMF。"
+  answer: true
+  explanation: "應急錢原則: 3-6 個月生活費, 高流動性 (活期 / MMF), 唔好鎖入長期定存。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "cum.5"
+  type: tf
+  source_modules: [1, 2, 3, 4]
+  statement: "錢嘅根基係政府信用, 唔係黃金、白銀或紙本身。"
+  answer: true
+  explanation: "法幣 (Fiat money) 靠政府信用 + 強制通用, 1971 年後全球主要貨幣唔再對應黃金。"
+  difficulty: 1
+  tags: [concept, terminology]
+
+- id: "cum.6"
+  type: mcq
+  source_modules: [1, 2, 3, 4]
+  question: "以下邊個唔係銀行常見戶口類型?"
+  options:
+    a: "往來戶口"
+    b: "儲蓄戶口"
+    c: "定期存款"
+    d: "加密幣戶口"
+  answer: d
+  explanation: "銀行 3 種主要戶口: 往來 (零息)、儲蓄 (有息)、定期 (鎖定高息)。加密幣戶口由虛擬銀行或交易所提供, 唔係傳統銀行戶口。"
+  difficulty: 2
+  tags: [terminology, recall]
+
+- id: "cum.7"
+  type: cloze
+  source_modules: [1, 2, 3, 4]
+  question: "錢嘅三大功能: {交換媒介}、{價值尺度}、{價值儲存}。"
+  answer: "交換媒介、價值尺度、價值儲存"
+  explanation: "少一個都唔算完整嘅錢, 黃金做唔到流通尺度, Bitcoin 暫時仲未穩定做尺度。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "cum.8"
+  type: mcq
+  source_modules: [1, 2, 3, 4]
+  question: "你 30 歲月入 $30,000, 跟 50/30/20 預算, 儲蓄應該幾多?"
+  options:
+    a: "$3,000"
+    b: "$6,000"
+    c: "$9,000"
+    d: "$15,000"
+  answer: b
+  explanation: "50/30/20: 必要 $15K, 想要 $9K, 儲蓄 $6K。20% 月入應該儲起, 包括還債 + 應急錢 + 投資。"
+  difficulty: 2
+  tags: [calculation, application]
+
+- id: "cum.9"
+  type: tf
+  source_modules: [1, 2, 3, 4]
+  statement: "現金 (紙幣) 喺現代經濟仍然係最重要嘅貨幣形式。"
+  answer: false
+  explanation: "錯。北歐國家現金只佔交易 10% 以下, 全球趨勢係電子化 (支付寶/PayMe/八達通/Credit Card)。現金變「最後手段」, 唔係主流。"
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "cum.10"
+  type: mcq
+  source_modules: [1, 2, 3, 4]
+  question: "辛巴威 2008 年通脹率達 89.7 sextillion % (10^13), 主因係?"
+  options:
+    a: "外國制裁"
+    b: "政府大量印銀紙, 法幣信用崩潰"
+    c: "國際油價波動"
+    d: "農業失收"
+  answer: b
+  explanation: "辛巴威政府為咗應付財政赤字, 不斷印新銀紙, 導致嚴重通脹, 法幣信用崩潰。一張幾億買唔到一粒米。"
+  difficulty: 1
+  tags: [concept, terminology]

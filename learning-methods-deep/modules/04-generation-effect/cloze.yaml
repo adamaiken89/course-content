@@ -1,0 +1,96 @@
+- id: c.1
+  question: 'Complete: The generation effect shows that {producing} information during
+    study leads to better retention than passively reading it.'
+  answer: producing
+  explanation: 'This is the core finding: active production (writing, speaking, filling,
+    predicting) beats passive consumption, even when total exposure time is equal.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 'Complete: The five generation patterns from easiest to hardest are: cloze,
+    predict, error-spot, {self-explain}, and free recall.'
+  answer: self-explain
+  explanation: Self-explain requires articulating reasoning without scaffolding —
+    harder than finding someone else's error but easier than full free recall.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: 'Complete: {Transfer-appropriate processing} explains why generation type
+    should match the retrieval demands of the real task.'
+  answer: Transfer-appropriate processing
+  explanation: Memory performance depends on overlap between encoding operations (how
+    you study) and retrieval operations (how you're tested). Match them for best results.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.4
+  question: 'Complete: The optimal generation success rate for difficulty calibration
+    is around {80} percent.'
+  answer: '80'
+  explanation: 80% balances productive struggle (generation effort) with achievable
+    success. Below 70% risks frustration; above 90% means the gap is too small for
+    meaningful generation.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: 'Complete: Even {failed} generation — attempting to produce and getting
+    it wrong — produces better retention than passive reading.'
+  answer: failed
+  explanation: The attempt itself activates relevant knowledge structures. The correct
+    answer then connects to this activated context. Effort matters more than immediate
+    success.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: 'Complete: Good cloze blanks target {key concepts} that require semantic
+    understanding, not predictable words.'
+  answer: key concepts
+  explanation: Blanking 'quick' in 'the quick brown fox' tests nothing. Blanking 'revenue'
+    in 'profit equals {revenue} minus costs' tests conceptual understanding.
+  difficulty: 2
+  tags:
+  - application
+- id: c.7
+  question: 'Complete: When a learner achieves >90% on single-blank cloze, the system
+    should increase generation demand by advancing to {multiple-blank} cloze or predict
+    tasks.'
+  answer: multiple-blank
+  explanation: More blanks = more generation demand. This scaffolds generation difficulty
+    without changing the underlying concept.
+  difficulty: 3
+  tags:
+  - application
+- id: c.8
+  question: 'Complete: The generation effect is amplified when the learner has sufficient
+    {prior knowledge} to generate effectively.'
+  answer: prior knowledge
+  explanation: Without relevant prior knowledge, generation attempts fail too often.
+    Novices may need more context and smaller gaps until they build enough knowledge
+    to generate productively.
+  difficulty: 3
+  tags:
+  - concept
+- id: c.9
+  question: 'Complete: The scaffolding chain for generation progresses from single-blank
+    cloze to {free recall} as the highest generation demand.'
+  answer: free recall
+  explanation: Free recall provides no cues — the learner must produce everything
+    from scratch. This is the highest generation demand and produces the strongest
+    memory trace.
+  difficulty: 1
+  tags:
+  - process
+- id: c.10
+  question: 'Complete: The generation effect ↔ retrieval practice relationship: retrieval
+    practice is a {subset} of the broader generation effect.'
+  answer: subset
+  explanation: Retrieval practice (free recall) is one form of generation. Generation
+    also includes cloze, prediction, error-spotting, and self-explanation — a broader
+    category than testing.
+  difficulty: 1
+  tags:
+  - terminology

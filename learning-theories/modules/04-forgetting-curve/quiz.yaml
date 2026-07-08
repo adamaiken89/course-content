@@ -1,0 +1,128 @@
+- id: '4.1'
+  question: 'The forgetting curve shows that memory loss is:'
+  options:
+    a: Logarithmic — rapid early loss, then slows
+    b: Linear — constant rate of forgetting
+    c: Exponential — accelerates over time
+    d: Random — unpredictable
+  answer: a
+  explanation: Ebbinghaus found rapid forgetting within hours, then deceleration. The curve is logarithmic.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.2'
+  question: What is the spacing effect?
+  options:
+    b: Distributed practice produces better long-term retention than massed practice
+    a: Studying in larger chunks improves retention
+    c: Reviewing immediately after learning is most effective
+    d: Spacing out topics within a session helps
+  answer: b
+  explanation: Spread study sessions over time (distributed) beats same total time in one session (massed).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.3'
+  question: Student A studies 5 hours on Saturday. Student B studies 1 hour/day Mon-Fri. Who remembers
+    more 3 weeks later?
+  options:
+    c: Student B — spaced practice builds durable memory
+    a: Student A — more concentrated effort
+    b: Both equally — same total time
+    d: Neither — both forgot by then
+  answer: c
+  explanation: Same total time, different schedule. Spaced practice triggers repeated consolidation cycles.
+  difficulty: 2
+  tags:
+  - application
+- id: '4.4'
+  question: Why does reviewing immediately after learning produce weaker long-term retention than reviewing
+    after a delay?
+  options:
+    d: Retrieval is too easy — no desirable difficulty
+    a: Immediate review is boring
+    b: The brain ignores close repetitions
+    c: Fatigue from studying
+  answer: d
+  explanation: Immediate retrieval requires minimal effort. A gap forces harder retrieval, which strengthens
+    the memory trace.
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.5'
+  question: Ebbinghaus used what kind of material in his memory experiments?
+  options:
+    a: Nonsense syllables
+    b: Poetry
+    c: Numbers
+    d: Faces
+  answer: a
+  explanation: He used nonsense syllables (e.g., ZOK, QAP) to eliminate prior knowledge effects and measure
+    pure memory.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.6'
+  question: 'A student reviews vocabulary on Day 1, 3, 7, 21. This schedule is:'
+  options:
+    b: Expanding interval
+    a: Fixed interval
+    c: Massed practice
+    d: Interleaved
+  answer: b
+  explanation: 'Gaps grow: 1 → 2 → 4 → 14 days. This is an expanding interval schedule.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.7'
+  question: What is the primary benefit of studying new material in the evening before sleep?
+  options:
+    c: Sleep consolidates recent memories without interference from waking activity
+    a: Evening is when you're most alert
+    b: The forgetting curve pauses during sleep
+    d: There is no benefit — morning study is better
+  answer: c
+  explanation: Sleep consolidates recent traces. No waking interference between encoding and consolidation
+    = stronger memory.
+  difficulty: 2
+  tags:
+  - application
+- id: '4.8'
+  question: Which factor does NOT affect the steepness of the forgetting curve?
+  options:
+    d: Intelligence
+    a: Encoding depth
+    b: Prior knowledge
+    c: Sleep after learning
+  answer: d
+  explanation: Encoding depth, prior knowledge, and sleep all affect forgetting rate. Intelligence is
+    not a direct factor.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '4.9'
+  question: A student has a test in 7 days. Which schedule produces the best retention?
+  options:
+    a: Study 1 hour each on days 1, 3, and 6
+    b: Study 7 hours on day 6
+    c: Study 3.5 hours on day 1 and 3.5 on day 6
+    d: Study 1 hour per day for all 7 days
+  answer: a
+  explanation: Spaced across the interval with gaps. Option D (daily) is overkill for a 7-day window.
+    Option B optimizes spacing with meaningful gaps.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '4.10'
+  question: 'The key mechanism explaining why spacing works includes all EXCEPT:'
+  options:
+    b: Massed practice triggers neural fatigue
+    a: Forgetting during intervals forces harder retrieval on re-study
+    c: Context variation across sessions builds context-independent memory
+    d: Reconsolidation after each session strengthens the trace
+  answer: b
+  explanation: Massed practice fatigue is not the mechanism. Spacing works via effortful retrieval, context
+    variation, and reconsolidation.
+  difficulty: 3
+  tags:
+  - concept

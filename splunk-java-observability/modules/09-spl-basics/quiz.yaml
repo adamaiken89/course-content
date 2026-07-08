@@ -1,0 +1,119 @@
+- id: "9.1"
+  question: "What is the role of the pipe (`|`) character in an SPL search?"
+  options:
+    a: "Passes the current result set as input to the next command"
+    b: "Acts as the OR operator between two terms"
+    c: "Marks the end of the search and stops processing"
+    d: "Switches the search to a different index"
+  answer: a
+  explanation: "SPL is a pipeline. Each `|` feeds the current result set to the next command, so `search ... | stats ...` applies stats to the search results."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "9.2"
+  question: "Which statement about the search `level=ERROR` is TRUE?"
+  options:
+    a: "The value is case-insensitive, so `error` also matches"
+    b: "Both the field name and the value are case-insensitive"
+    c: "The field name is case-insensitive but the value matches only uppercase ERROR"
+    d: "It matches any event whose raw text contains the literal string level=ERROR"
+  answer: c
+  explanation: "Field names are case-insensitive in SPL, but field values are case-sensitive by default. `level=error` does not match events storing ERROR."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "9.3"
+  question: "Which search is the fastest way to find ERROR events in the checkout index for the last hour?"
+  options:
+    a: "`NullPointerException` with no time filter"
+    b: "`index=checkout sourcetype=springboot_json earliest=-1h level=ERROR`"
+    c: "`service=*error*` with no time filter"
+    d: "`index=checkout level=ERROR` over all time"
+  answer: b
+  explanation: "It constrains index, sourcetype, time, and a field value. The TSIDX pre-filter checks these against the per-bucket bloom filter and skips buckets before rawdata is decompressed. The others scan broadly, use a slow leading wildcard, or ignore time."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "9.4"
+  question: "Which time modifier snaps the earliest time to the start of the current day (midnight)?"
+  options:
+    a: "earliest=-1h"
+    b: "earliest=now"
+    c: "earliest=-2d"
+    d: "earliest=-7d@d"
+  answer: d
+  explanation: "The `@d` snap rounds the modifier to midnight. `-7d@d` means the start of the day 7 days ago. `-1h`, `-2d`, and `now` do not snap."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "9.5"
+  question: "Which search reports which service throws the most NullPointerException events in the checkout index?"
+  options:
+    a: "`index=checkout \"NullPointerException\" | stats count by service`"
+    b: "`index=checkout level=ERROR count by service`"
+    c: "`NullPointerException stats count service`"
+    d: "`service=checkout NullPointerException | count`"
+  answer: a
+  explanation: "The quoted keyword searches _raw for the exception, and `stats count by service` groups the matching events per service. Options b and d filter before they can reveal other services; option c is not valid SPL."
+  difficulty: 2
+  tags: [application]
+
+- id: "9.6"
+  question: "You want ERROR and WARN events from the checkout index for the last hour. Which search is correct?"
+  options:
+    a: "`index=checkout (level=ERROR AND level=WARN) earliest=-1h`"
+    b: "`index=checkout level=ERROR level=WARN earliest=-1h`"
+    c: "`index=checkout (level=ERROR OR level=WARN) earliest=-1h`"
+    d: "`checkout ERROR WARN -1h`"
+  answer: c
+  explanation: "A single event's level cannot be both ERROR and WARN, so AND (or implied AND) returns nothing. The OR group in parentheses returns events with either level, constrained by index and time."
+  difficulty: 2
+  tags: [application]
+
+- id: "9.7"
+  question: "You run `index=a OR index=b level=ERROR` without parentheses. What does Splunk actually do?"
+  options:
+    a: "Raises a syntax error because OR and field filters cannot mix"
+    b: "Returns all ERROR events from both indexes"
+    c: "Returns only events from index=a"
+    d: "AND binds tighter than OR, so it parses as `(index=a) OR (index=b AND level=ERROR)`"
+  answer: d
+  explanation: "AND is implied and binds tighter than OR. Without parentheses the result is every event from index=a plus ERROR events from index=b. Fix it with `(index=a OR index=b) level=ERROR`."
+  difficulty: 2
+  tags: [concept]
+
+- id: "9.8"
+  question: "What does the TSIDX pre-filter check before rawdata is decompressed?"
+  options:
+    a: "The full text of every event in the bucket"
+    b: "Index, sourcetype, host, and the time range against a per-bucket bloom filter"
+    c: "Only the field values written as field=value terms"
+    d: "The output of the stats command"
+  answer: b
+  explanation: "TSIDX tests index, sourcetype, host, and the time range against each bucket's bloom filter. Only buckets that match are decompressed; the rest are skipped without reading rawdata."
+  difficulty: 2
+  tags: [concept]
+
+- id: "9.9"
+  question: "A scheduled alert search has no earliest/latest in the SPL; the UI time picker shows 'Last 15 minutes'. Overnight the alert fires on events from a month ago. What is the root cause and fix?"
+  options:
+    a: "The stats command is too slow — add head 100"
+    b: "A missing index filter — add index=checkout"
+    c: "The UI time picker does not reliably apply to scheduled searches — set earliest/latest in the SPL itself"
+    d: "Too many wildcards — remove them from the search"
+  answer: c
+  explanation: "Scheduled alert searches should carry their own time window. Embed e.g. `earliest=-15m latest=now` in the SPL so the run cannot silently scan all time."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "9.10"
+  question: "`level=error` returns zero results, yet you can see `\"level\":\"ERROR\"` in the events in the UI. Why does nothing match?"
+  options:
+    a: "Field values are case-sensitive — the stored value is ERROR, so the lowercase value never matches; use `level=ERROR`"
+    b: "The index filter is missing"
+    c: "You need rex to extract the level field first"
+    d: "The time range is too restrictive"
+  answer: a
+  explanation: "Field names are case-insensitive but values are case-sensitive by default. `level=error` does not equal ERROR. Retry with `level=ERROR`, or use case-insensitive matching via lower() in a later module."
+  difficulty: 3
+  tags: [scenario]

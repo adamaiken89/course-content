@@ -1,0 +1,129 @@
+- id: cum.1
+  type: mcq
+  source_modules:
+  - 1
+  question: 語言模型嘅核心任務係？
+  options:
+    a: 預測下一個字
+    b: 理解文字嘅意思
+    c: 記住所有事實
+    d: 分類文章類別
+  answer: a
+  explanation: 語言模型嘅核心係計算「俾咗上文，下一個字係乜」嘅概率。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.2
+  type: cloze
+  source_modules:
+  - 2
+  question: 電腦唔識字，只識{數字}。文字入模型之前一定要轉換成 model 可以處理嘅{數字表示}。
+  answer: 數字，數字表示
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.3
+  type: mcq
+  source_modules:
+  - 3
+  question: Training neural network 嘅核心 loop 係？
+  options:
+    a: Write code → compile → run → debug
+    b: Forward pass → loss → backward pass → update weights
+    c: Input → hidden → output
+    d: Train → test → deploy
+  answer: b
+  explanation: Training 係重複做：predict（forward）、計錯（loss）、分責任（backward）、調整（update）。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.4
+  type: tf
+  source_modules:
+  - 4
+  statement: Self-attention 嘅 query、key、value 全部嚟自同一個句子。
+  answer: true
+  explanation: 呢個係 self-attention 同 cross-attention 嘅分別 — 全部同 source。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.5
+  type: mcq
+  source_modules:
+  - 2
+  question: Subword tokenization 嘅主要優勢係？
+  options:
+    a: 最快嘅 tokenization 方法
+    b: vocab size 最細
+    c: 處理 OOV（未見過嘅字）問題
+    d: 唔需要 training
+  answer: c
+  explanation: Subword 將罕見字拆成常見碎片，確保任何輸入都可以 tokenize。
+  difficulty: 2
+  tags:
+  - comprehension
+- id: cum.6
+  type: mcq
+  source_modules:
+  - 3
+  question: Gradient descent 嘅 learning rate 太大會點？
+  options:
+    a: Training 更快完成
+    b: 冇影響
+    c: Model 更準確
+    d: 可能 overshoot 山谷最低點
+  answer: d
+  explanation: Learning rate = 每一步 size。太大 → overshoot 山谷，永遠收斂唔到。
+  difficulty: 2
+  tags:
+  - comprehension
+- id: cum.7
+  type: cloze
+  source_modules:
+  - 4
+  question: Attention 嘅運算 complexity 係{O(n²)}，因為每個字要同全部{其他字}計相關度。
+  answer: O(n²)，其他字
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.8
+  type: mcq
+  source_modules:
+  - 1
+  question: 一個 LLM 識寫詩，原因係？
+  options:
+    a: 佢學過大量詩嘅 pattern
+    b: 佢理解詩嘅美感
+    c: 佢有人類嘅創意
+    d: 佢 internal 有個詩人
+  answer: a
+  explanation: LLM 識寫詩係因為 training data 包含大量詩歌，學咗韻律同結構嘅 pattern。
+  difficulty: 2
+  tags:
+  - application
+- id: cum.9
+  type: tf
+  source_modules:
+  - 2
+  statement: Embedding matrix 係人 hand-craft 嘅，設計者定義每個 token 嘅語義位置。
+  answer: false
+  explanation: Embedding matrix 係模型 training 嗰陣 end-to-end 學返嚟嘅，一開始 random，然後慢慢調整。
+  difficulty: 2
+  tags:
+  - comprehension
+- id: cum.10
+  type: mcq
+  source_modules:
+  - 3
+  question: Neural network 嘅 initial weights 點解係 random？
+  options:
+    a: 因為太 lazy 唔想手 set
+    b: 避免 symmetry 問題 — 如果全部 weight 一樣，neurons 會學同一樣嘢
+    c: 隨機嘅 network 更準確
+    d: Random 係 tradition
+  answer: b
+  explanation: 如果全部 weights 一樣（例如全部 0），gradient 喺同一 layer 嘅 neurons 會完全一樣 — 全部 neurons
+    學同一樣嘢。Random initialization 打破 symmetry。
+  difficulty: 2
+  tags:
+  - application

@@ -1,0 +1,132 @@
+- id: '11.1'
+  question: 'Zimmerman''s three phases of self-regulated learning are:'
+  options:
+    a: Forethought, performance, self-reflection
+    b: Study, test, repeat
+    c: Input, processing, output
+    d: Plan, execute, forget
+  answer: a
+  explanation: Forethought (before), performance (during), self-reflection (after) — the complete SRL
+    cycle.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.2'
+  question: Which goal is most effective for self-regulated learning?
+  options:
+    b: Complete 3 retrieval practice sessions with 80% accuracy by Friday
+    a: Do my best this week
+    c: Study more
+    d: Read the textbook
+  answer: b
+  explanation: Specific, measurable, time-bound goals provide clear targets and feedback. Vague goals
+    don't regulate behavior.
+  difficulty: 2
+  tags:
+  - application
+- id: '11.3'
+  question: 'A student fails a test and thinks ''I''m just not good at math.'' This attribution is:'
+  options:
+    c: Maladaptive — attributes failure to a fixed trait, reducing motivation to improve
+    a: Adaptive — accepts reality
+    b: Accurate — math ability is innate
+    d: Helpful — lowers expectations
+  answer: c
+  explanation: Attributing failure to ability (fixed trait) leads to helplessness. Attributing to strategy
+    (changeable) leads to improvement.
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.4'
+  question: In the performance phase, which activity is most important?
+  options:
+    d: Monitoring attention and comprehension during study
+    a: Setting goals for next week
+    b: Reviewing last week's performance
+    c: Choosing what color pen to use
+  answer: d
+  explanation: Performance phase is about execution AND monitoring. Without monitoring, you can't tell
+    if strategies are working.
+  difficulty: 1
+  tags:
+  - concept
+- id: '11.5'
+  question: A student always uses the same study strategy (re-reading) regardless of the subject. This
+    is a failure of which phase?
+  options:
+    a: Forethought — no strategic planning
+    b: Performance — poor execution
+    c: Self-reflection — no evaluation
+    d: All phases equally
+  answer: a
+  explanation: Forethought includes strategic planning — choosing the right strategy for the task. Habitual
+    strategy use skips this step.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '11.6'
+  question: After a successful exam, which attribution produces the most adaptive motivation for future
+    learning?
+  options:
+    b: I used effective study strategies and put in consistent effort
+    a: I got lucky
+    c: The test was easy
+    d: I'm naturally smart
+  answer: b
+  explanation: Attributing success to controllable factors (effort, strategy) motivates continued use.
+    Ability attributions are fragile.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '11.7'
+  question: A student studies for 3 hours but can't say what they accomplished. What's missing?
+  options:
+    c: Self-observation and progress tracking
+    a: Motivation
+    b: Intelligence
+    d: Time
+  answer: c
+  explanation: Without self-observation (tracking comprehension, time use), you don't know if the 3 hours
+    were productive.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '11.8'
+  question: 'The weekly SRL cycle frequency should be:'
+  options:
+    d: Every week — plan, execute, review, adjust
+    a: Once at the start of the course
+    b: Every 6 months
+    c: Only when failing
+  answer: d
+  explanation: Weekly cycles match the natural rhythm of courses and projects. Frequent enough to adjust,
+    long enough to see progress.
+  difficulty: 2
+  tags:
+  - application
+- id: '11.9'
+  question: Which is NOT a component of the forethought phase?
+  options:
+    a: Self-evaluation
+    b: Goal setting
+    c: Strategic planning
+    d: Self-motivation beliefs
+  answer: a
+  explanation: Self-evaluation belongs to the self-reflection phase (after learning). Forethought is before.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.10'
+  question: A student consistently fails practice tests but keeps using the same study approach. Which
+    phase needs attention?
+  options:
+    b: Self-reflection — evaluate outcomes and adapt strategies
+    a: Forethought — set better goals
+    c: Performance — execute better
+    d: All are fine — just study more
+  answer: b
+  explanation: Repeated failure without strategy change indicates no adaptation. Self-reflection phase
+    should identify failure cause and adjust.
+  difficulty: 3
+  tags:
+  - scenario

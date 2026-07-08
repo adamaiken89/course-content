@@ -1,0 +1,119 @@
+- id: "5.1"
+  question: "A GraphQL mutation has ten fields and one throws. What does the error model guarantee?"
+  options:
+    a: "Only the failing field is reported as an error and the rest stay in data"
+    b: "The whole response is replaced by a 500 status"
+    c: "The entire data object becomes null"
+    d: "The HTTP status carries the application error"
+  answer: a
+  explanation: "Errors are field-scoped. The response keeps a 200 with an errors entry for the bad field while the rest resolve into data"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "5.2"
+  question: "Why must error codes live in the extensions map instead of the message string?"
+  options:
+    a: "The message is what users see in the console"
+    b: "extensions carry stable machine-readable codes that clients can branch on"
+    c: "Messages are always localized"
+    d: "extensions only work for authentication errors"
+  answer: b
+  explanation: "Message text changes freely for humans while extensions codes stay stable, so client logic branches on the code not the prose"
+  difficulty: 2
+  tags: [concept]
+
+- id: "5.3"
+  question: "After upgrading to Boot 4, a stateless Bearer-token GraphQL client gets 403 on every POST mutation. What changed?"
+  options:
+    a: "The JWT signature is no longer validated"
+    b: "The GraphQL endpoint now rejects all POST methods"
+    c: "Spring Security 7 enables CSRF protection for all endpoints by default"
+    d: "authorizeHttpRequests now forbids the /graphql path"
+  answer: c
+  explanation: "Security 7 turns CSRF on for every endpoint including stateless APIs, and the Bearer-only client never supplies a CSRF token"
+  difficulty: 3
+  tags: [scenario]
+
+- id: "5.4"
+  question: "With Spring Security 7, which API replaces the removed authorizeRequests() matcher?"
+  options:
+    a: "antMatchers()"
+    b: "authorizeHttpRequests()"
+    c: "pathRequestMatchers()"
+    d: "authorizeUrl()"
+  answer: b
+  explanation: "authorizeRequests is removed, and authorizeHttpRequests is the only authorization DSL left in Security 7"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "5.5"
+  question: "A cookie-based session DGS app removes csrf.disable() from config to fix a 403. A developer instead adds a Bearer token header to every client request. Why is this reasoning wrong?"
+  options:
+    a: "Bearer tokens are slower than cookies"
+    b: "The security filter chain cannot read Authorization headers"
+    c: "Cookie sessions still share the browser trust domain that CSRF protects"
+    d: "CSRF only applies to GET requests"
+  answer: c
+  explanation: "The client sends cookies on every request by default, so a CSRF token stays necessary for cookie-authenticated sessions regardless of extra headers"
+  difficulty: 3
+  tags: [scenario]
+
+- id: "5.6"
+  question: "Why must GraphQL introspection be guarded separately from mutations?"
+  options:
+    a: "Introspection is a read operation that reveals the whole schema and runs before resolver checks"
+    b: "Introspection never crosses the security filter chain"
+    c: "Mutations are protected by the CSRF token"
+    d: "Schema documents are stored in a different database"
+  answer: a
+  explanation: "Introspection is a read well inside the request that an unguarded caller can use to map the full schema, so gate it explicitly"
+  difficulty: 2
+  tags: [concept]
+
+- id: "5.7"
+  question: "A resolver is marked @Nullable but the schema field is declared non-null with Decimal! . What is the correct behavior when the value is absent?"
+  options:
+    a: "Return null so the client sees the data as missing"
+    b: "Return the boxed zero as a sentinel"
+    c: "Throw a mapped exception or return a documented sentinel"
+    d: "Change the schema at runtime"
+  answer: c
+  explanation: "Implicit null violates the non-null schema contract, so the resolver must fail loudly through a mapped error or a sentinel the contract allows"
+  difficulty: 3
+  tags: [scenario]
+
+- id: "5.8"
+  question: "How many error entries can a single GraphQL response carry?"
+  options:
+    a: "At most one for transport failures"
+    b: "One per failed field, plus partial data for the rest"
+    c: "Only the first exception raised"
+    d: "Exactly the number of root fields"
+  answer: b
+  explanation: "Every failed field contributes its own error entry, so a response reports all failures while shipping whatever else resolved"
+  difficulty: 2
+  tags: [concept]
+
+- id: "5.9"
+  question: "When does the data object itself come back null rather than a partial object?"
+  options:
+    a: "When any field at any depth throws"
+    b: "When the HTTP status is not 200"
+    c: "When a root field fails and there is nothing to fill"
+    d: "When the errors array is empty"
+  answer: c
+  explanation: "A root-level failure leaves the shape without content, so data is null at the top while deeper field failures still yield a partial object"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "5.10"
+  question: "A team protects mutations only inside each resolver and keeps the web chain open. Why is this defense-in-depth failure?"
+  options:
+    a: "Unauthenticated callers still enter the resolvers, so the chain should demand authentication first"
+    b: "Resolvers are faster than filter chains"
+    c: "Resolver checks cannot read the logged-in user"
+    d: "The chain only handles GET methods"
+  answer: a
+  explanation: "Resolver authorization is the second layer, not the only one, so the security chain must at least require authentication before any resolver runs"
+  difficulty: 2
+  tags: [comparison]

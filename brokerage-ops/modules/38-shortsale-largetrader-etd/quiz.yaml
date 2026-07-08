@@ -1,0 +1,124 @@
+- id: '38.1'
+  question: Under Reg SHO Rule 200, before executing a short sale a broker-dealer must do what?
+  options:
+    a: Locate shares available for borrowing and have reasonable grounds they can be borrowed by settlement date
+    b: Obtain SEC approval for each trade
+    c: Wait for a fail-to-deliver report first
+    d: Mark the order as long
+  answer: a
+  explanation: Rule 200 requires the broker to locate shares available for borrowing, have reasonable grounds they can be borrowed by settlement date, and document the locate source in the order management system. Locate sources include the prime broker, securities lending desk, and third-party lenders.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '38.2'
+  question: How must short sale orders be marked under Reg SHO?
+  options:
+    a: Buy / Sell / Cross
+    b: Long / Short / Short Exempt
+    c: New / Replace / Cancel
+    d: Agent / Principal / Cross
+  answer: b
+  explanation: Each order must be marked as long, short, or short exempt. Short exempt applies only to limited situations such as bona-fide market making.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '38.3'
+  question: A broker executes a short sale and the stock enters the threshold securities list at day 15 of consecutive fail-to-deliver. What must happen next?
+  options:
+    a: Immediately buy in the security
+    b: Request a new locate from the client
+    c: Hold the position and wait for the mandatory T+35 buy-in — no new short positions are allowed meanwhile
+    d: Stop all short sale activity and cancel the position
+  answer: c
+  explanation: Threshold securities enter the list after 13 consecutive settlement-day fails. The position can be held until T+35, but no new short positions are allowed unless shares are pre-borrowed. Day 35 triggers the mandatory buy-in.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '38.4'
+  question: A threshold security has failed to deliver for 40 calendar days since trade date. What must the broker do?
+  options:
+    a: Request another locate extension
+    b: Re-mark the order short exempt
+    c: Roll the position forward to a new trade date
+    d: Execute a mandatory buy-in to close out the position by T+35
+  answer: d
+  explanation: Rule 203 requires a forced close-out by T+35 calendar days from trade date — the broker must buy in the security. A fail beyond T+35 without buy-in is a Reg SHO violation.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '38.5'
+  question: A regulator asks for the firm's short interest on all NMS stocks. Which report provides this?
+  options:
+    a: FINRA Rule 4560 monthly short interest report
+    b: SEC Rule 606 order routing report
+    c: CAT event file
+    d: TRACE amendment message
+  answer: a
+  explanation: FINRA Rule 4560 requires monthly short interest reporting on all NYSE, NASDAQ, and NMS stocks. Reg SHO also requires fail-to-deliver and close-out status exception reports.
+  difficulty: 2
+  tags:
+  - terminology
+  - comparison
+- id: '38.6'
+  question: What are the SEC Form 13H large trader identification thresholds for NMS stocks?
+  options:
+    a: Daily 500K shares or $5M
+    b: Weekly 10M shares or $100M
+    c: Daily 2M shares or $20M (or monthly 20M shares or $200M)
+    d: Monthly 50M shares or $500M
+  answer: c
+  explanation: "Large trader thresholds: daily 2M shares or $20M NMS stock trading, or monthly 20M shares or $200M. Reaching any threshold triggers the identification requirement and Form 13H submission for a Large Trader ID (LTID)."
+  difficulty: 1
+  tags:
+  - terminology
+- id: '38.7'
+  question: A client account trades an average of 1.8M shares daily, then trades 5M shares on a single day. How should the broker respond?
+  options:
+    a: Ignore — the average stays below threshold
+    b: Monitor the account and notify the client to prepare a Form 13H — a single day exceeded the daily threshold
+    c: Immediately suspend the account
+    d: Report to the SEC but keep it secret from the client
+  answer: b
+  explanation: Large trader determination is based on daily OR monthly thresholds. A single day exceeding 2M shares or $20M triggers the requirement. The broker must notify the client, who submits Form 13H. Systems should monitor rolling activity, not just averages.
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '38.8'
+  question: Which of the following is NOT a broker obligation for large trader accounts under Rule 13h-1?
+  options:
+    a: Monitor account activity and notify the client when a threshold is triggered
+    b: Record order and execution data for each large trader account
+    c: Maintain large trader records for 3 years
+    d: Submit the client's Form 13H to the SEC on the client's behalf and take responsibility for its accuracy
+  answer: d
+  explanation: The client submits Form 13H to obtain the LTID. The broker's obligations are to identify large traders, report activity, maintain records for 3 years, and run internal controls — it does not file Form 13H for the client.
+  difficulty: 2
+  tags:
+  - concept
+- id: '38.9'
+  question: For CME futures, within how many minutes of execution must the give-up be submitted?
+  options:
+    a: 10 minutes
+    b: 15 minutes
+    c: 1 hour
+    d: T+1 08:00
+  answer: a
+  explanation: US futures (CME) require give-up within 10 minutes of execution. Options give-up is within 15 minutes, and European futures (Eurex, ICE Europe) also use a 15-minute give-up window.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '38.10'
+  question: A futures give-up is rejected by the CCP within the acceptance window. What should the broker do first?
+  options:
+    a: Abandon the trade as a non-give-up immediately
+    b: Notify the exchange to reverse the execution
+    c: Check the reject reason (account, position limit, credit limit), correct, and resubmit the give-up
+    d: Report the trade to FINRA TRACE instead
+  answer: c
+  explanation: A give-up rejection means the CCP will not accept the trade for clearing. The broker checks the reject reason (invalid account, position limit exceeded, insufficient credit limit), corrects and resubmits. Beyond the acceptance window it may be handled as a non-give-up trade or EFP.
+  difficulty: 3
+  tags:
+  - scenario
+  - application

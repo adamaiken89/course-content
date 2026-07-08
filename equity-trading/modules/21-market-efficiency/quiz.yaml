@@ -1,0 +1,142 @@
+- id: '21.1'
+  question: Which form of EMH states past prices and volume cannot predict future
+    prices?
+  options:
+    a: Strong form
+    b: Semi-strong form
+    c: Weak form
+    d: Adaptive form
+  answer: c
+  explanation: Weak-form EMH says all past market data is reflected in current prices.
+    Technical analysis cannot generate excess returns.
+  difficulty: 2
+  tags:
+  - concept
+- id: '21.2'
+  question: Which form of EMH would be contradicted if a trader consistently earns
+    excess returns using fundamental analysis on public financial statements?
+  options:
+    a: Weak form only
+    b: Semi-strong form only
+    c: Strong form only
+    d: Both semi-strong and strong form
+  answer: d
+  explanation: Semi-strong form says public info is fully reflected in prices. Strong
+    form says all info is reflected. Excess returns from fundamental analysis contradicts
+    both.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '21.3'
+  question: Which anomaly describes small-cap stocks outperforming large-caps in the
+    first month of the year?
+  options:
+    a: Momentum effect
+    b: Value premium
+    c: January effect
+    d: Size anomaly
+  answer: c
+  explanation: January effect sees small caps rally in January. Tax-loss selling in
+    December followed by buy-back is one explanation.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '21.4'
+  question: The momentum anomaly contradicts which form of EMH most directly?
+  options:
+    a: Strong form
+    b: Semi-strong form
+    c: Weak form
+    d: All forms equally
+  answer: c
+  explanation: Momentum says past returns predict future returns, directly contradicting
+    weak-form EMH which says past market data cannot predict anything.
+  difficulty: 2
+  tags:
+  - concept
+- id: '21.5'
+  question: Stocks with low price-to-book ratios outperforming high P/B stocks over
+    long horizons describes which anomaly?
+  options:
+    a: January effect
+    b: Momentum
+    c: Size effect
+    d: Value premium
+  answer: d
+  explanation: Value premium is the long-term outperformance of low P/B (value) stocks
+    over high P/B (growth) stocks.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '21.6'
+  question: Under semi-strong form EMH, what happens to a stock price on the day after
+    an unexpectedly high earnings announcement?
+  options:
+    a: Price gradually drifts up over weeks
+    b: Price immediately adjusts to reflect the news
+    c: Price does not change
+    d: Price drops because news was already priced
+  answer: b
+  explanation: Semi-strong form says all public information is immediately reflected.
+    The price should adjust on announcement day. Buying the day after would not generate
+    excess returns.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '21.7'
+  question: What is the proposed explanation for why anomalies tend to weaken after
+    discovery?
+  options:
+    a: Regulators ban trading on anomalies
+    b: Markets become less efficient over time
+    c: Anomalies only existed due to data errors
+    d: Traders arbitrage them away, reducing profitability
+  answer: d
+  explanation: Once an anomaly is published, traders compete to exploit it. Their
+    collective action reduces or eliminates the mispricing. This is consistent with
+    semi-strong EMH — public knowledge gets priced in.
+  difficulty: 3
+  tags:
+  - concept
+- id: '21.8'
+  question: The size effect refers to which empirical observation?
+  options:
+    a: Large-cap stocks outperform small-caps
+    b: Small-cap stocks earn higher risk-adjusted returns than large-caps
+    c: Companies with large market caps have higher volatility
+    d: Stock prices are larger in December
+  answer: b
+  explanation: 'Size effect: small-cap stocks outperform large-caps on a risk-adjusted
+    basis. This challenges EMH because size is publicly known information.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '21.9'
+  question: Which form of EMH implies that even corporate insiders cannot earn excess
+    returns?
+  options:
+    a: Weak form
+    b: Semi-strong form
+    c: Strong form
+    d: None — insiders can always beat market
+  answer: c
+  explanation: Strong-form EMH says even private/insider information is reflected
+    in prices. If true, insiders cannot profit. Empirical evidence rejects this —
+    insiders do earn abnormal returns.
+  difficulty: 2
+  tags:
+  - concept
+- id: '21.10'
+  question: From 1926-2020, by how much did US small-cap stocks outperform large-caps
+    in January on average?
+  options:
+    a: 1.1%
+    b: 3.2%
+    c: 5.0%
+    d: 8.5%
+  answer: b
+  explanation: Small-cap stocks outperformed large-caps by an average of 3.2% in January
+    alone over this period. In 1975-1985, traders earned 8-10% monthly returns repeatedly.
+  difficulty: 2
+  tags:
+  - fact

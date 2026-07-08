@@ -1,0 +1,133 @@
+- id: cum.1
+  type: mcq
+  source_modules:
+  - 1
+  - 2
+  question: Boot 4 drops RestTemplateBuilder auto-configuration. A team migrating from Boot 3 must do what to keep using RestTemplate?
+  options:
+    a: Register a RestTemplateBuilder bean explicitly in their own configuration
+    b: Rely on feature packaging to keep injecting the builder with no code change
+    c: Keep public-field property binding to configure the client
+    d: Enable an outbound HTTP module flag in application properties
+  answer: a
+  explanation: RestTemplate is now opt-in. Under modular starters the team must add the RestTemplate starter or register the builder bean themselves rather than inheriting auto-configuration.
+  difficulty: 1
+  tags:
+  - recall
+  - misconception
+  - cross-module
+- id: cum.2
+  type: mcq
+  source_modules:
+  - 3
+  - 4
+  question: A DGS query resolves an author field per book, firing one database hit per author (the N+1 problem). What is the production fix?
+  options:
+    a: Inline all author lookups inside a single large @DgsQuery method
+    b: Enlarge the mapping SQL to preload authors and ignore per-field resolution
+    c: Replace the one-at-a-time loader with a BatchLoader or MappedBatchLoader
+    d: Disable virtual threads so lookups serialize predictably
+  answer: c
+  explanation: DGS coalesces per-field loader calls into a single batch. BatchLoader keeps key order, MappedBatchLoader gives key lookup with dedup, killing the N+1 fan-out. Big queries and bigger SQL only hide the problem.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: cum.3
+  type: mcq
+  source_modules:
+  - 1
+  - 2
+  question: Boot 4 removed public-field binding in @ConfigurationProperties. An app that relied on mutable public fields should migrate how?
+  options:
+    a: Annotate every public field with @Value so the binder reads them
+    b: Move to a constructor-bound class or record annotated @ConfigurationProperties
+    c: Split each field into its own properties class so PropertyMapper handles it
+    d: Keep the public fields but add spring-boot-configuration-processor as a fallback
+  answer: b
+  explanation: Public-field binding is gone in Boot 4. Constructor binding via a record, or getters and setters, is the supported path. @Value, PropertyMapper, and the metadata processor do not restore field binding.
+  difficulty: 3
+  tags:
+  - misconception
+  - cross-module
+- id: cum.4
+  type: mcq
+  source_modules:
+  - 3
+  - 4
+  question: A federated entity fetcher batches child lookups by parent ID. Which loader shape guarantees the returned values line up with the input keys across the whole batch?
+  options:
+    a: A plain BatchLoader alone with no ordering contract
+    b: A per-request cache keyed only by child class name
+    c: DgsGraphQLClient with default request headers
+    d: MappedBatchLoader, which receives all keys and returns a map that keeps their order
+  answer: d
+  explanation: MappedBatchLoader hands you every requested key and expects one entry per key in return, so ordering and dedup stay under your control. Order drift or missing keys corrupts the ChildKey-to-priority map and breaks parent lookup.
+  difficulty: 3
+  tags:
+  - synthesis
+  - cross-module
+- id: cum.5
+  type: cloze
+  source_modules:
+  - 1
+  question: Spring Boot 4 registers auto-configuration classes through META-INF/spring/{AutoConfiguration.imports}, replacing the old spring.factories mechanism.
+  answer: AutoConfiguration.imports
+  explanation: Boot 4 loads auto-configuration candidates from the AutoConfiguration.imports file under META-INF/spring, generated per module.
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.6
+  type: cloze
+  source_modules:
+  - 3
+  - 4
+  question: DGS resolves N+1 by coalescing field loads into one batch, and a loader that returns values keyed by input lookup instead of raw position is a {MappedBatchLoader}.
+  answer: MappedBatchLoader
+  explanation: BatchLoader matches values by position, MappedBatchLoader by key. MappedBatchLoader also dedups repeated keys, which pairs well with virtual-thread concurrency.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: cum.7
+  type: cloze
+  source_modules:
+  - 2
+  question: When migrating to Boot 4 with OpenRewrite, applying each change on exactly {one} axis at a time keeps the breakage map readable and rollbacks clean.
+  answer: one
+  explanation: Boot 4 migrations bundle many coupled changes, so OpenRewrite runs should isolate a single axis per change to stay verifiable.
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.8
+  type: tf
+  source_modules:
+  - 1
+  - 2
+  statement: Boot 4 removes Undertow support, so every Tomcat-based application must switch to a different embedded server.
+  answer: false
+  explanation: Undertow support is removed, which only affects teams that chose Undertow. Tomcat, Jetty, and Reactor Netty remain first-class embedded servers.
+  difficulty: 2
+  tags:
+  - misconception
+  - cross-module
+- id: cum.9
+  type: tf
+  source_modules:
+  - 4
+  statement: A MappedBatchLoader that deduplicates its input keys must still return an entry for every originally requested key, not just the unique ones.
+  answer: true
+  explanation: DGS expects one mapping per requested key. Dropping entries for duplicated keys, even while deduping the downstream work, breaks key resolution for that request scope.
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.10
+  type: tf
+  source_modules:
+  - 3
+  statement: DGS 12 picks the Jackson3DgsJsonMapperAdapter as the default JSON mapper and lets dgs.graphql.preferred-json-mapper select an alternative.
+  answer: true
+  explanation: Jackson 3 is the DGS 12 default and the property switches mapper choice, matching the Boot-side Jackson 3 story.
+  difficulty: 2
+  tags:
+  - recall

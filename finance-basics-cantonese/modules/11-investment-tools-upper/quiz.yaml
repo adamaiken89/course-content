@@ -1,0 +1,129 @@
+- id: '11.1'
+  question: 以下邊種工具既保本又提供最高流動性?
+  options:
+    a: 貨幣市場基金 (MMF)
+    b: 5 年期公司債
+    c: 10 年期政府債
+    d: 5 年定期存款
+  answer: a
+  explanation: MMF 投資短期債, NAV 通常維持 $1, T+0/T+1 可贖回, 流動性最高。定存/債券鎖定本金, 提前取 = 罰息或市值損失。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.2'
+  question: 國庫券 (T-Bill) 用邊種方式發行?
+  options:
+    a: 平價發行 (Par)
+    b: 溢價發行 (Premium)
+    c: 折扣價發行 (Discount), 到期還票面
+    d: 隨機定價
+  answer: c
+  explanation: T-Bill 折扣發行, e.g. $99.50 買, 13 週後取 $100。賺差價, 唔派息。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.3'
+  question: 你 $100,000 買 1 年定存 3.5%, 提前 6 個月取, 取回幾多 (假設罰息 0)?
+  options:
+    a: $101,750
+    b: $100,000
+    c: $98,500
+    d: $103,500
+  answer: b
+  explanation: 提前取 = 罰息 = 0 利息, 只取回本金 $100,000。呢個就係定存嘅「流動性懲罰」。
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '11.4'
+  question: 短期國庫券 (3-12 個月) 喺金融界被視為?
+  options:
+    a: 投機工具
+    b: 唔流通
+    c: 高風險高回報
+    d: 無風險利率 (Rf) 基準
+  answer: d
+  explanation: 短期國庫券違約風險近乎 0, 二手市場活躍, 係金融界「無風險利率」基準, Sharpe Ratio 公式入面嘅 Rf 通常用佢。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '11.5'
+  question: 你 65 歲退休, 應急錢應該放邊?
+  options:
+    a: 貨幣市場基金 (T+0 提取)
+    b: 10 年期政府債
+    c: 加密幣
+    d: 5 年定存 (回報高)
+  answer: a
+  explanation: 退休人士需要應急錢, 流動性最重要。MMF T+0 提取, 適合 3-6 個月生活費。鎖 5 年定存有流動性風險。
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '11.6'
+  question: 你 $50,000 買 MMF 1 年, 年回報 3%, 期內冇提取。最終本金 + 利息 = ?
+  options:
+    a: $50,000 (MMF 唔派息)
+    b: $51,500
+    c: $51,000
+    d: $65,000
+  answer: b
+  explanation: $50,000 × 3% = $1,500 利息, 本金 $50,000 + 利息 $1,500 = $51,500。MMF 累積 NAV,
+    雖然唔主動派息但贖回時取回本息。
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '11.7'
+  question: 5 年期政府債同 5 年期定存, 邊個流動性高?
+  options:
+    a: 一樣高
+    b: 都唔可以中途提取
+    c: 5 年定存流動性高 (可部分提取)
+    d: 5 年政府債流動性高 (二手市場可隨時賣)
+  answer: d
+  explanation: 政府債有活躍二手市場, 任何時候可以按市價賣出 (雖然可能蝕/賺)。定存提前取 = 罰息 = 0 利息。流動性債券高。
+  difficulty: 2
+  tags:
+  - comparison
+  - concept
+- id: '11.8'
+  question: 你 $100,000 買 1 年定存 3%, 通脹 4%。1 年後實際購買力 (大約)?
+  options:
+    a: $96,153
+    b: $103,000 (本金加利息)
+    c: $99,038 (通脹調整後)
+    d: $104,000
+  answer: c
+  explanation: 103,000 / 1.04 ≈ 99,038。即使本金加利息, 通脹後購買力低過原本 $100,000。呢個就係「保本唔保值」。
+  difficulty: 3
+  tags:
+  - calculation
+  - application
+- id: '11.9'
+  question: 以下邊個描述債券最準確?
+  options:
+    a: 借據, 承諾派息同還本
+    b: 商品, 價隨供需
+    c: 貨幣, 央行發行
+    d: 公司股權, 有投票權
+  answer: a
+  explanation: 債券係借據 (IOU), 發行人借錢, 承諾定期派息 (Coupon) 同到期還本 (Face Value)。股權 (股票) 先有投票權。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.10'
+  question: 以下邊種風險係定存 / MMF / T-Bill 都有嘅?
+  options:
+    a: 違約風險
+    b: 通脹風險
+    c: 股價風險
+    d: 匯率風險 (如以港幣計)
+  answer: b
+  explanation: 呢 3 種工具違約風險近乎 0, 唔涉及股票, 港幣計無匯率風險。但都有通脹風險 — 名義回報低過通脹 = 實質虧損。
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+

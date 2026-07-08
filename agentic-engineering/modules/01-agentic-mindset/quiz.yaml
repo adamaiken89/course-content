@@ -1,0 +1,135 @@
+- id: '1.1'
+  question: What is the primary mental shift from chat-based LLM to agentic coding?
+  options:
+    b: Moving from operator to orchestrator
+    a: Writing more code yourself
+    c: Using a different programming language
+    d: Eliminating code review entirely
+  answer: b
+  explanation: 'Chat LLM: you drive every step. Agentic: you set goals and constraints,
+    agent drives subtasks. You become orchestrator, not operator.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.2'
+  question: Which task is BEST suited for an agent?
+  options:
+    a: Writing cross-file refactoring following existing patterns
+    b: Designing a novel cryptographic algorithm
+    c: Making high-level architecture decisions for a new system
+    d: Debugging a production hotfix under time pressure
+  answer: a
+  explanation: Mechanical, well-defined tasks with existing patterns are ideal for
+    agents. Novel algorithms, architecture decisions, and hotfixes are better done
+    manually.
+  difficulty: 1
+  tags:
+  - application
+- id: '1.3'
+  question: Which signal indicates you should start a NEW session (not continue)?
+  options:
+    a: Agent asks a question already answered 10 turns ago
+    b: Agent generates working code on first try
+    c: You see a minor typo in agent's output
+    d: Agent completes a subtask successfully
+  answer: a
+  explanation: Forgetting already-answered questions is a sign of context degradation.
+    Minor typos or successful completions are not restart signals.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '1.4'
+  question: Before restarting a session, what should you do?
+  options:
+    b: Compress session and save key decisions to AGENTS.md
+    a: Delete all files the agent created
+    c: Ask agent to rewrite everything from scratch
+    d: Nothing - just close and reopen
+  answer: b
+  explanation: Compress preserves decisions. Starting fresh without context means
+    agent re-explores and misses design rationale.
+  difficulty: 1
+  tags:
+  - procedure
+- id: '1.5'
+  question: Context budget is at 85%. Agent is working well on the same feature. What
+    should you do?
+  options:
+    c: Compress proactively, continue same session
+    a: Restart immediately before context gets worse
+    b: Continue until context is 100% full
+    d: Switch to a different project
+  answer: c
+  explanation: Proactive compression is better than waiting until full degradation
+    or restarting prematurely. Compress now, continue working.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '1.6'
+  question: Why is 'agent should do everything' a misconception?
+  options:
+    c: Best results come from strategic delegation, not full replacement
+    a: Agents are too slow for any real work
+    b: Agents cannot write any useful code
+    d: Manual coding is always faster
+  answer: c
+  explanation: Agent is a force multiplier. Delegate mechanical work, keep creative
+    and high-stakes decisions for yourself. Knowing what NOT to delegate is key.
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.7'
+  question: You need to implement a search feature. The codebase has 3 existing search
+    implementations. Agent or manual?
+  options:
+    b: Agent - pattern exists to follow
+    a: Manual - search is too complex for agents
+    c: Neither - this cannot be done with current tools
+    d: Always manual for any feature
+  answer: b
+  explanation: Existing patterns make this ideal for agents. Agent can read existing
+    implementations, extract the pattern, and replicate for new use case.
+  difficulty: 1
+  tags:
+  - application
+- id: '1.8'
+  question: A session has been running 4 hours on authentication. Agent now suggests
+    approaches already rejected. What happened?
+  options:
+    d: Context pollution - agent is forgetting earlier decisions
+    a: Agent is learning and reconsidering
+    b: This is normal agent behavior
+    c: The authentication system changed
+  answer: d
+  explanation: Revisiting already-rejected approaches is a clear sign of context degradation.
+    Compress and restart.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '1.9'
+  question: What is the cost of NOT compressing before restart?
+  options:
+    a: Agent re-explores codebase and misses previous decisions
+    b: Zero - agent remembers across sessions
+    c: Files get corrupted
+    d: Token costs increase by 10x
+  answer: a
+  explanation: Without compressed summary, fresh session has no memory of design decisions.
+    Agent wastes tokens re-discovering what was already settled.
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.10'
+  question: Which pair is correctly matched?
+  options:
+    d: Boilerplate → Agent; Architecture decisions → Manual
+    a: Test writing → Manual; Cryptography → Agent
+    b: Code review → Manual; Bug hunting → Manual
+    c: Hotfixes → Agent; Documentation → Manual
+  answer: d
+  explanation: Boilerplate is mechanical (good for agent). Architecture decisions
+    require human judgment (good for manual).
+  difficulty: 3
+  tags:
+  - comparison
+

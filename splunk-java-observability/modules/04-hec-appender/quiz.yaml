@@ -1,0 +1,119 @@
+- id: "4.1"
+  question: "What endpoint and port does the HEC appender POST events to by default?"
+  options:
+    a: "https://<host>:8000/services/collector"
+    b: "https://<host>:8088/services/collector"
+    c: "https://<host>:8088/services/receivers/simple"
+    d: "https://<host>:9997/services/collector"
+  answer: b
+  explanation: "HEC listens on 8088 at the path /services/collector. Port 9997 is the heavy forwarder ingest, and 8000 is the management port."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "4.2"
+  question: "How does the appender authenticate each HEC request?"
+  options:
+    a: "Basic auth over the token field"
+    b: "An HTTP header 'Authorization: Splunk <token>'"
+    c: "A bearer token in the URL query string"
+    d: "A session cookie set at startup"
+  answer: b
+  explanation: "HEC uses the HTTP header 'Authorization: Splunk <token>'. The token is never put in the URL, where it could leak into logs or proxies."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "4.3"
+  question: "With batch_size_count=100, batch_size_bytes=102400, batch_interval=500, when does the appender flush its buffer?"
+  options:
+    a: "Only when all three thresholds are met"
+    b: "At exactly 100 events, always"
+    c: "On whichever fires first: 100 events, 100 KB, or 500 ms"
+    d: "Every 500 ms regardless of buffer size"
+  answer: c
+  explanation: "The buffer flushes on whichever threshold is reached first. The others exist to bound latency and size when traffic is uneven."
+  difficulty: 2
+  tags: [comprehension]
+
+- id: "4.4"
+  question: "A teammate sets type=raw on the appender and also keeps batch_size_count=500. What actually happens?"
+  options:
+    a: "Batching still works exactly as configured"
+    b: "Raw mode forces batch count to 1; the count setting is ignored"
+    c: "Raw mode sends the JSON event wrapper around each line"
+    d: "Raw mode is only valid with messageFormat=json"
+  answer: b
+  explanation: "type=raw is incompatible with batching and forces count to 1, one event per POST. Batch config is ignored in raw mode."
+  difficulty: 2
+  tags: [application]
+
+- id: "4.5"
+  question: "Why choose messageFormat=json over the default text format?"
+  options:
+    a: "It makes logs human-readable in the console"
+    b: "It reduces network traffic by compressing events"
+    c: "It lets orderId, errorClass, and MDC values become searchable fields"
+    d: "It is required for the HEC token to work"
+  answer: c
+  explanation: "json sends structured events that pair with a JSON encoder so fields map cleanly. text just ships the rendered %m string, which cannot be field-mapped without extra extraction work."
+  difficulty: 2
+  tags: [comprehension]
+
+- id: "4.6"
+  question: "Your checkout service logs only ~1 event per second but has batch_size_count=1000. An incident happens and the last events never arrive before the pod dies. What is the most likely cause?"
+  options:
+    a: "The HEC token expired mid-incident"
+    b: "Splunk rejected the events because of a wrong index"
+    c: "batch_interval is large, so events sat in the buffer waiting for a count they never reached"
+    d: "type=raw silently disabled batching"
+  answer: c
+  explanation: "At 1 event/sec the count threshold never fires; only batch_interval flushes. A large interval means events wait minutes in memory and are lost if the pod dies. Lower batch_interval for low-volume services."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "4.7"
+  question: "Splunk sits behind a self-signed TLS cert in a dev cluster. A developer adds disableCertificateValidation=true and ships it to production. What is the problem?"
+  options:
+    a: "It is fine, since the appender ignores certificate problems anyway"
+    b: "It disables TLS validation in prod, opening the pipeline to man-in-the-middle attacks"
+    c: "It breaks HTTPS and forces the appender to use HTTP"
+    d: "It is ignored unless type=raw is set"
+  answer: b
+  explanation: "disableCertificateValidation=true is a dev-only escape hatch for self-signed certs. Shipping it to prod removes TLS trust verification. The fix is importing the CA into the JVM truststore and keeping validation on."
+  difficulty: 2
+  tags: [application]
+
+- id: "4.8"
+  question: "On K8s you run both the HEC appender and a stdout forwarder. A pod OOM-crashes. Why will the forwarder catch log data the appender misses?"
+  options:
+    a: "The appender only ships logs older than one minute"
+    b: "The forwarder batches more aggressively than the appender"
+    c: "The appender requires an index that the forwarder does not"
+    d: "The forwarder tails stdout continuously and captures pre-crash output the app logged outside SLF4J or never flushed"
+  answer: d
+  explanation: "The HEC appender ships only events the app pushed through it before dying. The forwarder reads the pod's stdout stream, catching JVM crash output and anything not logged via SLF4J. The two paths are complementary."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "4.9"
+  question: "Which dependency provides the Logback HEC appender?"
+  options:
+    a: "com.splunk.logging:splunk-library-javalogging"
+    b: "ch.qos.logback:logback-classic"
+    c: "org.springframework.boot:spring-boot-starter-logging"
+    d: "com.splunk:splunk-sdk-java"
+  answer: a
+  explanation: "splunk-library-javalogging ships HttpEventCollectorLogbackAppender (plus Log4j2, JUL, and SLF4J variants). The SDK jar is for Splunk REST APIs, not appender logging."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "4.10"
+  question: "What is the correct way to handle the HEC token in a Spring Boot app deployed to git-based CI/CD?"
+  options:
+    a: "Hardcode it in logback-spring.xml; the file is internal"
+    b: "Commit it as a build property so all envs share one token"
+    c: "Inject it via an environment variable referenced as ${SPLUNK_TOKEN} in the appender config"
+    d: "Put it in the JVM truststore alongside the CA"
+  answer: c
+  explanation: "The token is a secret. Referencing ${SPLUNK_TOKEN} in logback-spring.xml and setting the value through the environment or a secrets manager keeps it out of the repo and per-environment."
+  difficulty: 1
+  tags: [application]

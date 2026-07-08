@@ -1,0 +1,70 @@
+- id: c.1
+  question: NYSE uses an {auction model} with a {DMM} assigned per stock. Nasdaq uses
+    a {dealer model} with multiple competing {market makers}.
+  answer: auction model
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: Dark pools hide order {intent} to reduce {market impact} for large institutional
+    trades.
+  answer: intent
+  difficulty: 1
+  tags:
+  - concept
+- id: c.3
+  question: Approximately {40%} of US equity volume trades off-exchange in dark pools,
+    ATS, or internalization.
+  answer: 40%
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.4
+  question: Nasdaq Capital Market requires minimum stock price of {$2}, while Nasdaq
+    Global Select requires {$4}.
+  answer: $2
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: Regular US trading hours are {9:30 AM to 4:00 PM ET}. Pre-market runs
+    from {4:00 AM} and after-hours until {8:00 PM}.
+  answer: 9:30 AM to 4:00 PM ET
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.6
+  question: Outside regular trading hours, {spreads} are wider and {liquidity} is
+    lower. Use {limit orders} instead of market orders.
+  answer: spreads
+  difficulty: 2
+  tags:
+  - scenario
+- id: c.7
+  question: An {ATS (Alternative Trading System)} registers as a broker-dealer, not
+    an exchange, and must report trades to {FINRA}.
+  answer: ATS (Alternative Trading System)
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: OTC Pink requires {no financial reporting}. OTCQB requires {current reporting}.
+    OTCQX requires the highest standards among OTC tiers.
+  answer: no financial reporting
+  difficulty: 2
+  tags:
+  - comparison
+- id: c.9
+  question: Pink sheets are an unregulated market where companies file {no financial
+    reports} with the SEC.
+  answer: no financial reports
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.10
+  question: NYSE DMMs can delay the {opening} if they detect an order imbalance, allowing
+    price discovery before trading begins.
+  answer: opening
+  difficulty: 3
+  tags:
+  - concept

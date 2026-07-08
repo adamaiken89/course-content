@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "{MDC} is the per-thread key-value store that Logback attaches to every log line emitted on that thread."
+  answer: "MDC"
+  explanation: "Mapped Diagnostic Context: thread-local key-value state added to every log event on the thread."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "A {OncePerRequestFilter} reads the incoming correlation header, stores the value in the MDC, and clears it in a finally block."
+  answer: "OncePerRequestFilter"
+  explanation: "It wraps the whole request, so it can set the context before the controller runs and clean it up afterwards."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "An HTTP client {interceptor} copies the MDC key into the outgoing request header so the downstream service can read it back."
+  answer: "interceptor"
+  explanation: "A ClientHttpRequestInterceptor reads the MDC and sets the header on every outgoing call."
+  difficulty: 1
+  tags: [process]
+
+- id: "c.4"
+  question: "Thread-pool workers do not inherit the MDC, so wrap the task in a {TaskDecorator} to copy the context before it runs."
+  answer: "TaskDecorator"
+  explanation: "A TaskDecorator wraps each Runnable, copying the submitting thread's MDC map before execution."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.5"
+  question: "A worker {thread} in a pool does not see the submitting thread's MDC, so async log lines lose the {traceId} unless the context is copied."
+  answer: "thread; traceId"
+  explanation: "MDC is thread-local; pool workers start empty. Copying the context restores the correlation ID for async logs."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "The SPL command that groups events sharing a field value into one transaction is {transaction}."
+  answer: "transaction"
+  explanation: "transaction joins events by shared fields into one row with event_count and duration."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.7"
+  question: "In `| transaction trace_id maxspan=30s maxpause=5s`, {maxspan} is the total window of the transaction and {maxpause} is the maximum gap allowed between events."
+  answer: "maxspan; maxpause"
+  explanation: "maxspan caps the whole transaction length; maxpause caps the idle gap that splits it apart."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.8"
+  question: "Because {transaction} is memory-heavy on the search head, use `| stats values(_raw) by trace_id` for lighter aggregation."
+  answer: "transaction"
+  explanation: "transaction buffers events until boundaries close; stats is a cheaper alternative for large result sets."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.9"
+  question: "Log correlation joins log lines by an {MDC} field; APM tracing reconstructs the request path from {spans} that carry trace and span IDs."
+  answer: "MDC; spans"
+  explanation: "Correlation answers what happened in the logs; tracing answers where the time went via span relationships."
+  difficulty: 3
+  tags: [comparison]
+
+- id: "c.10"
+  question: "The OpenTelemetry Java agent injects {trace_id} and {span_id} into log lines; set OTEL_LOGS_EXPORTER={none} to disable log ingest."
+  answer: "trace_id; span_id; none"
+  explanation: "The agent auto-instruments and enriches logs; the exporter setting controls whether log records are sent via OTLP."
+  difficulty: 3
+  tags: [process]

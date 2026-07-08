@@ -1,0 +1,119 @@
+- id: "5.1"
+  question: "Which Logback encoder class turns each log call into one JSON object for Splunk?"
+  options:
+    a: "ch.qos.logback.core.PatternLayoutEncoder"
+    b: "net.logstash.logback.encoder.LogstashEncoder"
+    c: "ch.qos.logback.core.ConsoleAppender"
+    d: "org.slf4j.MDCEncoder"
+  answer: b
+  explanation: "LogstashEncoder (from net.logstash.logback.encoder:logstash-logback-encoder) emits one JSON object per log line with @timestamp, level, logger_name, thread_name, message, plus MDC and customFields. ConsoleAppender is the appender, not the encoder."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "5.2"
+  question: "What is the purpose of the <customFields> element in a LogstashEncoder configuration?"
+  options:
+    a: "Override the timestamp format per field"
+    b: "Set the log level for a specific class"
+    c: "Inject static key/value context, e.g. service and env, that become Splunk fields"
+    d: "Define the order of JSON keys in output"
+  answer: c
+  explanation: "customFields adds static app context like {\"service\":\"checkout\",\"env\":\"prod\"} to every event, so Splunk can filter by service or env without per-line changes."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "5.3"
+  question: "With LogstashEncoder, keys placed into the MDC (e.g. requestId, userId) appear in Splunk as what?"
+  options:
+    a: "Searchable JSON fields automatically"
+    b: "Only in the thread_name field"
+    c: "Only if a Composite encoder is used"
+    d: "Only as part of the message text"
+  answer: a
+  explanation: "LogstashEncoder automatically merges MDC keys into the JSON object, and Splunk's JSON extraction turns each key into a searchable field."
+  difficulty: 1
+  tags: [application]
+
+- id: "5.4"
+  question: "Which JSON field carries the full throwable stacktrace when using LogstashEncoder?"
+  options:
+    a: "exception_msg"
+    b: "logger_name"
+    c: "level_value"
+    d: "stacktrace"
+  answer: d
+  explanation: "LogstashEncoder emits a stacktrace field holding the multi-line throwable, which Splunk indexes as one multi-line field."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "5.5"
+  question: "In a servlet filter that sets MDC context per request, why must MDC.remove() run in a finally block?"
+  options:
+    a: "To avoid cross-request leakage when pooled threads are reused"
+    b: "To keep JSON output small"
+    c: "To ensure log level resets between requests"
+    d: "To force the encoder to re-read customFields"
+  answer: a
+  explanation: "Tomcat reuses threads. Without cleanup, request B inherits request A's requestId, corrupting trace correlation. finally guarantees removal even when the request throws."
+  difficulty: 2
+  tags: [application]
+
+- id: "5.6"
+  question: "Which SplunkCimLogEvent method attaches a full throwable stacktrace to the event?"
+  options:
+    a: "addField(key, value)"
+    b: "setLogLevel(level)"
+    c: "addThrowableWithStacktrace(throwable)"
+    d: "setTimestamp(date)"
+  answer: c
+  explanation: "addThrowableWithStacktrace(throwable) formats the stacktrace for indexing and searching. addField adds plain key/value context."
+  difficulty: 2
+  tags: [application]
+
+- id: "5.7"
+  question: "The design principle 'one event = one JSON object = one Splunk event' primarily drives which decision?"
+  options:
+    a: "Logging a compact single-line JSON object per log call so field extraction maps cleanly"
+    b: "Batching many log calls into a single large JSON document"
+    c: "Adding a new appender for each service"
+    d: "Writing logs to a dedicated JSON file separate from stdout"
+  answer: a
+  explanation: "Splunk parses each line as one event; a compact one-line JSON object maps 1:1 to one event with clean fields. Multi-line stacktraces are the deliberate exception."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "5.8"
+  question: "A service logs full URLs with query strings at INFO. Two weeks later index volume doubles and searches slow. What is the most likely cause?"
+  options:
+    a: "The customFields block is too large"
+    b: "Splunk is re-parsing the logback XML every restart"
+    c: "Stacktraces are being duplicated in every event"
+    d: "High-cardinality field values (unique URLs) bloat the index and slow search"
+  answer: d
+  explanation: "Full URLs with query params are unbounded high-cardinality values. Trim to the path or hash the value before logging to protect index size and search speed."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "5.9"
+  question: "An event built with SplunkCimLogEvent has no _time / timestamp value at the point of construction. Why?"
+  options:
+    a: "CIM events forbid timestamps by design"
+    b: "The class adds no timestamp; the logging config supplies it at emit time"
+    c: "You must always pass a timestamp to the constructor"
+    d: "Splunk only maps _time from message text"
+  answer: b
+  explanation: "SplunkCimLogEvent is a key/value builder and does not add a timestamp — the timestamp comes from the logging configuration (e.g. the encoder), so events inherit consistent time handling."
+  difficulty: 3
+  tags: [terminology]
+
+- id: "5.10"
+  question: "You must emit authentication-failure events that Splunk Enterprise Security and data models recognize without custom field mapping. Which approach is the best fit?"
+  options:
+    a: "A plain LogstashEncoder with customFields only"
+    b: "A hand-written pipe-delimited pattern layout"
+    c: "SplunkCimLogEvent with CIM field constants like COMMON_REASON and COMMON_RESULT"
+    d: "Logging JSON via System.out.println"
+  answer: c
+  explanation: "CIM compliance is exactly what SplunkCimLogEvent provides — constants such as COMMON_REASON, COMMON_RESULT, COMMON_SRC map events to ES data models without custom extraction."
+  difficulty: 3
+  tags: [scenario]

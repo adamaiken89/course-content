@@ -1,0 +1,139 @@
+- id: '3.1'
+  question: What is the decimal equivalent of US Treasury quote 97-08+?
+  options:
+    a: '97.265625'
+    b: '97.08'
+    c: '97.25'
+    d: '97.125'
+  answer: a
+  explanation: 97-08+ = 97 + 8.5/32 = 97 + 0.265625 = 97.265625. Note += 0.5/32.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '3.2'
+  question: What is the definition of Dirty Price?
+  options:
+    a: Face value multiplied by price percentage
+    b: The bond's quoted market price
+    c: Clean Price + Accrued Interest
+    d: The principal amount received at maturity
+  answer: c
+  explanation: Dirty Price = Clean Price (screen quote) + Accrued Interest. This is
+    the amount the buyer actually pays.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.3'
+  question: Why should a suitability engine use dirty price instead of clean price
+    for limit checks?
+  options:
+    a: Only dirty price can be converted to yield
+    b: Dirty price is smaller, making checks easier to pass
+    c: Regulations mandate using dirty price
+    d: The client needs to have dirty price in cash; using clean price underestimates
+      the funds required
+  answer: d
+  explanation: The client must actually pay the dirty price (including accrued interest).
+    Using clean price underestimates the funding need, which could cause a settlement
+    shortfall.
+  difficulty: 2
+  tags:
+  - application
+- id: '3.4'
+  question: When market yields rise, what happens to the price of an existing fixed-rate
+    bond?
+  options:
+    a: Rises
+    b: Falls
+    c: Stays the same
+    d: Rises then falls
+  answer: b
+  explanation: Yield and price are inversely related. Market rates rise → new bonds
+    offer higher yields → existing bonds become less attractive → price falls.
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.5'
+  question: A bond with $10M face value, priced at 99-16. How much does the buyer
+    need for settlement (assuming no accrued interest)?
+  options:
+    a: $10,000,000
+    b: $9,916,000
+    c: $9,950,000
+    d: $9,950,000 but would also need to add AI
+  answer: d
+  explanation: 99-16 = 99.5%. $10M × 0.995 = $9,950,000. But the question says 'no
+    AI' as a hypothetical. In practice, bond trades rarely settle exactly on a coupon
+    date, so there is almost always accrued interest.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '3.6'
+  question: Which of the following is NOT a special handling requirement for fixed
+    income in an OMS?
+  options:
+    a: Thirty-seconds price parsing
+    b: Accrued Interest calculation
+    c: Shares × Price = Total (equity logic also works for bonds)
+    d: Supporting RFQ (Request for Quote) workflows
+  answer: c
+  explanation: 'Equities: Qty × Price = Total. Bonds: Face × Price% + AI. Applying
+    equity logic to bonds produces incorrect valuations.'
+  difficulty: 2
+  tags:
+  - comparison
+- id: '3.7'
+  question: What information is needed to calculate Accrued Interest?
+  options:
+    a: Face value, coupon rate, days between last coupon and settlement, day count
+      convention
+    b: Face value and price
+    c: Maturity date and issue date
+    d: Issue price and maturity price
+  answer: a
+  explanation: Accrued Interest = Face × Coupon Rate × (Days since last coupon / Days
+    in period). Day count conventions (Actual/Actual, 30/360, etc.) vary by market.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.8'
+  question: Which bond type uses a different quotation method from the other three?
+  options:
+    a: US Treasury Note
+    b: US T-Bill
+    c: UK Gilt
+    d: German Bund
+  answer: b
+  explanation: T-Bills use discount yield quotation (not price) because they are zero-coupon
+    bonds. The other three use price quotations (though conventions differ).
+  difficulty: 3
+  tags:
+  - terminology
+- id: '3.9'
+  question: In a broker's OMS, what is the most likely problem when processing fixed
+    income orders?
+  options:
+    a: Can't find the correct exchange code
+    b: Stock split adjustment logic conflicts
+    c: Price parsing errors (32nds vs decimal) or missing accrued interest
+    d: Missing ticker symbol
+  answer: c
+  explanation: FI 32nds price parsing and AI calculation are common bug sources in
+    OMS. Bonds don't have exchange/ticker issues (OTC) or splits.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '3.10'
+  question: When market rates rise from 4% to 5%, what happens to the price of a 10Y
+    bond with a 4% coupon?
+  options:
+    a: Stays at 100 (par)
+    b: Falls below 100 (discount)
+    c: Rises above 100 (premium)
+    d: Unaffected
+  answer: b
+  explanation: Market rate 5% > coupon 4%. New bonds offer higher yield → existing
+    bond price falls (discount bond), price < 100.
+  difficulty: 2
+  tags:
+  - concept

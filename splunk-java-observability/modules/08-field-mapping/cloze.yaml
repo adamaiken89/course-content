@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "When you emit {JSON} logs, each key automatically becomes a Splunk {field}."
+  answer: "JSON; field"
+  explanation: "JSON extraction maps keys to fields at ingest, so the keys your Java encoder emits are your field schema."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Field mapping should be designed at the {source} in the Java app, not by {regex} after ingestion."
+  answer: "source; regex"
+  explanation: "Design the keys in your encoder. Regex extraction after the fact is damage control."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Splunk conventions favor lowercase {snake_case} field names like user_id over camelCase."
+  answer: "snake_case"
+  explanation: "snake_case matches Splunk conventions and data models; camelCase only works if used consistently everywhere."
+  difficulty: 1
+  tags: [naming]
+
+- id: "c.4"
+  question: "Splunk treats names starting with an {underscore} as internal fields, so do not log {_time}."
+  answer: "underscore; _time"
+  explanation: "Underscore-prefixed fields are internal; _time is Splunk's timestamp and must not be overwritten by app data."
+  difficulty: 2
+  tags: [naming]
+
+- id: "c.5"
+  question: "The same concept must have the same field name across services, e.g. {request_id} in every service, never requestId in one and req_id in another."
+  answer: "request_id"
+  explanation: "Cross-service consistency is a core naming rule; inconsistent names split data and break correlation."
+  difficulty: 1
+  tags: [naming]
+
+- id: "c.6"
+  question: "The Common Information Model ({CIM}) defines standard fields like {user} and {src} so Enterprise Security data models can accelerate searches."
+  answer: "CIM; user, src"
+  explanation: "CIM names give model coverage; custom synonyms like actor fall back to slow raw scans in ES."
+  difficulty: 2
+  tags: [cim]
+
+- id: "c.7"
+  question: "Cardinality is the number of {distinct} values a field holds; log high-cardinality fields like request_id but do not {index} them."
+  answer: "distinct; index"
+  explanation: "High-cardinality fields bloat the index and hurt TSIDX efficiency. Log them for lookups, keep them unindexed, and bucket metrics."
+  difficulty: 2
+  tags: [cardinality]
+
+- id: "c.8"
+  question: "Bucket raw latencies via {eval} (module 10) so duration_ms becomes a low-cardinality field for analysis."
+  answer: "eval"
+  explanation: "Bucketing reduces cardinality; duration_ms should be emitted as an integer in milliseconds and bucketed for aggregation."
+  difficulty: 1
+  tags: [cardinality]
+
+- id: "c.9"
+  question: "A field must keep a consistent value {type}; duration_ms is always a {number} and status always a {string}."
+  answer: "type; number; string"
+  explanation: "Inconsistent types break stats, where, and numeric comparisons at runtime."
+  difficulty: 2
+  tags: [types]
+
+- id: "c.10"
+  question: "For null handling, the cleanest JSON policy is to {omit} absent keys entirely rather than emit null or empty strings."
+  answer: "omit"
+  explanation: "Omission keeps the schema clean; empty keys disappear instead of cluttering events."
+  difficulty: 1
+  tags: [terminology]

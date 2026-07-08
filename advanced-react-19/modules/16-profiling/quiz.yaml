@@ -1,0 +1,161 @@
+- id: '16.1'
+  question: Which Profiler mode sorts components by total render time in descending
+    order, without showing parent-child nesting?
+  options:
+    a: Ranked timeline
+    b: Flamegraph
+    c: Interactions timeline
+    d: Component tree
+  answer: a
+  explanation: Ranked timeline lists components from slowest to fastest by total render
+    time per commit. Flamegraph shows hierarchy. Interactions timeline maps user actions
+    to commits. Component tree is not a Profiler mode.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '16.2'
+  question: A Flamegraph bar shows Component P at 20ms. Its three children total 17ms.
+    What is P's self-time?
+  options:
+    d: 3ms
+    a: 20ms
+    b: 17ms
+    c: 37ms
+  answer: d
+  explanation: Self-time = total - children sum. 20ms - 17ms = 3ms. P itself is cheap;
+    children are the bottleneck. Flamegraph shows total inclusive time. Compute self-time
+    by subtracting children.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '16.3'
+  question: Which Profiler metric indicates the hypothetical render time if no memoization
+    were applied?
+  options:
+    c: baseDuration
+    a: actualDuration
+    b: commitTime
+    d: startTime
+  answer: c
+  explanation: baseDuration estimates render time without memoization. actualDuration
+    is real time including memo benefits. If actualDuration ≈ baseDuration, memoization
+    is not helping. commitTime and startTime are timestamps, not duration estimates.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '16.4'
+  question: Component consistently shows actualDuration 45ms and baseDuration 12ms.
+    What does this indicate?
+  options:
+    a: Some children are not memoized correctly, causing actualDuration to exceed
+      baseDuration
+    b: Memoization is working perfectly
+    c: Memoization is adding overhead; actualDuration should be lower than baseDuration
+    d: baseDuration always exceeds actualDuration
+  answer: a
+  explanation: actualDuration > baseDuration means memoization is not fully effective.
+    Either children bypass memo (inline props, context changes) or memo overhead is
+    significant. Ideally actualDuration ≤ baseDuration when memo works.
+  difficulty: 2
+  tags:
+  - concept
+- id: '16.5'
+  question: Commit gap is consistently 80ms. Profiler shows each individual render
+    under 5ms. What is the most likely cause of the 80ms gap?
+  options:
+    b: Non-React JavaScript (event handlers, network callbacks) is blocking the main
+      thread between commits
+    a: React rendering is the bottleneck
+    c: The Profiler is inflating measurements in development mode
+    d: Browser painting adds 80ms overhead
+  answer: b
+  explanation: Commit gap measures time between commits. If React renders fast (<5ms)
+    but gap is high, non-React JS is the bottleneck. Event handlers, analytics, network
+    callbacks running on main thread delay next commit start.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '16.6'
+  question: A developer profiles in development mode and sees 35ms render time. Production
+    under load shows 150ms frame time. Which statement is true?
+  options:
+    c: 35ms dev + 150ms production means React render time is not the primary bottleneck;
+      GC, layout, or network likely dominate
+    a: Production build must be broken — file a bug
+    b: Development mode under-reports render time
+    d: The Profiler is inaccurate in both modes
+  answer: c
+  explanation: Dev mode inflates React render time. If production is slower than dev
+    under load, the bottleneck is outside React rendering — GC pauses, layout thrashing,
+    third-party scripts, or network contention. Profiler actualDuration (React-only)
+    is likely < 16ms in prod. The 150ms includes everything.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '16.7'
+  question: 'React team sets component budget: DataGrid 32ms, SearchInput 8ms, Sidebar
+    Infinity. Which budget reasoning is correct?'
+  options:
+    b: SearchInput 8ms ensures keystroke latency stays under frame budget
+    a: Sidebar budget Infinity means it should never render
+    c: DataGrid 32ms guarantees 60fps rendering
+    d: All components should have the same budget
+  answer: b
+  explanation: SearchInput responds to keystrokes — budget set tight (8ms) to leave
+    room for browser paint within 16ms frame. DataGrid 32ms at 30fps is acceptable
+    for non-interactive content. Sidebar Infinity acknowledges it is not performance-sensitive.
+    Budgets vary by interaction type.
+  difficulty: 2
+  tags:
+  - application
+- id: '16.8'
+  question: A list of 500 items re-renders entirely when one item's state changes.
+    Each item is React.memo wrapped, uses key={item.id}. Flamegraph shows 'Parent
+    rendered' as re-render reason. What is the fix?
+  options:
+    d: Check if parent passes inline props (functions, objects) that change each render,
+      breaking memo comparison
+    a: Remove React.memo — it is not working
+    b: Change keys from item.id to array index
+    c: Increase parent render budget
+  answer: d
+  explanation: React.memo works only if props are stable. If parent creates new object/function
+    references each render (e.g., `<Item onClick={() => ...} />`), memo shallow comparison
+    fails. Parent renders → creates new props → memo check fails → child re-renders.
+    Stabilize props with useCallback/useMemo or Compiler.
+  difficulty: 2
+  tags:
+  - application
+- id: '16.9'
+  question: Which approach detects React render time regressions in CI?
+  options:
+    a: All of the above
+    b: Run Lighthouse CI with performance assertions on TBT and LCP
+    c: Write a Jest test wrapping component in <Profiler> and asserting actualDuration
+      threshold
+    d: Track bundle size with size-limit
+  answer: a
+  explanation: All three catch different aspects. Lighthouse CI measures real-world
+    user metrics (TBT, LCP). Profiler-based tests measure per-component render times
+    programmatically. Bundle size tracking catches JS payload growth that indirectly
+    affects parse/compile time. Use all three in CI for comprehensive coverage.
+  difficulty: 2
+  tags:
+  - application
+- id: '16.10'
+  question: React 19 Compiler auto-memoizes components. Which performance problem
+    does the Compiler NOT fix?
+  options:
+    b: Large unvirtualized lists rendering 1000 DOM nodes
+    a: Unnecessary re-renders caused by unstable prop references
+    c: Re-renders from parent state changes not consumed by child
+    d: Context value changes causing subscriber re-renders
+  answer: b
+  explanation: Compiler auto-memoizes (fixes A, C, D) but does not fix algorithmic/rendering
+    inefficiency. Virtualizing large lists is a structural change, not a memoization
+    problem. Compiler eliminates defensive useMemo/useCallback but does not reduce
+    DOM node count or detect oversized renders.
+  difficulty: 3
+  tags:
+  - comparison
+

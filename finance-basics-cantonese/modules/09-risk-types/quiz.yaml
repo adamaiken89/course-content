@@ -1,0 +1,133 @@
+- id: '9.1'
+  question: 風險嘅 3 個構成 element 包括以下邊 3 項?
+  options:
+    a: 短期、中期、長期
+    b: 不確定、損失、變異
+    c: 高回報、低回報、零回報
+    d: 通脹、利率、匯率
+  answer: b
+  explanation: 風險 = 不確定 + 損失 + 變異。3 個 element 齊全先叫風險。如果只有不確定冇損失 (例如中彩票), 唔算風險, 叫機會。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.2'
+  question: 以下邊種唔係常見嘅主要風險類型?
+  options:
+    a: 流動性風險
+    b: 市場風險
+    c: 信用風險
+    d: 天氣風險
+  answer: d
+  explanation: '5 種主要風險: 市場/信用/流動性/通脹/事件。天氣風險唔係 finance 主要分類 (雖然農業有 weather derivative,
+    但 5 大風險唔包括)。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.3'
+  question: 你阿媽擺 200 萬喺定存 3%, 通脹 4%, 一年後實質回報大約係幾多?
+  options:
+    a: -0.96% (蝕)
+    b: 7% (賺)
+    c: 3% (賺)
+    d: 1% (賺)
+  answer: a
+  explanation: 實質回報 = (1+名目)/(1+通脹) - 1 = (1.03)/(1.04) - 1 ≈ -0.96%。即係購買力微跌。呢個就係通脹風險。
+  difficulty: 2
+  tags:
+  - calculation
+  - concept
+- id: '9.4'
+  question: 信評機構 (Moody's, S&P) 嘅最高評級係邊個?
+  options:
+    a: AAA
+    b: BBB
+    c: AA
+    d: A
+  answer: a
+  explanation: AAA/Aaa 係最高評級, 違約率近 0。AA 排第二, A 排第三, BBB 係投資級最低。BB 以下係投機級 (junk bond)。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.5'
+  question: 「我買咗 AAA 評級公司債, 所以零風險」呢句話啱唔啱?
+  options:
+    a: 啱, 因為 AAA 係最高評級
+    b: 錯, AAA 仍然有違約可能, 信評只反映相對違約率
+    c: 啱, 只要持有多過 1 年就安全
+    d: 錯, 因為 AAA 評級公司唔可以發債
+  answer: b
+  explanation: AAA 係「相對最高」, 唔等於「絕對零風險」。雷曼 2008 違約前信評 A2 (投資級), 安然 2001 違約前 BBB。信評只反映**期望違約率**,
+    唔係保證。仲有其他風險 (市場/利率) 疊加。
+  difficulty: 2
+  tags:
+  - concept
+  - misconception
+- id: '9.6'
+  question: 「黑天鵝事件」嘅特徵包括以下邊 3 項?
+  options:
+    a: 常見、影響大、事前可預測
+    b: 罕見、可預測、影響小
+    c: 罕見、影響巨大、事前難以預測
+    d: 常見、可預測、影響中
+  answer: c
+  explanation: '黑天鵝 (Nassim Taleb 提出) 3 個特徵: 罕見 (outlier)、影響巨大 (massive impact)、事前難以預測
+    (retrospective predictability)。911/COVID/2008 金融海嘯都係經典例子。'
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '9.7'
+  question: 定存 3% 喺通脹 4% 嘅環境下, 一年後 100 萬嘅購買力大約等於今日幾多?
+  options:
+    a: 107 萬
+    b: 100 萬 (一樣)
+    c: 103 萬
+    d: 99 萬 (約)
+  answer: d
+  explanation: 100 萬 × (1.03/1.04) ≈ 99.04 萬。雖然表面有 103 萬, 但通脹 4% 之後購買力只等於今日 99 萬。即係
+    1 萬蚊購買力消失咗。
+  difficulty: 3
+  tags:
+  - calculation
+  - application
+- id: '9.8'
+  question: 假設你 30 歲有自住樓 + 100 萬股票基金, 邊種風險對你影響最大?
+  options:
+    a: 只有市場風險
+    b: 只有通脹風險
+    c: 事件風險 (失業/大病) 影響最大, 因為會斷供
+    d: 完全零風險, 因為有樓同股票
+  answer: c
+  explanation: 退休/借貸人最大風險通常係事件風險 — 自己失業/大病/傷殘, 會令樓按斷供 + 股票被迫低賣。對沖靠保險 + 應急錢 (3-6 月支出)。
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '9.9'
+  question: 香港存款保障計劃保障每間銀行每位存戶幾多?
+  options:
+    a: 10 萬港元
+    b: 80 萬港元
+    c: 100 萬港元
+    d: 500 萬港元
+  answer: b
+  explanation: 香港存款保障委員會 (HKDPB) 保障每間銀行每位存戶最多 80 萬港元 (2024 年 10 月起, 之前係 50 萬)。所以擺超過
+    80 萬要分開幾間銀行。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.10'
+  question: 「分散投資可以消除所有風險」呢句話啱唔啱?
+  options:
+    a: 錯, 分散只可以降低非系統風險, 系統風險 (市場風險) 消除唔到
+    b: 啱, 分散後所有資產都保本
+    c: 錯, 因為分散會增加成本
+    d: 啱, 因為分散就等於安全
+  answer: a
+  explanation: 分散 (diversification) 只可以降低非系統風險 (個別公司/個別行業), 系統風險 (整體市場) 消除唔到。例如 2008
+    金融海嘯, 所有股票都跌, 分散都救唔到。真正消除系統風險要靠對沖 (hedge)。
+  difficulty: 3
+  tags:
+  - concept
+  - application
+

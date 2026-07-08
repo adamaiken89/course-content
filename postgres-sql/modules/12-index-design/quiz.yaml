@@ -1,0 +1,110 @@
+- id: "12.1"
+  question: "Index on (customer_id, issued) with query WHERE customer_id = ? AND issued BETWEEN ... best index column order?"
+  options:
+    a: "equality columns first, range columns last"
+    b: "range columns first, equality columns last"
+    c: "order irrelevant to scan pruning"
+    d: "put the more selective column last"
+  answer: a
+  explanation: "B-tree pruning stops at the first range column. Equality columns must lead so each value narrows the scan."
+  difficulty: 1
+  tags: [concept]
+- id: "12.2"
+  question: "What is stored in the leaves of an index when you use CREATE INDEX ... INCLUDE (col)?"
+  options:
+    a: "the heap page the row lives on"
+    b: "a second tree structure"
+    c: "extra columns carried only for index-only scans"
+    d: "a copy of the full row"
+  answer: c
+  explanation: "INCLUDE columns live only in the leaf pages. They let index-only scans return data without heap fetch, but cannot be used as keys."
+  difficulty: 1
+  tags: [terminology]
+- id: "12.3"
+  question: "Which index best speeds SELECT due_date FROM invoices WHERE status = 'open' AND due_date < today when the open subset is 2% of rows?"
+  options:
+    a: "CREATE INDEX ON invoices (status)"
+    b: "CREATE INDEX ON invoices (due_date) WHERE status = 'open'"
+    c: "CREATE INDEX ON invoices (status, due_date)"
+    d: "CREATE INDEX ON invoices (due_date)"
+  answer: b
+  explanation: "A partial index over just the open rows keeps scan tiny. A standalone status index is useless at low selectivity."
+  difficulty: 2
+  tags: [scenario, comparison]
+- id: "12.4"
+  question: "Why can CREATE INDEX ON users (last_name COLLATE \"C\") be faster for string ordering?"
+  options:
+    a: "it stores strings compressed as integers"
+    b: "it removes the need for a heap"
+    c: "it disables MVCC on the column"
+    d: "it sorts by byte value, skipping locale-comparison overhead"
+  answer: d
+  explanation: "The C collation does plain byte ordering, which is faster and deterministic for comparisons that only need byte order."
+  difficulty: 2
+  tags: [concept]
+- id: "12.5"
+  question: "A lot of queries filter on upper(email). Which statement creates a usable index?"
+  options:
+    a: "CREATE INDEX ON users (upper(email))"
+    b: "CREATE INDEX ON users (email, upper(email))"
+    c: "CREATE INDEX ON users (email) INCLUDE (email)"
+    d: "CREATE INDEX ON users (lower(email), upper(email))"
+  answer: a
+  explanation: "The planner requires the index expression to textually match the query expression. A plain email index cannot serve upper(email) = ?."
+  difficulty: 2
+  tags: [concept]
+- id: "12.6"
+  question: "Table users has UNIQUE NULLS NOT DISTINCT on email. How many rows with email = NULL can exist?"
+  options:
+    a: "unlimited"
+    b: "one"
+    c: "zero"
+    d: "depends on fillfactor"
+  answer: b
+  explanation: "NULLS NOT DISTINCT treats NULLs as equal, so a second NULL row would violate uniqueness."
+  difficulty: 2
+  tags: [scenario]
+- id: "12.7"
+  question: "SELECT status, total FROM orders WHERE customer_id = 42 needs only two columns. Best index knocks out heap access?"
+  options:
+    a: "CREATE INDEX ON orders (customer_id, status)"
+    b: "CREATE INDEX ON orders (total, status)"
+    c: "CREATE INDEX ON orders (total) INCLUDE (status)"
+    d: "CREATE INDEX ON orders (customer_id) INCLUDE (status, total)"
+  answer: d
+  explanation: "customer_id is the filter key; status and total ride along as INCLUDE payload for an index-only scan."
+  difficulty: 3
+  tags: [scenario]
+- id: "12.8"
+  question: "Why is CREATE INDEX ON invoices (status) likely ignored by the planner?"
+  options:
+    a: "indexes cannot be built on low-cardinality columns"
+    b: "status has poor selectivity; the index would still return a large share of the table"
+    c: "status is a reserved word"
+    d: "expression indexes require IMMUTABLE functions"
+  answer: b
+  explanation: "A column with few distinct values selects a big slice of rows — sequential scan beats random index fetches."
+  difficulty: 2
+  tags: [concept]
+- id: "12.9"
+  question: "Which query cannot use composite index (tenant_id, status, issued)?"
+  options:
+    a: "WHERE tenant_id = 1 AND status IN ('a','b') AND issued BETWEEN ... ORDER BY issued"
+    b: "WHERE tenant_id = 1 AND status = 'a' ORDER BY issued"
+    c: "WHERE tenant_id = 1 ORDER BY status"
+    d: "WHERE tenant_id = 1 AND issued > '2025-01-01'"
+  answer: a
+  explanation: "ORDER BY issued cannot use a B-tree when a range of status values breaks the sorted run; the IN-list is a gap discontiguity."
+  difficulty: 3
+  tags: [scenario, comparison]
+- id: "12.10"
+  question: "You need at most one order per (customer_id, store_id) pair, and rows with NULL store_id must also be unique per customer. Which index?"
+  options:
+    a: "UNIQUE (customer_id, store_id) NULLS LAST"
+    b: "non-unique (customer_id, store_id) INCLUDE (store_id)"
+    c: "UNIQUE NULLS NOT DISTINCT (customer_id, store_id)"
+    d: "UNIQUE (store_id, customer_id) NULLS FIRST"
+  answer: c
+  explanation: "NULLS NOT DISTINCT collapses NULLs so the pair can appear once; default UNIQUE would allow many NULL store_id rows per customer."
+  difficulty: 3
+  tags: [scenario, comparison]

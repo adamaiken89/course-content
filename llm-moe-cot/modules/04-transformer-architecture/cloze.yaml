@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Encoder block = {Multi-Head Self-Attention} → Add&Norm → {FFN} → Add&Norm"
+  answer: "Multi-Head Self-Attention, FFN"
+  explanation: "Encoder 有 2 sub-layers: attention (cross-position mixing) + FFN (per-position transformation)。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Encoder 嘅 self-attention 係{bidirectional} — 可以 attend 前後所有 tokens。"
+  answer: "bidirectional"
+  explanation: "冇 causal mask。Encoder 嘅任務係「理解」成個 input，需要睇晒前後 context。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Decoder 有 3 sub-layers: {Masked Self-Attention} → {Cross-Attention} → {FFN}"
+  answer: "Masked Self-Attention, Cross-Attention, FFN"
+  explanation: "Masked SA: 只睇左邊。Cross-Attention: Q=decoder, K,V=encoder。FFN: per-position transformation。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Residual connection: x + {Sublayer(x)}。Gradient = 1 + {∂Sublayer/∂x} — identity path gradient = 1。"
+  answer: "Sublayer(x), ∂Sublayer/∂x"
+  explanation: "Residual 確保深層嘅 gradient 可以 bypass sublayer 直接流返前面。係 deep network trainable 嘅關鍵。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "LayerNorm normalize over {features} dimension per token。Per-token mean = {0}, variance = {1}。"
+  answer: "features, 0, 1"
+  explanation: "LayerNorm(x) = γ · (x - μ)/√(σ²+ε) + β。γ, β 係 learnable。不同 BatchNorm normalize over batch。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Self-attention 係{permutation invariant} — shuffle input tokens → same output。Positional encoding 加入{order} info。"
+  answer: "permutation invariant, order"
+  explanation: "Set operation shuffle 唔改變 output。但語言嘅 order 至關重要 — PE 係必要嘅。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.7"
+  question: "RoPE 將位置信息{rotate}注入 Q, K vectors，令 dot product {RoPE(q)}·{RoPE(k)} encode 咗{relative position}。"
+  answer: "rotate, RoPE(q), RoPE(k), relative position"
+  explanation: "Rotation 令 dot product 自然反映 tokens 之間嘅相對距離。遠距離 tokens attention weight 自然 decay。"
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.8"
+  question: "Autoregressive decoding 逐 token generate — {KV cache} cache 已計算嘅 K, V matrices，避免重複計算。"
+  answer: "KV cache"
+  explanation: "每 decode 新 token 只需計自己嘅 K,V + attention over cached + new。第一個 token O(n²)，之後 O(n)。"
+  difficulty: 2
+  tags: [application]
+
+- id: "c.9"
+  question: "Decoder-only = stacked decoder blocks，冇{encoder} → 冇{cross-attention} → 所有 attention 係{causal self-attention}。"
+  answer: "encoder, cross-attention, causal self-attention"
+  explanation: "GPT 系列係 decoder-only。冇咗 cross-attention 減少參數同計算，但 experiments 證明 scaled decoder-only = powerful。"
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.10"
+  question: "FFN 係{position-wise} — 每個 token 獨立 transformation，hidden dim 通常 = {4× d_model}。"
+  answer: "position-wise, 4× d_model"
+  explanation: "Attention 做 cross-position mixing，FFN 做 per-position processing。Separation of concerns 係 transformer design key insight。"
+  difficulty: 2
+  tags: [concept]

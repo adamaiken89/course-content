@@ -1,0 +1,115 @@
+- type: mcq
+  question: Core mindset shift when engineering with agents?
+  options:
+    b: Write specs and guardrails, review outputs, iterate fast
+    a: Avoid automation entirely
+    c: Prompt once and ship
+    d: Disable all tools
+  answer: b
+  explanation: 'Agentic work treats the agent as a junior collaborator: clear intent, verification loops,
+    fast feedback.'
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.1
+  source_modules:
+  - 1
+- type: mcq
+  question: In opencode-style architecture, what separates the main loop from subagents?
+  options:
+    c: Subagents get scoped context and return compressed results, protecting the main window
+    a: They share one infinite context
+    b: They bypass tools
+    d: They write directly to git config
+  answer: c
+  explanation: Delegation with context isolation keeps retrieval quality high over long sessions.
+  difficulty: 2
+  tags:
+  - concept
+  id: cum.2
+  source_modules:
+  - 2
+- type: cloze
+  question: '{AGENTS.md} files give agents persistent project conventions so instructions survive across
+    sessions.'
+  answer: AGENTS.md
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.3
+  source_modules:
+  - 3
+- type: tf
+  statement: Skills bundle procedures + resources so an agent loads exactly the workflow it needs on demand.
+  answer: true
+  explanation: Skill = focused instruction set triggered by task shape, not always-on context.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.4
+  source_modules:
+  - 4
+- type: mcq
+  question: 'Review agentic-engineering module 1: which statement reflects the module''s core guidance?'
+  options:
+    a: Apply the documented pattern with its stated tradeoffs
+    b: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: a
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.5
+  source_modules:
+  - 1
+- type: mcq
+  question: 'Review agentic-engineering module 2: which statement reflects the module''s core guidance?'
+  options:
+    d: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    b: Patterns never have costs
+    c: Always rewrite existing code first
+  answer: d
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.6
+  source_modules:
+  - 2
+- type: mcq
+  question: 'Review agentic-engineering module 3: which statement reflects the module''s core guidance?'
+  options:
+    b: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: b
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.7
+  source_modules:
+  - 3
+- type: mcq
+  question: 'Review agentic-engineering module 4: which statement reflects the module''s core guidance?'
+  options:
+    a: Apply the documented pattern with its stated tradeoffs
+    b: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: a
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.8
+  source_modules:
+  - 4

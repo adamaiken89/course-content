@@ -1,0 +1,44 @@
+- id: c.1
+  question: Alignment 將有幫助但無約束嘅 pre-trained model 轉變為 {helpful}、{harmless} 同 {honest}
+    嘅 model。
+  answer: helpful / harmless / honest
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: RLHF 有三個階段：喺 demonstrations 上 {SFT}，訓練 {reward model} 喺 human preferences
+    上，同埋對住 reward model 做 {PPO} fine-tuning。
+  answer: SFT / reward model / PPO
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: Reward model 用 {Bradley-Terry} pairwise loss：L = -E[log(σ(r(x,y_w) - r(x,y_l)))]。
+  answer: Bradley-Terry
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: DPO 用 {policy ratio π/π_SFT} 表示 reward function，消除咗 {reward model}。
+  answer: policy ratio π/π_SFT / reward model
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: KTO（Kahneman-Tversky Optimisation）用 {binary} feedback（like/dislike）代替
+    {pairwise comparisons}。
+  answer: binary / pairwise comparisons
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: Reward over-optimisation：{RM score} 持續增加而 {human rating} 喺 threshold 後最終下降。
+  answer: RM score / human rating
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: RLHF 中嘅 KL penalty 防止 policy {exploiting RM flaws}（reward hacking）。
+  answer: exploiting RM flaws
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: DPO 嘅限制：缺乏 {online exploration} — 無法從 {current policy distribution} 收集
+    preferences。
+  answer: online exploration / current policy distribution
+  difficulty: 2
+  tags: []

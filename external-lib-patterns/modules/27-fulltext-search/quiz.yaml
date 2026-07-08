@@ -1,0 +1,142 @@
+- id: '27.1'
+  question: What is the purpose of Algolia's searchable attributes configuration?
+  options:
+    d: Specifies which fields are searched when a user types a query
+    a: Determines which attributes are returned in search results
+    b: Defines the CSS class names for search UI components
+    c: Controls the order of results in the index
+  answer: d
+  explanation: Searchable attributes define which record fields Algolia scans for
+    text matches. Only these fields contribute to relevance ranking. Non-searchable
+    attributes are returned but not searched.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '27.2'
+  question: What InstantSearch hook provides access to the current query and refine
+    function?
+  options:
+    a: useSearchBox
+    b: useQuery
+    c: useCurrentRefinement
+    d: useQueryParams
+  answer: a
+  explanation: useSearchBox returns { query, refine, clear }. query is current search
+    string. refine updates query and triggers search. clear resets to empty.
+  difficulty: 1
+  tags:
+  - api
+- id: '27.3'
+  question: How does React 19 useTransition improve search input UX compared to debounce?
+  options:
+    c: useTransition marks search refinement as low priority — input stays responsive,
+      no fixed delay
+    a: useTransition is faster than debounce
+    b: useTransition replaces debounce with Promise-based throttling
+    d: useTransition and debounce serve the same purpose
+  answer: c
+  explanation: useTransition marks state update as non-urgent. React processes input
+    update first, then search refinement. No magic number delay — adapts to device
+    speed naturally.
+  difficulty: 2
+  tags:
+  - react19
+- id: '27.4'
+  question: What is the correct way to scope search results by user in Algolia?
+  options:
+    b: Use Secured API Keys with filters generated server-side
+    a: Filter on client side after receiving results
+    c: Create separate index per user
+    d: Add user_id field and filter in InstantSearch useRefinementList
+  answer: b
+  explanation: 'Generate Secured API Key on server with user-specific filter: client.generateSecuredApiKey(key,
+    { filters: ''user_id:123'' }). Client receives scoped key and cannot access other
+    users'' data.'
+  difficulty: 2
+  tags:
+  - security
+- id: '27.5'
+  question: Which InstantSearch component renders matched text with <mark> tags?
+  options:
+    b: <Highlight>
+    a: <MarkedText>
+    c: <Match>
+    d: <Emphasis>
+  answer: b
+  explanation: 'Highlight component wraps matching query terms in <mark> tags for
+    visual emphasis. Usage: <Highlight attribute="name" hit={hit} />.'
+  difficulty: 1
+  tags:
+  - api
+- id: '27.6'
+  question: What is the difference between Highlight and Snippet in InstantSearch?
+  options:
+    c: Highlight marks matched words inline. Snippet truncates long text with ellipsis
+      around matches
+    a: They are the same — interchange-able
+    b: Snippet is for code blocks, Highlight is for text
+    d: Highlight works on client, Snippet works on server
+  answer: c
+  explanation: Highlight shows full attribute value with matched words in <mark>.
+    Snippet truncates to relevant portion around matches (configure snippet size in
+    Algolia dashboard).
+  difficulty: 2
+  tags:
+  - concept
+- id: '27.7'
+  question: How would you build a fully custom search widget beyond prebuilt components?
+  options:
+    a: Use hooks (useSearchBox, useHits, useRefinementList) and render custom JSX
+    b: Not possible — prebuilt components are required
+    c: Override prebuilt component CSS
+    d: Use InstantSearch's widget() factory function
+  answer: a
+  explanation: Hooks return { items, refine, currentRefinement } etc. Build any UI
+    layout. Prebuilt components are optional convenience wrappers around hooks.
+  difficulty: 1
+  tags:
+  - pattern
+- id: '27.8'
+  question: What should you never expose on the client side in Algolia integration?
+  options:
+    d: Admin API key
+    a: Search-only API key
+    b: Index name
+    c: Application ID
+  answer: d
+  explanation: Admin API key has full CRUD access to indices. Only search-only API
+    key (limited to search queries) should be on client. Admin key used server-side
+    for indexing.
+  difficulty: 1
+  tags:
+  - security
+- id: '27.9'
+  question: How do Server Components improve Algolia search page initial load?
+  options:
+    a: Server Components fetch and render initial results on server — client sees
+      results immediately without client-side Algolia request
+    b: Server Components cannot make API calls
+    c: Server Components replace InstantSearch entirely
+    d: Server Components cache Algolia responses in CDN
+  answer: a
+  explanation: Server Component fetches Algolia on server, renders HTML. Client hydrates
+    with InstantSearch for subsequent interactive searches. Eliminates flash of empty
+    results on page load.
+  difficulty: 2
+  tags:
+  - react19
+- id: '27.10'
+  question: What does Algolia useRefinementList return for each facet value?
+  options:
+    b: value, label, count, isRefined
+    a: id, name, total, selected
+    c: key, display, hits, active
+    d: attribute, value, frequency, checked
+  answer: b
+  explanation: 'Each item: value (raw facet value for refine()), label (display text),
+    count (matching result count), isRefined (currently selected). Pattern: { value,
+    label, count, isRefined }.'
+  difficulty: 2
+  tags:
+  - api
+

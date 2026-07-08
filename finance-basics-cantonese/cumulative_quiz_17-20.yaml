@@ -1,0 +1,114 @@
+- id: "cum.1"
+  type: mcq
+  source_modules: [17, 18, 19, 20]
+  question: "基金 NAV 計算公式?"
+  options:
+    a: "NAV = 總資產 / 流通股數"
+    b: "NAV = (總資產 - 總負債) / 流通單位數"
+    c: "NAV = 單位價格 × 流通股數"
+    d: "NAV = 基金管理資產"
+  answer: b
+  explanation: "NAV = (基金總資產 - 基金總負債) / 流通單位數。每日收市後計一次, 反映每個單位代表嘅底層資產價值。"
+  difficulty: 1
+  tags: [formula, terminology]
+
+- id: "cum.2"
+  type: mcq
+  source_modules: [17, 18, 19, 20]
+  question: "ETF 同互惠基金比較, ETF 嘅主要好處?"
+  options:
+    a: "開市內即時賣, 低費, 稅務高效"
+    b: "需要主動經理揀股"
+    c: "只可以收市後贖回"
+    d: "高管理費"
+  answer: a
+  explanation: "ETF 好處: (1) 開市內即時賣, (2) Expense Ratio 低 (被動指數), (3) In-kind Redemption 稅務高效。"
+  difficulty: 1
+  tags: [comparison, concept]
+
+- id: "cum.3"
+  type: cloze
+  source_modules: [17, 18, 19, 20]
+  question: "組合預期回報 = {Σ wi × E[Ri]}, 即 {資產預期回報嘅加權平均}。"
+  answer: "Σ wi × E[Ri]、資產預期回報嘅加權平均"
+  explanation: "簡單加權平均, 唔涉及相關性。組合方差就涉及相關性。"
+  difficulty: 2
+  tags: [formula, concept]
+
+- id: "cum.4"
+  type: tf
+  source_modules: [17, 18, 19, 20]
+  statement: "SPIVA 數據顯示 90% 主動基金 15 年跑輸指數, 大部分人揀被動 ETF 更著數。"
+  answer: true
+  explanation: "對。SPIVA 5 年 80% 跑輸, 15 年 90% 跑輸。被動 ETF 低費 + 跟指數, 對 90% 投資者更著數。"
+  difficulty: 1
+  tags: [concept, research]
+
+- id: "cum.5"
+  type: tf
+  source_modules: [17, 18, 19, 20]
+  statement: "組合相關性 ρ 永遠固定, 唔會隨時間變化。"
+  answer: false
+  explanation: "錯。相關性唔係固定, 危機時會急升 (e.g. 2008 所有資產一起跌, ρ 趨向 +1)。呢個就係「分散失效」。"
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "cum.6"
+  type: mcq
+  source_modules: [17, 18, 19, 20]
+  question: "你揀 ETF, 邊項唔重要?"
+  options:
+    a: "Expense Ratio"
+    b: "AUM"
+    c: "Tracking Error"
+    d: "經理名氣"
+  answer: d
+  explanation: "揀 ETF 客觀指標: ER、AUM、Tracking Error、Bid-Ask Spread。經理名氣唔重要, ETF 係被動跟指數, 唔靠個別經理。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "cum.7"
+  type: cloze
+  source_modules: [17, 18, 19, 20]
+  question: "60/40 組合 = {60% 股 + 40% 債}, 因為 {股債低相關 (ρ ~ 0.0-0.3), 分散效果顯著}。"
+  answer: "60% 股 + 40% 債、股債低相關 (ρ ~ 0.0-0.3), 分散效果顯著"
+  explanation: "60/40 係最經典嘅資產配置, 適合大部分人風險承受度。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "cum.8"
+  type: mcq
+  source_modules: [17, 18, 19, 20]
+  question: "以下邊個係「再平衡」(Rebalancing) 嘅目的?"
+  options:
+    a: "增加回報"
+    b: "控制風險, 維持原定資產比例"
+    c: "避稅"
+    d: "加快交易"
+  answer: b
+  explanation: "再平衡 = 將組合調返原定比例 (e.g. 60/40)。目的: 控制風險, 避免某資產佔比過高。回報唔一定高, 但風險受控。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "cum.9"
+  type: tf
+  source_modules: [17, 18, 19, 20]
+  statement: "ETF 用 In-kind Redemption, 比互惠基金現金贖回稅務更高效。"
+  answer: true
+  explanation: "對。In-kind Redemption 用股票換單位, 唔觸發 CG 稅。互惠現金贖回觸發 CG 稅。同等回報 ETF 稅後高 0.1-0.3%/年。"
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "cum.10"
+  type: mcq
+  source_modules: [17, 18, 19, 20]
+  question: "Glide Path 傳統策略, 25 歲同 65 歲嘅股債比?"
+  options:
+    a: "25 歲 50/50, 65 歲 90/10"
+    b: "25 歲 90/10, 65 歲 50/50"
+    c: "一樣"
+    d: "25 歲 100% 債, 65 歲 100% 股"
+  answer: b
+  explanation: "傳統 Glide Path: 年輕高股票 (90/10) → 退休 50/50。理論: 年輕長線, 承受波動; 退休保護累積。"
+  difficulty: 2
+  tags: [concept, application]

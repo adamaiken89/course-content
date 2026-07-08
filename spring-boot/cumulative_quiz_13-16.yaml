@@ -1,0 +1,109 @@
+- id: "cum.31"
+  type: mcq
+  question: "Which test mix matches the pyramid a Boot 4 team should aim for?"
+  options:
+    a: "mostly @SpringBootTest integration tests, with a few unit tests on the side"
+    b: "many fast unit and slice tests, and fewer end-to-end @SpringBootTest runs backed by Testcontainers"
+    c: "all coverage through GraphQLTestTemplate web tests"
+    d: "contract tests alone, with no other layers"
+  answer: b
+  source_modules: [13, 14]
+  explanation: "Slice tests (@WebMvcTest, @GraphQlTest) run fast and cover the web layer, @SpringBootTest plus Testcontainers cover the real wiring, and a thin top layer keeps CI cheap - that is the pyramid."
+  difficulty: 1
+  tags: [cross-module, synthesis]
+
+- id: "cum.32"
+  type: mcq
+  question: "Spring Cloud Contract verifies producer-consumer agreement at build time. At runtime, how are the two sides joined into a single trace?"
+  options:
+    a: "the consumer propagates a trace id and the producer continues it in its own spans"
+    b: "Spring Cloud Contract embeds the trace id inside each generated stub"
+    c: "both sides run in the same JVM and share one span list"
+    d: "a shared WireMock server holds the trace context for both"
+  answer: a
+  source_modules: [14, 15]
+  explanation: "Contracts nail the message shape at build time; at runtime OpenTelemetry/Micrometer correlation works because the caller propagates a trace id (e.g. via W3C headers) that the callee continues as its parent span."
+  difficulty: 3
+  tags: [cross-module, synthesis]
+
+- id: "cum.33"
+  type: mcq
+  question: "Path-based versioning (/v2/customers) duplicates routes and serializers, while versioning through the Accept header keeps one route but"
+  options:
+    a: "adds CSRF complications"
+    b: "only works with HTTP Service Client proxy interfaces"
+    c: "requires every client to negotiate a versioned media type explicitly"
+    d: "removes the need to deprecate anything"
+  answer: c
+  source_modules: [16]
+  explanation: "Accept-based negotiation keeps a single URL but pushes version selection into the media type each client sends. Spring's declarative versioning support smooths that negotiation for HTTP Service Client consumers."
+  difficulty: 2
+  tags: [recall]
+
+- id: "cum.34"
+  type: mcq
+  question: "A typo in a derived repository query such as findBbyEmail in the repository interface is caught"
+  options:
+    a: "only under a real database at runtime"
+    b: "never - it silently becomes an empty query"
+    c: "after the first request times out in production"
+    d: "during context startup or build-time validation, before any test needs a database"
+  answer: d
+  source_modules: [14]
+  explanation: "Spring Data validates derived query method names when the repository proxy is created, so a bad name fails the context - caught in an integration or slice test without touching a real store."
+  difficulty: 1
+  tags: [recall]
+
+- id: "cum.35"
+  type: cloze
+  question: "Boot slice tests now use the {blank} annotation - imported from Spring Framework 6.2 - to replace the deprecated @MockBean."
+  answer: "MockitoBean"
+  source_modules: [13]
+  explanation: "@MockitoBean supersedes @MockBean in Boot 4 test slices. Same mocking purpose, fresh location and lifecycle handling inside the Spring test framework."
+  difficulty: 1
+  tags: [recall]
+
+- id: "cum.36"
+  type: cloze
+  question: "With structured JSON logging, the {blank} entry carrying the trace id lets logs from one request be correlated across services."
+  answer: "MDC"
+  source_modules: [15]
+  explanation: "Micrometer and the tracing bridge write the trace id into the MDC so each log line carries it. The gap: virtual threads need a ContextSnapshot to carry that MDC onto worker threads."
+  difficulty: 2
+  tags: [recall]
+
+- id: "cum.37"
+  type: cloze
+  question: "Integration tests run against real Postgres via Testcontainers instead of H2, because H2 {blank} from production behavior even when its dialect claims compatibility."
+  answer: "drifts"
+  source_modules: [14]
+  explanation: "H2 diverges on JSON operators, locking, and SQL corner cases, so a green H2 build can still fail against Postgres. Real Postgres in a container removes the drift risk."
+  difficulty: 2
+  tags: [misconception]
+
+- id: "cum.38"
+  type: tf
+  statement: "A @WebMvcTest slice loads only the web layer, while @SpringBootTest loads the full context, so slice tests start faster but cover less wiring."
+  answer: true
+  source_modules: [13, 14]
+  explanation: "Slices mock collaborators (via @MockitoBean) and skip the database and messaging layers; the full @SpringBootTest covers real wiring. Both sit in the pyramid at different depths."
+  difficulty: 1
+  tags: [cross-module, recall]
+
+- id: "cum.39"
+  type: tf
+  statement: "The Actuator loggers endpoint cannot change a logger level while the application is running."
+  answer: false
+  source_modules: [15]
+  explanation: "POSTing to /actuator/loggers adjusts a level live, which is exactly how a support engineer lifts logging on a sick instance without redeploying. The change is not persisted across restarts."
+  difficulty: 2
+  tags: [misconception]
+
+- id: "cum.40"
+  type: tf
+  statement: "RestClient is first-class in Boot 4, while RestTemplate is an opt-in legacy recalled only when a team still needs its old behavior."
+  answer: true
+  source_modules: [16]
+  explanation: "RestClient is the recommended default; RestTemplate is on recall (opt-in). New code should prefer RestClient, with HTTP Service Client interfaces as the typed, proxy-based option."
+  difficulty: 3
+  tags: [misconception]

@@ -1,0 +1,60 @@
+- id: c.1
+  question: MiFID II requires equities trades reported within {1 minute} and research {unbundled} from execution commissions.
+  answer: 1 minute
+  difficulty: 1
+  tags:
+  - concept
+- id: c.2
+  question: MiFID II caps dark pool trading at {4%} per venue and {8%} total across the EU. This is called the {double volume cap}.
+  answer: 4%
+  difficulty: 2
+  tags:
+  - concept
+- id: c.3
+  question: Pre-MiFID II, bundled commissions were called {soft dollars}. Post-MiFID II, research is paid from a {research payment account} or the firm's own {P&L}.
+  answer: soft dollars
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.4
+  question: Best execution considers {price}, {speed}, likelihood of execution, {settlement} costs, and market impact. Price is {primary} but not sole factor.
+  answer: price
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: SEC Rule {605} requires monthly execution quality reports. SEC Rule {606} requires quarterly routing reports.
+  answer: '605'
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.6
+  question: '{Payment for order flow} (PFOF) creates conflict with best execution. Brokers receive rebate for routing orders, but must still prove client got {best price}.'
+  answer: Payment for order flow
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: Rule 201 (Alternative Uptick) triggers when stock drops {10%} in one day. Short sales must be at price {above} the national best {bid}.
+  answer: 10%
+  difficulty: 1
+  tags:
+  - concept
+- id: c.8
+  question: SEC Rule {204} (Regulation SHO) requires brokers to {locate} shares available for borrow before short selling. Failures to deliver must be closed within {T+2}.
+  answer: '204'
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.9
+  question: The original uptick rule (Rule {10a-1}) was in effect from {1938} to {2007}. It required short sales on an {uptick} only.
+  answer: 10a-1
+  difficulty: 2
+  tags:
+  - fact
+- id: c.10
+  question: The {Systematic Internaliser} regime under MiFID II requires firms executing OTC orders regularly to publish {firm quotes}. This blurs line between {exchange} and broker.
+  answer: Systematic Internaliser
+  difficulty: 3
+  tags:
+  - concept

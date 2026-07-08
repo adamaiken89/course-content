@@ -1,0 +1,77 @@
+- id: c.1
+  question: 'Multi-head attention: each head has dimension d_k = d_model / {h}. Outputs
+    are {concatenated} and projected with {W_O}.'
+  answer: h
+  explanation: Splitting into h lower-dimensional subspaces lets each head learn different
+    patterns.
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: Induction heads enable {in-context learning}. They match current token
+    to its {previous occurrence} and attend to the following token.
+  answer: in-context learning
+  explanation: Induction heads emerge at critical data size and enable pattern copying.
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: Up to {30-40%} of attention heads can be pruned with minimal quality loss.
+    {Later} layers tend to have more redundant heads.
+  answer: 30-40%
+  explanation: High redundancy. Early-layer heads harder to prune.
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: In MQA, {K} and {V} projections are shared across all heads. Each head
+    retains its own {Q} projection.
+  answer: K
+  explanation: K,V sharing saves KV cache. Q must be head-specific for diverse attention
+    patterns.
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: GQA has {G} KV head groups. Reduction ratio = {G/h}. Llama 2 70B uses
+    GQA with {8} groups and {64} query heads.
+  answer: G
+  explanation: 8x KV cache reduction while matching MHA quality closely.
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: MQA cache = 1/{h} of MHA. GQA cache = {G/h} of MHA. MQA is GQA with G={1}.
+    MHA is GQA with G={h}.
+  answer: h
+  explanation: GQA unifies all three approaches in one formulation.
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: 'Converting MHA → MQA: average {K} and {V} projections across heads. Then
+    {fine-tune} to recover quality.'
+  answer: K
+  explanation: Upcycling leverages pre-trained weights. Short fine-tune adapts to
+    shared KV.
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: KV cache memory = batch × seq_len × num_layers × {num_heads} × d_head
+    × {2} (K+V) × precision. This grows {linearly} with sequence length.
+  answer: num_heads
+  explanation: KV cache is O(n). At very long context, this dominates and MQA/GQA
+    become essential.
+  difficulty: 2
+  tags: []
+- id: c.9
+  question: Head importance can be measured by {gradient-based} metric or {magnitude-based}
+    metric. The former is more {accurate}.
+  answer: gradient-based
+  explanation: Gradient-based importance accounts for loss impact of removing each
+    head.
+  difficulty: 2
+  tags: []
+- id: c.10
+  question: At small model scale, MQA causes noticeable quality loss because shared
+    K,V projections are a {significant fraction} of total capacity. At large scale
+    (>10B), this fraction is {negligible}.
+  answer: significant fraction
+  explanation: MQA quality gap narrows at scale. This explains why large models adopt
+    it.
+  difficulty: 2
+  tags: []

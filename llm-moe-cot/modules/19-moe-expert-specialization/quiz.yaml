@@ -1,0 +1,81 @@
+- id: '19.1'
+  question: Expert specialisation 喺 MoE 入面係點樣 emerge 嘅？
+  options:
+    d: Router 透過 gradient descent 學會將 similar tokens 分去同一個 expert
+    a: Experts 喺 initialization 嗰陣就 pre-assign 咗去 domains
+    b: 用 domain labels 嚟分開訓練每個 expert
+    c: Experts 隨機 specialise 然後透過 mutual information 收斂
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '19.2'
+  question: 喺 knowledge locality 嘅角度，expert 嘅 up-projection 係：
+  options:
+    b: Keys（要匹配嘅 patterns）
+    a: Values（要輸出嘅 knowledge）
+    c: 同時係 keys 同 values
+    d: 一個 gating mechanism
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '19.3'
+  question: MoE 入面 low router entropy 表示：
+  options:
+    d: Router 好 confident 應該用邊個 expert
+    a: Router 隨機將 tokens 分俾 experts
+    b: Router collapse 咗（所有 tokens 去同一個 expert）
+    c: Load balancing 好差
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '19.4'
+  question: 邊個唔係 MoE expert specialisation 嘅一種？
+  options:
+    a: Time-based specialisation（experts 喺唔同 training steps 活躍）
+    b: Domain specialisation（code、math、biology）
+    c: Linguistic specialisation（language clusters）
+    d: Overlapping specialisation（shared functionality）
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '19.5'
+  question: DeepSeekMoE 入面處理 overlapping specialisation 嘅設計係：
+  options:
+    b: Shared 'catch-all' experts 加 specialised experts
+    a: 所有 experts 都係 generalists
+    c: 每個 token 啟動所有 experts
+    d: Experts 係每個 batch 動態建立
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '19.6'
+  question: 邊種 routing pattern 表示 healthy expert specialisation？
+  options:
+    c: Low router entropy，每句 low routing entropy
+    a: High router entropy，high activation skew
+    b: High router entropy，low activation skew
+    d: Random routing 橫跨所有 experts
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '19.7'
+  question: Expert specialisation 嘅實際好處係：
+  options:
+    c: 淨係 fine-tune domain-relevant experts 平過 full fine-tuning
+    a: 所有 experts 都要 fine-tune 先有 improvement
+    b: Experts 喺 training 期間會自動 merge
+    d: Experts specialise 嗰陣唔需要 load balancing
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '19.8'
+  question: Token routing entropy 量度緊：
+  options:
+    a: 同一個 document 嘅 tokens 被 route 去幾多個唔同 experts
+    b: Expert weight matrices 嘅 entropy
+    c: 所有 experts 用嘅總 compute
+    d: Loss gradient 關於 routing decisions
+  answer: a
+  difficulty: 2
+  tags: []
+

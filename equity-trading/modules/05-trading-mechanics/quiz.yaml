@@ -1,0 +1,141 @@
+- id: '5.1'
+  question: US equities currently settle how many business days after trade date?
+  options:
+    a: Same day (T+0)
+    b: Three days (T+3)
+    c: Two days (T+2)
+    d: Next day (T+1)
+  answer: d
+  explanation: US equities moved to T+1 settlement in May 2024. Previously T+2. The
+    switch reduces counterparty risk and frees collateral faster.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.2'
+  question: Under Reg T, what is the maximum leverage for stock purchases in a margin
+    account?
+  options:
+    a: '2:1'
+    b: 1:1 (no leverage)
+    c: '3:1'
+    d: '5:1'
+  answer: a
+  explanation: Reg T requires 50% initial margin → max 2:1 leverage ($20K buying power
+    for $10K equity). Higher leverage allowed for intraday but must reduce by settlement.
+  difficulty: 1
+  tags:
+  - concept
+- id: '5.3'
+  question: You deposit $15K and buy $30K of stock. Stock drops 20%. What is your
+    equity?
+  options:
+    a: $9K
+    b: $10K
+    c: $12K
+    d: $15K
+  answer: a
+  explanation: Position = $30K × 0.8 = $24K. Loan = $15K. Equity = $24K - $15K = $9K.
+    Equity % = $9K/$24K = 37.5%. Above 25% maintenance, but close to broker's house
+    requirement.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '5.4'
+  question: 'To short a stock, the broker first needs to:'
+  options:
+    a: Check the trader's credit score
+    b: Sell the trader's other holdings
+    c: Locate and borrow available shares
+    d: Get SEC approval
+  answer: c
+  explanation: Broker must locate shares available for borrow under SEC Rule 204.
+    Without borrowable shares, the short cannot execute. Shares come from margin accounts,
+    brokerage inventory, or lending desks.
+  difficulty: 1
+  tags:
+  - concept
+- id: '5.5'
+  question: S&P 500 drops 8% in a single day. Which circuit breaker level triggers?
+  options:
+    a: None — 8% does not hit any level
+    b: Level 1 — 15-minute halt
+    c: Level 2 — 15-minute halt
+    d: Level 3 — market closes for day
+  answer: b
+  explanation: 'Level 1 at 7%: 15-min halt. Level 2 at 13%. Level 3 at 20%. 8% exceeds
+    7% → Level 1 triggers. After 15 min, trading resumes.'
+  difficulty: 1
+  tags:
+  - concept
+- id: '5.6'
+  question: A short seller shorts XYZ at $100. The stock rallies to $250. What is
+    the loss percentage?
+  options:
+    a: 100%
+    b: 350%
+    c: 250%
+    d: 150%
+  answer: d
+  explanation: Short at $100, cover at $250 = $150 loss per share. Loss % = $150 /
+    $100 = 150%. Loss exceeds 100% because no cap on upside. Initial investment of
+    $100/share lost, plus $50 more.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '5.7'
+  question: What is LULD?
+  options:
+    a: Large Unit Liquidation Directive
+    b: Limit Up / Limit Down — price bands that pause trading if breached
+    c: London Unified Listing Database
+    d: Leveraged Underwriting Loss Determination
+  answer: b
+  explanation: Limit Up/Limit Down sets price bands for individual stocks. Trade outside
+    band → 5-second Limit State. If persists, trading halt. Prevents flash crashes
+    at single-stock level.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '5.8'
+  question: 'Margin call occurs. Trader does nothing. The broker will:'
+  options:
+    a: Liquidate positions to bring equity above maintenance
+    b: Wait patiently for deposit
+    c: Extend more credit
+    d: Report to SEC
+  answer: a
+  explanation: Broker has right to liquidate without client approval to protect loan.
+    Broker sells enough to restore equity above maintenance. Liquidations often at
+    worst prices if forced.
+  difficulty: 1
+  tags:
+  - scenario
+- id: '5.9'
+  question: 'A trader buys stock in a cash account without settled funds, then sells.
+    This violation is called:'
+  options:
+    a: Insider trading
+    b: Free riding
+    c: Wash trading
+    d: Spoofing
+  answer: b
+  explanation: 'Free riding = buying and selling before paying with settled cash.
+    Reg T violation. Penalty: 90-day restriction (can only trade with fully settled
+    cash). Broker must freeze account.'
+  difficulty: 2
+  tags:
+  - terminology
+- id: '5.10'
+  question: Which entity guarantees trade settlement in US equities?
+  options:
+    a: SEC
+    b: FINRA
+    c: NSCC (National Securities Clearing Corporation)
+    d: Federal Reserve
+  answer: c
+  explanation: NSCC (part of DTCC) acts as central counterparty. If one side defaults,
+    NSCC completes settlement. This is why trades almost always settle — NSCC guarantees
+    them.
+  difficulty: 2
+  tags:
+  - concept

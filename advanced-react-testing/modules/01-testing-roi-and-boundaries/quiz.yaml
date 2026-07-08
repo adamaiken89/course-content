@@ -1,0 +1,153 @@
+- id: '1.1'
+  question: What are the three costs of every test?
+  options:
+    b: Write, maintain, CI run
+    a: Setup, execution, teardown
+    c: Author, review, merge
+    d: Unit, integration, e2e
+  answer: b
+  explanation: Write cost (time to author), maintain cost (time to update when code
+    changes), CI run cost (compute time × frequency). Maintain cost is the hidden
+    killer that grows with test fragility.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.2'
+  question: A component test requires 30 lines of setup — mocking 3 modules, wrapping
+    in 2 providers, waiting for async. What should this signal?
+  options:
+    a: Component has too many responsibilities — extract concerns
+    b: Need a better mocking library
+    c: Write more setup helpers
+    d: Skip testing this component
+  answer: a
+  explanation: Hard-to-test code is architecture feedback. 30 lines of setup means
+    the component is tightly coupled. Extract data fetching, state management, and
+    rendering into separate units — each becomes testable with 5-10 lines.
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.3'
+  question: A payment flow E2E test (2 min) fails once per week due to network flakiness.
+    Integration tests already cover each step (2s each, 12 steps). What should you
+    do?
+  options:
+    d: Delete the E2E test — integration tests cover the same path with better isolation
+    a: Debug the flake — E2E is irreplaceable
+    b: Add retry logic to the E2E test
+    c: Move E2E test to a separate nightly pipeline
+  answer: d
+  explanation: The E2E adds zero new coverage but adds 2 min CI time + flakiness.
+    Only keep E2E for flows integration tests cannot simulate (e.g., third-party redirect).
+    Each test must justify its cost.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '1.4'
+  question: Which test set provides more value for the function `divide(a, b)`?
+  options:
+    a: Tests for divide(10, 2), divide(0, 5), divide(10, 0), divide(-10, 2), divide(10.5,
+      2)
+    b: Test that calls divide(10, 2) and asserts 5 (100% line coverage)
+    c: Both provide equal value
+    d: Neither — testing math functions is waste
+  answer: a
+  explanation: 'Coverage percentage is vanity. What matters is boundary verification:
+    zero, negative, division by zero, floats. The single test (A) executes the line
+    but verifies nothing about edge cases.'
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '1.5'
+  question: What distinguishes an advanced test from a junior test?
+  options:
+    b: Advanced tests test behavior/contracts and survive refactors
+    a: Advanced tests use more sophisticated mocking frameworks
+    c: Advanced tests have higher coverage percentages
+    d: Advanced tests are slower but more thorough
+  answer: b
+  explanation: Advanced tests verify behavior (what the code does), not implementation
+    (how it does it). They survive refactors because the spec does not change when
+    the implementation changes.
+  difficulty: 1
+  tags:
+  - comparison
+- id: '1.6'
+  question: Your team has 95% line coverage but ships a bug where negative price passes
+    through `calculateDiscount` without error. What is the root cause?
+  options:
+    c: Tests execute code but did not verify boundary conditions
+    a: Coverage tool is broken
+    b: Need more tests to reach 100%
+    d: Bug is in production, not testable
+  answer: c
+  explanation: Coverage measures what code executed, not what was verified. The tests
+    hit the price branch but never asserted behavior for edge cases like negative,
+    zero, or non-numeric inputs.
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.7'
+  question: When should you mock a dependency in tests?
+  options:
+    c: Only at external boundaries — API, filesystem, third-party SDK
+    a: Whenever the dependency makes tests slow or unpredictable
+    b: Never — always use real dependencies
+    d: Whenever a test is hard to set up
+  answer: c
+  explanation: Mock only external boundaries. Mocking internal modules hides coupling
+    instead of fixing it. If setup is hard, the architecture needs refactoring, not
+    more mocking.
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.8'
+  question: A refactor changes how data is fetched (switching from fetch to React
+    Query). The component's visual output is identical. How many tests should break?
+  options:
+    a: None — if tests mock at the right boundary
+    b: All tests that mock the data layer
+    c: Only tests that verify data fetching behavior — rendering tests should pass
+      unchanged
+    d: All tests must be rewritten
+  answer: a
+  explanation: If tests mock at the API boundary (MSW handlers) instead of the implementation
+    (fetch vs React Query), they pass unchanged. The component still renders the same
+    data. The mock boundary should match the external interface, not the internal
+    implementation.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '1.9'
+  question: What is the recommended test distribution for most React applications?
+  options:
+    d: 60% unit, 30% integration, 10% E2E
+    a: 70% E2E, 20% integration, 10% unit
+    b: 33% each level — balance is key
+    c: 100% E2E — test what users actually see
+  answer: d
+  explanation: 'The test pyramid prioritizes fast feedback: 60% unit for pure logic,
+    30% integration for component flows, 10% E2E for critical paths only. This is
+    about feedback speed vs confidence, not an exact rule.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.10'
+  question: 'A junior developer asks: ''Should I add a test every time I fix a bug?''
+    What is the advanced answer?'
+  options:
+    b: Yes, but only if the test catches the root cause at the right level — not a
+      superficial 'reproduce the bug' test
+    a: Yes — every bug deserves a regression test
+    c: No — bug-fix tests are waste
+    d: Write the test in the E2E suite to catch UI regressions
+  answer: b
+  explanation: A superficial bug-fix test asserts the exact scenario that broke. A
+    good regression test verifies the invariant that was violated — and lives at the
+    level closest to the root cause. If the bug was a calculation error, unit test.
+    If it was a missing state, integration test.
+  difficulty: 3
+  tags:
+  - scenario
+

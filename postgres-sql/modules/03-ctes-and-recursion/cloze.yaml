@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: Since PostgreSQL 12, a single-use CTE is {inlined} like a subquery by default."
+  answer: "inlined"
+  explanation: "Inlining enables the planner to push outer conditions into the CTE; MATERIALIZED overrides it."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.2"
+  question: "Complete: Use the {MATERIALIZED} keyword to force a CTE to compute once into a stored intermediate."
+  answer: "MATERIALIZED"
+  explanation: "Forces materialization; prevents condition pushdown. Choose only when EXPLAIN justifies it."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: A recursive CTE has a base term and a {recursive} term joined by UNION ALL."
+  answer: "recursive"
+  explanation: "The recursive term re-executes, expanding one level each iteration until it yields no new rows."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Complete: On cyclic data, the {CYCLE} clause records visited keys and prevents infinite recursion."
+  answer: "CYCLE"
+  explanation: "CYCLE tracks visited key sets, cutting re-visits that would otherwise loop until a limit."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Complete: A data-modifying CTE must be {materialized} because its effects must run exactly once."
+  answer: "materialized"
+  explanation: "Side effects (INSERT/UPDATE/DELETE) cannot be inlined or duplicated, so Postgres always materializes them."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Complete: LEFT JOIN a source table onto the running recursive result where source.{parent} equals recursive.id to expand descendants one level."
+  answer: "parent"
+  explanation: "The parent id links each source row to the parent already in the walk, expanding the tree per round."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "c.7"
+  question: "Complete: Materializing a single-use CTE blocks {pushdown}, so outer WHERE conditions cannot reach the CTE body."
+  answer: "pushdown"
+  explanation: "With MATERIALIZED the planner cannot thread outer quals into the CTE scans — the full intermediate is built first."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "Complete: A product catalog category tree best traverses with WITH {RECURSIVE} joining categories to their parent."
+  answer: "RECURSIVE"
+  explanation: "RECURSIVE handles arbitrary depth, unlike fixed self-joins, and terminates when the walk finds no new children."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "c.9"
+  question: "Complete: The recursion terminates when the {recursive} term produces zero new rows."
+  answer: "recursive"
+  explanation: "Each iteration consumes the previous round's output; an empty round ends the walk."
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.10"
+  question: "Complete: SEARCH DEPTH FIRST assigns a stable {ordering} column so the recursive output streams in traversal order."
+  answer: "ordering"
+  explanation: "SEARCH ... SET lets you control traversal order deterministically for further processing."
+  difficulty: 3
+  tags: [terminology]

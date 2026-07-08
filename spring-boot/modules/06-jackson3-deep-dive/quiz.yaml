@@ -1,0 +1,119 @@
+- id: "6.1"
+  question: "Where do Jackson 3 runtime packages live after the Jackson 2 to 3 move?"
+  options:
+    a: "com.fasterxml.jackson"
+    b: "org.springframework"
+    c: "tools.jackson"
+    d: "jakarta.json"
+  answer: c
+  explanation: "Jackson 3 moved groupId and runtime packages under tools.jackson. jackson-annotations is the exception that stays in com.fasterxml.jackson."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "6.2"
+  question: "Which Jackson artifact stays under com.fasterxml.jackson in Jackson 3?"
+  options:
+    a: "jackson-databind"
+    b: "jackson-annotations"
+    c: "jackson-core"
+    d: "jackson-module-parameter-names"
+  answer: b
+  explanation: "jackson-annotations keeps its com.fasterxml.jackson packages so existing annotation imports keep compiling."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "6.3"
+  question: "A service configures ObjectMapper with mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES) after building it in Jackson 3. What happens?"
+  options:
+    a: "Compiles but silently ignored"
+    b: "Mutates the shared mapper as usual"
+    c: "Does not compile: ObjectMapper is immutable, setters are gone"
+    d: "Only fails under memory constraints"
+  answer: c
+  explanation: "Jackson 3 ObjectMapper is immutable, so setter-style mutation no longer compiles. All config goes through the JsonMapper.Builder before build."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "6.4"
+  question: "Which Boot 4 starter pulls Jackson 3 by default?"
+  options:
+    a: "spring-boot-jackson2"
+    b: "spring-boot-jackson"
+    c: "spring-boot-starter-gson"
+    d: "spring-boot-starter-json"
+  answer: b
+  explanation: "spring-boot-jackson is the Jackson 3 default starter; spring-boot-jackson2 is the fallback for legacy apps."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "6.5"
+  question: "In Jackson 3, SerializerProvider was renamed to what?"
+  options:
+    a: "SerializationContext"
+    b: "JsonGenerator"
+    c: "ObjectCodec"
+    d: "SerializerFactory"
+  answer: a
+  explanation: "SerializerProvider became SerializationContext; custom serialize methods take it as the third argument."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "6.6"
+  question: "What replaced Jackson 2's JsonValueDeserializer in Jackson 3?"
+  options:
+    a: "ObjectValueDeserializer"
+    b: "JsonNodeDeserializer"
+    c: "StdDeserializer"
+    d: "ValueDeserializer"
+  answer: a
+  explanation: "JsonValueDeserializer became ObjectValueDeserializer (tools.jackson.databind.deser.std). JsonObjectSerializer likewise became ObjectValueSerializer."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "6.7"
+  question: "An old custom serializer throws IOException. What is the correct Jackson 3 replacement?"
+  options:
+    a: "SocketException"
+    b: "RuntimeException"
+    c: "JsonParseException"
+    d: "JacksonException"
+  answer: d
+  explanation: "Jackson 3 uses JacksonException as its own root exception; serializers no longer couple to checked IOException."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "6.8"
+  question: "Which setup enables safe polymorphic deserialization in Jackson 3?"
+  options:
+    a: "Default typing with an empty PolymorphicTypeValidator"
+    b: "Default typing with a strict allowlisting PolymorphicTypeValidator"
+    c: "No validator, only @JsonTypeInfo on abstract types"
+    d: "registerModule with a SecurityModule"
+  answer: b
+  explanation: "Polymorphic deserialization of untrusted input is an RCE vector; a strict validator that allowlists trusted subtypes is mandatory."
+  difficulty: 3
+  tags: [concept]
+
+- id: "6.9"
+  question: "A Boot 4 app needs zero-fields handling and date formats exactly like Boot 3. What single property restores the old global defaults?"
+  options:
+    a: "spring.jackson2.enabled=true"
+    b: "spring.jackson.skip-defaults=true"
+    c: "spring.jackson.compatibility=v2"
+    d: "spring.jackson.use-jackson2-defaults=true"
+  answer: d
+  explanation: "spring.jackson.use-jackson2-defaults=true aligns Jackson 3 defaults (zero-fields behavior, date formats) with what Boot 3 shipped."
+  difficulty: 3
+  tags: [formula]
+
+- id: "6.10"
+  question: "How does Boot 4 discover extra Jackson modules (e.g. a custom module jar) automatically?"
+  options:
+    a: "Manual ObjectMapper.registerModule calls in a @Configuration"
+    b: "spring.jackson2.modules property list"
+    c: "JDK ServiceLoader, no manual registration needed"
+    d: "META-INF spring.factories file"
+  answer: c
+  explanation: "Jackson 3 discovers modules via the JDK ServiceLoader, so in Boot 4 the auto-configured JsonMapper picks them up without manual registration."
+  difficulty: 3
+  tags: [concept]

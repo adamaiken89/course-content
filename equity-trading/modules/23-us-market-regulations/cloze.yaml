@@ -1,0 +1,60 @@
+- id: c.1
+  question: Insider trading requires {material} {non-public} information, a {breach of duty}, and {personal benefit} to the tipper.
+  answer: material
+  difficulty: 1
+  tags:
+  - concept
+- id: c.2
+  question: The leading Supreme Court case defining tipper/tippee liability is {Dirks} v. SEC (1983). The tipper must receive {personal benefit}.
+  answer: Dirks
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: '{Spoofing} involves entering orders with intent to {cancel} before execution. Prohibited under {Dodd-Frank} Act.'
+  answer: Spoofing
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: '{Wash trading} creates artificial volume without changing {beneficial ownership}. Prohibited under SEC Rule {10b-5}.'
+  answer: Wash trading
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.5
+  question: Reg NMS Rule {611} is the Order Protection Rule requiring routing to venue with best price. Rule {612} is the Sub-Penny Rule requiring {$0.01} increments for stocks ≥ $1.00.
+  answer: '611'
+  difficulty: 1
+  tags:
+  - concept
+- id: c.6
+  question: Reg NMS caps access fees at {$0.003} per share under Rule {610}. Prevents fee arbitrage from distorting routing decisions.
+  answer: $0.003
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: Navinder {Sarao} was convicted of {spoofing} E-mini S&P futures. His activity contributed to the 2010 {Flash Crash}.
+  answer: Sarao
+  difficulty: 2
+  tags:
+  - fact
+- id: c.8
+  question: '{Pump and dump} schemes promote stock with {false claims}, then sell into inflated price. Victims are {retail} buyers at peak.'
+  answer: Pump and dump
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.9
+  question: SEC v. {Newman} (2014) established tippee must {know} the tipper breached a duty. Without knowledge, tippee has {no violation}.
+  answer: Newman
+  difficulty: 3
+  tags:
+  - concept
+- id: c.10
+  question: '{Mosaic theory} allows analysts to connect dots from {public} filings. This is {legal} research, not insider trading.'
+  answer: Mosaic theory
+  difficulty: 2
+  tags:
+  - concept

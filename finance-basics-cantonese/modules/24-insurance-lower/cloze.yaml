@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "危疾保險賠付方式 = {一次過現金}, 唔係 {實報實銷}, 用於 {收入補償 + 醫療 + 任何用途}。"
+  answer: "一次過現金、實報實銷、收入補償 + 醫療 + 任何用途"
+  explanation: "醫療保險實報實銷, 危疾一次過, 兩者互補。"
+  difficulty: 1
+  tags: [terminology, comparison]
+
+- id: "c.2"
+  question: "危疾保額計算: {治療期月數 × 月收入} + {醫療自付} + {應急}。例: 12 × $80k + $200k + $300k = $1.46M。"
+  answer: "治療期月數 × 月收入、醫療自付、應急"
+  explanation: "考慮治療期收入歸零 + 醫療自負 + 應急 buffer。"
+  difficulty: 2
+  tags: [formula, calculation]
+
+- id: "c.3"
+  question: "自願醫保 VHIS = {保證續保至 100 歲} + 扣稅上限 {$8,000/人/年} + 涵蓋 {先天疾病 (8 歲後)}。"
+  answer: "保證續保至 100 歲、$8,000/人/年、先天疾病 (8 歲後)"
+  explanation: "比公司團體醫療優勝: 終身保證續保, 唔受離職影響。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.4"
+  question: "VHIS 標準計劃 = {基本住院 + 較平 ($3-5k/年)}; 彈性計劃 = {較高限額 + 門診牙科 + 較貴 ($8-30k/年)}。"
+  answer: "基本住院 + 較平 ($3-5k/年)、較高限額 + 門診牙科 + 較貴 ($8-30k/年)"
+  explanation: "兩者都享扣稅 $8,000。揀邊個視乎預算同保障需要。"
+  difficulty: 2
+  tags: [comparison, application]
+
+- id: "c.5"
+  question: "年金核心 = {一次過大筆, 每月派錢}, 種類 {Immediate / Deferred / Term / Life}。{終身年金 Life Annuity} 對沖 {長壽風險}。"
+  answer: "一次過大筆, 每月派錢、Immediate / Deferred / Term / Life、終身年金 Life Annuity、長壽風險"
+  explanation: "終身年金 IRR 3-4%, 派到死, 對沖長壽。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.6"
+  question: "終身年金 {IRR 3-4%} 蝕緊, 因為 {跑輸通脹 + 失去投資機會}。{唔好全部買}, 部分對沖。"
+  answer: "IRR 3-4%、跑輸通脹 + 失去投資機會、唔好全部買"
+  explanation: "分散: 部分年金 + 部分投資 4% Rule 提款。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.7"
+  question: "退休 4 層保障: {MPF (強制)} + {公司團體 (在職)} + {自願 (VHIS + 投資 + 儲蓄)} + {終身年金 (對沖長壽)}。"
+  answer: "MPF (強制)、公司團體 (在職)、自願 (VHIS + 投資 + 儲蓄)、終身年金 (對沖長壽)"
+  explanation: "4 層缺一不可, 強制性 + 在職 + 終身 + 長壽。"
+  difficulty: 1
+  tags: [concept, application]
+
+- id: "c.8"
+  question: "揀邊啲保險按年紀: {20-30 歲: Term + 危疾 (平)}、{30-40 歲: + VHIS}、{40-50 歲: 危疾加大}、{50-60 歲: 開始諗年金}、{60+: 終身年金}。"
+  answer: "20-30 歲: Term + 危疾 (平)、30-40 歲: + VHIS、40-50 歲: 危疾加大、50-60 歲: 開始諗年金、60+: 終身年金"
+  explanation: "年紀 + 家庭 + 收入決定保險組合。"
+  difficulty: 2
+  tags: [scenario, application]
+
+- id: "c.9"
+  question: "終身人壽 (Whole Life) 適合: {高資產 (>$10M) 遺產規劃}、{想強制儲蓄}、{信託架構}。{一般人 Term + 投資}。"
+  answer: "高資產 (>$10M) 遺產規劃、想強制儲蓄、信託架構、一般人 Term + 投資"
+  explanation: "Whole Life IRR 低, 一般人應該 Term + 投資分開做。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.10"
+  question: "危疾保險 + 醫療保險 + 終身年金 {互補}: 危疾 {收入歸零}, 醫療 {醫療費用}, 終身年金 {長壽風險}。"
+  answer: "互補、收入歸零、醫療費用、長壽風險"
+  explanation: "3 種保險對應 3 種風險, 缺一不可。"
+  difficulty: 2
+  tags: [terminology, concept]

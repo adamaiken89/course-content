@@ -1,0 +1,141 @@
+- id: '2.1'
+  question: Which exchange model uses a Designated Market Maker (DMM) assigned to
+    each stock?
+  options:
+    a: Nasdaq
+    b: NYSE
+    c: Dark Pool
+    d: ECN
+  answer: b
+  explanation: NYSE assigns a DMM per stock to maintain fair and orderly markets.
+    Nasdaq uses multiple competing market makers.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.2'
+  question: A stock must maintain minimum $4 price and $100M market cap. Which tier
+    does this describe?
+  options:
+    a: OTC Pink
+    b: Nasdaq Capital Market
+    c: Nasdaq Global Select
+    d: OTCQB
+  answer: c
+  explanation: Nasdaq Global Select requires $4+ price, $100M+ market cap, and strict
+    governance. Nasdaq CM is $2+ price, $50M+ cap.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.3'
+  question: What percentage of US equity volume trades in dark pools?
+  options:
+    a: ~5%
+    b: ~20%
+    c: ~40%
+    d: ~70%
+  answer: c
+  explanation: ~40% of US equity volume is off-exchange (dark pools, ATS, internalization).
+    This has grown significantly from ~10% in 2005.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '2.4'
+  question: Why would an institution use a dark pool instead of NYSE to sell 500,000
+    shares?
+  options:
+    a: Dark pools have lower SEC fees
+    b: To hide order intent and avoid moving the price
+    c: Dark pools guarantee better pricing
+    d: NYSE cannot handle orders over 100,000 shares
+  answer: b
+  explanation: Large sell order on NYSE shows in order book → other traders see selling
+    pressure → bid drops. Dark pool hides intent, reducing market impact.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '2.5'
+  question: What is the primary risk of placing a market order during pre-market (7
+    AM ET)?
+  options:
+    a: Order will not execute until 9:30 AM
+    b: Wide spreads due to low liquidity can cause poor fill price
+    c: Pre-market orders incur additional exchange fees
+    d: Market orders are not accepted in pre-market
+  answer: b
+  explanation: Pre-market has few participants → wide bid-ask spread. Market order
+    crosses the spread at potentially extreme price. Use limit orders outside regular
+    hours.
+  difficulty: 1
+  tags:
+  - scenario
+- id: '2.6'
+  question: Which is NOT a characteristic of Nasdaq's market model?
+  options:
+    a: Multiple competing market makers
+    b: Fully electronic
+    c: Designated DMM per stock
+    d: Quote-driven system
+  answer: c
+  explanation: Designated DMM is NYSE's model. Nasdaq has competing MMs, is fully
+    electronic, and quote-driven.
+  difficulty: 1
+  tags:
+  - comparison
+- id: '2.7'
+  question: A stock trades OTC Pink at $1.20. It announces Nasdaq Capital Market listing.
+    What must happen first?
+  options:
+    a: Reverse split to reach $2+
+    b: Nothing — any stock can list on Nasdaq
+    c: Price will automatically adjust
+    d: Company must delist from OTC first
+  answer: a
+  explanation: Nasdaq CM requires $2 minimum price. At $1.20, the stock needs a reverse
+    split to meet this threshold. Also needs clean audit, shareholder equity >$5M,
+    SEC reporting.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '2.8'
+  question: When is the highest volume period in regular US trading hours?
+  options:
+    a: 9:30 - 10:00 AM (opening)
+    b: 12:00 - 1:00 PM (mid-day)
+    c: 3:30 - 4:00 PM (closing)
+    d: Both opening and closing auctions concentrate volume
+  answer: d
+  explanation: Opening (9:30) and closing (4:00) auctions each concentrate ~5-8% of
+    daily volume. Combined ~10-15%. The first hour and last 30 minutes are highest
+    activity periods.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.9'
+  question: What distinguishes an ATS from a traditional exchange?
+  options:
+    a: ATS does not report trades
+    b: ATS is not registered with SEC
+    c: ATS matches orders but is registered as a broker-dealer, not an exchange
+    d: ATS only handles bonds, not equities
+  answer: c
+  explanation: ATS registers as a broker-dealer with the SEC, not as an exchange.
+    It matches buy/sell orders through its own system. Must report all trades to FINRA.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.10'
+  question: During a market crash, which exchange model is designed to provide continuity
+    for illiquid stocks?
+  options:
+    a: Nasdaq — MM competition ensures liquidity
+    b: NYSE — DMM obligation to maintain orderly market
+    c: Dark pool — absorbs all selling pressure
+    d: ECN — automatic matching regardless of conditions
+  answer: b
+  explanation: NYSE DMMs are obligated to maintain fair and orderly markets, including
+    stepping in during stress. Nasdaq MMs can widen spreads or step back. NYSE's model
+    provides continuity precisely when it's needed most.
+  difficulty: 3
+  tags:
+  - scenario
+  - comparison

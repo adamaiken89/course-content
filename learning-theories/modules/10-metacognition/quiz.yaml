@@ -1,0 +1,130 @@
+- id: '10.1'
+  question: 'Metacognition consists of:'
+  options:
+    a: Knowledge about cognition and regulation of cognition
+    b: Memory and attention
+    c: Intelligence and motivation
+    d: Reading and writing
+  answer: a
+  explanation: Metacognition = knowledge of cognitive processes + ability to regulate them.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.2'
+  question: 'The illusion of fluency refers to:'
+  options:
+    b: Mistaking ease of processing for actual learning
+    a: Speaking fluently about a topic
+    c: Fast reading speed
+    d: Automatic retrieval
+  answer: b
+  explanation: When material is easy to process (fluent), learners mistake this for understanding. But
+    fluency ≠ learning.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.3'
+  question: Why are delayed Judgments of Learning (JOLs) more accurate than immediate ones?
+  options:
+    c: Delay eliminates short-term familiarity, reflecting only what survived consolidation
+    a: Memory is stronger after delay
+    b: Learners are more motivated after a delay
+    d: Immediate JOLs are always accurate
+  answer: c
+  explanation: Immediate JOLs are inflated by WM familiarity. Delayed JOLs reflect actual retrieval strength.
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.4'
+  question: 'A student predicts 90% recall but actually recalls 55%. This is:'
+  options:
+    d: Overconfidence — prediction exceeds performance
+    a: Good calibration
+    b: Underconfidence
+    c: Normal variation
+  answer: d
+  explanation: Calibration = prediction accuracy. Large gap (90% vs 55%) = poor calibration, specifically
+    overconfidence.
+  difficulty: 2
+  tags:
+  - application
+- id: '10.5'
+  question: Which study activity provides the MOST accurate self-assessment?
+  options:
+    a: Free recall — trying to write everything you remember
+    b: Re-reading the chapter
+    c: Rating your confidence after re-reading
+    d: Reviewing highlighted passages
+  answer: a
+  explanation: Free recall is both a learning strategy AND a diagnostic tool. Re-reading inflates confidence.
+    Free recall reveals actual knowledge.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '10.6'
+  question: 'The Dunning-Kruger effect in learning describes:'
+  options:
+    b: Novices overestimating their competence due to poor metacognition
+    a: Experts overestimating beginners
+    c: All learners underestimating their ability
+    d: The benefit of group study
+  answer: b
+  explanation: Low performers lack the metacognitive skill to recognize their own gaps, leading to overconfidence.
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.7'
+  question: A student re-reads a chapter and feels confident. They then take a practice test and score
+    40%. What happened?
+  options:
+    c: Re-reading created fluency illusion, inflating confidence
+    a: The test was unfair
+    b: The student didn't try hard enough
+    d: Re-reading is always ineffective
+  answer: c
+  explanation: Re-reading creates familiarity (fluency). Familiarity feels like understanding but doesn't
+    enable recall.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '10.8'
+  question: 'After studying, you should ask yourself: ''Can I _____ this without looking?'' The best fill-in
+    for metacognitive calibration is:'
+  options:
+    d: recall
+    a: recognize
+    b: re-read
+    c: highlight
+  answer: d
+  explanation: Recall is the only true test of knowledge. Recognition (seeing the answer) is easier and
+    inflates confidence.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.9'
+  question: Which technique best trains metacognitive calibration over time?
+  options:
+    a: Tracking predictions vs actual test performance
+    b: Studying longer hours
+    c: Reading study tips online
+    d: Studying with a partner
+  answer: a
+  explanation: Prediction logs force you to compare confidence vs reality. Repeated comparison trains
+    calibration.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '10.10'
+  question: 'A student performs well on a test but felt anxious and underconfident beforehand. This student
+    shows:'
+  options:
+    b: Underconfidence — performance exceeds prediction
+    a: Overconfidence
+    c: Good calibration
+    d: No metacognitive issues
+  answer: b
+  explanation: 'Underconfidence: predicted < actual. Anxiety often causes this. Calibration would mean
+    prediction matches performance.'
+  difficulty: 2
+  tags:
+  - concept

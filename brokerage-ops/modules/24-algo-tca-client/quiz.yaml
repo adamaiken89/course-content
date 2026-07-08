@@ -1,0 +1,120 @@
+- id: '24.1'
+  question: What is the most direct impact of Reg NMS Rule 611 (Order Protection Rule) on algorithms?
+  options:
+    a: Algo cannot use dark pools
+    b: Algo's SOR must route to the exchange displaying the NBBO — it cannot trade through a protected quote
+    c: Algo must use a VWAP strategy
+    d: Algo must complete all execution before market open
+  answer: b
+  explanation: Rule 611 prohibits trading through a protected quote. The algo's SOR must route to the exchange displaying the NBBO at that moment, even if that exchange's fee/rebate structure is less favorable.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '24.2'
+  question: What do pre-trade and post-trade TCA each do?
+  options:
+    a: Pre-trade evaluates execution; post-trade selects the strategy
+    b: Both only compute commissions
+    c: Pre-trade estimates expected cost to select a strategy; post-trade evaluates actual slippage against a benchmark
+    d: Pre-trade is a regulatory filing; post-trade is optional
+  answer: c
+  explanation: Pre-trade TCA (ex-ante) simulates expected slippage under different strategies to help traders select an algorithm. Post-trade TCA (ex-post) measures actual slippage = execution price − benchmark price.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '24.3'
+  question: Which of the following is NOT a common post-trade TCA benchmark?
+  options:
+    a: Arrival Price
+    b: VWAP
+    c: Close price
+    d: Net asset value (NAV)
+  answer: d
+  explanation: Common post-trade TCA benchmarks are arrival price (decision timing), VWAP (day's average), and close. NAV is a fund valuation metric, not a trade execution benchmark.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '24.4'
+  question: 'A client says: "Help me buy 500K AAPL — use your best judgement." How is this classified?'
+  options:
+    a: Broker-Choice — the broker optimizes based on client profile and order parameters
+    b: Client-Directed — the client specified the routing rules
+    c: Pre-trade allocation
+    d: Dark pool crossing
+  answer: a
+  explanation: Broker-Choice means the client authorizes the broker to pick the algo and routing. Client-Directed would be the client specifying e.g. "Use Broker's VWAP for this order."
+  difficulty: 1
+  tags:
+  - comparison
+- id: '24.5'
+  question: For stocks priced above $1, what does Reg NMS Rule 612 (Sub-Penny Rule) require?
+  options:
+    a: Quote increments of $0.0001
+    b: A minimum quote increment of $0.01
+    c: No limit orders allowed
+    d: A minimum quote increment of $1
+  answer: b
+  explanation: Rule 612 sets the minimum price increment at $0.01 for stocks above $1, so an algo can only place orders in penny increments.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '24.6'
+  question: 'A TCA report shows a BUY order was -$0.18 vs arrival (good) and -$0.82 vs close (saved). The same order is re-run next day in a flat market and close-vs-arrival shows +$0.30. What should the trader conclude?'
+  options:
+    a: The algo got worse — switch vendors
+    b: The algo got better — reward it
+    c: Market direction drove the change — compare actual IS against pre-trade expected IS rather than raw benchmark swings
+    d: The close benchmark is useless
+  answer: c
+  explanation: A single-day benchmark delta hides market moves. In a rising market even perfect execution shows high IS; in a falling market poor execution can look good. Compare actual IS to the pre-trade TCA expected IS.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '24.7'
+  question: 'A junior trader reports: BUY 200K MSFT (0.8% ADV), POV 10%, avg fill $425.20, VWAP $425.10, arrival $425.00. "Execution is only $0.10 from VWAP — good performance." What key point does this miss?'
+  options:
+    a: At 0.8% ADV the order is tiny — any method gets near VWAP; the real test is vs arrival price and expected IS from pre-trade TCA
+    b: POV is not a legal algo for MSFT
+    c: VWAP is not a valid execution benchmark
+    d: Nothing — the analysis is complete
+  answer: a
+  explanation: For a 0.8% ADV order any reasonable execution method lands close to VWAP, so closeness to VWAP says little about skill. Assess how the stock trended vs arrival and compare actual vs expected slippage from pre-trade TCA.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '24.8'
+  question: Is there an inherent tension between Rule 611 (Order Protection Rule) and algo routing strategy?
+  options:
+    a: No — the rules never conflict
+    b: No — Rule 611 requires choosing the lowest-fee venue
+    c: Yes, but only for retail orders
+    d: Yes — 611 forces routing to the best-priced exchange even if it has low rebates or is slow; it protects "price", not "total cost"
+  answer: d
+  explanation: Rule 611 protects price, not total cost. If the best-priced exchange charges a high taker fee, the fee can eat the edge. That is why algos still factor fee/rebate structures into routing and why Rule 610 fee fairness matters.
+  difficulty: 2
+  tags:
+  - concept
+- id: '24.9'
+  question: 'A buy order for XYZ shows NYSE quoting the best offer at $150.05. Another venue quotes $150.06 but offers taker-fee rebates. Under Rule 611, where must the algo''s SOR route?'
+  options:
+    a: To the venue at $150.06 — lower total cost after the rebate
+    b: To NYSE at $150.05 — it cannot trade through the protected quote even if another venue has better fees
+    c: To a dark pool at the midpoint
+    d: To any venue — Rule 611 does not apply to displayed quotes
+  answer: b
+  explanation: Rule 611 prohibits trading through the protected quote. The algo must route to NYSE at $150.05 regardless of rebates elsewhere — the fee comparison only happens at the best-price level.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '24.10'
+  question: 'From the TCA report example (BUY 500K AAPL): avg fill $150.18, arrival $150.00, VWAP $150.12, close $151.00. Which benchmark shows the order performed worst against?'
+  options:
+    a: Arrival price
+    b: VWAP
+    c: Close price
+    d: TWAP
+  answer: c
+  explanation: vs close the fill is $150.18 − $151.00 = −$0.82 (0.54%), the largest gap of the three. Note for a buyer a negative vs close is good — the stock rose and the fill came in below close, so the trade "saved" vs waiting until the close.
+  difficulty: 2
+  tags:
+  - calculation

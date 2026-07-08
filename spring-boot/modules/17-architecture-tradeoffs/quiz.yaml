@@ -1,0 +1,119 @@
+- id: "17.1"
+  question: "What is the real axis that decides monolith versus microservices?"
+  options:
+    a: "Deploy shape and team topology"
+    b: "Total number of classes and methods"
+    c: "Whether GraphQL or REST is used"
+    d: "Which database vendor you use"
+  answer: a
+  explanation: "Counting code never decides the split. The axis is how many deploy units you ship and how many teams own them, since each extra deploy adds coordination cost in transactions, versioning, and failure handling."
+  difficulty: 1
+  tags: [terminology, comparison]
+
+- id: "17.2"
+  question: "What is a modular monolith?"
+  options:
+    a: "Many deployable services sharing one database"
+    b: "One deploy with enforced module boundaries inside"
+    c: "A microservice that has grown too large"
+    d: "A monolith with no module testing"
+  answer: b
+  explanation: "A modular monolith ships once but enforces hard module boundaries, giving team ownership lines without the distributed coordination of separate deploys."
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "17.3"
+  question: "What does Spring Modulith mostly enforce?"
+  options:
+    a: "That every bean is a singleton"
+    b: "That every module gets its own database"
+    c: "That modules call each other only through public APIs"
+    d: "That a message broker is added automatically"
+  answer: c
+  explanation: "Modulith verifies at build time that modules do not reach into each other's internals, locking dependency rules the way ArchUnit does by hand, while keeping one deploy and one transaction scope."
+  difficulty: 1
+  tags: [concept]
+
+- id: "17.4"
+  question: "Why does a @Transactional method not give one atomic outcome across two services?"
+  options:
+    a: "A remote @Transactional coordinate both sides automatically"
+    b: "Microservices can share a global transaction through Spring"
+    c: "The caller's transaction ends at the network boundary"
+    d: "Async event handlers run inside the caller's transaction"
+  answer: c
+  explanation: "A transaction is bound to the calling thread. Work that crosses the network or an async seam commits in its own transaction, so a failure after that point cannot be rolled back by the caller."
+  difficulty: 2
+  tags: [concept, scenario]
+
+- id: "17.5"
+  question: "What does the outbox pattern guarantee?"
+  options:
+    a: "Exactly-once delivery of every event"
+    b: "A distributed two-phase commit across services"
+    c: "Strong consistency across all services"
+    d: "Atomic local write of domain change plus event, then a relay publishes"
+  answer: d
+  explanation: "The domain change and the outbox row land in one local transaction, so every committed change has a durable event. Delivery after that is at-least-once, not exactly-once."
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "17.6"
+  question: "When does a @TransactionalEventListener with phase AFTER_COMMIT run?"
+  options:
+    a: "Only when the surrounding transaction commits"
+    b: "Before the transaction begins"
+    c: "Always, even on rollback"
+    d: "Only when a message broker is configured"
+  answer: a
+  explanation: "AFTER_COMMIT defers handling until the transaction commits, so listeners never act on rolled-back work. This is the default guard for publishing domain events in-process."
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "17.7"
+  question: "Why must event consumers be idempotent?"
+  options:
+    a: "Spring emits every event at most once"
+    b: "At-least-once delivery and retries can deliver the same event several times"
+    c: "Spring Events are synchronous so they cannot repeat"
+    d: "The broker deduplicates events automatically"
+  answer: b
+  explanation: "Relays, retries, and replays deliver the same event more than once in practice. A consumer keyed on a business id treats duplicates as no-ops, otherwise double-decrements or duplicate emails follow."
+  difficulty: 3
+  tags: [scenario, concept]
+
+- id: "17.8"
+  question: "When is CQRS overkill?"
+  options:
+    a: "Writes must stay strict and reads diverge from them"
+    b: "Reporting needs a separate projection"
+    c: "A CRUD list page reads the same rows it writes"
+    d: "A read replica is needed for load"
+  answer: c
+  explanation: "CQRS pays when reads genuinely diverge in shape, load, or store. For plain CRUD over the same rows it doubles DTOs, mappers, and sync jobs with zero benefit."
+  difficulty: 2
+  tags: [scenario, comparison]
+
+- id: "17.9"
+  question: "How should package layout evolve in a real codebase?"
+  options:
+    a: "Model the grand architecture upfront and never change it"
+    b: "Copy an enterprise reference architecture verbatim"
+    c: "Keep one flat package forever"
+    d: "Start feature-sliced and evolve with real seams"
+  answer: d
+  explanation: "Grand upfront packaging guesses the seams wrong. Start feature-sliced, enforce rules with ArchUnit and Maven modules, and move boundaries where teams, load, and data dependencies actually land."
+  difficulty: 1
+  tags: [concept]
+
+- id: "17.10"
+  question: "Which is the strongest reason to split into separate services?"
+  options:
+    a: "The codebase feels big and messy"
+    b: "A failure in one area must not take down unrelated flows for another team"
+    c: "The team prefers a different framework"
+    d: "Two endpoints live in one controller"
+  answer: b
+  explanation: "Blast radius and independent ownership are the real drivers. Splitting to control failure isolation pays off; splitting because code is large adds coordination cost without fixing the actual problem."
+  difficulty: 3
+  tags: [scenario, comparison]

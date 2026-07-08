@@ -1,0 +1,54 @@
+- id: "c.101"
+  question: "State that describes the current view — filters, sort, page — belongs in the {URL}, while row data belongs in the server {cache}."
+  answer: "URL, cache"
+  explanation: "View state is positional and shareable; row data is server-derived and cached."
+  difficulty: 2
+  tags: [concept, comparison]
+- id: "c.102"
+  question: "A filter change must reset {page} to 1 so the URL never claims a page of a universe it doesn't describe."
+  answer: "page"
+  explanation: "Stale page numbers against a new filter produce wrong or empty results."
+  difficulty: 1
+  tags: [concept]
+- id: "c.103"
+  question: "The query key is the view {identity}; caching follows view stability, so back-navigation is a cache hit."
+  answer: "identity"
+  explanation: "Key by filters/page/sort, never by result rows — keying by result destroys the cache."
+  difficulty: 2
+  tags: [concept]
+- id: "c.104"
+  question: "Row selection is {cross}-{screen} intent, so selected ids live in the selection store, not in grid-local state."
+  answer: "cross-screen"
+  explanation: "The batch bar and batch review consume selection elsewhere, so it must survive navigation."
+  difficulty: 1
+  tags: [terminology, comparison]
+- id: "c.105"
+  question: "'Select all matching' requires the server's total {count}, which the mounted rows cannot provide."
+  answer: "count"
+  explanation: "Visible rows are a window; the filtered universe size comes only from the server."
+  difficulty: 2
+  tags: [concept]
+- id: "c.106"
+  question: "`{useDeferredValue}` keeps typing responsive while the expensive grid renders a lagged filter value."
+  answer: "useDeferredValue"
+  explanation: "Deferral decouples input latency from the heavy render of the derived list."
+  difficulty: 1
+  tags: [terminology, react-19]
+- id: "c.107"
+  question: "`{useTransition}` wraps heavy filter swaps so the update renders non-blockingly, exposing an isPending flag."
+  answer: "useTransition"
+  explanation: "Transitions let the browser stay interactive while the list reconciles."
+  difficulty: 1
+  tags: [terminology, react-19]
+- id: "c.108"
+  question: "Writing to history in a useEffect that mirrors state makes the component a {mirror} rather than the source of truth."
+  answer: "mirror"
+  explanation: "The URL must be truth; state follows. Read params and write back through the same API."
+  difficulty: 2
+  tags: [concept]
+- id: "c.109"
+  question: "On a shared filtered link, the colleague's grid must rehydrate from {URL} params, not from component memory."
+  answer: "URL"
+  explanation: "Component memory is per-instance; the URL is transportable."
+  difficulty: 1
+  tags: [scenario]

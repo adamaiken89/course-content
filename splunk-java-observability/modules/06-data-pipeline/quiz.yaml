@@ -1,0 +1,119 @@
+- id: "6.1"
+  question: "Which field holds the event's parsed timestamp?"
+  options:
+    a: "_raw"
+    b: "_time"
+    c: "_sourcetype"
+    d: "_host"
+  answer: b
+  explanation: "_time is promoted from the parsed timestamp. _raw holds the original text, _sourcetype the format classification, _host the producing machine."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "6.2"
+  question: "Which regex setting splits the raw byte stream into events?"
+  options:
+    a: "TIME_FORMAT"
+    b: "MAX_TIMESTAMP_LOOKAHEAD"
+    c: "LINE_BREAKER"
+    d: "INDEXED_EXTRACTIONS"
+  answer: c
+  explanation: "LINE_BREAKER defines event boundaries. TIME_FORMAT and MAX_TIMESTAMP_LOOKAHEAD affect timestamp parsing only; INDEXED_EXTRACTIONS handles JSON structure."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "6.3"
+  question: "Parsing rules in props.conf live in stanzas named after what?"
+  options:
+    a: "The sourcetype"
+    b: "The index"
+    c: "The search head"
+    d: "The license"
+  answer: a
+  explanation: "Stanzas are named after a sourcetype (or a source path). The index is a storage container, not a config key."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "6.4"
+  question: "Which setting controls the timezone assumed when a timestamp has no explicit offset?"
+  options:
+    a: "LINE_BREAKER"
+    b: "INDEXED_EXTRACTIONS"
+    c: "BREAK_ONLY_BEFORE"
+    d: "TZ"
+  answer: d
+  explanation: "TZ applies a zone when the timestamp carries none. LINE_BREAKER and BREAK_ONLY_BEFORE control event boundaries; INDEXED_EXTRACTIONS controls JSON field extraction."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "6.5"
+  question: "A K8s pod logs in UTC but the app writes timestamps in Asia/Shanghai time. What is the consequence?"
+  options:
+    a: "Events are rejected by the indexer"
+    b: "Events get bucketed in the wrong hour"
+    c: "The raw text is truncated"
+    d: "Fields are not extracted"
+  answer: b
+  explanation: "Offset-less timestamps are interpreted using TZ or the indexer's local zone, so a shift puts events in the wrong time bucket — time-range searches then miss them."
+  difficulty: 2
+  tags: [concept]
+
+- id: "6.6"
+  question: "A Java stacktrace arrives with no multi-line config on its sourcetype. How does Splunk index it?"
+  options:
+    a: "As one intact event"
+    b: "It is rejected"
+    c: "As one event per line"
+    d: "As a JSON object"
+  answer: c
+  explanation: "Default line breaking splits on newlines, so every stack frame becomes its own event. BREAK_ONLY_BEFORE keeps multi-line events whole."
+  difficulty: 2
+  tags: [concept]
+
+- id: "6.7"
+  question: "Which setting keeps a multi-line Java stacktrace as one event?"
+  options:
+    a: "BREAK_ONLY_BEFORE matching the timestamp at each event start"
+    b: "BREAK_ONLY_AFTER matching the timestamp at each event end"
+    c: "MAX_TIMESTAMP_LOOKAHEAD = 0"
+    d: "TZ = Etc/UTC"
+  answer: a
+  explanation: "BREAK_ONLY_BEFORE's regex matches the start of each new event (the timestamp); non-matching stack lines stay glued to the previous event."
+  difficulty: 2
+  tags: [concept]
+
+- id: "6.8"
+  question: "You edit props.conf and search immediately, but nothing changes. What is the most likely cause?"
+  options:
+    a: "Wrong sourcetype name"
+    b: "The regex is invalid"
+    c: "The index is full"
+    d: "Splunk requires a reload or restart"
+  answer: d
+  explanation: "Config is read at startup and on splunk reload; editing the file alone changes nothing. Verify syntax with splunk btool before reloading."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "6.9"
+  question: "You add INDEXED_EXTRACTIONS = JSON to your Spring Boot sourcetype and re-ingest. What is true of traceId now?"
+  options:
+    a: "It must be extracted at search time with regex"
+    b: "It is an indexed field usable directly in stats"
+    c: "It overwrites _raw"
+    d: "It only appears in Data Preview"
+  answer: b
+  explanation: "JSON keys become indexed fields at parse time, so traceId is searchable and usable in stats without search-time regex."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "6.10"
+  question: "Which bucket lifecycle order is correct?"
+  options:
+    a: "Hot → Warm → Cold → Frozen"
+    b: "Cold → Warm → Hot → Frozen"
+    c: "Frozen → Cold → Warm → Hot"
+    d: "Hot → Cold → Warm → Frozen"
+  answer: a
+  explanation: "Buckets start hot (receiving writes), seal to warm (searchable), move to cold (cheaper storage), and finally freeze (deleted)."
+  difficulty: 3
+  tags: [concept]

@@ -1,0 +1,119 @@
+- id: "15.1"
+  question: "Splunk Enterprise is licensed per what unit?"
+  options:
+    a: "Per user per month"
+    b: "Per search executed"
+    c: "Per deployment node"
+    d: "Per GB indexed per day"
+  answer: d
+  explanation: "Splunk Enterprise licenses the volume indexed per day. Every indexed event counts toward that GB figure regardless of whether anyone searches it."
+  difficulty: 1
+  tags: [licensing]
+
+- id: "15.2"
+  question: "Which field has the highest cardinality and is slowest for TSIDX?"
+  options:
+    a: "http_status with values 200, 400, 500"
+    b: "level with values INFO, WARN, ERROR"
+    c: "request_id unique per request"
+    d: "service name with 12 distinct values"
+  answer: c
+  explanation: "request_id differs for every event, so it cannot compress and forces expensive lookups. Low-cardinality fields like status and level compress well."
+  difficulty: 2
+  tags: [cardinality]
+
+- id: "15.3"
+  question: "A teammate plans to log the full URL including query string and a six-decimal latency float for every request. What should you recommend?"
+  options:
+    a: "Increase the Splunk license to cover the volume"
+    b: "Strip query strings and bucket latency into ranges"
+    c: "Move these fields to metrics and keep logging them raw"
+    d: "Log the same data in a secondary index"
+  answer: b
+  explanation: "URL query strings and high-precision floats are high cardinality. Strip query strings and bucket latency so compression and TSIDX stay efficient."
+  difficulty: 2
+  tags: [cardinality]
+
+- id: "15.4"
+  question: "Where should secrets and PII be redacted to provide the strongest defense in depth?"
+  options:
+    a: "Only at parse time in props.conf SEDCMD"
+    b: "In the Splunk search-time field extraction"
+    c: "In the JVM at the source, before the event is emitted"
+    d: "By the storage team during retention"
+  answer: c
+  explanation: "Redacting at the source prevents the secret from ever being written to disk. SEDCMD is a parse-time safety net, not the primary defense."
+  difficulty: 1
+  tags: [sensitive-data]
+
+- id: "15.5"
+  question: "props.conf SEDCMD at parse time is best described as what?"
+  options:
+    a: "The only place secrets are safe"
+    b: "A way to increase index volume"
+    c: "A replacement for source-level masking"
+    d: "A safety net, not the primary defense"
+  answer: d
+  explanation: "SEDCMD can scrub patterns during parsing, but the raw bytes may already exist in the data. Defense in depth still demands not emitting secrets at the source."
+  difficulty: 2
+  tags: [sensitive-data]
+
+- id: "15.6"
+  question: "Which alert design most reliably surfaces real emergencies?"
+  options:
+    a: "Symptom-based alerts on error rate, latency, and SLO burn"
+    b: "Static threshold alerting when each VM CPU exceeds 80%"
+    c: "An alert on every metric emitted each minute"
+    d: "A scheduled daily digest of all metrics"
+  answer: a
+  explanation: "Symptom-based alerts reflect user-facing impact. Static resource thresholds and per-metric alerts produce noise and alert fatigue."
+  difficulty: 3
+  tags: [alerting]
+
+- id: "15.7"
+  question: "What should accompany every alert definition to keep it actionable?"
+  options:
+    a: "A higher license limit"
+    b: "A documented runbook and owner"
+    c: "A static threshold on each host"
+    d: "A copy of all related raw logs"
+  answer: b
+  explanation: "Each alert needs a runbook describing what it means and what a responder does. Alerts without ownership and a runbook are dead alarms."
+  difficulty: 1
+  tags: [alerting]
+
+- id: "15.8"
+  question: "Observability-as-code means doing what?"
+  options:
+    a: "Writing alerts and dashboards in version control and reviewing them in pull requests"
+    b: "Storing all logs as code strings"
+    c: "Creating a new alert for every dashboard chart"
+    d: "Removing iteration on alert definitions"
+  answer: a
+  explanation: "Alerts and dashboards defined in version control are reviewable, reproducible, and improvable over time. This supports tuning or deleting noisy alerts."
+  difficulty: 2
+  tags: [alerting]
+
+- id: "15.9"
+  question: "Two services log the same customer event using different field names. What is the recommended practice?"
+  options:
+    a: "Keep both names since each service owns its logs"
+    b: "Move customer logs to separate indexes"
+    c: "Log the event twice in one service"
+    d: "Standardize field names and map to the Common Information Model"
+  answer: d
+  explanation: "Standard field names plus CIM mapping enable cross-service search and correlation. Divergent names break correlated queries."
+  difficulty: 1
+  tags: [structured-logging]
+
+- id: "15.10"
+  question: "Which logging practice is most appropriate for a very high-volume event inside a hot loop?"
+  options:
+    a: "Log the full event at DEBUG level in production"
+    b: "Log every iteration with exact timestamps"
+    c: "Sample the event or drop it entirely"
+    d: "Add a new field for every request id"
+  answer: c
+  explanation: "High-volume hot-loop logging explodes indexed volume and cardinality. Sampling keeps observability while controlling cost."
+  difficulty: 3
+  tags: [volume]

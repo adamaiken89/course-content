@@ -1,0 +1,131 @@
+- id: cum.11
+  type: mcq
+  source_modules:
+  - 5
+  - 6
+  question: During impersonation, the /me session separates two identities. Which pairing is authoritative?
+  options:
+    a: actingAs drives the UI identity while actor drives audit and permission boundaries
+    b: actor drives the UI identity while actingAs is logged for auditing only
+    c: Both fields render interchangeably in the avatar
+    d: actingAs is derived from actor on every request
+  answer: a
+  difficulty: 1
+  tags:
+  - cross-module
+  - session
+  - impersonation
+- id: cum.12
+  type: cloze
+  source_modules:
+  - 5
+  question: Parallel refresh floods are prevented by {single-flight} dedupe plus replay of queued resolvers.
+  answer: single-flight
+  difficulty: 2
+  tags:
+  - cross-module
+  - silent-refresh
+- id: cum.13
+  type: tf
+  source_modules:
+  - 6
+  statement: The impersonation banner should render from the actor identity because that is what the user perceives.
+  answer: false
+  difficulty: 1
+  tags:
+  - cross-module
+  - impersonation
+- id: cum.14
+  type: mcq
+  source_modules:
+  - 7
+  - 8
+  question: When Escape is pressed inside a workflow modal with an open config and dirty state, what should happen?
+  options:
+    a: The modal unmounts and drops the draft
+    b: Focus returns immediately without checking state
+    c: The dirty guard intercepts the close and asks before unmounting
+    d: The backdrop blur alone cancels the workflow
+  answer: c
+  difficulty: 2
+  tags:
+  - cross-module
+  - modal
+  - dirty-guard
+- id: cum.15
+  type: cloze
+  source_modules:
+  - 7
+  question: On dialog close, focus must return to the {trigger} element that opened it.
+  answer: trigger
+  difficulty: 1
+  tags:
+  - cross-module
+  - focus-trap
+- id: cum.16
+  type: mcq
+  source_modules:
+  - 5
+  - 7
+  question: A session silently expires while a patient modal is open. Which move keeps the a11y contract intact?
+  options:
+    a: Keep the modal open and assume the refresh will recover
+    b: Render the login over the trapped modal
+    c: Freeze the page until the network recovers
+    d: Let the focus trap close as part of the auth state transition to the guard screen
+  answer: d
+  difficulty: 3
+  tags:
+  - cross-module
+  - session
+  - focus-trap
+- id: cum.17
+  type: cloze
+  source_modules:
+  - 7
+  - 8
+  question: A workflow dialog models its phases as a {state machine}, so the dirty guard can block phase exits and the focus trap re-arms per phase.
+  answer: state machine
+  difficulty: 2
+  tags:
+  - cross-module
+  - workflow
+  - state-machine
+- id: cum.18
+  type: tf
+  source_modules:
+  - 8
+  statement: The dirty guard should discard the draft unconditionally on Escape so the user can always bail fast.
+  answer: false
+  difficulty: 1
+  tags:
+  - cross-module
+  - dirty-guard
+- id: cum.19
+  type: mcq
+  source_modules:
+  - 6
+  - 8
+  question: Admins switch impersonation sessions mid-workflow. What keeps the draft consistent?
+  options:
+    a: Discard drafts whenever impersonation toggles
+    b: Restore the draft keyed to the actingAs identity after the session contract resets
+    c: Keep one global draft shared across all identities
+    d: Block workflow modals during impersonation
+  answer: b
+  difficulty: 3
+  tags:
+  - cross-module
+  - impersonation
+  - draft-restore
+- id: cum.20
+  type: tf
+  source_modules:
+  - 7
+  statement: In nested dialogs, the topmost dialog owns Escape handling and the focus trap.
+  answer: true
+  difficulty: 2
+  tags:
+  - cross-module
+  - nesting
+  - modal

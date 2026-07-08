@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Trinity Study 顯示 4% 提取率 + 50/50 股債 30 年成功率 {95%}, 100% 債 {65%}, 100% 股 {85%}。"
+  answer: "95%、65%、85%"
+  explanation: "50/50 配置係 4% Rule 最穩陣組合, 95% 成功率。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.2"
+  question: "{Sequence of Returns Risk} 即 {退休頭幾年大跌, 終身提款能力永久受損}。"
+  answer: "Sequence of Returns Risk、退休頭幾年大跌, 終身提款能力永久受損"
+  explanation: "對沖: 動態提款 (Guyton-Klinger) + Bucket Strategy + 留 5-10% buffer。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.3"
+  question: "Guyton-Klinger 規則包含 {提取率規則} (按回報調整提取) + {資本消耗規則} (組合過低強制減提取)。"
+  answer: "提取率規則、資本消耗規則"
+  explanation: "雙重保險, 抗序列風險比 4% Rule 強。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.4"
+  question: "Bucket Strategy 三桶: {短期現金} (1-3年開支)、{中期均衡} (3-7年)、{長期股票} (7+年)。"
+  answer: "短期現金、中期均衡、長期股票"
+  explanation: "跌市時由長桶補短桶, 唔使賣股, 抗序列風險。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.5"
+  question: "FIRE 4 變體: {Lean FIRE} 簡樸、{Fat FIRE} 標準、{Barista FIRE} 半退休、{Coast FIRE} 複利滾。"
+  answer: "Lean FIRE、Fat FIRE、Barista FIRE、Coast FIRE"
+  explanation: "唔係人人都要極端, 揀適合自己嘅生活模式。"
+  difficulty: 2
+  tags: [terminology, classification]
+
+- id: "c.6"
+  question: "MPF 供 {5% 老闆 + 5% 員工} 強制性, 最高扣稅 $18,000。TVC 額外供款可扣稅, 最高 {$60,000}。"
+  answer: "5% 老闆 + 5% 員工、$60,000"
+  explanation: "TVC 為可扣稅自願性供款, 與強制性合計 $78,000 扣稅。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.7"
+  question: "傳統 Glide Path: {25 歲 90/10} (高股) → {65 歲 50/50} (平衡)。年輕高股票承受波動, 退休後保護累積。"
+  answer: "25 歲 90/10、65 歲 50/50"
+  explanation: "亦有變體: Rising Equity (反向)、Target Date Fund (自動調整)。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.8"
+  question: "3 大退休風險: {Longevity 風險} (長壽)、{Sequence of Returns 風險} (序列)、{Inflation 風險} (通脹)。"
+  answer: "Longevity 風險、Sequence of Returns 風險、Inflation 風險"
+  explanation: "對沖: 年金 (長壽) + 動態提款 (序列) + TIPS/股票 (通脹)。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.9"
+  question: "MPF + 個人投資 {雙軌並行} 策略: MPF 放 {低費 Default Fund}, 個人投資 {全球 ETF VTI/VXUS}。"
+  answer: "雙軌並行、低費 Default Fund、全球 ETF VTI/VXUS"
+  explanation: "MPF 唔可以靠晒, 個人 ETF 範圍廣, 互補雙贏。"
+  difficulty: 3
+  tags: [scenario, application]
+
+- id: "c.10"
+  question: "提早 20 年開始退休準備 vs 遲 20 年, 終值差距 {3-5 倍}。時間係 {最珍貴嘅資產}。"
+  answer: "3-5 倍、最珍貴嘅資產"
+  explanation: "$15K/月 7% 35 年 = $28M, 25 年 = $11M。複利效應巨大。"
+  difficulty: 2
+  tags: [concept, application]

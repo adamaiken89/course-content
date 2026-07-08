@@ -1,0 +1,128 @@
+- id: '11.1'
+  question: What is the core idea of virtualization?
+  options:
+    d: Render every row but hide overflow with CSS
+    a: Render only the rows visible in the viewport plus overscan
+    b: SSR the list into static HTML
+    c: Chunk the data into 1,000-row pages
+  answer: a
+  explanation: Virtualization windows the DOM to the viewport — visible rows + overscan, with a spacer that preserves scrollbar reality.
+  difficulty: 1
+  tags:
+  - concept
+  - terminology
+- id: '11.2'
+  question: What must the scrollbar reflect even though only ~40 rows are mounted?
+  options:
+    a: The overscan count
+    b: The total dataset height (the spacer)
+    c: The browser default bar
+    d: The window translation only
+  answer: b
+  explanation: A spacer of items.length × itemH makes the scrollbar match all 10k rows while only the window is DOM.
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.3'
+  question: A row receives `onToggle={() => select(app.id)}` created inline. Why does React.memo fail to prevent re-renders?
+  options:
+    b: memo ignores props entirely
+    c: The callback identity changes every render, so props are never equal
+    d: Inline functions are always legal in memo
+    a: memo requires class components
+  answer: c
+  explanation: memo compares props by reference; a fresh callback every render breaks equality and re-renders the row.
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '11.4'
+  question: Which benchmark metric is most directly tied to browser memory pressure?
+  options:
+    c: Scroll frame time
+    d: DOM node count
+    a: Keystroke latency
+    b: Bundle size
+  answer: d
+  explanation: Each node holds DOM + paint data; 60k nodes vs 40 explains the ~120MB vs ~8MB story.
+  difficulty: 1
+  tags:
+  - formula
+  - comparison
+- id: '11.5'
+  question: A scroll past 200 rows shows a blank area in a custom virtualizer. Which piece is broken?
+  options:
+    d: The spacer height is correct but the window slice is empty
+    a: The window derives from scrollTop but nothing updates it (missing scroll handler)
+    b: Overscan is set to 0
+    c: The rows are not memoized
+  answer: a
+  explanation: No scroll handler → range never updates → old window stays and untranslated rows vanish. The spacer alone doesn't move the window.
+  difficulty: 3
+  tags:
+  - scenario
+  - comparison
+- id: '11.6'
+  question: Which React 19 pair directly reduces perceived blocking at 10k rows?
+  options:
+    a: useMemo + useCallback
+    b: useDeferredValue for input + useTransition for heavy swaps
+    c: useLayoutEffect + useRef
+    d: createRoot + StrictMode
+  answer: b
+  explanation: Deferral separates typing from the heavy render; transitions keep the swap non-blocking.
+  difficulty: 2
+  tags:
+  - react-19
+  - concept
+- id: '11.7'
+  question: The benchmark table reports ratios matter more than absolutes. Why?
+  options:
+    b: Absolute numbers are always wrong
+    c: Hardware differs; the order-of-magnitude gap is what transfers across machines
+    d: Ratios let you skip measuring memory
+    a: Ratios hide the jank entirely
+  answer: c
+  explanation: A 50× mount-time gap holds across machines; a 2.8s number on one laptop is noise on another.
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '11.8'
+  question: The React Compiler is enabled. Which problem does it NOT fix?
+  options:
+    c: Inline callback identity created fresh each render
+    d: Row objects re-derived by a map inside render
+    a: Missing virtualization of 10k rows
+    b: Memoization enabled by default
+  answer: a
+  explanation: Compiler covers memoization; it cannot reduce DOM node count. Virtualization is architectural.
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '11.9'
+  question: What is the role of overscan in a virtualizer?
+  options:
+    b: Render extra rows above/below the window to avoid blank flashes on fast scroll
+    c: Double the spacer height
+    d: Replace the scroll handler
+    a: Cache rows in Query storage
+  answer: b
+  explanation: Overscan keeps a few hidden rows mounted so quick scrolling shows content instead of white space.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.10'
+  question: A status-chip update triggers re-render of every row in a virtualized list despite memo. Most likely cause?
+  options:
+    c: Overscan too large
+    d: The visible array is re-created each render and children get new props
+    a: The spacer uses itemH wrong
+    b: The scroll listener uses a ref
+  answer: d
+  explanation: Deriving rows outside render with consistent row-object identity keeps memo effective; recreating them defeats it.
+  difficulty: 3
+  tags:
+  - scenario
+  - application

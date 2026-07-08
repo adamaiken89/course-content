@@ -1,0 +1,133 @@
+- id: '9.1'
+  question: What is the primary benefit of subagent delegation?
+  options:
+    d: Protects main context from exploration noise
+    a: Faster execution than inline
+    b: Subagents write better code
+    c: No token cost for subagents
+  answer: d
+  explanation: Subagents run in separate context. Exploration noise doesn't pollute
+    main thread.
+  difficulty: 1
+  tags:
+  - concept
+- id: '9.2'
+  question: Which Cavecrew subagent type is best for mapping codebase usage?
+  options:
+    a: Investigator
+    b: Builder
+    c: Reviewer
+    d: All three equally
+  answer: a
+  explanation: Investigator is read-only code locator. Finds usages, returns file:line
+    table. No modifications.
+  difficulty: 1
+  tags:
+  - application
+- id: '9.3'
+  question: When should you delegate a task to a subagent?
+  options:
+    b: When task would consume >20% of remaining context budget
+    a: Always delegate everything
+    c: Only for build tasks
+    d: Never - always work inline
+  answer: b
+  explanation: If task consumes >20% remaining context, delegate. Protects budget
+    for main task.
+  difficulty: 1
+  tags:
+  - procedure
+- id: '9.4'
+  question: What context compression ratio does subagent output typically achieve
+    vs inline?
+  options:
+    a: ~60% smaller
+    b: Same size
+    c: ~90% smaller
+    d: ~10% smaller
+  answer: a
+  explanation: Cavecrew output is ~60% smaller than equivalent inline exploration.
+    Compressed summaries, no noise.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.5'
+  question: Why include 'main context' in delegation prompt?
+  options:
+    b: Subagent has no access to main session context
+    a: To make the prompt longer
+    c: It's optional and rarely needed
+    d: Subagent reads main context automatically
+  answer: b
+  explanation: Subagent starts fresh with no context. Pass relevant decisions, goals,
+    and constraints so it doesn't make wrong assumptions.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '9.6'
+  question: Can you run multiple subagents in parallel?
+  options:
+    a: Yes - independent investigations run simultaneously
+    b: No - only one subagent at a time
+    c: Yes, but they share context
+    d: No - subagents cannot run independently
+  answer: a
+  explanation: Independent subagents can run in parallel. Each in its own context.
+    Results synthesized in main thread.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.7'
+  question: Which Cavecrew subagent type would you use for post-implementation diff
+    review?
+  options:
+    b: Reviewer
+    a: Investigator
+    c: Builder
+    d: None - review inline
+  answer: b
+  explanation: Reviewer is designed for diff/branch review. Returns severity-tagged
+    findings without polluting main context.
+  difficulty: 2
+  tags:
+  - application
+- id: '9.8'
+  question: What tool does a Builder subagent refuse?
+  options:
+    c: 3+ file scope edits
+    a: Read
+    b: Write new files
+    d: Running tests
+  answer: c
+  explanation: Builder is for surgical 1-2 file edits. Refuses 3+ file scope by design.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '9.9'
+  question: Main context is at 30%. Task is checking if a function is used. Delegate
+    or inline?
+  options:
+    c: Inline - plenty of context budget remaining
+    a: Delegate - still use subagent for exploration
+    b: Neither - do it manually
+    d: Hard to say
+  answer: c
+  explanation: 30% remaining is comfortable. Simple grep + result check is fast inline.
+    Subagent overhead not worth it.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '9.10'
+  question: What is the typical overhead time for delegating to a subagent?
+  options:
+    d: ~5 seconds
+    a: <1 second
+    b: ~30 seconds
+    c: Several minutes
+  answer: d
+  explanation: ~5 seconds for create + return. Worth it when saving hundreds of tokens
+    of main context.
+  difficulty: 2
+  tags:
+  - concept
+

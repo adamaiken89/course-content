@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "風險 3 個 element 係 {不確定}、{損失} 同 {變異}。3 個齊全先叫風險。"
+  answer: "不確定、損失、變異"
+  explanation: "如果只有不確定冇損失 (例如中彩票), 唔算風險, 叫機會。如果結果確定 (定存), 冇風險。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "5 種主要風險類型包括 {市場風險}、{信用風險}、{流動性風險}、{通脹風險} 同 {事件風險}。"
+  answer: "市場風險、信用風險、流動性風險、通脹風險、事件風險"
+  explanation: "呢 5 種覆蓋個人投資者面對嘅大部分風險。機構投資者會再加 operational/regulatory/legal 等風險。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "市場風險主要來源包括 {股票市場波動}、{利率變動}、{匯率波動} 等。"
+  answer: "股票市場波動、利率變動、匯率波動"
+  explanation: "市場風險指資產價格因市場因素而波動。Module 10 會用 std dev 量度。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "信評機構 {Moody's} 同 {S&P} 將債券信評分級, 最高評級係 {AAA/Aaa}。"
+  answer: "Moody's、S&P、AAA/Aaa"
+  explanation: "Moody's 用 Aaa/Aa/A/Baa, S&P/Fitch 用 AAA/AA/A/BBB。AAA/Aaa 違約率近 0, BB 以下係 junk bond。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "實質回報計算公式係 (1+{名目})/(1+{通脹}) - 1。"
+  answer: "名目、通脹"
+  explanation: "實質回報 = (1+名目回報)/(1+通脹率) - 1。例: 名目 3%, 通脹 4%, 實質 = 1.03/1.04 - 1 ≈ -0.96%。"
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.6"
+  question: "黑天鵝事件 3 個特徵係 {罕見}、{影響巨大} 同 {事前難以預測}。"
+  answer: "罕見、影響巨大、事前難以預測"
+  explanation: "Nassim Taleb 提出嘅 concept。911/COVID/2008 金融海嘯都係經典例子。對沖靠保險 + 分散 + 應急錢。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "香港存款保障計劃每間銀行每位存戶保障上限係 {80 萬港元} (2024 年 10 月起, 之前係 {50 萬})。"
+  answer: "80 萬港元、50 萬"
+  explanation: "2024 年 10 月起上限由 50 萬提高到 80 萬。擺超過 80 萬要分開幾間銀行 (e.g. HSBC 80 萬 + 中銀 80 萬 = 160 萬全保)。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.8"
+  question: "分散投資可以降低 {非系統風險}, 但 {系統風險} 消除唔到。"
+  answer: "非系統風險、系統風險"
+  explanation: "非系統風險 = 個別公司/行業風險, 分散可降。系統風險 = 整體市場風險 (e.g. 2008), 分散救唔到, 要靠 hedge。"
+  difficulty: 3
+  tags: [concept, application]
+
+- id: "c.9"
+  question: "定存至少有 3 種風險: {通脹風險}、{流動性風險} 同 {信用風險}。"
+  answer: "通脹風險、流動性風險、信用風險"
+  explanation: "冇任何投資係零風險。定存最 safe 但都有購買力風險, 提前取罰息, 同埋理論上銀行倒閉 (雖然有 80 萬存款保障)。"
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "c.10"
+  question: "個人最大風險通常唔係 {市場風險}, 而係 {事件風險} (失業/大病/傷殘) 因為會令收入斷。"
+  answer: "市場風險、事件風險"
+  explanation: "市場風險有時間復原, 但事件風險直接打斷收入, 可能令樓按斷供 + 資產被迫低賣。對沖靠保險 (醫療/危疾) + 應急錢 3-6 月。"
+  difficulty: 3
+  tags: [application, scenario]

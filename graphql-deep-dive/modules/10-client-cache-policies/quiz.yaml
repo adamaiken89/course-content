@@ -1,0 +1,136 @@
+- id: '10.1'
+  question: Which fetchPolicy returns cached data immediately AND always fires a network
+    request?
+  options:
+    b: cache-and-network
+    a: cache-first
+    c: network-only
+    d: cache-only
+  answer: b
+  explanation: cache-and-network returns cached data instantly for fast render, then
+    fires network request to update cache with fresh data. Best for data that changes
+    moderately often.
+  difficulty: 2
+  tags: []
+- id: '10.2'
+  question: A stock trading app displays current prices. Stale price could trigger
+    wrong trade decisions. Which fetchPolicy?
+  options:
+    d: network-only
+    a: cache-first
+    b: cache-and-network
+    c: standby
+  answer: d
+  explanation: network-only guarantees no stale cache data. Every query hits server.
+    cache-and-network could briefly show stale cached price. For trading, stale data
+    is dangerous.
+  difficulty: 2
+  tags: []
+- id: '10.3'
+  question: 'Mutation returns only { success: boolean }. List view needs to reflect
+    new data. What cache update strategy?'
+  options:
+    b: Both B and C work
+    a: Automatic — Apollo merges by id
+    c: refetchQueries — re-fetch the list query
+    d: cache.modify — manually write new data
+  answer: b
+  explanation: Since mutation response has no updated entity, automatic update does
+    nothing. Either refetchQueries (simple but wasteful) or cache.modify (precise
+    but verbose) works.
+  difficulty: 2
+  tags: []
+- id: '10.4'
+  question: User likes a post. Mutation takes 2s. With optimisticResponse, what does
+    user see during those 2 seconds?
+  options:
+    b: Like count incremented immediately, then reverts if server fails
+    a: Loading spinner — mutation in flight
+    c: Nothing changes until server responds
+    d: Error toast — no network response yet
+  answer: b
+  explanation: optimisticResponse provides fake data for instant UI update. If server
+    succeeds, optimistic data replaced with real. If server fails, Apollo rolls back
+    to pre-mutation state.
+  difficulty: 2
+  tags: []
+- id: '10.5'
+  question: What does nextFetchPolicy do?
+  options:
+    d: Transitions to different policy after initial fetch
+    a: Defines fallback policy when network fails
+    b: Sets policy for mutation queries
+    c: Controls subscription fetch behavior
+  answer: d
+  explanation: 'nextFetchPolicy applies to subsequent re-renders after the initial
+    mount. Common pattern: cache-and-network first, cache-first thereafter.'
+  difficulty: 2
+  tags: []
+- id: '10.6'
+  question: Pagination loads 20 comments per page. Without custom merge function,
+    what happens on page 2 load?
+  options:
+    a: Page 2 comments replace page 1 comments
+    b: Comments append to existing list
+    c: Apollo errors — duplicate comments
+    d: Comments merged by id automatically
+  answer: a
+  explanation: Default merge replaces existing array with incoming. Page 1 comments
+    lost unless custom merge appends incoming to existing.
+  difficulty: 2
+  tags: []
+- id: '10.7'
+  question: cache-and-network returns stale data, user mutates data, then network
+    response overwrites with pre-mutation data. What happened?
+  options:
+    c: 'Race condition: network response arrived after user mutation'
+    a: Normal cache-and-network behavior — no bug
+    b: Mutation failed silently
+    d: fetchPolicy was actually network-only
+  answer: c
+  explanation: 'Race condition: stale network response arrived after mutation, overwriting
+    user''s changes. Fix: use optimistic updates so mutation update runs after network
+    response, or use network-only for mutable data.'
+  difficulty: 2
+  tags: []
+- id: '10.8'
+  question: Which method reads current cache state without firing any network request?
+  options:
+    a: client.readQuery()
+    b: client.query()
+    c: client.refetchQueries()
+    d: 'useQuery with fetchPolicy: network-only'
+  answer: a
+  explanation: readQuery reads cache synchronously (or returns null if missing). query()
+    fires network if cache miss. refetchQueries always fires network.
+  difficulty: 2
+  tags: []
+- id: '10.9'
+  question: List of countries rarely changes. You want zero network requests after
+    initial load. Which fetchPolicy for subsequent mounts?
+  options:
+    c: cache-only
+    a: cache-first
+    b: network-only
+    d: standby
+  answer: c
+  explanation: cache-only never fires network. If data exists in cache, returns it.
+    If not, returns null (no fetch). Ideal for static reference data loaded once.
+  difficulty: 2
+  tags: []
+- id: '10.10'
+  question: Mutation creates a new Todo. You use cache.modify to append TodoRef to
+    todos list. After server responds with real Todo (id from DB), what extra step
+    is needed?
+  options:
+    a: Remove optimistic TodoRef and replace with real TodoRef
+    b: Nothing — cache.modify handles replacement automatically
+    c: Call cache.gc() to clean up
+    d: Refetch the todos query
+  answer: a
+  explanation: Optimistic response used temp id. Server returns real id. Cache has
+    both temp-ref and real-ref in todos list. Update callback must remove temp-ref
+    and add real-ref. Or use IDs that match (pre-generated UUID) to avoid remapping.
+  difficulty: 2
+  tags: []
+

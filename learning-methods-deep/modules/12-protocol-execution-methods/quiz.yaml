@@ -1,0 +1,117 @@
+- id: '12.1'
+  question: What is the three-phase structure of the BLURT protocol?
+  options:
+    a: Brain dump (5min), compare to source (5min), fill gaps (5min)
+    b: Read, recall, repeat
+    c: Question, answer, explain
+    d: Write, check, correct
+  answer: a
+  explanation: 'Phase 1: dump everything remembered about a module (5min). Phase 2:
+    compare dump to source material, identify gaps and misconceptions (5min). Phase
+    3: reread to fill top 3 gaps (5min).'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.2'
+  question: Why does interleaved practice feel harder than blocked practice?
+  options:
+    a: Interleaving has more questions than blocked practice
+    b: Interleaving requires context-switching — identifying which concept applies
+      before answering
+    c: Interleaving is designed to be deliberately frustrating
+    d: Interleaving uses harder questions than blocked practice
+  answer: b
+  explanation: Blocked practice uses the same mental context — each card reinforces
+    the previous. Interleaving requires identifying which concept applies (discrimination).
+    This extra cognitive effort is a desirable difficulty that drives better retention.
+  difficulty: 2
+  tags:
+  - concept
+- id: '12.3'
+  question: After 4 weeks, meta-learning analysis shows daily REVIEW sessions have
+    70% completion rate. What is the best adjustment?
+  options:
+    a: Skip REVIEW entirely — 70% completion means it's not working
+    b: Add more REVIEW sessions to compensate
+    c: Reduce daily review time budget or adjust FSRS-5 desired retention lower
+    d: Replace REVIEW with LEARN sessions
+  answer: c
+  explanation: '70% completion means the time budget or card volume exceeds capacity.
+    Options: reduce time to 10min, reduce desired retention from 0.9 to 0.85 (fewer
+    due cards), or reschedule to higher-focus time of day.'
+  difficulty: 3
+  tags:
+  - scenario
+- id: '12.4'
+  question: A learner follows blocked practice (study one module fully before moving
+    to next). After 4 weeks, module 1 retention is ~30%. What change would most improve
+    this?
+  options:
+    a: Study module 1 again — re-read the full lesson
+    b: Skip module 1, focus on modules 2-4
+    c: Take a week off to consolidate
+    d: Add daily interleaved REVIEW sessions covering all completed modules
+  answer: d
+  explanation: Daily interleaved REVIEW using FSRS-5 spaced repetition would review
+    module 1's cards at optimal intervals. Each review resets the forgetting curve
+    at higher stability. Re-reading alone is less effective than active recall via
+    REVIEW.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '12.5'
+  question: What information does meta-learning analysis track to improve the protocol?
+  options:
+    a: Session type, module, duration, score, skipped days — then weekly analysis
+    b: Only quiz scores
+    c: Total study hours per week
+    d: Number of cards created
+  answer: a
+  explanation: Meta-learning tracks session type (LEARN/REVIEW/etc.), module, duration,
+    score, and skipped days. Weekly analysis identifies weakest modules, best session
+    types, missed days count, and adherence rate — then suggests adjustments.
+  difficulty: 2
+  tags:
+  - concept
+- id: '12.6'
+  question: Why does the Feynman protocol require an analogy round after the simple
+    explanation passes?
+  options:
+    a: Analogies make the session longer and more thorough
+    b: Simple explanation can be memorized — analogy tests flexible understanding
+    c: The AI probe only works on analogies
+    d: Analogies are required by the curriculum
+  answer: b
+  explanation: A simple explanation can be rote. An analogy forces mapping the concept
+    to a different domain — revealing whether understanding is flexible or rigid.
+    This tests deep relational understanding.
+  difficulty: 2
+  tags:
+  - concept
+- id: '12.7'
+  question: What is the recommended frequency for cumulative quizzes?
+  options:
+    a: After every module
+    b: Once per course
+    c: After every 3-5 modules
+    d: Only after completing all modules
+  answer: c
+  explanation: Every 3-5 modules builds cross-module connections early and often.
+    Questions mix MCQ, cloze, and T/F formats and are tagged with source_modules to
+    identify which modules need review.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.8'
+  question: At what time intervals should a learner run the BLURT protocol on a module?
+  options:
+    a: Only immediately after LEARN
+    b: Only at the end of the course
+    c: Every day for a month
+    d: Immediately after LEARN, then 1 week later, then 1 month later
+  answer: d
+  explanation: Immediate BLURT tests initial encoding, 1-week BLURT tests medium-term
+    retention, 1-month BLURT tests consolidation. Each horizon reveals different decay.
+  difficulty: 2
+  tags:
+  - concept

@@ -1,0 +1,116 @@
+- id: '7.1'
+  question: MoE 解決 dense model 嘅邊個問題？
+  options:
+    a: 更多參數 = 更高 compute cost
+    b: Training 太慢
+    c: Data 唔夠
+    d: Overfitting
+  answer: a
+  explanation: Dense model 嘅參數量同 compute cost 成正比。MoE 令你可以有更多總參數，但每個 token 嘅 compute
+    cost 唔會同比例增加。
+  difficulty: 1
+  tags:
+  - concept
+- id: '7.2'
+  question: MoE 入面嘅 router 做乜？
+  options:
+    a: 將 tokens 排序
+    b: 決定每個 token 去邊個 expert
+    c: 組合 experts 嘅 output
+    d: 過濾 bad tokens
+  answer: b
+  explanation: Router 睇每個 token 嘅 representation，計 probability distribution over experts，揀
+    top-k 個 experts 去處理個 token。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '7.3'
+  question: MoE 嘅「top-k」係指乜？
+  options:
+    a: 揀得分最高嘅 k 個 token
+    b: Keep k 個 experts
+    c: 每個 token activate k 個 experts
+    d: Top k 個 layers
+  answer: c
+  explanation: Router 計每個 expert 嘅 score，揀最高分嘅 k 個 experts 去處理個 token。典型 k=2。
+  difficulty: 2
+  tags:
+  - terminology
+- id: '7.4'
+  question: Mixtral 8×7B 嘅 total parameters 同 active per token 係？
+  options:
+    a: Total 7B, active 7B
+    b: Total 12.9B, active 47B
+    c: Total 56B, active 56B
+    d: Total 47B, active 12.9B
+  answer: d
+  explanation: Mixtral 8×7B 有 8 個 experts（每個 ~5.6B），total ~47B。Top-2 routing → 每個
+    token active ~12.9B parameters。
+  difficulty: 2
+  tags:
+  - scenario
+- id: '7.5'
+  question: Load balancing failure 喺 MoE 入面係指？
+  options:
+    a: 大部分 tokens 去晒同一個 expert
+    b: GPU 記憶體爆咗
+    c: Router 壞咗
+    d: Experts 數量唔夠
+  answer: a
+  explanation: 如果 router 將 90% tokens 送去同一 expert，其他 experts 冇足夠訓練 signal，capacity
+    浪費。用 auxiliary loss 鼓勵 router 更平衡。
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.6'
+  question: MoE 嘅主要 tradeoff 係？
+  options:
+    a: More accuracy vs slower speed
+    b: Total memory vs active compute
+    c: Larger model vs worse quality
+    d: Easier training vs harder deployment
+  answer: b
+  explanation: Total parameters 決定 memory requirement（全部 experts load 入 RAM），active
+    parameters 決定 compute（每個 token 用嘅 experts）。呢個 tradeoff 係 MoE 嘅核心。
+  difficulty: 3
+  tags:
+  - concept
+- id: '7.7'
+  question: 以下邊個唔係 MoE 模型？
+  options:
+    a: Mixtral 8×7B
+    b: GPT-4 (推測)
+    c: BERT
+    d: DeepSeek-V2
+  answer: c
+  explanation: BERT 係 encoder-only dense transformer。Mixtral、GPT-4（推測）、DeepSeek-V2
+    全部用 MoE architecture。
+  difficulty: 1
+  tags:
+  - scenario
+- id: '7.8'
+  question: MoE 嘅概念最早出自邊年？
+  options:
+    a: 2017 (Attention Is All You Need)
+    b: 2023 (Mixtral)
+    c: 2006 (Deep Learning 復興)
+    d: 1991 (Jacobs et al.)
+  answer: d
+  explanation: MoE 概念最早 1991 年由 Jacobs et al. 提出（Adaptive Mixture of Local Experts）。近代
+    Shazeer et al. 2017 引入 neural network。但直到 2023-2024 先 become mainstream。
+  difficulty: 3
+  tags:
+  - terminology
+- id: '7.9'
+  question: Dense model 同 MoE 嘅核心分別係？
+  options:
+    a: Dense 全部參數 active，MoE 只 active 部分
+    b: Dense 冇 FFN，MoE 有
+    c: Dense 用 attention，MoE 唔用
+    d: Dense 更快但唔準
+  answer: a
+  explanation: Dense = forward pass 全部參數 active。MoE = router 揀 top-k experts，只有 k/total
+    嘅參數 active。呢個係核心 difference。
+  difficulty: 1
+  tags:
+  - comparison

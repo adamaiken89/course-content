@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Attention 係{content-based weighted retrieval} — Query 決定邊啲 Keys 重要，weighted sum of Values。"
+  answer: "content-based weighted retrieval"
+  explanation: "呢個 framing 統一一哂 attention 嘅 variants — self/cross/causal 都係同一 pattern。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Scaled dot-product attention: Attention(Q,K,V) = softmax({QKᵀ / √dₖ}) · V"
+  answer: "QKᵀ / √dₖ"
+  explanation: "QKᵀ = similarity matrix（n×n），√dₖ = scale factor 防止 softmax 極端化。"
+  difficulty: 1
+  tags: [formula]
+
+- id: "c.3"
+  question: "Scaling factor √dₖ normalize dot product 嘅{variance} ≈ 1，防止 softmax 進入{extreme / near one-hot}區域。"
+  answer: "variance, extreme (near one-hot)"
+  explanation: "q,k ~ N(0,1) → q·k variance = dₖ。唔 scale → softmax too sharp → small gradients。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "Self-attention: Q, K, V 都來自{same sequence X}。Cross-attention: Q 來自{one sequence}, K, V 來自{another}。"
+  answer: "same sequence X, one sequence, another"
+  explanation: "Self-attention 做 intra-sequence 嘅 context mixing。Cross-attention 做 inter-sequence 嘅 info transfer（如 encoder→decoder）。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Causal mask 係{upper triangular} matrix 填 -inf，softmax 後未來 token 嘅 weight = {0}。"
+  answer: "upper triangular, 0"
+  explanation: "防止 label leakage — decoder 唔可以睇未來 token。每個 token 只 attend 自己 + past。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.6"
+  question: "Multi-head output = Concat([head₁,...,headₕ]) · {W_O}。{W_O} 可以 cross-head mixing。"
+  answer: "W_O (output projection)"
+  explanation: "W_O ∈ ℝᵈ_modelˣᵈ_model 將 concatenated heads project 返去 model dimension。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "Self-attention complexity = O({n² · d})。n 係{sequence length}，d 係{hidden dimension}。"
+  answer: "n² · d, sequence length, hidden dimension"
+  explanation: "Quadratic in n — 長 context 嘅主要 bottleneck。Flash Attention 用 tiling 減 memory 但 complexity 仍 O(n²)。"
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.8"
+  question: "Grouped-Query Attention (GQA) 將 K,V 分成{g}組，balance{cache size}同{quality}。"
+  answer: "g, cache size, quality"
+  explanation: "MQA (g=1) cache 最細但 quality drop。Standard MHA (g=h) 最好但 cache 大。GQA 取中間。"
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.9"
+  question: "Seq len 由 512 變 4096，attention computation 增長{64}倍（O(n²)）。"
+  answer: "64"
+  explanation: "4096/512 = 8 → 8² = 64。呢個係 context window scaling 嘅主要成本。"
+  difficulty: 2
+  tags: [formula, application]
+
+- id: "c.10"
+  question: "Attention weights 用完嘅 softmax scores，但唔可以直接當成{explanation / reasoning} — 因為完全不同嘅 weights 可以 produce{相同 prediction}。"
+  answer: "explanation (reasoning), 相同 prediction"
+  explanation: "Jain & Wallace (2019): adversarial attention weights 可以 produce same output。Attention 係 computation tool 唔係 explanation tool。"
+  difficulty: 3
+  tags: [concept]

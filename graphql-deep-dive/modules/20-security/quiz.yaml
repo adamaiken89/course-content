@@ -1,0 +1,139 @@
+- id: '20.1'
+  question: Which library prevents deeply nested GraphQL queries during validation?
+  options:
+    d: graphql-depth-limit
+    a: graphql-query-complexity
+    b: graphql-rate-limiter
+    c: graphql-constraint-directive
+  answer: d
+  explanation: graphql-depth-limit rejects queries exceeding a configurable depth
+    level during parsing/validation. graphql-query-complexity computes cost, not depth.
+  difficulty: 2
+  tags: []
+- id: '20.2'
+  question: What does APQ (Automatic Persisted Queries) primarily protect against?
+  options:
+    b: Arbitrary query execution and oversized payloads
+    a: SQL injection via query arguments
+    c: Unauthenticated introspection
+    d: CSRF via cookie-based auth
+  answer: b
+  explanation: APQ stores query-by-hash. Clients send hashes instead of full queries.
+    Server rejects hashes not in the cache, preventing arbitrary query execution and
+    reducing payload size.
+  difficulty: 2
+  tags: []
+- id: '20.3'
+  question: A user can see their own email but not other users' emails. Which auth
+    strategy?
+  options:
+    a: RBAC with role USER vs ADMIN, check ownership in resolver
+    b: Disable email field for all non-admins
+    c: Only show email if query is from mobile app
+    d: Remove email from schema entirely
+  answer: a
+  explanation: 'Field-level RBAC + ownership check. USER role can read email only
+    when parent.id matches authenticated user. This is ABAC pattern: authorization
+    depends on resource attribute (ownership).'
+  difficulty: 2
+  tags: []
+- id: '20.4'
+  question: Which GraphQL attack uses many aliases of the same field to amplify request
+    cost?
+  options:
+    c: Alias abuse
+    a: Deep recursion
+    b: Batching attack
+    d: Introspection leak
+  answer: c
+  explanation: 'Alias abuse requests the same field under many aliases (a1: user,
+    a2: user, ... a1000: user), multiplying resolver execution. Defense: limit aliases
+    or compute cost per unique resolver call.'
+  difficulty: 2
+  tags: []
+- id: '20.5'
+  question: Why is query-count rate limiting insufficient for GraphQL?
+  options:
+    a: One request can execute wildly different amounts of work
+    b: GraphQL always uses websockets, not HTTP
+    c: Rate limiting is impossible in GraphQL
+    d: Apollo Server has built-in rate limiting
+  answer: a
+  explanation: A single GraphQL request can request one field or one hundred. Query-count
+    treats a cheap ping and an expensive dashboard query identically. Cost-based rate
+    limiting scales with actual work.
+  difficulty: 2
+  tags: []
+- id: '20.6'
+  question: Schema has Query.users returning [User!] with resolver that queries DB.
+    Max depth = 7. Query requests users { posts { comments { author { posts { comments
+    { author { name } } } } } } }. How many resolver calls for 25 users, each with
+    5 posts, each with 3 comments?
+  options:
+    c: 1 + 25 + 125 + 375 = 526 calls
+    a: 25 + 125 + 375 = 525 calls
+    b: 25 calls
+    d: 7 calls (one per level)
+  answer: c
+  explanation: 1 Query.users → 25 User.author → 125 User.posts → 375 Post.comments
+    → ... depth limit at 7 levels means query executes fully. Total resolver calls
+    = 1 + 25 + 125 + 375 = 526 unique resolver invocations. Depth limit prevents deeper
+    nesting but doesn't limit breadth.
+  difficulty: 2
+  tags: []
+- id: '20.7'
+  question: You need to enable introspection for internal debugging tools but disable
+    it for external clients. How?
+  options:
+    a: 'Use introspection: (req) => req.headers[''x-internal-key''] === env.INTERNAL_KEY'
+    b: 'Set introspection: false globally and deploy a separate staging server'
+    c: Remove introspection from schema entirely
+    d: Introspection is always on — can't disable conditionally
+  answer: a
+  explanation: Apollo Server accepts a function for introspection option. Check internal
+    API key in request headers to conditionally allow. External requests without the
+    key get no introspection.
+  difficulty: 2
+  tags: []
+- id: '20.8'
+  question: Which CSRF protection is most effective against cross-origin GraphQL requests?
+  options:
+    b: 'Enforce Content-Type: application/json + SameSite: Strict cookies'
+    a: CORS configuration allowing all origins
+    c: Disable mutations
+    d: Use query parameters instead of POST body
+  answer: b
+  explanation: 'SameSite: Strict prevents cookie attachment from cross-origin forms.
+    Content-Type enforcement blocks simple form-based POST attacks that use text/plain.
+    Both together eliminate the most common CSRF vectors.'
+  difficulty: 2
+  tags: []
+- id: '20.9'
+  question: A non-admin user receives ForbiddenError on `query { users { email } }`.
+    What is the likely configuration?
+  options:
+    d: 'User.email has @auth(requires: ADMIN)'
+    a: AdminDashboard' requires ADMIN role
+    b: 'Query.users has @auth(requires: ADMIN)'
+    c: Rate limit exceeded for high-cost query
+  answer: d
+  explanation: Field-level @auth on User.email. Non-admin can access Query.users and
+    User fields except email. Error occurs only at the email field, which nulls if
+    non-null or returns null if nullable.
+  difficulty: 2
+  tags: []
+- id: '20.10'
+  question: 'Client sends query { user(id: 1) { id name } } with Content-Type: text/plain
+    and Origin: https://evil.com. What should the server do?'
+  options:
+    b: Reject — Content-Type must be application/json for POST requests
+    a: Execute query — it's a valid, low-cost query
+    c: Execute but log the suspicious origin
+    d: Reject only if Origin doesn't match the registered client origin
+  answer: b
+  explanation: Content-Type not application/json is a CSRF signal. Server should reject
+    before any processing. Origin validation is secondary defense — Content-Type check
+    is the primary gate. text/plain allows form-based CSRF attacks.
+  difficulty: 2
+  tags: []
+

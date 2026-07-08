@@ -1,0 +1,132 @@
+- id: '12.1'
+  question: What is the minimum evidence needed to approve agent work?
+  options:
+    a: Diff, test results, design decisions
+    b: Agent says 'done'
+    c: Full log of every tool call
+    d: Approval from another team member
+  answer: a
+  explanation: Diff (what changed), test results (it works), decisions (why this approach).
+    30-second review with these artifacts.
+  difficulty: 1
+  tags:
+  - concept
+- id: '12.2'
+  question: What is the recommended review order?
+  options:
+    b: Evidence check → Diff scan → Spot check
+    a: Read full modified files first
+    c: Run tests first
+    d: Random sampling
+  answer: b
+  explanation: 'Layers: evidence exists and coherent (30s) → diff scan for issues
+    (2-5m) → deep spot check critical files (5-10m).'
+  difficulty: 1
+  tags:
+  - procedure
+- id: '12.3'
+  question: Why should a review skill instruct 'no praise'?
+  options:
+    c: Praise wastes tokens without adding value
+    a: Praise makes agent overconfident
+    b: Praise violates policy
+    d: Agent cannot give genuine praise
+  answer: c
+  explanation: Review is for finding issues. Agent-generated praise ('good work!')
+    adds no actionable information. Output only findings.
+  difficulty: 1
+  tags:
+  - concept
+- id: '12.4'
+  question: How should trust calibrate after 10 clean PRs followed by a complex auth
+    change?
+  options:
+    a: Escalate review for auth (high-risk change)
+    b: High trust — agent earned it
+    c: Reset trust to zero
+    d: Same medium trust as before
+  answer: a
+  explanation: Trust applies to routine work. Security/auth/permissions always get
+    full review regardless of history.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '12.5'
+  question: What causes trust to degrade?
+  options:
+    b: Incorrect code, missed verification gates, unexplained changes
+    a: Agent working too fast
+    c: Agent being verbose
+    d: Agent asking questions
+  answer: b
+  explanation: 'Trust degrades on: incorrect code, skipped gates, changes to files
+    outside scope, inability to explain decisions.'
+  difficulty: 1
+  tags:
+  - concept
+- id: '12.6'
+  question: For which situation should you perform a FULL read (not scan)?
+  options:
+    c: Security-sensitive code change
+    a: Bug fix with clear scope
+    b: Mechanical rename
+    d: Test file additions
+  answer: c
+  explanation: 'Security-sensitive code always gets full read + audit. Bug fixes (clear
+    scope), mechanical refactors, tests: scan or spot check.'
+  difficulty: 2
+  tags:
+  - application
+- id: '12.7'
+  question: What should you do if agent provides incomplete evidence?
+  options:
+    a: Ask agent to provide complete evidence
+    b: Approve anyway — agent earned trust
+    c: Assume agent is hiding something
+    d: Ignore and move on
+  answer: a
+  explanation: Incomplete evidence = request completion. If agent can't produce coherent
+    evidence, investigate before approving.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '12.8'
+  question: What is the purpose of a decision log in evidence?
+  options:
+    b: Shows why agent chose approach X over Y without you re-analyzing
+    a: Makes review longer
+    c: Documents which AI model was used
+    d: Logs all errors during implementation
+  answer: b
+  explanation: Decision log explains tradeoffs. Helps you evaluate if right call was
+    made without re-doing the analysis.
+  difficulty: 2
+  tags:
+  - concept
+- id: '12.9'
+  question: High trust level should still require what minimum review?
+  options:
+    d: Summary + security check of changed files
+    a: No review needed
+    b: Full diff read
+    c: Manual testing of all features
+  answer: d
+  explanation: 'Even high trust: summary check + security scan. Never zero review.
+    Superhuman trust is cargo-culting.'
+  difficulty: 2
+  tags:
+  - procedure
+- id: '12.10'
+  question: An agent says 'all tests pass' but you suspect otherwise. What to do?
+  options:
+    d: Run tests yourself or ask agent to show output
+    a: Trust the agent
+    b: Ignore suspicion — it's probably fine
+    c: Reject all changes
+  answer: d
+  explanation: If trust is low or something feels off, verify. Ask agent to show test
+    command and output. Evidence should be reproducible.
+  difficulty: 3
+  tags:
+  - scenario
+

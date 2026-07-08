@@ -1,0 +1,101 @@
+- id: cum.9
+  type: mcq
+  source_modules:
+  - 9
+  - 10
+  question: A learner has 3 missed days in 2 weeks. The meta-learning analysis identifies trigger failure as the cause. Which principle applies?
+  options:
+    a: Increase streak freeze count from 1 to 3
+    b: Skip the missed days — they don't matter long-term
+    c: Design external triggers (fixed-time notifications) and context-dependent cues to rebuild habit
+    d: Extend REVIEW session time to compensate
+  answer: c
+  explanation: "Missed days indicate trigger failure. Solution: use fixed-time external triggers and context cues to rebuild the habit pattern. Streak freeze is a safety net, not a fix for trigger failure."
+  difficulty: 2
+  tags:
+  - scenario
+- id: cum.10
+  type: cloze
+  source_modules:
+  - 11
+  question: 'Complete: Daily {REVIEW} sessions preserve previous LEARN investment. Without them, retention drops to ~{30%}.'
+  answer: REVIEW, 30%
+  explanation: REVIEW sessions using FSRS-5 spaced repetition are the highest-ROI component. Without review, the forgetting curve erodes ~70% of learned content within days.
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.11
+  type: cloze
+  source_modules:
+  - 10
+  question: 'Complete: Implementation intentions follow the format: at {time} in {context}, I will {action}.'
+  answer: time, context, action
+  explanation: "At 7:30 AM in my kitchen, I will review 5 due cards. This specific-time-plus-context plan automates the decision to start studying."
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.12
+  type: mcq
+  source_modules:
+  - 12
+  question: Which principle explains why a learner prefers blocked practice (study one module fully) even though interleaving roughly triples long-term retention?
+  options:
+    a: Interleaving requires context-switching, which feels harder (desirable difficulty), so learners prefer blocked practice which feels easier
+    b: Content engineering should generate interleaved questions
+    c: Streak mechanics reward blocked practice
+    d: FSRS-5 optimizes for blocked schedules
+  answer: a
+  explanation: Interleaving requires identifying which concept applies before answering — cognitively demanding. Learners prefer blocked practice because it feels productive. The protocol must override this preference.
+  difficulty: 2
+  tags:
+  - cross-module
+- id: cum.13
+  type: mcq
+  source_modules:
+  - 12
+  question: 'A weekly meta-learning review shows: REVIEW sessions have 60% completion rate, BLURT sessions have 90% completion rate. What does the protocol suggest?'
+  options:
+    a: Replace REVIEW with more BLURT sessions
+    b: Reduce REVIEW time budget or FSRS-5 desired retention — cards pile up beyond capacity
+    c: Ignore the data — patterns emerge over months
+    d: Add more LEARN sessions to compensate for poor REVIEW
+  answer: b
+  explanation: 60% REVIEW completion means the time budget or card volume exceeds capacity. Reduce desired retention in FSRS-5 (fewer cards due daily) or shorten the time budget to match actual capacity.
+  difficulty: 3
+  tags:
+  - scenario
+- id: cum.14
+  type: mcq
+  source_modules:
+  - 9
+  question: In the Hook cycle, which phase makes the next trigger more effective over time by improving the learner's FSRS model?
+  options:
+    a: Trigger
+    b: Action
+    c: Reward
+    d: Investment
+  answer: d
+  explanation: Investment adds to the product of use — each review updates FSRS-5 stability/difficulty, so future sessions are better calibrated and the next trigger lands in a stronger habit loop.
+  difficulty: 2
+  tags:
+  - concept
+- id: cum.15
+  type: cloze
+  source_modules:
+  - 9
+  question: 'Complete: Effort attribution builds {growth} mindset. Ability attribution is {fixed} — failure implies ''not talented'' and discourages persistence.'
+  answer: growth, fixed
+  explanation: "'Your practice is paying off' (effort) vs 'You're smart' (ability). Effort attribution is controllable and builds persistence."
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.16
+  type: tf
+  source_modules:
+  - 10
+  statement: For a learner who just missed 2 days, showing 'Days studied 45/60 (75%)' motivates persistence better than showing 'Current streak 3 days.'
+  answer: true
+  explanation: Consistent percentage reframes a miss as a minor blip, not a reset. A short streak makes the learner feel like they're just starting despite overall consistency.
+  difficulty: 2
+  tags:
+  - scenario

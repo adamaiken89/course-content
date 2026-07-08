@@ -1,0 +1,125 @@
+- id: cum.11
+  type: mcq
+  source_modules:
+  - 5
+  question: 'Short selling requires the seller to:'
+  options:
+    a: Own the shares first
+    b: Borrow the shares
+    c: Hold for 30 days
+    d: Pay a premium
+  answer: b
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.12
+  type: mcq
+  source_modules:
+  - 5
+  question: 'When a market-wide circuit breaker trips, the primary effect is that:'
+  options:
+    a: Trading pauses market-wide for a set period
+    b: Only the hardest-hit stock halts
+    c: Short selling is banned permanently
+    d: All resting orders cancel automatically
+  answer: a
+  difficulty: 2
+  tags:
+  - cross-module
+  - scenario
+- id: cum.13
+  type: cloze
+  source_modules:
+  - 6
+  question: P/E ratio equals {stock price} divided by {earnings per share}.
+  answer: stock price
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.14
+  type: cloze
+  source_modules:
+  - 6
+  question: The PEG ratio divides the P/E by the expected {earnings growth} rate.
+  answer: earnings growth
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.15
+  type: mcq
+  source_modules:
+  - 7
+  question: In DCF, terminal value typically represents what % of total value?
+  options:
+    a: 10-20%
+    b: 30-50%
+    c: 60-80%
+    d: 90-100%
+  answer: c
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.16
+  type: mcq
+  source_modules:
+  - 7
+  question: 'In a DCF model, WACC is used as the:'
+  options:
+    a: Tax rate
+    b: Growth floor
+    c: Terminal multiple
+    d: Discount rate
+  answer: d
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.17
+  type: tf
+  source_modules:
+  - 7
+  statement: Increasing the discount rate raises a DCF present value.
+  answer: false
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.18
+  type: cloze
+  source_modules:
+  - 8
+  question: Revenue minus COGS equals {gross profit}.
+  answer: gross profit
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.19
+  type: mcq
+  source_modules:
+  - 8
+  question: 'An earnings surprise occurs when reported EPS differs from:'
+  options:
+    a: Analyst consensus estimates
+    b: The prior year's EPS
+    c: The share count
+    d: Book value per share
+  answer: a
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.20
+  type: tf
+  source_modules:
+  - 8
+  statement: Trailing EPS is calculated from the most recent 12 months of reported earnings.
+  answer: true
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall

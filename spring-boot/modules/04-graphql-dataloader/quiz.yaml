@@ -1,0 +1,119 @@
+- id: "4.1"
+  question: "A GraphQL query returns 60 orders and each order nests a supplier field. How many database queries do the naive per-object resolvers issue?"
+  options:
+    a: "1"
+    b: "60"
+    c: "61"
+    d: "120"
+  answer: c
+  explanation: "One query fetches the order list, then the supplier field resolver runs once per order, so 1 plus 60 equals 61. This is the N+1 problem."
+  difficulty: 1
+  tags: [terminology, calculation]
+
+- id: "4.2"
+  question: "What does a DataLoader do with loads that repeat the same key within one request pass?"
+  options:
+    a: "Queues the key twice and runs the batch twice"
+    b: "Deduplicates it and fetches the value once"
+    c: "Rejects the second load with an error"
+    d: "Forces an eager fetch on first use"
+  answer: b
+  explanation: "Deduplication caches the first result in the pass and gives every resolver that asked for the same key the same value, so the batch function sees the key only once."
+  difficulty: 1
+  tags: [concept]
+
+- id: "4.3"
+  question: "Which loader type is the safe default when results come back out of key order or with missing keys?"
+  options:
+    a: "BatchLoader"
+    b: "PromiseLoader"
+    c: "DirectLoader"
+    d: "MappedBatchLoader"
+  answer: d
+  explanation: "MappedBatchLoader returns a Map so values attach by key, making ordering harmless and absent keys simply stay missing. BatchLoader zips positionally and misaligns."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "4.4"
+  question: "A BatchLoader contract requires which guarantee from the batch function to stay correct?"
+  options:
+    a: "Results in the exact input key order with one value per key"
+    b: "Results sorted by primary key"
+    c: "At most one batch call per second"
+    d: "An in-memory cache backing the results"
+  answer: a
+  explanation: "The framework zips the returned list onto the input keys positionally. Any reordering or missing entry shifts values onto wrong keys, so exact order and full count are required."
+  difficulty: 2
+  tags: [concept]
+
+- id: "4.5"
+  question: "In DGS you use a DataLoader in a field resolver. Where does the resolver get the loader from?"
+  options:
+    a: "A static utility class"
+    b: "The database connection pool"
+    c: "The DataFetchingEnvironment"
+    d: "The Spring application context singleton"
+  answer: c
+  explanation: "DGS exposes per-request loaders on the DataFetchingEnvironment, and the resolver returns the future the loader produces. The engine drains the loader at the pass boundary."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "4.6"
+  question: "Why must a DataLoader not be a Spring singleton bean shared by all requests?"
+  options:
+    a: "It blocks the request thread permanently"
+    b: "Results leak across requests and serve stale cached values"
+    c: "It doubles the memory use of every batch"
+    d: "It reorders keys differently per request"
+  answer: b
+  explanation: "The loader keeps a first-level cache for its lifetime. A singleton caches results from one request and hands them to the next, leaking data and serving stale values. Scope it to the request."
+  difficulty: 3
+  tags: [concept, scenario]
+
+- id: "4.7"
+  question: "Boot 4 enables virtual threads by default. Why does that not remove the N+1 problem?"
+  options:
+    a: "Virtual threads ignore DataLoader caches"
+    b: "Only web sockets use virtual threads"
+    c: "Virtual threads deadlock under batching"
+    d: "The resolver still issues N round trips and N queries"
+  answer: d
+  explanation: "Virtual threads keep the thread pool from starving on blocking IO but the query count and summed latency stay the same. DataLoader reduces the calls themselves, so the two are complementary."
+  difficulty: 3
+  tags: [concept, comparison]
+
+- id: "4.8"
+  question: "You set a DataLoader batch size cap of 10. The pass collects 45 keys. How do the batch calls split?"
+  options:
+    a: "5 calls, each with up to 10 keys"
+    b: "One call with all 45 keys"
+    c: "10 calls of 4 keys and one of 5"
+    d: "45 calls of one key"
+  answer: a
+  explanation: "The batch size is a cap on keys per flush, so a 45-key pass drains as 5 bounded batches. It is not a latency tuning lever, just a guard against oversized IN clauses."
+  difficulty: 2
+  tags: [calculation, concept]
+
+- id: "4.9"
+  question: "Two different parent objects in one query share the same child entity id. After deduplication, how many times does the batch function see that key?"
+  options:
+    a: "Twice, once per parent object"
+    b: "Once, and both resolvers receive the cached value"
+    c: "Zero, the value comes from the database anyway"
+    d: "Twice, unless the parents resolve concurrently"
+  answer: b
+  explanation: "Deduplication collapses identical keys within the pass. The key is loaded once and the cached value is handed to every resolver that requested it."
+  difficulty: 1
+  tags: [concept]
+
+- id: "4.10"
+  question: "Why does a MappedBatchLoader returning a Map for suppliers avoid the misalignment risk a List loader has?"
+  options:
+    a: "Map lookups are faster than list indexing"
+    b: "The Map sorts keys before returning values"
+    c: "Values attach by key so result order is irrelevant"
+    d: "The Map compresses duplicate keys automatically"
+  answer: c
+  explanation: "Dictionary-style loading matches each value to its key directly, so reordered or missing results are safe. A list loader depends on positional order between keys and values."
+  difficulty: 2
+  tags: [comparison]

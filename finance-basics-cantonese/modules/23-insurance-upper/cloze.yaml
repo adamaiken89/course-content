@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "保險嘅核心原理係 {大數法則}, 透過 {集中風險, 攤分成本} 運作。預期損失 = {損失機率 × 損失金額}。"
+  answer: "大數法則、集中風險, 攤分成本、損失機率 × 損失金額"
+  explanation: "1 個人風險難預測, 1 萬人可估算, 集中風險攤分成本。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.2"
+  question: "保費結構: {純保費 (60-80%)} + {行政費用 (15-25%)} + {利潤 (5-10%)} + {風險準備 (5-10%)}。"
+  answer: "純保費 (60-80%)、行政費用 (15-25%)、利潤 (5-10%)、風險準備 (5-10%)"
+  explanation: "純保費最大, 行政費用第二, 利潤同風險較細。第一年行政費可能佔 50%+ (佣金 + setup)。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.3"
+  question: "{Term Life} 係 {純保障, 冇投資成分}, 平啲, $1M 保額年保費 ~$1,500; {Whole Life} 係 {含投資成分}, 貴 ($30,000-50,000), 有 {現金價值}。"
+  answer: "Term Life、純保障, 冇投資成分、Whole Life、含投資成分、現金價值"
+  explanation: "Term 純保障適合家庭支柱, Whole Life 適合遺產規劃或強制儲蓄。"
+  difficulty: 1
+  tags: [comparison, terminology]
+
+- id: "c.4"
+  question: "自願醫保 VHIS 2019 年推出, 認可產品, {保證續保至 100 歲}, 涵蓋 {先天疾病治療 (8 歲後)}, 扣稅上限 {$8,000/人/年}。"
+  answer: "保證續保至 100 歲、先天疾病治療 (8 歲後)、$8,000/人/年"
+  explanation: "VHIS 比公司團體醫療優勝: 終身保證續保, 唔受離職影響。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.5"
+  question: "VHIS {標準計劃} vs {彈性計劃}: 標準 {基本住院 + 較平}, 彈性 {較高限額 + 門診/牙科 + 較貴}。兩者都可扣稅。"
+  answer: "標準計劃、彈性計劃、基本住院 + 較平、較高限額 + 門診/牙科 + 較貴"
+  explanation: "揀邊個視乎預算同保障需要。預算緊 / 年輕揀標準; 想要更全面揀彈性。"
+  difficulty: 2
+  tags: [comparison, application]
+
+- id: "c.6"
+  question: "保障 vs 投資 {唔好混合}: 純保障 (Term + 醫療) + 純投資 (ETF / 指數)。儲蓄保 IRR 通常 {2-4%} 蝕緊, 唔當投資。"
+  answer: "唔好混合、2-4%"
+  explanation: "ETF 長期 7-8%, 儲蓄保 2-4%, 兩件事分開做加埋平過儲蓄保。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.7"
+  question: "4 步決定買咩保險: {風險評估} → {計算需要} → {已有保障} → {缺口}。"
+  answer: "風險評估、計算需要、已有保障、缺口"
+  explanation: "系統化方法, 唔好人云亦云。"
+  difficulty: 1
+  tags: [concept, application]
+
+- id: "c.8"
+  question: "買保險原則: {先大人後小孩}, {先保障後投資}, {先急後緩}。"
+  answer: "先大人後小孩、先保障後投資、先急後緩"
+  explanation: "大人係收入支柱, 保障先; 投資次要; 急用先處理。"
+  difficulty: 1
+  tags: [concept, application]
+
+- id: "c.9"
+  question: "保額估算: 年家庭開支 $400,000 × 撫養年期 18 年 = $7.2M 純基本, 加 {通脹 3%/年} + {應急 30%} = {$10M 左右} 合理。"
+  answer: "通脹 3%/年、應急 30%、$10M 左右"
+  explanation: "實際需要因人而異, 但 $10M 級數係家庭支柱常見合理範圍。"
+  difficulty: 3
+  tags: [calculation, application]
+
+- id: "c.10"
+  question: "儲蓄保陷阱: IRR {低 (2-4%)}、鎖定 {20+ 年}、退保 {蝕晒}、壽險部分 {貴過 Term}。"
+  answer: "低 (2-4%)、20+ 年、蝕晒、貴過 Term"
+  explanation: "分紅保 / 儲蓄保 / 萬能壽險都有類似陷阱, 唔當投資工具用。"
+  difficulty: 2
+  tags: [terminology, misconception]

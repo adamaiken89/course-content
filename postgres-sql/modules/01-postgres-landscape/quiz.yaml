@@ -1,0 +1,119 @@
+- id: "1.1"
+  question: "How often does PostgreSQL ship a new major version, and how long is each supported?"
+  options:
+    a: "Yearly majors; five years of support"
+    b: "Yearly majors; one year of support"
+    c: "Every two years; three years of support"
+    d: "Ad hoc majors; support until next major"
+  answer: a
+  explanation: "Postgres releases a major version roughly every September, and each major is supported for five years from release."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "1.2"
+  question: "What does MVCC stand for and what is its core storage idea?"
+  options:
+    a: "Multi-View Concurrent Cache; rows cached in memory"
+    b: "Multi-Version Column Control; each column stored separately"
+    c: "Multi-Version Concurrency Control; writes create new row versions instead of editing in place"
+    d: "Multi-Value Connected Cache; values linked by pointers"
+  answer: c
+  explanation: "MVCC means INSERT/UPDATE create new row versions; old versions stay for readers with older snapshots. Writes don't block reads."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "1.3"
+  question: "A teammate copies PG18-era SQL (UUIDv7, new MERGE) into a shared codebase. The deployed Postgres is PG15. Why does this break?"
+  options:
+    a: "PG15 rejects all modern SQL syntax"
+    b: "Those features may not exist in PG15 — the running major decides which SQL exists"
+    c: "SQL is version-independent; only performance changes"
+    d: "PG15 is not supported by the community"
+  answer: b
+  explanation: "Features ship by major version. Check SELECT version() before using syntax from a newer release; the codebase must target its actual server."
+  difficulty: 2
+  tags: [concept]
+
+- id: "1.4"
+  question: "Which trait is MOST characteristic of an OLTP workload?"
+  options:
+    a: "Long-running scans over most rows"
+    b: "A single analyst running overnight batch queries"
+    c: "Append-only log ingestion with no updates"
+    d: "Many short, concurrent, row-level transactions with frequent writes"
+  answer: d
+  explanation: "OLTP = short, frequent, concurrent, row-level, write-heavy transactions. Long scans and bulk reads are OLAP traits."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "1.5"
+  question: "Transaction A updates a row and commits at time T. Transaction B took its snapshot before T. What does B read?"
+  options:
+    a: "The old row version, from before A's commit"
+    b: "The new row version, since A committed"
+    c: "A partial merge of both versions"
+    d: "An error until vacuum runs"
+  answer: a
+  explanation: "Readers see a consistent snapshot from when they started. B's snapshot predates A's commit, so B reads the old version — reads never block on writes."
+  difficulty: 2
+  tags: [concept]
+
+- id: "1.6"
+  question: "What is a 'dead tuple' in Postgres terms?"
+  options:
+    a: "A row that failed a CHECK constraint"
+    b: "A row version no snapshot can see, removed by vacuum"
+    c: "A row locked by another transaction"
+    d: "A row that was never committed"
+  answer: b
+  explanation: "Superseded or aborted row versions become dead tuples once no snapshot can see them. VACUUM (or autovacuum) reclaims them."
+  difficulty: 2
+  tags: [concept]
+
+- id: "1.7"
+  question: "Your SELECT on orders(customer_id) takes 30s. The index exists. What is the FIRST thing to do?"
+  options:
+    a: "Rewrite the query with a LATERAL join"
+    b: "Drop and rebuild the index"
+    c: "Check version(), \\d orders, then EXPLAIN (ANALYZE, BUFFERS)"
+    d: "Raise work_mem to 1GB"
+  answer: c
+  explanation: "Inspect before acting: confirm server version, verify the index shape actually matches, then read the plan. Guessing which index/feature applies wastes time."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "1.8"
+  question: "Why does a heavy UPDATE workload make indexes bloat?"
+  options:
+    a: "Indexes are always rebuilt on UPDATE regardless of MVCC"
+    b: "Indexes are only written on INSERT"
+    c: "UPDATEs lock index pages permanently"
+    d: "Each new row version usually needs its own index entries, while old entries remain until vacuum"
+  answer: d
+  explanation: "New row versions get index entries; old versions' entries linger until vacuum. Write-heavy OLTP therefore needs autovacuum to keep indexes lean."
+  difficulty: 2
+  tags: [concept]
+
+- id: "1.9"
+  question: "One table is queried by key (100 rows/query). Another is scanned monthly for reporting (2M rows). Which pattern fits OLTP and which OLAP?"
+  options:
+    a: "Key reads = OLAP; monthly scan = OLTP"
+    b: "Key reads = OLTP; monthly scan = OLAP"
+    c: "Both are OLTP"
+    d: "Both are OLAP"
+  answer: b
+  explanation: "OLTP fetches few rows by key with low latency and high concurrency; OLAP does wide scans and aggregation. Index strategy differs accordingly."
+  difficulty: 3
+  tags: [comparison]
+
+- id: "1.10"
+  question: "Postgres 18 is the current stable major (Aug 2026). What is Postgres 19's status?"
+  options:
+    a: "In beta; general availability expected ~late 2026"
+    b: "Already the recommended production version"
+    c: "Cancelled; 18 is final"
+    d: "EOL and unsupported"
+  answer: a
+  explanation: "19 is in beta (GA ~Sep/Oct 2026). Until GA, features may change — production OLTP should run 18."
+  difficulty: 1
+  tags: [terminology]

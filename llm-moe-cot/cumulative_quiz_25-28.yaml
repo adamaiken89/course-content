@@ -1,0 +1,108 @@
+- id: cum.49
+  type: mcq
+  source_modules:
+  - 25
+  question: "A model generates 'Step 1: A > B. Step 2: B > C. Therefore A > C.' When Step 2 changes to 'B < C', the model still outputs 'A > C'. What does this reveal?"
+  options:
+    a: The reasoning is faithful, the model uses all steps
+    b: The reasoning is partially faithful, the model uses some steps
+    c: The reasoning is unfaithful, the answer is computed independently of the steps (post-hoc rationalisation)
+    d: The model has correctly re-derived the relationship from Step 1
+  answer: c
+  explanation: Changing a step without changing the answer shows the steps are rationalisation rather than causal; intervention tests expose this.
+  difficulty: 3
+  tags:
+  - cross-module
+  - evaluation
+- id: cum.50
+  type: cloze
+  source_modules:
+  - 25
+  question: Intervention tests that edit one reasoning step and observe whether the answer changes measure the {faithfulness} of the chain.
+  answer: faithfulness
+  explanation: Faithfulness asks whether the stated steps actually drive the answer; low faithfulness means the chain is post-hoc.
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: cum.51
+  type: mcq
+  source_modules:
+  - 25
+  question: What do intervention experiments generally find about chain-of-thought?
+  options:
+    a: Steps are partially faithful, some are used while others are post-hoc rationalisation
+    b: Every step is strictly causal and load-bearing
+    c: No step ever influences the final answer
+    d: Steps only affect the style of the generated text
+  answer: a
+  explanation: "The picture is mixed: some steps are genuinely used, but models can also produce plausible chains that are not causally linked to the answer."
+  difficulty: 3
+  tags:
+  - concept
+  - synthesis
+- id: cum.52
+  type: mcq
+  source_modules:
+  - 26
+  question: How does Tree-of-Thoughts go beyond Self-Consistency?
+  options:
+    a: It searches over reasoning branches with backtracking instead of only majority-voting over independent samples
+    b: It removes all branching and picks a single best path
+    c: It fine-tunes a verifier during decoding
+    d: It uses a larger model at every step
+  answer: a
+  explanation: Self-consistency samples independent paths and votes; ToT maintains a tree of partial solutions and searches with backtracks.
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: cum.53
+  type: cloze
+  source_modules:
+  - 27
+  question: Reasoning-oriented models such as o1 scale compute at {inference} time rather than spending more only on pretraining.
+  answer: inference
+  explanation: Test-time compute lets the model search and refine chains during inference, trading latency for accuracy.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: cum.54
+  type: mcq
+  source_modules:
+  - 28
+  question: A leading cause of hallucination is that a next-token model can produce fluent, plausible-sounding text even when it does not know the true answer. Which statement captures the core problem?
+  options:
+    a: The model has perfect knowledge of all training data
+    b: The model only ever answers when it is certain
+    c: The model pretends to know the fact and generates accordingly
+    d: The model stores all answers as key-value triples
+  answer: c
+  explanation: The objective rewards fluent continuations, not truth. When the true answer is absent from memory, the model still emits a fluent confabulation.
+  difficulty: 2
+  tags:
+  - concept
+  - synthesis
+- id: cum.55
+  type: cloze
+  source_modules:
+  - 28
+  question: Prompt fragility means that small wording changes can produce {different} outputs for the same underlying question.
+  answer: different
+  explanation: LLMs are sensitive to surface phrasing; identical tasks with different wording can yield very different responses.
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: cum.56
+  type: tf
+  source_modules:
+  - 26
+  statement: ReAct interleaves reasoning steps with tool actions, letting the model gather external evidence before it concludes.
+  answer: true
+  explanation: ReAct alternates reasoning and actions such as search or computation, combining thought with grounded tool use.
+  difficulty: 3
+  tags:
+  - concept
+  - mechanism

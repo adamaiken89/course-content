@@ -1,0 +1,111 @@
+Question,Answer,Explanation,Tags
+交易生命週期分為四個階段，正確的順序是？,B. 預交易 → 執行 → 分配 → 交割結算,"預交易（suitability/pre-clearance）→ 執行（routing/matching）→ 分配（allocation to sub-accounts）→ 交割結算（DVP, CNS）。這是行業標準順序。",01-trade-lifecycle
+OMS 和 OES 的主要區別是什麼？,A. OMS 管理訂單生命週期和合規檢查；OES 負責路由到交易所執行,OMS 專注於訂單管理、合規檢查、限額管理。OES 專注於路由、價格發現、執行速度。兩者通常是獨立系統，透過 FIX 通訊。,01-trade-lifecycle
+FIX Protocol 中，New Order Single 的 message type 是？,B. 35=D,35=D 是 New Order Single（新訂單）。35=8 是 Execution Report（成交回報）。35=0 是 Heartbeat。35=W 是 Market Data Request。,01-trade-lifecycle
+當 OES 收到 OMS 發送的訂單後，發現 ClOrdID 與歷史訂單重複，OES 應該？,"C. 回覆 Execution Report, ExecType=8 (Rejected), RejectReason=11 (Duplicate ClOrdID)",FIX 規範要求 ClOrdID 必須唯一。重複時 OES 必須拒絕，OM S必須負責生成唯一 ClOrdID。,01-trade-lifecycle
+Suitability 檢查通過後，以下哪個原因仍可能導致訂單執行失敗？,D. 以上皆可能,Suitability 只檢查產品是否適合客戶。執行階段還有獨立的檢查：mapping、價格範圍、流動性等。,01-trade-lifecycle
+交易日（Trade Date）與交割日（Settlement Date）的關係，以下何者正確？,B. 交割日通常晚於交易日，美股目前為 T+1,美股 2024 年已改為 T+1 交割。不同市場和資產類別的 settlement cycle 不同。交易日是交易發生的日期，交割日是資金和證券實際轉移的日期。,01-trade-lifecycle
+你在開發預交易系統時，發現某客戶持有 AAPL 超過集中度限制（concentration limit）。正確的處理方式是？,A. 直接拒絕訂單並記錄拒絕原因,集中度限制是合規檢查的一部分，違反應直接拒絕訂單、記錄原因、通知合規團隊。繞過或隱藏可能導致監管違規。,01-trade-lifecycle
+從 OMS 發送訂單到 OES，如果因為 mid-night batch sync 延遲導致 instrument master data 不一致，應該歸類為哪類問題？,B. 資料同步 / 主檔一致性問題,這是典型的 master data synchronization 問題。不同系統各有一套 instrument master，如果沒做好 real-time 或 near-real-time 同步，就會發生 OMS 可下單但 OES 無法執行的情況。,01-trade-lifecycle
+以下哪個不是 OES 的主要職責？,C. 客戶適合性檢查（suitability check）,Suitability check 屬於預交易系統/OMS 的職責，必須在訂單進入 OES 之前完成。OES 專注於執行相關功能。,01-trade-lifecycle
+交易分配階段（Allocation）的主要目的是？,B. 將大宗交易拆分到不同的子帳戶,Allocation 是將 block trade（大宗交易）按照客戶的指示分配到各自的子帳戶。這發生在執行完成後、交割結算前。,01-trade-lifecycle
+股票 4:1 分割後，一個 1000 股 @ $200 的 GTC 限價賣單應該如何調整？,B. 4000 股 @ $50,"分割後股數增加、股價降低。4:1 分割：qty × 4 = 4000, price ÷ 4 = $50。總價值不變（$200K）。",02-equity-etf
+以下哪種公司行動**不需要**調整 GTC 訂單？,C. 每股 $0.50 現金配息,現金配息不改變股票的數量和價格結構，所以 GTC 訂單不需要調整。但 ex-date 前後帳務會變動。A/B/D 都直接影響訂單參數。,02-equity-etf
+ETF 的 NAV（Net Asset Value）與市場價格的關係，以下何者正確？,B. 市場價格可能偏離 NAV，形成溢價或折價,市場供需導致 ETF 價格偏離底層資產價值（NAV），產生 premium（溢價）或 discount（折價）。AP 的套利機制理論上會縮小差距，但短期內仍然存在。,02-equity-etf
+什麼機制使 ETF 的市場價格不會長期大幅偏離 NAV？,B. 授權參與者（AP）的創設/贖回套利,AP 是 ETF 生態的關鍵角色。當 price > NAV 時，AP 創設新 ETF 股份賣出，賺取差價，同時壓低價格回 NAV。反之則贖回。這是套利機制，不是監管或交易所行為。,02-equity-etf
+在 經紀商 的 suitability 系統中，處理 ETF 訂單時正確的做法是？,B. 以 ETF 本身屬性為主（槓桿/反向/被動/主動），不做穿透式底層檢查,ETF 底層持倉每日可能變動且某些 ETF 不透明，穿透式檢查不切實際。應以 ETF 類型、風險等級、流動性等整體屬性做 suitability。,02-equity-etf
+OMS 在收到 corporate action 通知後，正確的處理順序是？,B. 通知交易員 → 確認後調整 → 透過 FIX 35=G 發送取消/修改請求,需先通知交易員即將進行的調整，經確認或至少知情後，再透過 FIX Order Cancel/Replace Request (35=G) 修改訂單。直接修改內部狀態或取消訂單都會造成問題。,02-equity-etf
+美股（NYSE/NASDAQ）目前的標準交割週期是？,B. T+1（交易日次一營業日交割）,美股 2024 年 5 月起從 T+2 改為 T+1 交割。但不同市場和資產類別不同。,02-equity-etf
+以下哪個不是 ETF 特有的風險？,C. 公司破產風險（Bankruptcy Risk）,破產風險是股票特有的（公司倒閉、股權歸零）。ETF 持有一籃子資產，除非底層全部違約，否則不會破產。A/B/D 都是 ETF 特有的風險類別。,02-equity-etf
+交易員下了一個 GTC 買單 $50，然後股票宣布 2:1 split。除權日前系統沒有調整訂單。除權後股價從 $100 變成 $50，這筆訂單會發生什麼？,B. 訂單價格不變 $50，但訂單實際上是錯誤的（應該調整）,因為系統沒調整，訂單還掛在 $50。但正確的調整後價格應該是 $25（$50 ÷ 2）。如果以 $50 成交，交易員多付了一倍的價格。這是一種系統 bug。,02-equity-etf
+OMS 中最難跨系統同步的資料類型是？,B. Instrument master data（含 corporate actions）,Instrument master data 涉及多個維度（ISIN/CUSIP/Ticker、交易所、價格、corporate actions 影響等），且不同系統（OMS/OES/back office）各自維護一份，同步延遲是常見生產事故原因。,02-equity-etf
+美國國債報價 97-08+ 相當於 decimal 多少？,C. 97.265625,97-08+ = 97 + 8.5/32 = 97 + 0.265625 = 97.265625。注意 + = 0.5/32。,03-fixed-income
+Dirty Price（骯髒價格）的定義是？,B. Clean Price + Accrued Interest,Dirty Price = Clean Price（螢幕報價）+ Accrued Interest。這是買方實際支付的金額。,03-fixed-income
+為什麼 suitability 引擎應該用 dirty price 而不是 clean price 做限額檢查？,B. 客戶實際需要支付的資金是 dirty price，用 clean price 會低估,客戶實際需支付 dirty price（含 accrued interest）。用 clean price 低估資金需求，可能導致 settlement 時資金不足。,03-fixed-income
+當市場殖利率上升時，既有固定利率債券的價格會？,B. 下降,殖利率和價格反向相關。市場利率上升 → 新債券 yield 更高 → 舊債券吸引力下降 → 價格下跌。,03-fixed-income
+面值 $10M 的債券，價格 99-16，買方需要準備多少資金才能交割（假設沒有 accrued interest）？,"D. $9,950,000 但還需要加 AI","99-16 = 99.5%。$10M × 0.995 = $9,950,000。但題目說「沒有 AI」是假設性情境。實務上 bond 交易很少恰好在 coupon date 交割，所以幾乎總有 AI。",03-fixed-income
+以下哪個不是固定收益在 OMS 中的特殊處理項目？,C. 股數 x 股價 = 總值（股票邏輯也適用於債券）,股票是 Qty × Price = Total。債券是 Face × Price% + AI。直接用股票邏輯處理債券會導致錯誤的價值計算。,03-fixed-income
+Accrued Interest 的計算需要哪些資訊？,B. 面值、票面利率、上次付息日到交割日的天數、day count convention,"Accrued Interest = Face × Coupon Rate × (Days since last coupon / Days in period)。Day count convention（Actual/Actual, 30/360 等）因市場而異。",03-fixed-income
+以下哪種債券的報價方式與其他三種不同？,B. 美國國庫券（T-Bill）,T-Bill 使用 discount yield 報價（非價格），因為 T-Bills 為零息債券。其他三者用價格報價（雖然 convention 不同）。,03-fixed-income
+在 經紀商 OMS 中，處理固定收益訂單時最可能遇到的問題是？,B. 價格解析錯誤（32nds vs decimal）或 accrued interest 漏算,FI 的 32nds 價格解析和 AI 計算是 OMS 中常見的 bug 來源。Bond 沒有 exchange/ticker 問題（OTC），也沒有分割。,03-fixed-income
+當市場利率從 4% 上升到 5%，一個票面利率 4% 的 10Y 債券價格會？,B. 跌到 100 以下（discount）,市場利率 5% > 票面利率 4%，新債券 yield 更高 → 舊債券價格下跌（discount bond），價格 < 100。,03-fixed-income
+買入 20 口 SPY $480 Call（報價 $8.50），需要支付的 total premium 是多少？,"B. $17,000","美股選擇權 multiplier = 100。Total Premium = $8.50 × 100 × 20 = $17,000。",04-options-futures-fx-mf
+期貨保證金（Initial Margin）的正確描述是？,C. 履約保證金，確保能承擔每日結算損失,保證金不是頭期款。它是信用擔保，確保你在每日 MTM 虧損時有能力補足。Full notional value 始終在風險中。,04-options-futures-fx-mf
+"客戶做多 1 口 E-mini S&P 500（multiplier $50），指數從 5,800 跌到 5,650。每日結算影響是？","C. 帳戶扣除 $7,500（variation margin）","期貨每日 MTM。1 口 E-mini：$50 × (5,800 - 5,650) = $7,500 損失。帳戶 cash 減少 $7,500。如低於 maintenance margin 需補繳。",04-options-futures-fx-mf
+"EUR/USD spot rate 1.0500，客戶想買入 €5,000,000（standard lot = €100,000）。需要準備多少 USD？","D. 視 lot size 而定，但最終結算為 $5,250,000","EUR/USD：買 EUR 賣 USD。€5M × 1.0500 = $5,250,000。Standard lot 是 €100K，50 lots。這不影響總金額。",04-options-futures-fx-mf
+互惠基金（Mutual Fund）訂單的價格何時確定？,B. 每日收盤後（EOD NAV）,MF 在 market close 後計算 NAV，所有當天 cut-off 前的訂單都以此 NAV 執行。下單時無法確切知道價格。,04-options-futures-fx-mf
+OMS 處理 MF 訂單時，suitability 引擎應該用哪個價格做限額檢查？,B. Previous day NAV,MF 訂單下單時當日 NAV 未知。標準做法是用 previous day NAV 做 check，但需要考慮 NAV 波動 margin。,04-options-futures-fx-mf
+以下哪個是選擇權特有的風險因子？,B. Delta（底層價格變動對選擇權價格的影響）,Delta 是選擇權 Greeks 之一，衡量選擇權價格對底層資產價格的敏感度。A 是股票風險，C 是 ETF 風險，D 是所有資產的交割風險。,04-options-futures-fx-mf
+期貨的 Daily Settlement（MTM）與 Equity 的未實現損益（Unrealized P&L）主要差異是？,A. 期貨的 MTM 影響實際帳戶 cash，必須結算；股票的未實現損益不影響 cash,期貨每日 MTM 損益直接從帳戶 cash credit/debit。股票的未實現損益只是帳面損益，不影響 cash，直到平倉才實現。,04-options-futures-fx-mf
+以下哪個資產類別在 FIX 協議中的支援最不完整？,D. Mutual Funds,Mutual Funds 很多仍透過 proprietary API 或 batch file 處理，FIX 支援有限。Equity/Options/Futures 在 FIX 中有成熟的 message types。,04-options-futures-fx-mf
+Multi-asset OMS 做限額檢查時，以下哪個是正確的做法？,B. 將所有資產的 notional exposure 加總統一檢查,客戶的總風險暴露是所有資產的總和。雖然每類資產有自己的 limit（如 option greek limit），但總 notional exposure 必須統一檢查。,04-options-futures-fx-mf
+ISIN 和 CUSIP 的主要差異是什麼？,A. ISIN 是全球標準（ISO 6166），CUSIP 主要用於美國和加拿大市場,ISIN 是 ISO 6166 定義的全球標準（2 碼國家 + 9 碼 + 1 檢查碼）。CUSIP 是美國/加拿大市場的主導識別碼（9 碼英數字元）。兩者用途不同，且在結算系統中的角色不同。,05-identifiers-mapping
+證券主檔（Security Master）中，哪個識別碼最適合做為內部 golden key（金鑰）？,B. ISIN,ISIN 是標準化、全球唯一且在產品生命週期內不變的識別碼。Bloomberg Ticker 和 RIC 是專有識別碼，可能會隨公司行動或 vendor 規則變更。交易所代碼在不同市場可能重複。ISIN 是跨 vendor 一致的金鑰。,05-identifiers-mapping
+FIX 訂單中 SecurityID(48)=037833100 搭配 SecurityIDSource(22)=1，表示此識別碼類型為？,C. CUSIP,"SecurityIDSource(22)=1 表示 CUSIP。4=ISIN, 2=SEDOL, 8=Bloomberg Ticker。相同的 SecurityID 值搭配不同的 Source 會指向不同識別碼體系。",05-identifiers-mapping
+選擇權的 OCC Symbol「AAPL 250817 C 00250000」中，00250000 代表？,B. 履約價 × 1000（即 $250.00）,OCC Symbol 的最後部分為履約價 × 1000。00250000 ÷ 1000 = $250.00。這與股票選擇權的合約乘數 100 配合使用。,05-identifiers-mapping
+當 AAPL 宣布 4:1 股票分割，持有 AAPL 250817C00250000（AAPL $250 Call）的客戶，其選擇權會如何調整？,B. OCC Symbol 不變，但合約乘數從 100 調整為 400，履約價調整為 $62.50,股票分割時，OCC Symbol 保持不變（避免系統全面更新），但合約乘數從 100 調整為 400（代表 400 股），履約價等比例從 $250 調整為 $62.50。OMS 必須更新乘數和履約價，否則風險計算完全錯誤。,05-identifiers-mapping
+一項 DTCC 研究指出，約百分之多少的 STP（Straight-Through Processing）失敗源於識別碼映射問題？,C. 40%,約 40% 的 STP 中斷來自識別碼映射失敗。常見原因包括：新發行證券 mapping 未建立、公司行動後某端未更新、跨國上市的多識別碼衝突、多 vendor 映射不一致。,05-identifiers-mapping
+某 OMS 同時使用 Bloomberg 和 Reuters 兩個市場資料源。同一檔巴西股票 Bloomberg 標為 BZAN BZ Equity，Reuters 標為 BZAN.SA。兩者的 ISIN 相同。OMS 做限額檢查時，應該如何聚合持倉？,B. 以 ISIN 為金鑰聚合持倉，兩種 Ticker 視為同一產品,不同 vendor 的專有識別碼可能不同，但 ISIN 是跨 vendor 一致的金鑰。用 ISIN 聚合持倉可避免同一產品被重複計算限額。如果用 Bloomberg Ticker 聚合，來自 Reuters 源的訂單會被當作不同持倉。,05-identifiers-mapping
+期貨合約 ESZ5 中的 Z 和 5 分別代表什麼？,B. Z = 12 月合約月，5 = 年份最後一位（2025）,期貨合約碼使用標準月代碼：F(1月) G(2月) H(3月) J(4月) K(5月) M(6月) N(7月) Q(8月) U(9月) V(10月) X(11月) Z(12月)。Z = 12 月，5 = 2025 年。ES = E-mini S&P 500。,05-identifiers-mapping
+OMS 收到 FIX 訂單，Symbol(55)=MSFT，SecurityID(48)=US5949181045，SecurityIDSource(22)=4。正確的處理方式是？,B. 以 ISIN US5949181045 查詢 Security Master，驗證 Symbol 配對後再轉發,FIX 訂單提供了高品質的 ISIN（US5949181045），OMS 應該用 ISIN 查 Security Master，驗證 Symbol 和 ISIN 的 mapping 是否一致。直接丟棄 ISIN 只用 Symbol 會浪費接收到的精確識別碼，且可能因 Symbol 匹配錯誤導致路由失敗。,05-identifiers-mapping
+以下哪種情況不會觸發證券識別碼的變更？,B. 現金配息（Cash Dividend），ISIN 更新,現金配息不影響識別碼。ISIN、CUSIP、Ticker 在配息前後保持不變。更名會觸發 Bloomberg Ticker 更新；分割會觸發選擇權乘數和履約價調整；併購會導致目標公司 CUSIP 失效。,05-identifiers-mapping
+市價單（Market Order）與限價單（Limit Order）的主要區別是？,B. 市價單保證執行但不保證價格，限價單保證價格但不保證執行,市價單保證執行（必然成交），但成交價格可能因滑價而偏離預期。限價單保證價格（不會以劣於限價的價格成交），但不保證一定能成交。這是訂單類型最核心的權衡。,06-order-types
+FIX Protocol 中，GTC（Good-Till-Cancelled）訂單的 TimeInForce（tag 59）值為？,B. 1,"FIX tag 59 TimeInForce: 0=Day, 1=GTC, 3=IOC, 4=FOK。GTC 訂單跨日有效，需 Open 到取消為止。",06-order-types
+冰山訂單（Iceberg Order）中，顯示數量與總數量分別使用哪兩個 FIX tags？,A. tag 38=OrderQty（總量），tag 111=MaxFloor（顯示量）,FIX tag 38=OrderQty 是訂單總數量，tag 111=MaxFloor 是顯示數量（冰山露出水面的部分）。如果 tag 111 未設定，訂單為普通限價單。,06-order-types
+IOC（Immediate-or-Cancel）與 FOK（Fill-or-Kill）的最大差別是？,B. IOC 允許部分成交剩餘取消，FOK 要求全部成交否則全部取消,IOC 會吃掉訂單簿中可獲得的流動性（部分成交），剩餘部分取消。FOK 檢查訂單簿是否能全額滿足，能則全額成交，不能則全部拒絕。IOC 更靈活，FOK 更嚴格。,06-order-types
+經紀商 客戶下了一筆 Iceberg 限價單，OMS 將其路由到一家不支援 Reserve Order 的 wholesaler。結果會是什麼？,B. Wholesaler 因無法處理 MaxFloor 而拒絕訂單,Wholesaler 不支援 Reserve/Iceberg 訂單類型時，會因為 FIX tag 111=MaxFloor 無法被理解而拒絕（Reject）。正確做法：OMS 應在路由前檢查場地的訂單類型支援清單，若不支援，可轉為普通限價單（取消 tag 111）或改路由到其他支援的場地。,06-order-types
+GTC 訂單遇到 4:1 股票分割，OMS 應該如何調整訂單？,B. 數量×4，價格÷4,4:1 分割是 1 股變 4 股，總價值不變。所以成交數量應變為 4 倍，價格降為 1/4。例如原本 GTC 限價 $100 買 1000 股，調整後為限價 $25 買 4000 股。,06-order-types
+Trailing Stop 的 stop price 在什麼情況下會移動？,A. 朝向有利方向移動時（做多時股價上漲）,Trailing Stop 的 stop price 只能朝有利方向跟蹤（做多時往上，做空時往下），且永不回調。做多時股價上漲，stop price 同步上調保持固定距離；股價下跌時 stop price 維持不變，直到價格穿過 stop 觸發停損。,06-order-types
+Stop Order（停損單）觸發後變成什麼類型的訂單？,B. 市價單（Market Order）,Stop Order 觸發後變為市價單（Market Order），確保立即成交但價格可能滑價。Stop-Limit Order 觸發後變為限價單（Limit Order），確保價格不超過限價但可能不成交。,06-order-types
+交易員使用 OCO（One-Cancels-Other）訂單，同時掛了 Stop Buy @ $152 和 Stop Sell @ $148。股價從 $150 跌到 $147 後回升到 $151。結果如何？,B. Stop Sell @ $148 觸發成交，Stop Buy @ $152 被取消,股價跌到 $147 穿過了 Stop Sell @ $148 的觸發價格 → Stop Sell 觸發成交。OCO 邏輯要求：其中一單成交後，另一單自動取消。所以 Stop Buy @ $152 被取消。即使之後股價回升到 $151，Stop Buy 已不在市場上。,06-order-types
+Iceberg 訂單每輪顯示量成交後補量時，其 price-time priority（價格時間優先順序）會如何變化？,B. 排到同一價格的隊尾,Iceberg 訂單每輪顯示量消耗完後補量時，新顯示的部分會排到同一價格的隊尾（相當於一個新訂單）。這是冰山訂單的內在弱勢 — 犧牲隊列位置來換取隱藏意圖。這也是判斷是否存在 Iceberg 訂單的線索之一：同一價格持續有訂單補充。,06-order-types
+預交易合規（Pre-Trade Compliance）與交易中合規（At-Trade Compliance）的主要區別是？,A. 預交易在訂單送出前執行檢查；交易中在執行期間監控市場操縱行為,預交易合規著重 suitability、pre-clearance、credit check，在訂單進入 OES 前完成。交易中合規監控市場操縱（layering/spoofing）、最佳執行等，發生在執行期間。時間邊界不同，責任不同。,07-oms-pre-trade
+Restricted List 與 Watch List 的主要區別是什麼？,A. Restricted List 是硬阻擋（hard block），Watch List 是軟阻擋（soft block）,Restricted List（因公司承銷/M&A 顧問業務產生）觸發硬阻擋，訂單無法送出。Watch List（潛在風險標記）觸發軟阻擋，訂單可繼續但需額外審查。混淆兩者在監管上非常嚴重。,07-oms-pre-trade
+Rule-Based Suitability 與 Risk-Based Suitability 的比較，何者正確？,A. Rule-Based 使用客戶問卷分級匹配產品風險，簡單可預測但僵硬；Risk-Based 使用動態評分模型，靈活但需持續校準,Rule-Based 將客戶分 A/B/C/D 級，產品分 1/2/3/4 級，匹配決定通過/拒絕。Risk-Based 用波動率、槓桿、流動性等動態加權評分。經紀商 使用 hybrid 架構：rule-based 為第一道閘，risk-based 為第二道閘。,07-oms-pre-trade
+PDT（Pattern Day Trader）規則的描述，以下何者正確？,B. PDT 基於 rolling 5 個交易日，今天 3 次 day trade 會在 rolling window 保留 5 天,PDT 計數基於 rolling 5 個交易日。第 1 天的 day trades 在第 6 天才移除。觸發條件：equity < $25K AND ≥ 3 day trades in rolling 5 days。不是 daily reset。,07-oms-pre-trade
+合規規則引擎中，Priority 1（最高優先級）的規則屬於什麼類型的阻擋？,C. 硬阻擋（hard block），不可覆蓋,Priority 1 規則（如 restricted list match、insider trading detection、KYC/AML 未完成）屬於硬阻擋，訂單被絕對拒絕，不可覆蓋。這是為了滿足監管強制要求。,07-oms-pre-trade
+MiFID II 對佣金結構的要求，何者正確？,B. 要求 unbundled（拆分）佣金結構，研究費用與執行費用分開,MiFID II 要求資產管理公司將研究費用與執行費用拆分（unbundled）。研究費用必須從獨立的 research budget 支付，並按季向客戶報告使用情況。OMS 需在 pre-trade 檢查客戶 research budget 餘額。,07-oms-pre-trade
+非美國客戶在 經紀商 開戶交易美股時，OMS 需要檢查哪份稅務表單的有效性？,B. W-8 系列（如 W-8BEN、W-8BEN-E）,非美國客戶需提供 W-8 系列表單（W-8BEN 個人、W-8BEN-E 實體等）。W-9 是美國客戶使用。表單有效期通常 3 年，過期後 OMS 應假設 30% withholding 率並 hard block。,07-oms-pre-trade
+經紀商 OMS 收到一筆機構訂單：現金帳戶買入 $15M 的 MSFT，帳戶餘額 $12M。集團另有 margin 帳戶餘額 $8M。Pre-trade gate 應該怎麼處理？,B. 接受，因為集團合併購買力 $20M > $15M,集團層級合併購買力 $12M（現金）+ $8M（margin）= $20M，足夠覆蓋 $15M 訂單。但前提是 OMS 必須支援 cross-account/group-level credit check，而非只看單一帳戶。這是許多 OMS 的 common gap。,07-oms-pre-trade
+DUCO（Dual Control）流程中，以下哪個描述是錯誤的？,B. 單一 manager 批准即可，因為 manager 有 final authority,DUCO 要求雙人控制（Dual Control），即兩人獨立批准。單人批准違反 dual control 原則，無法防止 rogue trading 或 collusion。這是監管強制要求。,07-oms-pre-trade
+FIX Protocol 中，用於 RFQ（請求報價）的 message type 是？,C. 35=W (Request for Quote),35=W 是 Request for Quote（RFQ），用於詢價特別是固定收益或不流動產品。做市商回覆 35=j（Quote）。然後客戶根據報價決定是否發送 35=D 執行。,07-oms-pre-trade
+集中度限額檢查的計算公式是？,B. (Held Value + Order Value) ÷ Total Equity ≤ Threshold,集中度限額計算包含持有部位和新訂單的合計值佔總權益的比例。公式：(Held Value + Order Value) ÷ Total Equity ≤ Threshold。例如單一證券 ≤ 20% 帳戶淨值。,07-oms-pre-trade
+預交易階段發現客戶的 W-8BEN 表單已過期，但該客戶是長期合作夥伴且從未有過稅務問題。OMS 應該怎麼處理？,B. Hard block 訂單，要求客戶更新表單,W-8 表單過期意味著 經紀商 無法確認客戶稅務身份。繼續交易可能導致 withholding 錯誤和監管風險。應 hard block 並通知客戶更新表單。這在 經紀商 是標準流程。,07-oms-pre-trade
+Pre-trade gate 的順序是？,B. Validate → Approve → Route,正確順序是 Validate（格式、symbol 查找、必填欄位檢查）→ Approve（合規、信用、稅務全部通過 + 可能 DUCO）→ Route（發送 FIX 35=D 到 OES）。每一步都必須通過才能進入下一步。,07-oms-pre-trade
+FINRA 2111 要求哪三層適合性檢查？,A. 合理基礎、客戶特定、量化,FINRA 2111 要求：(1) 合理基礎（reasonable-basis）— 產品本身適合某些投資者 (2) 客戶特定（customer-specific）— 產品適合該特定客戶 (3) 量化（quantitative）— 交易頻率和數量是否適合。這是美國經紀商的強制要求。,07-oms-pre-trade
+經紀商 OMS 中，suitability 檢查通過但 credit check 失敗的訂單應該如何處理？,B. 拒絕訂單，返回拒絕碼如 CREDIT_INSUFFICIENT,任何 pre-trade 檢查失敗都應拒絕訂單。CREDIT_INSUFFICIENT 是常見拒絕碼。OMS 不應自動修改訂單數量（可能超出客戶授權），也不應繞過 credit check。正確作法是記錄拒絕原因並通知交易員。,07-oms-pre-trade
+Smart Order Routing (SOR) 的主要目標是什麼？,B. 根據價格、流動性和費用將訂單路由到最佳場地,SOR 的目的是跨多場地尋找最佳執行條件，包括價格、流動性深度和費用。不是集中到同一場地，也不是故意延遲。,08-oes-execution-routing
+以下哪個是 Lit Venue（顯示流動性場地）的特徵？,B. 公開顯示買賣盤的數量和價格層級,Lit Venue（如 NYSE、NASDAQ）公開顯示訂單簿的每一個價格層的 bid/offer size。Dark Pool 則不公開顯示。,08-oes-execution-routing
+FIX Execution Report 中，哪個字段標示本次成交的數量？,B. Tag 32 (LastShares),Tag 32=LastShares 是本次成交的數量。CumQty (14) 是累積成交數，LeavesQty (151) 是剩餘數，LastPx (31) 是本次成交價格。,08-oes-execution-routing
+一筆訂單收到 3 筆 Execution Report 後 OrdStatus=2（Filled）且 LeavesQty=0。以下哪個欄位的值應該等於原始訂單數量？,A. Tag 14 (CumQty),訂單完全成交時 CumQty（累積成交數）應該等於原始訂單數量。LeavesQty=0 表示無剩餘。LastShares 只包含最後一筆成交數。,08-oes-execution-routing
+經紀商 OES 收到 50K MSFT 限價買單。NYSE 顯示 15K @ $449.95，NASDAQ 顯示 20K @ $449.95，ARCA 顯示 12K @ $449.96。SOR 最合理的路由策略是？,C. 拆分訂單：15K 到 NYSE、20K 到 NASDAQ、15K 到 ARCA,SOR 根據各場地顯示深度拆分訂單。NYSE 只有 15K、NASDAQ 20K、ARCA 12K（但實際發送 15K）。將全部 50K 發送單一場地會造成 price impact（剩餘部分以更差價格成交）。選項 D 不符合 best execution 義務。,08-oes-execution-routing
+Dark Pool 相對於 Lit Venue 的主要優勢是什麼？,B. 減少大單的市場衝擊,Dark Pool 不公開顯示訂單簿，因此大單不會暴露意圖，減少 market impact。但並不保證更快、更便宜或全部成交。,08-oes-execution-routing
+SIP（Securities Information Processor）提供的 NBBO 主要限制是什麼？,B. 延遲約 1-5ms，不是即時市場狀態,SIP 匯總所有場地資料後發布 NBBO，延遲約 1-5ms。使用 Direct Feed 的對手可以更早看到市場變化。,08-oes-execution-routing
+Wash Trade 檢測的正確時機是在哪個環節？,B. 訂單路由之前，在 OMS 或 OES 層級進行跨場地買賣檢測,Wash trade 預防需在訂單離開發送前進行跨場地檢測。如果買賣單去了不同場地，場地本身的 matching engine 無法檢測。交割後才檢測太晚了。,08-oes-execution-routing
+OMS 收到以下 Execution Report 序列：第一筆 CumQty=15K / LeavesQty=35K，第二筆 CumQty=35K / LeavesQty=15K，第三筆 CumQty=35K / LeavesQty=0。OMS 應該如何處理？,B. 偵測到 CumQty 遞增不連續（35K → 35K，總和應為 50K），觸發警報,第三筆 CumQty=35K 沒有包含前兩筆的累積數（應為 50K）。這是一個不一致的 Execution Report，OMS 不應自動標記為 Filled，需要人工 reconciliation。,08-oes-execution-routing
+一筆訂單需要全部成交，但單一場地顯示深度不足。以下哪種路由策略最適合？,B. Algo Routing — 使用 TWAP 或 Implementation Shortfall 拆分到多場地,當訂單量超過單一場地深度時，Algo Routing 會自動將訂單拆分成更小的 pieces 發送到多個場地，減少 market impact。DMA 不適合因為交易員指定場地可能沒有足夠流動性。,08-oes-execution-routing
+在 FIX Execution Report 中，ExecType=1 (Partial Fill) 和 ExecType=2 (Fill) 的區別是什麼？,B. ExecType=1 表示部分成交（仍有剩餘），ExecType=2 表示完全成交（LeavesQty=0）,ExecType=1 是 Partial Fill — 訂單部分成交後仍有剩餘數量（LeavesQty > 0）。ExecType=2 是 Fill — 訂單已全部成交（LeavesQty = 0）。,08-oes-execution-routing
+經紀商 的自有 Dark Pool LX 內部交叉 30K MSFT。成交價應滿足什麼條件？,B. 必須不劣於 NBBO（price improvement 可以優於 NBBO，但不能比 NBBO 差）,Best execution 義務要求 Dark Pool 成交價不劣於 NBBO。Price improvement（比 NBBO 更好）是允許的。但偏離 NBBO 的定價可能構成 violation。,08-oes-execution-routing
+Direct Feed 相對於 SIP 的主要優勢是什麼？,B. 延遲更低（微秒級 vs 毫秒級），市場資料更即時,Direct Feed 直接從交易所接收原始訂單簿資料，延遲 ~10-50μs，而 SIP 需要合併所有場地資料後才發布，延遲 ~1-5ms。,08-oes-execution-routing
+某交易員需要同時在 NYSE 和 NASDAQ 執行一對套利交易。SOR 的哪個設置最適合？,B. 關閉 SOR，改用 DMA 直接指定各子訂單的目標場地,套利策略需要精確控制每個子訂單的目標場地和時機。SOR 的自動路由會干擾套利策略的執行。DMA 讓交易員直接控制路由。,08-oes-execution-routing
+當 LeavesQty 不等於 0 但 OES 不再發送後續 Execution Report，最可能的原因是？,B. 剩餘部分在市場上無法成交（可能因價格未達標），訂單停留在 OES 訂單簿中,LeavesQty > 0 表示有剩餘未成交數量。如果市場沒有對應價格的對手盤，訂單會停留在 OES 或交易所的訂單簿中直到被取消或市場達到價格條件。選項 A 和 D 的狀態會有明確的 ExecType。,08-oes-execution-routing
+VWAP（Volume-Weighted Average Price）的計算公式是？,B. Σ(Price_i × Volume_i) / Σ(Volume_i),VWAP = Σ(Price_i × Volume_i) / Σ(Volume_i)，即每筆交易的價格乘以成交量之總和，除以總成交量。TWAP 才是 Σ(Price_i)/N。,09-algo-trading
+相較於 VWAP，TWAP（Time-Weighted Average Price）的主要特點是？,B. 將時間平均分割，每個 slice 大小相等,TWAP 忽略 volume profile，將總訂單量等分到每個時間片。VWAP 則根據歷史成交量分佈安排 slicing schedule。,09-algo-trading
+Implementation Shortfall（IS）使用的 benchmark 是什麼？,C. Arrival Price（決策時的市場價格）,IS 以 arrival price 為基準。執行成本 = (執行均價 − arrival price) × 股數。這衡量的是執行效率而非單純的價格表現。,09-algo-trading
+"某客戶要買入 500,000 股 AAPL，ADV = 10,000,000 股。Size/ADV 比率為 5%。在 spread 窄、urgency 中等的條件下，最適合的算法是？",C. VWAP — 追蹤成交量輪廓，分散執行,5% ADV 為中等規模，spread 窄利於被動執行。VWAP 能將訂單按成交量分佈分散到全天，適合 medium urgency 訂單。Liquidity Seeker 的 spread cost 在多餘。,09-algo-trading
+在 IS（Implementation Shortfall）的分解中，「因為等待期間市場波動造成的額外成本」屬於哪一類？,B. Timing Risk,Timing Risk 是等待市場達成交易期間，因市場價格變動產生的成本。Market Impact 是你的訂單直接造成的價格偏移。Opportunity Cost 是未成交部位的損益。,09-algo-trading
+POV（Percentage of Volume）算法的核心機制是什麼？,C. 以即時市場成交量的固定比例參與交易,POV alg o設定目標參與率（如 10%），監控即時市場成交量，每單位時間送出對應比例的訂單。市場量快則快，慢則慢。,09-algo-trading
+使用 Taker 策略（主動吃單）與 Maker 策略（被動掛單）相比，哪項成本是 Taker 必須承擔而 Maker 不須承擔的？,B. Spread + taker fee,Taker 必須支付 bid-ask spread 和 exchange taker fee。Maker 掛限價單可以賺取 rebate，但承擔不成交和 adverse selection 的風險。,09-algo-trading
+Reg NMS Rule 611（Order Protection Rule）對算法的最直接影響是？,A. 算法必須將訂單 routing 到提供 NBBO 的交易所,Rule 611 禁止 traded through 一個 protected quote。Algo 的 SOR 必須將訂單 routing 到當下 NBBO（National Best Bid and Offer）所在的交易所，即使 fee/rebase 結構不理想。,09-algo-trading
+Scenario: 經紀商 algo 執行一個 buy 訂單 500K AAPL。Arrival Price=$150，執行均價=$150.30，收盤=$151.50。全部 500K 均成交。IS Cost 是多少？,"A. $150,000","IS = (執行均價 − Arrival Price) × 股數 = ($150.30 − $150.00) × 500,000 = $0.30 × 500,000 = $150,000。注意這未包含 fixed cost。",09-algo-trading
+Trade 結束後，客戶說「VWAP algo 保證了我的成交價格等於當日 VWAP」。這個說法為什麼不對？,A. VWAP algo 只追蹤歷史 volume profile，實際成交量可能偏離，導致最終價格偏離 VWAP,VWAP algo 無法 guarantee VWAP。如果日內實際成交量分佈與歷史 profile 不一致（如突發新聞），algo 的 slicing schedule 會失準。沒有 algo 能 guarantee 達到 benchmark。這是最常見的 algo misconception。,09-algo-trading
+Block trade 執行後發生 partial fill（僅成交 75%），為公平對待所有客戶，OMS 分配引擎應使用哪種方法？,B. Pro-rata — 按原始比例縮減所有客戶配額,Pro-rata 確保所有客戶按原比例平均承擔 partial fill 的影響。FIFO 可能導致部分客戶完全分不到配額，對 ERISA 帳戶可能違反 fiduciary duty。,10-post-trade-fees-pricing
+機構交易中，affirmation 與 confirmation 的主要區別是什麼？,B. Affirmation 是 T+0 的意向確認；confirmation 是 T+1 的正式確認,Affirmation 在 T+0 完成，目的是讓機構客戶和 broker 提前對交易細節達成一致。Confirmation 是 T+1 正式法律文件。零售市場沒有 affirmation 流程。,10-post-trade-fees-pricing
+自 2024 年 5 月 28 日起，美國股票和 ETF 的交割週期（settlement cycle）是？,B. T+1,SEC 將美股交割從 T+2 縮短為 T+1（生效日 2024/5/28）。美債仍為 T+0，FX spot 仍為 T+2。,10-post-trade-fees-pricing
+DVP（Delivery Versus Payment）和 FOP（Free of Payment）的核心差異是什麼？,B. DVP 要求資金與證券同步交換；FOP 僅移轉證券，不涉及資金,DVP 確保款券對付 — 資金不到，證券不交付。FOP 只移轉證券所有權，資金流不在結算系統內管理。DVP 用於買賣交易，FOP 用於抵押品移轉或內部轉帳。,10-post-trade-fees-pricing
+NSCC CNS（Continuous Net Settlement）的主要功能是？,B. 計算 broker dealer 間的買賣淨差額以減少交割筆數,CNS 在後交易階段對已成交交易進行淨額結算 — 每個參與者的所有買賣單合併為一個淨額。這不是撮合（matching engine 執行階段的事），也不是費用計算或監管報告。,10-post-trade-fees-pricing
+經紀商 block trade 1M 股 AAPL 分配給 50 個帳戶，每個帳戶都有各自的 settlement instruction。如果其中一個帳戶的 DVP/RVP flag 因 migration 錯誤被清空（變成 FOP），後果是？,B. DTC 只移轉證券，不觸發資金結算 — 賣方收不到錢，broker 需墊付款項,FOP 只移轉證券所有權。買方帳戶會收到股票，但賣方不會收到資金。Broker dealer 若已支付資金給賣方，就等於對買方墊款，承擔 credit risk。這是 post-trade pipeline 中常見但危險的錯誤。,10-post-trade-fees-pricing
+交割失敗後，NSCC 在何時會啟動 buy-in 程序？,C. 超過 T+5 後,CNS 允許短期間的 open fail（一般 T+3~T+5），但超過 T+5 後 NSCC 強制啟動 buy-in — 在市場上買回證券，差價和罰款由違約方承擔。,10-post-trade-fees-pricing
+SEC Section 31 費用（Section 31(a) fee）的計算基礎是什麼？,B. 賣方交易金額（賣出交易的總價值）,SEC Section 31 費用按賣方交易金額計算（如 2024 年約 $0.000008 每美元交易量），用於資助 SEC 監管運作。FINRA TAF 則按股數計算，有每筆上限。,10-post-trade-fees-pricing
+某經紀商的後交易 STP 率為 88%。什麼是對這個數字最合理的解釋？,A. 88% 的交易從執行到交割完全自動完成；12% 需要某種形式的人工干預,STP Rate = (自動完成的交易數 ÷ 總交易數) × 100%。88% 表示 12% 的交易有人工干預。世界級標準為 >95%。低於 85% 表示 ops 成本過高。,10-post-trade-fees-pricing
+機構交易後，FINRA 的 OATS（Order Audit Trail System）和 CAT（Consolidated Audit Trail）的主要差異是？,B. OATS 追蹤訂單路線；CAT 涵蓋更完整的 audit trail，包含最終客戶帳戶資訊,OATS 追蹤從下單到執行的訂單路線。CAT 更全面 — 涵蓋訂單 + 帳戶資訊 + 歸因到最終客戶，目標是取代 OATS 和多個 blue sheet 請求。兩者都由 FINRA/SEC 管理。,10-post-trade-fees-pricing

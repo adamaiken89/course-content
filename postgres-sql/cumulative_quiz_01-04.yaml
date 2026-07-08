@@ -1,0 +1,120 @@
+- id: cum.1
+  type: mcq
+  source_modules:
+  - 1
+  question: "A writer is updating a row. With MVCC, what happens to a concurrent reader?"
+  options:
+    a: "Reader blocks until the writer commits"
+    b: "Reader only sees rows visible in its own snapshot"
+    c: "Reader waits on the writer row lock"
+    d: "Reader raises a serialization failure"
+  answer: b
+  difficulty: 1
+  tags:
+  - cross-module
+  - concept
+- id: cum.2
+  type: mcq
+  source_modules:
+  - 2
+  question: "What does the planner use to estimate row counts and costs?"
+  options:
+    a: "Histograms from pg_statistic"
+    b: "Measured times from EXPLAIN ANALYZE"
+    c: "Rows cached from pg_stat_activity"
+    d: "The logical order of WHERE clauses"
+  answer: a
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.3
+  type: mcq
+  source_modules:
+  - 3
+  question: "Which CTE form is always materialized, never inlined?"
+  options:
+    a: "A single-use SELECT CTE"
+    b: "A recursive CTE"
+    c: "A data-modifying CTE"
+    d: "A NOT MATERIALIZED CTE"
+  answer: c
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.4
+  type: mcq
+  source_modules:
+  - 4
+  question: "A running-total window with only ORDER BY defaults to which frame?"
+  options:
+    a: "ROWS BETWEEN 1 PRECEDING AND CURRENT ROW"
+    b: "RANGE UNBOUNDED PRECEDING to CURRENT ROW"
+    c: "The whole partition"
+    d: "A single current row"
+  answer: b
+  difficulty: 3
+  tags:
+  - cross-module
+  - scenario
+- id: cum.5
+  type: cloze
+  source_modules:
+  - 2
+  question: "At the rewrite stage Postgres {inlines} simple subqueries and view definitions into the main query."
+  answer: inlines
+  difficulty: 1
+  tags:
+  - cross-module
+  - process
+- id: cum.6
+  type: cloze
+  source_modules:
+  - 3
+  question: "A recursive CTE is a base term UNION ALL a {recursive} term; it stops when a term yields zero rows."
+  answer: recursive
+  difficulty: 1
+  tags:
+  - cross-module
+  - concept
+- id: cum.7
+  type: cloze
+  source_modules:
+  - 4
+  question: "ROW_NUMBER, RANK, and DENSE_RANK differ in whether ties share a rank and whether {gaps} follow them."
+  answer: gaps
+  difficulty: 2
+  tags:
+  - cross-module
+  - comparison
+- id: cum.8
+  type: tf
+  source_modules:
+  - 1
+  statement: "Under MVCC, readers never block on row locks that writers hold."
+  answer: true
+  difficulty: 1
+  tags:
+  - cross-module
+  - concept
+- id: cum.9
+  type: tf
+  source_modules:
+  - 3
+  statement: "The recursive term of a recursive CTE is joined with UNION ALL, not UNION."
+  answer: true
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.10
+  type: tf
+  source_modules:
+  - 2
+  statement: "EXPLAIN ANALYZE actually executes the query, so DML runs for real."
+  answer: true
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall

@@ -1,0 +1,132 @@
+- id: cum.11
+  type: mcq
+  source_modules:
+  - 5
+  question: With Spring Security 7 (CSRF default-on), an unauthenticated POST to a permissive-looking API path returns 403. Most likely cause?
+  options:
+    a: Missing CORS configuration
+    b: CSRF protection enabled by default blocks unsafe methods
+    c: Password encoder mismatch for the anonymous user
+    d: authorizeHttpRequests requires ROLE_ADMIN on that path
+  answer: b
+  explanation: Security 7 enables CSRF by default, and CSRF filters reject unsafe methods like POST before authorization. CORS, encoders, and roles do not explain a blanket 403 on unsafe verbs.
+  difficulty: 1
+  tags:
+  - misconception
+  - recall
+- id: cum.12
+  type: mcq
+  source_modules:
+  - 6
+  - 7
+  question: Which pairing of MapStruct and Jackson 3 is correct when a mapper component copies a record DTO?
+  options:
+    a: Both MapStruct and Jackson register mappers at runtime via component scanning
+    b: Jackson 3 needs an explicit DgsJsonMapper because record components are not visible
+    c: unmappedTargetPolicy REPORT_ERROR is validated during JSON serialization
+    d: MapStruct generates mapper implementations at compile time while Jackson 3 binds records through canonical constructor components
+  answer: d
+  explanation: MapStruct runs annotation processors at build time, Jackson 3 binds records via their canonical constructor and parameter names. No runtime glue or explicit DGS mapper is needed.
+  difficulty: 3
+  tags:
+  - synthesis
+  - cross-module
+- id: cum.13
+  type: mcq
+  source_modules:
+  - 5
+  - 8
+  question: A controller package is @NullMarked and one endpoint returns a @Nullable DTO. Which statement about its interaction with Spring Security is correct?
+  options:
+    a: Authorization and nullness contracts are separate concerns, so a @NullMarked controller is still allowed or denied independently of its @Nullable return type
+    b: Only hand-written controllers can be @NullMarked, DGS-generated ones cannot
+    c: authorizeHttpRequests permits every request by default once @NullMarked is present
+    d: CSRF protection only applies to endpoints that declare a @Nullable return
+  answer: a
+  explanation: JSpecify nullness describes data contracts, Spring Security describes access. A nullable return neither bypasses nor trips CSRF or authorization rules.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: cum.14
+  type: mcq
+  source_modules:
+  - 5
+  question: A field resolver throws and the rest of the operation should still resolve. What is the DGS pattern for partial success with extra details?
+  options:
+    a: Let the exception escape so the whole operation fails
+    b: Catch locally, return null, and stay silent about the cause
+    c: Surface it as a field-level error in the errors array with custom extensions
+    d: Add an authorization rule that forces the field through
+  answer: c
+  explanation: Field-level errors plus extensions let sibling fields resolve while the failing field reports context. Silencing with null hides the cause and fails the null-field resolver contract.
+  difficulty: 2
+  tags:
+  - recall
+  - cross-module
+- id: cum.15
+  type: cloze
+  source_modules:
+  - 5
+  question: In GraphQL, an exception thrown by a field resolver becomes a {field} error inside the errors array, so valid sibling fields still resolve.
+  answer: field
+  explanation: Non-null field failures are demoted to per-field errors and the operation continues, the basis for DGS partial-success handling.
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.16
+  type: cloze
+  source_modules:
+  - 6
+  - 8
+  question: Jackson 3 binds immutable records when compiled with the {parameters} flag for constructor name retention, and JSpecify package-info declares the nullness default for the same types.
+  answer: parameters
+  explanation: Boot 4 enables parameter-names by default, Jackson 3 uses constructor parameter names for record binding, and @NullMarked package-info supplies the default nullness contract on those components.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: cum.17
+  type: cloze
+  source_modules:
+  - 7
+  question: MapStruct generates the mapper implementation at compile time, and componentModel = {spring} turns it into a Spring bean.
+  answer: spring
+  explanation: The spring component model lets MapStruct emit a Spring bean, so DI wiring is automatic while the mapping code stays generated and fast.
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.18
+  type: tf
+  source_modules:
+  - 6
+  statement: In Jackson 3 both the runtime ObjectMapper and the annotation packages moved to tools.jackson.
+  answer: false
+  explanation: Only the runtime classes moved to tools.jackson. The annotation packages stay under com.fasterxml.jackson, which limits breaking changes for annotated models.
+  difficulty: 2
+  tags:
+  - misconception
+  - cross-module
+- id: cum.19
+  type: tf
+  source_modules:
+  - 8
+  statement: JSpecify annotations are type-use, so @Nullable can appear in generics and array positions such as List<@Nullable String>.
+  answer: true
+  explanation: Type-use composition is what lets JSpecify express nullness inside generics and arrays, going beyond a plain parameter declaration.
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.20
+  type: tf
+  source_modules:
+  - 7
+  - 8
+  statement: Boot 4 deprecates org.springframework.lang in favor of org.jspecify.annotations, and MapStruct still builds mapper implementations as runtime reflection proxies.
+  answer: false
+  explanation: The annotation switch to org.jspecify.annotations is real, but MapStruct generates mappers at compile time, not as runtime reflection proxies.
+  difficulty: 3
+  tags:
+  - synthesis
+  - misconception
+  - cross-module

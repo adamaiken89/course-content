@@ -1,0 +1,119 @@
+- id: "9.1"
+  question: "What is Postgres's default transaction isolation level?"
+  options:
+    a: "READ COMMITTED"
+    b: "REPEATABLE READ"
+    c: "SERIALIZABLE"
+    d: "READ UNCOMMITTED"
+  answer: a
+  explanation: "SHOW default_transaction_isolation returns read committed. READ UNCOMMITTED is accepted syntactically but behaves exactly like READ COMMITTED."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "9.2"
+  question: "Under READ COMMITTED, when does a transaction see changes committed by other transactions?"
+  options:
+    a: "Only once, at transaction start"
+    b: "Only after an explicit LOCK command"
+    c: "At the start of each statement it runs"
+    d: "Never, until it commits"
+  answer: c
+  explanation: "READ COMMITTED takes a fresh snapshot per statement, so later statements in the same transaction can see newly committed rows."
+  difficulty: 2
+  tags: [concept]
+
+- id: "9.3"
+  question: "Why does a plain SELECT never block a concurrent UPDATE of the same row?"
+  options:
+    a: "The database serializes all work through one writer thread"
+    b: "The reader does not read the live row; it reads its snapshot via MVCC"
+    c: "SELECT takes no row version at all"
+    d: "Only SERIALIZABLE transactions take locks"
+  answer: b
+  explanation: "MVCC gives each statement its own snapshot. The reader works on an older row version and never needs a lock the writer holds."
+  difficulty: 2
+  tags: [concept]
+
+- id: "9.4"
+  question: "What kind of lock does SELECT ... FOR UPDATE place?"
+  options:
+    a: "A table-level ACCESS EXCLUSIVE lock"
+    b: "An advisory lock"
+    c: "A page lock"
+    d: "A lock on each selected row"
+  answer: d
+  explanation: "FOR UPDATE locks the returned rows until COMMIT or ROLLBACK, allowing other statements to detect the wait and decide (NOWAIT, SKIP LOCKED)."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "9.5"
+  question: "Which statement lets several workers each claim a different pending job instead of queueing on the same row?"
+  options:
+    a: "SELECT ... FOR UPDATE SKIP LOCKED LIMIT 1"
+    b: "SELECT ... FOR SHARE NOWAIT"
+    c: "LOCK TABLE ... IN SHARE ROW EXCLUSIVE MODE"
+    d: "SELECT ... FOR NO KEY UPDATE NOWAIT"
+  answer: a
+  explanation: "SKIP LOCKED makes the read step over rows another worker locked, so each worker grabs a distinct free row. NOWAIT would still wait-free but retries the same hot row."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "9.6"
+  question: "A worker query aborts with SQLSTATE 40P01. What happened?"
+  options:
+    a: "A unique constraint was violated"
+    b: "The statement exceeded lock_timeout"
+    c: "Postgres detected a deadlock and chose this transaction as the victim"
+    d: "The serializable isolation check failed on a read-write conflict"
+  answer: c
+  explanation: "40P01 = deadlock_detected. 40001 (serialization_failure) is the SSI / first-writer-wins abort; 23505 is unique_violation."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "9.7"
+  question: "When is an advisory lock taken with pg_advisory_xact_lock(...) automatically released?"
+  options:
+    a: "When the current statement finishes"
+    b: "When the transaction commits or rolls back"
+    c: "When the session disconnects only"
+    d: "Never until explicitly unlocked"
+  answer: b
+  explanation: "pg_advisory_xact_lock is transaction-scoped: it lives on a transaction lock and is released at COMMIT or ROLLBACK. The session-level variant needs an explicit unlock."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "9.8"
+  question: "Which one is NOT a Postgres isolation level?"
+  options:
+    a: "READ COMMITTED"
+    b: "REPEATABLE READ"
+    c: "SERIALIZABLE"
+    d: "READ ONLY"
+  answer: d
+  explanation: "READ ONLY is an access mode (like READ WRITE), not an isolation level. The four SQL levels are READ UNCOMMITTED, READ COMMITTED, REPEATABLE READ, SERIALIZABLE."
+  difficulty: 1
+  tags: [comparison]
+
+- id: "9.9"
+  question: "After a deadlock_detected or serialization_failure, what is the correct application recovery?"
+  options:
+    a: "Log the error and leave the row unmodified"
+    b: "Re-run just the last UPDATE statement"
+    c: "Restart the whole transaction from its first statement, with a short random backoff, capped attempts"
+    d: "Downgrade the transaction to READ COMMITTED and retry once"
+  answer: c
+  explanation: "The aborted transaction no longer exists; replaying one statement would run against a fresh world and corrupt intended logic. Retry the whole transaction with jitter."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "9.10"
+  question: "What reclaims the dead row versions that heavy UPDATE / DELETE workloads leave behind?"
+  options:
+    a: "VACUUM"
+    b: "ANALYZE"
+    c: "CHECKPOINT"
+    d: "COMMIT"
+  answer: a
+  explanation: "VACUUM removes tuples no snapshot can still see. COMMIT does not: it only marks the writer's changes durable and visible, leaving dead versions for later reclaim."
+  difficulty: 2
+  tags: [concept]

@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: In slice tests the new context that registers a mock bean is annotated {blank}."
+  answer: "@MockitoBean"
+  explanation: "The bean-override API replaces the deprecated @MockBean so tests can register mock collaborators."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: A slice test brings up only the {blank} for one layer instead of the whole application context."
+  answer: "autoconfiguration"
+  explanation: "Modular autoconfiguration in Boot 4 lets a slice keep just the beans its layer needs."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: Controller tests against a sliced MockMvc context start with the {blank} annotation."
+  answer: "@WebMvcTest"
+  explanation: "The annotation builds the smallest web context around the controller class under test."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Complete: Security 7 CSRF turns token-less MockMvc POST requests into {blank} responses before any controller code runs."
+  answer: "403"
+  explanation: "CSRF is on for all endpoints, so mutating requests need csrf() or the security filters disabled."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.5"
+  question: "Complete: To make a MockMvc request authenticated without real login machinery the test marks the class with {blank}."
+  answer: "@WithMockUser"
+  explanation: "TestUser support seeds the security context before the filters evaluate the request."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Complete: The DGS web slice that loads @DgsComponent classes and the schema but no services is the {blank} test annotation."
+  answer: "@GraphQlTest"
+  explanation: "It fills the context with DGS components and GraphQL infrastructure while services stay in the test as mocks."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Complete: DGS tests execute queries through {blank}, which drives the sliced context like a GraphQL client."
+  answer: "GraphQLTestTemplate"
+  explanation: "It posts a query resource and returns a GraphQLResponse for jsonPath-style assertions."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "Complete: In a @GraphQlTest the data fetcher dependencies are supplied as {blank} so the resolver returns scripted values."
+  answer: "mocks"
+  explanation: "The slice loads no services, so each @DgsComponent dependency arrives through @MockitoBean."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.9"
+  question: "Complete: Removing the security and CSRF funnel from a MockMvc slice uses addFilters=false on the {blank} annotation."
+  answer: "@AutoConfigureMockMvc"
+  explanation: "With filters disabled the request reaches the controller with no auth gate and no CSRF check."
+  difficulty: 3
+  tags: [process]
+
+- id: "c.10"
+  question: "Complete: When a test must prove real wiring across layers such as transactions, it uses the full {blank} instead of a slice."
+  answer: "@SpringBootTest"
+  explanation: "Cross-layer flows need real collaborators, which slices deliberately exclude."
+  difficulty: 3
+  tags: [comparison]

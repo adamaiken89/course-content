@@ -1,0 +1,54 @@
+- id: "c.181"
+  question: "React error {boundaries} catch render-phase exceptions below them; they must be {scoped} per region so a leaf failure cannot blank the whole portal."
+  answer: "boundaries, scoped"
+  explanation: "One boundary per failing region keeps the shell and form alive; a blanket boundary hides the leaf bug and reproduces the blank page."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.182"
+  question: "A retry is only responsible when the failure is {transient} and the operation carries an {idempotency} key on which the server dedupes."
+  answer: "transient, idempotency"
+  explanation: "Transient (429/5xx/network) errors can heal; a keyed retry re-sends the same intent instead of sending twice (m14 runId, m17)."
+  difficulty: 2
+  tags: [concept]
+- id: "c.183"
+  question: "Retrying clients must add full {jitter} to their exponential {backoff} so reconnects spread instead of forming a thundering herd against the dying endpoint."
+  answer: "jitter, backoff"
+  explanation: "Fixed-delay retries synchronize into a herd that keeps the outage alive; jitter spreads the window."
+  difficulty: 1
+  tags: [concept]
+- id: "c.184"
+  question: "The failure-surface ladder rises by {scope}: field error, row badge, region error with stale-cache fallback, then page-level fatal as the last resort."
+  answer: "scope (locality)"
+  explanation: "Match the surface to how much of the UI the failure damaged — the bigger the blast radius, the higher the rung."
+  difficulty: 2
+  tags: [terminology, concept]
+- id: "c.185"
+  question: "At the region rung the superpower is showing the {stale} cache (m12) while failing, so a user keeps working through an outage instead of staring at a skeleton."
+  answer: "stale"
+  explanation: "A previous good list in the cache seam renders with a Retry and a 'showing saved version' note — context preserved."
+  difficulty: 2
+  tags: [process]
+- id: "c.186"
+  question: "navigator.onLine {lies}: it reports any network interface as online even when the route to the API is dead, so offline detection trusts the {online} and offline event pair instead."
+  answer: "lies, online"
+  explanation: "The event pair comes from the browser's connectivity engine; a failed request is the tiebreaker for real coverage."
+  difficulty: 1
+  tags: [concept]
+- id: "c.187"
+  question: "Writes that arrive while offline enqueue into a persisted {queue} and flush on reconnect, each carrying its idempotency key so the flush is a re-send of the same intent."
+  answer: "queue"
+  explanation: "The m19 queue survives tab close because it is zustand + persistence, and m17 keys stop replay duplicates."
+  difficulty: 2
+  tags: [process, concept]
+- id: "c.188"
+  question: "The three questions before rendering any failure pixel are scope (what broke), {retry} (is it transient and idempotent), and recovery (what survives)."
+  answer: "retry"
+  explanation: "An error is a state, not an exit: classify the scope, gate the retry, then restore what the user was doing."
+  difficulty: 2
+  tags: [concept]
+- id: "c.189"
+  question: "The recovery panel summarizes the m14 {ledger} — '37 of 40 saved' — instead of dumping raw errors, and its Retry resubmits under the same runId key."
+  answer: "ledger"
+  explanation: "Per-item verdicts are the source of truth for what landed; the panel reads and summarizes them, never replays completed writes."
+  difficulty: 3
+  tags: [concept, process]

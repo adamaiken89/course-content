@@ -1,0 +1,131 @@
+- id: '17.1'
+  question: 基金嘅 NAV 計算公式?
+  options:
+    a: NAV = (總資產 - 總負債) / 流通單位數
+    b: NAV = 單位價格 × 流通股數
+    c: NAV = 基金管理資產
+    d: NAV = 總資產 / 流通股數
+  answer: a
+  explanation: NAV = (基金總資產 - 基金總負債) / 流通單位數。每日收市後計一次。
+  difficulty: 1
+  tags:
+  - formula
+  - terminology
+- id: '17.2'
+  question: 基金總資產 $100 億, 總負債 $500 萬, 流通單位 5 億。NAV 係?
+  options:
+    a: $19.99
+    b: $19.0
+    c: $20.01
+    d: $20.0
+  answer: a
+  explanation: NAV = (100 億 - 500 萬) / 5 億 = 99.95 億 / 5 億 = $19.99。
+  difficulty: 1
+  tags:
+  - calculation
+  - formula
+- id: '17.3'
+  question: 以下邊個唔係基金嘅 4 種主要費用之一?
+  options:
+    a: Front-end Load 申購費
+    b: Expense Ratio 年管理費
+    c: Performance Fee 表現費
+    d: Capital Gain Tax 資本利得稅
+  answer: d
+  explanation: '基金 4 種費用: Front-end Load, Back-end Load, Expense Ratio, Performance
+    Fee。資本利得稅係投資者自己嘅稅, 唔係基金收嘅費用。'
+  difficulty: 2
+  tags:
+  - terminology
+- id: '17.4'
+  question: $10,000 申購基金, 3% Front-end Load。實際買到幾多基金單位 (假設 NAV $10)?
+  options:
+    a: 999 個
+    b: 1,000 個
+    c: 970 個
+    d: 1,030 個
+  answer: c
+  explanation: 申購費 = $10,000 × 3% = $300。實際投資 = $9,700, 買到 $9,700 / $10 = 970 個單位。
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '17.5'
+  question: SPIVA 數據顯示, 5 年期美國大型股主動基金跑輸指數嘅比例約係?
+  options:
+    a: 50%
+    b: 80%+
+    c: 99%
+    d: 20%
+  answer: b
+  explanation: 'SPIVA 數據: 5 年期 80%+ 主動基金跑輸指數, 15 年期 90%+ 跑輸。即係話揀主動基金長期跑贏機率 < 10%。'
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '17.6'
+  question: $100,000 投資 30 年年化 8%。0% 費用 vs 1% 費用, 終值差距大約?
+  options:
+    a: $245,000
+    b: $500,000
+    c: $0 (一樣)
+    d: $100,000
+  answer: a
+  explanation: 0% 費用 = $1,006,266; 1% 費用 = $761,225; 差距 = $245,041。1% 費用 30 年複利蝕 24.5%。
+  difficulty: 2
+  tags:
+  - calculation
+  - application
+- id: '17.7'
+  question: 你揀基金, 邊項最重要?
+  options:
+    a: 過去 1 年回報最高
+    b: Expense Ratio + 5+ 年 Track Record
+    c: 明星基金經理名氣
+    d: 廣告做得多
+  answer: b
+  explanation: 費用 + 5+ 年跑贏基準嘅記錄最可靠。過去 1 年回報係噪音, 名氣同廣告唔等於表現。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '17.8'
+  question: 香港法律點保障基金投資者?
+  options:
+    a: 政府包底
+    b: SFC 直接賠償
+    c: 冇保障
+    d: 託管人獨立於基金公司, 即使公司執笠資產都歸持有人
+  answer: d
+  explanation: 香港法例要求託管人獨立, 基金公司執笠唔影響底層資產。SFC 監管基金公司要持牌, 但唔直接賠償損失。
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '17.9'
+  question: 對沖基金典型費用結構?
+  options:
+    a: 0.1% 年費
+    b: 2% 管理費 + 20% 表現費
+    c: 5% 申購費
+    d: 冇費用
+  answer: b
+  explanation: '對沖基金 2/20 結構係行業標準: 2% 年管理費 + 20% 表現費。所以對沖基金平均回報要跑贏指數 4-5% 先打和。'
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '17.10'
+  question: 一隻主動基金年費 1.5%, 過去 5 年年化跑贏指數 2% 每年。你嘅淨 Alpha 係?
+  options:
+    a: 3.5% (跑贏 + 跑贏)
+    b: 2% (跑贏指數就係 Alpha)
+    c: 0.5% (2% - 1.5% 費用)
+    d: -1.5% (蝕)
+  answer: c
+  explanation: 跑贏指數 2% - 1.5% 費用 = 淨 Alpha 0.5%。要再扣 1.5% 嘅機會成本(同指數 ETF 比), 實質輸蝕。
+  difficulty: 3
+  tags:
+  - calculation
+  - application
+

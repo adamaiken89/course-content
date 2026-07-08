@@ -1,0 +1,81 @@
+- id: '29.1'
+  question: o1/R1-style models 代表咗咩 paradigm shift？
+  options:
+    b: Inference-time compute scaling 用嚟做 reasoning
+    a: 更大嘅 training datasets
+    c: 更細嘅 model architecture
+    d: 唔使 pre-training
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '29.2'
+  question: Multimodal MoE models 比起 standard MoE 多咗啲乜？
+  options:
+    a: Modality-specific 或 cross-modal expert routing
+    b: 更多 dense layers
+    c: 更簡單嘅 routing mechanisms
+    d: 每個 modality 固定嘅 expert allocation
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '29.3'
+  question: DeepSeek R1 透過 rule-based RL 展現咗咩 emergent behaviour？
+  options:
+    a: Self-verification、reflection、同 long CoT
+    b: 自主 fine-tuning
+    c: Multi-modal generation
+    d: Agentic tool use
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '29.4'
+  question: Agentic loop 嘅四個步驟係乜？
+  options:
+    c: Observe, plan, execute, reflect
+    a: Train, test, deploy, monitor
+    b: Tokenize, embed, attend, predict
+    d: Reason, act, verify, correct
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '29.5'
+  question: 目前 agentic architectures 嘅根本限制係乜？
+  options:
+    c: Error accumulation — planning 嘅錯誤會傳播到成個 loop
+    a: 太多 parameters
+    b: 用唔到 tools
+    d: 太慢，做唔到 real-time
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '29.6'
+  question: 邊個 open problem 係關於 MoE efficiency？
+  options:
+    b: Dead experts 嘥咗 parameters (sparse yet dense)
+    a: 太多 experts
+    c: Router training 太慢
+    d: Scalability 局限喺 64 個 experts
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '29.7'
+  question: Test-time compute scaling 同 training compute 有乜關係？
+  options:
+    d: Test-time compute 可以喺 reasoning tasks 上代替 training compute
+    a: 佢哋獨立 — 一個唔影響另一個
+    b: Test-time compute 只係 for vision models
+    c: 更多 training compute 就唔需要 test-time compute
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '29.8'
+  question: 邊個唔係 frontiers module 入面提到嘅 open problem？
+  options:
+    d: Exact token prediction（模型 predict 唔到 exact next token）
+    a: Faithful reasoning（模型 rationalise 多過真正 reasoning）
+    b: True composition（skills 唔會 reliably compose）
+    c: Safety at scale（越大嘅模型越難 align）
+  answer: d
+  difficulty: 2
+  tags: []
+

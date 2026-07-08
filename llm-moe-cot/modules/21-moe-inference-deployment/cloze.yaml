@@ -1,0 +1,46 @@
+- id: c.1
+  question: MoE inference 永遠係 {memory-bound} 因為每個 token 都要從 VRAM load {全部 E 個 experts}，雖然得
+    {k} 個活躍。
+  answer: memory-bound / 全部 E 個 experts / k
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: Expert parallelism 用 {all-to-all} 通訊：tokens 被送去 hosting 所需 {expert} 嘅
+    GPU。
+  answer: all-to-all / expert
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: 喺 dynamic batching 入面，tokens 喺 routing 之後會 {按 expert 分組}。每個 expert 每 batch
+    最多處理 {capacity} 個 tokens。
+  answer: 按 expert 分組 / capacity
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: '{Router} 係 MoE 入面最 quantization-sensitive 嘅組件，因為佢決定 {expert selection}。'
+  answer: Router / expert selection
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: 建議 precision：router 用 {FP16/BF16}，expert FFN layers 用 {FP8/INT8}。
+  answer: FP16/BF16 / FP8/INT8
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: 用 MoE 做 speculative decoding 需要 {expert cache reuse} — draft tokens 可能
+    route 去唔同 experts 而 verification tokens 唔同，降低 {acceptance rate}。
+  answer: expert cache reuse / acceptance rate
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: 超出 expert capacity 嘅 tokens 會被 {dropped} — 佢哋喺嗰層收唔到 expert computation，造成
+    {information loss}。
+  answer: dropped / information loss
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: MoE 比 dense 嘅 speedup 低過 k/E 比率，因為每個 token 要將 {全部 E 個 experts} load 入
+    VRAM，雖然只計 {k} 個。
+  answer: 全部 E 個 experts / k
+  difficulty: 2
+  tags: []

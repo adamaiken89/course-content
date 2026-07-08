@@ -1,0 +1,153 @@
+- id: '23.1'
+  question: What does tRPC use to define both runtime validation and TypeScript types?
+  options:
+    b: Zod schemas
+    a: TypeScript interfaces
+    c: GraphQL SDL
+    d: Joi schemas
+  answer: b
+  explanation: Zod schemas define runtime validation rules and TypeScript infers static
+    types from them via z.infer().
+  difficulty: 1
+  tags:
+  - trpc
+  - zod
+  - validation
+- id: '23.2'
+  question: How does tRPC provide end-to-end type safety without code generation?
+  options:
+    b: TypeScript infers types from the server router definition shared with the client
+    a: It generates TypeScript types at build time
+    c: It uses GraphQL introspection
+    d: It requires manual type definitions on both sides
+  answer: b
+  explanation: The AppRouter type is exported from the server. The client imports
+    it as a generic parameter, and TypeScript infers all input/output types.
+  difficulty: 1
+  tags:
+  - trpc
+  - type-safety
+  - inference
+- id: '23.3'
+  question: Which tRPC pattern should you use for calling procedures from React 19
+    Server Components without an HTTP round-trip?
+  options:
+    a: Server caller pattern with createCaller
+    b: tRPC React Query hooks
+    c: HTTP batch link direct invocation
+    d: WebSocket subscription
+  answer: a
+  explanation: createCaller creates a server-side caller that invokes procedures directly
+    in-process, bypassing HTTP. Used in Server Components.
+  difficulty: 2
+  tags:
+  - trpc
+  - server-components
+  - react-19
+- id: '23.4'
+  question: What is the purpose of tRPC middleware?
+  options:
+    d: Inject cross-cutting concerns like auth, logging, and rate limiting
+    a: Transform response data before sending
+    b: Define database queries
+    c: Configure HTTP headers
+  answer: d
+  explanation: 'Middleware intercepts procedure execution for cross-cutting logic.
+    Multiple middleware compose in order, sharing context via next({ ctx: ... }).'
+  difficulty: 1
+  tags:
+  - trpc
+  - middleware
+  - patterns
+- id: '23.5'
+  question: How do you invalidate cached queries after a mutation in tRPC?
+  options:
+    b: Call utils.procedureName.invalidate() with the relevant input
+    a: Clear the QueryClient entirely
+    c: Restart the React component
+    d: Set staleTime to 0
+  answer: b
+  explanation: tRPC provides useUtils() returning helpers per procedure. Invalidate
+    refetches the query with matching input keys.
+  difficulty: 2
+  tags:
+  - trpc
+  - react-query
+  - cache-invalidation
+- id: '23.6'
+  question: What does the Zod z.infer<typeof Schema> utility do?
+  options:
+    c: Extracts the TypeScript type from a Zod schema definition
+    a: Validates input at runtime
+    b: Creates a new schema instance
+    d: Converts Zod types to TypeScript interfaces
+  answer: c
+  explanation: z.infer extracts the static TypeScript type that a Zod schema validates
+    against, enabling single-source-of-truth typing.
+  difficulty: 1
+  tags:
+  - zod
+  - typescript
+  - inference
+- id: '23.7'
+  question: Which React 19 hook is recommended for composing with tRPC mutations in
+    progressive enhancement patterns?
+  options:
+    a: useActionState
+    b: useReducer
+    c: useDeferredValue
+    d: useSyncExternalStore
+  answer: a
+  explanation: useActionState handles form submission state and progressive enhancement.
+    It pairs with tRPC mutateAsync for server mutations.
+  difficulty: 2
+  tags:
+  - react-19
+  - useActionState
+  - trpc
+- id: '23.8'
+  question: What error code does tRPC use for unauthenticated requests?
+  options:
+    d: UNAUTHORIZED
+    a: BAD_REQUEST
+    b: FORBIDDEN
+    c: NOT_FOUND
+  answer: d
+  explanation: tRPC maps TRPCError codes to HTTP status codes. UNAUTHORIZED maps to
+    401. FORBIDDEN (403) is for insufficient permissions despite authentication.
+  difficulty: 1
+  tags:
+  - trpc
+  - errors
+  - authentication
+- id: '23.9'
+  question: How does tRPC integrate with TanStack React Query under the hood?
+  options:
+    c: tRPC wraps React Query hooks, providing typed query/mutation hooks
+    a: tRPC replaces React Query entirely
+    b: React Query wraps tRPC procedures
+    d: They operate independently with no integration
+  answer: c
+  explanation: tRPC React Query adapter (createTRPCReact) generates typed hooks that
+    internally use React Query's useQuery and useMutation.
+  difficulty: 2
+  tags:
+  - trpc
+  - react-query
+  - integration
+- id: '23.10'
+  question: What happens when a tRPC middleware throws a TRPCError?
+  options:
+    a: The error propagates to the client with the configured error formatter
+    b: The error is silently ignored
+    c: The server crashes
+    d: The procedure retries automatically
+  answer: a
+  explanation: TRPCError propagates through the middleware chain to the client. The
+    errorFormatter can add context like Zod validation errors.
+  difficulty: 2
+  tags:
+  - trpc
+  - error-handling
+  - middleware
+

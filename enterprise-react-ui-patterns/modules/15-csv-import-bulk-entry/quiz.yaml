@@ -1,0 +1,110 @@
+- id: "15.1"
+  question: "Why does `csvText.split('\\n').map(l => l.split(','))` fail as a CSV parser?"
+  options:
+    a: "CSV is always one field per line"
+    b: "Commas never appear inside values"
+    c: "Quoted commas, `\"\"` escapes, embedded newlines, CRLF, and BOM all break the naive splits"
+    d: "The browser forbids string splitting on CSV data"
+  answer: c
+  explanation: "A real parser honors quoting and physical-line rules; naive splits mis-file rows silently."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "15.2"
+  question: "A CSV cell that begins with `=`, `+`, `-`, or `@` is a threat called:"
+  options:
+    a: "CSV (formula) injection"
+    b: "An XSS sanitizer bypass"
+    c: "A cache poisoning attack"
+    d: "A row reordering bug"
+  answer: a
+  explanation: "Spreadsheets interpret a leading operator as an expression; hostile cells payload the export file."
+  difficulty: 2
+  tags: [terminology, security]
+- id: "15.3"
+  question: "What is the correct handling of a formula-leading cell found in an inbound import row?"
+  options:
+    a: "Escape `<` to `&lt;` and render it"
+    b: "Render it via dangerouslySetInnerHTML after a replace pass"
+    c: "Prefix with a tick and echo it as a record"
+    d: "Reject it at parse and report it by row number in the error report"
+  answer: d
+  explanation: "Inbound data flows into the store and reports; rejection at parse beats echoing a half-neutralized value."
+  difficulty: 1
+  tags: [concept, security]
+- id: "15.4"
+  question: "300 rows import; one has a malformed grade. What happens to the other 299?"
+  options:
+    a: "The whole import aborts pending the fix"
+    b: "299 stage as valid; the 1 is categorized with its row number"
+    c: "The 299 import but are silently un-validated"
+    d: "The 23 with bad dates also abort"
+  answer: b
+  explanation: "Per-row verdicts mean one bad row never blocks valid ones; errors route to the report lane."
+  difficulty: 3
+  tags: [calculation, scenario]
+- id: "15.5"
+  question: "An imported CSV contains a column the schema does not know. The portal should:"
+  options:
+    a: "Silently drop it to keep the store clean"
+    b: "Throw a parse error and refuse the file"
+    c: "Warn that the column will not be imported — a header never read is data loss"
+    d: "Auto-create a free-text zod field"
+  answer: c
+  explanation: "Silent dropping hides data loss; a warning makes the decision visible and deliberate."
+  difficulty: 2
+  tags: [concept, comparison]
+- id: "15.6"
+  question: "What makes the import error report actionable rather than decorative?"
+  options:
+    a: "Row numbers plus error category and field, downloadable as CSV for fix-and-reimport"
+    b: "A single aggregate error count"
+    c: "The raw stack trace of the parse"
+    d: "The displayed original file only"
+  answer: a
+  explanation: "The workflow is closed-loop: locate the row, fix the source, re-import."
+  difficulty: 2
+  tags: [scenario, process]
+- id: "15.7"
+  question: "Where do staged valid import rows live?"
+  options:
+    a: "In the query cache, invalidation on write"
+    b: "In component useState, dropped on unmount"
+    c: "In localStorage until submitted"
+    d: "In the zustand draft store, tagged source 'import', merged with manual drafts"
+  answer: d
+  explanation: "Client-authored drafts must merge with hand-typed ones and feed the batch engine (m14)."
+  difficulty: 1
+  tags: [concept, comparison]
+- id: "15.8"
+  question: "Why must imported cells never pass through dangerouslySetInnerHTML?"
+  options:
+    a: "It is deprecated in React 19"
+    b: "It parses markup instead of escaping text, so hostile cells execute"
+    c: "It is slower than string concatenation"
+    d: "It breaks CSV column alignment"
+  answer: b
+  explanation: "React's default escaping is free and total; innerHTML converts a hostile byte into executable DOM."
+  difficulty: 1
+  tags: [concept, security]
+- id: "15.9"
+  question: "The registrar fixes 3 bad rows and re-imports the same 512-row file. What stops duplication?"
+  options:
+    a: "The batch engine blocks all imports after size 512"
+    b: "MSW fixture caching"
+    c: "A per-draft fingerprint dedupes re-imports against staged drafts; the engine's runId+itemId dedupes writes"
+    d: "The server refuses duplicate filenames"
+  answer: c
+  explanation: "Same file twice is the same intake twice — stable fingerprints and idempotent commit keys prevent it."
+  difficulty: 3
+  tags: [scenario, comparison]
+- id: "15.10"
+  question: "After staging, what owns the actual submission of the valid rows?"
+  options:
+    a: "The batch engine (m14) — its ledger handles partial failure, rollback, and idempotent retry"
+    b: "A for-loop inside the import screen"
+    c: "The CSV parser, resubmitting the file"
+    d: "A fresh useEffect per staged row"
+  answer: a
+  explanation: "Import is intake; submission is the engine's job. One ledger, no reimplementation."
+  difficulty: 2
+  tags: [comparison, scenario]

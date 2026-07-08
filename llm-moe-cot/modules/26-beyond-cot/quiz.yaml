@@ -1,0 +1,81 @@
+- id: '26.1'
+  question: Tree-of-Thoughts 用咩 search strategy？
+  options:
+    d: Tree search over multiple reasoning branches
+    a: Linear chain of reasoning steps
+    b: Graph with merging branches and cycles
+    c: Random sampling of answers
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '26.2'
+  question: Self-consistency 通常提供幾多 accuracy improvement？
+  options:
+    c: 5-15%
+    a: 1-2%
+    b: 30-40%
+    d: 50-100%
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '26.3'
+  question: ReAct 結合咗 CoT 自己冇嘅乜嘢？
+  options:
+    d: Reasoning 結合 actions（tool use、environment feedback）
+    a: 更多 exemplars
+    b: 多個 parallel reasoning paths
+    c: Fine-tune 喺 reasoning data 上面
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '26.4'
+  question: 邊個 strategy 最平嚟改善 reasoning accuracy？
+  options:
+    c: Self-consistency
+    a: Tree-of-Thoughts
+    b: Graph-of-Thoughts
+    d: ReAct
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '26.5'
+  question: Tree-of-Thoughts 幾時 outperform self-consistency？
+  options:
+    b: 對於需要 search 同 backtracking 嘅 tasks（puzzles、創意 tasks）
+    a: 對於所有 reasoning tasks
+    c: 對於已知正確答案嘅 tasks
+    d: 對於 single-step factual queries
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '26.6'
+  question: Graph-of-Thoughts 比起 Tree-of-Thoughts 嘅主要創新係乜？
+  options:
+    a: 允許合併 reasoning branches 同 cycles
+    b: 更快嘅 inference
+    c: 唔需要 LLM calls
+    d: 用更細嘅 models
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '26.7'
+  question: Self-consistency 通常用幾多個 parallel CoT paths？
+  options:
+    a: 5-10
+    b: 1-2
+    c: 50-100
+    d: 1000+
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '26.8'
+  question: 喺 ReAct 入面，'Observe' step 嘅目的係乜？
+  options:
+    b: 收集 tool calls 嘅結果嚟通知下一個 reasoning step
+    a: 監控模型表現
+    c: 睇用戶行為
+    d: 追蹤 token 用量
+  answer: b
+  difficulty: 2
+  tags: []
+

@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: Jackson 3 moved its runtime packages from com.fasterxml.jackson to {tools.jackson}."
+  answer: "tools.jackson"
+  explanation: "The groupId and package move is the headline of Jackson 3; only jackson-annotations stays behind."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: The one Jackson artifact that still lives under com.fasterxml.jackson is {jackson-annotations}."
+  answer: "jackson-annotations"
+  explanation: "Its com.fasterxml.jackson packages keep existing annotation imports compiling in Jackson 3."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: In Jackson 3 the ObjectMapper is {immutable}, so configuration happens on the JsonMapper.Builder before building."
+  answer: "immutable"
+  explanation: "Setters are gone; mutation after construction is impossible by design, which prevents shared-mapper race bugs."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "Complete: The Boot 4 starter for Jackson 3 is spring-boot-{jackson}; the legacy fallback is spring-boot-jackson2."
+  answer: "jackson"
+  explanation: "spring-boot-jackson defaults to Jackson 3 while spring-boot-jackson2 restores Jackson 2 for legacy apps."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Complete: java.time (jsr310) support and constructor parameter-names are {built} into Jackson 3, so no module registration is needed."
+  answer: "built"
+  explanation: "Two old Jackson 2 module-registration rituals disappeared; LocalDateTime fields and record construction just work."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Complete: Jackson2ObjectMapperBuilderCustomizer was renamed to {JsonMapperBuilderCustomizer} in Boot 4."
+  answer: "JsonMapperBuilderCustomizer"
+  explanation: "Customizers now target the JsonMapper.Builder that Jackson 3 uses for immutable configuration."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Complete: Jackson 2's JsonObjectSerializer became {ObjectValueSerializer} in Jackson 3."
+  answer: "ObjectValueSerializer"
+  explanation: "Custom serializers gained a new name and live in tools.jackson.databind.ser.std."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Complete: Custom serialize methods now receive a {SerializationContext} instead of the old SerializerProvider."
+  answer: "SerializationContext"
+  explanation: "The context rename is required for Jackson 3 custom serializers to compile."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.9"
+  question: "Complete: Safe polymorphic typing requires a strict {PolymorphicTypeValidator} that allowlists trusted subtypes."
+  answer: "PolymorphicTypeValidator"
+  explanation: "Without a strict validator, polymorphic deserialization of untrusted input becomes a remote code execution vector."
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.10"
+  question: "Complete: Configuring spring.jackson.use-jackson2-defaults=true restores Boot 3 {defaults} such as zero-fields behavior on the Jackson 3 mapper."
+  answer: "defaults"
+  explanation: "The property bridges Jackson 3 onto Boot 3-style behavior, easing migration for teams upgrading from Boot 3."
+  difficulty: 3
+  tags: [comparison]

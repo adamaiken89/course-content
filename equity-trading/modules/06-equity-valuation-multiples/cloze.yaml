@@ -1,0 +1,69 @@
+- id: c.1
+  question: The {blank} ratio uses last twelve months' actual earnings, while the
+    forward P/E uses projected future earnings.
+  answer: trailing P/E
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: Enterprise Value is calculated as market capitalization plus total debt
+    minus {blank}.
+  answer: cash
+  difficulty: 1
+  tags:
+  - formula
+- id: c.3
+  question: The {blank} ratio divides the P/E ratio by the expected earnings growth
+    rate to assess valuation relative to growth.
+  answer: PEG
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: Price-to-Book ratio compares market price per share to {blank} per share.
+  answer: book value
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.5
+  question: In comparable company analysis, the final step is applying the peer median
+    multiple to the target company's {blank} to derive an implied valuation.
+  answer: metric
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: EV/EBITDA is capital-structure-neutral because enterprise value includes
+    both equity and {blank}.
+  answer: debt
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: When a company has {blank} earnings, the P/E ratio becomes undefined and
+    EV/Sales may be used instead.
+  answer: negative
+  difficulty: 1
+  tags:
+  - concept
+- id: c.8
+  question: The ratio EV/{blank} is useful for valuing companies with negative earnings
+    but positive operating cash flow.
+  answer: EBITDA
+  difficulty: 2
+  tags:
+  - formula
+- id: c.9
+  question: A PEG ratio of {blank} is typically considered the threshold for fair
+    value, with lower values indicating undervaluation.
+  answer: '1.0'
+  difficulty: 3
+  tags:
+  - concept
+- id: c.10
+  question: The EV/EBITDA multiple for a company with enterprise value of $800 million
+    and EBITDA of $200 million is {blank} times.
+  answer: '4.0'
+  difficulty: 2
+  tags:
+  - calculation

@@ -1,0 +1,81 @@
+- id: '28.1'
+  question: LLM output 有 probabilistic 特性，主要原因係乜？
+  options:
+    d: 從 probability distribution over tokens 做 sampling
+    a: 模型嘅 random weights
+    b: Randomised training data
+    c: GPU 運算嘅 hardware randomness
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '28.2'
+  question: Temperature=0 保證咗啲乜？
+  options:
+    a: Deterministic output（同一 input → 同一 output）
+    b: 答案一定啱
+    c: 唔會有 hallucination
+    d: 生成速度更快
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '28.3'
+  question: 邊個唔係 hallucination 嘅成因？
+  options:
+    b: 用 temperature=0
+    a: Knowledge boundary（模型唔知呢個事實）
+    c: Training data noise
+    d: RLHF 壓力令模型成日都要答
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '28.4'
+  question: Prompt brittleness 係咩？
+  options:
+    a: Prompt 細微改動導致 output 大幅改變
+    b: 會整壞模型嘅 prompts
+    c: 超過 context window 嘅 prompts
+    d: 含有特殊字符嘅 prompts
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '28.5'
+  question: 邊啲因素會導致 prompt brittleness？
+  options:
+    c: 以上全部
+    a: Tokenisation edge cases
+    b: Training distribution sensitivity
+    d: Context position effects (lost-in-the-middle)
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '28.6'
+  question: LLM safety 脈絡下嘅 jailbreak 係咩？
+  options:
+    c: 專登設計嚟 bypass safety training 嘅 special prompts
+    a: 令模型更快
+    b: 逃出 restricted API
+    d: 唔用 safety data 就 fine-tune
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '28.7'
+  question: 點樣 diagnose LLM errors 係隨機定系統性？
+  options:
+    b: 以上全部
+    a: Check 吓 errors 喺 100+ 個 test examples 入面有冇 pattern
+    c: 較高 temperature 睇 variance
+    d: 同一個 input 行 100 次
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '28.8'
+  question: 解決 knowledge cutoff 問題嘅最佳方法係乜？
+  options:
+    d: 加 RAG (retrieval-augmented generation)
+    a: 用高啲嘅 temperature
+    b: 用大啲嘅 model
+    c: 加多啲 few-shot exemplars
+  answer: d
+  difficulty: 2
+  tags: []
+

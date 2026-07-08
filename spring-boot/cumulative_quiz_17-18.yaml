@@ -1,0 +1,109 @@
+- id: "cum.41"
+  type: mcq
+  question: "TeamPay wants one deployable but enforced internal boundaries. Which target shape delivers that?"
+  options:
+    a: "microservices for every aggregate root"
+    b: "one package folder per feature, guarded only by code review"
+    c: "a modular monolith with build-time verification rules"
+    d: "a BFF layer over one shared database"
+  answer: c
+  source_modules: [17]
+  explanation: "A modular monolith (Spring Modulith) keeps a single deployable while the build refuses cross-module imports. Independent services are only worth their cost when boundaries must scale and deploy separately."
+  difficulty: 1
+  tags: [recall]
+
+- id: "cum.42"
+  type: mcq
+  question: "A milestone acceptance gate is only meaningful when it is"
+  options:
+    a: "an observable outcome such as a startup log line, a build rule passing, or a documented 403"
+    b: "a high commit count in the milestone branch"
+    c: "the senior engineer's subjective approval"
+    d: "a low story-point estimate"
+  answer: a
+  source_modules: [18]
+  explanation: "A gate must be checkable without interpretation - logs, build output, or a documented behavior. Anything subjective fails to prove the milestone actually finished."
+  difficulty: 2
+  tags: [recall]
+
+- id: "cum.43"
+  type: mcq
+  question: "A payment controller calls a service that writes two repositories. Where must the transaction boundary live so a partial write never commits?"
+  options:
+    a: "inside the controller method"
+    b: "on each repository method independently"
+    c: "nowhere - the database handles atomicity itself"
+    d: "on the service method that owns the whole business operation"
+  answer: d
+  source_modules: [17, 18]
+  explanation: "The service method owns the full operation, so @Transactional sits there. Controller or repository-level fragments allow a partial commit. An ArchUnit/Modulith rule flags annotations leaking outside the service boundary."
+  difficulty: 3
+  tags: [cross-module, synthesis]
+
+- id: "cum.44"
+  type: mcq
+  question: "When does CQRS with a separate read model stop being ceremony and start paying off?"
+  options:
+    a: "whenever the team wants event sourcing"
+    b: "when an aggregate's read shapes diverge far enough from its writes to justify a projection"
+    c: "only when the write model is measurably slow"
+    d: "as the default shape for every aggregate"
+  answer: b
+  source_modules: [17]
+  explanation: "CQRS earns its complexity when queries need shapes the write model cannot serve cheaply. Divergence, not fashion or latency panic, is the threshold - below it the extra model is duplication."
+  difficulty: 1
+  tags: [synthesis]
+
+- id: "cum.45"
+  type: cloze
+  question: "A message that must leave reliably with a state change is written first to the {blank} table inside the same transaction, then a relay publishes it."
+  answer: "outbox"
+  source_modules: [17]
+  explanation: "The outbox rows and the business write commit together, so the message cannot be lost between commit and publish. The relay is what turns local events into cross-service delivery."
+  difficulty: 2
+  tags: [recall]
+
+- id: "cum.46"
+  type: cloze
+  question: "Spring {blank} verifies module boundaries in the build and can back domain events with an event publication registry for reliable delivery."
+  answer: "Modulith"
+  source_modules: [17]
+  explanation: "Spring Modulith checks module dependencies, surfaces violations at build time, and its publication registry complements plain Spring Events with outbox-style reliability."
+  difficulty: 1
+  tags: [recall]
+
+- id: "cum.47"
+  type: cloze
+  question: "The migration rule that each PR changes one kind of thing, so a red build names a single suspect, is called one {blank} per change."
+  answer: "axis"
+  source_modules: [18]
+  explanation: "Bundling a version bump with a module split makes a failure ambiguous - framework or layout. One axis per change keeps each PR revertible and failures attributable."
+  difficulty: 2
+  tags: [recall]
+
+- id: "cum.48"
+  type: tf
+  statement: "Spring Events dispatch only inside the application process; cross-service delivery needs the outbox pattern or a message broker."
+  answer: true
+  source_modules: [17]
+  explanation: "Spring Events are in-process only. Once delivery must cross a service boundary, an outbox table plus a relay, or a real broker, is required."
+  difficulty: 1
+  tags: [misconception]
+
+- id: "cum.49"
+  type: tf
+  statement: "Each legacy smell maps to one capstone module - a public-field config bean maps to the modular-config milestone, not to a whole-app rewrite."
+  answer: true
+  source_modules: [18]
+  explanation: "Smell-to-module mapping keeps each milestone narrow: config beans to the Boot 4 config module, untyped DTOs to JSpecify, RestTemplate calls to the HTTP-client module, and so on."
+  difficulty: 2
+  tags: [synthesis]
+
+- id: "cum.50"
+  type: tf
+  statement: "Two services that share one database table are fine as long as both use the same migration tool."
+  answer: false
+  source_modules: [17]
+  explanation: "A shared table couples schemas, transactions, and deploy cycles - the classic trap that erases the benefit of splitting services. Split the schema and own the boundary per service."
+  difficulty: 3
+  tags: [misconception]

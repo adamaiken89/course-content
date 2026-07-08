@@ -1,0 +1,155 @@
+- id: '31.1'
+  question: What is the typical fee structure for a professional market data license
+    per exchange?
+  options:
+    a: $5-30 per user per month
+    b: $5-30 per user per year
+    c: $500-1000 per user per month
+    d: Always free
+  answer: a
+  explanation: Professional licenses cost $5-30/user/month per exchange. Non-professional
+    is free to about $5/user/month, enterprise runs $50-200K/year, and redistribution
+    runs $10-50K/month plus per-subscriber.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '31.2'
+  question: A stock closes at $200 and announces a 2:1 stock split. What is the corporate-action-adjusted
+    previous close?
+  options:
+    a: $200
+    b: $100
+    c: $400
+    d: $150
+  answer: b
+  explanation: 2:1 split adjustment = previous close x (pre-split shares / post-split
+    shares) = $200 x (1/2) = $100. The adjusted price reflects per-share value halving
+    with share count doubling.
+  difficulty: 1
+  tags:
+  - calculation
+  - concept
+- id: '31.3'
+  question: How does NYSE define a 'professional user' for real-time data licensing?
+  options:
+    a: Anyone holding a CFA charter
+    b: Anyone who can see a real-time price
+    c: A FINRA registered representative
+    d: Clients with more than $1M AUM
+  answer: c
+  explanation: NYSE uses the 'registered representative' definition (FINRA-registered
+    persons). NASDAQ uses 'screen-based user' (anyone viewing real-time prices). The
+    difference forces brokers to maintain two separate user tracking systems.
+  difficulty: 1
+  tags:
+  - terminology
+  - comparison
+- id: '31.4'
+  question: A system applies a 2:1 split price adjustment (close $200 to $100) but
+    forgets to double the share quantity. What happens to the client portfolio?
+  options:
+    a: No impact
+    b: Portfolio value doubles
+    c: Only fees change
+    d: Portfolio value halves — a phantom 50% loss in client statements and NAV
+  answer: d
+  explanation: A corporate action must adjust price AND quantity together. Fixing
+    only one side corrupts position value — here the share count stays the same while
+    price halves, producing a phantom 50% loss.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '31.5'
+  question: A stock closes at $100 and pays a $0.50 cash dividend. What is the corporate-action-adjusted
+    previous close?
+  options:
+    a: $99.50
+    b: $100
+    c: $100.50
+    d: $50
+  answer: a
+  explanation: Cash dividend adjustment = previous close - dividend amount = $100 -
+    $0.50 = $99.50. This isolates the dividend effect for historical performance
+    calculation and tax tracking.
+  difficulty: 2
+  tags:
+  - calculation
+  - concept
+- id: '31.6'
+  question: What is the likely consequence for a broker found misclassifying professional
+    users as non-professional during a market data licensing audit?
+  options:
+    a: Warning letter only
+    b: $100K+ fine plus possible data feed disconnection
+    c: Requirement to re-file registration documents
+    d: Automatic downgrade to delayed data
+  answer: b
+  explanation: Misclassification is a serious violation. Exchange fines can exceed
+    $100K and data feeds may be suspended. Brokers must retain 2 years of subscriber
+    records for retrospective audits.
+  difficulty: 1
+  tags:
+  - concept
+- id: '31.7'
+  question: Why do NYSE and NASDAQ require different professional-user definitions,
+    and what does this mean for a broker?
+  options:
+    a: NYSE and NASDAQ use the same definition, so one system suffices
+    b: NASDAQ uses the FINRA registered representative definition
+    c: NASDAQ uses 'screen-based user'; the differing definitions force brokers to
+      maintain two separate user tracking systems
+    d: Neither exchange requires user classification
+  answer: c
+  explanation: NYSE classifies by registered representative while NASDAQ classifies
+    by screen-based user. Because the definitions differ, brokers must track the two
+    populations separately for subscriber reporting.
+  difficulty: 2
+  tags:
+  - comparison
+  - concept
+- id: '31.8'
+  question: A broker wants to forward real-time market data to its clients. What must
+    it do under market data licensing rules?
+  options:
+    a: Nothing — forwarding is free
+    b: Forwarding real-time data is banned outright
+    c: No reporting is required
+    d: Pay redistribution fees and submit subscriber reports
+  answer: d
+  explanation: Brokers forwarding real-time data to clients must pay redistribution
+    fees (typically $10-50K/month plus per-subscriber) and submit subscriber reports.
+    This is how exchanges track who ultimately uses the data.
+  difficulty: 2
+  tags:
+  - concept
+- id: '31.9'
+  question: A brokerage's market data budget is about $1M per year, of which Bloomberg
+    Terminal for 20 seats costs about $500K. What share of total spend is Bloomberg?
+  options:
+    a: About 50%
+    b: About 10%
+    c: About 30%
+    d: About 5%
+  answer: a
+  explanation: $500K of a $1M total is 50% — Bloomberg Terminal is typically the largest
+    single line item in a brokerage's market data budget.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '31.10'
+  question: On the ex-date, why does a stock's adjusted close not equal previous close
+    minus the dividend amount?
+  options:
+    a: Because the dividend was never announced
+    b: Market price incorporates other information, so adjusted close is a statistical
+      adjustment that isolates the dividend effect — not an opening price prediction
+    c: Because dividend taxes distort the price
+    d: There is no reason; the two always match
+  answer: b
+  explanation: The ex-date market price reflects broad market moves and stock-specific
+    news on top of the dividend. Adjusted close is a statistical adjustment for historical
+    performance and tax tracking, not a prediction of the opening price.
+  difficulty: 2
+  tags:
+  - concept

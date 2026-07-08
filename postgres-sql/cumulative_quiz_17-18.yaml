@@ -1,0 +1,120 @@
+- id: cum.41
+  type: mcq
+  source_modules:
+  - 17
+  question: "For a high-volume insert workload, what is the key difference between uuidv7 and uuidv4 primary keys?"
+  options:
+    a: "v4 writes append like a sequence"
+    b: "v7 keys arrive time-ordered, so inserts stay append-like"
+    c: "v7 makes every insert a random page write"
+    d: "v4 avoids B-tree splits entirely"
+  answer: b
+  difficulty: 2
+  tags:
+  - cross-module
+  - comparison
+- id: cum.42
+  type: mcq
+  source_modules:
+  - 18
+  question: "A partial index WHERE status='pending' pairs best with which worker pattern?"
+  options:
+    a: "SKIP LOCKED claim of one row at a time"
+    b: "A full-table status sweep"
+    c: "VACUUM FULL on commit"
+    d: "pg_trgm similarity ranking"
+  answer: a
+  difficulty: 3
+  tags:
+  - cross-module
+  - scenario
+- id: cum.43
+  type: mcq
+  source_modules:
+  - 17
+  question: "REPACK CONCURRENTLY is intended to replace which offline rewrite?"
+  options:
+    a: "CREATE INDEX CONCURRENTLY"
+    b: "ANALYZE"
+    c: "REINDEX CONCURRENTLY"
+    d: "VACUUM FULL"
+  answer: d
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.44
+  type: mcq
+  source_modules:
+  - 18
+  question: "Which EXPLAIN line means an unindexed predicate re-filtered rows after the scan?"
+  options:
+    a: "Index Cond"
+    b: "Incremental Sort"
+    c: "Filter"
+    d: "Hash Cond"
+  answer: c
+  difficulty: 2
+  tags:
+  - cross-module
+  - scenario
+- id: cum.45
+  type: cloze
+  source_modules:
+  - 17
+  question: "uuidv7 keeps B-tree inserts append-like because values are {time}-ordered."
+  answer: time
+  difficulty: 2
+  tags:
+  - cross-module
+  - synthesis
+- id: cum.46
+  type: cloze
+  source_modules:
+  - 18
+  question: "A reappearing {sort} node in EXPLAIN means ORDER BY no longer matches an index prefix."
+  answer: sort
+  difficulty: 2
+  tags:
+  - cross-module
+  - process
+- id: cum.47
+  type: cloze
+  source_modules:
+  - 17
+  question: "PostgreSQL 19 brings property-graph queries through the SQL/{PGQ} interface."
+  answer: PGQ
+  difficulty: 1
+  tags:
+  - cross-module
+  - terminology
+- id: cum.48
+  type: tf
+  source_modules:
+  - 17
+  statement: "Parallel GIN index builds are supported in PostgreSQL 18."
+  answer: true
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.49
+  type: tf
+  source_modules:
+  - 18
+  statement: "INCLUDE columns speed point lookups because they widen the B-tree key."
+  answer: false
+  difficulty: 2
+  tags:
+  - cross-module
+  - misconception
+- id: cum.50
+  type: tf
+  source_modules:
+  - 17
+  statement: "INSERT ON CONFLICT DO SELECT atomically returns the existing or newly-created row."
+  answer: true
+  difficulty: 3
+  tags:
+  - cross-module
+  - synthesis

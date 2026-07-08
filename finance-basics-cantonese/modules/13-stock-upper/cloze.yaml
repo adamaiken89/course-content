@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "股票代表 {公司部分擁有權}, 股東有 3 種權利: {經濟權}、{治理權} 同 {清算權}。"
+  answer: "公司部分擁有權、經濟權、治理權、清算權"
+  explanation: "股票唔係借據 (嗰個係債券), 係擁有權一部分。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "普通股有 {投票權}, 優先股通常 {冇投票權} 但 {派息優先} 同 {清算時先攞返}。"
+  answer: "投票權、冇投票權、派息優先、清算時先攞返"
+  explanation: "優先股 = 股 + 債混合, 派息似債, 升值潛力似股 (但較低)。"
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.3"
+  question: "市值嘅公式係 {股價 × 已發行股數}, 流通市值係 {股價 × 流通股數}, 後者反映 {真正市場流通量}。"
+  answer: "股價 × 已發行股數、股價 × 流通股數、真正市場流通量"
+  explanation: "流通少 = 容易俾人操控股價。市值大唔代表流通多。"
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.4"
+  question: "IPO 過程 7 步: {保薦人} → {盡職審查+招股書} → {聯交所審批} → {路演} → {公開招股} → {定價} → {掛牌買賣}。"
+  answer: "保薦人、盡職審查+招股書、聯交所審批、路演、公開招股、定價、掛牌買賣"
+  explanation: "由委任保薦人到正式掛牌, 香港 IPO 通常 6-12 個月。"
+  difficulty: 3
+  tags: [process, terminology]
+
+- id: "c.5"
+  question: "T+2 交收即 {落單日 + 2 個工作日} 股票同錢正式過戶。"
+  answer: "落單日 + 2 個工作日"
+  explanation: "T = 落單日, T+2 = 兩個工作日後。之前只係 trade matched, 未真正過戶。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.6"
+  question: "{拆細} 將 1 股變多股 (價錢減半), {合股} 將多股變 1 股 (價錢加多倍), 兩者都 {不改變總資產}。"
+  answer: "拆細、合股、不改變總資產"
+  explanation: "拆細 / 合股純粹改變「每股價格」同「股數」, 對公司價值同你嘅資產完全冇影響。"
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "c.7"
+  question: "派息有 4 個重要日期: {宣派日}、{截止過戶日}、{除淨日}、{派發日}。散戶實際操作以 {除淨日} 為準。"
+  answer: "宣派日、截止過戶日、除淨日、派發日、除淨日"
+  explanation: "除淨日之前買入先有權收今次息, 當日或之後買入 = 冇得收。"
+  difficulty: 2
+  tags: [terminology, process]
+
+- id: "c.8"
+  question: "{停牌} 期間股東被鎖住, 買賣都 {唔可以}, 要等 {復牌}。復牌後可能 {暴升或暴跌}。"
+  answer: "停牌、唔可以、復牌、暴升或暴跌"
+  explanation: "公司主動停牌 (有重大消息) 或港交所強制停牌 (違規)。停牌期間完全凍結。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.9"
+  question: "{暗盤交易} 喺 {上市前 1 日晚} 進行, 由 {輝立/富途} 等券商提供, 對 {IPO 認購者} 特別有用。"
+  answer: "暗盤交易、上市前 1 日晚、輝立/富途、IPO 認購者"
+  explanation: "正式掛牌前嘅 OTC 交易, 可以鎖定 IPO 利潤或止蝕。"
+  difficulty: 2
+  tags: [terminology, application]
+
+- id: "c.10"
+  question: "香港買賣渠道按佣金由低至高: {網上券商} ($0-15) < {傳統券商} ($50-100) ≈ {傳統銀行} ($50-100) < {孖展戶口} (加利息)。"
+  answer: "網上券商、傳統券商、傳統銀行、孖展戶口"
+  explanation: "頻密買賣用網上券商最平, 但孖展有槓桿風險。"
+  difficulty: 2
+  tags: [comparison, application]

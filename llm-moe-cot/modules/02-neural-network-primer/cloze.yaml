@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Linear layer 嘅公式係{y = Wx + b}，W 叫 weight matrix，b 叫 bias。"
+  answer: "y = Wx + b"
+  explanation: "Affine transformation — W 控制 rotation/scaling，b 控制 translation。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "{Non-linear activation} 係 deep network 可以 model 非線性關係嘅關鍵。"
+  answer: "Non-linear activation"
+  explanation: "冇 activation，多層 linear = 單層 linear，expressivity 唔增加。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.3"
+  question: "ReLU = {max(0, x)}，解決 sigmoid 嘅 vanishing gradient 問題。"
+  answer: "max(0, x)"
+  explanation: "x>0 時 gradient=1（唔會 vanish），x<0 時 gradient=0 → dead neuron risk。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Softmax 將{scores / logits}轉成{probabilities}，output 加埋 = 1。"
+  answer: "scores (logits), probabilities"
+  explanation: "Softmax(zᵢ) = exp(zᵢ) / Σ exp(zⱼ)。Temperature T 控制分佈平滑度。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.5"
+  question: "Cross-entropy loss: L = -{y · log(p)}。Model 俾 correct token 高概率 → loss {低}。"
+  answer: "y · log(p), 低"
+  explanation: "p(correct) → 1.0 → log → 0 → loss → 0。Perplexity = 2^loss 更 interpretable。"
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.6"
+  question: "Backpropagation 用{chain rule}逐層傳遞 gradient，從 output 到 input。"
+  answer: "chain rule"
+  explanation: "∂L/∂W₁ = ∂L/∂y · ∂y/∂W₁。每層 gradient = local gradient × upstream gradient。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.7"
+  question: "Vanishing gradient = 每層 gradient scale < 1，叠乘後前面層 gradient ≈ {0}。"
+  answer: "0"
+  explanation: "Sigmoid activation max gradient = 0.25，100 層後 0.25¹⁰⁰ ≈ 0。Residual connection 係關鍵解決方案。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "Embedding matrix E ∈ ℝ{ |V|×d }，每行係一個 token 嘅 learnable vector。"
+  answer: "|V|×d"
+  explanation: "|V| = vocab size, d = embedding dimension。One-hot → dense 解決 sparse representation 問題。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.9"
+  question: "Softmax output 係{relative preference}，唔等於 calibrated probability，需要{temperature scaling}校正。"
+  answer: "relative preference, temperature scaling"
+  explanation: "LLM 常見 overconfident — softmax=0.99 但實際得 60% 準確。Calibration 係 evaluation 重要環節。"
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.10"
+  question: "MLP 處理 sequence 嘅問題：需要{fixed-size input} + 冇內建{position awareness}。"
+  answer: "fixed-size input, position awareness"
+  explanation: "Sentence length 可變 + token order 對意思影響大（我食飯 vs 飯食我）。呢啲問題 attention 機制解決咗。"
+  difficulty: 2
+  tags: [application]

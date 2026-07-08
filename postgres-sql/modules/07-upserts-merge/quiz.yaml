@@ -1,0 +1,110 @@
+- id: "7.1"
+  question: "What does the `excluded` pseudo-table reference in `ON CONFLICT DO UPDATE`?"
+  options:
+    a: "The row already stored in the table"
+    b: "The row that would have been inserted"
+    c: "The conflict error payload"
+    d: "All rows that matched the unique index"
+  answer: b
+  explanation: "excluded holds the values that were proposed for the new row, so DO UPDATE can use them in its SET clauses."
+  difficulty: 1
+  tags: [terminology]
+- id: "7.2"
+  question: "Which statement requires a real unique or exclusion constraint on the conflict target?"
+  options:
+    a: "INSERT ... VALUES"
+    b: "COPY ... WITH"
+    c: "SELECT ... FOR UPDATE"
+    d: "INSERT ... ON CONFLICT DO UPDATE"
+  answer: d
+  explanation: "ON CONFLICT arbitrates through the constraint; without one matching the named columns, the statement errors out."
+  difficulty: 1
+  tags: [concept]
+- id: "7.3"
+  question: "If `DO NOTHING` absorbs a conflict, what does `RETURNING *` produce for that row?"
+  options:
+    a: "An empty result (no row)"
+    b: "The existing row"
+    c: "A NULL-only row"
+    d: "The would-be inserted row"
+  answer: a
+  explanation: "RETURNING only reports rows the statement actually changed; a conflicting DO NOTHING writes nothing, so nothing comes back."
+  difficulty: 2
+  tags: [concept]
+- id: "7.4"
+  question: "A nightly import replaces existing orders and inserts new ones. Which generic form does this workflow need?"
+  options:
+    a: "A DELETE-all then INSERT cycle"
+    b: "A SELECT-then-INSERT loop in the app"
+    c: "A plain INSERT, failing on duplicates"
+    d: "MERGE with MATCHED update and NOT MATCHED insert"
+  answer: d
+  explanation: "MERGE handles update-on-match and insert-on-no-match in a single atomic statement, avoiding delete-then-insert gaps."
+  difficulty: 2
+  tags: [scenario]
+- id: "7.5"
+  question: "In MERGE, rows the source join produces are matched against target rows on what?"
+  options:
+    a: "A random sample of the target"
+    b: "The primary key only"
+    c: "The ON condition joining the two sides"
+    d: "A hash of the row text"
+  answer: c
+  explanation: "MERGE matches source to target using its ON condition. For safe locking, that condition should satisfy uniqueness on both sides."
+  difficulty: 2
+  tags: [concept]
+- id: "7.6"
+  question: "Which version introduced MERGE?"
+  options:
+    a: "PG12"
+    b: "PG13"
+    c: "PG14"
+    d: "PG15"
+  answer: d
+  explanation: "MERGE arrived in PostgreSQL 15; PG17 added RETURNING and PG18 rewrote the core implementation."
+  difficulty: 1
+  tags: [terminology]
+- id: "7.7"
+  question: "For a single-row idempotent upsert, which is the more appropriate tool?"
+  options:
+    a: "MERGE with a subquery source"
+    b: "INSERT ... ON CONFLICT DO UPDATE"
+    c: "A transaction with SELECT first"
+    d: "A plain INSERT"
+  answer: b
+  explanation: "On CONFLICT is compact, locks only the conflicting row, and is the idiomatic one-row upsert; MERGE shines with multi-branch joins."
+  difficulty: 2
+  tags: [comparison]
+- id: "7.8"
+  question: "Which upsert building block lets you create a parent row and children in one statement?"
+  options:
+    a: "A stored PROCEDURE per child"
+    b: "A UNIQUE index on the parent"
+    c: "RETURNING chained through a data-modifying CTE"
+    d: "ON CONFLICT DO NOTHING only"
+  answer: c
+  explanation: "RETURNING hands the freshly inserted id to a WITH clause, which then inserts child rows in the same transaction."
+  difficulty: 2
+  tags: [application]
+- id: "7.9"
+  question: "Why is `DO SELECT` in PG19 faster than the classic `DO UPDATE` get-or-create?"
+  options:
+    a: "It skips parsing"
+    b: "It returns the existing row without writing a new version"
+    c: "It bypasses the unique index"
+    d: "It avoids the planner"
+  answer: b
+  explanation: "DO UPDATE writes a dead version even when nothing changes; DO SELECT reads and returns the existing row, so no bloat."
+  difficulty: 2
+  tags: [comparison]
+- id: "7.10"
+  question: "Two workers concurrently upsert the same key via ON CONFLICT DO UPDATE. What guarantees ordering?"
+  options:
+    a: "The unique index, with one worker blocking until the other commits"
+    b: "Nothing — duplicates appear"
+    c: "The application retry count"
+    d: "Autovacuum"
+  answer: a
+  explanation: "The unique index arbitrates: one insert wins, the other waits on the row lock, then follows the DO UPDATE path. No duplicates."
+  difficulty: 2
+  tags: [scenario]

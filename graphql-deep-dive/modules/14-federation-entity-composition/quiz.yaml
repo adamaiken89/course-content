@@ -1,0 +1,138 @@
+- id: '14.1'
+  question: 'What does @key(fields: ''id'') declare about a type?'
+  options:
+    d: The type is an entity whose identity spans multiple subgraphs, keyed by 'id'
+    a: The type is a value type with no cross-subgraph identity
+    b: The field 'id' is only used for caching
+    c: The type is private to this subgraph
+  answer: d
+  explanation: '@key marks type as entity — identity crosses subgraph boundaries.
+    Key fields uniquely identify entity across all subgraphs that extend it.'
+  difficulty: 2
+  tags: []
+- id: '14.2'
+  question: What is the purpose of @external on a field?
+  options:
+    d: Indicates field is resolved by another subgraph
+    a: Marks field as publicly accessible via supergraph
+    b: Exports field to external services
+    c: Marks field for deprecation
+  answer: d
+  explanation: '@external tells composition: ''this field''s definition lives in another
+    subgraph; I only reference it.'' Required for fields used in @requires or @provides
+    that aren''t owned locally.'
+  difficulty: 2
+  tags: []
+- id: '14.3'
+  question: 'Shipping subgraph defines `Product.shippingCost @requires(fields: ''weight'')`.
+    What must router do before calling Shipping for this field?'
+  options:
+    b: Check if weight is in cache — if not, fetch from Products subgraph first
+    a: Call Shipping with just the product SKU
+    c: Ignore @requires and let Shipping figure it out
+    d: Pre-fetch all Product fields from all subgraphs
+  answer: b
+  explanation: '@requires creates dependency. Router must ensure ''weight'' is fetched
+    (from Products or cache) before calling Shipping subgraph. Passes weight in entity
+    representation to shipping''s __resolveReference.'
+  difficulty: 2
+  tags: []
+- id: '14.4'
+  question: Which resolver must every subgraph implement for entity types it extends?
+  options:
+    c: __resolveReference
+    a: __resolveType
+    b: __resolveEntity
+    d: __extendEntity
+  answer: c
+  explanation: __resolveReference takes entity representation ({__typename, key fields})
+    and returns full entity. Router calls it to resolve extended fields in dependent
+    subgraphs.
+  difficulty: 2
+  tags: []
+- id: '14.5'
+  question: 'Client queries `user(id: 5) { name payments { amount } }`. User.name
+    in Accounts, User.payments in Payments. What does router send to Payments subgraph?'
+  options:
+    a: 'query { _entities(representations: [{__typename: ''User'', id: ''5''}]) {
+      ... on User { payments { amount } } } }'
+    b: 'query { user(id: 5) { payments { amount } } }'
+    c: 'query { payments(userId: 5) { amount } }'
+    d: 'query { resolveReference(type: ''User'', id: ''5'') { payments { amount }
+      } }'
+  answer: a
+  explanation: Router sends `_entities` query with entity representation array. Representation
+    includes __typename and key fields. Payments subgraph's __resolveReference uses
+    representation to fetch data.
+  difficulty: 2
+  tags: []
+- id: '14.6'
+  question: What distinguishes a value type from an entity type in federation?
+  options:
+    c: Value types lack @key; entity types have @key
+    a: Value types have @key; entity types do not
+    b: Value types are mutable; entity types are immutable
+    d: Value types are defined in multiple subgraphs; entity types in one
+  answer: c
+  explanation: Entity types have @key and span subgraphs. Value types lack @key —
+    they're owned by single subgraph, embedded in entities.
+  difficulty: 2
+  tags: []
+- id: '14.7'
+  question: 'Reviews subgraph has local copy of Product.name and uses @provides(fields:
+    ''name''). What is the benefit?'
+  options:
+    a: Router skips calling Products subgraph for name when querying reviews
+    b: Product.name becomes writable from Reviews subgraph
+    c: Reviews subgraph automatically syncs name changes from Products
+    d: Router caches Product.name permanently
+  answer: a
+  explanation: '@provides tells router: ''I can resolve this field without calling
+    the owning subgraph.'' Router optimizes plan — no extra subgraph hop for provided
+    fields.'
+  difficulty: 2
+  tags: []
+- id: '14.8'
+  question: 'Accounts subgraph has User.id. Reviews has User @key(fields: ''id'').
+    Payments has User @key(fields: ''id'') @key(fields: ''email''). What does ''User''
+    entity look like after composition?'
+  options:
+    a: User merged with all fields, each subgraph resolves its fields independently
+    b: User merged with all fields, Accounts as primary owner
+    c: Composition fails — duplicate @key
+    d: User split into three separate types
+  answer: a
+  explanation: Each subgraph extends User with its own fields. All @key definitions
+    merge. Router resolves each subgraph's fields via independent __resolveReference
+    calls. No single 'primary owner' — subgraphs are peers.
+  difficulty: 2
+  tags: []
+- id: '14.9'
+  question: A subgraph defines @requires that chains across 4 fields from 3 different
+    subgraphs. What is the performance implication?
+  options:
+    b: Sequential subgraph calls increase latency — each requires field must be fetched
+      before dependent field resolves
+    a: No impact — router parallelizes all requests
+    c: Only first subgraph call matters; subsequent fields are cached
+    d: Federation 2 eliminates @requires overhead automatically
+  answer: b
+  explanation: '@requires creates sequential dependency chain. Router must fetch fields
+    in order: subgraph A → subgraph B (needs A''s data) → subgraph C (needs B''s data).
+    Each hop = network round-trip. Design @requires chains shallow.'
+  difficulty: 2
+  tags: []
+- id: '14.10'
+  question: What happens in the entity representation sent to __resolveReference?
+  options:
+    b: Object with __typename and key fields (plus any @requires fields)
+    a: Full GraphQL query string
+    c: HTTP headers only
+    d: The entire supergraph schema
+  answer: b
+  explanation: 'Entity representation = {__typename: ''TypeName'', keyField1: value1,
+    ...}. If @requires declared, router includes required fields too. Minimal payload
+    identifying which entity to resolve.'
+  difficulty: 2
+  tags: []
+

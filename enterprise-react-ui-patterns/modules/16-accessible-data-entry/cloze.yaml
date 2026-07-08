@@ -1,0 +1,60 @@
+- id: "c.161"
+  question: "Validation beats are only audible when they render inside {aria-live} regions such as role={status}."
+  answer: "aria-live"
+  explanation: "Plain DOM re-renders are silent; the region announces changes."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.162"
+  question: "Routine field verdicts use aria-live=polite; only {submit}-{blocking} verdicts should interrupt with assertive."
+  answer: "submit-blocking"
+  explanation: "Assertive speech cuts off the reader; reserve it for batch rejection."
+  difficulty: 2
+  tags: [concept]
+- id: "c.163"
+  question: "A live-region beat must be {atomic}: the whole verdict in one sentence, never partial typed fragments."
+  answer: "atomic"
+  explanation: "partial beats get coalesced into stuttering speech on the reader."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.164"
+  question: "The announcer must {dedupe} identical messages so a re-render never re-announces the same verdict."
+  answer: "dedupe"
+  explanation: "Same beat twice is stutter; keep a last-message ref."
+  difficulty: 2
+  tags: [concept]
+- id: "c.165"
+  question: "On a cascade reset, focus must never drop to {body}; stay on the origin select or announce before moving to a child."
+  answer: "body"
+  explanation: "Body-drop strands keyboard and screen-reader users mid-tab."
+  difficulty: 1
+  tags: [concept, scenario]
+- id: "c.166"
+  question: "In a custom combobox, {aria}-{activedescendant} points at the highlighted option while real focus stays on the input."
+  answer: "aria-activedescendant"
+  explanation: "It tells the screen reader which option is active without moving DOM focus."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.167"
+  question: "Escape closes an open option list while focus {stays} on the input — the same retrieval rule the m7 modal uses."
+  answer: "stays"
+  explanation: "Dismissing a layer must not eject the user from the field."
+  difficulty: 1
+  tags: [concept]
+- id: "c.168"
+  question: "After a failed submit, focus moves to the first {invalid} field, re-announcing its describedby error on arrival."
+  answer: "invalid"
+  explanation: "Jump-table summary links plus imperative focus land the user at the exact offender."
+  difficulty: 2
+  tags: [scenario]
+- id: "c.169"
+  question: "Six application grade groups each need a {fieldset} and {legend} so the reader announces the group name once."
+  answer: "fieldset"
+  explanation: "Group semantics prefix every child for free."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.1610"
+  question: "Focus is managed with imperative {refs}; it must never be routed through {zustand} because store writes race against the DOM commit."
+  answer: "refs"
+  explanation: "A render-driven focus is a race; refs act on the DOM directly."
+  difficulty: 2
+  tags: [concept, comparison]

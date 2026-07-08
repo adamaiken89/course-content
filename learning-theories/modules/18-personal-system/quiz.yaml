@@ -1,0 +1,126 @@
+- id: '18.1'
+  question: What is the 'minimum viable system' for learning?
+  options:
+    a: 5 minutes of SRS review daily + log one thing learned
+    b: A complete study plan with every detail
+    c: 4 hours of study daily
+    d: A detailed schedule
+  answer: a
+  explanation: Start tiny (5 min SRS + log). The habit must be sustainable before optimization.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '18.2'
+  question: 'The recommended daily learning loop consists of:'
+  options:
+    b: Warmup (SRS) → Main session → Cooldown (recall + log)
+    a: Study, rest, study
+    c: Read, highlight, review
+    d: Watch videos, take notes, test
+  answer: b
+  explanation: 'Daily loop: priming (SRS) → focused technique → consolidation (recall + log).'
+  difficulty: 1
+  tags:
+  - concept
+- id: '18.3'
+  question: 'FSRS-5''s ''desired retention'' parameter set to 0.85 means:'
+  options:
+    c: You aim to recall 85% of cards at review time
+    a: You study 85% of the time
+    b: You retain 85% of what you learn forever
+    d: 85% of cards are easy
+  answer: c
+  explanation: Desired retention = target probability of recalling a card when it's due. 0.85 balances
+    review load vs retention.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '18.4'
+  question: What should come FIRST when building a learning system?
+  options:
+    d: Habit (same time, same place, 5 min minimum)
+    a: Perfect tool stack
+    b: Research all methods
+    c: Design the ideal schedule
+  answer: d
+  explanation: Habit is the foundation. Tools and optimization come after the habit is automatic.
+  difficulty: 2
+  tags:
+  - application
+- id: '18.5'
+  question: 'A student studies daily but varies time, place, and duration randomly. The missing element
+    is:'
+  options:
+    a: Consistent trigger-routine-reward habit loop
+    b: Motivation
+    c: Intelligence
+    d: Content
+  answer: a
+  explanation: Inconsistent schedule never builds automatic habit. Fixed trigger (time/place) → routine
+    → reward makes it stick.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '18.6'
+  question: The weekly rhythm allocates which day for planning?
+  options:
+    b: Sunday
+    a: Monday
+    c: Wednesday
+    d: Friday
+  answer: b
+  explanation: 'Sunday: plan goals for the week. Saturday: review. The cycle prepares you before execution.'
+  difficulty: 1
+  tags:
+  - concept
+- id: '18.7'
+  question: A student wants to know whether 25-min or 50-min sessions work better for them. What should
+    they do?
+  options:
+    c: 'Run a self-experiment: 2 weeks of each, track recall'
+    a: Ask an expert
+    b: Pick the longer one
+    d: Use whatever feels right
+  answer: c
+  explanation: Self-experiments change one variable and measure outcomes. Your optimal duration depends
+    on your context.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '18.8'
+  question: 'The daily cooldown (5-min free recall summary) primarily serves:'
+  options:
+    d: Consolidation + metacognitive calibration
+    a: Note-taking for future reference
+    b: Filling time
+    c: Teacher assessment
+  answer: d
+  explanation: Free recall consolidates the session's learning AND provides a metacognitive check (did
+    I really learn this?).
+  difficulty: 2
+  tags:
+  - concept
+- id: '18.9'
+  question: Which statement reflects the correct approach to building a learning system?
+  options:
+    a: Start with minimum viable habit, iterate based on data
+    b: Design the perfect system first, then execute
+    c: Copy someone else's system exactly
+    d: Systems don't matter — only effort
+  answer: a
+  explanation: Start simple, build the habit, then improve. Perfection before action is paralysis.
+  difficulty: 2
+  tags:
+  - application
+- id: '18.10'
+  question: 'The ultimate measure of a successful learning system is:'
+  options:
+    b: Whether you use it consistently and it produces learning
+    a: How many tools you use
+    c: How many hours you study
+    d: How complex the schedule is
+  answer: b
+  explanation: Consistency > intensity. A simple system used daily beats a complex system used occasionally.
+  difficulty: 2
+  tags:
+  - concept

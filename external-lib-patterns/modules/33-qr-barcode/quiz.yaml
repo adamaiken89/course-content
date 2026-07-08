@@ -1,0 +1,145 @@
+- id: '33.1'
+  question: What is the difference between QRCodeCanvas and QRCodeSVG in react-qrcode?
+  options:
+    a: Canvas renders to canvas element (good for export); SVG renders scalable vector
+      (good for inline display)
+    b: Canvas supports color; SVG is monochrome
+    c: SVG is faster; Canvas supports more error levels
+    d: They are identical — name only differs for SSR compatibility
+  answer: a
+  explanation: QRCodeCanvas renders to <canvas> — use for export (toDataURL, toBlob).
+    QRCodeSVG renders to <svg> — use for inline display, copy, embedding, scaling.
+  difficulty: 1
+  tags:
+  - rendering
+- id: '33.2'
+  question: Which error correction level should be used when overlaying a logo on
+    a QR code?
+  options:
+    a: Q (25% recovery) or H (30% recovery)
+    b: L (7% recovery)
+    c: M (15% recovery)
+    d: Error correction has no effect on logo overlays
+  answer: a
+  explanation: Logo covers 15-25% of QR modules. Need Q (25%) or H (30%) recovery
+    to ensure scan succeeds. L or M will fail with typical logo sizes.
+  difficulty: 1
+  tags:
+  - qr
+  - error-correction
+- id: '33.3'
+  question: What does the excate prop do in react-qrcode imageSettings?
+  options:
+    b: Removes QR modules behind logo to prevent scan interference
+    a: Creates embossed effect on logo
+    c: Excavates background color around QR code
+    d: Exports QR as SVG file
+  answer: b
+  explanation: excate=true tells renderer to clear QR data modules in logo area. Without
+    this, logo overlay creates contrast issues that degrade scanning.
+  difficulty: 2
+  tags:
+  - qr
+  - customization
+- id: '33.4'
+  question: Which barcode format is appropriate for retail product labeling?
+  options:
+    d: EAN-13
+    a: CODE128
+    b: CODE39
+    c: DataMatrix
+  answer: d
+  explanation: EAN-13 is the international retail product barcode standard. CODE128
+    is general alphanumeric. CODE39 is logistics. DataMatrix is for small electronics.
+  difficulty: 1
+  tags:
+  - barcode
+  - formats
+- id: '33.5'
+  question: Why use virtual scrolling for batch QR code generation?
+  options:
+    c: Prevents DOM thrashing by only rendering visible QR codes
+    a: Virtual scrolling increases QR generation speed
+    b: Required for jsbarcode to work in batches
+    d: Virtual scrolling enables PNG export
+  answer: c
+  explanation: Rendering hundreds of QR/barcode DOM nodes simultaneously causes layout
+    thrashing and jank. Virtual scroll renders only visible items, recycling DOM nodes.
+  difficulty: 2
+  tags:
+  - performance
+  - batch
+- id: '33.6'
+  question: How does the React 19 ref-as-prop pattern enable QR export to PNG?
+  options:
+    b: Ref provides access to canvas element for toDataURL/toBlob calls
+    a: Ref holds QR value as string
+    c: Ref triggers automatic download on mount
+    d: Ref stores QR SVG source
+  answer: b
+  explanation: Canvas ref via ref-as-prop gives imperative access to underlying <canvas>.
+    Call canvas.toDataURL('image/png') or canvas.toBlob() to trigger PNG download.
+  difficulty: 2
+  tags:
+  - react
+  - export
+- id: '33.7'
+  question: What is the advantage of using React 19 Server Components for QR codes?
+  options:
+    d: Zero JS shipped to client — QR rendered to SVG string at build/request time
+    a: Faster client-side rendering
+    b: Higher error correction available on server
+    c: Server can generate animated QR codes
+  answer: d
+  explanation: Server Components pre-render QR to SVG string deterministically. No
+    QR library JS sent to client. Wrap in Suspense for streaming delivery.
+  difficulty: 2
+  tags:
+  - react
+  - server-components
+- id: '33.8'
+  question: Which jsbarcode format supports full ASCII character set?
+  options:
+    b: CODE128
+    a: EAN-13
+    c: UPC-A
+    d: ITF
+  answer: b
+  explanation: CODE128 supports full ASCII character set (alphanumeric + symbols)
+    with variable length. EAN-13/UPC-A are fixed-length numeric. ITF is numeric only.
+  difficulty: 2
+  tags:
+  - barcode
+  - formats
+- id: '33.9'
+  question: When would you prefer react-qrcode over jsbarcode for generating QR codes?
+  options:
+    c: For QR codes specifically — better error correction, customization, and React
+      integration
+    a: Always — react-qrcode supports all barcode formats
+    b: jsbarcode cannot generate QR codes
+    d: They both generate identical QR output
+  answer: c
+  explanation: react-qrcode specializes in QR codes with better customization, error
+    correction levels, and React component API. jsbarcode supports QR but is focused
+    on linear barcodes.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '33.10'
+  question: What is the correct approach for high-resolution QR export suitable for
+    print?
+  options:
+    a: Scale canvas element using drawImage with resolution multiplier before toDataURL
+    b: Use QRCodeSVG at large size
+    c: Increase size prop on QRCodeCanvas
+    d: Export as JPEG for smaller file size
+  answer: a
+  explanation: Screen canvas resolution is limited. For print, draw canvas to offscreen
+    canvas at 4x scale via drawImage with scale transform, then export via toDataURL
+    at quality 1.
+  difficulty: 3
+  tags:
+  - export
+  - print
+

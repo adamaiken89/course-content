@@ -1,0 +1,138 @@
+- id: '9.1'
+  question: What is the key format Apollo InMemoryCache uses to store normalized entities
+    by default?
+  options:
+    c: __typename + id composite key
+    a: Only the entity id
+    b: Only the __typename
+    d: Full query path + field name
+  answer: c
+  explanation: Default key is `${__typename}:${id}`. This prevents collisions between
+    types sharing same id (e.g., User:1 and Post:1).
+  difficulty: 2
+  tags: []
+- id: '9.2'
+  question: Which method would you call to prevent a specific entity from being garbage
+    collected?
+  options:
+    a: cache.retain()
+    b: cache.evict()
+    c: cache.persist()
+    d: cache.keep()
+  answer: a
+  explanation: cache.retain() marks an entity as ineligible for GC even if unreachable
+    from root queries. Useful for entities referenced only by evicted fields.
+  difficulty: 2
+  tags: []
+- id: '9.3'
+  question: Entity type `Transaction` has fields `txnId`, `amount`, `currency` but
+    no field named `id`. No single field is globally unique. What is the correct typePolicy?
+  options:
+    b: 'keyFields: false'
+    a: No typePolicy needed — Apollo defaults work
+    c: 'keyFields: [''txnId'']'
+    d: 'keyFields: [''__typename'']'
+  answer: b
+  explanation: 'When no single field is unique, set keyFields: false to treat each
+    entity as unique without normalization. txnId may not be globally unique across
+    pages. Option B assumes txnId is globally unique, which may be wrong.'
+  difficulty: 2
+  tags: []
+- id: '9.4'
+  question: User queries product list, gets Product(id:5, name:'Shoe'). Then navigates
+    to product detail for id:5. Without cache redirect, what happens?
+  options:
+    a: Client fires network request for product detail
+    b: Cache returns product detail from list query data
+    c: Product detail shows all fields from list query
+    d: Apollo throws missing cache field error
+  answer: a
+  explanation: Without cache redirect, Apollo treats product(id:5) as a separate cache
+    key. It fires network request even though Product:5 exists. With redirect, it
+    returns cached reference.
+  difficulty: 2
+  tags: []
+- id: '9.5'
+  question: 'Cache contains User:1 with name ''Alice''. Mutation updates user name
+    to ''Bob'' on server but mutation response only returns { success: true }. What
+    is displayed in views querying User:1?'
+  options:
+    d: '''Alice'' — cache unchanged, no refetch triggered'
+    a: '''Bob'' — mutation automatically updates cache'
+    b: null — cache evicted User:1
+    c: Error — type mismatch
+  answer: d
+  explanation: 'Cache only updates when mutation response contains the updated entity.
+    Since response is { success: true }, cache never learns of name change. Must refetch
+    or use cache.modify to write new name.'
+  difficulty: 2
+  tags: []
+- id: '9.6'
+  question: What algorithm does Apollo cache.gc() use?
+  options:
+    c: Mark-sweep
+    a: Reference counting
+    b: Generational collection
+    d: Timer-based expiry
+  answer: c
+  explanation: 'Mark-sweep: marks all entities reachable from root queries, sweeps
+    (evicts) unmarked entities. Does not use reference counting or generational collection.'
+  difficulty: 2
+  tags: []
+- id: '9.7'
+  question: 'Two queries fetch User:1 with different field sets. Query A: { id, name
+    }. Query B: { id, email }. After both execute, what does User:1 cache entry contain?'
+  options:
+    b: 'Merged fields: { id, name, email }'
+    a: Only fields from the most recent query
+    c: Error — conflicting field sets
+    d: Both field sets stored separately under different keys
+  answer: b
+  explanation: Apollo merges fields from multiple queries into same entity. User:1
+    ends up with { id, name, email }. This is normalization benefit — no duplicate
+    entities for different field selections.
+  difficulty: 2
+  tags: []
+- id: '9.8'
+  question: Which storage wrapper is typically used with apollo3-cache-persist in
+    browser environments?
+  options:
+    d: LocalStorageWrapper
+    a: AsyncStorageWrapper
+    b: IndexedDBWrapper
+    c: MemoryWrapper
+  answer: d
+  explanation: LocalStorageWrapper uses window.localStorage. AsyncStorageWrapper is
+    for React Native. Apollo cache persist abstracts the storage via wrapper pattern.
+  difficulty: 2
+  tags: []
+- id: '9.9'
+  question: 'Schema: union SearchResult = User | Post. Client executes search query
+    without inline fragment on __typename. Cache stores results array with no __typename.
+    What problem occurs?'
+  options:
+    a: Array positions used as keys — no normalization
+    b: All results stored as same type — cache breaks
+    c: Apollo throws SchemaError at query time
+    d: Results stored normally, no issue
+  answer: a
+  explanation: Without __typename, Apollo cannot determine entity identity. Falls
+    back to array-position keys. Entities are not normalized — updates to User:1 do
+    not reflect in search results. Always include __typename in queries with unions.
+  difficulty: 2
+  tags: []
+- id: '9.10'
+  question: You want Product:42 to survive GC even though no root query references
+    it. What sequence?
+  options:
+    b: cache.identify → cache.retain
+    a: cache.evict → cache.gc()
+    c: cache.writeQuery → cache.gc()
+    d: cache.modify → cache.retain
+  answer: b
+  explanation: 'cache.identify({ __typename: ''Product'', id: ''42'' }) returns the
+    cache key string. Pass to cache.retain() to mark entity as ineligible for GC.
+    Without retain, unreachable entities are collected.'
+  difficulty: 2
+  tags: []
+

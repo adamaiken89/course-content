@@ -1,0 +1,71 @@
+- id: c.1
+  question: Equity holders have a {residual claim} on company assets — they get paid
+    only after {debt holders} are satisfied.
+  answer: residual claim
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 'In bankruptcy, payment priority is: {debt holders} first, then {preferred
+    stockholders}, then common stockholders.'
+  answer: debt holders
+  difficulty: 1
+  tags:
+  - concept
+- id: c.3
+  question: Market capitalization = {share price} × {shares outstanding}.
+  answer: share price
+  difficulty: 1
+  tags:
+  - formula
+- id: c.4
+  question: Preferred stock dividends are typically {cumulative} — if the company
+    skips a payment, it must eventually pay {all missed payments} before resuming
+    common dividends.
+  answer: cumulative
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: Treasury shares are {issued} but not {outstanding}. They have no voting
+    rights and receive no dividends.
+  answer: issued
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.6
+  question: A company with authorized 100M shares, issued 80M, and treasury 5M has
+    {75M} shares outstanding.
+  answer: 75M
+  difficulty: 2
+  tags:
+  - calculation
+- id: c.7
+  question: Common stockholders typically have {voting rights} (e.g., 1 vote per share
+    for board elections), while preferred stockholders generally do not.
+  answer: voting rights
+  difficulty: 1
+  tags:
+  - comparison
+- id: c.8
+  question: Stock split changes {share count} and {price} but does not change market
+    capitalization.
+  answer: share count
+  difficulty: 1
+  tags:
+  - concept
+- id: c.9
+  question: A company with stock price $150 and 300M shares outstanding has a market
+    cap of {$45B}.
+  answer: $45B
+  difficulty: 2
+  tags:
+  - calculation
+- id: c.10
+  question: Enterprise Value = Market Cap + {debt} - {cash}. This metric better captures
+    the value of a company's operating business than market cap alone.
+  answer: debt
+  difficulty: 3
+  tags:
+  - formula
+  - concept

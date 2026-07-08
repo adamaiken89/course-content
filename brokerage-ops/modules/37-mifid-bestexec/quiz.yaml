@@ -1,0 +1,125 @@
+- id: '37.1'
+  question: In the EU, who submits MiFID II transaction reports to the competent authority?
+  options:
+    a: The executing exchange
+    b: The trade repository
+    c: The Approved Reporting Mechanism (ARM) on behalf of the investment firm
+    d: The central securities depository
+  answer: c
+  explanation: MiFID II transaction reporting is submitted by an Approved Reporting Mechanism (ARM) to the competent authority (FCA, BaFin, AMF). The reporting firm is the investment firm — broker, proprietary trader, or asset manager.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '37.2'
+  question: What is the deadline for MiFID II transaction reports?
+  options:
+    a: T+1
+    b: Within 15 minutes
+    c: T+10
+    d: Real-time at execution
+  answer: a
+  explanation: MiFID II transaction reports (RTS 22) must be submitted by T+1. EMIR trade reports also follow a T+1 business-day deadline.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '37.3'
+  question: If buyer and seller reports in EMIR double-sided reporting do not match, what happens?
+  options:
+    a: Trade Repository automatically adopts the buyer's report
+    b: Break resolution is triggered — both parties must investigate and resolve the discrepancy
+    c: Only trades above $1M require reconciliation
+    d: The seller's report is presumed correct and the buyer must match it
+  answer: b
+  explanation: EMIR's double-sided reporting is designed for automatic reconciliation. A mismatch flags a break, and both parties must investigate the discrepancy (e.g., trade date, price, currency errors) and resubmit. Prolonged unresolved breaks may trigger regulator inquiry.
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '37.4'
+  question: SFTR reporting covers which type of transaction?
+  options:
+    a: Corporate bond trades
+    b: Exchange-traded futures
+    c: Equity option trades
+    d: Securities financing transactions — repos, securities lending, buy-sell backs, margin lending
+  answer: d
+  explanation: SFTR covers securities financing transactions including repos, securities lending, buy-sell backs, and margin lending. It also requires double-sided reporting and shares infrastructure with EMIR.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '37.5'
+  question: A broker is about to trade a newly issued bond and finds its ISIN is not registered in FIRDS. What must the firm understand?
+  options:
+    a: MiFID II requires all financial instruments to be registered in FIRDS before trading — the broker must verify instrument reference data accuracy
+    b: FIRDS registration is voluntary
+    c: FIRDS only covers equities
+    d: ISIN accuracy is the client's responsibility
+  answer: a
+  explanation: MiFID II established FIRDS, the Financial Instruments Reference Data System. All financial instruments must be registered in the ESMA database before trading, and the broker must ensure the ISIN and CFI codes used are accurate and not expired.
+  difficulty: 2
+  tags:
+  - concept
+- id: '37.6'
+  question: A sell order executes at the ask price when the market is quoted bid 50.10 / ask 50.20. Under the tick test, how is this execution classified?
+  options:
+    a: Price improvement — best execution
+    b: Neutral — at midpoint
+    c: Negative — a sell executed above the bid, crossing the spread
+    d: Best execution regardless of order side
+  answer: c
+  explanation: For a sell order, executing at the ask (above the bid) is a negative result — sell-side crossing the spread. Best execution requires a buy to execute at or inside the ask and a sell at or inside the bid.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '37.7'
+  question: Which report must EU investment firms publish annually to demonstrate best execution quality?
+  options:
+    a: RTS 22 transaction report
+    b: RTS 28 execution quality report
+    c: SEC Rule 606 order routing report
+    d: Form 13H
+  answer: b
+  explanation: MiFID II RTS 28 is the annual execution quality report, categorized by asset class, transaction type, and execution venue, analyzing price, cost, speed, likelihood of execution, and settlement.
+  difficulty: 2
+  tags:
+  - terminology
+  - comparison
+- id: '37.8'
+  question: Which US report discloses quarterly order routing venue selection statistics to clients?
+  options:
+    a: SEC Rule 605 execution quality report
+    b: FINRA Rule 4560 short interest report
+    c: SEC Form 13H
+    d: SEC Rule 606 order routing report
+  answer: d
+  explanation: SEC Rule 606 requires quarterly order routing reports disclosing routing venue selection statistics and routing logic. SEC Rule 605 covers execution quality statistics published by market centers.
+  difficulty: 1
+  tags:
+  - terminology
+  - comparison
+- id: '37.9'
+  question: Under best execution rules in both the US and EU, which factor is emphasized as the most important?
+  options:
+    a: Execution speed
+    b: Settlement reliability
+    c: Price
+    d: Likelihood of execution
+  answer: c
+  explanation: Best execution is multi-factor (price, cost, speed, likelihood, settlement), but both FINRA and FCA emphasize that price is the most important factor. Optimizing for speed alone while disregarding price likely violates the obligation.
+  difficulty: 2
+  tags:
+  - concept
+- id: '37.10'
+  question: A broker that clears derivatives reports only its own side of an OTC swap to the trade repository. What is the consequence under EMIR?
+  options:
+    a: The trade stays unmatched and triggers a break or valuation mismatch at the trade repository — EMIR mandates double-sided reporting
+    b: The trade repository reconciles it against the broker's internal books automatically
+    c: Reporting one side is sufficient for cleared swaps
+    d: The counterparty's report is not needed for non-financial counterparties
+  answer: a
+  explanation: EMIR mandates double-sided reporting — both counterparties must report. A one-sided report leaves an unmatched record that triggers a break or valuation mismatch at the trade repository (DTCC, Regis-TR, UnaVista).
+  difficulty: 3
+  tags:
+  - scenario
+  - application

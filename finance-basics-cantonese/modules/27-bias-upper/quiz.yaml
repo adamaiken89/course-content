@@ -1,0 +1,134 @@
+- id: '27.1'
+  question: Anchoring 效應最準確嘅描述?
+  options:
+    a: 只睇支持自己嘅新聞
+    b: 高估自己能力
+    c: 聳動新聞影響決定
+    d: 過度依賴第一個信息, 後續判斷被呢個錨點影響
+  answer: d
+  explanation: Anchoring = 過度依賴第一個信息, 例如買入價錨定, 跌咗仍覺平; 高位錨定, 跌咗仍覺貴。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '27.2'
+  question: Confirmation Bias 投資例子?
+  options:
+    a: 睇股價圖預測
+    b: 只睇支持自己睇法嘅新聞, 忽略反對
+    c: 分散投資
+    d: 設止蝕位
+  answer: b
+  explanation: 'Confirmation Bias = 選擇性搵支持, 忽略反對證據。投資表現: 朋友推薦就買, 只睇利好新聞。'
+  difficulty: 1
+  tags:
+  - terminology
+  - scenario
+- id: '27.3'
+  question: Barber & Odean 2000 研究發現?
+  options:
+    a: 高頻交易一定賺
+    b: 女性交易頻率高, 回報低
+    c: 男性交易頻率高 50%, 回報卻低過市場
+    d: 所有人交易頻率一樣
+  answer: c
+  explanation: 研究顯示男性交易頻率比女性高 50%, 但回報反而低過市場。反映 Overconfidence 導致過度交易。
+  difficulty: 2
+  tags:
+  - concept
+  - research
+- id: '27.4'
+  question: 90% 主動基金 15 年跑輸指數, 但幾多 % 投資者自認跑贏?
+  options:
+    a: 95%
+    b: 50%
+    c: 70%
+    d: 80%
+  answer: d
+  explanation: 研究顯示約 80% 投資者自認跑贏指數, 但 90% 主動基金跑輸, 反映 Overconfidence Bias。
+  difficulty: 2
+  tags:
+  - concept
+  - research
+- id: '27.5'
+  question: Availability Heuristic 投資例子?
+  options:
+    a: 睇 10 年回報
+    b: 新聞聳動股就買, 朋友賺錢就跟
+    c: 買 ETF
+    d: 設止蝕位
+  answer: b
+  explanation: '可得性謬誤: 容易被記住嘅聳動事件影響判斷, 忽略實際頻率。朋友賺錢案例 + 聳動新聞 → 跟風。'
+  difficulty: 2
+  tags:
+  - terminology
+  - scenario
+- id: '27.6'
+  question: 避開 Anchoring 嘅方法?
+  options:
+    a: 睇基本面, 唔睇歷史價; 重新分析; 寫投資 thesis
+    b: 跟朋友買
+    c: 睇 KOL
+    d: 睇歷史價
+  answer: a
+  explanation: '避開 Anchoring: 問「呢間公司值幾多」唔問「之前幾多」; 跌 30% 時重新睇 thesis, 唔好因為「已經跌」就 hold。'
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '27.7'
+  question: 避開 Confirmation Bias 嘅方法?
+  options:
+    a: 主動搵反對證據, 預先定止蝕規則, 找 Devil's Advocate
+    b: 唔做研究
+    c: 聽朋友意見
+    d: 只睇支持嘅新聞
+  answer: a
+  explanation: '強制自己搵反對觀點: (1) 主動搜「[股名] 風險」, (2) 預先定止蝕, (3) 朋友扮反方, (4) 讀多角度來源。'
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '27.8'
+  question: 避開 Overconfidence 嘅方法?
+  options:
+    a: 加大注碼
+    b: 記錄所有交易, 定期對賬指數, 承認市場有效, 被動投資
+    c: 只聽自己分析
+    d: 加快交易頻率
+  answer: b
+  explanation: '對沖 Overconfidence: (1) 交易 log, (2) 對賬 S&P 500, (3) 承認市場有效, (4) 直接買
+    ETF。'
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '27.9'
+  question: Pre-mortem 嘅意思?
+  options:
+    a: 加碼
+    b: 死後驗屍
+    c: 假設一年後蝕 50%, 你而家會點? 預先應對
+    d: 慶祝賺錢
+  answer: c
+  explanation: 'Pre-mortem: 決策前先假設失敗, 問「如果一年後蝕 50%, 邊度錯?」, 預先準備退場策略。'
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '27.10'
+  question: 你朋友 2024 年靠 NVDA 賺 3 倍, 同你講「快啲買」。你點做?
+  options:
+    a: 警惕 4 個 Bias, 自己研究基本面, 設止蝕位, 唔好 FOMO
+    b: 借錢買 NVDA
+    c: 叫朋友寫推薦信
+    d: 即刻 all-in
+  answer: a
+  explanation: '警惕 4 個 Bias: Anchoring (朋友 entry price 唔係 reference)、Confirmation
+    (朋友賺咗自然 support)、Overconfidence (1 次成功唔代表眼光好)、Availability (聳動案例容易記住)。應該自己研究,
+    設止蝕, 唔 FOMO。'
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+

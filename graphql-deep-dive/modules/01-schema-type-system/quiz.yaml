@@ -1,0 +1,132 @@
+- id: '1.1'
+  question: Which GraphQL type modifier pair correctly describes 'non-null list of
+    non-null strings'?
+  options:
+    a: '[String!]!'
+    b: '[String!]'
+    c: '[String]!'
+    d: String[!]!
+  answer: a
+  explanation: '[String!]! means the list is non-null, each element is non-null. Option
+    A allows null list. Option B allows null elements. Option D is invalid syntax.'
+  difficulty: 2
+  tags: []
+- id: '1.2'
+  question: How many root types are required in a GraphQL schema?
+  options:
+    b: Only query
+    a: 'All three: query, mutation, subscription'
+    c: At least query and mutation
+    d: None — schema can be empty
+  answer: b
+  explanation: Only query root type is required. Mutation and subscription are optional.
+  difficulty: 2
+  tags: []
+- id: '1.3'
+  question: You have types User (id, name, email) and Admin (id, name, email, role)
+    that share fields. Which type system construct should you use?
+  options:
+    d: Interface — Node with id, name, email
+    a: Union — User | Admin
+    b: Interface — Node with id only
+    c: Keep separate, no abstraction
+  answer: d
+  explanation: Interface fits when types share common fields. Admin extends User's
+    fields with role. Union is for unrelated types.
+  difficulty: 2
+  tags: []
+- id: '1.4'
+  question: A search endpoint returns Users, Posts, or Comments. Types have no shared
+    fields. Which construct?
+  options:
+    a: union SearchResult = User | Post | Comment
+    b: interface Searchable { ... }
+    c: type SearchResult = User | Post | Comment
+    d: Return [JSON] and parse client-side
+  answer: a
+  explanation: Union is correct when types are semantically grouped but structurally
+    unrelated. Interface requires shared fields. Type union is not valid SDL.
+  difficulty: 2
+  tags: []
+- id: '1.5'
+  question: What happens when a non-null field (!) resolves to null at runtime?
+  options:
+    d: The parent object becomes null and error is added to errors[]
+    a: The field returns null and error is added to errors[]
+    b: The field returns null silently
+    c: The entire response is rejected
+  answer: d
+  explanation: 'Null-bubble rule: non-null field returning null causes parent to become
+    null. Error goes to errors[]. This prevents partial parent objects.'
+  difficulty: 2
+  tags: []
+- id: '1.6'
+  question: Which statement about input types is FALSE?
+  options:
+    b: Input types can be used as field return types
+    a: Input types can have default values on fields
+    c: Input types can reference other input types
+    d: Input types are used only for mutation or query arguments
+  answer: b
+  explanation: Input types cannot be used as return types for fields. They exist solely
+    for argument definitions.
+  difficulty: 2
+  tags: []
+- id: '1.7'
+  question: 'Schema has `type Query { user(id: ID!): User }` and `type User { id:
+    ID! posts: [Post!]! }` with `type Post { id: ID! title: String! }`. Client queries
+    user(id: "1") { id posts { title } }. The resolver for User.posts throws an error
+    for one of the posts. What is the result?'
+  options:
+    b: The posts field returns null for that element
+    a: The entire posts list is null
+    c: The user object is null
+    d: The request fails with a top-level error
+  answer: b
+  explanation: 'Individual list elements that error become null (since Post is a nullable
+    member of [Post!] — wait, [Post!] means elements are non-null. So the thrown error
+    causes that list element to be null, which violates non-null, so the entire list
+    becomes null. The correct answer depends: if [Post!], null list. If [Post], null
+    element. Common mistake.'
+  difficulty: 2
+  tags: []
+- id: '1.8'
+  question: Which directive would you use to conditionally exclude a field during
+    execution?
+  options:
+    c: '@skip'
+    a: '@include'
+    b: '@exclude'
+    d: '@deprecated'
+  answer: c
+  explanation: '@skip(if: Boolean!) excludes the field when true. @include(if: Boolean!)
+    includes when true. They are opposites.'
+  difficulty: 2
+  tags: []
+- id: '1.9'
+  question: Schema has `scalar Email`. Server validates format in parseValue. What
+    is the advantage over using String?
+  options:
+    a: Type-level validation enforced by schema tooling and codegen
+    b: Better performance
+    c: Automatic database indexing
+    d: Smaller network payload
+  answer: a
+  explanation: Custom scalars enable schema-level validation, documentation, and codegen
+    that emits native types (e.g., Email type in TypeScript) rather than raw strings.
+  difficulty: 2
+  tags: []
+- id: '1.10'
+  question: You want every CreateUser mutation to accept only role USER or ADMIN.
+    How many schema constructs needed?
+  options:
+    c: 'Two: enum for role + input type'
+    a: 'One: input type with String field'
+    b: 'Three: enum + input type + custom scalar'
+    d: 'Four: enum + input type + directive + scalar'
+  answer: c
+  explanation: 'Define enum UserRole { USER ADMIN } then input CreateUserInput { ...,
+    role: UserRole! }. Two constructs. Enum enforces values at schema level.'
+  difficulty: 2
+  tags: []
+

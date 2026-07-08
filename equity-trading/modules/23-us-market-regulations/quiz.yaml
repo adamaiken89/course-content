@@ -1,0 +1,120 @@
+- id: '23.1'
+  question: Which element is NOT required for insider trading liability?
+  options:
+    a: Material non-public information
+    b: Breach of fiduciary duty
+    c: Profitability (the trade made money)
+    d: Personal benefit to the tipper
+  answer: c
+  explanation: Insider trading does NOT require profit. Trading on MNPI is illegal regardless of outcome. SEC can seek penalties based on loss avoided.
+  difficulty: 1
+  tags:
+  - concept
+- id: '23.2'
+  question: 'Entering large buy orders with intent to cancel before execution, creating false demand, is called:'
+  options:
+    a: Wash trading
+    b: Pump and dump
+    c: Spoofing
+    d: Quote stuffing
+  answer: c
+  explanation: Spoofing = placing orders with intent to cancel. Large orders create false demand → market moves → trader executes on other side → cancels original orders. Illegal under Dodd-Frank.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '23.3'
+  question: Under Reg NMS Rule 611 (Order Protection Rule), what is a trade-through?
+  options:
+    a: Executing at NBBO
+    b: Executing at price worse than NBBO when better price available at another venue
+    c: Executing at price better than NBBO
+    d: Executing outside of market hours
+  answer: b
+  explanation: Trade-through = order executes at price inferior to NBBO when a protected quote at better price existed. Rule 611 requires routing to venue with best price first.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '23.4'
+  question: 'Under Reg NMS Rule 612 (Sub-Penny Rule), minimum price increment for quoting a stock priced at $50 is:'
+  options:
+    a: $0.0001
+    b: $0.001
+    c: $0.01
+    d: $0.05
+  answer: c
+  explanation: Rule 612 requires minimum $0.01 increments for stocks ≥ $1.00. Sub-penny increments only allowed for stocks below $1.00. Prevents queue-jumping by microscopic price improvements.
+  difficulty: 1
+  tags:
+  - concept
+- id: '23.5'
+  question: In SEC v. Dirks (1983), what is required for tipper liability?
+  options:
+    a: Tipper must trade personally
+    b: Tipper must receive personal benefit
+    c: Information must be material
+    d: Tippee must profit
+  answer: b
+  explanation: Dirks established that tipper liability requires personal benefit to the tipper — money, reputational gain, or gift to friend. Mere disclosure without benefit is not a violation.
+  difficulty: 2
+  tags:
+  - concept
+- id: '23.6'
+  question: 'A trader simultaneously buys and sells same stock through two different broker accounts. No change in beneficial ownership. This is:'
+  options:
+    a: Spoofing
+    b: Wash trading
+    c: Arbitrage
+    d: Hedging
+  answer: b
+  explanation: Wash trading = simultaneous buy/sell by same beneficial owner creating artificial volume. Prohibited under Rule 10b-5. Creates false impression of market activity.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '23.7'
+  question: Navinder Sarao (2015) is known for which market manipulation scheme?
+  options:
+    a: Pump and dump of penny stocks
+    b: Wash trading in oil futures
+    c: Spoofing E-mini S&P futures
+    d: Insider trading in tech stocks
+  answer: c
+  explanation: Sarao spoofed E-mini S&P 500 futures with large orders he intended to cancel. His activity is widely cited as contributing to the 2010 Flash Crash.
+  difficulty: 2
+  tags:
+  - fact
+- id: '23.8'
+  question: What is the maximum SEC access fee per share under Reg NMS Rule 610?
+  options:
+    a: $0.001
+    b: $0.003
+    c: $0.005
+    d: $0.010
+  answer: b
+  explanation: Rule 610 caps access fees at $0.003/share. This prevents fee arbitrage from distorting routing decisions and ensures price priority matters.
+  difficulty: 2
+  tags:
+  - fact
+- id: '23.9'
+  question: Under the Dirks test, what happens if a tippee does NOT know the tipper breached a duty?
+  options:
+    a: Tippee still liable
+    b: No violation (per SEC v. Newman)
+    c: Only tipper liable
+    d: Both liable but reduced penalties
+  answer: b
+  explanation: SEC v. Newman (2014) established tippee must know the tipper breached a duty for personal benefit. Tippee liability requires knowledge of the breach.
+  difficulty: 3
+  tags:
+  - concept
+- id: '23.10'
+  question: In pump and dump schemes, who are typically the victims?
+  options:
+    a: Institutional investors
+    b: Market makers
+    c: Retail buyers at inflated prices
+    d: Short sellers
+  answer: c
+  explanation: Pump and dump promotes stock (often penny stocks) with false claims, then sells into inflated price. Retail buyers who purchase at inflated prices are left holding worthless shares.
+  difficulty: 1
+  tags:
+  - concept

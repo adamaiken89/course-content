@@ -1,0 +1,110 @@
+- id: "17.1"
+  question: "Which UUID version keeps values time-ordered so new B-tree inserts stay append-like?"
+  options:
+    a: "uuidv1"
+    b: "uuidv4"
+    c: "uuidv7"
+    d: "uuidv8"
+  answer: c
+  explanation: "uuidv7 encodes a timestamp, so generated keys are roughly monotonic and new index entries land near the current edge instead of at random positions."
+  difficulty: 1
+  tags: [terminology]
+- id: "17.2"
+  question: "Which function reads the creation time back directly out of a uuidv7 value?"
+  options:
+    a: "uuid_extract_timestamp"
+    b: "uuid_clock"
+    c: "gen_random_uuid"
+    d: "pg_stat_activity"
+  answer: a
+  explanation: "uuid_extract_timestamp decodes the time part of a uuidv7, often removing the need for a separate created_at column."
+  difficulty: 1
+  tags: [terminology]
+- id: "17.3"
+  question: "A team seeds a 100-row lookup table with uuidv7 'for insert performance'. Why is the benefit over-rated here?"
+  options:
+    a: "uuidv7 does not work offline"
+    b: "Generated columns conflict with it"
+    c: "AIO disables it"
+    d: "The table is too small for index write locality to matter"
+  answer: d
+  explanation: "uuidv7 wins on big, hot keys where index page-splitting and write locality matter. Tiny tables barely benefit, and the 16-byte keys still cost space."
+  difficulty: 2
+  tags: [scenario]
+- id: "17.4"
+  question: "What does the multicolumn B-tree 'skip scan' in PG18 enable?"
+  options:
+    a: "Skip the entire index when stats are stale"
+    b: "Remove rows without vacuum"
+    c: "Use a matching index without the leading columns in the query"
+    d: "Skip the planner entirely"
+  answer: c
+  explanation: "Skip scan hops over leading-column values when the query only filters on later columns — a fallback that beats a full scan but is not a replacement for ordering columns correctly."
+  difficulty: 2
+  tags: [concept]
+- id: "17.5"
+  question: "Which PG19 statement implements atomic get-or-create without no-op updates or dead tuples?"
+  options:
+    a: "REPACK"
+    b: "MERGE WHEN MATCHED"
+    c: "COPY ... FORMAT json"
+    d: "INSERT ... ON CONFLICT DO SELECT"
+  answer: d
+  explanation: "ON CONFLICT DO SELECT returns the existing row on conflict, roughly 4x faster than DO NOTHING plus retry, and creates no fake-update dead tuple."
+  difficulty: 2
+  tags: [concept]
+- id: "17.6"
+  question: "Which PG19 feature replaces VACUUM FULL/CLUSTER and can repack without a full write block?"
+  options:
+    a: "REPACK CONCURRENTLY"
+    b: "pg_plan_advice"
+    c: "AIO"
+    d: "INCREMENTAL SORT"
+  answer: a
+  explanation: "REPACK CONCURRENTLY rewrites the table densely on a shadow copy and swaps metadata near the end, so long operations continue on the original table."
+  difficulty: 1
+  tags: [terminology]
+- id: "17.7"
+  question: "The hard physical constraint before running REPACK CONCURRENTLY on a 200GB table is:"
+  options:
+    a: "A matching index must exist"
+    b: "Free disk space roughly the table size on the tablespace"
+    c: "All clients must disconnect"
+    d: "Checksums must be disabled"
+  answer: b
+  explanation: "Repack builds a shadow copy, so you need nearly the table's size in free bytes. The swap itself may not block, but the disk budget is the blocker."
+  difficulty: 3
+  tags: [scenario]
+- id: "17.8"
+  question: "How does pg_plan_advice confirm whether an applied hint actually took effect?"
+  options:
+    a: "It reloads the planner automatically"
+    b: "It shows only timing numbers"
+    c: "It disables the hint on error silently"
+    d: "It reports matched / partially matched / not matched"
+  answer: d
+  explanation: "Feedback lines tell you if the hint matched, partially matched, or did not match, so you know when to fix the underlying structure instead of trusting the hint."
+  difficulty: 2
+  tags: [concept]
+- id: "17.9"
+  question: "Which PG18 feature lets you add a NOT NULL constraint with only SHARE UPDATE EXCLUSIVE (no long write lock)?"
+  options:
+    a: "CREATE UNIQUE INDEX CONCURRENTLY"
+    b: "SET NOT NULL DEFAULT"
+    c: "NOT NULL NOT VALID then VALIDATE CONSTRAINT"
+    d: "ALTER TABLE ... SET (fillfactor)"
+  answer: c
+  explanation: "Add it NOT VALID (cheap lock) and later run VALIDATE CONSTRAINT. Validation is a background scan rather than a write-blocking rebuild."
+  difficulty: 2
+  tags: [concept]
+- id: "17.10"
+  question: "What do OLD and NEW aliases in PG18 RETURNING let you write more cleanly?"
+  options:
+    a: "Window function frames"
+    b: "Trigger-style audit code that sees before/after values"
+    c: "Recursive CTE base cases"
+    d: "Partition pruning predicates"
+  answer: b
+  explanation: "RETURNING OLD.column / NEW.column exposes the pre- and post-write row in one statement, simplifying audit and change-tracking queries."
+  difficulty: 2
+  tags: [concept]

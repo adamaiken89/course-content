@@ -1,0 +1,57 @@
+- id: c.1
+  question: 語言模型嘅核心任務係俾咗{上文}之後，預測{下一個字}係乜。
+  answer: 上文，下一個字
+  explanation: 呢兩個概念係語言模型嘅最基礎理解。模型唔係理解文字，而係根據上文統計下一個字嘅概率。
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 語言模型唔係{database}，佢唔會「記住」事實。佢嘅 weights 係 training data 嘅{compressed representation}。
+  answer: database，compressed representation
+  explanation: 呢個區分好重要 — LLM 唔係查 records，而係根據學到嘅統計規律生成文字。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.3
+  question: 當模型大到某個程度，會出現{湧現能力} — 細模型完全做唔到嘅新能力。
+  answer: 湧現能力
+  explanation: Emergent abilities 係 LLM 嘅關鍵特徵，解釋咗點解大模型突然做到推理、coding 等複雜 task。
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.4
+  question: Hallucination 係語言模型嘅{本質 feature}，因為模型嘅 job 係 generate{合理 continuation}，唔係
+    recall facts。
+  answer: 本質 feature，合理 continuation
+  explanation: 明白呢點之後，你就唔會期望 LLM 做 perfect fact retrieval — 佢嘅設計目標根本唔係呢樣嘢。
+  difficulty: 3
+  tags:
+  - concept
+- id: c.5
+  question: 手機鍵盤自動完成同 ChatGPT 本質相同，分別只在於{規模}同{參數量}。
+  answer: 規模，參數量
+  explanation: 核心機制一樣，但規模差別導致能力差別。呢個係 LLM 入面 scaling 嘅重要性。
+  difficulty: 1
+  tags:
+  - comparison
+- id: c.6
+  question: Temperature 越高，模型越傾向揀{低概率}嘅字，output 更加{多樣化}但可能冇咁穩定。
+  answer: 低概率，多樣化
+  explanation: Temperature 控制 sampling 嘅隨機性 — 高 temperature 令低概率字都有機會被揀到。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: 同樣問題轉少少 wording 就唔同答案 — 呢個叫{prompt sensitivity}，因為字嘅{概率分佈}變咗。
+  answer: prompt sensitivity，概率分佈
+  explanation: 模型嘅 job 係預測下一個字，wording 改變會改變概率分佈，所以答案可以好唔同。
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.8
+  question: 模型答到你未見過嘅問題叫{generalisation}，但佢亦都會答錯 — 呢個就係{hallucination}。
+  answer: generalisation，hallucination
+  explanation: 同一個 mechanism 兩面睇：統計規律令模型可以應付新問題，但亦令佢會作一啲睇落合理嘅嘢。
+  difficulty: 1
+  tags:
+  - concept

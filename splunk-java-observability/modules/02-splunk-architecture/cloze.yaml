@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "The {universal forwarder} is a lightweight agent that tails log files and forwards them, while the {indexer} parses and stores them."
+  answer: "universal forwarder, indexer"
+  explanation: "Forwarders collect and forward; indexers parse and store; search heads query."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Timestamp assignment, line breaking, and default metadata extraction happen during {parsing}, which is configured in {props.conf}."
+  answer: "parsing, props.conf"
+  explanation: "The parsing phase on the indexer is driven by props.conf sourcetype definitions."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.3"
+  question: "In distributed search, each indexer runs a {sub-search} on its local buckets and the {search head} merges partial results."
+  answer: "sub-search, search head"
+  explanation: "Fan-out and merge is how distributed search scales across indexers."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "The {deployment server} centrally pushes configuration to many forwarders."
+  answer: "deployment server"
+  explanation: "Central config distribution avoids editing each forwarder by hand."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "HTTP Event Collector accepts events over {HTTPS} at the {/services/collector} endpoint."
+  answer: "HTTPS, /services/collector"
+  explanation: "HEC is an HTTPS input; appenders post events there with a token."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.6"
+  question: "HEC supports {batching}, {acknowledgment}, and TLS, which raw TCP inputs lack."
+  answer: "batching, acknowledgment"
+  explanation: "Batching and ack make HEC reliable for app-level logging; TCP is fire-and-forget."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.7"
+  question: "A {heavy forwarder} is a forwarder with parsing and routing power that can run props/transforms at the edge."
+  answer: "heavy forwarder"
+  explanation: "Heavy forwarders can parse, filter, and route before forwarding to indexers."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "An {indexer cluster} replicates data across peers, protecting against indexer loss."
+  answer: "indexer cluster"
+  explanation: "Replication factor N in a cluster guards against peer failure."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.9"
+  question: "Fields are extracted at three places: {index time}, {search time}, and in the application itself."
+  answer: "index time, search time"
+  explanation: "Index-time is baked into the index; search-time is computed per query; the app can emit fields in JSON logs."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.10"
+  question: "Search-time field extraction costs {CPU} per event but no {storage}, and can change without re-indexing."
+  answer: "CPU, storage"
+  explanation: "That tradeoff is why search-time is the default and index-time is reserved for special cases."
+  difficulty: 2
+  tags: [comparison]

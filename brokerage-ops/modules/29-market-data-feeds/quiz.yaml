@@ -1,0 +1,163 @@
+- id: '29.1'
+  question: What is the primary factor distinguishing real-time, delayed, and end-of-day
+    market data?
+  options:
+    a: Latency duration (under 1s, 15-20 min, after daily close)
+    b: Data source authority level
+    c: Number of asset classes covered
+    d: Number of exchanges providing data
+  answer: a
+  explanation: Real-time latency is under 1s, used for trade execution. Delayed latency
+    is 15-20 min, used for public display and non-trading decisions. EOD is provided
+    after daily close, used for NAV, risk reporting, and client statements.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '29.2'
+  question: What is the core difference between SIP (Securities Information Processor)
+    and direct feed?
+  options:
+    a: SIP is free, direct feed requires payment
+    b: SIP provides multi-exchange consolidated NBBO at higher latency; direct feed
+      connects to a single exchange at lower latency
+    c: SIP is for options, direct feed is for equities
+    d: SIP is operated by the SEC, direct feed by exchanges
+  answer: b
+  explanation: SIP consolidates quotes from multiple exchanges into NBBO at 5-20 microseconds
+    latency. Direct feed connects to a single exchange at 1-5 microseconds latency
+    but requires custom multi-source merging logic.
+  difficulty: 1
+  tags:
+  - comparison
+  - concept
+- id: '29.3'
+  question: A market maker needs minimum-latency order book depth data to drive pricing
+    models. Which data source should they choose?
+  options:
+    a: SIP consolidated feed
+    b: Delayed 15-minute feed
+    c: Direct feed from each exchange
+    d: End-of-day pricing
+  answer: c
+  explanation: Direct feeds offer 1-5 microsecond latency with full level 2/3 order
+    book. SIP adds 5-15 microseconds with no full depth. Market maker profitability
+    is driven by microsecond advantages.
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '29.4'
+  question: What risk comes from using delayed market data for execution price comparison
+    on trade confirmations?
+  options:
+    a: No risk; prices barely move in 20 minutes
+    b: Exchanges fine brokers for using delayed data
+    c: Fill prices always match delayed prices exactly
+    d: Prices can move 1-5% during a 20-minute delay, so confirmations may show deviations
+      from actual fills, triggering client complaints
+  answer: d
+  explanation: A 20-minute delay is long enough for material price moves. A broker
+    using delayed prices for trade confirmation may show deviations from actual fill
+    prices, causing client complaints.
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+- id: '29.5'
+  question: An HFT firm uses direct feeds from every exchange for alpha decisions
+    but still subscribes to SIP. Why is SIP still necessary?
+  options:
+    a: SIP has the full order book depth that direct feeds lack
+    b: SIP is required to calculate NBBO, which needs consolidated data from all exchanges
+    c: SIP is free, so there is no reason not to take it
+    d: SIP has lower latency than any direct feed
+  answer: b
+  explanation: Direct feed only has one exchange's data. To calculate NBBO (national
+    best bid/offer) the firm still needs SIP's consolidated tape. HFT firms use direct
+    feeds for alpha decisions and SIP for NBBO protection.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '29.6'
+  question: What is the primary purpose of Bloomberg BVAL (Bond Valuation)?
+  options:
+    a: Provide real-time US equity trade prices
+    b: Provide evaluated pricing for fixed income securities lacking active market
+      quotes
+    c: Calculate FX fixing rates
+    d: Provide options chain data
+  answer: b
+  explanation: BVAL uses matrix pricing models to derive fair values for OTC bonds
+    without frequent trading. This is Bloomberg's core competitive advantage in fixed
+    income pricing.
+  difficulty: 1
+  tags:
+  - concept
+- id: '29.7'
+  question: Someone argues a retail brokerage should use direct feeds for all execution
+    data since direct feed has lower latency. Why is this wrong?
+  options:
+    a: Direct feed is cheaper than SIP
+    b: Retail execution needs microsecond-level latency
+    c: Direct feed costs $50-200K/month versus SIP's $10-50K, and retail does not need
+      microsecond latency — retail mixes SIP with delayed data
+    d: Direct feed lacks any order book data
+  answer: c
+  explanation: Direct feed's $50-200K/month cost only pays off for market makers
+    and algo desks where the microsecond edge drives profitability. Retail brokerages
+    mix SIP with delayed data instead.
+  difficulty: 2
+  tags:
+  - comparison
+  - concept
+- id: '29.8'
+  question: In Bloomberg's data product line, what does BCOMP provide?
+  options:
+    a: Real-time equity last sale prices
+    b: FX fixing rates
+    c: Matrix-priced bond valuations
+    d: Corporate action-adjusted prices
+  answer: d
+  explanation: BCOMP is Bloomberg's corporate action-adjusted price. BGN is the generic
+    price and BVAL is evaluated pricing. BCOMP adjusts historical prices for events
+    like dividends and splits.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '29.9'
+  question: A brokerage uses internal evaluated pricing for an illiquid bond's NAV
+    but never back-tests the model for a quarter. What failure surfaces first?
+  options:
+    a: Model drift produces slightly-off fair values and a wrong NAV; with no exchange
+      quote to cross-check, nothing alerts until clients question their statements
+    b: The exchange immediately rejects the price
+    c: No impact because only one bond is affected
+    d: The regulator auto-fines the broker
+  answer: a
+  explanation: Without back-testing, the internal model drifts and produces wrong
+    fair values. Since no exchange quote exists to cross-check, the error is undetected
+    until clients notice — the classic undetected stale price failure.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '29.10'
+  question: Why does fixed income pricing rely more on evaluated pricing than exchange
+    prices, unlike equities?
+  options:
+    a: Exchanges charge more for bond data than equity data
+    b: Most bonds trade OTC with low liquidity and no unified exchange, so vendors
+      use matrix/evaluated pricing to derive fair values
+    c: Regulation forbids exchange-based bond pricing
+    d: Equity prices are considered unreliable
+  answer: b
+  explanation: Equities trade on centralized exchanges with frequent quotes. Most
+    bonds trade OTC with sparse trades and no unified exchange, so Bloomberg BVAL
+    uses matrix pricing referencing similar bonds. This is the most significant multi-source
+    pricing challenge.
+  difficulty: 2
+  tags:
+  - concept
+  - comparison

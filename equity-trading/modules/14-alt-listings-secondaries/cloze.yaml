@@ -1,0 +1,70 @@
+- id: c.1
+  question: A {SPAC} is a shell company that raises capital through its own IPO, then
+    merges with a private company to take it {public}.
+  answer: SPAC
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: Unlike an IPO, a {direct listing} does not raise new capital for the company
+    and has no {underwriters}.
+  answer: direct listing
+  difficulty: 1
+  tags:
+  - comparison
+- id: c.3
+  question: A {follow-on} offering issues new shares at a fixed discount on a single
+    day. An {ATM} offering sells shares gradually at market price.
+  answer: follow-on
+  difficulty: 2
+  tags:
+  - comparison
+- id: c.4
+  question: The {greenshoe} option allows the underwriter to issue up to {15%} additional
+    shares to stabilize the stock price after the IPO.
+  answer: greenshoe
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.5
+  question: In a SPAC, investors can {redeem} their shares for {trust value} (typically
+    ~$10) if they disapprove of the proposed acquisition target.
+  answer: redeem
+  difficulty: 3
+  tags:
+  - concept
+- id: c.6
+  question: A SPAC IPO typically prices at ${10} per unit, which includes one share
+    and a fraction of a {warrant}.
+  answer: '10'
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.7
+  question: In a SPAC, the {sponsor} receives a {promote} — typically 20% of equity
+    — for organizing the SPAC and finding a target.
+  answer: sponsor
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: The process of a SPAC completing its acquisition is called a {deSPAC},
+    after which the target company becomes {public}.
+  answer: deSPAC
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.9
+  question: If stock price falls after IPO, greenshoe is NOT exercised — underwriter
+    buys shares in {open market} to cover short, which provides {price stabilization}.
+  answer: open market
+  difficulty: 3
+  tags:
+  - concept
+- id: c.10
+  question: A direct listing typically costs {1-2%} of market cap in fees, compared
+    to {3-7%} for traditional IPO.
+  answer: 1-2%
+  difficulty: 2
+  tags:
+  - comparison

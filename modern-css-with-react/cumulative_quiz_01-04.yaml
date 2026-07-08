@@ -1,0 +1,114 @@
+- type: mcq
+  question: Biggest architectural shift in the 2026 CSS landscape for React apps?
+  options:
+    b: Platform-native features (nesting, container queries, layers) shrinking preprocessor/runtime layers
+    a: Return to global CSS only
+    c: Death of utility classes
+    d: Browsers dropping CSS variables
+  answer: b
+  explanation: Native capabilities replace chunks of Sass/CSS-in-JS tooling.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.1
+  source_modules:
+  - 1
+- type: mcq
+  question: CSS Modules give you what by default?
+  options:
+    c: Locally scoped class names with compile-time mapping to unique hashes
+    a: Global cascade layers
+    b: Runtime style objects
+    d: Automatic critical CSS
+  answer: c
+  explanation: Each file exports a map from original names to generated unique names — collisions impossible.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.2
+  source_modules:
+  - 3
+- type: cloze
+  question: Runtime CSS-in-JS trades developer ergonomics for a {runtime cost} paid on every render until
+    compilation moves to build time.
+  answer: runtime cost
+  difficulty: 2
+  tags:
+  - concept
+  id: cum.3
+  source_modules:
+  - 4
+- type: tf
+  statement: Sass nesting now has a near-native CSS equivalent, reducing migration friction.
+  answer: true
+  explanation: Native CSS nesting mirrors much of Sass nesting behavior.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.4
+  source_modules:
+  - 2
+- type: mcq
+  question: 'Review modern-css-with-react module 1: which statement reflects the module''s core guidance?'
+  options:
+    a: Apply the documented pattern with its stated tradeoffs
+    b: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: a
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.5
+  source_modules:
+  - 1
+- type: mcq
+  question: 'Review modern-css-with-react module 2: which statement reflects the module''s core guidance?'
+  options:
+    d: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    b: Patterns never have costs
+    c: Always rewrite existing code first
+  answer: d
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.6
+  source_modules:
+  - 2
+- type: mcq
+  question: 'Review modern-css-with-react module 3: which statement reflects the module''s core guidance?'
+  options:
+    b: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: b
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.7
+  source_modules:
+  - 3
+- type: mcq
+  question: 'Review modern-css-with-react module 4: which statement reflects the module''s core guidance?'
+  options:
+    a: Apply the documented pattern with its stated tradeoffs
+    b: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: a
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.8
+  source_modules:
+  - 4

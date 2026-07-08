@@ -1,0 +1,120 @@
+- id: '3.1'
+  question: Regarding an ETF's NAV (Net Asset Value) vs market price, which statement is correct?
+  options:
+    a: NAV and market price are always equal
+    b: Market price can deviate from NAV, creating a premium or discount
+    c: NAV is more important than market price; trades should use NAV
+    d: ETFs only have NAV, no market price
+  answer: b
+  explanation: Market supply and demand cause ETF prices to deviate from the underlying asset value (NAV), creating a premium or discount. AP arbitrage theoretically narrows the gap, but deviations persist short-term.
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.2'
+  question: What mechanism prevents an ETF's market price from persistently deviating far from NAV?
+  options:
+    a: Exchange price regulation mechanisms
+    b: Authorized Participant (AP) creation/redemption arbitrage
+    c: The ETF issuer adjusting prices daily
+    d: Regulatory price intervention
+  answer: b
+  explanation: APs are the key to the ETF ecosystem. When price > NAV, APs create new ETF shares to sell, pocketing the spread while pushing price back toward NAV. This is arbitrage, not regulation.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.3'
+  question: Who performs ETF creation and redemption?
+  options:
+    a: Authorized Participants (APs)
+    b: Any retail investor
+    c: The exchange
+    d: The custodian bank
+  answer: a
+  explanation: Only Authorized Participants (APs) do creation/redemption with the ETF issuer. Stocks have no such mechanism, which is a fundamental difference between ETFs and stocks.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.4'
+  question: How does a retail client trade an ETF?
+  options:
+    a: Can create new ETF shares directly with the issuer
+    b: Can redeem ETF shares directly with the issuer
+    c: Can trade directly with the ETF issuer
+    d: Can only buy/sell existing ETF shares on the exchange
+  answer: d
+  explanation: ETF creation/redemption is institutional-level. Retail clients can only buy/sell ETF shares on the exchange. The OMS doesn't need to support creation/redemption unless it runs an AP business.
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.5'
+  question: In a broker's suitability system, what is the correct approach when handling ETF orders?
+  options:
+    a: Run suitability checks on every single underlying holding in the ETF basket
+    b: Focus on the ETF's own attributes (leveraged/inverse/passive/active); don't do look-through checks on underlying holdings
+    c: Only check the ETF's expense ratio
+    d: ETFs don't need suitability checks
+  answer: b
+  explanation: ETF holdings can change daily and some ETFs are opaque. Look-through checks are impractical. Suitability should focus on the ETF's type, risk level, liquidity, and other aggregate attributes.
+  difficulty: 2
+  tags:
+  - application
+- id: '3.6'
+  question: Which of the following is NOT an ETF-specific risk?
+  options:
+    a: Tracking Error
+    b: Premium/Discount Risk
+    c: Company Bankruptcy Risk
+    d: Early Liquidation Risk
+  answer: c
+  explanation: Bankruptcy risk is stock-specific (company goes under, equity goes to zero). ETFs hold a basket of assets; unless all underlying assets default, the ETF won't go bankrupt. A/B/D are all ETF-specific risk categories.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '3.7'
+  question: When an ETF's market price is above its NAV, what do Authorized Participants (APs) do to profit and push price back toward NAV?
+  options:
+    a: Sell short the ETF without delivery
+    b: Redeem ETF shares to the issuer
+    c: Create new ETF shares and sell them, pocketing the spread
+    d: Report the deviation to the exchange
+  answer: c
+  explanation: When price > NAV, APs create new ETF shares and sell them, pocketing the spread while pushing the market price back toward NAV. When price < NAV the reverse happens. This is the arbitrage mechanism.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.8'
+  question: For ETF suitability and limit checks, which price should the OMS generally use?
+  options:
+    a: Market price, because that is what the trader actually pays
+    b: NAV, because it reflects true value
+    c: Indicative NAV from the exchange
+    d: The previous day's close
+  answer: a
+  explanation: Usually market price is used for suitability checks because that is what the trader actually pays. NAV vs market price matters for premium/discount monitoring, but the executable price is the market price.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.9'
+  question: Apple announces a massive stock buyback. How does this affect the ETF IVV (iShares Core S&P 500 ETF) and the OMS?
+  options:
+    a: The OMS must cancel all IVV GTC orders
+    b: IVV's holding weight changes but the ETF issuer adjusts the basket automatically; the OMS doesn't need to intervene
+    c: IVV must be delisted
+    d: The exchange recalculates IVV's NAV
+  answer: b
+  explanation: Apple is an S&P 500 component, so a buyback changes IVV's holding weight. This is not a corporate action requiring OMS intervention — the ETF issuer adjusts the basket composition automatically. Only if a weight exceeds a regulatory limit might the suitability engine need to recalculate concentration.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '3.10'
+  question: What is tracking error in the ETF context?
+  options:
+    a: The fee charged by the ETF issuer
+    b: The spread between bid and offer
+    c: The risk of the ETF being delisted
+    d: The deviation of the ETF's performance from its index
+  answer: d
+  explanation: Tracking error measures how far the ETF drifts from its index. It is a suitability factor — high tracking error means the ETF is drifting from its benchmark. Tracking an index is not the same as being as safe as the index.
+  difficulty: 1
+  tags:
+  - terminology

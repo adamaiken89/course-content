@@ -1,0 +1,60 @@
+- id: c.1
+  question: The board of directors announces a dividend on the {blank} date.
+  answer: declaration
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: On {blank} date, the stock trades without the right to receive the dividend.
+  answer: ex-dividend
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: On the ex-dividend date, stock price drops approximately by the {blank} amount.
+  answer: dividend
+  difficulty: 1
+  tags:
+  - concept
+- id: c.4
+  question: Dividend yield equals annual {blank} divided by stock price.
+  answer: dividend
+  difficulty: 1
+  tags:
+  - formula
+- id: c.5
+  question: A {blank} dividend issues additional shares instead of cash, conserving company cash.
+  answer: stock
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.6
+  question: Dividend capture strategy requires the stock price to {blank} after the ex-date drop to be profitable.
+  answer: recover
+  difficulty: 2
+  tags:
+  - strategy
+- id: c.7
+  question: The price adjustment on ex-date prevents {blank} — risk-free profit from buying before ex-date and selling after.
+  answer: arbitrage
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: '{blank} dividends are taxed at the lower capital gains rate, while {blank} dividends are taxed as regular income.'
+  answer: Qualified, ordinary
+  difficulty: 3
+  tags:
+  - tax
+- id: c.9
+  question: A {blank} dividend is a large one-time payment that causes a bigger ex-date price drop.
+  answer: special
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.10
+  question: When stock price falls but dividend remains unchanged, dividend yield {blank}.
+  answer: increases
+  difficulty: 2
+  tags:
+  - concept

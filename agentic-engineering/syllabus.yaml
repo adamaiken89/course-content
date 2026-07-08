@@ -1,0 +1,115 @@
+subject: "Agentic Software Engineering with opencode"
+language: en
+time_budget_hours: 20
+target_level: intermediate
+domain: "Software Engineering / AI-assisted Development"
+prerequisites:
+  - "Basic CLI knowledge"
+  - "Familiarity with git"
+  - "Some experience with LLM-based chat tools"
+learning_objectives:
+  - "Decide when agentic tools add value vs when to code manually"
+  - "Configure opencode modes, instructions, and skills for your workflow"
+  - "Design custom modes (Reviewer, Researcher, Tester, Commiter) with tool-permission tables"
+  - "Write specs agents execute reliably without over-specifying"
+  - "Manage context budget and compress effectively across sessions"
+  - "Build verification gates (typecheck, lint, test) into agent prompts"
+  - "Optimize token economy and minimize waste"
+  - "Create and maintain custom skills with quality controls"
+
+modules:
+  - id: 1
+    name: "Agentic Mindset & Session Lifecycle"
+    time_hours: 1.5
+    prerequisites: []
+    topics: [mindset, session-management, when-to-use-agents]
+
+  - id: 2
+    name: "opencode Architecture & Modes"
+    time_hours: 1.5
+    prerequisites: [1]
+    topics: [architecture, tools, permissions, custom-modes, mode-catalog]
+
+  - id: 3
+    name: "Instructions & Knowledge Persistence"
+    time_hours: 1.5
+    prerequisites: [2]
+    topics: [AGENTS.md, CLAUDE.md, knowledge-reuse, compression]
+
+  - id: 4
+    name: "Skills System Deep Dive"
+    time_hours: 1.5
+    prerequisites: [2, 3]
+    topics: [built-in-skills, custom-skills, flexible-vs-scripted, hooks, lifecycle]
+
+  - id: 5
+    name: "Spec Crafting for Agent Execution"
+    time_hours: 1.5
+    prerequisites: [3]
+    topics: [spec-writing, acceptance-criteria, granularity, technical-context]
+
+  - id: 6
+    name: "Dev Loop Patterns"
+    time_hours: 1.5
+    prerequisites: [4]
+    topics: [plan-explore-implement-verify-review, discovery-first, spec-first, debugging]
+
+  - id: 7
+    name: "Context & Compression Strategy"
+    time_hours: 1.0
+    prerequisites: [5]
+    topics: [token-budget, signal-vs-noise, compression-techniques]
+
+  - id: 8
+    name: "Planning & Style Enforcement"
+    time_hours: 1.5
+    prerequisites: [6]
+    topics: [plan-before-code, conventions, style-guides, refactoring]
+
+  - id: 9
+    name: "Subagent Delegation (Cavecrew)"
+    time_hours: 1.0
+    prerequisites: [7]
+    topics: [subagents, delegation-patterns, investigator-builder-reviewer]
+
+  - id: 10
+    name: "Script Management & Quality"
+    time_hours: 1.5
+    prerequisites: [8, 9]
+    topics: [testing-skills, logging, fallbacks, idempotency, quality-checklist]
+
+  - id: 11
+    name: "Automated Checks & TDD"
+    time_hours: 1.5
+    prerequisites: [9]
+    topics: [typecheck, lint, test-first, verification-in-prompts]
+
+  - id: 12
+    name: "Evidence & Human Review"
+    time_hours: 1.0
+    prerequisites: [10]
+    topics: [diff-receipts, decision-logs, review-automation, review-skills]
+
+  - id: 13
+    name: "Safety, Guardrails, Rollback"
+    time_hours: 1.0
+    prerequisites: [11]
+    topics: [token-limits, infinite-loops, destructive-ops, rollback-strategy]
+
+  - id: 14
+    name: "Token Economy"
+    time_hours: 1.0
+    prerequisites: [12]
+    topics: [token-burn, waste-elimination, cost-optimization]
+
+  - id: 15
+    name: "Prompt Patterns Library"
+    time_hours: 1.5
+    prerequisites: [13, 14]
+    topics: [chain-of-thought, few-shot, role-prompting, anti-patterns]
+
+  - id: 16
+    name: "Production Pipeline & MCPs"
+    time_hours: 1.0
+    prerequisites: [14]
+    topics: [CI-CD, PR-agents, MCP-servers, custom-hooks, multi-repo]

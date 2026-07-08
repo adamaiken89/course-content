@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: In a schema-first DGS project, GraphQL schema files live in resources/{schema} and end with the .graphqls extension."
+  answer: "schema"
+  explanation: "The resources/schema directory is the conventional home DGS scans for .graphqls definitions."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: The Jackson-agnostic interface that plugs any JSON backend into DGS 12 is the {DgsJsonMapper}."
+  answer: "DgsJsonMapper"
+  explanation: "DgsJsonMapper abstracts serialization and deserialization so DGS supports Jackson 3 and Jackson 2 through one code path."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: When both Jackson versions are on the classpath you force one with the {dgs.graphql.preferred-json-mapper} property set to jackson3 or jackson2."
+  answer: "dgs.graphql.preferred-json-mapper"
+  explanation: "The property picks the active JSON backend when both Jackson 3 and Jackson 2 adapters are available."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "Complete: The default DgsJsonMapper adapter in DGS 12 is the {Jackson3DgsJsonMapperAdapter}."
+  answer: "Jackson3DgsJsonMapperAdapter"
+  explanation: "Jackson 3 auto-configures by default; the Jackson 2 adapter is the opt-in alternative."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Complete: A top-level Query field is resolved with {DgsQuery}, while a field on another type uses DgsData."
+  answer: "DgsQuery"
+  explanation: "DgsQuery binds root Query or Mutation fields; DgsData binds a named field on a parentType."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Complete: @DgsData is applied to a method that resolves a specific {field} on a parent type, while root queries use @DgsQuery."
+  answer: "field"
+  explanation: "DgsData declares parentType and field so the resolver attaches to exactly one schema spot."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "Complete: In a federated graph, your subgraph implements {DgsEntityFetcher} so the gateway can resolve references to entities owned by other subgraphs."
+  answer: "DgsEntityFetcher"
+  explanation: "The entity fetcher receives the partial reference map and rebuilds the entity for the gateway."
+  difficulty: 3
+  tags: [process]
+
+- id: "c.8"
+  question: "Complete: The new typed client interface for server-to-server GraphQL calls in DGS 12 is the {DgsGraphQLClient}, wired through DgsJsonMapper."
+  answer: "DgsGraphQLClient"
+  explanation: "DgsGraphQLClient replaces the deprecated ObjectMapper based client constructors."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.9"
+  question: "Complete: DGS ships a Gradle plugin called {DgsCodeGen} that generates Java types directly from .graphqls files."
+  answer: "DgsCodeGen"
+  explanation: "Generated types keep fetcher signatures and client documents in sync with the schema at build time."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.10"
+  question: "Complete: Records returned from a fetcher are serialized through the configured DgsJsonMapper, so {Jackson 3} rules apply to your GraphQL responses."
+  answer: "Jackson 3"
+  explanation: "The active mapper governs serialization of all fetcher results, including records and DTOs."
+  difficulty: 3
+  tags: [concept]

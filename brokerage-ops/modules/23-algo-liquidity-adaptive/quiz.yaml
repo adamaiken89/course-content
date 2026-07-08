@@ -1,0 +1,120 @@
+- id: '23.1'
+  question: What does a Liquidity Seeking algo do?
+  options:
+    a: Aggressively sweeps visible liquidity on public books as a taker
+    b: Waits passively for matches in dark pools
+    c: Splits quantity evenly across time slices
+    d: Tracks the historical volume profile
+  answer: a
+  explanation: Liquidity Seeking aggressively sweeps visible public liquidity using a taker strategy — hits the best offer/bid. It is fast but pays the spread plus taker fee, and suits high-urgency orders.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '23.2'
+  question: '"Dark algo is always better than a liquidity seeker because it produces zero market impact." Why is this wrong?'
+  options:
+    a: Dark pools charge higher fees than lit venues
+    b: Dark algo guarantees fills
+    c: Dark algo waits passively with uncertain fill rates — the unfilled portion creates large opportunity cost
+    d: Dark pools are not registered venues
+  answer: c
+  explanation: A dark algo has near-zero market impact but no fill guarantee. Waiting for passive matching may fill only a fraction by close, and the unfilled portion creates opportunity cost that can exceed the impact a liquidity seeker would cause.
+  difficulty: 2
+  tags:
+  - concept
+- id: '23.3'
+  question: Compared to a maker strategy (passive limit orders), which cost must a taker strategy (aggressive market orders) bear that a maker does not?
+  options:
+    a: Regulatory reporting fees
+    b: Spread + taker fee
+    c: Broker commission
+    d: Settlement cost
+  answer: b
+  explanation: A taker pays the bid-ask spread and the exchange taker fee. A maker posting limit orders can earn a rebate but bears non-execution and adverse selection risk.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '23.4'
+  question: 'A client wants to buy 500,000 shares of AAPL. ADV = 10,000,000, so size/ADV = 5%. Spread is narrow, urgency is medium. Which algorithm is most suitable?'
+  options:
+    a: Liquidity Seeker — ensures fast fill
+    b: Dark Algo — minimizes market impact
+    c: TWAP — evenly slices across time
+    d: VWAP — tracks the volume profile and spreads execution across the day
+  answer: d
+  explanation: 5% ADV is a medium size with narrow spread and medium urgency. VWAP tracks the historical volume profile and distributes the order across the day. A liquidity seeker would waste money on spread given no high urgency.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '23.5'
+  question: 'You are running a VWAP algo on a 500K AAPL order. The client suddenly says the order must complete within 15 minutes. What is the best action?'
+  options:
+    a: Pause the VWAP algo and switch to liquidity seeker mode (aggressive taker)
+    b: Keep the VWAP algo running and ignore the request
+    c: Cancel the entire order
+    d: Lower the participation rate to reduce impact
+  answer: a
+  explanation: With a hard 15-minute deadline you must switch to aggressive execution. The brokerage's algo wheel supports real-time urgency override — pause VWAP and switch to liquidity seeker, or use an adaptive IS algo with high-urgency parameters.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '23.6'
+  question: 'An adaptive algo''s volume model predicts a 20% liquidity drop over the next 30 minutes. How should it adjust?'
+  options:
+    a: Raise participation — more volume is needed to complete the order
+    b: Cut participation — lower volume means each order moves price more, so impact rises
+    c: Keep participation unchanged
+    d: Switch entirely to aggressive taker orders
+  answer: b
+  explanation: In a lower-liquidity environment each order moves the price more, so impact rises. The adaptive algo cuts participation and may shift to dark pools to avoid tipping its hand.
+  difficulty: 2
+  tags:
+  - concept
+- id: '23.7'
+  question: What risk does a dark algo face from the counterparties it matches with in dark pools?
+  options:
+    a: Higher exchange taker fees
+    b: Reg NMS Rule 611 violations
+    c: Toxic flow (e.g. HFT hedging flow)
+    d: No fills at any price
+  answer: c
+  explanation: Dark algo matches against other dark pool participants and may encounter toxic flow — informed flow such as HFT hedging. This is a distinct risk from the simple risk of no fill.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '23.8'
+  question: In the maker-taker fee model, who earns a rebate and who pays the spread?
+  options:
+    a: Maker pays the spread; taker earns a rebate
+    b: Both earn rebates
+    c: Both pay the spread
+    d: Maker (limit order) earns a rebate (~$0.002/share); taker (market order) pays the spread (~$0.01/share)
+  answer: d
+  explanation: The maker posting liquidity earns a rebate but has no fill guarantee and faces adverse selection. The taker pays the spread and the taker fee but gets near-guaranteed execution.
+  difficulty: 1
+  tags:
+  - comparison
+- id: '23.9'
+  question: When is a Liquidity Seeking algo the right choice?
+  options:
+    a: High-urgency orders that must complete quickly and can tolerate paying the spread
+    b: Low-urgency orders where minimizing market impact is the priority
+    c: Illiquid micro-cap stocks
+    d: Orders where cost matters more than speed
+  answer: a
+  explanation: Liquidity Seeking is for high-urgency orders — it guarantees fast execution by taking liquidity, paying spread and taker fee. For low-urgency orders a dark or passive algo would better minimize impact.
+  difficulty: 3
+  tags:
+  - application
+- id: '23.10'
+  question: 'In the algo selection decision tree, when size/ADV > 10% (bleeding risk) and urgency is medium, which strategy is recommended?'
+  options:
+    a: TWAP
+    b: POV + Dark hybrid strategy
+    c: Liquidity Seeker
+    d: IS algo with narrow-spread parameters
+  answer: b
+  explanation: For orders larger than 10% of ADV, a single visible strategy risks tipping off the market. The decision tree recommends a POV + Dark hybrid — participating at a percentage of volume while seeking passive dark liquidity.
+  difficulty: 1
+  tags:
+  - concept

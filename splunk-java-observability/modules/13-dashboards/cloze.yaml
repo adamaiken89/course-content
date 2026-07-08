@@ -1,0 +1,82 @@
+- id: c.1
+  question: A dashboard is a set of {panels}, each running its own search when the page loads.
+  answer: panels
+  explanation: Every panel on a dashboard is backed by its own SPL search, and that search re-runs whenever the dashboard loads.
+  difficulty: 1
+  tags:
+  - dashboard
+  - panels
+- id: c.2
+  question: The fastest way to turn a working search into a panel is {Save As} → Dashboard Panel.
+  answer: Save As
+  explanation: Save As → Dashboard Panel converts the current search into a panel immediately, keeping the query you already refined.
+  difficulty: 1
+  tags:
+  - workflow
+  - save-as
+- id: c.3
+  question: A {timechart} command produces time buckets, which is the shape a line chart needs.
+  answer: timechart
+  explanation: Line, area, and column charts plot over time, and only timechart creates the time buckets that feed them.
+  difficulty: 1
+  tags:
+  - timechart
+  - chart
+- id: c.4
+  question: A pie chart is fed by a {stats} command with a by clause, such as `stats count by level`.
+  answer: stats
+  explanation: stats with a by clause returns one row per category, and a pie chart turns those categories into slices.
+  difficulty: 1
+  tags:
+  - stats
+  - pie
+- id: c.5
+  question: Simple XML lays out panels on a grid using {row} and {panel} elements, and the source is {versionable}.
+  answer: row, panel, versionable
+  explanation: The grid structure comes from row and panel elements, and because it is plain XML the source can be diffed and reviewed like code.
+  difficulty: 2
+  tags:
+  - xml
+  - layout
+  - observability-as-code
+- id: c.6
+  question: When an input and its panel search use different token names, the token is not substituted and the search returns {nothing}; fix it by {matching} the names on both sides.
+  answer: nothing, matching
+  explanation: Token substitution is name-based; a mismatch leaves literal text in the search, which matches no events. Aligning the token name fixes the silent empty panel.
+  difficulty: 2
+  tags:
+  - tokens
+  - inputs
+- id: c.7
+  question: Clicking a chart cell is a {drilldown} that can navigate to another dashboard while passing {tokens}.
+  answer: drilldown, tokens
+  explanation: Drilldown links dashboard to dashboard and passes values such as the clicked endpoint or trace ID so the target view stays relevant.
+  difficulty: 2
+  tags:
+  - drilldown
+  - navigation
+- id: c.8
+  question: A single value panel shows one number with a {sparkline} and a trend indicator.
+  answer: sparkline
+  explanation: Single value renders a single number and can add a sparkline and trend indicator to show direction at a glance.
+  difficulty: 2
+  tags:
+  - single-value
+  - panels
+- id: c.9
+  question: Heavy dashboards stay snappy by reading cached results from a {scheduled} saved search instead of running wide searches on every load.
+  answer: scheduled
+  explanation: A scheduled saved search precomputes results and panels read from that cache, so opening the dashboard does not re-run the expensive query.
+  difficulty: 3
+  tags:
+  - performance
+  - scheduled-search
+- id: c.10
+  question: The {time} picker is global to the dashboard, so it filters every panel, while dropdown {tokens} are scoped to the panels that reference them.
+  answer: time, tokens
+  explanation: The global time picker bounds all panels at once; dropdown inputs create tokens that only affect panels which use the token name.
+  difficulty: 3
+  tags:
+  - inputs
+  - tokens
+  - time-picker

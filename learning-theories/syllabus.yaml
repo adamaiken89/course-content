@@ -1,0 +1,121 @@
+subject: "Evidence-Based Learning: Science of How We Learn"
+language: en
+time_budget_hours: 40
+target_level: intermediate
+domain: "Cognitive science of learning, metacognition, study strategies"
+prerequisites: []
+learning_objectives:
+  - "Describe cognitive architecture (WM/LTM) and its implications for learning design"
+  - "Apply memory principles (encoding, consolidation, retrieval) to optimize retention"
+  - "Implement evidence-based strategies: spaced repetition, retrieval practice, interleaving"
+  - "Monitor and regulate own learning using metacognitive calibration techniques"
+  - "Design effective learning environments and content using cognitive science principles"
+
+modules:
+  - id: 1
+    name: "Cognitive Architecture: Working Memory & Long-Term Memory"
+    time_hours: 1.5
+    prerequisites: []
+    topics: [working memory, long-term memory, attention bottleneck, cognitive load]
+
+  - id: 2
+    name: "Cognitive Load Theory"
+    time_hours: 1.5
+    prerequisites: [1]
+    topics: [intrinsic load, extraneous load, germane load, load-aware design]
+
+  - id: 3
+    name: "Memory Systems: Encoding, Storage, Retrieval"
+    time_hours: 1.5
+    prerequisites: [1]
+    topics: [sensory memory, working memory, long-term memory, encoding specificity]
+
+  - id: 4
+    name: "The Forgetting Curve & Spacing Effect"
+    time_hours: 1.5
+    prerequisites: [3]
+    topics: [Ebbinghaus, forgetting curve, spacing effect, optimal review timing]
+
+  - id: 5
+    name: "Deep Processing & Elaboration"
+    time_hours: 1.5
+    prerequisites: [3]
+    topics: [levels-of-processing, elaborative interrogation, self-explanation]
+
+  - id: 6
+    name: "Dual Coding & Multimedia Learning"
+    time_hours: 1.5
+    prerequisites: [3]
+    topics: [Paivio dual coding, Mayer principles, diagram vs text]
+
+  - id: 7
+    name: "Retrieval Practice"
+    time_hours: 1.5
+    prerequisites: [4, 5]
+    topics: [testing effect, free recall, recognition, quiz design]
+
+  - id: 8
+    name: "Interleaving vs Blocking"
+    time_hours: 1.5
+    prerequisites: [6]
+    topics: [blocked practice, interleaved practice, transfer]
+
+  - id: 9
+    name: "Desirable Difficulties"
+    time_hours: 1.5
+    prerequisites: [7]
+    topics: [Bjork framework, productive struggle, difficulty vs difficulty]
+
+  - id: 10
+    name: "Metacognition"
+    time_hours: 1.5
+    prerequisites: [8, 9]
+    topics: [calibration, illusion of fluency, judgment of learning, comprehension monitoring]
+
+  - id: 11
+    name: "Self-Regulated Learning"
+    time_hours: 1.5
+    prerequisites: [10]
+    topics: [goal setting, self-monitoring, strategy selection, reflection]
+
+  - id: 12
+    name: "Feedback & Error-Driven Learning"
+    time_hours: 1.5
+    prerequisites: [10]
+    topics: [feedback types, timing, error signals, corrective feedback]
+
+  - id: 13
+    name: "Attention & Focus"
+    time_hours: 1.5
+    prerequisites: [11]
+    topics: [sustained attention, mind-wandering, multitasking, flow]
+
+  - id: 14
+    name: "Sleep & Memory Consolidation"
+    time_hours: 1.5
+    prerequisites: [12]
+    topics: [sleep stages, consolidation, naps, circadian rhythms]
+
+  - id: 15
+    name: "Motivation & Emotion in Learning"
+    time_hours: 1.5
+    prerequisites: [13, 14]
+    topics: [intrinsic motivation, extrinsic motivation, anxiety, curiosity]
+
+  - id: 16
+    name: "Transfer & Application"
+    time_hours: 1.5
+    prerequisites: [14]
+    topics: [near transfer, far transfer, analogical reasoning, problem-solving]
+
+  - id: 17
+    name: "Content Design for Learning"
+    time_hours: 1.5
+    prerequisites: [15, 16]
+    topics: [writing for learning, diagram design, exercise design, error-spotting]
+
+  - id: 18
+    name: "Building Your Personal Learning System"
+    time_hours: 1.5
+    prerequisites: [17]
+    topics: [FSRS, study protocols, tool stack, habit formation]

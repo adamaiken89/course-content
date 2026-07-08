@@ -1,0 +1,110 @@
+- id: "18.1"
+  question: "Which key type belongs on an edge-minted, client-visible order table?"
+  options:
+    a: "uuidv7"
+    b: "bigint identity"
+    c: "text code"
+    d: "float"
+  answer: a
+  explanation: "Orders are created at the edge, want distributable unique ids, and get monotonic insert order from uuidv7 — so index writes stay append-like."
+  difficulty: 1
+  tags: [concept]
+- id: "18.2"
+  question: "Why does order_lines deserve a bigint identity rather than uuidv7?"
+  options:
+    a: "Identity ids are globally unique across clusters"
+    b: "uuidv7 only works on primary keys"
+    c: "Identity keys are smaller and server-minted, ideal for dense joined rows"
+    d: "Identity always sorts faster"
+  answer: c
+  explanation: "Lines are server-minted and dense; an 8-byte identity key is narrower than a 16-byte UUID, helping index-only scans and join locality."
+  difficulty: 2
+  tags: [concept]
+- id: "18.3"
+  question: "Which query ingredient turns a worker claim into `UPDATE ... WHERE id = (SELECT ... LIMIT 1 FOR UPDATE SKIP LOCKED)`?"
+  options:
+    a: "A left join"
+    b: "A recursive CTE"
+    c: "A window function"
+    d: "SKIP LOCKED"
+  answer: d
+  explanation: "SKIP LOCKED makes contending workers skip locked rows instead of waiting, keeping a job queue moving."
+  difficulty: 1
+  tags: [terminology]
+- id: "18.4"
+  question: "A lone index on a low-cardinality status column is ignored by the planner. What replaces it?"
+  options:
+    a: "A bitmap scan of everything"
+    b: "A partial index on the pending subset"
+    c: "A hash index"
+    d: "Nothing can help"
+  answer: b
+  explanation: "A partial index keeps the small subset that is actually probed, so the planner can use it; a lone low-cardinality index is rarely selective."
+  difficulty: 2
+  tags: [scenario]
+- id: "18.5"
+  question: "In the report tuning loop, what does the bottom node showing Filter on a Seq Scan mean?"
+  options:
+    a: "An index exists and is being used"
+    b: "No index served the predicate; the scan reads the whole table"
+    c: "The query is parallel"
+    d: "The stats are fresh"
+  answer: b
+  explanation: "Filter on the scan means the planner fell back to filtering rows after scanning — index the predicate so the scan shrinks (module 10)."
+  difficulty: 2
+  tags: [concept]
+- id: "18.6"
+  question: "Which EXPLAIN options should the tuning loop routinely use to measure where the time goes?"
+  options:
+    a: "(ANALYZE, BUFFERS, MEMORY)"
+    b: "(VERBOSE) only"
+    c: "(COSTS OFF)"
+    d: "(FORMAT JSON) with no analyze"
+  answer: a
+  explanation: "ANALYZE gives actuals, BUFFERS shows shared/temp block traffic, MEMORY (PG17+) shows planner memory — enough signal to locate the dominant node."
+  difficulty: 3
+  tags: [scenario]
+- id: "18.7"
+  question: "Overnight, the ledger table grows 1.2M rows and the nightly roll-up writes and updates them. Why does the heap bloat without a fillfactor setting?"
+  options:
+    a: "WAL removes rows"
+    b: "uuidv7 fills pages"
+    c: "Updates leave dead tuples that vacuum recycles"
+    d: "AIO rewrites the heap"
+  answer: c
+  explanation: "Every update creates a new row version; old ones become dead tuples until VACUUM recycles space. fillfactor keeps HOT chains in-page (modules 11, 15)."
+  difficulty: 2
+  tags: [concept]
+- id: "18.8"
+  question: "To re-verify order stats on tables that change shape every night, you schedule REPACK CONCURRENTLY instead of VACUUM FULL. What is the main caution?"
+  options:
+    a: "It drops indexes"
+    b: "It disables autovacuum"
+    c: "It changes all primary keys"
+    d: "It needs disk space close to the table size"
+  answer: d
+  explanation: "REPACK builds a shadow copy, so plan the tablespace headroom ahead of the repack window."
+  difficulty: 3
+  tags: [scenario]
+- id: "18.9"
+  question: "A report computes per-customer revenue, paid count, and cancelled count in one pass. Which two SQL features combine for that?"
+  options:
+    a: "FILTER aggregates and window rankings"
+    b: "Recursion and SKIP LOCKED"
+    c: "BRIN and hashing"
+    d: "MERGE and COPY"
+  answer: a
+  explanation: "FILTER gives per-aggregate conditions, windows give per-row rankings — both in one scan over the same table."
+  difficulty: 2
+  tags: [concept]
+- id: "18.10"
+  question: "You add `(kind, booked_at)` but the planner still shows extra Sort nodes. What does that indicate?"
+  options:
+    a: "The index is corrupted"
+    b: "The query's ORDER BY does not align with the index prefix"
+    c: "Statements need re-parsing"
+    d: "The server needs a restart"
+  answer: b
+  explanation: "Extra Sort means the requested ordering does not match the index's column+descending prefix; align ORDER BY to index order or accept a cheaper sort."
+  difficulty: 2
+  tags: [scenario]

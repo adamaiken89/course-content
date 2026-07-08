@@ -1,0 +1,113 @@
+- id: '3.1'
+  question: Neural network 入面嘅 weights 係乜？
+  options:
+    a: 每個 input 嘅重要性
+    b: Neuron 嘅數量
+    c: Layer 嘅數目
+    d: Training 嘅速度
+  answer: a
+  explanation: 每個 weight 代表一個 input 對 output 嘅影響程度。High weight = 呢個 input 好重要。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.2'
+  question: Training neural network 嘅核心 loop 係？
+  options:
+    a: Write code → compile → run → debug
+    b: Forward pass → loss → backward pass → update weights
+    c: Input → hidden → output
+    d: Train → test → deploy
+  answer: b
+  explanation: Training 係重複做：預測（forward）、計錯幾多（loss）、分返責任（backward）、調整 weights（update）。呢個
+    loop 做幾百萬次。
+  difficulty: 1
+  tags:
+  - process
+- id: '3.3'
+  question: Gradient descent 嘅直覺比喻係？
+  options:
+    a: 煮餸跟食譜
+    b: 隨機亂撞直到撞啱
+    c: 喺山上面向最斜嘅方向行，逐步落到山谷
+    d: 背書考試
+  answer: c
+  explanation: Gradient descent = feel the slope（error 增加嘅方向），然後向反方向（減少 error）行一步。每一步都向山谷（最低
+    error）前進。
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.4'
+  question: Learning rate 太大會發生乜事？
+  options:
+    a: Training 更快完成
+    b: 冇影響
+    c: Model 更準確
+    d: 可能 overshoot，永遠到唔到最低點
+  answer: d
+  explanation: Learning rate = 每一步嘅 size。太大 → 跨過山谷最低點，來回震盪，永遠收斂唔到。
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.5'
+  question: 「Deep learning」嘅「deep」係指乜？
+  options:
+    a: 好多 layers
+    b: Data 好 deep
+    c: Training 好深入
+    d: Model 好 deep（抽象）
+  answer: a
+  explanation: Deep = 多層 hidden layers。傳統 NN 得一兩層 hidden layers，deep learning 可以有幾十到幾百層。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.6'
+  question: 點解每次 train 出嚟嘅 neural network 都略略唔同？
+  options:
+    a: 因為 training code 有 bug
+    b: 因為 initial weights 係 random，training 過程亦有 randomness
+    c: 因為 hardware 唔同
+    d: 因為 data 每次唔同
+  answer: b
+  explanation: Initial weights random + training 嘅 randomness（data order、dropout）令每次結果有差異。呢個
+    randomness 有助探索唔同嘅 weight configuration。
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.7'
+  question: 如果 gradient descent 搵到一個 local minimum 而唔係 global minimum，會點？
+  options:
+    a: Model 會 crash
+    b: Model automatically 跳出去
+    c: Model 停喺一個「唔係最好但唔差」嘅位置
+    d: Training 唔會完成
+  answer: c
+  explanation: Gradient descent 冇辦法 guarantee 搵到 global minimum。實際會用 momentum、learning
+    rate scheduling 等技巧嘗試避開 local minima。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '3.8'
+  question: Forward pass 係指？
+  options:
+    a: 將 error 向後傳播
+    b: 調整 weights
+    c: Load data
+    d: 俾 input → 網絡計 output
+  answer: d
+  explanation: Forward pass = data 由 input layer 向前傳到 output layer，產生 prediction。之後先會
+    compare with correct answer。
+  difficulty: 2
+  tags:
+  - terminology
+- id: '3.9'
+  question: LLM 嘅 training 同一般 neural network 嘅 training 有乜 fundamental 分別？
+  options:
+    a: 冇分別 — 都係 forward → loss → backward → update，只係 scale 唔同
+    b: LLM 用唔同 algorithm
+    c: LLM 唔需要 backward pass
+    d: LLM 嘅 weights 唔使 train
+  answer: a
+  explanation: 本質上一樣。只係 LLM 嘅參數量、數據量、training time 都大好多個數量級。核心機制完全一樣。
+  difficulty: 2
+  tags:
+  - comparison

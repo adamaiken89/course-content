@@ -1,0 +1,139 @@
+- id: '24.1'
+  question: 'MiFID II research unbundling requires asset managers to:'
+  options:
+    a: Stop using research entirely
+    b: Pay for research separately from execution commissions
+    c: Use only sell-side research
+    d: Publish all research publicly
+  answer: b
+  explanation: Pre-MiFID bundled commission (soft dollars) created conflict. Unbundling
+    forces separate charges, increasing transparency and giving managers incentive
+    to get value from research.
+  difficulty: 1
+  tags:
+  - concept
+- id: '24.2'
+  question: How quickly must equities trades be reported under MiFID II?
+  options:
+    a: By end of trading day
+    b: Within 1 minute
+    c: Within 15 minutes
+    d: Within 1 hour
+  answer: b
+  explanation: MiFID II requires post-trade reporting within 1 minute for equities
+    and 15 minutes for bonds.
+  difficulty: 1
+  tags:
+  - fact
+- id: '24.3'
+  question: 'A broker routes client order to venue paying $0.002 rebate instead of
+    venue with better price. This likely violates:'
+  options:
+    a: Sub-Penny Rule
+    b: Order Protection Rule
+    c: Best execution obligations
+    d: Rule 201
+  answer: c
+  explanation: Best execution requires price priority. Routing to inferior price because
+    of rebate (PFOF) violates obligation. Same price at multiple venues? Rebate is
+    fine.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '24.4'
+  question: Under MiFID II, dark pool trading is capped at what percentages?
+  options:
+    a: 2% per venue, 4% total
+    b: 4% per venue, 8% total
+    c: 8% per venue, 15% total
+    d: 10% per venue, 20% total
+  answer: b
+  explanation: Double volume caps limit dark pool trading to 4% per venue and 8% total
+    across EU. Exceeding triggers a 6-month trading ban for that stock in dark pools.
+  difficulty: 2
+  tags:
+  - fact
+- id: '24.5'
+  question: Rule 201 (Alternative Uptick Rule) triggers when a stock drops what percentage
+    in one day?
+  options:
+    a: 5%
+    b: 7%
+    c: 10%
+    d: 20%
+  answer: c
+  explanation: Rule 201 activates at 10% decline. Once triggered, short sales must
+    be at price above the national best bid. Lasts rest of day + next day.
+  difficulty: 1
+  tags:
+  - concept
+- id: '24.6'
+  question: Under SEC Rule 605, what must brokers publish monthly?
+  options:
+    a: Profit and loss statements
+    b: Execution quality statistics per stock per venue
+    c: Insider trading investigations
+    d: Short interest positions
+  answer: b
+  explanation: Rule 605 requires monthly execution quality reports for each stock
+    and venue. Rule 606 requires quarterly routing reports. Both are public.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '24.7'
+  question: The original uptick rule (Rule 10a-1) was in effect from when to when?
+  options:
+    a: 1933-2005
+    b: 1950-2010
+    c: 1938-2007
+    d: 1970-2008
+  answer: c
+  explanation: The uptick rule was in effect 1938-2007. It required short sales on
+    an uptick only. Repealed as part of Reg NMS modernization. Many cite its repeal
+    as factor in 2008 crisis.
+  difficulty: 2
+  tags:
+  - fact
+- id: '24.8'
+  question: 'Under SEC Rule 204 (Regulation SHO), failures to deliver must be closed
+    within:'
+  options:
+    a: T+1
+    b: T+2
+    c: T+3
+    d: T+5
+  answer: b
+  explanation: Rule 204 requires close-out of failures to deliver within T+2 settlement
+    cycle. T+5 allowed for bona fide market making activities.
+  difficulty: 2
+  tags:
+  - concept
+- id: '24.9'
+  question: What was the purpose of replacing the always-on uptick rule with trigger-based
+    Rule 201?
+  options:
+    a: Eliminate short selling entirely
+    b: Reduce liquidity in normal markets
+    c: Provide circuit-breaker protection without harming normal market liquidity
+    d: Increase speculative short selling
+  answer: c
+  explanation: Original uptick rule was always on, potentially reducing liquidity
+    in normal markets. Rule 201 only activates during severe downward pressure, less
+    intrusive normally but protective during crashes.
+  difficulty: 2
+  tags:
+  - concept
+- id: '24.10'
+  question: Which of the following is NOT a factor in best execution analysis?
+  options:
+    a: Price
+    b: Speed of execution
+    c: Broker's profit margin
+    d: Likelihood of settlement
+  answer: c
+  explanation: Best execution considers price, speed, likelihood of execution/settlement,
+    order size, routing cost, and market impact. Broker's profit margin is not a factor
+    — this is exactly the conflict best execution rules aim to prevent.
+  difficulty: 2
+  tags:
+  - concept

@@ -1,0 +1,54 @@
+- id: "c.141"
+  question: "A batch is a {ledger} of per-item outcomes under one intent — partial failure is honest data."
+  answer: "ledger"
+  explanation: "Each item owns its outcome slot; batch status derives from the rollup."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.142"
+  question: "The batch engine's status machine runs idle → validating → {submitting} → done/partial/failed."
+  answer: "submitting"
+  explanation: "The machine is explicit; retries loop back into submitting from partial or failed."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "c.143"
+  question: "Before any POST, all items run the validation {gate} — local zod then remote chain — and known-bad items become blocked."
+  answer: "gate"
+  explanation: "Blocked items are excluded from flight; fixing a field requeues only that item."
+  difficulty: 2
+  tags: [process, concept]
+- id: "c.144"
+  question: "Submission uses {bounded} parallelism — a worker pool, so the server's connection pool and write path are not stormed."
+  answer: "bounded"
+  explanation: "A small lane count saturates a round-trip per worker without melting the server's pool."
+  difficulty: 2
+  tags: [concept, formula]
+- id: "c.145"
+  question: "Each item {settles} independently during submit; one rejection is data about one item, never a control-flow abort."
+  answer: "settles"
+  explanation: "Settlement branches — success/failed/blocked — never a thrown promise that kills siblings."
+  difficulty: 2
+  tags: [concept]
+- id: "c.146"
+  question: "Some items ok and some failed → the rollup status is {partial}, never a guess of done or failed."
+  answer: "partial"
+  explanation: "The middle state is the honest count-based answer of the ledger."
+  difficulty: 1
+  tags: [terminology, calculation]
+- id: "c.147"
+  question: "Retry reuses the same {runId} so the server dedupes by it plus itemId and cannot double-submit."
+  answer: "runId"
+  explanation: "Same run makes replay against an already-landed write return the stored outcome."
+  difficulty: 2
+  tags: [terminology, process]
+- id: "c.148"
+  question: "Optimistic UI commits {per}-{item}, never per batch — the bar may show in-flight, never fake committed."
+  answer: "per-item"
+  explanation: "You may lie about being in flight; you may not lie about being committed."
+  difficulty: 2
+  tags: [concept, comparison]
+- id: "c.149"
+  question: "On failure, useOptimistic previews must be rolled back {explicitly}, because React only discards the optimistic value when the base state changes."
+  answer: "explicitly"
+  explanation: "A failed write never changes the cache, so the flash must be undone by hand — the classic frozen-'submitting' bug."
+  difficulty: 3
+  tags: [concept, react-19]

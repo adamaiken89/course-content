@@ -1,0 +1,119 @@
+- id: "2.1"
+  question: "Which Splunk component tails log files and forwards them to an indexer, without storing or searching data?"
+  options:
+    a: "Search head"
+    b: "Universal forwarder"
+    c: "Indexer"
+    d: "Deployment server"
+  answer: b
+  explanation: "The universal forwarder is a lightweight agent that only collects and forwards. Search heads query, indexers store, deployment server pushes configs."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "2.2"
+  question: "Which component performs timestamp assignment and line breaking?"
+  options:
+    a: "The universal forwarder"
+    b: "The search head"
+    c: "The indexer (parsing phase)"
+    d: "The deployment server"
+  answer: c
+  explanation: "Parsing - timestamp, line breaking, default metadata - happens on the indexer, configured by props.conf."
+  difficulty: 1
+  tags: [concept]
+
+- id: "2.3"
+  question: "In distributed search with 4 indexers, how does `stats count by pod` execute?"
+  options:
+    a: "Sharding"
+    b: "Replication"
+    c: "Clustered indexing"
+    d: "Distributed search"
+  answer: d
+  explanation: "Distributed search fans sub-searches out to all indexers and merges partial results on the search head."
+  difficulty: 2
+  tags: [concept]
+
+- id: "2.4"
+  question: "A Spring Boot app uses the Splunk HEC appender. What component receives the logs?"
+  options:
+    a: "HTTP Event Collector on the indexer side"
+    b: "Search head"
+    c: "Deployment server"
+    d: "Universal forwarder"
+  answer: a
+  explanation: "HEC is an HTTPS input that accepts events into the indexing pipeline. The appender posts to /services/collector."
+  difficulty: 2
+  tags: [application]
+
+- id: "2.5"
+  question: "Which is the strongest reason to prefer HEC over a raw TCP input for app logs?"
+  options:
+    a: "HEC supports batching, acknowledgment, and TLS"
+    b: "TCP is faster than HTTPS"
+    c: "TCP cannot carry JSON"
+    d: "HEC does not need an index"
+  answer: a
+  explanation: "HEC gives batching (batch_size_count/bytes/interval), retries, and secure transport. TCP is fire-and-forget with no ack, easy to lose events."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "2.6"
+  question: "On Kubernetes, a pod writes logs to stdout which a forwarder tails. What is one advantage over HEC-only?"
+  options:
+    a: "HEC cannot accept structured events"
+    b: "Forwarders parse JSON automatically"
+    c: "Stdout captures logs even from crash-looping containers that die before the app can send them"
+    d: "stdout logs are exempt from license"
+  answer: c
+  explanation: "Stdout + forwarder captures all container output including pre-crash logs, needs no app library. Many teams run both: stdout safety net plus HEC structured stream."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "2.7"
+  question: "A search head sends each indexer a sub-search scoped to its buckets, then merges results. What is this called?"
+  options:
+    a: "Replication"
+    b: "Sharding"
+    c: "Clustered indexing"
+    d: "Distributed search"
+  answer: d
+  explanation: "Distributed search fans sub-searches out to all indexers and merges partial results on the search head."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "2.8"
+  question: "Where does field extraction typically happen by default in Splunk, and what is its advantage?"
+  options:
+    a: "Index time - stored once, immutable"
+    b: "Search time - flexible, changeable, no storage cost"
+    c: "In the deployment server"
+    d: "Index time - fastest always"
+  answer: b
+  explanation: "Search-time extraction (props extractions or SPL rex/spath/extract) is the default. It costs CPU per event but no storage, and can change without re-indexing."
+  difficulty: 2
+  tags: [concept]
+
+- id: "2.9"
+  question: "Your cluster has 4 indexers and searches feel slow. Which fix addresses the most likely bottleneck?"
+  options:
+    a: "Tighten time range and index/sourcetype filters in searches"
+    b: "Add 2 more indexers"
+    c: "Remove the deployment server"
+    d: "Move all data to one index"
+  answer: a
+  explanation: "Search speed is dominated by events scanned. Tight filters/time range reduce scanned events - the real lever. More indexers don't fix broad scans."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "2.10"
+  question: "Which component centrally pushes configuration (inputs, props, apps) to many forwarders?"
+  options:
+    a: "Search head"
+    b: "Indexer cluster master"
+    c: "Deployment server"
+    d: "License master"
+  answer: c
+  explanation: "The deployment server distributes configs to forwarders, so you don't hand-edit every host."
+  difficulty: 1
+  tags: [terminology]

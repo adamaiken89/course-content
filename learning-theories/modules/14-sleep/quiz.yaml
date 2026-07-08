@@ -1,0 +1,128 @@
+- id: '14.1'
+  question: Which sleep stage primarily consolidates declarative (fact-based) memories?
+  options:
+    a: NREM sleep (deep sleep)
+    b: REM sleep
+    c: Light sleep (Stage 1)
+    d: All stages equally
+  answer: a
+  explanation: NREM/deep sleep strengthens declarative memory via hippocampal replay and transfer to neocortex.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '14.2'
+  question: A student learns a new piano piece. Which sleep stage is most important for consolidating
+    this procedural skill?
+  options:
+    b: REM sleep
+    a: NREM sleep
+    c: Stage 1 sleep
+    d: Waking rest
+  answer: b
+  explanation: REM sleep preferentially strengthens procedural memory — skills, patterns, and motor sequences.
+  difficulty: 2
+  tags:
+  - application
+- id: '14.3'
+  question: 'Sleep spindles during NREM sleep are associated with:'
+  options:
+    c: Transfer of memories from hippocampus to neocortex
+    a: Dream recall
+    b: Muscle relaxation
+    d: Increased heart rate
+  answer: c
+  explanation: Sleep spindles facilitate systems consolidation — moving temporary hippocampal storage
+    to permanent cortical storage.
+  difficulty: 2
+  tags:
+  - concept
+- id: '14.4'
+  question: A student has 2 hours before a test. They can either review for 1 hour and nap for 1 hour,
+    or review for 2 hours. Which is better?
+  options:
+    d: Review 1 hour + nap 1 hour — nap consolidates existing learning
+    a: Review 2 hours — no time for sleep
+    b: Neither — rest without review
+    c: Only nap — skip review entirely
+  answer: d
+  explanation: A nap aids consolidation of material already studied. Diminishing returns on the second
+    review hour make the nap more valuable.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '14.5'
+  question: What is the minimum recommended sleep duration during intensive learning periods?
+  options:
+    a: 7-9 hours
+    b: 4-5 hours
+    c: 10-12 hours
+    d: Sleep is not important for learning
+  answer: a
+  explanation: 7-9 hours supports both NREM and REM cycles necessary for full consolidation.
+  difficulty: 1
+  tags:
+  - concept
+- id: '14.6'
+  question: Why does sleep deprivation impair next-day learning beyond just feeling tired?
+  options:
+    b: It impairs attention (encoding) AND previous material wasn't consolidated
+    a: It causes permanent brain damage
+    c: Only attention is affected
+    d: No effect on learning
+  answer: b
+  explanation: 'Double impairment: poor encoding of new material + fragile consolidation of previous material.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '14.7'
+  question: 'A student learns best in the evening and reviews before bed. This strategy leverages:'
+  options:
+    c: Consolidation during sleep immediately after encoding
+    a: Only evening alertness
+    b: Morning retrieval
+    d: REM rebound
+  answer: c
+  explanation: Learning before bed means consolidation begins during sleep with minimal interference from
+    waking activity.
+  difficulty: 2
+  tags:
+  - application
+- id: '14.8'
+  question: Which nap duration is most likely to aid memory consolidation?
+  options:
+    d: 60-90 minutes (includes NREM sleep)
+    a: 5 minutes
+    b: 15 minutes
+    c: 30 minutes
+  answer: d
+  explanation: 60-90 min includes NREM sleep, enabling consolidation processes. Short naps improve alertness
+    but not consolidation.
+  difficulty: 2
+  tags:
+  - concept
+- id: '14.9'
+  question: A student studies until 3 AM and wakes at 7 AM for an exam. What's the primary learning problem?
+  options:
+    a: No consolidation window — traces never stabilized
+    b: Too much study
+    c: Study time was wasted
+    d: The exam was too early
+  answer: a
+  explanation: Late-night study has no sleep window for consolidation. The traces remain fragile and may
+    decay before or during the exam.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '14.10'
+  question: 'The process where the hippocampus replays recent experiences during sleep is called:'
+  options:
+    b: Reactivation
+    a: Dreaming
+    c: Encoding
+    d: Retrieval
+  answer: b
+  explanation: Hippocampal reactivation during NREM sleep replays recent experiences, enabling transfer
+    to neocortical storage.
+  difficulty: 2
+  tags:
+  - terminology

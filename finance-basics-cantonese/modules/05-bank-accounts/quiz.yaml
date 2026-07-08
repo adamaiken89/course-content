@@ -1,0 +1,139 @@
+- id: '5.1'
+  question: 香港零售銀行主要提供邊 4 種基本戶口?
+  options:
+    a: 現金、支票、信用卡、八達通
+    b: 基本、進階、VIP、私人銀行
+    c: 個人、家庭、公司、聯名
+    d: 往來、儲蓄、定期、外幣
+  answer: d
+  explanation: '香港零售銀行主要 4 種: 往來戶口 (Current, 日常用)、儲蓄戶口 (Savings, 短期儲蓄)、定期存款 (Fixed
+    Deposit, 鎖定高息)、外幣戶口 (Multi-Currency, 持有外幣)。其他選項係銀行產品/客戶類型, 唔係戶口種類。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.2'
+  question: 港元定存 3 個月, 4% 年利率, 本金 $100,000, 到期利息幾多?
+  options:
+    a: $1,000
+    b: $3,000
+    c: $400
+    d: $4,000
+  answer: a
+  explanation: '利息 = 本金 × 年利率 × (期/月數) = $100,000 × 4% × (3/12) = $1,000。記住公式: 利息
+    = 本金 × 利率 × 時間。3 個月即係 1/4 年, 所以係 4% × 1/4 = 1% 嘅本金, 即 $1,000。'
+  difficulty: 2
+  tags:
+  - calculation
+- id: '5.3'
+  question: 如果你有 $200,000 儲蓄, 應該點分配?
+  options:
+    a: 全部放 12 個月定存, 拎最多息
+    b: 6 個月生活費放儲蓄, 剩低拆短中期定存
+    c: 全部放外幣戶口, 對沖風險
+    d: 全部放往來戶口, 靈活
+  answer: b
+  explanation: '正確: 保留流動性 (應急錢放儲蓄, 即時攞到) + 拎較高息 (定存) + 分散到期日 (拆 3/6/12 個月, 唔好全部同期)。全部往來
+    = 零息, 全部長定存 = 急用被罰, 全部外幣 = 對新手風險過高。'
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '5.4'
+  question: 應急錢應該放邊種戶口?
+  options:
+    a: 外幣戶口 (匯率風險)
+    b: 往來戶口 (即時用, 但零息)
+    c: 儲蓄戶口 (即時攞, 有少少息)
+    d: 12 個月定存 (高息但鎖定)
+  answer: c
+  explanation: '應急錢 3 個條件: 1) 即時攞到 (急用唔等); 2) 安全 (唔輸本金); 3) 多少少息。儲蓄戶口符合晒。往來零息, 定存鎖定
+    (急用要罰息), 外幣有匯率風險。標準建議: 6 個月生活費放儲蓄戶口。'
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '5.5'
+  question: 外幣戶口對新手嘅主要用途係乜?
+  options:
+    a: 保本儲蓄 (比 HKD 戶口安全)
+    b: 投資 (買美股) / 旅行 (換 JPY) / 對沖 (分散貨幣風險)
+    c: 避稅 (外幣收入唔使報稅)
+    d: ATM 提款 (跨國 ATM 提款方便)
+  answer: b
+  explanation: '外幣戶口主要 3 用途: 投資 (買海外股票/基金)、旅行 (出發前換晒)、對沖 (高資產人士分散風險)。對新手嚟講, 冇呢啲需要就唔使開,
+    因為有匯率風險 + 找換店通常比銀行平。'
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.6'
+  question: 找換店同銀行換外幣, 一般邊個 spread (買入賣出差) 較平?
+  options:
+    a: 兩者完全一樣
+    b: 視乎當日匯率, 冇定律
+    c: 銀行一定平, 因為有牌
+    d: 找換店通常較平, 視乎地點
+  answer: d
+  explanation: '找換店 (尤其旺角/中環) 通常 spread 較窄 (0.2-0.5%), 銀行 spread 通常 0.5-1.5%。但找換店要小心假鈔
+    + 計準手續費。建議: 換大額 ($30,000+) 前先 compare 兩者, 用計算機計真實 cost。'
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '5.7'
+  question: 你準備去日本旅行, 換 $30,000 HKD 做 JPY, 點換最化算?
+  options:
+    a: 去 ATM 提款, 一定最平
+    b: 先 compare 銀行同找換店 spread, 計埋手續費, 揀平嘅
+    c: 用信用卡, 一定免手續費
+    d: 直接去銀行, 因為銀行有牌最安全
+  answer: b
+  explanation: '冇單一答案, 要視乎當日匯率 + 銀行/找換店政策。實用做法: 出發前 1-2 星期 compare 銀行同 2-3 間找換店, 用計算機計真實
+    cost (包括手續費), 揀最平。ATM (海外) 可能有海外手續費 + DCC 陷阱。信用卡 (海外) 通常 1-2% 手續費。講「最平一定係 X」係講大話,
+    實事求係先 compare。'
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '5.8'
+  question: 如果你將所有儲蓄 $500,000 做 12 個月定存, 最大風險係乜?
+  options:
+    a: 急用錢時要罰息或贖回, 冇流動性
+    b: 通脹令實際回報變負
+    c: 政府會抽走部分本金
+    d: 銀行倒閉, 全部輸晒
+  answer: a
+  explanation: '香港有存款保障計劃 (每位存款人每銀行 $500,000 保障), 所以銀行倒閉風險低 (但要留意 500K 上限)。最大風險係「冇流動性」:
+    12 個月內急用, 提前贖回可能 0 息 + 行政費。通脹係真實風險但長期先顯著。拆短中期 + 保留應急錢先穩陣。'
+  difficulty: 2
+  tags:
+  - scenario
+  - misconception
+- id: '5.9'
+  question: Virtual Bank (e.g. ZA Bank) 同傳統銀行 (HSBC/中銀) 嘅主要分別係乜?
+  options:
+    a: Virtual Bank 唔可以做定存
+    b: Virtual Bank 一定高息過傳統銀行
+    c: Virtual Bank 冇實體分行, 全 App 操作, 通常推廣期利率較高
+    d: Virtual Bank 唔受金管局監管
+  answer: c
+  explanation: 'Virtual Bank 一樣受金管局發牌同監管, 一樣有存款保障。分別係: 1) 冇實體分行, 全部 App 操作; 2) 通常用較高息做推廣
+    (ZA Bank 開戶期高息); 3) 收費結構唔同 (跨行轉帳可能 $0)。但推廣期過後利率會回落到市場水平, 唔好假設「永遠高息」。'
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '5.10'
+  question: 你每月出糧 $20,000, 想自動儲蓄 20% ($4,000), 點做最穩陣?
+  options:
+    a: '設定自動轉賬: 出糧當日由往來自動轉 $4,000 到儲蓄戶口'
+    b: 用信用卡儲里數代替現金儲蓄
+    c: 將糧直接存入儲蓄戶口 (往來戶口放零)
+    d: 每月手動轉賬到儲蓄戶口
+  answer: a
+  explanation: '自動轉賬係「Pay Yourself First」嘅核心做法: 出糧當日自動 split 20% 去儲蓄, 剩低先用。好處: 1)
+    唔使記得; 2) 唔會使凸; 3) 強迫儲蓄。手動轉賬 = 容易忘記/諗多咗就唔轉。信用卡里數唔係儲蓄。糧直入儲蓄 = 日常支付唔方便。'
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+

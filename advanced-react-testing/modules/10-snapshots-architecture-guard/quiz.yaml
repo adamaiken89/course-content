@@ -1,0 +1,117 @@
+- id: '10.1'
+  question: When do snapshots provide the most value?
+  options:
+    d: For stable, small components with predictable output (error pages, empty states)
+    a: For every component in the app
+    b: For dynamic components with random data
+    c: For testing API responses
+  answer: d
+  explanation: Snapshots excel at detecting unintended changes in stable output. Error
+    pages, empty states, and loading skeletons rarely change — a snapshot diff signals
+    an intentional or accidental change.
+  difficulty: 1
+  tags:
+  - concept
+- id: '10.2'
+  question: A snapshot is 300 lines. What is the problem?
+  options:
+    a: Nobody will review the diff before approving — defeats the purpose
+    b: No problem — bigger is more thorough
+    c: Snapshots over 100 lines cause test timeouts
+    d: The snapshot format has a line limit
+  answer: a
+  explanation: Large snapshots create 'update fatigue' — developers approve without
+    reviewing. The snapshot becomes noise. Targeted assertions on specific elements
+    provide more value.
+  difficulty: 1
+  tags:
+  - concept
+- id: '10.3'
+  question: How do you handle a component with Math.random() in snapshot tests?
+  options:
+    c: Mock Math.random to return a fixed value
+    a: Skip snapshot testing for this component
+    b: Use toMatchInlineSnapshot
+    d: Remove the random element from the component
+  answer: c
+  explanation: Mocking Math.random (or Date.now, etc.) makes the output deterministic.
+    The snapshot captures the structure without random elements changing each run.
+  difficulty: 2
+  tags:
+  - application
+- id: '10.4'
+  question: What should you use instead of a 100-line snapshot?
+  options:
+    b: Targeted assertions (getByRole, getByText) for each important element
+    a: Multiple smaller snapshots for logical sections
+    c: Inline snapshots
+    d: Screenshot comparison
+  answer: b
+  explanation: Targeted assertions on specific elements (button text, heading content)
+    are more maintainable than large snapshots. They fail on specific elements, not
+    the entire output.
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.5'
+  question: A snapshot changes because a CSS-in-JS library changes its class name
+    hash. What is the issue?
+  options:
+    c: Snapshot is too coupled to volatile implementation details
+    a: Snapshot caught a real change — approve it
+    b: Update the CSS library
+    d: This is expected — approve the change
+  answer: c
+  explanation: CSS-in-JS class hashes are volatile — they change with library updates,
+    build tool changes, or version bumps. Snapshots should not include these implementation
+    details.
+  difficulty: 2
+  tags:
+  - concept
+- question: A PR changes component markup and its snapshot. Reviewer approves without
+    reading the diff. What guardrail helps most?
+  options:
+    d: CI rule requiring snapshot diffs be reviewed inline with size limits
+    a: Delete all snapshot tests
+    b: Store snapshots in the database
+    c: Disable CI on snapshot paths
+  answer: d
+  explanation: Inline diff review plus size limits fights update fatigue — the top
+    cause of snapshots silently losing their guarding power.
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+  id: '10.6'
+- question: Which use case is 'snapshot as architecture guard' rather than plain regression
+    testing?
+  options:
+    b: Verifying the exported props interface and DOM structure of a shared design-system
+      component stays stable
+    a: Testing a countdown timer's ticking
+    c: Capturing random avatar URLs
+    d: Asserting an API returns 200
+  answer: b
+  explanation: Shared components act as contracts; snapshots pin their public structure
+    so downstream teams notice breaking changes before runtime.
+  difficulty: 3
+  tags:
+  - scenario
+  - comparison
+  id: '10.7'
+- question: Dates render inside a captured component. Which combination keeps snapshots
+    deterministic?
+  options:
+    a: Mock Date.now/setDate via setup and inject fixed dates as props
+    b: Freeze system clock in CI only
+    c: Ignore the snapshot on failure
+    d: Regenerate the snapshot daily
+  answer: a
+  explanation: Injecting fixed dates as props plus mocking time sources makes output
+    deterministic regardless of when tests run.
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+  id: '10.8'
+

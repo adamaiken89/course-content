@@ -1,0 +1,141 @@
+- id: '10.1'
+  question: In a 3:1 forward stock split, what happens to share price and share count?
+  options:
+    a: Price triples, shares divided by 3
+    b: Price divided by 3, shares triple
+    c: Price unchanged, shares triple
+    d: Price divided by 3, shares unchanged
+  answer: b
+  explanation: 3:1 split = 3 shares for each 1 held. Price adjusts to 1/3 of pre-split
+    price. Market cap unchanged. 100 shares at $300 become 300 shares at $100.
+  difficulty: 1
+  tags:
+  - calculation
+- id: '10.2'
+  question: Why do companies typically execute reverse stock splits?
+  options:
+    a: To avoid delisting when price falls below exchange minimum
+    b: To increase market capitalization
+    c: To make shares more affordable for retail investors
+    d: To signal strong business performance
+  answer: a
+  explanation: Reverse split boosts share price above exchange minimum bid requirement
+    (typically $1 for NYSE/Nasdaq) to avoid delisting. Often signals financial distress.
+  difficulty: 1
+  tags:
+  - concept
+- id: '10.3'
+  question: A company earns $200M with 100M shares outstanding. It buys back 20M shares.
+    What is the new EPS?
+  options:
+    a: $2.00
+    b: $2.50
+    c: $3.00
+    d: $1.50
+  answer: b
+  explanation: 'Original EPS = $200M / 100M = $2.00. After buyback: $200M / 80M =
+    $2.50. EPS increased 25% without any earnings growth.'
+  difficulty: 2
+  tags:
+  - calculation
+- id: '10.4'
+  question: Which of the following is a key advantage of buybacks over dividends for
+    returning capital?
+  options:
+    a: Buybacks are immediately taxed as ordinary income
+    b: Buybacks commit the company to ongoing payments
+    c: Buybacks offer deferred tax treatment (capital gains)
+    d: Buybacks reduce flexibility for management
+  answer: c
+  explanation: Buybacks defer taxes until shareholder sells at capital gains rates.
+    Dividends are taxable immediately. Buybacks also offer flexibility — no ongoing
+    commitment unlike dividends.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '10.5'
+  question: PayPal's spin-off from eBay in 2015 is an example of what type of corporate
+    action?
+  options:
+    a: Stock split
+    b: Rights issue
+    c: Spin-off
+    d: Share buyback
+  answer: c
+  explanation: eBay separated PayPal into an independent company, distributing shares
+    pro-rata to eBay shareholders. This unlocked value by eliminating the conglomerate
+    discount.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.6'
+  question: A rights issue allows existing shareholders to buy new shares at a discount.
+    What happens if a shareholder ignores the rights issue?
+  options:
+    a: They receive cash compensation
+    b: Their ownership percentage is diluted
+    c: Their shares are automatically converted
+    d: Nothing — their position stays the same
+  answer: b
+  explanation: If a shareholder does not exercise rights, new shares issued to others
+    dilute their ownership percentage. The theoretical ex-rights price is below pre-announcement
+    price, so non-subscribers lose value.
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.7'
+  question: What is the theoretical ex-rights price for a stock at $40 with a 1-for-4
+    rights issue at $30?
+  options:
+    a: $38.00
+    b: $37.50
+    c: $35.00
+    d: $40.00
+  answer: a
+  explanation: Formula = (4 × $40 + 1 × $30) / (4 + 1) = ($160 + $30) / 5 = $38.00.
+    Right value = $38.00 − $30.00 = $8.00 per right.
+  difficulty: 3
+  tags:
+  - calculation
+- id: '10.8'
+  question: A company does a 1:25 reverse split. Before split, a shareholder owns
+    500 shares at $0.40. What is the post-split position?
+  options:
+    a: 20 shares at $10.00
+    b: 500 shares at $10.00
+    c: 20 shares at $0.40
+    d: 12,500 shares at $0.016
+  answer: a
+  explanation: 500 shares / 25 = 20 shares. Price = $0.40 × 25 = $10.00. Total value
+    = 20 × $10 = $200 (unchanged from 500 × $0.40 = $200).
+  difficulty: 2
+  tags:
+  - calculation
+- id: '10.9'
+  question: Which of the following best describes tracking stock?
+  options:
+    a: Full legal separation of a subsidiary
+    b: Stock tied to division performance without full separation
+    c: Stock that tracks index performance
+    d: New shares issued in a rights offering
+  answer: b
+  explanation: Tracking stock is tied to a specific division's financial performance
+    but does not represent full legal separation. Shareholders have limited rights
+    compared to a true spin-off.
+  difficulty: 3
+  tags:
+  - terminology
+- id: '10.10'
+  question: A critic argues that debt-funded buybacks primarily benefit whom?
+  options:
+    a: Rank-and-file employees
+    b: Bondholders
+    c: Executives with stock-based compensation
+    d: Customers
+  answer: c
+  explanation: Critics argue debt-funded buybacks boost EPS, which increases executive
+    bonuses and stock option values. They also increase financial fragility by adding
+    leverage without productive investment.
+  difficulty: 3
+  tags:
+  - scenario

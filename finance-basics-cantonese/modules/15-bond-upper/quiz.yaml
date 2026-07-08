@@ -1,0 +1,130 @@
+- id: '15.1'
+  question: 債券 4 個關鍵元素包括以下邊 4 樣?
+  options:
+    a: 面值、票面利率、到期日、市場價格
+    b: 本金、利息、稅率、到期日
+    c: 買入價、賣出價、回報率、波動率
+    d: 發行人、評級、行業、地區
+  answer: a
+  explanation: '債券 4 個關鍵元素係: 面值 (Face Value)、票面利率 (Coupon Rate)、到期日 (Maturity)、市場價格
+    (Market Price)。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '15.2'
+  question: 面值 $10,000, 票面 4%, 5 年期, 半年派息。每 6 個月派幾多?
+  options:
+    a: $4,000
+    b: $400
+    c: $200
+    d: $40
+  answer: c
+  explanation: 年派息 $10,000 × 4% = $400, 半年派 = $400 / 2 = $200。
+  difficulty: 1
+  tags:
+  - calculation
+  - formula
+- id: '15.3'
+  question: 以下邊種債券違約風險最低?
+  options:
+    a: 政府/主權債
+    b: 高息債 (Junk Bond)
+    c: 新興市場公司債
+    d: 科技公司債
+  answer: a
+  explanation: 政府/主權債由中央政府發行, 違約風險最低 (政府可加稅 / 印銀紙還)。其他三種風險都較高。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '15.4'
+  question: Zero-Coupon Bond 嘅特點係?
+  options:
+    a: 可以轉成股票
+    b: 派高息, 鎖定高回報
+    c: 唔派息, 折扣價發行, 到期取面值
+    d: 可以隨時贖回
+  answer: c
+  explanation: Zero-Coupon 債券唔派息, 折扣價發行 (e.g. $500 買, 10 年後取 $1,000), 鎖定回報率。
+  difficulty: 2
+  tags:
+  - terminology
+- id: '15.5'
+  question: TIPS (Treasury Inflation-Protected Securities) 嘅特點?
+  options:
+    a: 票面最高嘅政府債
+    b: 本金隨通脹調整, 真正抗通脹
+    c: 可以轉成股票
+    d: 只派息一次
+  answer: b
+  explanation: TIPS 本金跟通脹調整, 派息跟住本金加, 係真正「保本 + 保值」嘅政府債。
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '15.6'
+  question: 票面 4%, 買入價 $9,500, 面值 $10,000。Current Yield 係?
+  options:
+    a: 4.0% (等於票面)
+    b: 4.21% (高過票面)
+    c: 3.81% (低過票面)
+    d: 5.0%
+  answer: b
+  explanation: Current Yield = 年派息 / 買入價 = $400 / $9,500 = 4.21%。買入價低過面值, Yield 高過票面。
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '15.7'
+  question: 以下邊種情況會令你嘅 Callable Bond 風險增加?
+  options:
+    a: 市場利率下跌, 發行人贖回你要再投資低息
+    b: 公司盈利大增
+    c: 你揸到到期
+    d: 市場利率上升
+  answer: a
+  explanation: 利率下跌時, 發行人會贖回舊債 (高息) 發新債 (低息), 你要再投資但回報低咗。呢個係 Callable 債嘅再投資風險。
+  difficulty: 3
+  tags:
+  - concept
+  - application
+- id: '15.8'
+  question: 信用評級 BB 嘅意思係?
+  options:
+    a: 政府級別
+    b: 最高質素
+    c: 投資級別
+    d: 投機級別 (Junk / High Yield), 違約風險高
+  answer: d
+  explanation: Moody's Ba / S&P BB 本身已屬 Junk Bond / High Yield (投機級別), 違約風險高, 票面高係補償風險。
+    投資級別底線係 BBB-/Baa3, BB/Ba 已經喺底線之下。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '15.9'
+  question: 你揸住一隻 10 年公司債, 票面 5%, 5 年後公司被降評級到 BB。你會?
+  options:
+    a: 繼續揸, 票面 5% 唔變
+    b: 二手市場價會跌, 因為市場重新定價違約風險
+    c: 公司會自動加票面
+    d: 冇影響, 票面係合約寫死
+  answer: b
+  explanation: 票面 5% 係合約寫死, 但二手市場價會跌, 因為市場要補償新嘅違約風險。如果你賣, 就會蝕價差。呢個就係「信用風險傳導到價格」。
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '15.10'
+  question: 你見到政府債二手價 $980 (面值 $1,000)。點解「唔係抵買」?
+  options:
+    a: 政府債唔可以二手買
+    b: $980 已經係最平
+    c: 二手價應該高過面值
+    d: 可能市場新債 5%, 呢隻舊債 4% 唔吸引所以跌價, 唔係真平
+  answer: d
+  explanation: 二手價反映市場利率, 平過面值通常因為舊債息率低過新債。真正比較要對標同期同類新債, 而唔係同自己面值比。
+  difficulty: 3
+  tags:
+  - concept
+  - misconception
+

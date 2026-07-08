@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Future Value Annuity 公式: {FV = PMT × [(1+r)ⁿ - 1] / r}, 計 {未來累積金額}。"
+  answer: "FV = PMT × [(1+r)ⁿ - 1] / r、未來累積金額"
+  explanation: "PMT 年供款, r 年回報, n 年期。"
+  difficulty: 1
+  tags: [formula, terminology]
+
+- id: "c.2"
+  question: "年供 $120,000, 30 年, 5% 回報, 終值 ~{$8M}。年供 $180,000, 35 年, 7% 回報, 終值 ~{$25M}。"
+  answer: "$8M、$25M"
+  explanation: "複利威力: 回報越高, 終值差距越大。"
+  difficulty: 2
+  tags: [calculation, application]
+
+- id: "c.3"
+  question: "而家年開支 $400,000, 通脹 3%, 35 年後退休, 退休時年開支 {$1,124,000} (通脹因子 2.81)。"
+  answer: "$1,124,000"
+  explanation: "通脹因子 (1.03)³⁵ = 2.81, 退休時開支 = $400k × 2.81。"
+  difficulty: 2
+  tags: [calculation, formula]
+
+- id: "c.4"
+  question: "4% Rule 原理: 第一年提 {4%}, 之後按 {通脹} 加, 30 年 {成功率 95%+} (Trinity Study)。"
+  answer: "4%、通脹、成功率 95%+"
+  explanation: "60/40 股債, 1998 Trinity Study, 30 年期安全提取率。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.5"
+  question: "4% Rule 總需要 = {退休年開支 / 4%}。例: $1.124M / 4% = $28.1M。"
+  answer: "退休年開支 / 4%"
+  explanation: "反向計算: 需要幾多本金先可以提 X 蚊。"
+  difficulty: 1
+  tags: [formula, concept]
+
+- id: "c.6"
+  question: "MPF 35 年強制供款 (僱主 + 僱員合共 $3,000/月), 5% 回報, 預期累積 ~{$3.25M}, 65 歲提取 {免稅}。"
+  answer: "$3.25M、免稅"
+  explanation: "MPF 提取完全免稅, 係退休重要一部分。"
+  difficulty: 1
+  tags: [terminology, calculation]
+
+- id: "c.7"
+  question: "MPF 提取條件: 65 歲 / {永久離港} / {完全喪失行為能力} / {死亡} / {小額結餘}。"
+  answer: "永久離港、完全喪失行為能力、死亡、小額結餘"
+  explanation: "提早提取要符合特定條件, 否則違法。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "退休規劃 6 大錯誤: {低估通脹}、{高估回報}、{短視年期}、{忽略醫療}、{過早退休}、{無應急錢}。"
+  answer: "低估通脹、高估回報、短視年期、忽略醫療、過早退休、無應急錢"
+  explanation: "避開呢 6 個錯誤, 退休計劃更穩健。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.9"
+  question: "30 歲起步月投 $15k (7%) + 儲 $5k (2%), 35 年後總資產 ~$31M, 對比需要 $28M, {略為足夠}。"
+  answer: "略為足夠"
+  explanation: "$31M - $28M = ~$3M buffer, 接近剛好。要有保險 (年金 + 應急)。"
+  difficulty: 3
+  tags: [calculation, application]
+
+- id: "c.10"
+  question: "退休規劃 4 步: {設定目標年齡} → {計算需要} → {評估來源} (MPF + 投資 + 儲蓄) → {計算缺口}。"
+  answer: "設定目標年齡、計算需要、評估來源、計算缺口"
+  explanation: "系統化方法, 唔靠感覺。"
+  difficulty: 1
+  tags: [concept, application]

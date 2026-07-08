@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Sharpe Ratio 嘅公式係 {S=(R-Rf)/σ}, 分子係 {資產回報減去無風險利率}, 分母係 {標準差}。"
+  answer: "S=(R-Rf)/σ、資產回報減去無風險利率、標準差"
+  explanation: "Sharpe 衡量「每承擔 1 單位風險, 賺到幾多額外回報」。Rf 通常用短債 / 國庫券。"
+  difficulty: 2
+  tags: [terminology, formula]
+
+- id: "c.2"
+  question: "方差 σ² 嘅公式係 {E[(R-μ)²]}, 即每個實際回報偏離 {平均回報} 嘅平方再平均。"
+  answer: "E[(R-μ)²]、平均回報"
+  explanation: "方差量化波動, 但單位係百分比嘅平方, 所以再開方變標準差。"
+  difficulty: 2
+  tags: [terminology, formula]
+
+- id: "c.3"
+  question: "將方差 {開方} 就係標準差, 單位同回報一樣係 {百分比}, 比方差易解讀。"
+  answer: "開方、百分比"
+  explanation: "σ = √σ², 將「百分比嘅平方」轉返做百分比, 比較直觀。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "風險可以分為 {系統風險} 同 {非系統風險} 兩種, 分散化只可以降低 {非系統風險}。"
+  answer: "系統風險、非系統風險、非系統風險"
+  explanation: "系統風險(市場整體)避唔到, 非系統風險(個別公司)可以透過分散消除。"
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "c.5"
+  question: "分散化有效嘅前提係組合入面資產嘅 {相關性} 唔係 +1, 即係唔係完全同步上落。"
+  answer: "相關性"
+  explanation: "當 ρ=1, 組合方差 = 加權平均, 分散無效。ρ 越低, 分散效果越好。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "風險承受度受多個因素影響, 包括 {年齡}、{收入穩定性}、{家庭負擔}、{目標時限} 同 {心理質素}。"
+  answer: "年齡、收入穩定性、家庭負擔、目標時限、心理質素"
+  explanation: "全部因素都會影響你頂唔頂到短期波動。30 歲穩定收入同 60 歲退休人士承受度完全唔同。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Sharpe > {3} 通常代表 {計算方法有問題或 data 唔可靠}, 應該自己驗算。"
+  answer: "3、計算方法有問題或 data 唔可靠"
+  explanation: "Sharpe > 3 喺真實市場罕見, 大部分係月/年回報混淆、rf 假設錯誤、或幸存者偏差。"
+  difficulty: 3
+  tags: [concept, misconception]
+
+- id: "c.8"
+  question: "短期 {國庫券} (T-bill) 或 {高息戶口} 係真正「無風險」資產, 波動近乎 {零}。"
+  answer: "國庫券、高息戶口、零"
+  explanation: "呢類資產有政府 / 銀行信用支持, 違約風險極低, 波動 < 1% 年化。但回報低, 對抗唔到通脹。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.9"
+  question: "真正分散要 {跨資產類別}、{跨地區}、{跨行業}, 唔係淨係買多幾隻同類股票。"
+  answer: "跨資產類別、跨地區、跨行業"
+  explanation: "10 隻港股科技股 ≠ 分散。要混合股、債、商品、黃金, 跨港美歐日, 跨科技醫療消費能源。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.10"
+  question: "組合方差嘅公式 {σp² = w₁²σ₁² + w₂²σ₂² + 2w₁w₂σ₁σ₂ρ}, 當 {相關性 ρ < 1} 時, 組合方差低於個別加權平均。"
+  answer: "σp² = w₁²σ₁² + w₂²σ₂² + 2w₁w₂σ₁σ₂ρ、相關性 ρ < 1"
+  explanation: "數學上, 當相關性低過 1, 加權協方差項變細, 組合波動自然低過個別資產平均。"
+  difficulty: 3
+  tags: [formula, application]

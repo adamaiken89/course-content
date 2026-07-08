@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: The real axis deciding monolith versus services is deploy shape and {blank}, not code size."
+  answer: "team topology"
+  explanation: "How many deploy units you ship and how many teams own them set the coordination tax, so they decide the architecture question."
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.2"
+  question: "Complete: A modular monolith keeps one {blank} while enforcing hard module boundaries for team ownership."
+  answer: "deploy"
+  explanation: "One deployment unit with enforced boundaries gives isolation benefits without the distributed coordination of separate services."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: Spring Modulith verifies module boundaries at {blank} time, catching illegal internal access like ArchUnit."
+  answer: "build"
+  explanation: "Boundary checks at build time make coupling failures cheap instead of runtime surprises."
+  difficulty: 2
+  tags: [concept, process]
+
+- id: "c.4"
+  question: "Complete: A @Transactional boundary ends where work leaves the {blank} thread, such as a remote call or async handler."
+  answer: "calling"
+  explanation: "Transactions bind to the thread that started them, so work past a network or async seam commits independently."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "Complete: The outbox pattern writes the domain change and the event in one {blank} transaction, then a relay publishes."
+  answer: "local"
+  explanation: "Same-transaction write guarantees every committed change has a durable event, the foundation of reliable eventual delivery."
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.6"
+  question: "Complete: A saga is a sequence of local transactions with {blank} actions that rebuild consistency without a global rollback."
+  answer: "compensating"
+  explanation: "Sagas accept eventual consistency and undo earlier steps when a later one fails, replacing the monolith's single rollback."
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.7"
+  question: "Complete: Spring Events run inside one {blank} and need no broker, making them cheap decoupling within an application."
+  answer: "process"
+  explanation: "In-process publish/subscribe has no network or serialization, so it suits same-JVM decoupling but is not a service boundary."
+  difficulty: 2
+  tags: [concept, comparison]
+
+- id: "c.8"
+  question: "Complete: A @{blank}EventListener with phase AFTER_COMMIT runs only when the surrounding transaction commits."
+  answer: "Transactional"
+  explanation: "Deferring to after-commit prevents handlers from acting on rolled-back work before the database state is durable."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.9"
+  question: "Complete: Event consumers must be {blank} because retries and replays can deliver the same event more than once."
+  answer: "idempotent"
+  explanation: "At-least-once delivery makes duplicates routine, so consumers keyed on a business id must treat repeats as no-ops."
+  difficulty: 3
+  tags: [concept, process]
+
+- id: "c.10"
+  question: "Complete: CQRS pays only when the {blank} genuinely diverge from the write model, such as reporting projections."
+  answer: "reads"
+  explanation: "Separate read models earn their doubled surface when query shape, load, or store really differ; plain CRUD gets nothing from it."
+  difficulty: 3
+  tags: [concept, comparison]

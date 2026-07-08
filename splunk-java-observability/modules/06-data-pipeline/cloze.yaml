@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "A raw log line travels through {input}, {parsing}, indexing, and searching."
+  answer: "input, parsing"
+  explanation: "The first two phases get data in and shape events; indexing stores them, searching queries them."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "The parsed timestamp becomes the internal field {_time}; an offset-less timestamp falls back to the {TZ} setting."
+  answer: "_time, TZ"
+  explanation: "_time is the bucketing timestamp; TZ supplies the zone when the timestamp carries no offset."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.3"
+  question: "A {sourcetype} tells Splunk which parsing rules to apply to incoming data."
+  answer: "sourcetype"
+  explanation: "Parsing rules are keyed by sourcetype in props.conf stanzas."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Multi-line Java stacktraces stay one event using {BREAK_ONLY_BEFORE}, whose regex matches the {start} of each new event."
+  answer: "BREAK_ONLY_BEFORE, start"
+  explanation: "Matching the event start (e.g. the timestamp pattern) leaves stack frames glued to their event."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.5"
+  question: "Parsing rules live in a {props.conf} file; after editing it you must reload or restart."
+  answer: "props.conf"
+  explanation: "Config is not hot-reloaded; a reload or restart picks up changes, and btool verifies syntax."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.6"
+  question: "Each event's metadata is {source} (origin), {sourcetype} (format), and {host} (machine)."
+  answer: "source, sourcetype, host"
+  explanation: "These three can be set at input or overridden at index time via TRANSFORMS."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Parsed events are stored in time-sliced storage called {buckets}, which age from hot to frozen."
+  answer: "buckets"
+  explanation: "Buckets roll over roughly every five minutes and age through hot, warm, cold, and frozen states."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "With {INDEXED_EXTRACTIONS} = JSON, JSON fields are extracted at index time and appear immediately."
+  answer: "INDEXED_EXTRACTIONS"
+  explanation: "The indexer reads JSON structure once during parsing and writes keys as indexed fields."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.9"
+  question: "JSON logs usually parse correctly with zero config because their {ISO8601} timestamps are auto-detected."
+  answer: "ISO8601"
+  explanation: "Splunk auto-detects common formats including ISO8601; the risk is timestamps without a timezone offset."
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.10"
+  question: "A Java stacktrace spread across many events usually means the sourcetype lacks a multi-line {line breaking} configuration."
+  answer: "line breaking"
+  explanation: "Default newline breaking fragments stack frames; BREAK_ONLY_BEFORE fixes it."
+  difficulty: 3
+  tags: [scenario]

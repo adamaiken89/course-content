@@ -1,0 +1,267 @@
+subject: "Brokerage Operations & OMS/EMS Full Lifecycle"
+language: en
+time_budget_hours: 40
+target_level: intermediate
+domain: "brokerage operations, OMS, EMS, trade lifecycle"
+prerequisites: []
+learning_objectives:
+  - "Understand full trade lifecycle: from pre-trade to settlement"
+  - "Master multi-asset class core attributes and their impact on OMS"
+  - "Master order types, price logic, and bookkeeping mechanics"
+  - "Understand execution system routing, algo trading, and market structure"
+  - "Understand settlement, fee calculation, pricing and valuations"
+  - "Connect pre-trade domain with execution/post-trade domain"
+  - "Understand market data, pricing, regulatory reporting, and exception management"
+
+modules:
+  - id: 1
+    name: "Trade Lifecycle Overview — Pre-Trade to Settlement"
+    time_hours: 1.5
+    prerequisites: []
+    topics: [trade-lifecycle, oms-vs-ems, system-boundaries]
+
+  - id: 2
+    name: "Asset Class Basics: Equity"
+    time_hours: 0.75
+    prerequisites: [1]
+    topics: [equity, order-book, corporate-actions]
+
+  - id: 3
+    name: "Asset Class Basics: ETF"
+    time_hours: 0.75
+    prerequisites: [2]
+    topics: [etf, nav, creation-redemption]
+
+  - id: 4
+    name: "Asset Class Basics: Fixed Income"
+    time_hours: 1
+    prerequisites: [1]
+    topics: [fixed-income, bond-conventions, yield, clean-dirty-price]
+
+  - id: 5
+    name: "Asset Class Overview: Options, Futures, FX, Mutual Funds"
+    time_hours: 1
+    prerequisites: [1]
+    topics: [options, futures, fx, mutual-funds]
+
+  - id: 6
+    name: "Security Identifiers"
+    time_hours: 1
+    prerequisites: [2, 4, 5]
+    topics: [isin, cusip, sedol, bloomberg-ticker, ric, figi, valoren]
+
+  - id: 7
+    name: "Identifier Mapping"
+    time_hours: 1
+    prerequisites: [6]
+    topics: [cross-reference, mapping-patterns, conflicts]
+
+  - id: 8
+    name: "Security Master"
+    time_hours: 1
+    prerequisites: [6, 7]
+    topics: [security-master, reference-data, maintenance]
+
+  - id: 9
+    name: "Multi-Vendor Identifier Management"
+    time_hours: 1
+    prerequisites: [7, 8]
+    topics: [vendor-management, identifier-conflicts, data-governance]
+
+  - id: 10
+    name: "Order Types Core"
+    time_hours: 1
+    prerequisites: [1]
+    topics: [order-types, market-limit, time-in-force]
+
+  - id: 11
+    name: "Stop & Pegged Orders"
+    time_hours: 1
+    prerequisites: [10]
+    topics: [stop-orders, pegged-orders, price-types]
+
+  - id: 12
+    name: "Conditional Orders"
+    time_hours: 1
+    prerequisites: [10]
+    topics: [conditional-orders, one-cancels-other, one-triggers-other]
+
+  - id: 13
+    name: "Venue, FIX & Matching"
+    time_hours: 1
+    prerequisites: [10, 5]
+    topics: [venue-types, matching-engine, fix-protocol, order-book]
+
+  - id: 14
+    name: "Pre-Trade Compliance"
+    time_hours: 1
+    prerequisites: [5, 10]
+    topics: [suitability, compliance, order-validation]
+
+  - id: 15
+    name: "Pre-Clearance & Credit"
+    time_hours: 1
+    prerequisites: [14]
+    topics: [pre-clearance, credit-check, risk-limit]
+
+  - id: 16
+    name: "Rule Engine Validation"
+    time_hours: 1
+    prerequisites: [14]
+    topics: [rule-engine, order-validation, enrichment]
+
+  - id: 17
+    name: "FIX & DUCO"
+    time_hours: 1
+    prerequisites: [13, 16]
+    topics: [fix-protocol, duco, order-ticket]
+
+  - id: 18
+    name: "Regulatory Detail"
+    time_hours: 1
+    prerequisites: [14]
+    topics: [reg-sho, 15c3, erisa, duco]
+
+  - id: 19
+    name: "SOR & Venues"
+    time_hours: 1
+    prerequisites: [13, 15]
+    topics: [smart-order-routing, venue-types, liquidity]
+
+  - id: 20
+    name: "FIX Execution Reports"
+    time_hours: 1
+    prerequisites: [17]
+    topics: [execution-reports, fills, fix-messages]
+
+  - id: 21
+    name: "Wash, Datafeed & STP"
+    time_hours: 0.75
+    prerequisites: [20]
+    topics: [wash-sales, trade-datafeed, stp]
+
+  - id: 22
+    name: "Algorithmic Trading Core"
+    time_hours: 1
+    prerequisites: [19]
+    topics: [algo-trading, twap, vwap, implementation-shortfall]
+
+  - id: 23
+    name: "Liquidity & Adaptive Algos"
+    time_hours: 0.75
+    prerequisites: [22]
+    topics: [liquidity-seeking, adaptive-algos, dark-pools]
+
+  - id: 24
+    name: "TCA & Client Algos"
+    time_hours: 0.75
+    prerequisites: [22]
+    topics: [tca, algo-wheel, client-algos]
+
+  - id: 25
+    name: "Allocation & Clearing"
+    time_hours: 1
+    prerequisites: [19, 22]
+    topics: [allocation, clearing, dtc]
+
+  - id: 26
+    name: "Settlement & Fees"
+    time_hours: 1
+    prerequisites: [25]
+    topics: [settlement, t1, fee-calculation, commission]
+
+  - id: 27
+    name: "Reporting & STP"
+    time_hours: 0.75
+    prerequisites: [26]
+    topics: [trade-reporting, stp, confirmations]
+
+  - id: 28
+    name: "Scenario & Why Answers"
+    time_hours: 0.75
+    prerequisites: [26]
+    topics: [operations-scenarios, trade-breaks, reconciliation]
+
+  - id: 29
+    name: "Market Data Feeds"
+    time_hours: 1
+    prerequisites: [5, 19]
+    topics: [real-time-data, delayed-data, feed-hierarchy]
+
+  - id: 30
+    name: "Price Validation & FX"
+    time_hours: 1
+    prerequisites: [29]
+    topics: [pricing-sources, price-validation, fx-rates]
+
+  - id: 31
+    name: "Corporate Actions & Licensing"
+    time_hours: 1
+    prerequisites: [29]
+    topics: [corporate-actions, market-data-licensing]
+
+  - id: 32
+    name: "Security Master Lifecycle"
+    time_hours: 1
+    prerequisites: [8]
+    topics: [security-master, lifecycle, reference-data]
+
+  - id: 33
+    name: "Golden Copy & Vendor"
+    time_hours: 1
+    prerequisites: [32]
+    topics: [golden-copy, vendor-management, data-governance]
+
+  - id: 34
+    name: "Data Quality & Corporate Actions"
+    time_hours: 0.75
+    prerequisites: [32]
+    topics: [data-quality, corporate-actions, normalization]
+
+  - id: 35
+    name: "Setup & Deactivation"
+    time_hours: 0.75
+    prerequisites: [32]
+    topics: [security-setup, deactivation, billing-codes]
+
+  - id: 36
+    name: "FINRA TRACE & SEC CAT"
+    time_hours: 1
+    prerequisites: [26]
+    topics: [finra-trace, sec-cat, trade-reporting]
+
+  - id: 37
+    name: "MiFID II & Best Execution"
+    time_hours: 1
+    prerequisites: [36, 22]
+    topics: [mifid-ii, best-execution, rts27]
+
+  - id: 38
+    name: "Short Sale, Large Trader & ETD"
+    time_hours: 1
+    prerequisites: [36]
+    topics: [short-sale-reporting, large-trader, etd-reporting]
+
+  - id: 39
+    name: "Error & Calendar"
+    time_hours: 0.75
+    prerequisites: [36]
+    topics: [error-trades, calendar, trading-hours]
+
+  - id: 40
+    name: "Order Exceptions"
+    time_hours: 1
+    prerequisites: [16, 20]
+    topics: [order-exceptions, rejects, cancellations]
+
+  - id: 41
+    name: "Alert Queues & Metrics"
+    time_hours: 0.75
+    prerequisites: [40]
+    topics: [alert-queues, operational-metrics, kpis]
+
+  - id: 42
+    name: "Exception Handling"
+    time_hours: 1
+    prerequisites: [40, 41]
+    topics: [exception-management, escalation, reconciliation]

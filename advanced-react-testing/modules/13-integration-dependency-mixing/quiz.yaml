@@ -1,0 +1,107 @@
+- id: '13.1'
+  question: A component uses 3 stores, 2 API endpoints, and the router. How should you set up its test?
+  options:
+    a: 'Set each at its natural boundary: setState for stores, MSW for APIs, MemoryRouter for router'
+    b: Mock every dependency with jest.mock
+    c: Only test through E2E — too complex for unit tests
+    d: Refactor the component until it has fewer dependencies
+  answer: a
+  explanation: 'Each dependency has a natural boundary: setState (store), MSW (API), MemoryRouter (router).
+    No jest.mock needed. This tests real integration between dependencies.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '13.2'
+  question: Which dependencies should be mocked (replaced with test doubles)?
+  options:
+    a: External boundaries (analytics SDK, third-party APIs, WebSocket)
+    b: Zustand stores — to control state
+    c: React Router — to control navigation
+    d: Custom hooks — they are internal
+  answer: a
+  explanation: External boundaries (analytics, third-party SDKs) should be mocked because they have side
+    effects and are not under your control. Internal deps (stores, hooks) use real implementations.
+  difficulty: 2
+  tags:
+  - concept
+- id: '13.3'
+  question: How do you verify that an order action updates both cart and order stores atomically?
+  options:
+    c: Assert store state for both stores after the action completes
+    a: Check only the rendered output
+    b: Mock both stores and assert the mock functions were called
+    d: Use a snapshot of all store state
+  answer: c
+  explanation: Atomicity means both stores update together. Read store state directly after the action.
+    Assert cart is empty AND order is created. One assertion per store.
+  difficulty: 2
+  tags:
+  - application
+- id: '13.4'
+  question: A checkout wizard has 4 steps. How do you test that the user cannot skip the payment step?
+  options:
+    c: Set store state to 'shipping', click next, assert current step is 'payment'
+    a: Click through all steps and assert final step is correct
+    b: Test each step renders — transitions are a separate concern
+    d: Use E2E tests for multi-step flows
+  answer: c
+  explanation: Set the pre-condition (shipping step), perform action (click next), assert post-condition
+    (payment step). This tests the state machine transition rule.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '13.5'
+  question: An analytics SDK is called on every page view. How should you test this?
+  options:
+    b: Mock the analytics SDK module and assert calls
+    a: Real analytics calls — use test environment
+    c: Do not test analytics — it is not user-facing
+    d: Use MSW to intercept analytics calls
+  answer: b
+  explanation: Analytics is an external service with side effects. Mock the module boundary. Assert the
+    analytics function was called with correct parameters.
+  difficulty: 2
+  tags:
+  - application
+- id: '13.6'
+  question: Your team uses MSW handlers in Vitest. How should they be used in Playwright E2E tests?
+  options:
+    d: Share the same handler definitions from a shared-mocks package
+    a: Playwright has its own mocking — do not share handlers
+    b: MSW does not work with Playwright
+    c: Duplicate the handlers — Playwright uses a different API
+  answer: d
+  explanation: Same handlers, same contract. A shared-mocks package exports handler definitions consumed
+    by both Vitest and Playwright. One API change updates one file, not two mock implementations.
+  difficulty: 2
+  tags:
+  - concept
+- id: '13.7'
+  question: Which test tool is most appropriate for verifying multi-page user flows (login → dashboard
+    → logout)?
+  options:
+    b: Playwright — real browser, cookies, redirects
+    a: Vitest — fast and simple
+    c: Storybook — visual component states
+    d: MSW — network-level mocking
+  answer: b
+  explanation: Playwright runs in a real browser with proper cookie/session handling, redirects, and navigation.
+    Vitest is better for component logic. Storybook is better for visual variants.
+  difficulty: 1
+  tags:
+  - concept
+- question: An action writes to cart AND session stores; test must verify both stay consistent on failure.
+    What does this test target?
+  options:
+    a: Multi-store atomicity — assert rollback leaves both stores unchanged
+    b: Pixel layout
+    c: Bundle size
+    d: Type coverage
+  answer: a
+  explanation: Atomicity means all-or-nothing across stores; the failure path must restore every touched
+    store to its prior state.
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+  id: '13.8'

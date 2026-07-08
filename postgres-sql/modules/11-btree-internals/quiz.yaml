@@ -1,0 +1,119 @@
+- id: "11.1"
+  question: "What does a B-tree LEAF page entry store for each key?"
+  options:
+    a: "The full row, duplicated from the heap"
+    b: "The key plus a TID pointing to the heap row"
+    c: "The row's MVCC header fields"
+    d: "Only the key value"
+  answer: b
+  explanation: "Leaf entries are (key, TID=(block,offset)). The full row and MVCC metadata live only in the heap. To read the row the index adds a heap visit."
+  difficulty: 1
+  tags: [concept]
+
+- id: "11.2"
+  question: "About how many keys fit on a typical 8 KB index page (fan-out)?"
+  options:
+    a: "A few hundred"
+    b: "Exactly 2"
+    c: "Exactly 64"
+    d: "One per page"
+  answer: a
+  explanation: "High fan-out makes height tiny. A few hundred keys per page turns a billion-row lookup into roughly 3-4 page reads, not 30."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "11.3"
+  question: "Which fields are stored in the heap row and NOT in the index?"
+  options:
+    a: "The key column value"
+    b: "The TID pointer"
+    c: "xmin / xmax MVCC visibility fields"
+    d: "The leaf page number"
+  answer: c
+  explanation: "MVCC metadata (xmin/xmax/cmin/cmax) lives on heap tuples. Indexes only map keys to TIDs, so visibility is decided when the heap is visited."
+  difficulty: 1
+  tags: [concept]
+
+- id: "11.4"
+  question: "An equality query returns 15 rows scattered across 15 different heap pages. Beyond the index pages, what dominates the cost?"
+  options:
+    a: "Nothing; the index already finished the job"
+    b: "Rebalancing the tree"
+    c: "Waiting on fillfactor reservations"
+    d: "15 random heap page fetches for the rows"
+  answer: d
+  explanation: "The btree part is few pages, but each match needs its own heap page read. Scattered matches mean random I/O — often more than a sequential scan."
+  difficulty: 2
+  tags: [calculation]
+
+- id: "11.5"
+  question: "An UPDATE changes only a non-indexed column and the new row fits on the same heap page. Which is the CHEAP path Postgres uses?"
+  options:
+    a: "HOT update: new version appended on the same page, added to a HOT chain, no new index entry"
+    b: "Full delete plus reinsert at the heap end"
+    c: "Rebuild every index on the table"
+    d: "Write the new index entries for all indexes"
+  answer: a
+  explanation: "HOT (Heap-Only Tuple) keeps the update in place and chains the versions; the index is untouched. It breaks only when an indexed column changes or the page is full."
+  difficulty: 2
+  tags: [concept]
+
+- id: "11.6"
+  question: "What is the DEFAULT order of NULL values in an ASC btree index?"
+  options:
+    a: "NULLS FIRST"
+    b: "NULLS LAST"
+    c: "NULLs are not stored at all"
+    d: "NULLs are sorted randomly"
+  answer: b
+  explanation: "ASC indexes default to NULLS LAST; DESC defaults to NULLS FIRST. To let an index serve ORDER BY, the query's NULL ordering must match the index clause."
+  difficulty: 2
+  tags: [concept]
+
+- id: "11.7"
+  question: "When a non-HOT UPDATE modifies an indexed column, what happens in the index?"
+  options:
+    a: "The index is left unchanged"
+    b: "Only a new leaf page is allocated"
+    c: "A new entry for the new TID is added and the old entry stays pointing at the dead version until VACUUM"
+    d: "The whole btree is rebuilt"
+  answer: c
+  explanation: "New tuple = new index entry; the old entry lingers on the dead version. Without VACUUM, repeated updates bloat the index exactly as they bloat the heap."
+  difficulty: 2
+  tags: [concept]
+
+- id: "11.8"
+  question: "Roughly how many index pages does a B-tree point lookup visit for a billion-row table?"
+  options:
+    a: "About 3 to 4"
+    b: "About 15"
+    c: "About 50"
+    d: "About 100"
+  answer: a
+  explanation: "With hospitals-high fan-out the height stays near log_fanout(N keys) ~ 4. That constant number is why point lookups are so fast."
+  difficulty: 1
+  tags: [calculation]
+
+- id: "11.9"
+  question: "A query matches 60% of rows on an equality-filter plus a usable index. What does the planner usually prefer, and why?"
+  options:
+    a: "Index Scan, because an index always helps"
+    b: "Seq Scan, because random 60% heap fetches cost more than one sequential pass"
+    c: "Index Only Scan regardless of match size"
+    d: "A special 'mixed' scan"
+  answer: b
+  explanation: "Low-selectivity matches equal many random heap page fetches. Sequential scan wins. This is why indexes shine only for highly selective predicates."
+  difficulty: 3
+  tags: [comparison]
+
+- id: "11.10"
+  question: "In a unique btree index with DEFAULT settings, how do NULL values behave?"
+  options:
+    a: "Any number of NULL values is allowed; they are treated as distinct"
+    b: "Only one NULL row is permitted"
+    c: "NULLs are forbidden entirely"
+    d: "NULLs act exactly like empty strings"
+  answer: a
+  explanation: "Pre-PG15 default: NULL is distinct in unique indexes, so multiple NULL rows can coexist. UNIQUE NULLS NOT DISTINCT changes that to one NULL row."
+  difficulty: 3
+  tags: [comparison]

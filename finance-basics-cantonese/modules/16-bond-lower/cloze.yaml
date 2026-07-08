@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "YTM 嘅全寫係 {Yield to Maturity}, 反映 {買入後揸到到期, 真實年化回報率}, 即 IRR。"
+  answer: "Yield to Maturity、買入後揸到到期, 真實年化回報率"
+  explanation: "YTM 考慮派息 + 折溢價, 係債券真實回報率指標。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.2"
+  question: "Coupon Rate = {票面 / 面值}, Current Yield = {年息 / 買入價}, YTM = {IRR of cash flow}。"
+  answer: "票面 / 面值、年息 / 買入價、IRR of cash flow"
+  explanation: "3 個指標反映唔同 aspect: 票面 (發行鎖定)、當下回報率、總回報率。"
+  difficulty: 2
+  tags: [formula, concept]
+
+- id: "c.3"
+  question: "Modified Duration 量度 {債券價格對利率變動嘅敏感度}, 公式 {ΔP/P ≈ -MD × Δy}。"
+  answer: "債券價格對利率變動嘅敏感度、ΔP/P ≈ -MD × Δy"
+  explanation: "MD=5, 利率升 1% → 價格跌 5%。MD 越高, 利率風險越大。"
+  difficulty: 2
+  tags: [formula, concept]
+
+- id: "c.4"
+  question: "{Duration} 假設價格-收益關係係 {直線}, {Convexity} 修正呢個假設, 反映 {凸曲線}。"
+  answer: "Duration、直線、Convexity、凸曲線"
+  explanation: "凸曲線對投資者有利, 高 Convexity 嘅債 (Zero-Coupon, 長期) 升跌幅度唔對稱, 升多跌少。"
+  difficulty: 3
+  tags: [concept, formula]
+
+- id: "c.5"
+  question: "Big 3 評級機構包括 {Moody's}、{S&P} 同 {Fitch}。投資級別底線係 {BBB-/Baa3}, 以下屬 {Junk Bond / High Yield}。"
+  answer: "Moody's、S&P、Fitch、BBB-/Baa3、Junk Bond / High Yield"
+  explanation: "Big 3 壟斷全球評級市場。投資級別 vs 投機級決定咗基金配置限制。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.6"
+  question: "降評觸發嘅即時影響: {二手價急跌} (市場重新定價)、部分 {投資級別基金強制沽出} (合約限制)、{借貸成本升}。"
+  answer: "二手價急跌、投資級別基金強制沽出、借貸成本升"
+  explanation: "降評係連鎖反應, 唔只係評級文字改變。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.7"
+  question: "預期 {利率跌} → 揀 {長 Duration + 高 Convexity} (賺價差)。預期 {利率升} → 揀 {短 Duration} (避價跌)。"
+  answer: "利率跌、長 Duration + 高 Convexity、利率升、短 Duration"
+  explanation: "Duration 策略配對利率預期, 動態調整。"
+  difficulty: 3
+  tags: [scenario, application]
+
+- id: "c.8"
+  question: "債券 4 大風險: {利率風險} (升二手價跌)、{信用風險} (違約)、{通脹風險} (實質回報跌)、{流動性風險} (二手市場冷清)。"
+  answer: "利率風險、信用風險、通脹風險、流動性風險"
+  explanation: "識別 4 大風險先至可以逐個對沖。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.9"
+  question: "30 年零息債 Duration = {30 年}, 30 年期 5% 票面債 Duration ≈ {18 年} (中間已收息, 縮短加權平均)。"
+  answer: "30 年、18 年"
+  explanation: "同期限下, 零息 Duration 最長 (中間唔收息), 票面債因為中段派息, 加權平均縮短。"
+  difficulty: 2
+  tags: [concept, calculation]
+
+- id: "c.10"
+  question: "Callable Bond 有 {Negative Convexity}, 因為 {利率跌時發行人會贖回, 投資者蝕價差}。"
+  answer: "Negative Convexity、利率跌時發行人會贖回, 投資者蝕價差"
+  explanation: "Callable 債凸性反轉, 利率跌反為蝕, 票面高 0.5-1% 作為補償。"
+  difficulty: 3
+  tags: [concept, application]

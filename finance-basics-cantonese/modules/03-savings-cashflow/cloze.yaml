@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "現金流嘅核心公式係: 月儲蓄 = {月收入} - {月支出}。永遠成立。"
+  answer: "月收入、月支出"
+  explanation: "呢個公式永遠成立。正數代表有儲蓄, 負數代表負債。"
+  difficulty: 1
+  tags: [formula]
+
+- id: "c.2"
+  question: "理財嘅金科玉律係 {先儲蓄, 後投資}。因為 {投資有風險}, 冇儲蓄底輸少少就破產。"
+  answer: "先儲蓄, 後投資、投資有風險"
+  explanation: "儲蓄放喺受存款保障嘅戶口一定唔會輸; 投資可能輸。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.3"
+  question: "「{應急錢}」係最重要嘅儲蓄, 目標係 {3-6 個月} 必要支出, 擺喺 {活期戶口}。"
+  answer: "應急錢、3-6 個月、活期戶口"
+  explanation: "應急錢要即刻攞到, 所以活期戶口 (0-1% 回報但靈活)。Trade-off: 放棄 2-3% 高回報, 換取靈活性。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "儲蓄率 = {月儲蓄} ÷ {月收入} × 100%。健康水平 {20%} 以上。"
+  answer: "月儲蓄、月收入、20%"
+  explanation: "儲蓄率唔睇金額, 睇比例。20%+ 算健康, < 10% 需要調整, > 30% 過度儲蓄。"
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.5"
+  question: "儲蓄要 {分戶口}, 因為分戶口係 {心理賬戶} 工具, 可避免一筆錢洗晒。"
+  answer: "分戶口、心理賬戶"
+  explanation: "Mental accounting 係心理學概念, 分開戶口令唔同目標嘅錢唔會混淆。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "你月必要支出 $15,000, 應急錢 6 個月目標 = ${90,000}。"
+  answer: "90,000"
+  explanation: "15,000 × 6 = 90,000。"
+  difficulty: 2
+  tags: [calculation]
+
+- id: "c.7"
+  question: "「先 {pay 自己}」嘅儲蓄策略比「{慳錢}」更容易持續, 因為將儲蓄 {自動化}。"
+  answer: "pay 自己、慳錢、自動化"
+  explanation: "出糧後即時轉 20% 入獨立戶口, 然後用剩低嘅使。自動化習慣唔使掙扎。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.8"
+  question: "儲蓄率 < 10% 嘅人, 唔應該即刻 {投資}, 應該先 {審視支出 + 增加收入}。"
+  answer: "投資、審視支出 + 增加收入"
+  explanation: "投資會放大風險, 借貸會陷入債務。正確: 削減非必要 + 提升收入, 儲蓄率回到 20% 先投資。"
+  difficulty: 3
+  tags: [application, scenario]
+
+- id: "c.9"
+  question: "儲蓄嘅 4 種期限分類: {應急錢} (即時) / {短期} (3-12 月) / {中期} (1-3 年) / {長期} (5 年+)。"
+  answer: "應急錢、短期、中期、長期"
+  explanation: "唔同期限擺唔同工具: 應急錢 → 活期; 短期 → 短期定存; 中期 → 中期定存/債劵; 長期 → 投資戶口。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.10"
+  question: "儲蓄嘅最大心理陷阱係 {先使未來錢} 同 {儲唔落}。"
+  answer: "先使未來錢、儲唔落"
+  explanation: "先使未來錢 = 信用卡/私人貸款過活; 儲唔落 = 冇自動化、冇分戶口、冇目標。兩者都係現金流唔健康嘅徵兆。"
+  difficulty: 3
+  tags: [concept, scenario]

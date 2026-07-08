@@ -1,0 +1,134 @@
+- id: '7.1'
+  question: What consumes the most token budget in a typical session?
+  options:
+    a: Tool outputs
+    b: System instructions
+    c: User messages
+    d: Agent greetings
+  answer: a
+  explanation: Tool outputs ~40% of budget. Be precise with file reads and search
+    results.
+  difficulty: 1
+  tags:
+  - concept
+- id: '7.2'
+  question: At what context usage should you compress proactively?
+  options:
+    d: 50-70%
+    a: 10%
+    b: 90%
+    c: Only when session ends
+  answer: d
+  explanation: 50-70% is proactive zone. Don't wait until 90% when quality is already
+    degrading.
+  difficulty: 1
+  tags:
+  - procedure
+- id: '7.3'
+  question: Which should you KEEP in a compression summary?
+  options:
+    b: Design decisions and rejected alternatives
+    a: Full error trace from failed build
+    c: Every tool output verbatim
+    d: Agent's greeting message
+  answer: b
+  explanation: Keep design decisions, rejected alternatives, file paths, patterns,
+    pending steps. Drop raw traces and noise.
+  difficulty: 1
+  tags:
+  - application
+- id: '7.4'
+  question: What is the risk of compressing too aggressively?
+  options:
+    d: Agent loses critical context, re-explores, wastes tokens
+    a: Session ends prematurely
+    b: Files get deleted
+    c: Token budget increases
+  answer: d
+  explanation: Over-aggressive compression drops signal. Agent re-explores what was
+    lost. When uncertain, keep more.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.5'
+  question: Context is at 60% and task is flowing well with no confusion. What should
+    you do?
+  options:
+    a: Monitor, but compress if next step involves large file reads
+    b: Compress immediately
+    c: Restart session
+    d: Ignore compression entirely
+  answer: a
+  explanation: If flowing well, no need to compress immediately. But if large reads
+    coming, compress first to make room.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '7.6'
+  question: What is the recommended compression cadence for complex sessions?
+  options:
+    c: Every 30-50 turns or when topic phase closes
+    a: Every 5 turns
+    b: Only at session end
+    d: Never for simple tasks
+  answer: c
+  explanation: 30-50 turns or phase boundaries. Not too frequent (waste) and not too
+    rare (degradation).
+  difficulty: 2
+  tags:
+  - procedure
+- id: '7.7'
+  question: What is the compression anti-pattern 'saving without external backup'?
+  options:
+    b: Not saving decisions to AGENTS.md or CLAUDE.md, losing them if session dies
+    a: Compressing too early
+    c: Compressing too late
+    d: Compressing too frequently
+  answer: b
+  explanation: Compression lives in session. If session dies, decisions die. Also
+    save to external memory (AGENTS.md, CLAUDE.md).
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.8'
+  question: A file read returns 500 lines. You need 2 specific functions. Best approach?
+  options:
+    c: 'Specify exact line ranges: ''Read lines 100-130 and 300-320'''
+    a: Read full file, agent will filter
+    b: Ask agent to read entire file three times
+    d: Skip reading, guess the implementation
+  answer: c
+  explanation: Exact line ranges minimize token waste. Full reads are the biggest
+    token consumer.
+  difficulty: 2
+  tags:
+  - application
+- id: '7.9'
+  question: Which compression summary is MORE useful for continuing work?
+  options:
+    a: 'Search: implemented full-text search with PostgreSQL tsvector. Query at src/api/search.ts.
+      Next: add pagination. Known: highlight snippet not working for CJK characters.'
+    b: Worked on search feature. Some progress. Need to finish.
+    c: Search feature. 2000 lines of code written.
+    d: Did search stuff. Agent worked hard.
+  answer: a
+  explanation: Specific state, files, next steps, and known issues. Agent can continue
+    without re-exploring.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '7.10'
+  question: Mid-task, you notice agent re-reading files it already read. What's likely
+    happening?
+  options:
+    b: Context is degraded - agent forgot what it read
+    a: Agent is being thorough
+    c: Files changed since last read
+    d: This is standard behavior
+  answer: b
+  explanation: Re-reading is a sign of context degradation. The content was likely
+    in earlier context that's now compressed or pushed out.
+  difficulty: 3
+  tags:
+  - scenario
+

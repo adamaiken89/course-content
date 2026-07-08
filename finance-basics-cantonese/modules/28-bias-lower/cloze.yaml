@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Loss Aversion 指 {蝕嘅感覺強過賺}, 比例約 {2-2.5:1}。投資表現: {贏嘅倉短, 輸嘅倉長}。"
+  answer: "蝕嘅感覺強過賺、2-2.5:1、贏嘅倉短, 輸嘅倉長"
+  explanation: "避開: 預先定止蝕位, Rebalance 規則, 問「會唔會今日再買」。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.2"
+  question: "Sunk Cost 謬誤 = {因為已經投資所以繼續投資, 即使現時理性分析唔應該再投}。關鍵: {過去唔影響未來}。"
+  answer: "因為已經投資所以繼續投資, 即使現時理性分析唔應該再投、過去唔影響未來"
+  explanation: "應該由零分析, 每次決策問「如果今日先有, 會唔會再投」。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.3"
+  question: "Herding = {跟風別人決策, 獨立分析不足}。社交媒體 {放大羊群效應, 群組瘋傳必升訊息}。"
+  answer: "跟風別人決策, 獨立分析不足、放大羊群效應, 群組瘋傳必升訊息"
+  explanation: "避開: 逆向思考, 獨立研究, 等確認, Sounding Board。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.4"
+  question: "Ponzi Scheme = {用後期投資者嘅錢付前期回報, 無真實業務}。例子: {Madoff $65B, OneCoin $4B, PlusToken}。"
+  answer: "用後期投資者嘅錢付前期回報, 無真實業務、Madoff $65B, OneCoin $4B, PlusToken"
+  explanation: "結果: 後加入者全蝕, 騙局爆煲。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.5"
+  question: "Pump and Dump 流程: {KOL pump 細價股}, {散戶接火棒}, {KOL 散貨}, 散戶 {80%+ 蝕}。"
+  answer: "KOL pump 細價股、散戶接火棒、KOL 散貨、80%+ 蝕"
+  explanation: "Telegram 群組、加密幣 pump group 常見。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.6"
+  question: "Scam 5 個訊號: {保本高回報} (唔可能)、{限時優惠} (壓力)、{Insider Info} (多數假)、{不透明策略}、{名人代言} (多假)。"
+  answer: "保本高回報、限時優惠、Insider Info、不透明策略、名人代言"
+  explanation: "太美好就係假, 真投資唔會限時限刻。"
+  difficulty: 2
+  tags: [terminology, scenario]
+
+- id: "c.7"
+  question: "避開 Sunk Cost 嘅 {由零分析} 方法: 每次決策, 問 {如果我而家先有呢個倉, 我會點}, {唔會就賣}。"
+  answer: "由零分析、如果我而家先有呢個倉, 我會點、唔會就賣"
+  explanation: "過去蝕幾多唔影響未來, 應該睇「如果今日先有, 會唔會再投」。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.8"
+  question: "防 Bias 系統: {IPS 投資政策聲明}、{Decision Log 決策記錄}、{Sounding Board 獨立朋友}、{Pre-mortem 預先設想失敗}、{冷靜期 24-48 小時}、{自動投資 月供 ETF}。"
+  answer: "IPS 投資政策聲明、Decision Log 決策記錄、Sounding Board 獨立朋友、Pre-mortem 預先設想失敗、冷靜期 24-48 小時、自動投資 月供 ETF"
+  explanation: "系統性防 Bias 比個人意志可靠。"
+  difficulty: 3
+  tags: [concept, application]
+
+- id: "c.9"
+  question: "WhatsApp 群組話『內部消息, 即將被收購, 升 5 倍, 限時入』係 {100% 騙局訊號}。應該: {唔回覆}、{退群}、{報 SFC}。"
+  answer: "100% 騙局訊號、唔回覆、退群、報 SFC"
+  explanation: "5 個 Scam 訊號齊: Herding + Insider Info + 收購借口 + 限時 + 群組散貨。"
+  difficulty: 3
+  tags: [scenario, application]
+
+- id: "c.10"
+  question: "朋友賺 10 倍, 你話『我都可以』係 {錯}。每個人 {時機、倉位、風險承受唔同}, 朋友可能 {早入 / 高槓桿 / 賭晒身家 / 好彩}。"
+  answer: "錯、時機、倉位、風險承受唔同、早入 / 高槓桿 / 賭晒身家 / 好彩"
+  explanation: "唔可以照抄, 要自己研究, 寫 Decision Log, 設倉位上限。"
+  difficulty: 2
+  tags: [concept, misconception]

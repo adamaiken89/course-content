@@ -1,0 +1,122 @@
+- id: cum.21
+  type: mcq
+  source_modules:
+  - 9
+  question: 'On ex-dividend date, stock price typically:'
+  options:
+    a: Increases by dividend amount
+    b: Decreases by approximately dividend amount
+    c: Stays unchanged
+    d: Doubles
+  answer: b
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.22
+  type: tf
+  source_modules:
+  - 9
+  statement: The record date determines which shareholders receive a declared dividend.
+  answer: true
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.23
+  type: cloze
+  source_modules:
+  - 10
+  question: In a 2:1 forward split, share price is {halved} and share count {doubles}.
+  answer: halved
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.24
+  type: mcq
+  source_modules:
+  - 10
+  question: 'In a spin-off, existing shareholders of the parent:'
+  options:
+    a: Sell their shares back to the company
+    b: Receive shares of the new subsidiary
+    c: Pay a cash premium to participate
+    d: Lose their voting rights
+  answer: b
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.25
+  type: tf
+  source_modules:
+  - 11
+  statement: An uptrend is defined by higher highs and higher lows.
+  answer: true
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.26
+  type: cloze
+  source_modules:
+  - 11
+  question: An uptrend is more reliable when price gains are confirmed by rising {volume}.
+  answer: volume
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.27
+  type: mcq
+  source_modules:
+  - 12
+  question: 'Golden cross occurs when:'
+  options:
+    a: 50-day MA crosses above 200-day MA
+    b: Price crosses above 200-day MA
+    c: 200-day MA crosses above 50-day MA
+    d: Volume crosses above price
+  answer: a
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.28
+  type: mcq
+  source_modules:
+  - 11
+  - 12
+  question: 'Head and shoulders pattern signals:'
+  options:
+    a: Trend continuation
+    b: Trend reversal from bullish to bearish
+    c: Trend reversal from bearish to bullish
+    d: Market indecision
+  answer: b
+  difficulty: 3
+  tags:
+  - cross-module
+  - synthesis
+- id: cum.29
+  type: tf
+  source_modules:
+  - 9
+  - 10
+  statement: Dividend capture strategy guarantees profit because you collect dividend and sell at the same price.
+  answer: false
+  difficulty: 2
+  tags:
+  - cross-module
+  - synthesis
+- id: cum.30
+  type: cloze
+  source_modules:
+  - 12
+  question: When price exits a consolidation range, it is called a {breakout}.
+  answer: breakout
+  difficulty: 2
+  tags:
+  - cross-module
+  - terminology

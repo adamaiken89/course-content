@@ -1,0 +1,129 @@
+- id: '5.1'
+  question: According to the levels of processing framework, what determines memory durability?
+  options:
+    a: Depth of encoding
+    b: Time spent studying
+    c: Intention to learn
+    d: Number of repetitions
+  answer: a
+  explanation: 'Craik & Lockhart: depth of processing (how meaningfully you encode) predicts retention
+    — not time, intention, or repetition count.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.2'
+  question: Which is an example of shallow processing?
+  options:
+    b: Noticing the font style of a textbook
+    a: Explaining a concept in your own words
+    c: Connecting a fact to your personal experience
+    d: Asking 'why is this true?'
+  answer: b
+  explanation: Noticing font is visual/shallow processing — it encodes appearance, not meaning.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.3'
+  question: 'Elaborative interrogation involves asking:'
+  options:
+    c: '''Why is this true?'''
+    a: '''What is the definition?'''
+    b: '''When was this discovered?'''
+    d: '''Who said this?'''
+  answer: c
+  explanation: Asking 'why' forces you to connect new info to prior knowledge — the core of deep encoding.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.4'
+  question: A student reads a history chapter and highlights key dates. Another student reads and writes
+    a paragraph explaining why each event happened. Who retains more and why?
+  options:
+    d: Explainer — explanation forces semantic elaboration and causal reasoning
+    a: Highlighter — visual cues aid memory
+    b: Both equally — same exposure time
+    c: Highlighter — less cognitive load
+  answer: d
+  explanation: Explaining causes deep semantic processing. Highlighting is shallow visual marking.
+  difficulty: 2
+  tags:
+  - application
+- id: '5.5'
+  question: Why does self-explanation reveal gaps that re-reading hides?
+  options:
+    a: Re-reading creates an illusion of fluency — it feels like understanding
+    b: Self-explanation takes longer
+    c: Self-explanation uses more energy
+    d: Re-reading is inherently better
+  answer: a
+  explanation: Re-reading makes material feel familiar (fluent), but familiarity isn't understanding.
+    Self-explanation forces you to articulate, which exposes gaps.
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.6'
+  question: 'Organizing knowledge hierarchically benefits retrieval because:'
+  options:
+    b: Activating one node in the hierarchy primes related nodes — retrieval cues are built-in
+    a: It takes less space in memory
+    c: Hierarchies are visually appealing
+    d: It prevents forgetting entirely
+  answer: b
+  explanation: Hierarchical organization creates retrieval pathways. Activating one concept spreads to
+    related concepts.
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.7'
+  question: Which study activity involves the DEEPEST level of processing?
+  options:
+    c: Creating a new example that illustrates the concept
+    a: Copying notes verbatim
+    b: Reading a summary
+    d: Listening to a lecture recording
+  answer: c
+  explanation: Generating a novel example forces elaboration, application, and connection — the deepest
+    processing.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '5.8'
+  question: You study a biology chapter on cell division. Which technique would produce the deepest encoding?
+  options:
+    d: Explain why each phase must occur before the next
+    a: Read it 3 times
+    b: Create a mnemonic for each phase name
+    c: Draw the cell diagram from memory once
+  answer: d
+  explanation: Explaining causal sequence forces elaborative processing (why does this follow?). Drawing
+    from memory is retrieval practice, but explanation deepens encoding.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '5.9'
+  question: 'The illusion that re-reading is effective arises because:'
+  options:
+    a: Familiarity with the text is mistaken for understanding
+    b: Re-reading always works
+    c: Deep processing is impossible while reading
+    d: The brain prefers shallow processing
+  answer: a
+  explanation: Processing fluency (easy to read) creates a feeling of knowing. But you're recognizing
+    the text, not recalling the content.
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.10'
+  question: What is the relationship between deep processing and other learning strategies (retrieval
+    practice, spacing)?
+  options:
+    b: Deep processing is the underlying mechanism — other strategies work because they force deeper encoding
+    a: They are unrelated
+    c: Deep processing replaces other strategies
+    d: Other strategies are better than deep processing
+  answer: b
+  explanation: Retrieval practice, spacing, and interleaving all force deeper processing. Deep processing
+    is the common mechanism.
+  difficulty: 3
+  tags:
+  - concept

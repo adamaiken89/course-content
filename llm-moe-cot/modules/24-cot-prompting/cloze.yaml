@@ -1,0 +1,42 @@
+- id: c.1
+  question: Zero-shot CoT 透過 {trigger 模型嘅 training distribution} 趨向 step-by-step reasoning，唔需要 {exemplars}。
+  answer: trigger 模型嘅 training distribution / exemplars
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: Few-shot CoT 提供 {exemplars} 嚟展示 question → reasoning → answer 嘅 {pattern}。
+  answer: exemplars / pattern
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: Auto-CoT 透過 {clustering questions by embedding similarity} 嚟揀 exemplars，然後用 {zero-shot CoT}
+    為每個生成 reasoning。
+  answer: clustering questions by embedding similarity / zero-shot CoT
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: Prompt sensitivity 意思係 {exemplar order, choice, or formatting} 嘅細微改動會導致大嘅 {accuracy swings}。
+  answer: exemplar order, choice, or formatting / accuracy swings
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: Self-consistency 透過 {sampling multiple reasoning paths} 同 {voting on the most common answer}
+    嚟改善 accuracy。
+  answer: sampling multiple reasoning paths / voting on the most common answer
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: Plan-and-Solve CoT 有兩個 stages：生成高層次 {plan}，然後逐步 {execution}。
+  answer: plan / execution
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: Exemplar order 重要因為 autoregressive generation 嘅 {primacy/recency bias}。
+  answer: primacy/recency bias
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: Zero-Shot CoT 只需要一句 {trigger phrase}（例如「一步一步諗」）就唔使 example 都能觸發推理。
+  answer: trigger phrase
+  difficulty: 1
+  tags: []

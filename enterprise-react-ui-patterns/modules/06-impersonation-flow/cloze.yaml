@@ -1,0 +1,62 @@
+- id: "c.61"
+  question: "Complete: The officer who logged in with privileges and audit blame is the {actor}, while the identity whose data the session currently serves is the actingAs identity."
+  answer: "actor"
+  explanation: "actor names who holds the privileges and responsibility; actingAs names whose view and data the session is scoped to. Both must be present in the session."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.62"
+  question: "Complete: The server decides whose data to return from the session {token}, never from a query parameter the client could forge."
+  answer: "token"
+  explanation: "Authorization and scope derive from the token the server issued. A client-supplied id in the URL is forgeable and changes nothing about identity."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.63"
+  question: "Complete: On a normal session GET /me returns actingAs equals {null}, the only value that marks a session as not impersonating."
+  answer: "null"
+  explanation: "actingAs null is the single normal state. Any non-null actingAs means impersonation and forces the banner, guards, and audit stamps."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.64"
+  question: "Complete: A mutation performed while impersonating must carry the {actorId} so the audit log can attribute responsibility to the officer, not just to the student whose data changed."
+  answer: "actorId"
+  explanation: "The impersonation audit needs the pair actorId plus actedOnBehalfOf: who acted and on whose behalf. Without actorId the log cannot answer who was responsible."
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.65"
+  question: "Complete: Impersonation identity state belongs in an app-level {zustand} store because banner, data fetches, route guards, and mutation handlers all read it at high frequency across screens."
+  answer: "zustand"
+  explanation: "App-level state read by many unrelated consumers on every path is the earned zustand case from the scope/frequency rubric. Draft data, with a shorter lifetime, stays in its own store."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.66"
+  question: "Complete: The impersonation banner is deliberately {non-dismissable}; only exiting the session via switchSession back to the actor may end the marker."
+  answer: "non-dismissable"
+  explanation: "A hideable banner lets a distracted officer forget they are inside another user's data while the session still holds student scope. The UI must never stop saying who it is acting for."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.67"
+  question: "Complete: If the exit handler clears the UI before the server switch completes, the next fetch still uses the impersonation {token}, so the UI must never be the authority."
+  answer: "token"
+  explanation: "The server trusts the token, not the banner. Exit must finish switchSession(actor, null) and store the fresh token before clearing actingAs."
+  difficulty: 3
+  tags: [application]
+
+- id: "c.68"
+  question: "Complete: The audited pair recorded for every impersonating mutation is the actor who acted and the {actedOnBehalfOf} id of the user whose data changed."
+  answer: "actedOnBehalfOf"
+  explanation: "Mutations while impersonating payload actorId plus actedOnBehalfOf so the audit answers who changed what for whom. Credentials, never the token, belong in the log."
+  difficulty: 2
+  tags: [application]
+
+- id: "c.69"
+  question: "Complete: In multi-level impersonation the banner shows the deepest {actingAs} identity the user is currently working as, while the audit log keeps the full chain of hops."
+  answer: "actingAs"
+  explanation: "The banner tells the user whose view they are inside right now (the leaf). Accountability keeps the whole chain, so every hop is attributable."
+  difficulty: 2
+  tags: [scenario]

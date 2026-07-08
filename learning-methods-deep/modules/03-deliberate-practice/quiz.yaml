@@ -1,0 +1,116 @@
+- id: '3.1'
+  question: What distinguishes deliberate practice from naive practice?
+  options:
+    a: Targeting specific weaknesses with immediate feedback and progressive challenge
+    b: Total hours spent practicing
+    c: Practicing in a focused environment without distractions
+    d: Repeating the same task until it becomes automatic
+  answer: a
+  explanation: Naive practice repeats known tasks without targeting weaknesses. Deliberate
+    practice isolates specific improvement areas, gets immediate feedback, and increases
+    difficulty at the edge of ability.
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.2'
+  question: What does the 10,000-hour rule get wrong about Ericsson's research?
+  options:
+    a: The rule underestimates the number of hours needed for expertise
+    b: The rule focuses on total hours rather than deliberate practice hours
+    c: The rule applies only to musical expertise
+    d: The rule was invented by Gladwell with no basis in Ericsson's work
+  answer: b
+  explanation: Ericsson's finding was about deliberate practice hours specifically,
+    not total practice. Gladwell's popularization conflated the two, creating the
+    misleading '10,000 hours to expertise' rule.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.3'
+  question: What are mental representations in the context of deliberate practice?
+  options:
+    a: Visual images used to memorize information
+    b: Mental rehearsal techniques for anxiety reduction
+    c: Internal models of skill structure that guide performance and self-correction
+    d: Instructions written down before practicing
+  answer: c
+  explanation: Mental representations are the cognitive structures experts build through
+    practice. They allow pattern recognition, prediction, and self-correction — the
+    key difference between novice and expert performance.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.4'
+  question: According to deliberate practice principles, what is the optimal success
+    rate for a learning task?
+  options:
+    a: 95-100% (ensures confidence)
+    b: 50% (maximum difficulty)
+    c: 100% after 3 attempts
+    d: Around 80% (challenging but achievable)
+  answer: d
+  explanation: ~80% success rate on first attempt is optimal. Lower causes frustration.
+    Higher means the task is no longer at the edge of ability — no growth stimulus.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.5'
+  question: A student answers correctly but takes twice the target time. What should
+    the system do?
+  options:
+    a: Keep difficulty, set speed target for next attempt
+    b: Decrease difficulty to improve speed
+    c: Increase difficulty since accuracy is achieved
+    d: Provide the answer to reduce time pressure
+  answer: a
+  explanation: 'Accuracy without speed means the skill is not yet fluent. Keep difficulty
+    constant but add a speed target. This maintains deliberate practice: specific
+    goal (speed), immediate feedback (target time), and appropriate challenge.'
+  difficulty: 3
+  tags:
+  - scenario
+- id: '3.6'
+  question: Which feedback example best follows deliberate practice principles?
+  options:
+    a: Incorrect. The answer is 42.
+    b: Good try. You assumed linear scaling but the relationship is logarithmic. Try
+      this approach instead.
+    c: Close! Keep practicing.
+    d: Wrong. Review chapter 3.
+  answer: b
+  explanation: Deliberate practice feedback must be immediate, specific, and corrective.
+    'You assumed X but Y is true because Z' identifies the error, explains why, and
+    points to the correct approach.
+  difficulty: 2
+  tags:
+  - application
+- id: '3.7'
+  question: A learner has been doing the same type of problem for 3 weeks with 95%
+    accuracy. What's the most likely problem?
+  options:
+    a: The problems are at the right difficulty level for consolidation
+    b: More time is needed to achieve automaticity
+    c: The learner has plateaued because difficulty has not increased with skill
+    d: The learner should focus on speed rather than accuracy
+  answer: c
+  explanation: 95% accuracy indicates the task is below the learner's current ability
+    level. Deliberate practice requires increasing difficulty to stay at the edge
+    of ability. The learner is now doing naive practice.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '3.8'
+  question: Why might deliberate practice be less effective for medical diagnostic
+    expertise than for musical performance?
+  options:
+    a: Medical diagnosis has lower performance standards
+    b: Musicians have more mental representations than doctors
+    c: Deliberate practice only applies to motor skills
+    d: Delayed feedback in diagnosis makes the corrective loop weaker
+  answer: d
+  explanation: In music, feedback is immediate (wrong note heard instantly). In diagnosis,
+    feedback (patient outcome, biopsy result) may be delayed hours or days. Deliberate
+    practice requires immediate feedback — the longer the delay, the weaker the learning.
+  difficulty: 3
+  tags:
+  - concept

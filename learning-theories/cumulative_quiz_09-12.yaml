@@ -1,0 +1,108 @@
+- id: cum.17
+  type: mcq
+  question: Which practice is a desirable difficulty rather than an undesirable one?
+  source_modules:
+  - 9
+  options:
+    a: Highlighting while reading a textbook
+    b: Re-reading the same passage four times
+    c: Forcing recall from memory before checking the answer
+    d: Removing all challenge to feel fluent
+  answer: c
+  explanation: Effortful retrieval is a desirable difficulty — it feels harder now but yields stronger long-term retention than fluent re-reading.
+  difficulty: 2
+  tags:
+  - synthesis
+  - misconception
+- id: cum.18
+  type: mcq
+  question: Which option is NOT an example of a desirable difficulty?
+  source_modules:
+  - 9
+  options:
+    a: Interleaving different problem types
+    b: Spacing reviews further apart over time
+    c: Using a hint or cue before recalling the answer
+    d: Taking a practice test before studying the material
+  answer: c
+  explanation: Giving hints reduces the retrieval effort and can short-circuit the difficulty that makes practice desirable. The others add productive difficulty.
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: cum.19
+  type: cloze
+  question: 'Desirable difficulties are learning conditions that require more {effort} at study time but reliably improve long-term retention.'
+  answer: effort
+  explanation: Difficulty is desirable only when the extra effort serves encoding and retrieval strength — difficulty without learning value is just frustration.
+  difficulty: 3
+  tags:
+  - concept
+  - synthesis
+  source_modules:
+  - 9
+- id: cum.20
+  type: mcq
+  question: What is the term for accurately judging how well you actually know a topic?
+  source_modules:
+  - 10
+  options:
+    a: Fluency
+    b: Calibration
+    c: Interleaving
+    d: Mnemonics
+  answer: b
+  explanation: Calibration measures how closely confidence matches performance. Fluency is the misleading ease that makes calibration harder.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: cum.21
+  type: cloze
+  question: 'Metacognition has two components — knowledge about cognition and the regulation of {cognition}.'
+  answer: cognition
+  explanation: The two pieces are knowing about your own mental processes and actively planning, monitoring, and adjusting them.
+  difficulty: 1
+  tags:
+  - terminology
+  - recall
+  source_modules:
+  - 10
+- id: cum.22
+  type: tf
+  statement: Self-regulated learners set specific goals, monitor their own progress, and adjust their strategies based on outcomes.
+  answer: true
+  explanation: This goal-setting, monitoring, and adjustment loop is the core cycle of self-regulated learning.
+  difficulty: 3
+  tags:
+  - concept
+  - synthesis
+  source_modules:
+  - 11
+- id: cum.23
+  type: mcq
+  question: Which feedback is most effective for a wrong answer on a practice question?
+  source_modules:
+  - 12
+  options:
+    a: A mark showing correct or incorrect only
+    b: An explanation delivered after the learner has attempted an answer
+    c: Showing the correct answer before the learner tries
+    d: Delaying feedback indefinitely to encourage guessing
+  answer: b
+  explanation: Timely, elaborative feedback after an attempt corrects errors and explains the reasoning — strongest for learning.
+  difficulty: 2
+  tags:
+  - application
+  - scenario
+- id: cum.24
+  type: tf
+  statement: In Zimmerman's model, reactive self-regulation means planning specific goals before starting to study.
+  answer: false
+  explanation: Reactive self-regulation means adjusting strategies in response to outcomes; proactive regulation is the goal-setting and planning phase.
+  difficulty: 2
+  tags:
+  - terminology
+  - misconception
+  source_modules:
+  - 11

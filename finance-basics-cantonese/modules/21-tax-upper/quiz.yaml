@@ -1,0 +1,129 @@
+- id: '21.1'
+  question: 香港薪俸稅有幾多種計法?
+  options:
+    a: 1 種 (累進稅率)
+    b: 2 種 (累進 vs 標準), 取較低
+    c: 3 種 (累進、標準、統一)
+    d: 4 種
+  answer: b
+  explanation: '香港薪俸稅 2 種計法: 累進稅率 (2-17%) 或 標準稅率 (15%)。取兩者中較低者。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '21.2'
+  question: 2024/25 年度標準稅率係幾多?
+  options:
+    a: 17%
+    b: 20%
+    c: 10%
+    d: 15%
+  answer: d
+  explanation: 2024/25 年度標準稅率係 15% (應評稅入息淨額 $500 萬以內; 超過部分 16%, 兩級制)。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '21.3'
+  question: 2024/25 年度基本免稅額 (單身) 係?
+  options:
+    a: $100,000
+    b: $132,000
+    c: $200,000
+    d: $75,000
+  answer: b
+  explanation: 2024/25 年度基本個人免稅額係 $132,000。已婚人士 $264,000。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '21.4'
+  question: 應評稅入息 $200,000 (累進計算), 稅額大約?
+  options:
+    a: $30,000
+    b: $16,000
+    c: $40,000
+    d: $20,000
+  answer: b
+  explanation: $50k×2% + $50k×6% + $50k×10% + $50k×14% = $1k+$3k+$5k+$7k = $16,000。標準稅率
+    = $200k × 15% = $30,000, 累進較低。
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '21.5'
+  question: MPF 強制性供款結構?
+  options:
+    a: 僱主 0% + 僱員 10%
+    b: 僱主 + 僱員共 15%
+    c: 僱主 5% + 僱員 5% (上限 $1,500/月 各)
+    d: 僱主 10% + 僱員 0%
+  answer: c
+  explanation: 'MPF 強制性供款: 僱主 5% + 僱員 5%, 上限 $1,500/月 (即 $18,000/年) 各, 總上限 $36,000/年。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '21.6'
+  question: MPF 提取年齡?
+  options:
+    a: 65 歲
+    b: 70 歲
+    c: 55 歲
+    d: 60 歲
+  answer: a
+  explanation: MPF 法定提取年齡 65 歲, 或符合特定條件 (e.g. 永久離港、完全喪失行為能力、死亡、小額結餘) 提早提取。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '21.7'
+  question: 你年薪 $1M, 邊種計法低?
+  options:
+    a: 取較低者, 通常 $1M 應評稅入息標準稍低
+    b: 一樣
+    c: 累進一定低
+    d: 標準一定低
+  answer: a
+  explanation: '邊際計算: 應評稅 $1M, 累進 ≈ $152k, 標準 = $150k, 標準低 $2k。超高收入標準稍低, 但差異唔大。'
+  difficulty: 3
+  tags:
+  - calculation
+  - comparison
+- id: '21.8'
+  question: TVC (Tax-deductible Voluntary Contributions) 嘅好處?
+  options:
+    a: 回報保證
+    b: 可以隨時提取
+    c: 可扣稅, 上限 $60,000/年
+    d: 提取免稅
+  answer: c
+  explanation: TVC 自願性 MPF 供款, 可扣減薪俸稅 / 利得稅, 上限 $60,000/年。適合高收入人士節稅。
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '21.9'
+  question: 供養一位 65 歲父親 (同住), 免稅額加幾多?
+  options:
+    a: $50,000
+    b: $75,000
+    c: $100,000
+    d: $25,000
+  answer: a
+  explanation: 供養 60+ 父母/祖父母, 同住 $50,000/年, 非同住 $25,000/年。父母 55-59 歲, 同住 $25,000,
+    非同住 $12,500。
+  difficulty: 2
+  tags:
+  - terminology
+  - calculation
+- id: '21.10'
+  question: 你 MPF 揀保證基金, 過去 10 年回報 3%/年, 同期股票基金回報 7%/年。30 歲供到 65 歲, 點解應該改股票?
+  options:
+    a: 保證基金太安全, 應該全炒窩輪
+    b: MPF 唔可以揀股票
+    c: 保證基金回報固定, 唔可以改
+    d: 保證基金 3% 唔夠對抗通脹, 股票 7% 跑贏
+  answer: d
+  explanation: 保證基金 3% 跑輸通脹 (3%+), 實質負回報。股票 7% 跑贏通脹。30+ 年時間, 應該承受短期波動換長線回報。Glide Path
+    隨退休接近慢慢轉保證。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+

@@ -1,0 +1,176 @@
+- id: '6.1'
+  question: What is the recommended way to set Zustand store state in a test?
+  options:
+    c: Call useStore.setState() with the desired data before render
+    a: Mock the entire store module with jest.mock
+    b: Simulate user actions that produce the state
+    d: Use store.dispatch() like Redux
+  answer: c
+  explanation: store.setState() directly populates store data before render. No mocking
+    needed — the component reads from the real store. This is simpler and faster than
+    simulating user actions.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.2'
+  question: Why is store.setState() better than mocking the store module?
+  options:
+    b: Tests exercise the real store implementation instead of a fake one
+    a: It is faster to type
+    c: mocking is deprecated
+    d: It works with all state managers
+  answer: b
+  explanation: Module mocking replaces the entire store with a fake. setState() sets
+    raw data — the component reads through the actual store logic (selectors, derived
+    state, middleware). Tests cover real behavior.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '6.3'
+  question: After two tests run, the second test fails because store state from the
+    first test leaks over. What is the fix?
+  options:
+    a: Reset store state between tests using afterEach
+    b: Run tests in random order
+    c: Use isolated test files
+    d: Clear all mocks after each test
+  answer: a
+  explanation: Stores are singletons. Test A sets store state; Test B inherits it.
+    Reset via `afterEach(() => store.setState(store.getInitialState()))` to ensure
+    each test starts clean.
+  difficulty: 1
+  tags:
+  - concept
+- id: '6.4'
+  question: An async store action calls fetch() and updates state. What is the test
+    approach?
+  options:
+    d: Use MSW for the API call, await the action, assert on store state
+    a: Mock the async action entirely
+    b: Skip testing async actions
+    c: Use setTimeout to wait for completion
+  answer: d
+  explanation: MSW provides the API response. Call store action directly (not through
+    component), await the promise, then assert on store state. This tests both the
+    API interaction and state updates.
+  difficulty: 2
+  tags:
+  - application
+- id: '6.5'
+  question: A store persist middleware saves to localStorage. How should tests handle
+    this?
+  options:
+    b: 'Disable persist middleware in tests (skipHydration: true)'
+    a: Mock localStorage in every test
+    c: Test localStorage interactions separately
+    d: Use real localStorage — jsdom supports it
+  answer: b
+  explanation: Persist middleware adds complexity without test value. Disable it in
+    tests. The store logic (state transitions) is what matters — persistence is an
+    infrastructure concern.
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.6'
+  question: What store pattern leads to the simplest tests?
+  options:
+    a: Multiple small stores, each owned by a domain (user, cart, theme)
+    b: One large store containing all application state
+    c: Store per component
+    d: No stores — pass everything through props
+  answer: a
+  explanation: Domain-based stores (user, cart, theme) have clear boundaries. Tests
+    only set state for stores their component actually reads. This minimizes coupling
+    and test setup.
+  difficulty: 1
+  tags:
+  - concept
+- id: '6.7'
+  question: A test sets useUserStore, useCartStore, and useThemeStore. The component
+    only reads from useUserStore. What is the issue?
+  options:
+    c: Unnecessary coupling — the test depends on stores it should not know about
+    a: No issue — extra state is harmless
+    b: Performance — more stores means slower tests
+    d: Theme store will not reset
+  answer: c
+  explanation: Setting stores the component does not use creates hidden dependencies.
+    If the extra stores change their API, this test breaks even though no relevant
+    code changed. Only set what the component consumes.
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.8'
+  question: How do you test a computed value (derived state) from a store?
+  options:
+    d: Testing the selector function directly with store.getState()
+    a: Rendering a component and asserting on the computed output
+    b: Computed values cannot be tested separately
+    c: Adding a test-only getter
+  answer: d
+  explanation: Selectors are pure functions. Test them by passing store state and
+    asserting return value. This is faster than rendering and isolates selector logic
+    from rendering concerns.
+  difficulty: 2
+  tags:
+  - application
+- id: '6.9'
+  question: A store action has a side effect (sends analytics event). How do you test
+    the side effect?
+  options:
+    b: Mock the analytics module, call store action directly, assert on mock
+    a: Only test through component — side effects are untestable in isolation
+    c: Side effects cannot be tested
+    d: Remove side effects from store actions
+  answer: b
+  explanation: Store actions are functions. Call them directly via `store.getState().actionName()`,
+    then assert the side effect was called. This tests the action without rendering
+    any component.
+  difficulty: 2
+  tags:
+  - application
+- id: '6.10'
+  question: A store initializes by fetching data from an API. After the test, the
+    store has data. Next test fails because the data leaks. What is the best pattern?
+  options:
+    d: Reset all stores in a global afterEach
+    a: Run tests sequentially
+    b: Use separate test files for each store
+    c: Manually undo each store change
+  answer: d
+  explanation: Create a resetStores utility that calls getInitialState() on all stores.
+    Call it in the global afterEach. This ensures every test starts with a clean state
+    regardless of test order.
+  difficulty: 2
+  tags:
+  - application
+- id: '6.11'
+  question: A component uses React Query for server data and zustand for UI state.
+    What test wrappers are needed?
+  options:
+    a: QueryClientProvider for React Query + setState for zustand
+    b: Just zustand — setState before render
+    c: Only MSW — it covers both
+    d: No wrappers — just mock the fetch calls
+  answer: a
+  explanation: React Query needs QueryClientProvider as context. Zustand needs setState.
+    MSW handles the API responses. Three boundaries, each at its natural level.
+  difficulty: 2
+  tags:
+  - application
+- id: '6.12'
+  question: A component reads URL search params via `useSearchParams()`. How do you
+    set initial query params in a test?
+  options:
+    c: 'Use MemoryRouter with initialEntries: [''/products?sort=price'']'
+    a: Mock useSearchParams with jest.mock
+    b: Set window.location.search directly
+    d: URL state cannot be tested in unit tests
+  answer: c
+  explanation: MemoryRouter with initialEntries sets the URL state. The component
+    reads useSearchParams() and gets 'sort=price'. This is the natural boundary for
+    URL state testing.
+  difficulty: 2
+  tags:
+  - application
+

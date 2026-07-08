@@ -1,0 +1,132 @@
+- id: cum.1
+  type: mcq
+  source_modules:
+  - 5
+  question: Transformer block 嘅兩個主要部分係？
+  options:
+    a: Self-Attention + FFN
+    b: Tokenizer + Embedding
+    c: Encoder + Decoder
+    d: Training + Inference
+  answer: a
+  explanation: Self-attention（資訊交換）+ FFN（資訊處理）係 Transformer block 嘅核心。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.2
+  type: cloze
+  source_modules:
+  - 6
+  question: LLM 訓練有三階段：{pretraining} → {instruction tuning} → {alignment}。
+  answer: pretraining，instruction tuning，alignment
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.3
+  type: mcq
+  source_modules:
+  - 7
+  question: MoE 嘅關鍵 insight 係？
+  options:
+    a: 越多 experts 越好
+    b: 唔係所有 token 需要全部參數
+    c: Router 唔需要 training
+    d: MoE replace attention
+  answer: b
+  explanation: MoE insight = 唔同 token 需要唔同嘅 processing capacity，唔需要 activate 全部參數。
+  difficulty: 2
+  tags:
+  - concept
+- id: cum.4
+  type: tf
+  source_modules:
+  - 8
+  statement: CoT 嘅「Let's think step by step」對所有問題類型都一樣有效。
+  answer: false
+  explanation: 對 fact recall（recall only）冇幫助，對 creative tasks 可能 kill 創意。最 effective
+    係多步驟推理問題。
+  difficulty: 2
+  tags:
+  - comprehension
+- id: cum.5
+  type: mcq
+  source_modules:
+  - 5
+  question: Residual connection 嘅主要用途係？
+  options:
+    a: 加快運算速度
+    b: 減少參數量
+    c: 解決 vanishing gradient
+    d: 令 output 更長
+  answer: c
+  explanation: Residual connection 俾 gradient 一條 shortcut 由 output 直接流返 input，令 deep
+    network 可以 train。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.6
+  type: mcq
+  source_modules:
+  - 7
+  question: MoE 嘅 load balancing failure 係指？
+  options:
+    a: GPU 記憶體爆咗
+    b: Router 壞咗
+    c: Experts 數量唔夠
+    d: 大部分 tokens 去晒同一個 expert
+  answer: d
+  explanation: 如果 router 將 90% tokens 送同一個 expert，其他 experts 學唔到嘢。用 auxiliary loss
+    解決。
+  difficulty: 2
+  tags:
+  - comprehension
+- id: cum.7
+  type: cloze
+  source_modules:
+  - 5
+  question: Decoder-only architecture 用{causal attention}，每個 token 只可以望{前面}嘅 token。
+  answer: causal attention，前面
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.8
+  type: tf
+  source_modules:
+  - 8
+  statement: CoT 係真 reasoning — 模型透過逐步思考真正理解咗邏輯關係。
+  answer: false
+  explanation: CoT 係 pattern matching 嘅 sophisticated form，唔係真 reasoning。Steps 睇落合理但模型內部冇真正嘅
+    logical consistency。
+  difficulty: 2
+  tags:
+  - comprehension
+- id: cum.9
+  type: mcq
+  source_modules:
+  - 6
+  question: RLHF 嘅三步係？
+  options:
+    a: Human compare → Train reward model → RL training
+    b: Collect data → Train model → Deploy
+    c: Pretrain → Instruct → Align
+    d: Tokenize → Embed → Attend
+  answer: a
+  explanation: 人類比較 outputs → train reward model → 用 RL optimize for high reward。
+  difficulty: 2
+  tags:
+  - process
+- id: cum.10
+  type: mcq
+  source_modules:
+  - 8
+  question: Self-consistency 喺邊種情況最有用？
+  options:
+    a: Deterministic 計算
+    b: 多種 possible reasoning paths
+    c: Fact recall
+    d: Single step 問題
+  answer: b
+  explanation: 多條 reasoning paths converge 到同一答案，你對答案更有信心。
+  difficulty: 2
+  tags:
+  - application

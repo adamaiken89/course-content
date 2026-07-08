@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Age-Based Rule 經典公式: {股 % = 100 - 年齡}。30 歲 → {70% 股 + 30% 債}。Bogle 修訂為 {110 - 年齡}。"
+  answer: "股 % = 100 - 年齡、70% 股 + 30% 債、110 - 年齡"
+  explanation: "簡單易記嘅傳統規則, 現代人壽命長, Bogle 修訂為 110 - 年齡。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.2"
+  question: "Strategic Asset Allocation {設定固定比例, 長期維持, 簡單穩定}。Tactical Asset Allocation {短期調整比例, 可能 capture 機會, 但 timing 90% 失敗}。"
+  answer: "設定固定比例, 長期維持, 簡單穩定、短期調整比例, 可能 capture 機會, 但 timing 90% 失敗"
+  explanation: "SAA 適合 90% 人, TAA 需要 timing 能力。"
+  difficulty: 2
+  tags: [terminology, comparison]
+
+- id: "c.3"
+  question: "Rebalancing 兩種方法: {Calendar-based 定期 (半年/1 年)} 同 {Threshold-based 閾值 (±5% drift)}。混合方案最常見。"
+  answer: "Calendar-based 定期 (半年/1 年)、Threshold-based 閾值 (±5% drift)"
+  explanation: "混合: 半年 check 1 次, 超過 ±5% drift 先 rebalance。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "60/40 組合股升 20%, 債升 5%, rebalance 返 60/40 要 {賣 $3.6 股 + 買 $3.6 債}。"
+  answer: "賣 $3.6 股 + 買 $3.6 債"
+  explanation: "原 $60 + $40 = $100, 1 年後 $72 + $42 = $114。60% of $114 = $68.4 股, 賣 $72 - $68.4 = $3.6 股換債。"
+  difficulty: 2
+  tags: [calculation, application]
+
+- id: "c.5"
+  question: "Glide Path 3 段: {累積期 (高股 80-90%)}、{過渡期 (慢慢減 5-10 年)}、{提取期 (低波動 30-50% 股)}。"
+  answer: "累積期 (高股 80-90%)、過渡期 (慢慢減 5-10 年)、提取期 (低波動 30-50% 股)"
+  explanation: "隨年齡由高股降到低股, 平衡增長同保本。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.6"
+  question: "Goal-Based 3 罐子: {短期罐 (0-2 年) 100% 現金/MMF/短債}、{中期罐 (2-10 年) 40/60}、{長期罐 (10+ 年) 80/20}。"
+  answer: "短期罐 (0-2 年) 100% 現金/MMF/短債、中期罐 (2-10 年) 40/60、長期罐 (10+ 年) 80/20"
+  explanation: "每罐清晰, 唔會短期目標用長期投資, Rebalancing 簡單。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.7"
+  question: "MPF DIS 預設 {由約 60% 股降到 20% 股, 隨年齡}, {自動 rebalance}。適合 {唔想煩嘅人}。"
+  answer: "由約 60% 股降到 20% 股, 隨年齡、自動 rebalance、唔想煩嘅人"
+  explanation: "MPF 默認 Glide Path, 簡單但未必最優。"
+  difficulty: 1
+  tags: [terminology, application]
+
+- id: "c.8"
+  question: "個人化 Glide Path 考慮: {延遲退休可以延後 glide}、{有其他收入可高啲股}、{想留遺產提取期可高啲股}。"
+  answer: "延遲退休可以延後 glide、有其他收入可高啲股、想留遺產提取期可高啲股"
+  explanation: "Glide Path 唔係一刀切, 應按個人情況微調。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.9"
+  question: "Rebalancing 5 大錯誤: {永遠唔 rebalance} (drift 過頭)、{過度 rebalance} (交易成本)、{熊市時唔敢買} (錯過買平)、{牛市時太早賣} (心理)、{忽略稅務} (觸發 CG 稅)。"
+  answer: "永遠唔 rebalance、過度 rebalance、熊市時唔敢買、牛市時太早賣、忽略稅務"
+  explanation: "執行嘅紀律先係難, 識 plan 唔代表做到。"
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "c.10"
+  question: "市場研究顯示: {90% Market Timing 失敗}、{SAA + Rebalancing 跑贏 80%+ 嘅 active 投資者}。結論: {SAA 悶但長期贏}。"
+  answer: "90% Market Timing 失敗、SAA + Rebalancing 跑贏 80%+ 嘅 active 投資者、SAA 悶但長期贏"
+  explanation: "SAA 雖然悶, 但係大多數人嘅最佳選擇。"
+  difficulty: 2
+  tags: [concept, application]

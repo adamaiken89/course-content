@@ -1,0 +1,131 @@
+- id: '7.1'
+  question: 「2% 月息」嘅信用卡, 實際年利率 (EAR) 大約幾多?
+  options:
+    a: 20%
+    b: 24% (2% × 12)
+    c: 26.82%
+    d: 12%
+  answer: c
+  explanation: EAR = (1 + 0.24/12)¹² - 1 = 26.82%。月複利效應, 真實比名義高 2.82%。
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '7.2'
+  question: APR 同 APY 嘅主要分別係乜?
+  options:
+    a: APR 用喺存款, APY 用喺借貸
+    b: APR 包括費用但唔包複利, APY 包複利
+    c: 兩個完全一樣, 只係唔同國家叫法
+    d: APY 永遠比 APR 高, 冇例外
+  answer: b
+  explanation: APR (Annual Percentage Rate) 包括利息 + 費用, 用單利計, 借貸用。APY (Annual Percentage
+    Yield) 包複利效應, 存款用, 真實回報。唔係話 APY 永遠高過 APR, 但存款 APY ≥ 對應 APR。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '7.3'
+  question: 4.8% APR 月複利嘅定存, 實際 APY 係幾多?
+  options:
+    a: 4.92%
+    b: 5.00%
+    c: 4.85%
+    d: 4.80%
+  answer: a
+  explanation: APY = (1 + 0.048/12)¹² - 1 = 4.92%。月複利略高過 4.8% 名義。
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '7.4'
+  question: 連續複利公式 A = P × eʳᵗ 入面, e 係咩?
+  options:
+    a: 複利次數, 一年幾多次
+    b: 本金嘅縮寫
+    c: 一個 variable, 視乎利率變
+    d: 自然對數底數, 約 2.71828, 數學常數
+  answer: d
+  explanation: e 同 π 一樣, 係數學常數 (≈ 2.71828), 唔會變。連續複利係 (n → ∞) 嘅數學極限, 推到極限自然出現 e。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '7.5'
+  question: 借貸時應該比較邊個率?
+  options:
+    a: APR 越低越好
+    b: 名義月息越低越好
+    c: 睇下個名好唔好聽
+    d: APY 越高越好
+  answer: a
+  explanation: 借貸 (信用卡/按揭/私貸) 比較 APR 越低越好。APY 係存款用, 借貸唔適用。
+  difficulty: 1
+  tags:
+  - terminology
+  - application
+- id: '7.6'
+  question: 如果銀行只提供 5% APR 年複利, 實質回報率 (EAR) 係幾多?
+  options:
+    a: 5.00%
+    b: 5.12%
+    c: 5.05%
+    d: 5.13%
+  answer: a
+  explanation: 年複利 n=1, EAR = (1 + 0.05/1)¹ - 1 = 5.00%。因為 1 次複利, 冇額外效應, EAR = APR。
+  difficulty: 2
+  tags:
+  - calculation
+- id: '7.7'
+  question: 以下邊個情況實際回報率 (EAR) 最高?
+  options:
+    a: 5% 年複利
+    b: 5% 半年複利
+    c: 5% 月複利
+    d: 5% 日複利
+  answer: d
+  explanation: 複利次數愈多, EAR 愈高。日複利 > 月複利 > 半年複利 > 年複利。但差距愈來愈細 (日→連續只差 0.04%)。
+  difficulty: 2
+  tags:
+  - comparison
+  - formula
+- id: '7.8'
+  question: 你想放 $50000 喺銀行 1 年, 邊個信息最重要?
+  options:
+    a: 銀行名同 logo
+    b: APY (Annual Percentage Yield)
+    c: 分行地址
+    d: 月息幾多
+  answer: b
+  explanation: APY 係真實年回報, 直接講「$50000 1 年後拎幾多」。其他信息都唔及 APY 實用。
+  difficulty: 1
+  tags:
+  - application
+- id: '7.9'
+  question: 你碌信用卡 $20000 借 1 年, APR 30% 月複利, 總利息大約幾多?
+  options:
+    a: $6000
+    b: $6455
+    c: $5640
+    d: $7000
+  answer: b
+  explanation: EAR = (1 + 0.30/12)¹² - 1 = 34.49%。總利息 ≈ $20000 × 34.49% = $6898。實際答案接近
+    b。APR 30% 唔等如 30% 利息, 因為月複利效應。
+  difficulty: 3
+  tags:
+  - calculation
+  - scenario
+- id: '7.10'
+  question: 點解銀行 marketing 鍾意寫「月息 X%」唔寫「年息 Y%」?
+  options:
+    a: 因為會計習慣
+    b: 因為法例強制要寫月息
+    c: 因為月息數字細, 聽落易接受
+    d: 因為月息計出嚟實際高, 想呃客
+  answer: c
+  explanation: 「月息 2%」聽落似 2%, 心理上易接受;「年息 26.82%」太驚, 用戶即刻走。Marketing 心理戰。法例要寫 APR (年化),
+    但銀行行銷用月息吸引。
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+

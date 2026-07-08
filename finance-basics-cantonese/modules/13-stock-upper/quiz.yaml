@@ -1,0 +1,128 @@
+- id: '13.1'
+  question: 股票代表咩?
+  options:
+    a: 公司部分擁有權
+    b: 央行發行嘅貨幣
+    c: 商品期貨合約
+    d: 公司向股東借錢嘅憑證
+  answer: a
+  explanation: 股票 = 公司部分擁有權, 股東有經濟權 (派息 / 升值)、治理權 (投票)、清算權 (公司執笠攞番攤分)。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '13.2'
+  question: 普通股同優先股嘅主要分別?
+  options:
+    a: 優先股永遠升多過普通股
+    b: 普通股有票面, 優先股冇
+    c: 普通股有投票權, 優先股通常冇但派息優先
+    d: 普通股喺清算時先攞錢, 優先股最後
+  answer: c
+  explanation: 普通股有投票 (一股一票), 優先股通常冇投票但派息固定且優先。清算時優先股先攞返本金, 普通股最後。
+  difficulty: 1
+  tags:
+  - comparison
+- id: '13.3'
+  question: 公司發行 1 億股, 股價 $50。市值係幾多?
+  options:
+    a: $50 億
+    b: $1 億
+    c: $5 億
+    d: $5,000 萬
+  answer: a
+  explanation: 市值 = 股價 × 已發行股數 = $50 × 1 億 = $50 億。股本 (賬面) = 票面值 × 股數, 通常細好多, 唔等於市值。
+  difficulty: 1
+  tags:
+  - calculation
+  - formula
+- id: '13.4'
+  question: 騰訊宣布「1 拆 5」, 拆細前股價 $370。理論上拆細後開市價大約?
+  options:
+    a: $370 (不變)
+    b: $74 ($370/5)
+    c: $1,850 ($370×5)
+    d: $92 ($370/4)
+  answer: b
+  explanation: 拆細純粹改變股數同每股價格, 總市值不變。$370 / 5 = $74。實際開市價由市場決定, 通常接近理論價。
+  difficulty: 2
+  tags:
+  - calculation
+  - concept
+- id: '13.5'
+  question: T+2 交收即係?
+  options:
+    a: T 鍵落單, 2 個工作天後先知結果
+    b: 落單後 2 小時內交收
+    c: 落單日 + 2 個工作日後股票同錢正式過戶
+    d: 落單後第 2 個交易日可以提取
+  answer: c
+  explanation: T+2 係香港股票交收標準, 落單當日為 T, 2 個工作日後 (即 T+2) 股票同錢正式過戶。之前只係 trade matched。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '13.6'
+  question: 公司宣布派 $1 息, 除淨日當日股價會點?
+  options:
+    a: 跌約 $1 (派息額)
+    b: 唔變
+    c: 升多過 $1
+    d: 升 $1
+  answer: a
+  explanation: 除淨日當日買入嘅人冇得收今次息, 所以股價會跌返個派息額。$1 派息 → 股價除淨日理論跌 $1。
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '13.7'
+  question: IPO 一定賺錢, 因為公司有前景先上市?
+  options:
+    a: 啱, IPO 平均回報正
+    b: 錯, 2018-2024 港股 IPO 破發率 30-40%, 唔一定賺
+    c: 啱, 因為只有好公司先通過聯交所審批
+    d: 啱, 因為散戶通常可以分到好多
+  answer: b
+  explanation: '三個錯: 上市可能係股東套現、定價過高、鎖定期解禁後大股東沽貨。破發率 30-40%, 唔當穩賺。'
+  difficulty: 2
+  tags:
+  - concept
+  - misconception
+- id: '13.8'
+  question: 公司 1 億股, 當中創辦人持 60% (鎖定), 政府持 10%, 散戶流通 30%。股價 $100, 流通市值?
+  options:
+    a: $7 億 (創辦 + 政府)
+    b: $9 億 (散戶 + 政府)
+    c: $10 億 (全部已發行)
+    d: $3 億 (散戶流通)
+  answer: d
+  explanation: 流通市值 = 股價 × 流通股數 = $100 × 3,000 萬股 = $3 億。創辦人鎖定股唔喺市場流通, 影響可操控程度。
+  difficulty: 2
+  tags:
+  - calculation
+  - concept
+- id: '13.9'
+  question: 邊個交易渠道佣金最低, 適合頻密買賣?
+  options:
+    a: 銀行孖展戶口
+    b: 傳統銀行 (匯豐、中銀)
+    c: 傳統券商 (輝立、信誠)
+    d: 網上券商 (富途、耀才)
+  answer: d
+  explanation: 網上券商佣金 $0-15/單, 傳統銀行/券商 $50-100/單。頻密買賣用網上慳好多, 但要留意系統穩定性。
+  difficulty: 1
+  tags:
+  - comparison
+  - application
+- id: '13.10'
+  question: 停牌 (Suspension) 期間, 股東可以做咩?
+  options:
+    a: 可以賣但唔可以買
+    b: 買賣都唔可以, 要等復牌
+    c: 可以免費轉去其他股票
+    d: 可以正常買賣
+  answer: b
+  explanation: 停牌期間買賣完全凍結, 股東被鎖住。漢能薄膜 2015 年停牌之後從未正常復牌, 2020 年私有化退市; 其他個案復牌後就可能暴升或暴跌。
+  difficulty: 1
+  tags:
+  - terminology
+  - scenario
+

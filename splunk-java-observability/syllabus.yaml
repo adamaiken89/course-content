@@ -1,0 +1,207 @@
+subject: "Splunk for Java Developers: Logging, Field Mapping, Search and Alerting"
+language: en
+time_budget_hours: 24
+target_level: intermediate
+domain: splunk-java-observability
+prerequisites:
+  - Java 17+
+  - Spring Boot basics
+  - SLF4J / Logback familiarity
+  - Basic Docker/Kubernetes exposure
+learning_objectives:
+  - "Explain Splunk core concepts: index, event, field, sourcetype, host, source, and the data pipeline"
+  - "Describe Splunk Enterprise architecture: indexer, search head, forwarder, HEC, distributed search"
+  - Instrument Java apps with SLF4J + Logback structured logging and the Splunk HEC appender
+  - Design log field schemas that map cleanly from Java to Splunk searchable fields
+  - Configure index-time vs search-time field extraction with props.conf, transforms.conf, fields.conf
+  - "Write effective SPL: filtering, stats/eval/rex/spath/timechart, time ranges, correlation"
+  - Correlate logs with MDC traceId/requestId and OpenTelemetry trace metadata
+  - Build monitoring dashboards and alerting rules following Splunk best practices
+  - "Troubleshoot production incidents: error search, stacktrace analysis, latency breakdown"
+
+modules:
+  - id: 1
+    name: Splunk Fundamentals
+    time_hours: 1.5
+    prerequisites: []
+    topics:
+      - What Splunk is and why organizations use it
+      - "Core objects: index, event, field, source, sourcetype, host"
+      - "Data flow: forwarders to indexers to search heads"
+      - Intro to SPL and the Search app
+      - Licensing, editions (Enterprise, Cloud, Observability)
+    type: foundation
+
+  - id: 2
+    name: Splunk Architecture
+    time_hours: 1.5
+    prerequisites: [1]
+    topics:
+      - "Components: indexer, search head, forwarder, heavy forwarder, deployment server"
+      - Distributed search and indexer clusters
+      - "Data ingestion paths: HEC, TCP/UDP, forwarder monitoring, app log files"
+      - Parser vs indexer roles in ingestion
+    type: foundation
+
+  - id: 3
+    name: Java Logging Foundations
+    time_hours: 1.5
+    prerequisites: [1]
+    topics:
+      - SLF4J abstraction and why it matters
+      - Logback vs Log4j2 vs java.util.logging
+      - Log levels and level filtering
+      - "MDC: putting request context on the thread"
+      - Pattern layouts and appenders in Spring Boot
+    type: core
+
+  - id: 4
+    name: "Getting Logs In: Splunk HEC Appender"
+    time_hours: 1.5
+    prerequisites: [2, 3]
+    topics:
+      - "HTTP Event Collector: enable, token, channel"
+      - splunk-library-javalogging logback appender config
+      - batching, retries, timeouts, TLS
+      - "K8s stdout vs HEC: when to use which"
+    type: core
+
+  - id: 5
+    name: Structured Logging in Java
+    time_hours: 1.5
+    prerequisites: [3]
+    topics:
+      - JSON layout with logstash-logback-encoder
+      - Designing key-value log fields
+      - SplunkCimLogEvent for CIM-compliant events
+      - Stacktrace formatting for searchability
+      - Cardinality control in field values
+    type: core
+
+  - id: 6
+    name: Splunk Data Pipeline
+    time_hours: 1.5
+    prerequisites: [1, 2]
+    topics:
+      - "Ingestion: parse → index → search path"
+      - Timestamp extraction and timezone
+      - Line breaking and multi-line events (stacktraces)
+      - Sourcetype, host, source, index metadata
+      - props.conf basics
+    type: core
+
+  - id: 7
+    name: "Field Extraction: Index-Time vs Search-Time"
+    time_hours: 1.5
+    prerequisites: [6]
+    topics:
+      - Search-time extraction vs indexed field extraction
+      - props.conf INDEXED_EXTRACTIONS with JSON
+      - transforms.conf regex extraction into _meta
+      - fields.conf INDEXED=true
+      - Performance and storage tradeoffs
+    type: core
+
+  - id: 8
+    name: Field Mapping Design
+    time_hours: 1.5
+    prerequisites: [5, 7]
+    topics:
+      - Mapping Java fields to Splunk fields
+      - Naming conventions and consistency
+      - CIM field names (user, src, dest, app)
+      - Avoiding high-cardinality fields
+      - Field dictionary and data model planning
+    type: core
+
+  - id: 9
+    name: SPL Basics
+    time_hours: 1.5
+    prerequisites: [1]
+    topics:
+      - "Search syntax: keywords, booleans, phrases"
+      - index/sourcetype/host filters and filter order
+      - Time range modifiers and snapping
+      - Field=value matching semantics
+      - _raw, _time, _index, _sourcetype internals
+    type: core
+
+  - id: 10
+    name: SPL Transformations
+    time_hours: 1.5
+    prerequisites: [9]
+    topics:
+      - "stats: count, dc, avg, sum, max, min, values"
+      - eval and conditional logic
+      - rex for ad-hoc field extraction
+      - spath for JSON exploration
+      - timechart, top/rare, dedup, sort, table, fields
+    type: core
+
+  - id: 11
+    name: Correlation & Tracing
+    time_hours: 1.5
+    prerequisites: [3, 9]
+    topics:
+      - MDC traceId/requestId propagation in Spring Boot
+      - transaction command to group related events
+      - OpenTelemetry Java agent and trace/span metadata
+      - Correlating logs across services
+    type: advanced
+
+  - id: 12
+    name: Troubleshooting Workflows
+    time_hours: 1.5
+    prerequisites: [9, 10, 11]
+    topics:
+      - Error and exception search patterns
+      - Stacktrace analysis in Splunk
+      - Latency breakdown with timechart
+      - Cross-service incident drill-down
+    type: advanced
+
+  - id: 13
+    name: Dashboards
+    time_hours: 1.5
+    prerequisites: [9, 10]
+    topics:
+      - Search-to-chart workflow
+      - Dashboard panels and layouts
+      - Dynamic inputs and tokens
+      - Dashboard Studio basics
+    type: intermediate
+
+  - id: 14
+    name: Alerts
+    time_hours: 1.5
+    prerequisites: [9, 10]
+    topics:
+      - Scheduled vs real-time alerts
+      - Trigger conditions and secondary search
+      - Throttling and suppression
+      - Cron scheduling and time-range alignment
+      - "Alert actions: email, webhook, RSS"
+    type: advanced
+
+  - id: 15
+    name: Best Practices
+    time_hours: 1.5
+    prerequisites: [8, 14]
+    topics:
+      - Splunk logging best practices for Java teams
+      - Alert fatigue and SLO-based alerting
+      - Sensitive data and log redaction
+      - Cardinality and volume management
+      - Observability-as-code
+    type: advanced
+
+  - id: 16
+    name: Capstone Project
+    time_hours: 1.5
+    prerequisites: [4, 5, 8, 11, 12, 13, 14, 15]
+    topics:
+      - Instrument a Spring Boot app with JSON + MDC + HEC
+      - Build field mapping and sourcetype config
+      - Create dashboards and alerts
+      - Troubleshoot a simulated production incident
+    type: project

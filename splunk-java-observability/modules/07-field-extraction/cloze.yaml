@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "The default field extraction model extracts fields when a {search} runs, not when data is {ingested}."
+  answer: "search / ingested"
+  explanation: "Search-time extraction happens per query against stored raw text — zero storage cost and reconfigurable anytime."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Index-time extraction is configured via INDEXED_EXTRACTIONS in {props.conf}; fields are then marked indexed in fields.conf."
+  answer: "props.conf"
+  explanation: "props.conf holds the extraction stanza; fields.conf declares which extracted fields are stored as indexed."
+  difficulty: 2
+  tags: [application]
+
+- id: "c.3"
+  question: "The biggest index-time cost is storage {growth}: each indexed field is stored per event, and changing extraction requires re-indexing."
+  answer: "growth"
+  explanation: "Each indexed field is stored per event. Changing extraction means re-indexing all affected data."
+  difficulty: 2
+  tags: [tradeoff]
+
+- id: "c.4"
+  question: "For JSON logs set INDEXED_EXTRACTIONS = {JSON} and KV_MODE = {none} to avoid a second key=value extraction racing the JSON parser."
+  answer: "JSON / none"
+  explanation: "KV_MODE none keeps the JSON parser as the single extraction path, preventing duplicate keys and type races."
+  difficulty: 2
+  tags: [application]
+
+- id: "c.5"
+  question: "Indexed fields are searched with double-colon notation, for example {club::glee}."
+  answer: "club::glee"
+  explanation: "field::value is the indexed-extraction search notation, e.g. club::glee."
+  difficulty: 2
+  tags: [application]
+
+- id: "c.6"
+  question: "TSIDX is a {bloom} filter-based pre-filter that skips buckets with no match before rawdata is {decompressed}."
+  answer: "bloom / decompressed"
+  explanation: "The time-series index tests per-bucket bloom filters first, skipping empty buckets before decompressing rawdata."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Indexing a {high-cardinality} field rarely helps: its bloom filter matches almost every bucket, so the pre-filter is not selective."
+  answer: "high-cardinality"
+  explanation: "Rare values make the bloom filter selective; values present in most buckets defeat the pre-filter."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "c.8"
+  question: "Custom index-time fields are written into the {_meta} metadata field, where text units split on whitespace and :: becomes field::value."
+  answer: "_meta"
+  explanation: "transforms write to _meta via WRITE_META=true and DEST_KEY=_meta; :: is the delimiter for field::value pairs."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.9"
+  question: "The HEC {fields} key sends a flat JSON object indexed automatically at index time; it keeps _raw clean and does not apply to raw-type events."
+  answer: "fields"
+  explanation: "HEC fields are searchable via field=value but never appear in the event string; raw-type events do not support it."
+  difficulty: 2
+  tags: [application]
+
+- id: "c.10"
+  question: "Recommendation: use {search-time} extraction by default; reserve {index-time} for rare fields you filter on across huge data or need in data models."
+  answer: "search-time / index-time"
+  explanation: "Search-time is cheap and flexible; index-time pays storage and locks extraction, so it earns its cost only on rare, heavily-filtered fields."
+  difficulty: 3
+  tags: [tradeoff]

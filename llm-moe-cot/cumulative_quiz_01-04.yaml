@@ -1,0 +1,108 @@
+- id: cum.1
+  type: cloze
+  source_modules:
+  - 3
+  question: 'In attention, √d_k normalises the dot product because Q and K are drawn from distributions with variance {d_k}. Scaling by 1/√d_k restores unit variance.'
+  answer: d_k
+  explanation: Each of d_k dimensions contributes variance 1 under the unit-variance assumption, so the sum has variance d_k. Dividing by the square root restores unit scale.
+  difficulty: 1
+  tags:
+  - mechanism
+  - recall
+- id: cum.2
+  type: mcq
+  source_modules:
+  - 1
+  question: What is the core training objective of most current large language models?
+  options:
+    a: Classify text into a fixed set of labels
+    b: Predict the next token given the preceding tokens
+    c: Translate between any two languages
+    d: Compress images into low-dimensional codes
+  answer: b
+  explanation: LLMs are next-token predictors; classification and translation are downstream capabilities, not the objective itself.
+  difficulty: 1
+  tags:
+  - recall
+  - terminology
+- id: cum.3
+  type: cloze
+  source_modules:
+  - 2
+  question: During training, {gradient} descent repeatedly adjusts weights in the direction that reduces the loss on the training data.
+  answer: gradient
+  explanation: Gradient descent follows the negative gradient of the loss with respect to the weights to find a lower-loss region.
+  difficulty: 1
+  tags:
+  - recall
+  - terminology
+- id: cum.4
+  type: mcq
+  source_modules:
+  - 2
+  question: What role does a nonlinear activation function such as ReLU play in a neural network layer?
+  options:
+    a: It lets the network represent nonlinear functions by mixing linear layers
+    b: It shrinks the vocabulary before feed-forward blocks
+    c: It replaces attention during the forward pass
+    d: It removes the need for weight matrices
+  answer: a
+  explanation: Stacking only linear layers stays linear; nonlinear activations let deeper stacks approximate arbitrary functions.
+  difficulty: 3
+  tags:
+  - concept
+  - synthesis
+- id: cum.5
+  type: mcq
+  source_modules:
+  - 3
+  question: In dot-product attention, what do the query and key vectors together determine?
+  options:
+    a: Which position becomes the final output token
+    b: The attention weight each token places on every other token
+    c: The size of the embedding dictionary
+    d: The number of layers left to run
+  answer: b
+  explanation: Q and K are compared per pair of positions; the softmax of their dot products gives the attention weights.
+  difficulty: 2
+  tags:
+  - concept
+  - mechanism
+- id: cum.6
+  type: tf
+  source_modules:
+  - 4
+  statement: The original transformer sequence-to-sequence model contains both an encoder that reads the input and a decoder that generates the output.
+  answer: true
+  explanation: The original 2017 transformer is an encoder-decoder model; later GPT-style LLMs dropped the encoder.
+  difficulty: 1
+  tags:
+  - terminology
+  - recall
+- id: cum.7
+  type: cloze
+  source_modules:
+  - 4
+  question: 'Inside each transformer block, the attention outputs are recombined by a {linear} projection before the feed-forward network continues the transformation.'
+  answer: linear
+  explanation: The output projection after attention is a learned linear map that reshapes the combined result back to the model dimension.
+  difficulty: 2
+  tags:
+  - concept
+  - mechanism
+- id: cum.8
+  type: mcq
+  source_modules:
+  - 4
+  question: Which mechanism lets every token in a transformer layer exchange information with every other token in one step?
+  options:
+    a: Residual connection
+    b: Self-attention
+    c: Layer normalisation
+    d: Dropout
+  answer: b
+  explanation: Self-attention gives each token a weighted view of all other positions — the core information-exchange mechanism of transformers.
+  difficulty: 3
+  tags:
+  - concept
+  - terminology

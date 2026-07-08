@@ -1,0 +1,132 @@
+- id: '8.1'
+  question: What happens when you don't enforce planning before implementation?
+  options:
+    c: Agent starts writing immediately, often in wrong direction
+    a: Agent works faster with fewer tokens
+    b: Agent refuses to work
+    d: Agent plans anyway without being asked
+  answer: c
+  explanation: Without enforcement, agent optimizes for speed → starts writing immediately.
+    Often wrong direction → rework.
+  difficulty: 1
+  tags:
+  - concept
+- id: '8.2'
+  question: How much token savings does 'plan first' typically provide?
+  options:
+    c: 30-50% by preventing rewrites
+    a: 10% or less
+    b: 100% - no tokens used
+    d: Token usage increases
+  answer: c
+  explanation: Preventing wrong direction saves 2-3x of planning overhead. A 100-token
+    plan prevents 1000-token rewrite.
+  difficulty: 1
+  tags:
+  - concept
+- id: '8.3'
+  question: What is the purpose of the 'approval gate' in planning?
+  options:
+    d: Ensures agent waits for human review before implementing
+    a: Slows down the agent
+    b: Lets agent decide when to proceed
+    c: Automatically rejects all plans
+  answer: d
+  explanation: Approval gate ensures agent presents plan and waits for human confirmation
+    before writing code.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.4'
+  question: Which style enforcement method has zero overhead?
+  options:
+    b: Linter auto-fix
+    a: AGENTS.md conventions
+    c: Per-task style block
+    d: Verification gate
+  answer: b
+  explanation: Linter auto-fix runs automatically post-hoc. Agent doesn't need to
+    think about formatting.
+  difficulty: 2
+  tags:
+  - application
+- id: '8.5'
+  question: Why should you NOT refactor and add features in same step?
+  options:
+    a: If bug appears, hard to tell if from refactor or new feature
+    b: Agent cannot do both at once
+    c: Refactoring is always unnecessary
+    d: Features should never follow refactoring
+  answer: a
+  explanation: Bug origin becomes ambiguous. Separate refactor (behavior-preserving)
+    from feature (behavior-changing).
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.6'
+  question: How many files should a rename step typically update at once?
+  options:
+    a: 3-5 files per step, verify after each
+    b: All files at once
+    c: 1 file only
+    d: As many as possible
+  answer: a
+  explanation: Small batches (3-5) with verification after each. If something breaks,
+    you know which step caused it.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '8.7'
+  question: What should you verify after each refactoring step?
+  options:
+    b: Typecheck + lint + tests
+    a: Only that files were saved
+    c: Only the UI looks correct
+    d: Nothing - verify only at end
+  answer: b
+  explanation: Run typecheck (catches missed references), lint (styling), tests (behavior).
+    Catch issues immediately.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '8.8'
+  question: Where should you put planning protocol to avoid repeating it every session?
+  options:
+    d: In AGENTS.md
+    a: In every task prompt
+    b: In a separate chat
+    c: In commit messages
+  answer: d
+  explanation: AGENTS.md loads every session automatically. Write planning protocol
+    once.
+  difficulty: 1
+  tags:
+  - application
+- id: '8.9'
+  question: Should a 1-line bug fix require a planning step?
+  options:
+    a: No - planning overhead exceeds benefit for trivial fixes
+    b: Yes - always plan
+    c: Only if the bug is in production
+    d: Only if you don't know the fix
+  answer: a
+  explanation: Planning overhead (reading files, writing proposal) exceeds time saved
+    for trivial fixes. Reserve for complex tasks.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '8.10'
+  question: Agent's grep for 'findUsers' missed files using dynamic import `import(`./services/${name}`)`.
+    What went wrong?
+  options:
+    b: Dynamic imports and computed references are invisible to static grep
+    a: Agent's grep was incorrect
+    c: The files didn't exist
+    d: Agent skipped the search
+  answer: b
+  explanation: Static grep misses dynamic references. Run typecheck after rename to
+    catch these. Don't trust grep alone.
+  difficulty: 3
+  tags:
+  - scenario
+

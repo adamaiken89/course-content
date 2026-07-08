@@ -1,0 +1,115 @@
+- type: mcq
+  question: Which type best models "a field that may return several object types"?
+  options:
+    b: Union or interface
+    a: Enum
+    c: Scalar
+    d: Input object
+  answer: b
+  explanation: Unions/interfaces let a field resolve to multiple object types; fragments handle type-specific
+    selection.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.1
+  source_modules:
+  - 1
+- type: mcq
+  question: In (parent, args, context, info), what does the context argument carry?
+  options:
+    c: Request-scoped dependencies like auth and dataloaders
+    a: The parent object
+    b: Field arguments
+    d: The schema SDL
+  answer: c
+  explanation: Context is assembled per request and passed to every resolver — the home for auth, loaders,
+    datasources.
+  difficulty: 2
+  tags:
+  - recall
+  id: cum.2
+  source_modules:
+  - 2
+- type: cloze
+  question: Aliases let one query request the same field twice with {different names} to avoid key collisions.
+  answer: different names
+  difficulty: 2
+  tags:
+  - concept
+  id: cum.3
+  source_modules:
+  - 3
+- type: tf
+  statement: Mutations in GraphQL execute serially at the top level by spec.
+  answer: true
+  explanation: Spec guarantees top-level mutation fields run sequentially; query fields may run in parallel.
+  difficulty: 2
+  tags:
+  - recall
+  id: cum.4
+  source_modules:
+  - 4
+- type: mcq
+  question: 'Review graphql-deep-dive module 1: which statement reflects the module''s core guidance?'
+  options:
+    a: Apply the documented pattern with its stated tradeoffs
+    b: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: a
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.5
+  source_modules:
+  - 1
+- type: mcq
+  question: 'Review graphql-deep-dive module 2: which statement reflects the module''s core guidance?'
+  options:
+    d: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    b: Patterns never have costs
+    c: Always rewrite existing code first
+  answer: d
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.6
+  source_modules:
+  - 2
+- type: mcq
+  question: 'Review graphql-deep-dive module 3: which statement reflects the module''s core guidance?'
+  options:
+    b: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: b
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.7
+  source_modules:
+  - 3
+- type: mcq
+  question: 'Review graphql-deep-dive module 4: which statement reflects the module''s core guidance?'
+  options:
+    a: Apply the documented pattern with its stated tradeoffs
+    b: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: a
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.8
+  source_modules:
+  - 4

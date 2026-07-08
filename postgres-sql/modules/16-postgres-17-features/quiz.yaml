@@ -1,0 +1,110 @@
+- id: "16.1"
+  question: "Which EXPLAIN option reports optimizer memory usage per plan node?"
+  options:
+    a: "MEMORY"
+    b: "BUFFERS"
+    c: "SERIALIZE"
+    d: "ANALYZE"
+  answer: a
+  explanation: "MEMORY shows how much server memory planning consumed per node. BUFFERS shows block I/O, SERIALIZE shows output-conversion cost, ANALYZE shows run time."
+  difficulty: 1
+  tags: [terminology]
+- id: "16.2"
+  question: "Which EXPLAIN option requires ANALYZE and separates output-formatting cost from query execution cost?"
+  options:
+    a: "VERBOSE"
+    b: "SERIALIZE"
+    c: "MEMORY"
+    d: "TIMING"
+  answer: b
+  explanation: "SERIALIZE must run with ANALYZE; it reports time and memory spent converting result rows to the output format. High serialize time points at per-row casting/formatting."
+  difficulty: 1
+  tags: [terminology]
+- id: "16.3"
+  question: "A query takes 1.0s planning and 3.2s serialise. Where is the real problem?"
+  options:
+    a: "The scan is too slow"
+    b: "The join loses rows"
+    c: "The planner space and the output conversion dominate"
+    d: "The transaction log grows"
+  answer: c
+  explanation: "Big plan time means the planner search space is huge (add/fix join filters). Big serialise time means row-to-answer conversion dominates; either fix the plan or reduce output work."
+  difficulty: 2
+  tags: [scenario]
+- id: "16.4"
+  question: "Which PG17 addition turns a JSON document into typed relational rows inside FROM?"
+  options:
+    a: "JSON_TABLE"
+    b: "jsonb_agg"
+    c: "to_jsonb"
+    d: "jsonb_path_query"
+  answer: a
+  explanation: "JSON_TABLE maps JSON paths to COLUMNS with declared types and ON EMPTY handling. jsonb_agg and to_jsonb build JSON; jsonb_path_query extracts JSON, not a typed row set."
+  difficulty: 1
+  tags: [concept]
+- id: "16.5"
+  question: "A finance app synchronises stock counts into inventory with MERGE and then re-reads the merged rows in a second query. What PG17 feature removes the second query?"
+  options:
+    a: "ON CONFLICT DO NOTHING"
+    b: "TRUNCATE"
+    c: "COPY FROM"
+    d: "MERGE RETURNING"
+  answer: d
+  explanation: "MERGE RETURNING (PG17) returns rows written across all branch actions, so you get them in one statement instead of merging then selecting."
+  difficulty: 2
+  tags: [scenario]
+- id: "16.6"
+  question: "Which of these is an automatic PG17 performance upgrade needing no query change?"
+  options:
+    a: "JSON_TABLE support"
+    b: "MERGE RETURNING"
+    c: "Streaming I/O for sequential reads"
+    d: "EXPLAIN (MEMORY)"
+  answer: c
+  explanation: "Streaming I/O reads blocks in bulk on sequential scans and COPY, giving roughly 2x export speed automatically. JSON_TABLE, MERGE RETURNING and EXPLAIN options are features you must opt in to."
+  difficulty: 2
+  tags: [comparison]
+- id: "16.7"
+  question: "Why does streaming I/O barely change typical OLTP random-looking row lookups?"
+  options:
+    a: "Index scans disable it"
+    b: "The queries wait on locks"
+    c: "Vacuum blocks the stream"
+    d: "Random index probes have no big sequential runs to stream"
+  answer: d
+  explanation: "Streaming I/O wins when reads are sequential. Point lookups hop across random pages, so there is little contiguity for the stream to exploit."
+  difficulty: 2
+  tags: [concept]
+- id: "16.8"
+  question: "What is the purpose of adding CHECK (...) NOT VALID to a partitioned PG17 table?"
+  options:
+    a: "Block writes forever"
+    b: "Get partition pruning without a long write lock"
+    c: "Remove the check from data"
+    d: "Speed up row inserts"
+  answer: b
+  explanation: "PG17 lets NOT VALID check constraints prune partitions during planning, and adding NOT VALID takes a cheap lock. VALIDATE CONSTRAINT later proves correctness with a background scan."
+  difficulty: 2
+  tags: [concept]
+- id: "16.9"
+  question: "An admin adds a check as NOT VALID then runs VALIDATE CONSTRAINT, expecting minutes. It takes hours. Why?"
+  options:
+    a: "VALIDATION still requires a full scan of the table"
+    b: "The constraint blocks on a lock"
+    c: "Partition keys changed"
+    d: "The index is corrupt"
+  answer: a
+  explanation: "Adding the constraint NOT VALID is cheap, but VALIDATE CONSTRAINT must scan every row to prove the check holds. That scan takes as long as the table is big — budget off-peak time."
+  difficulty: 3
+  tags: [scenario]
+- id: "16.10"
+  question: "Where does incremental sort actually come from, in terms of PostgreSQL release history?"
+  options:
+    a: "It is new in PG17"
+    b: "It is a PG18 feature"
+    c: "It was introduced in PG13 and improved since"
+    d: "It shipped with PG9.4"
+  answer: c
+  explanation: "Incremental sort was introduced in Postgres 13. PG16/17 make more plans pick it and cap its memory. Claiming it is 'the PG17 feature' is a common mistake."
+  difficulty: 1
+  tags: [comparison]

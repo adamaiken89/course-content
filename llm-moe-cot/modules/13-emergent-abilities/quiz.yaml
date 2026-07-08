@@ -1,0 +1,91 @@
+- id: '13.1'
+  question: 邊個最好定義 LLMs 中嘅 emergent abilities？
+  options:
+    c: 細 model 冇但大 model 有嘅 abilities
+    a: 隨 model scale 平滑改善嘅 abilities
+    b: 透過 fine-tuning 學到嘅 abilities
+    d: 同一個 model 長時間訓練後出現嘅 abilities
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '13.2'
+  question: 根據 Wei (2022)，邊種 ability 喺大 scale 出現但細 model 冇？
+  options:
+    a: 多步推理
+    b: Next-token prediction
+    c: Part-of-speech tagging
+    d: Token embedding learning
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '13.3'
+  question: Emergence 同 grokking 有咩分別？
+  options:
+    b: Emergence 關乎 scale (params)；grokking 關乎 training time (epochs)
+    a: Emergence 需要 fine-tuning；grokking 需要 pre-training
+    c: Grokking 係 metric artifact；emergence 係 circuit capacity
+    d: 佢哋係同一現象唔同名
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '13.4'
+  question: Schaeffer (2023) 認為 LLM emergence 好多係：
+  options:
+    d: 用 discontinuous evaluation metrics 造成嘅 metric artifact
+    a: 神經 circuits 嘅真正 phase transition
+    b: 由 grokking at scale 引起
+    c: 大 model 有感知能力嘅證據
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '13.5'
+  question: 邊種 attention mechanism 係 in-context learning 嘅 minimal circuit？
+  options:
+    c: Induction heads
+    a: Cross-attention
+    b: Multi-head attention
+    d: 淨係 Causal self-attention
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '13.6'
+  question: Induction head circuit 做乜？
+  options:
+    a: 喺當前 token 之前出現過嘅位置之後，複製下一個 token
+    b: 用 relative position 計 attention scores
+    c: 將 tokens 路由到唔同 expert networks
+    d: 跨 token positions 正規化 activations
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '13.7'
+  question: Function vector (Todd 2023) 係：
+  options:
+    d: Activation space 中編碼 ICL function 嘅方向
+    a: 儲存事實知識嘅 weight matrix
+    b: Function calls 嘅一種 positional encoding
+    c: Loss 對 model parameters 嘅 gradient
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '13.8'
+  question: 用 task vectors 做 model arithmetic 係乜？
+  options:
+    b: 加/減 task vectors (θ_finetuned - θ_base) 嚟獲得或移除 capabilities
+    a: 將 model weights 除開嚟減少 size
+    c: 用 arithmetic precision (FP8) 訓練 models
+    d: 用 arithmetic reasoning datasets 做 fine-tuning
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '13.9'
+  question: 邊個提供更強證據證明係真正 phase transition（唔係 metric artifact）？
+  options:
+    a: Model 喺 10B params 完美解決 algorithmic tasks 但喺 5B params 隨機表現
+    b: Pass@1 分數喺 10B params 從 0% 跳到 80%
+    c: Per-token accuracy 隨 scale 平滑由 30% 升到 90%
+    d: Training loss 隨更多 data 指數下降
+  answer: a
+  difficulty: 2
+  tags: []
+

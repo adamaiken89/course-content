@@ -1,0 +1,60 @@
+- id: "c.171"
+  question: "The network is {unordered}; the UI must impose a winner with cancellation, guards, and serialization."
+  answer: "unordered"
+  explanation: "Requests and resolves do not preserve order under real latency."
+  difficulty: 1
+  tags: [concept]
+- id: "c.172"
+  question: "AbortController cancels the old work — on unmount and on a {superseding} request."
+  answer: "superseding"
+  explanation: "Each new intent cancels the previous in-flight work."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.173"
+  question: "AbortError is a {carrier}, not an error: it means the request was deliberately replaced, so no toast."
+  answer: "carrier"
+  explanation: "Aborted work is a quiet handover; only real rejections surface."
+  difficulty: 2
+  tags: [concept]
+- id: "c.174"
+  question: "A closure-captured {version} compared against the current intent at resolve time is the durable stale-response contract."
+  answer: "version"
+  explanation: "Only the newest intent id may paint; abort is merely best-effort."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.175"
+  question: "The {effect}-committed flag dies with its effect instance; a superseding request inside one component needs the durable version ref."
+  answer: "effect"
+  explanation: "Cleanup flags only cover unmount-triggered cancellation in a single instance."
+  difficulty: 2
+  tags: [concept, comparison]
+- id: "c.176"
+  question: "Mutating ops order their calls with a {promise} {chain} (per-id), so saves land A then B never the interleaved reverse."
+  answer: "promise chain"
+  explanation: "Each write awaits the previous settlement, imposing call order the server cannot see."
+  difficulty: 2
+  tags: [concept]
+- id: "c.177"
+  question: "A refetch is reconciled per {field}: local dirtyAt newer than the server row timestamp keeps the local value."
+  answer: "field"
+  explanation: "Per-field timestamps let independent updates coexist; row-level ones pick a wrong winner."
+  difficulty: 2
+  tags: [concept]
+- id: "c.178"
+  question: "Deletion is the ultimate {dirty} signature — never allow a background refetch to resurrect a deleted draft."
+  answer: "dirty"
+  explanation: "Deleted is an intent newer than any refetch; the merge must honor it."
+  difficulty: 2
+  tags: [concept, scenario]
+- id: "c.179"
+  question: "The search race uses a {latest}-query guard so a stale resolve for q1 never paints over q2 results."
+  answer: "latest"
+  explanation: "Only the newest query owns the screen; older resolves drop."
+  difficulty: 1
+  tags: [terminology, scenario]
+- id: "c.1710"
+  question: "Race tooling lives in {refs} and plain functions — only the winner's {output} becomes React state."
+  answer: "refs"
+  explanation: "Arbitration must never re-render; versions are sync guards read at resolve time."
+  difficulty: 2
+  tags: [concept, comparison]

@@ -1,0 +1,145 @@
+- id: '1.1'
+  question: The trade lifecycle has four phases. What is the correct order?
+  options:
+    a: Execution → Pre-Trade → Allocation → Settlement
+    b: Pre-Trade → Execution → Allocation → Settlement
+    c: Allocation → Pre-Trade → Execution → Settlement
+    d: Pre-Trade → Allocation → Execution → Settlement
+  answer: b
+  explanation: Pre-Trade (suitability/pre-clearance) → Execution (routing/matching)
+    → Allocation (allocation to sub-accounts) → Settlement (DVP, CNS). This is the
+    industry standard sequence.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.2'
+  question: What is the main difference between an OMS and an EMS?
+  options:
+    a: OMS manages order lifecycle and compliance checks; EMS handles routing to exchanges
+      for execution
+    b: They are functionally the same, just different vendors
+    c: OMS handles domestic markets, EMS handles international markets
+    d: OMS is used by traders, EMS is used by compliance teams
+  answer: a
+  explanation: OMS focuses on order management, compliance checks, and limit management.
+    EMS focuses on routing, price discovery, and execution speed. They are usually
+    separate systems communicating via FIX.
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.3'
+  question: In FIX Protocol, what is the message type for New Order Single?
+  options:
+    a: 35=8
+    b: 35=D
+    c: 35=0
+    d: 35=W
+  answer: b
+  explanation: 35=D is New Order Single. 35=8 is Execution Report. 35=0 is Heartbeat.
+    35=W is Market Data Request.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.4'
+  question: When an EMS receives an order from OMS and finds the ClOrdID duplicates
+    a historical order, what should the EMS do?
+  options:
+    a: Ignore the duplicate, treat it as a new order
+    b: Overwrite the old order with the new one
+    c: Reply with Execution Report, ExecType=8 (Rejected), RejectReason=11 (Duplicate
+      ClOrdID)
+    d: Wait a while then process it
+  answer: c
+  explanation: FIX spec requires ClOrdID to be unique. On duplicate, the EMS must
+    reject. The OMS is responsible for generating unique ClOrdIDs.
+  difficulty: 2
+  tags:
+  - application
+- id: '1.5'
+  question: After a suitability check passes, which of the following could still cause
+    an order to fail execution?
+  options:
+    a: Instrument mapping failure on the EMS side
+    b: Insufficient exchange liquidity, partial fill can't be completed
+    c: Price outside valid range (market or limit price outside range)
+    d: All of the above
+  answer: d
+  explanation: 'Suitability only checks whether the product is appropriate for the
+    client. The execution phase has its own independent checks: mapping, price range,
+    liquidity, etc.'
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+- id: '1.6'
+  question: What is the relationship between Trade Date and Settlement Date?
+  options:
+    a: They are always the same day
+    b: Settlement Date usually comes after Trade Date; US equities are currently T+1
+    c: Settlement Date always comes before Trade Date
+    d: Settlement Date only matters for fixed income products
+  answer: b
+  explanation: US equities switched to T+1 settlement in 2024. Different markets and
+    asset classes have different settlement cycles. Trade Date is when the trade happens;
+    Settlement Date is when cash and securities actually move.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.7'
+  question: You are developing a pre-trade system and find that a client's AAPL holding
+    exceeds the concentration limit. What is the correct action?
+  options:
+    a: Reject the order directly and log the rejection reason
+    b: Warn but let the order go through
+    c: Hide the restriction, don't interfere with trading
+    d: Modify the client data to bypass the restriction
+  answer: a
+  explanation: Concentration limits are part of compliance checks. Violations should
+    result in direct rejection, logged reason, and notification to the compliance
+    team. Bypassing or hiding could lead to regulatory violations.
+  difficulty: 2
+  tags:
+  - application
+  - scenario
+- id: '1.8'
+  question: An order sent from OMS to EMS fails due to instrument master data inconsistency
+    caused by midnight batch sync delay. What category of problem is this?
+  options:
+    a: Execution algorithm problem
+    b: Data synchronization / master data consistency problem
+    c: Market liquidity problem
+    d: Clearing and settlement problem
+  answer: b
+  explanation: This is a classic master data synchronization problem. Each system
+    maintains its own instrument master. Without real-time or near-real-time sync,
+    OMS may accept an order that EMS cannot execute.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '1.9'
+  question: Which of the following is NOT a primary responsibility of an EMS?
+  options:
+    a: Smart Order Routing (SOR)
+    b: Order book matching
+    c: Client suitability check
+    d: Execution reporting
+  answer: c
+  explanation: Suitability checks belong to the pre-trade system / OMS, and must complete
+    before the order reaches the EMS. The EMS focuses on execution-related functions.
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.10'
+  question: What is the main purpose of the Allocation phase?
+  options:
+    a: Deciding which exchange the order goes to
+    b: Splitting a block trade across different sub-accounts
+    c: Calculating trade taxes and fees
+    d: Checking the client's credit limit
+  answer: b
+  explanation: Allocation is the process of distributing a block trade to individual
+    sub-accounts according to client instructions. It happens after execution and
+    before settlement.
+  difficulty: 2
+  tags:
+  - concept

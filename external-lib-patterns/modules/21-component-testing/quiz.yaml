@@ -1,0 +1,151 @@
+- id: '21.1'
+  question: Which Testing Library query should you use as the first preference?
+  options:
+    c: getByRole
+    a: getByTestId
+    b: getByText
+    d: getByPlaceholderText
+  answer: c
+  explanation: getByRole is the most accessible query. It finds elements by ARIA role
+    and matches how assistive technology users navigate.
+  difficulty: 1
+  tags:
+  - testing-library
+  - queries
+- id: '21.2'
+  question: What is the purpose of the wrapper option in Testing Library's render
+    function?
+  options:
+    a: Provide context providers like Router and QueryClient
+    b: Decorate component with CSS classes
+    c: Wrap component in error boundary
+    d: Add data-testid attributes automatically
+  answer: a
+  explanation: Wrapper allows injecting context providers around the tested component
+    without repeating provider setup in every test.
+  difficulty: 1
+  tags:
+  - testing-library
+  - wrapper
+  - providers
+- id: '21.3'
+  question: In Vitest setup with jsdom, why do we mock IntersectionObserver and ResizeObserver?
+  options:
+    b: They are not implemented in jsdom environment
+    a: They are slow and slow down tests
+    c: They cause memory leaks in tests
+    d: Testing Library requires explicit mock declarations
+  answer: b
+  explanation: jsdom does not implement IntersectionObserver or ResizeObserver. Tests
+    crash without stubs for these browser APIs.
+  difficulty: 2
+  tags:
+  - vitest
+  - jsdom
+  - mocking
+- id: '21.4'
+  question: How does React 19 Concurrent Mode affect component tests?
+  options:
+    a: State updates may be batched, requiring act() wrapping
+    b: It has no effect on tests
+    c: All tests must use async/await
+    d: Testing Library throws warnings for concurrent rendering
+  answer: a
+  explanation: Concurrent Mode batches state updates. Tests wrapping interactions
+    in act() ensures all updates flush before assertions.
+  difficulty: 2
+  tags:
+  - react-19
+  - concurrent-mode
+  - testing
+- id: '21.5'
+  question: Which approach should be preferred for most component tests?
+  options:
+    c: Behavior testing with user interactions
+    a: Snapshot testing
+    b: Render-only snapshot assertion
+    d: Manual DOM inspection
+  answer: c
+  explanation: Behavior testing validates actual user interactions and state changes,
+    producing more resilient tests than snapshots.
+  difficulty: 1
+  tags:
+  - testing
+  - best-practices
+- id: '21.6'
+  question: What happens when vi.mock is called at module level?
+  options:
+    d: It is hoisted to the top of the file before imports
+    a: It is evaluated at function call time
+    b: It only applies within the current describe block
+    c: It requires explicit import path matching
+  answer: d
+  explanation: vi.mock is hoisted by Vitest's transform pipeline, replacing module
+    imports before test code executes.
+  difficulty: 2
+  tags:
+  - vitest
+  - vi.mock
+  - hoisting
+- id: '21.7'
+  question: Why should userEvent be preferred over fireEvent for interactions?
+  options:
+    b: userEvent simulates full user interaction sequence including hover, focus,
+      and keyboard events
+    a: userEvent is faster than fireEvent
+    c: fireEvent is deprecated in Testing Library v14
+    d: userEvent requires less setup code
+  answer: b
+  explanation: userEvent dispatches the full chain of events (focus, keyDown, keyUp,
+    click, blur) matching real browser behavior.
+  difficulty: 2
+  tags:
+  - testing-library
+  - user-event
+- id: '21.8'
+  question: When testing a component wrapping AG Grid, what is the recommended approach?
+  options:
+    a: Mock AgGridReact and test the wrapper component's logic
+    b: Test AG Grid API directly
+    c: Use end-to-end tests instead of unit tests
+    d: Render AG Grid without mocking
+  answer: a
+  explanation: AG Grid is a complex library with heavy DOM. Mocking the grid component
+    isolates wrapper logic and keeps tests fast.
+  difficulty: 2
+  tags:
+  - ag-grid
+  - mocking
+  - component-testing
+- id: '21.9'
+  question: What does React 19 StrictMode double-invocation mean for test cleanup?
+  options:
+    b: Effects and cleanups run twice in development, requiring careful assertion
+      count handling
+    a: Cleanup runs once regardless of StrictMode
+    c: StrictMode is disabled during tests
+    d: Testing Library handles double-invocation automatically
+  answer: b
+  explanation: StrictMode double-invokes effects for detecting impure logic. Tests
+    asserting on subscription counts must account for this.
+  difficulty: 3
+  tags:
+  - react-19
+  - strict-mode
+  - testing
+- id: '21.10'
+  question: Which Vitest configuration disables retries for React Query in tests?
+  options:
+    d: 'retry: false'
+    a: 'retryDelay: 0'
+    b: 'enabled: false'
+    c: 'refetchOnMount: false'
+  answer: d
+  explanation: 'React Query retries failed queries by default. Setting retry: false
+    in test QueryClient prevents unexpected retries from interfering with assertions.'
+  difficulty: 2
+  tags:
+  - react-query
+  - vitest
+  - testing
+

@@ -1,0 +1,87 @@
+subject: "Advanced Learning Methods: Pedagogies, Algorithms & Tool Design"
+language: en
+time_budget_hours: 15
+target_level: intermediate
+domain: "Learning science methods, spaced repetition algorithms, content engineering, learning tool design"
+prerequisites:
+  - "Evidence-Based Learning: Science of How We Learn (existing course)"
+learning_objectives:
+  - "Apply Feynman Technique and Marva Collins' Socratic method to design AI-driven learning interactions"
+  - "Implement deliberate practice and generation effect principles in adaptive learning systems"
+  - "Understand FSRS-5 algorithm internals (stability, difficulty, lapses, state transitions)"
+  - "Design adaptive difficulty systems with ease weighting, difficulty ramp, and streak detection"
+  - "Engineer content generation pipelines with quality rule enforcement and schema validation"
+  - "Build persistence architectures for learning tools: progress tracking, nudges, weekly digests"
+
+modules:
+  - id: 1
+    name: "Feynman Technique"
+    time_hours: 1.5
+    prerequisites: []
+    topics: [explain-simply, gap detection, teaching as diagnostic, AI probe design]
+
+  - id: 2
+    name: "Marva Collins' Way"
+    time_hours: 1.5
+    prerequisites: []
+    topics: [Socratic method, rigorous Q&A, high expectations, no-fail philosophy]
+
+  - id: 3
+    name: "Deliberate Practice"
+    time_hours: 1.5
+    prerequisites: []
+    topics: [Ericsson framework, immediate feedback, ZPD, structured improvement loop]
+
+  - id: 4
+    name: "Generation Effect"
+    time_hours: 1.5
+    prerequisites: [1]
+    topics: [produce vs consume, retrieval as generation, cloze/predict/error rationale]
+
+  - id: 5
+    name: "FSRS-5 Algorithm Internals"
+    time_hours: 1.5
+    prerequisites: []
+    topics: [stability, difficulty, lapses, state model, w-parameters, optimization]
+
+  - id: 6
+    name: "Adaptive Difficulty Systems"
+    time_hours: 1.5
+    prerequisites: [5]
+    topics: [ease weighting, difficulty ramp, streak skip, quiz engine logic]
+
+  - id: 7
+    name: "Prompt Engineering for Learning Content"
+    time_hours: 1
+    prerequisites: [1, 2, 4]
+    topics: [prompt templates, multi-shot examples, structured output, Pass@k quality]
+
+  - id: 8
+    name: "Content Quality at Scale"
+    time_hours: 1
+    prerequisites: [7]
+    topics: [distractor engineering, difficulty calibration, content diversity, cost management]
+
+  - id: 9
+    name: "Engagement Loop Design"
+    time_hours: 1
+    prerequisites: [5, 6]
+    topics: [Hook cycle, trigger design, streak mechanics, feedback systems]
+
+  - id: 10
+    name: "Sustaining Systems Design"
+    time_hours: 1
+    prerequisites: [9]
+    topics: [friction reduction, implementation intentions, progress visualization]
+
+  - id: 11
+    name: "Study Protocol Design"
+    time_hours: 1
+    prerequisites: [8, 10]
+    topics: [session types, weekly scheduling, daily REVIEW routine]
+
+  - id: 12
+    name: "Protocol Execution Methods"
+    time_hours: 1
+    prerequisites: [11]
+    topics: [BLURT protocol, Feynman protocol, interleaving, cumulative assessment, meta-learning]

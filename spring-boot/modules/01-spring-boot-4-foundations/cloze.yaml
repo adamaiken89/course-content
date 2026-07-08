@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: Boot 4 targets the {Jakarta EE} 11 baseline (Servlet 6.1, JPA 3.2, Bean Validation 3.1)."
+  answer: "Jakarta EE"
+  explanation: "EE 11 is Boot 4's runtime platform; everything (Tomcat, JPA, validation) aligns to it."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: The web server dropped in Boot 4 is {Undertow}, which never implemented Servlet 6.1."
+  answer: "Undertow"
+  explanation: "Undertow's removal is a migration trap for teams that pinned it in Boot 3."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: Prefer {constructor} injection with final fields over field injection so dependencies stay explicit and testable without Spring."
+  answer: "constructor"
+  explanation: "Constructor injection creates immutable, plainly constructible collaborators."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.4"
+  question: "Complete: @Value resolves properties at {runtime}, so typos surface only when code executes; constructor-bound properties fail at startup."
+  answer: "runtime"
+  explanation: "Startup binding catches configuration errors in CI instead of production."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "Complete: Boot 4 declares auto-configuration classes in META-INF/spring/{AutoConfiguration.imports}."
+  answer: "AutoConfiguration.imports"
+  explanation: "spring.factories was removed; AutoConfiguration.imports is the boot 4 mechanism."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.6"
+  question: "Complete: Auto-configuration backs off when a user bean exists thanks to @ConditionalOnMissing{Bean}."
+  answer: "Bean"
+  explanation: "This guard makes user beans win over framework defaults."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Complete: Boot 4 groups autoconfigure into small focused artifacts called {modular} starters (e.g. per-concern modules)."
+  answer: "modular"
+  explanation: "Modular starters trim startup and classpath; classic starters still work."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Complete: Binding @ConfigurationProperties to {public} fields was removed in Boot 4; use private fields or constructor-bound records."
+  answer: "public"
+  explanation: "Config binding now champions immutability and encapsulation."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.9"
+  question: "Complete: Feature-based packaging makes a {flow} a single package subtree, which maps cleanly onto module boundaries."
+  answer: "flow"
+  explanation: "Each feature owns controller, service, repository, and fetchers together."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.10"
+  question: "Complete: @ConfigurationPropertiesSource is a {build}-time hint for the config processor; it has no runtime effect."
+  answer: "build"
+  explanation: "It tells tooling which annotation marks property homes, improving metadata generation."
+  difficulty: 3
+  tags: [process]

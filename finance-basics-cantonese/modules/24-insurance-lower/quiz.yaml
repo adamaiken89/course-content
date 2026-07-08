@@ -1,0 +1,129 @@
+- id: '24.1'
+  question: 危疾保險嘅賠付方式係?
+  options:
+    a: 一次過現金, 自由使用
+    b: 每月派錢
+    c: 累積至到期
+    d: 實報實銷 (醫院單據)
+  answer: a
+  explanation: 危疾保險 = 確診指定疾病, 一次過賠現金。唔係實報實銷, 受保人自由使用 (醫療 + 收入補償 + 任何)。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '24.2'
+  question: 以下邊個屬於危疾保險涵蓋嘅疾病?
+  options:
+    a: 所有住院
+    b: 意外受傷
+    c: 感冒發燒
+    d: 癌症、心臟病、中風
+  answer: d
+  explanation: '危疾保險涵蓋指定危疾: 癌症、心臟病、中風、器官移植、腎衰竭等嚴重疾病。感冒/一般住院由醫療保險包。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '24.3'
+  question: 危疾保險 vs 醫療保險嘅分別?
+  options:
+    a: 完全一樣
+    b: 醫療實報實銷 (醫院單據), 危疾一次過現金
+    c: 危疾只賠癌症
+    d: 醫療包晒所有
+  answer: b
+  explanation: 醫療保險實報實銷 (賠醫療費用), 危疾保險一次過現金 (賠收入歸零)。兩者互補, 唔重疊。
+  difficulty: 1
+  tags:
+  - terminology
+  - comparison
+- id: '24.4'
+  question: 自願醫保 VHIS 扣稅上限?
+  options:
+    a: 無扣稅
+    b: $8,000/人/年
+    c: $60,000/人/年
+    d: $18,000/人/年
+  answer: b
+  explanation: VHIS 保費可扣減薪俸稅 / 利得稅, 上限 $8,000/人/年, 包括自己 + 受養人。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '24.5'
+  question: VHIS 標準計劃 vs 彈性計劃分別?
+  options:
+    a: 標準基本住院, 彈性較高限額 + 門診牙科
+    b: 標準高保額, 彈性低保額
+    c: 標準只包私家, 彈性只包普通
+    d: 一樣
+  answer: a
+  explanation: 標準計劃基本住院 (年保障 $420k), 保費 $3-5k。彈性計劃較高限額 (年保障 $5M+) + 門診/牙科, 保費 $8-30k。
+  difficulty: 2
+  tags:
+  - comparison
+  - application
+- id: '24.6'
+  question: 終身年金 (Life Annuity) 嘅作用?
+  options:
+    a: 投資高回報
+    b: 對沖長壽風險, 派到死為止
+    c: 短期流動性
+    d: 節稅
+  answer: b
+  explanation: 終身年金 = 一次過大筆, 每月派到死。對沖長壽風險 (活到 100 歲都仲有錢), 內部回報率 IRR 3-4%。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '24.7'
+  question: $1M 一次過買 60 歲終身年金, IRR 3-4%, 預期派幾耐?
+  options:
+    a: 派到保險公司執笠
+    b: 派 10 年一定停
+    c: 派到死 (預期 ~25-30 年, 即到 85-90 歲)
+    d: 派到 100 歲停
+  answer: c
+  explanation: 終身年金派到受保人死為止。預期壽命 85 歲, 即派 25-30 年。越長命越化算, 短命蝕底。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '24.8'
+  question: 你 30 歲, 應該最先買咩保險?
+  options:
+    a: 咩都唔買
+    b: 儲蓄保
+    c: Term 壽險 + 危疾保險 + 自願醫保 VHIS
+    d: 終身年金
+  answer: c
+  explanation: '30 歲起步: Term 壽險 (家庭支柱保障) + 危疾 (大病收入歸零) + 自願醫保 (終身醫療)。儲蓄保 IRR 太低, 終身年金太早。'
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '24.9'
+  question: 退休 4 層保障包括?
+  options:
+    a: 只有 MPF
+    b: MPF + 股票 + 樓
+    c: MPF + 銀行
+    d: MPF + 公司保障 + 自願 + 終身年金
+  answer: d
+  explanation: '退休 4 層: (1) 強制性 MPF, (2) 公司團體保障, (3) 自願 (VHIS + 投資 + 儲蓄), (4) 終身年金
+    (對沖長壽)。'
+  difficulty: 1
+  tags:
+  - concept
+  - terminology
+- id: '24.10'
+  question: 點解唔應該將全部退休錢買終身年金?
+  options:
+    a: 年金 IRR 3-4% 太低, 鎖死失去靈活度同投資機會
+    b: 年金唔合法
+    c: 年金一定要 70 歲先買
+    d: 年金要扣稅
+  answer: a
+  explanation: 年金 IRR 3-4% 蝕緊 (通脹 + 失去投資機會), 鎖死失去靈活度。應該部分買年金對沖長壽, 部分保留投資。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+

@@ -1,0 +1,121 @@
+- id: '21.1'
+  question: What is the main limitation of NBBO provided by the SIP (Securities Information Processor)?
+  options:
+    a: It does not include NYSE data
+    b: Latency of ~1-5ms; it reflects historical market state, not real-time
+    c: Cannot distinguish buy/sell direction
+    d: Only supports US equities, not ETFs
+  answer: b
+  explanation: SIP consolidates all venue data before publishing NBBO, adding ~1-5ms latency. Rivals using Direct Feed see market changes sooner, so SIP NBBO is effectively historical.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '21.2'
+  question: What is the main advantage of Direct Feed over SIP?
+  options:
+    a: Provides historical data for all venues
+    b: Completely free
+    c: Includes predictive price movement analysis
+    d: Lower latency (microsecond vs millisecond), more real-time market data
+  answer: d
+  explanation: Direct Feed receives raw order book data straight from each venue with ~10-50us latency. SIP aggregates all venue data before publishing, adding ~1-5ms latency.
+  difficulty: 1
+  tags:
+  - comparison
+- id: '21.3'
+  question: At which stage should wash trade detection occur?
+  options:
+    a: Before order routing, at the OMS or EMS level, with cross-venue buy/sell detection
+    b: Only at settlement/reconciliation
+    c: Only within a single venue
+    d: Batch check 24 hours after trade execution
+  answer: a
+  explanation: Wash trade prevention must run cross-venue before orders leave the system. If buy/sell orders go to different venues, a single venue's matching engine cannot detect it. Post-trade detection is too late.
+  difficulty: 2
+  tags:
+  - concept
+- id: '21.4'
+  question: Which is a characteristic of a Lit Venue?
+  options:
+    a: Does not publicly display order book information
+    b: Publicly displays bid/ask quantities and price levels
+    c: Only allows algorithmic trading
+    d: Does not require SEC registration
+  answer: c
+  explanation: Lit Venues (NYSE, NASDAQ) publicly display the full order book at each price level. Dark Pools do not publicly display this information.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '21.5'
+  question: What is the primary advantage of a Dark Pool over a Lit Venue?
+  options:
+    a: Faster execution speed
+    b: Zero transaction fees
+    c: Reduced market impact for large orders
+    d: Guaranteed full fill
+  answer: c
+  explanation: Dark Pools do not publicly display order books, so large orders do not expose intent, reducing market impact. They do not guarantee faster, cheaper, or full fills.
+  difficulty: 2
+  tags:
+  - concept
+- id: '21.6'
+  question: Under the brokerage EMS's pre-dispatch wash trade check, which combination gets flagged as a potential wash trade?
+  options:
+    a: Same account trading two different symbols on the same venue
+    b: Same account + same venue + same symbol + one buy and one sell with overlapping prices
+    c: Different accounts buying the same symbol on the same venue
+    d: Any order routed to a dark pool
+  answer: b
+  explanation: The detection logic flags same account + same venue + same symbol with a buy and a sell at overlapping prices, then rejects one order. Different symbols or different accounts do not match this pattern.
+  difficulty: 2
+  tags:
+  - concept
+- id: '21.7'
+  question: "The brokerage EMS's SIP feed suffers a 10ms network fault. SOR routes on a stale NBBO: best offer $449.95. The market has moved and orders now fill at $449.97 instead. Client order is 50K shares. What is the extra cost?"
+  options:
+    a: $1,000
+    b: $500
+    c: $10,000
+    d: $0 — the fill was within NBBO
+  answer: a
+  explanation: Stale NBBO means the fill of $449.97 is worse than the stale quote of $449.95. Extra cost = 50K x $0.02 = $1,000. In extreme volatility, stale NBBO can cause much worse fills and best execution concerns — the latency arbitrage penalty of SIP.
+
+  difficulty: 3
+  tags:
+  - calculation
+- id: '21.8'
+  question: 'A colleague claims: "Wash trades only happen between two different accounts — a same-account buy and sell cannot fill because the EMS auto-blocks it." Why is this wrong?'
+  options:
+    a: Venues automatically detect all same-account activity
+    b: Same-account buy/sell sent to two different venues bypass EMS detection — wash prevention needs cross-venue detection before orders leave the system
+    c: Same-account trades never execute
+    d: Deliberate wash trades always use one account and one venue
+  answer: b
+  explanation: Same-account buy (NYSE) and sell (NASDAQ) go to different matching engines and cannot be caught by the EMS automatically. Wash prevention must be cross-venue, at the OMS/EMS level, before dispatch. HFT wash traders often spread across accounts and venues to evade detection.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '21.9'
+  question: Which statement about Dark Pool fill prices is correct?
+  options:
+    a: Dark Pool fills must always equal the NBBO mid-point
+    b: Dark Pool fills must always be price-improved vs NBBO
+    c: Dark Pool fills cannot be worse than NBBO (price improvement is common but not guaranteed)
+    d: Dark Pool fills must equal the venue's displayed best bid
+  answer: c
+  explanation: Dark Pool fills are typically at prices better than NBBO (price improvement), but not always at the mid-point. The key requirement is the fill price cannot be worse than NBBO — the basic best execution requirement.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '21.10'
+  question: Why does the brokerage EMS typically combine Direct Feed with FPGA acceleration?
+  options:
+    a: To ensure routing decisions are based on the latest market state rather than stale NBBO
+    b: Because SIP data is too expensive
+    c: To comply with Reg NMS reporting rules
+    d: For post-trade allocation calculations
+  answer: a
+  explanation: Direct Feed + FPGA lowers latency so SOR routing decisions use the latest market state. SIP's ~1-5ms delay means routing on SIP data risks decisions made on historical prices.
+  difficulty: 1
+  tags:
+  - terminology

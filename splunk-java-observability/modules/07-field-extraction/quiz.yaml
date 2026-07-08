@@ -1,0 +1,119 @@
+- id: "7.1"
+  question: "Which field extraction model is Splunk's default?"
+  options:
+    a: "Search-time: fields extracted when a search runs"
+    b: "Index-time: fields extracted at ingest"
+    c: "No extraction until an alert fires"
+    d: "Extraction at forwarder startup"
+  answer: a
+  explanation: "Search-time is default. Fields are pulled from raw event text when a query runs — zero storage cost, reconfigurable anytime. Index-time is opt-in via INDEXED_EXTRACTIONS."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "7.2"
+  question: "A field is declared in fields.conf with INDEXED = true. Which statement is correct?"
+  options:
+    a: "It is extracted at search time from _raw"
+    b: "It is searchable only inside _raw text"
+    c: "It was extracted at index time and is searchable via field::value"
+    d: "It disables KV extraction for that event"
+  answer: c
+  explanation: "INDEXED=true only makes sense for fields baked in at ingest (via transforms.conf or INDEXED_EXTRACTIONS). They are searched with double-colon notation like club::glee."
+  difficulty: 1
+  tags: [application]
+
+- id: "7.3"
+  question: "You add a new EXTRACT-<name> rule to props.conf today. Old events from last week — what happens?"
+  options:
+    a: "They are re-indexed overnight"
+    b: "They gain the field immediately, because extraction runs at search time"
+    c: "They gain the field only after a restart"
+    d: "They never gain the field"
+  answer: b
+  explanation: "Search-time extraction reads stored raw text on every query, so old events pick up new rules instantly. This flexibility is the core advantage over index-time."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "7.4"
+  question: "Which is the PRIMARY cost that makes indexing every field a bad idea?"
+  options:
+    a: "Storage grows because each indexed field is stored per event"
+    b: "Searches get slower because more fields match"
+    c: "Alerts stop firing on raw text"
+    d: "Forwarders stop sending data"
+  answer: a
+  explanation: "Each indexed field is stored per event, so storage grows and ingest time grows. Also the extraction is locked in — changing it requires re-indexing."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "7.5"
+  question: "A search filters on an indexed field with a rare value. What does TSIDX do first?"
+  options:
+    a: "Decompresses all rawdata in the time range"
+    b: "Re-runs the regex over every event"
+    c: "Skips the search and returns cached results"
+    d: "Tests each bucket's bloom filter and skips buckets with no match"
+  answer: d
+  explanation: "TSIDX is a bloom-filter-based pre-filter. Buckets whose filter lacks the value are skipped before rawdata decompression — fast for rare values."
+  difficulty: 2
+  tags: [application]
+
+- id: "7.6"
+  question: "Why does an indexed field stop paying off at high cardinality (e.g. latency_ms)?"
+  options:
+    a: "The field is too large to store"
+    b: "regex extraction fails on numbers"
+    c: "The bloom filter matches almost every bucket, so it pre-filters nothing"
+    d: "Splunk refuses to index numeric fields"
+  answer: c
+  explanation: "A high-cardinality field appears in nearly every bucket, so the bloom filter is rarely selective. You still decompress all rawdata — index cost paid, no speed win."
+  difficulty: 3
+  tags: [application]
+
+- id: "7.7"
+  question: "Your props.conf stanza is [springboot_json] with INDEXED_EXTRACTIONS = JSON and KV_MODE = auto. Events come in double-extracted with racing field types. What is wrong?"
+  options:
+    a: "INDEXED_EXTRACTIONS should be NONE for JSON"
+    b: "KV_MODE must be none so the JSON parser is the only extraction path"
+    c: "TIMESTAMP_FIELDS is missing"
+    d: "The sourcetype name must be _json"
+  answer: b
+  explanation: "With JSON extraction active, KV_MODE should be none — auto runs the key=value parser on top, causing duplicate keys and type races. One extraction path per event."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "7.8"
+  question: "What is the _meta field used for in index-time extraction?"
+  options:
+    a: "Storing search-time extracted values"
+    b: "A timestamp cache"
+    c: "An encrypted credential store"
+    d: "Holding index-time metadata where whitespace-separated text units become field::value pairs"
+  answer: d
+  explanation: "transforms write into _meta via WRITE_META=true and DEST_KEY=_meta. Text units split on whitespace and :: becomes field::value — that is how custom indexed fields are carried."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "7.9"
+  question: "Java team sends HEC JSON events with a flat `fields` object. Which statement is true?"
+  options:
+    a: "Those fields are indexed at index-time automatically and searched via field=value, but are not in _raw"
+    b: "They are ignored unless transforms.conf is configured"
+    c: "They are stored only for raw-type events"
+    d: "They require INDEXED_EXTRACTIONS = JSON"
+  answer: a
+  explanation: "The HEC `fields` key is a flat JSON object indexed automatically at index time. It is searchable via field=value but never appears in _raw text, keeping the event string clean. Not applicable to raw-type events."
+  difficulty: 2
+  tags: [application]
+
+- id: "7.10"
+  question: "Which fields should you NEVER mark as indexed, because the pipeline already provides them?"
+  options:
+    a: "Custom business keys like userId"
+    b: "timestamp, host, source, sourcetype"
+    c: "JSON keys from HEC events"
+    d: "Fields used in data models"
+  answer: b
+  explanation: "Defaults (timestamp, host, source, sourcetype) are already populated by the pipeline. Indexing them adds storage with zero search benefit — pure cost with no upside."
+  difficulty: 1
+  tags: [application]

@@ -1,0 +1,127 @@
+- id: '12.1'
+  question: Two components render `useQuery(['programs'], ...)` simultaneously. What does the cache dedupe?
+  options:
+    a: The cache entries only
+    b: The in-flight request into one promise
+    c: The UI renders
+    d: The zod types
+  answer: b
+  explanation: 'Dedupe-in-flight: same key, one promise shared until resolution.'
+  difficulty: 1
+  tags:
+  - concept
+- id: '12.2'
+  question: 'Stale-while-revalidate means:'
+  options:
+    d: Show a spinner instead of old data
+    a: Show cached data while a background refetch replaces it
+    b: Fetch only on focus
+    c: Never reuse cached data
+  answer: a
+  explanation: The cache serves truth from last resolve and replenishes it silently.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.3'
+  question: After a submit mutation, which invalidation call is the coordinator pattern?
+  options:
+    b: window.location.reload()
+    c: queryCache.invalidate(['applications'])
+    d: queryClient.clear()
+    a: dispatchEvent on window
+  answer: c
+  explanation: Invalidate by key so next reads refetch that domain; components never guess.
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+- id: '12.4'
+  question: Which best matches the optimistic-update rule of thumb?
+  options:
+    a: Optimistically set what you can compute; invalidate what you can't
+    b: Always invalidate; never write the cache
+    c: Skip the cache for mutations
+    d: Refetch the whole app on each mutation
+  answer: a
+  explanation: Cache writes buy instant UI; invalidation buys correctness for uncomputable rows.
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '12.5'
+  question: 'An SSE burst of 60 status changes should produce:'
+  options:
+    a: 60 UI re-renders grouped into paint lanes
+    b: One coalesced cache patch and one UI transition
+    c: 60 refetches of the list
+    d: A forced reload
+  answer: b
+  explanation: Throttle/coalesce merges events; the cache patches touched rows once.
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+- id: '12.6'
+  question: Which state belongs in zusstand, NOT the query cache?
+  options:
+    a: Program option list from the server
+    b: Application row data
+    c: The draft field values the user is typing
+    d: Status counts aggregates
+  answer: c
+  explanation: Drafts are client-authored truth; caches hold server truth.
+  difficulty: 2
+  tags:
+  - comparison
+  - scenario
+- id: '12.7'
+  question: What does 'push never refetches the world' mean for a status event?
+  options:
+    c: Ignore it entirely
+    d: Patch only the touched cache row; refetch nothing
+    a: Refetch every domain key
+    b: Reload the tab
+  answer: d
+  explanation: The upsert changes one entry; a storm would race against every other patch.
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '12.8'
+  question: Why must the `fetcher` be typed with a zod parse (m4) at the cache seam?
+  options:
+    a: To make the seam's contract testable against the MSW contract
+    b: To avoid using TypeScript elsewhere
+    c: To slow the cache down
+    d: To match the query key
+  answer: a
+  explanation: Runtime drift dies at the parse seam, and the fixture contract becomes an assertion.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '12.9'
+  question: Where does the query cache state machine live, and how do React components read it?
+  options:
+    a: Inside the components; they own copies
+    b: In an external store; components subscribe via a sync bridge
+    c: Only in the server
+    d: In zusstand with selectors replacing keys
+  answer: b
+  explanation: The cache is an external store; useSyncExternalStore-style bridging keeps renders cheap.
+  difficulty: 3
+  tags:
+  - concept
+  - comparison
+- id: '12.10'
+  question: 'The textbook misuse of a query library is:'
+  options:
+    d: Using it as a fetcher-per-component wrapper
+    a: Reading stale data
+    b: Invalidating after mutations
+    c: Serving cached rows
+  answer: d
+  explanation: Same storm, but wrapped — the point is keyed caching, dedupe, and merged push.
+  difficulty: 1
+  tags:
+  - misconception

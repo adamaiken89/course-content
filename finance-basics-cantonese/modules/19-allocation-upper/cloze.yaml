@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "組合預期回報 = {Σ wi × E[Ri]}, 即 {各資產預期回報嘅加權平均}, 與 {相關性} 無關。"
+  answer: "Σ wi × E[Ri]、各資產預期回報嘅加權平均、相關性"
+  explanation: "預期回報計算簡單, 只係加權平均。"
+  difficulty: 1
+  tags: [formula, concept]
+
+- id: "c.2"
+  question: "2 資產組合方差公式 {σp² = w1²σ1² + w2²σ2² + 2w1w2ρσ1σ2}, 第三項涉及 {相關性 ρ}。"
+  answer: "σp² = w1²σ1² + w2²σ2² + 2w1w2ρσ1σ2、相關性 ρ"
+  explanation: "ρ 越低, 組合方差越低, 分散效果越好。"
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.3"
+  question: "相關性 ρ = {+1} 完全同步, ρ = {0} 無關, ρ = {-1} 完全相反 (可達 σp=0)。"
+  answer: "+1、0、-1"
+  explanation: "ρ 範圍 -1 到 +1, 越低越分散。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Markowitz {效率前緣} 係 {喺同一風險下回報最高, 或同一回報下風險最低嘅組合曲線}。"
+  answer: "效率前緣、喺同一風險下回報最高, 或同一回報下風險最低嘅組合曲線"
+  explanation: "前緣上面嘅組合係最優, 下面嘅可以改善。"
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "c.5"
+  question: "60/40 經典組合有效嘅核心係 {股債低相關 (~0.0-0.3)}。但 {2022 通脹加息} 時, 60/40 跌 ~17%, 因為 {ρ 急升, 分散失效}。"
+  answer: "股債低相關 (~0.0-0.3)、2022 通脹加息、ρ 急升, 分散失效"
+  explanation: "相關性唔固定, 危機時升。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.6"
+  question: "Markowitz 限制: {假設常態分佈低估 extreme event}、{過去 ρ 唔等於未來}、{估算相關性同預期回報有誤差}。"
+  answer: "假設常態分佈低估 extreme event、過去 ρ 唔等於未來、估算相關性同預期回報有誤差"
+  explanation: "Markowitz 係基礎, 現實要配合情景分析同壓力測試。"
+  difficulty: 2
+  tags: [concept, limitation]
+
+- id: "c.7"
+  question: "10 隻港股科技股 ρ ≈ {0.8}, 分散效果 {有限}, 因為 {同類型/同行業股票接近完全同步}。"
+  answer: "0.8、有限、同類型/同行業股票接近完全同步"
+  explanation: "要真正分散, 跨資產、跨地區、跨行業。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.8"
+  question: "Bogle 三罐子: {VTI 美股} + {VXUS 國際股} + {BND 美國債}, 總費用 {< 0.05%}。"
+  answer: "VTI 美股、VXUS 國際股、BND 美國債、< 0.05%"
+  explanation: "簡單全球分散, 適合 90% 散戶。"
+  difficulty: 1
+  tags: [terminology, application]
+
+- id: "c.9"
+  question: "60% 美股 + 40% 美國科技股嘅問題: {ρ ≈ 0.9, 分散效果近乎 0}。應該改為 {60% 美股 + 40% 美國國債} (ρ ≈ 0.1)。"
+  answer: "ρ ≈ 0.9, 分散效果近乎 0、60% 美股 + 40% 美國國債"
+  explanation: "60/40 嘅核心係低相關資產配對, 唔係機械 60/40 數字。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.10"
+  question: "60/40 改成 70/30 嘅效果: 預期回報 {+0.6%}, 標準差 {+18% (風險平方加)}, 兩者唔對等。"
+  answer: "+0.6%、+18% (風險平方加)"
+  explanation: "回報線性加, 風險平方加。要按自己承受度調整, 唔好盲目加大股比例。"
+  difficulty: 3
+  tags: [calculation, application]

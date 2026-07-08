@@ -1,0 +1,142 @@
+- id: '12.1'
+  question: How does TanStack Router define route relationships?
+  options:
+    b: Route tree — each Route instance declares its parent via getParentRoute()
+    a: Flat config object with nested path strings
+    c: File system directory structure
+    d: JSON route manifest imported at build time
+  answer: b
+  explanation: 'Each Route declares getParentRoute() returning its parent route. Tree
+    structure enables full type inference: params, search, loader data flow down the
+    tree with correct types.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.2'
+  question: What happens when a search param fails zod validation?
+  options:
+    a: Depends on schema method — catch() returns fallback, otherwise route error
+      boundary catches
+    b: Router throws error — app crashes
+    c: Invalid param is silently dropped
+    d: Search params are not validated at runtime
+  answer: a
+  explanation: catch() returns fallback for invalid values. Without catch, validation
+    error triggers route error boundary — errorComponent renders. This prevents malformed
+    URLs from breaking the app.
+  difficulty: 2
+  tags:
+  - concept
+- id: '12.3'
+  question: How does a parent layout render its child route content?
+  options:
+    b: <Outlet /> — renders active child route component
+    a: Props.children — child component is passed as children
+    c: React Router's <Routes> component
+    d: Child route is rendered automatically without explicit placeholder
+  answer: b
+  explanation: Parent route component renders <Outlet /> as placeholder. TanStack
+    Router injects matched child route's component into Outlet. Supports arbitrary
+    nesting depth.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.4'
+  question: What does beforeLoad return to redirect user to login?
+  options:
+    c: 'Throw router.navigate({ to: ''/login'' })'
+    a: Return false
+    b: 'Return { redirect: ''/login'' }'
+    d: Return null
+  answer: c
+  explanation: Throwing router.navigate() from beforeLoad aborts current navigation
+    and redirects. TanStack Router catches the navigate throw in beforeLoad and executes
+    the redirect.
+  difficulty: 2
+  tags:
+  - application
+- id: '12.5'
+  question: How to access loader data in a route component?
+  options:
+    c: Route.useLoaderData() — returns typed loader data
+    a: useLoaderData() — untyped, must cast
+    b: Props.match.data
+    d: window.__LOADER_DATA__
+  answer: c
+  explanation: Route.useLoaderData() is a hook on the route instance. Return type
+    matches loader's return type — full inference. No casting needed.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.6'
+  question: How does TanStack Router handle same-route param changes (e.g., product/1
+    to product/2)?
+  options:
+    b: Keeps component mounted — useParams hook updates reactively. beforeLoad does
+      not re-run.
+    a: Unmounts and remounts component
+    c: Runs beforeLoad again for each param change
+    d: Requires window.location.reload()
+  answer: b
+  explanation: Param changes within same route pattern keep component mounted. useParams
+    and useSearch reactively update. beforeLoad only runs on route activation, not
+    param changes within same route.
+  difficulty: 3
+  tags:
+  - concept
+- id: '12.7'
+  question: What is the purpose of loaderDeps in a route definition?
+  options:
+    d: Declares dependencies from search/params that should trigger loader re-run
+    a: Lists npm dependencies the route needs
+    b: Defines type-only dependencies for TypeScript
+    c: Specifies static paths the loader depends on
+  answer: d
+  explanation: loaderDeps returns a memoized object from search/params. When deps
+    change (same route, different search), loader re-runs. Without loaderDeps, loader
+    only runs on route activation.
+  difficulty: 3
+  tags:
+  - terminology
+- id: '12.8'
+  question: How to code-split a route component in TanStack Router?
+  options:
+    a: Use React.lazy(() => import('./page')) as route component
+    b: Router handles code splitting automatically
+    c: Split route definitions into separate files
+    d: Use dynamic() from next/dynamic
+  answer: a
+  explanation: 'Route component accepts React.lazy() result. Combine with pendingComponent
+    for loading UI and wrapInSuspense: true for Suspense integration.'
+  difficulty: 2
+  tags:
+  - application
+- id: '12.9'
+  question: Which hook provides access to current route's search params?
+  options:
+    d: Route.useSearch() — returns typed search object from validateSearch schema
+    a: useSearchParams()
+    b: useQuery()
+    c: useLocation().search
+  answer: d
+  explanation: Route.useSearch() returns validated search object matching the route's
+    validateSearch schema. TypeScript infers exact shape — no type assertions.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.10'
+  question: How does TanStack Router handle route context injection?
+  options:
+    a: Router constructor context option — typed via module augmentation (Register
+      interface)
+    b: React Context provider nested in route tree
+    c: Global singleton accessed in loader
+    d: Props drilling from RootRoute
+  answer: a
+  explanation: 'Context is passed to Router constructor and typed via `declare module
+    ''@tanstack/react-router'' { interface Register { router: typeof router } }`.
+    beforeLoad and loaders access context through their parameters.'
+  difficulty: 2
+  tags:
+  - concept
+

@@ -1,0 +1,62 @@
+- id: "c.71"
+  question: "Complete: A modal that loses focus, ignores Escape, scrolls the page behind, and never announces itself has one origin: nobody {owns} the dialog contract."
+  answer: "owns"
+  explanation: "Focus, Escape, nesting, aria, and busy-save are all ownership failures. One component or store owning the controlled contract removes them."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.72"
+  question: "Complete: In the modal state contract the {intent} field names which dialog variant is showing, and payload carries the data it needs."
+  answer: "intent"
+  explanation: "intent distinguishes edit-grade, confirm-discard, and note dialogs; payload is the data; busy flags a blocking op; onOpenChange is the controlled close seam."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.73"
+  question: "Complete: The controlled {onOpenChange} seam is where a busy or saving guard can block a close that the library would otherwise allow."
+  answer: "onOpenChange"
+  explanation: "OnOpenChange is the escape hatch the library calls on backdrop click or programmatic close. Routing it through your guard is what keeps a mid-save dialog open."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.74"
+  question: "Complete: Focus state after closing a dialog belongs in a {ref}, not the store, because focus is a DOM side effect, not data."
+  answer: "ref"
+  explanation: "A store would re-render subscribers just to move focus. The trigger ref mutates the DOM directly and dies with its component, which is the needed lifetime."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.75"
+  question: "Complete: A close-guard unblocks Escape only after the blocking operation such as {saving} has finished, otherwise the close event is prevented."
+  answer: "saving"
+  explanation: "busy means block close. While a save or submit is in flight the guard preventDefaults Escape, keeping the dialog visible with a disabled Save button."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "c.76"
+  question: "Complete: Nested dialogs behave as a {stack}: Escape pops exactly one level and focus returns to the previous trigger, never to the page body."
+  answer: "stack"
+  explanation: "Each open adds a level; Escape pops the top. Earlier levels must stay alive until popped, or the return path is destroyed."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.77"
+  question: "Complete: z-index for dialogs should come from {nesting} and stacking contexts rather than magic numbers."
+  answer: "nesting"
+  explanation: "The last-opened level paints on top because each level owns a stacking context. Manual z-indexes race again at every panel, tooltip, or dropdown."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.78"
+  question: "Complete: The accessibility contract for a dialog needs role=dialog, aria-modal=true, and aria-{labelledby} pointing at the title element."
+  answer: "labelledby"
+  explanation: "labelledby gives the dialog its accessible name so a screen reader announces what opened. Without a name the reader announces an unnamed dialog."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.79"
+  question: "Complete: Long forms belong on a page or a workflow modal, not a dialog, because a dialog is the right shape only for tasks that are short and {interruptible}."
+  answer: "interruptible"
+  explanation: "A dialog traps a long form in a small scrolling bottleneck and blocks save-slot flows. Short, confirm-like tasks fit the modal; long, reload-sensitive work needs a page or the m8 workflow modal."
+  difficulty: 3
+  tags: [scenario]

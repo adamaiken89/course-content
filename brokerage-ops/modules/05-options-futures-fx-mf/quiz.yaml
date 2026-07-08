@@ -1,0 +1,139 @@
+- id: '4.1'
+  question: Buying 20 contracts SPY $480 Call (quoted at $8.50), what is the total
+    premium payable?
+  options:
+    a: $8,500
+    b: $17,000
+    c: $9,600
+    d: $96,000
+  answer: b
+  explanation: US equity options multiplier = 100. Total Premium = $8.50 × 100 × 20
+    = $17,000.
+  difficulty: 1
+  tags:
+  - calculation
+- id: '4.2'
+  question: Which is the correct description of futures Initial Margin?
+  options:
+    a: A down payment — the rest is paid later
+    b: A trading commission
+    c: A performance bond ensuring you can absorb daily settlement losses
+    d: The total purchase price of the futures contract
+  answer: c
+  explanation: Margin is not a down payment. It is a credit guarantee ensuring you
+    can cover daily MTM losses. The full notional value is always at risk.
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.3'
+  question: A client is long 1 E-mini S&P 500 contract (multiplier $50). The index
+    falls from 5,800 to 5,650. What is the daily settlement impact?
+  options:
+    a: No impact — unrealized P&L doesn't count
+    b: Account receives $7,500
+    c: Account is debited $7,500 (variation margin)
+    d: Only the initial margin needs topping up
+  answer: c
+  explanation: 'Futures use daily MTM. 1 E-mini: $50 × (5,800 - 5,650) = $7,500 loss.
+    Account cash decreases by $7,500. If below maintenance margin, a margin call is
+    triggered.'
+  difficulty: 2
+  tags:
+  - calculation
+- id: '4.4'
+  question: EUR/USD spot rate 1.0500. Client wants to buy €5,000,000 (standard lot
+    = €100,000). How much USD is needed?
+  options:
+    a: $5,000,000
+    b: $5,250,000
+    c: $5,000,000 × 1.0500 = $5,250,000
+    d: Depends on lot size, but final settlement is $5,250,000
+  answer: d
+  explanation: 'EUR/USD: buy EUR sell USD. €5M × 1.0500 = $5,250,000. Standard lot
+    is €100K, so 50 lots. Lot size does not change the total amount.'
+  difficulty: 2
+  tags:
+  - calculation
+- id: '4.5'
+  question: When is a Mutual Fund order's price determined?
+  options:
+    a: At order entry in real time
+    b: After market close (EOD NAV)
+    c: On T+1 settlement date
+    d: Decided by the trader
+  answer: b
+  explanation: MF calculates NAV after market close. All orders received before cut-off
+    execute at that NAV. The exact price is not known at order time.
+  difficulty: 1
+  tags:
+  - concept
+- id: '4.6'
+  question: When the OMS processes an MF order, what price should the suitability
+    engine use for the limit check?
+  options:
+    a: The day's real-time price (real-time NAV)
+    b: Previous day NAV
+    c: Face value
+    d: Historical average price
+  answer: b
+  explanation: The current day's NAV is unknown at MF order time. Standard practice
+    uses previous day NAV, but NAV movement margin should be considered.
+  difficulty: 2
+  tags:
+  - application
+- id: '4.7'
+  question: Which of the following is a risk factor unique to options?
+  options:
+    a: Company bankruptcy risk
+    b: Tracking error
+    c: Delta (sensitivity of option price to underlying price changes)
+    d: Settlement risk
+  answer: c
+  explanation: Delta is one of the option Greeks, measuring option price sensitivity
+    to underlying asset price changes. A is equity risk, C is ETF risk, D applies
+    to all asset classes.
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.8'
+  question: What is the main difference between futures Daily Settlement (MTM) and
+    equity Unrealized P&L?
+  options:
+    a: Futures MTM affects actual account cash and must be settled; equity unrealized
+      P&L does not affect cash
+    b: There is no difference
+    c: Equity unrealized P&L also requires daily cash settlement
+    d: Futures have no concept of unrealized P&L
+  answer: a
+  explanation: Futures daily MTM directly credits/debits account cash. Equity unrealized
+    P&L is a book entry that does not affect cash until the position is closed.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '4.9'
+  question: Which asset class has the least complete FIX protocol support?
+  options:
+    a: Equity
+    b: Options
+    c: Futures
+    d: Mutual Funds
+  answer: d
+  explanation: Many Mutual Funds still use proprietary APIs or batch file processing
+    — FIX support is limited. Equity/Options/Futures have mature FIX message types.
+  difficulty: 3
+  tags:
+  - terminology
+- id: '4.10'
+  question: When a multi-asset OMS performs limit checks, which approach is correct?
+  options:
+    a: Each asset class has its own independent limit — they don't affect each other
+    b: Aggregate all asset classes' notional exposure into one unified check
+    c: Only check the equity portion
+    d: Let the trader self-report risk
+  answer: b
+  explanation: The client's total risk exposure is the sum across all assets. While
+    individual limits exist (e.g., option Greek limits), total notional exposure must
+    be checked uniformly.
+  difficulty: 2
+  tags:
+  - application

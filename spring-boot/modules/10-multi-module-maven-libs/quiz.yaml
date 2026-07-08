@@ -1,0 +1,119 @@
+- id: "10.1"
+  question: "Which benefit does a multi-module reactor build provide that separate versioned repos cannot?"
+  options:
+    a: "Co-build consistency — sibling modules resolve from the same build"
+    b: "Independent release cadence per module"
+    c: "Cohabitation of code in one repository"
+    d: "Automatic publishing of artifacts to a remote repository"
+  answer: a
+  explanation: "A reactor resolves inter-module dependencies from the current build, so a change recompiles and tests its consumers together. Separate repos can never guarantee that."
+  difficulty: 1
+  tags: [concept]
+
+- id: "10.2"
+  question: "What is the primary job of a platform BOM's dependencyManagement block?"
+  options:
+    a: "To add every managed library to the consumer classpath"
+    b: "To pin managed versions without adding jars to consumer projects"
+    c: "To force override of versions imported upstream"
+    d: "To replace the parent pom of every module"
+  answer: b
+  explanation: "dependencyManagement sets versions but adds nothing to the classpath. Consumers still choose dependencies; the BOM only controls their versions."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "10.3"
+  question: "Two separate repos both depend on a shared library, but without a shared source of truth for versions. What is the most likely long-term outcome?"
+  options:
+    a: "Both repos always align to the latest library release"
+    b: "The shared library stops being published"
+    c: "Versions drift — Service X locks Jackson 2 while Service Y upgrades to Jackson 3"
+    d: "Maven auto-resolves a single canonical version"
+  answer: c
+  explanation: "Without a BOM or other shared version source, each repo picks its own versions and drifts apart over time, which is exactly the alignment problem a BOM solves."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "10.4"
+  question: "In an api/impl split, which dependency direction is correct?"
+  options:
+    a: "impl depends on api; api depends on nothing from impl"
+    b: "api depends on impl, impl depends on nothing"
+    c: "Both modules depend on each other"
+    d: "Consumers depend on impl directly and never on api"
+  answer: a
+  explanation: "The arrow points one way: impl implements the contract in api. Consumers depend on api and stay free to swap implementations."
+  difficulty: 1
+  tags: [concept]
+
+- id: "10.5"
+  question: "How does dependencyManagement differ from dependencies inside a BOM?"
+  options:
+    a: "They are synonyms in Maven"
+    b: "dependencies manages versions; dependencyManagement adds jars"
+    c: "Both add jars to every consumer transitively"
+    d: "dependencyManagement manages versions; dependencies adds jars"
+  answer: d
+  explanation: "dependencyManagement controls versions for declared dependencies; dependencies actually adds them. Confusing them leaks jars to every consumer."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "10.6"
+  question: "Which tooling enforces module boundaries structurally at compile time?"
+  options:
+    a: "Maven Enforcer import-control rules"
+    b: "JPMS module-info.java with exports and requires"
+    c: "ArchUnit tests in CI"
+    d: "A reviewer checklist in the pull request template"
+  answer: b
+  explanation: "JPMS makes the boundary structural — the module compiler itself checks exports and requires. Enforcer and ArchUnit are good, but JPMS is enforced by the compiler, not by tests or build rules."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "10.7"
+  question: "A team's shared `common` module grows and adds a WebFlux dependency for one consumer. Which symptom does every other consumer face?"
+  options:
+    a: "Nothing, because dependencies are isolated per module"
+    b: "The module automatically stops exporting WebFlux"
+    c: "The WebFlux jar lands on their classpath and can conflict with their stack"
+    d: "Maven removes the dependency for consumers that do not use it"
+  answer: c
+  explanation: "Everyone who depends on common inherits its declared dependencies transitively. A need of one consumer becomes a cost (or conflict) for all — the shared-lib nightmare."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "10.8"
+  question: "Under the Rule of Three, when should a shared library be extracted?"
+  options:
+    a: "The first time the same logic is written twice"
+    b: "When the same logic appears a third time and its contract shape is visible"
+    c: "As soon as any two teams write similar code"
+    d: "Only when management mandates a shared module"
+  answer: b
+  explanation: "The first two copies are fine; the third occurrence justifies the abstraction because the shared contract's shape is visible by then. Premature extraction creates modules debated forever."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "10.9"
+  question: "During a commons-splitting migration, which ordering of steps keeps the build green throughout?"
+  options:
+    a: "Move all classes first, then add enforcer rules, then normalize versions"
+    b: "Delete dead code first, then move classes, then add the BOM"
+    c: "Create common-v2, move everything at once, then fix failures"
+    d: "Normalize versions via a BOM, extract the smallest slice, add enforcer rules, then delete dead code"
+  answer: d
+  explanation: "Normalizing versions first removes drift, extracting the smallest slice keeps each step shippable, enforcer rules stop new leakage, and dead code deletion comes after the split."
+  difficulty: 3
+  tags: [calculation]
+
+- id: "10.10"
+  question: "What is the strongest reason to split an api module from its impl module rather than keeping one module?"
+  options:
+    a: "It reduces the total number of source files in the reactor"
+    b: "It lets consumers depend on the contract without inheriting implementation frameworks"
+    c: "It guarantees faster compile times through Maven parallelism"
+    d: "It removes the need for a BOM entirely"
+  answer: b
+  explanation: "The api module holds the contract and declares nothing from impl or its frameworks. Consumers depend on api only, so implementation details like persistence or web frameworks never leak onto their classpath."
+  difficulty: 1
+  tags: [concept]

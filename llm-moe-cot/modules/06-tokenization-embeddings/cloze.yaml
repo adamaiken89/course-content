@@ -1,0 +1,84 @@
+- id: c.1
+  question: Tokenization maps raw text to {integer IDs}. The sweet spot between character-level
+    and word-level is {subword} tokenization.
+  answer: integer IDs
+  explanation: Subword tokenization balances finite vocabulary size with generalisation
+    to rare words.
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: BPE (Byte Pair Encoding) merges adjacent character pairs based on {frequency}
+    in the training corpus. In contrast, WordPiece merges based on {likelihood increase}.
+  answer: frequency
+  explanation: 'BPE uses simple frequency counting; WordPiece uses a statistical criterion:
+    score = P(merged) / (P(first) × P(second)).'
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: 'SentencePiece does not require pre-tokenization (space splitting), making
+    it {language agnostic}. It supports two modes: {BPE} and {Unigram}.'
+  answer: language agnostic
+  explanation: SentencePiece works on raw Unicode. Unigram mode uses EM algorithm
+    to find most probable segmentation.
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: The embedding matrix has shape [{vocab_size}, {d_model}]. Getting a token's
+    vector means {looking up the row} at index corresponding to the token ID.
+  answer: vocab_size
+  explanation: E[token_id] is a simple indexing operation. The matrix is learned end-to-end.
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: Positional embeddings are necessary because self-attention is {permutation
+    invariant}. Without position signal, '{man bites dog}' and '{dog bites man}' would
+    have identical model input.
+  answer: permutation invariant
+  explanation: Self-attention computes pairwise similarities regardless of order.
+    Position signal (sinusoidal, learned, RoPE, ALiBi) is essential for sequence understanding.
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: In BERT tokenizer, {[CLS]} token's final hidden state serves as aggregate
+    sequence representation for classification, while {[SEP]} marks boundary between
+    two sentences.
+  answer: '[CLS]'
+  explanation: These special tokens are added to the vocabulary during tokenizer training
+    and have learned embeddings.
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: BPE tokenizer initial vocab consists of {individual characters or bytes}.
+    Merges create {new tokens} from frequent adjacent pairs until target {vocab size}
+    is reached.
+  answer: individual characters or bytes
+  explanation: Typically starts with all individual characters/bytes in corpus. Merges
+    expand vocabulary.
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: In a model with vocab_size 32,000 and d_model 4,096, the embedding matrix
+    alone has {131,072,000} parameters (approx {131 million}).
+  answer: 131,072,000
+  explanation: 32000 × 4096 = 131,072,000. This dominates parameter count in small
+    to medium models.
+  difficulty: 2
+  tags: []
+- id: c.9
+  question: Adding a new token after training is complete requires adding a new {row}
+    to the embedding matrix. This row has {no training signal} and must be learned
+    during {fine-tuning}.
+  answer: row
+  explanation: New tokens have randomly initialised embeddings. Sufficient fine-tuning
+    (or additional pre-training) needed to learn useful representation.
+  difficulty: 2
+  tags: []
+- id: c.10
+  question: WordPiece merge decisions are based on {likelihood increase} rather than
+    raw frequency. SentencePiece's Unigram mode uses {EM algorithm} to find the most
+    probable segmentation.
+  answer: likelihood increase
+  explanation: 'WordPiece: score = P(merged)/[P(first)P(second)]. SentencePiece Unigram:
+    trains a language model over possible segmentations, uses EM to find optimal vocabulary.'
+  difficulty: 2
+  tags: []

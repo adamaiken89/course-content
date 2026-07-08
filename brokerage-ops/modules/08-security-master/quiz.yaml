@@ -1,0 +1,120 @@
+- id: '8.1'
+  question: In a Security Master, which identifier is best suited as the internal golden key?
+  options:
+    a: Bloomberg Ticker
+    b: ISIN
+    c: Reuters RIC
+    d: Exchange code (e.g., AAPL)
+  answer: b
+  explanation: ISIN is standardized, globally unique, and remains stable throughout a product's lifecycle. Bloomberg Ticker and RIC are proprietary and may change with corporate actions or vendor rule changes. ISIN is the only cross-vendor consistent key.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.2'
+  question: Why should the Bloomberg Ticker NOT be used as the security master's primary key?
+  options:
+    a: It changes on company rename/restructuring and is proprietary, forcing cascading updates and vendor lock-in
+    b: It is too long for a database key
+    c: It is not unique across exchanges
+    d: It only covers US markets
+  answer: a
+  explanation: Bloomberg Ticker changes on company rename, restructuring, or Bloomberg's own naming conventions. Using it as the primary key means order history, positions, and limits require cascading updates on every change. It is also proprietary — switching vendors invalidates the entire dataset.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.3'
+  question: In the security master record, what is the OMS internal unique key (e.g., SEC-123456)?
+  options:
+    a: The golden key used for external settlement
+    b: The ISIN
+    c: The relational key between systems, which should not be exposed to external interfaces
+    d: The exchange symbol
+  answer: c
+  explanation: The Internal ID is the OMS internal relational key between systems and should not be exposed to external interfaces. ISIN serves as the golden key that does not change with corporate actions.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.4'
+  question: The Bloomberg data feed says a bond settles T+2, but the DTCC feed says T+1. What is the correct approach for the security master?
+  options:
+    a: Always trust Bloomberg
+    b: Always trust DTCC
+    c: Use whichever feed arrives latest
+    d: Define a single source of truth / conflict-resolution priority rule for data source conflicts
+  answer: d
+  explanation: Data source conflicts require a defined single source of truth and priority rule. Without one, different downstream systems pick different values. Who has final edit authority is one of the core security master maintenance challenges.
+  difficulty: 3
+  tags:
+  - application
+- id: '8.5'
+  question: Which of the following are proprietary identifiers, versus standard identifiers?
+  options:
+    a: Bloomberg Ticker and Reuters RIC
+    b: ISIN and CUSIP
+    c: SEDOL and VALOREN
+    d: FIGI and ISIN
+  answer: a
+  explanation: Bloomberg Ticker and Reuters RIC are proprietary and require licenses. ISIN, CUSIP, SEDOL, VALOREN, and FIGI are standards. Proprietary identifiers should be stored as aliases, not relational keys.
+  difficulty: 1
+  tags:
+  - concept
+- id: '8.6'
+  question: What corporate action information does the security master record track for a security?
+  options:
+    a: Only the latest trade price
+    b: Last split, dividend schedule, and pending actions
+    c: Trader names and desks
+    d: Client account balances
+  answer: b
+  explanation: The security master tracks corporate action data such as last split, dividend schedule, and pending actions. This data drives GTC order adjustment decisions and downstream notification.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.7'
+  question: The same ISIN maps to multiple exchange codes (NASDAQ, BATS, NYSE ARCA). What must the security master handle?
+  options:
+    a: 1:N mappings for multi-market listings while preserving venue context
+    b: Only one exchange per ISIN
+    c: A separate ISIN for each exchange
+    d: No mapping at all
+  answer: a
+  explanation: Multi-market listings mean the same ISIN maps to multiple exchange codes. The master record must handle 1:N mappings and preserve venue context so orders route to the correct market.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.8'
+  question: A Swiss issuer's CHF instrument needs VALOREN while the same issuer's USD bond trades under CUSIP. What must the security master support?
+  options:
+    a: Only one identifier per issuer
+    b: Per-currency identifiers and aliases for the same issuer
+    c: Rejecting multi-currency instruments
+    d: Deriving CUSIP from VALOREN
+  answer: b
+  explanation: The security master must handle per-currency identifiers — the same issuer's CHF securities settle under VALOREN while USD bonds trade under CUSIP. Multi-currency support is a core maintenance challenge.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.9'
+  question: Which of the following is NOT a security master maintenance challenge?
+  options:
+    a: Single source of truth / final edit authority
+    b: Change notification to downstream systems
+    c: Client KYC data maintenance
+    d: Data source conflicts between vendor feeds
+  answer: c
+  explanation: Security master challenges are single source of truth, data source conflicts, new product onboarding, change notification, multi-market listings, and multi-currency support. Client KYC data is a separate concern, not a security master issue.
+  difficulty: 1
+  tags:
+  - concept
+- id: '8.10'
+  question: When a corporate action occurs, what does the security master change-notification process need to define?
+  options:
+    a: Only the new price for the exchange
+    b: Only the archive location of old records
+    c: Only the regulator filing
+    d: Who triggers the master update and how downstream systems are notified
+  answer: d
+  explanation: Change notification must define who triggers the security master update when a corporate action occurs, and how downstream systems (OMS, EMS, back office) are notified. Broken notification flow is a common cause of stale GTC orders.
+  difficulty: 2
+  tags:
+  - concept

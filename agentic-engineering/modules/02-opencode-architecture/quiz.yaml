@@ -1,0 +1,133 @@
+- id: '2.1'
+  question: What is the key difference between Plan mode and Build mode?
+  options:
+    b: Plan mode cannot write or edit files; Build mode can
+    a: Plan mode is faster; Build mode is slower
+    c: Plan mode uses a different AI model
+    d: Build mode cannot read files
+  answer: b
+  explanation: Plan mode is read-only at system level. Agent physically cannot write
+    or edit files. Build mode has full tool access.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.2'
+  question: What does a mode restrict at the system level?
+  options:
+    c: Which tools the agent can call
+    a: Which prompts the agent receives
+    b: Which files are visible in the filesystem
+    d: Which programming languages are available
+  answer: c
+  explanation: Modes restrict tool access permissions. This is enforced at system
+    level, not via prompting.
+  difficulty: 1
+  tags:
+  - concept
+- id: '2.3'
+  question: Which mode should you use to investigate a bug without risking any file
+    changes?
+  options:
+    c: Researcher mode
+    a: Build mode
+    b: Commiter mode
+    d: Scaffolder mode
+  answer: c
+  explanation: Researcher mode allows reading all files and writing only .md reports.
+    Cannot touch source code.
+  difficulty: 1
+  tags:
+  - application
+- id: '2.4'
+  question: Which tools should a Reviewer mode allow?
+  options:
+    d: Read, Glob, Grep, Question
+    a: Write, Edit, Bash
+    b: All tools including delete
+    c: Bash only
+  answer: d
+  explanation: Reviewer needs read-only access plus ability to produce review output.
+    Write/Edit/Bash are unnecessary and risky.
+  difficulty: 2
+  tags:
+  - application
+- id: '2.5'
+  question: Why is system-level enforcement better than prompting 'don't write files'?
+  options:
+    a: Prompts can be ignored or forgotten; system enforcement cannot be bypassed
+    b: System enforcement is cheaper
+    c: System enforcement is faster
+    d: System enforcement uses less tokens
+  answer: a
+  explanation: No amount of prompting can override a blocked tool. System-level enforcement
+    is absolute.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.6'
+  question: What is the correct sequence for a safe multi-mode workflow?
+  options:
+    a: Researcher → Build → Tester → Reviewer → Commiter
+    b: Build → Researcher → Commiter → Reviewer
+    c: Commiter → Tester → Build → Reviewer
+    d: Reviewer → Build → Researcher → Tester
+  answer: a
+  explanation: Research first (understand problem), build (implement), test (verify),
+    review (audit), commit (ship). Each phase has appropriate restrictions.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '2.7'
+  question: Which mode allows creating new files but prevents editing existing ones?
+  options:
+    b: Scaffolder
+    a: Janitor
+    c: Build
+    d: Deployer
+  answer: b
+  explanation: Scaffolder allows Write (new files) but blocks Edit (existing files).
+    Safe for generating boilerplate.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '2.8'
+  question: A junior developer needs to write tests without risk to source code. Which
+    custom mode?
+  options:
+    d: Tester mode - read + write test files only
+    a: Build mode - they need full access
+    b: Commiter mode - git only
+    c: Plan mode - read only
+  answer: d
+  explanation: Tester mode allows reading source and writing to test directories only.
+    Source code is safe from accidental modification.
+  difficulty: 1
+  tags:
+  - scenario
+- id: '2.9'
+  question: When would the Janitor mode be most useful?
+  options:
+    b: Cleaning dead code, renaming, restructuring
+    a: Writing new features
+    c: Production deployments
+    d: Code review
+  answer: b
+  explanation: Janitor mode allows delete/rename operations but blocks new feature
+    code. Purpose-built for cleanup tasks.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '2.10'
+  question: Which statement about custom modes is FALSE?
+  options:
+    a: Custom modes are just system prompts with different instructions
+    b: Custom modes can allow specific Bash commands while blocking others
+    c: Custom modes can restrict Write to specific file patterns
+    d: Custom modes can be used with subagents
+  answer: a
+  explanation: Custom modes are tool-permission configurations, not prompts. System-level
+    enforcement is fundamentally different from instruction-based control.
+  difficulty: 3
+  tags:
+  - comparison
+

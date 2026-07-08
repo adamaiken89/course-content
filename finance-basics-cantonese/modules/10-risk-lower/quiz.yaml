@@ -1,0 +1,137 @@
+- id: '10.1'
+  question: 標準差 (σ) 同方差 (σ²) 嘅關係係?
+  options:
+    a: 標準差 = 方差 × 2
+    b: 標準差 = 方差嘅平方
+    c: 標準差 = 方差開方
+    d: 標準差 = 1 / 方差
+  answer: c
+  explanation: 標準差 = √方差, 將「百分比嘅平方」轉返做百分比, 單位同回報一致, 比較直觀。
+  difficulty: 1
+  tags:
+  - terminology
+  - formula
+- id: '10.2'
+  question: A 基金回報 8%, σ=5%。B 基金回報 12%, σ=18%。Rf=4%。邊個 Sharpe 高?
+  options:
+    a: B 嘅 Sharpe = 1.6, A 嘅 Sharpe = 0.8, B 比較好
+    b: 兩個 Sharpe 一樣, 因為回報差唔多
+    c: 唔可以計, 因為無風險利率唔合理
+    d: A 嘅 Sharpe = 0.8, B 嘅 Sharpe = 0.44, A 比較好
+  answer: d
+  explanation: 'Sharpe = (R - Rf) / σ。A: (8-4)/5 = 0.8。B: (12-4)/18 = 0.44。A 比較好,
+    因為每承擔 1 單位風險, 賺到嘅回報多過 B。'
+  difficulty: 2
+  tags:
+  - formula
+  - calculation
+- id: '10.3'
+  question: Sharpe Ratio 1.5 嘅意思係?
+  options:
+    a: 賺 1.5% 回報
+    b: 每承擔 1 單位風險, 賺到 1.5 單位額外回報
+    c: 波動率 1.5%
+    d: 蝕 1.5% 機會
+  answer: b
+  explanation: Sharpe = (R - Rf) / σ, 即「每 1 單位風險換幾多額外回報」。1.5 算好, 2+ 算非常好, >3 通常有問題。
+  difficulty: 2
+  tags:
+  - concept
+  - formula
+- id: '10.4'
+  question: 以下邊種風險可以透過分散化完全消除?
+  options:
+    a: 通脹風險
+    b: 系統風險 (Systematic Risk)
+    c: 市場風險
+    d: 非系統風險 (Unspecific Risk)
+  answer: d
+  explanation: 非系統風險係個別公司 / 行業嘅風險, 透過買齊唔同股票 / 行業可以分散。系統風險 / 市場風險 / 通脹風險影響整個市場, 分散唔到。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '10.5'
+  question: 假設你兩隻 ETF 各佔 50%, A σ=20%, B σ=20%, 相關性 0.6。組合 σ 大概係?
+  options:
+    a: 20% (等於個別)
+    b: 0% (完全對沖)
+    c: 16.7% (低過個別平均)
+    d: 40% (個別相加)
+  answer: c
+  explanation: 組合方差 = w₁²σ₁² + w₂²σ₂² + 2w₁w₂σ₁σ₂ρ。當 ρ < 1, 組合方差 < 加權平均。ρ=0.6 得出 σ_p
+    ≈ 16.7%, 證明分散有效。
+  difficulty: 3
+  tags:
+  - formula
+  - calculation
+  - application
+- id: '10.6'
+  question: 你而家 28 歲, 月入穩定 $30000, 有 20 年時間儲錢。你嘅風險承受度應該?
+  options:
+    a: 高, 因為有時間 recover, 可以承受較大波動
+    b: 零, 一定要擺現金
+    c: 極低, 因為年輕人經歷唔起跌
+    d: 中等, 因為要平衡長線同短期
+  answer: a
+  explanation: 年輕 + 收入穩定 + 長線目標 → 風險承受度通常較高。但唔等於 All-in Bitcoin, 仍然要分散。承受度高 = 可以接受短期波動,
+    唔等於亂嚟。
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '10.7'
+  question: 以下邊個組合分散效果最差?
+  options:
+    a: 50% S&P 500 + 50% 美國國債
+    b: 50% 騰訊 + 50% 美團 (兩隻港股科技)
+    c: 30% 港股 + 30% 美股 + 20% 債 + 20% 黃金
+    d: 50% 大盤 ETF + 50% 醫療 ETF
+  answer: b
+  explanation: 50% 騰訊 + 50% 美團都係港股科技, 相關性 +0.7, 分散效果有限。應該跨資產、跨地區、跨行業先有效。
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '10.8'
+  question: 你朋友話「呢隻基金過去 5 年 Sharpe 2.5, 勁!」。你會點回應?
+  options:
+    a: 過去 Sharpe 唔等於未來, 而且 >3 通常有問題, 要自己驗算
+    b: 唔理, Sharpe 唔重要
+    c: Sharpe 2.5 算低, 唔好買
+    d: 即刻買, 因為 Sharpe 高
+  answer: a
+  explanation: 過去 Sharpe 唔保證未來, 而且要 check 計算方法(月/年回報、rf 假設)。Sharpe > 3 通常有 data 問題,
+    2.5 算好但要自己驗。
+  difficulty: 3
+  tags:
+  - scenario
+  - misconception
+- id: '10.9'
+  question: 你全買 S&P 500 ETF, 已經「完全分散」, 風險係零?
+  options:
+    a: 係, 因為 500 隻股分散晒
+    b: 唔係, 因為仲有系統風險, 大盤跌你都跌
+    c: 唔係, 因為 ETF 有管理費
+    d: 係, 只要 ETF 唔清盤就安全
+  answer: b
+  explanation: ETF 分散嘅係非系統風險(個別公司風險), 系統風險(整個市場)避唔到。2008 金融海嘯, S&P 500 跌 37%, 乜 ETF
+    都跌。
+  difficulty: 2
+  tags:
+  - concept
+  - misconception
+- id: '10.10'
+  question: 如果你想完全消除風險(波動 = 0), 應該買咩?
+  options:
+    a: Bitcoin, 因為長線升
+    b: 短期國庫券 (T-bill) 或高息戶口
+    c: 杠杆 ETF
+    d: 個股, 揀最好嗰隻
+  answer: b
+  explanation: 短期國庫券 / 高息戶口波動近乎零, 係真正「無風險」資產。但回報低, 對抗唔到通脹。個股、Bitcoin、槓桿 ETF 全部都有顯著波動。
+  difficulty: 1
+  tags:
+  - concept
+  - application
+

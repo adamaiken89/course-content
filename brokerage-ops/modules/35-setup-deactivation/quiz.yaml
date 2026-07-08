@@ -1,0 +1,155 @@
+- id: '35.1'
+  question: What is the standard new security setup workflow in RefData?
+  options:
+    a: Request → data collection → validation → approval → activation
+    b: Data collection → request → approval → validation → activation
+    c: Validation → request → activation → approval
+    d: Activation → validation → request
+  answer: a
+  explanation: The workflow runs request → data collection → validation → approval
+    → activation, then broadcasts to downstream systems and notifies the requestor.
+    A failed validation sends the request back to the start.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '35.2'
+  question: What is the SLA for a rush security setup?
+  options:
+    a: T+2 weeks
+    b: T+0 within 2 hours
+    c: T+2 days
+    d: T+30 days
+  answer: b
+  explanation: Normal setup is T+2, expedited is T+0 within 6 hours, and rush is T+0
+    within 2 hours. IPOs and new product launches typically demand the fastest tiers.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '35.3'
+  question: In a rush security setup, which fields may be conditionally deferred to
+    T+1 completion?
+  options:
+    a: ISIN
+    b: Currency
+    c: SEDOL and FIGI
+    d: Issuer name
+  answer: c
+  explanation: Rush setup allows conditional activation with some fields deferred
+    to T+1, typically non-critical identifiers like SEDOL and FIGI. ISIN and currency
+    are required at activation.
+  difficulty: 2
+  tags:
+  - terminology
+  - scenario
+- id: '35.4'
+  question: 'Rush security setup (within 2 hours) allows conditional activation with
+    fields deferred to T+1. The biggest risk is:'
+  options:
+    a: Increased RefData team workload
+    b: Downstream systems receive incomplete data, potentially causing trade or settlement
+      failures
+    c: Violation of exchange rules
+    d: Database storage waste
+  answer: b
+  explanation: Downstream systems get an incomplete security master on T+0. If a trading
+    system starts trading without SEDOL (required for European settlement), settlement
+    may fail. Deferred fields must be tracked with auto-reminders.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '35.5'
+  question: A broker deactivates a target company's stock on the merger effective date
+    while T+2 settlement trades are still in flight. What is the likely outcome?
+  options:
+    a: Settlement failure for the in-flight trades
+    b: Higher clearing fees
+    c: No impact on trades
+    d: Faster settlement
+  answer: a
+  explanation: Premature deactivation on the effective date ignores T+2 settlements
+    still in flight, causing settlement failure. Deactivation must account for pending
+    trades before the status change is applied.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '35.6'
+  question: What is the typical grace period in the security deactivation workflow
+    before formal deactivation?
+  options:
+    a: 0 days
+    b: 30-90 days
+    c: 1 year
+    d: 5 years
+  answer: b
+  explanation: The deactivation workflow runs trigger detection → impact assessment
+    → grace period of 30-90 days → formal deactivation → historical archiving. The
+    grace period lets pending settlements and client positions clear.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '35.7'
+  question: When a target company's shares are converted to the acquirer in a merger,
+    how is the master record updated?
+  options:
+    a: The record is hard-deleted
+    b: No record change is needed
+    c: Status is set to MERGED with the surviving entity's SM-ID and the exchange
+      ratio retained
+    d: Status stays ACTIVE with a new ISIN
+  answer: c
+  explanation: A merged security gets status MERGED, records the surviving entity's
+    SM-ID, and retains the exchange ratio and holder records for historical reconciliation.
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '35.8'
+  question: A bond matures on 2025-03-15 (Saturday). On which date should RefData formally
+    set its status to MATURED?
+  options:
+    a: 2025-03-15 (Saturday itself)
+    b: 2025-03-14 (Friday)
+    c: 2025-03-16 (Sunday)
+    d: 2025-03-17 (Monday, next business day)
+  answer: d
+  explanation: When maturity falls on a non-business day, market convention shifts
+    to the next business day. Setting MATURED too early may affect final interest
+    payment accounting — the settlement calendar must be considered.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '35.9'
+  question: A team deactivates a target company's stock but forgets its warrants and
+    corporate bonds. What is the resulting error?
+  options:
+    a: Related securities stay active as orphaned records after the issuer is gone
+    b: The whole firm's records double
+    c: No issue — only the stock matters
+    d: Regulators approve the partial deactivation
+  answer: a
+  explanation: Missing related securities is a common deactivation error — the target's
+    warrants and bonds stay active even though the issuer no longer exists. Impact
+    assessment must scan for related securities before deactivation.
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '35.10'
+  question: What does SEC Rule 10b-17 require brokers to do before certain security
+    deactivations?
+  options:
+    a: No advance notice is required
+    b: Provide advance announcement to clients
+    c: Notify only after deactivation
+    d: Obtain client consent for every deactivation
+  answer: b
+  explanation: Regulation may require advance notice to clients, such as SEC Rule
+    10b-17 requiring advance announcement. Deactivation is high regulatory risk —
+    the most commonly neglected part of the security master lifecycle.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept

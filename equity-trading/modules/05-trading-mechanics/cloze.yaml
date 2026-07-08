@@ -1,0 +1,69 @@
+- id: c.1
+  question: US equities settled {T+1} as of {May 2024}. Previously settled {T+2}.
+  answer: T+1
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: Margin call occurs when account equity falls below the {maintenance} requirement.
+    For stocks, this is typically {25%} of position value.
+  answer: maintenance
+  difficulty: 1
+  tags:
+  - concept
+- id: c.3
+  question: To short a stock, broker must first {locate} and {borrow} shares. The
+    short seller profits if price {falls} and loses if price {rises}.
+  answer: locate
+  difficulty: 1
+  tags:
+  - concept
+- id: c.4
+  question: Short selling has {unlimited} loss potential because there is no cap on
+    how high a stock price can {rise}.
+  answer: unlimited
+  difficulty: 1
+  tags:
+  - concept
+- id: c.5
+  question: Market-wide circuit breaker Level 1 triggers at {7%} S&P 500 decline.
+    Level 2 at {13%}. Level 3 at {20%} (market closes for day).
+  answer: 7%
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.6
+  question: LULD stands for {Limit Up / Limit Down}. It pauses individual stock trading
+    if price moves outside the prescribed {band}.
+  answer: Limit Up / Limit Down
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.7
+  question: If a short seller's borrowed shares are recalled by the lender, the broker
+    can force a {buy-in}, requiring the short seller to {cover} immediately.
+  answer: buy-in
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: During a margin call, the broker can {liquidate} positions without client
+    approval to bring equity above {maintenance} levels.
+  answer: liquidate
+  difficulty: 2
+  tags:
+  - scenario
+- id: c.9
+  question: 'Free riding = buying stock in a {cash} account and {selling} before paying
+    with settled cash. Penalty: {90} day restriction.'
+  answer: cash
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.10
+  question: The {NSCC (National Securities Clearing Corporation)} acts as central
+    counterparty, guaranteeing trade settlement even if one party {defaults}.
+  answer: NSCC (National Securities Clearing Corporation)
+  difficulty: 2
+  tags:
+  - concept

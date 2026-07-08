@@ -1,0 +1,81 @@
+- id: '22.1'
+  question: Switch Transformer 嘅主要創新係咩？
+  options:
+    b: Top-1 routing 可以 scale 到 2048 experts
+    a: Top-2 routing 配 16 experts
+    c: Soft weighted routing 唔使 discrete selection
+    d: 每個 token 都會激活 shared experts
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '22.2'
+  question: DeepSeekMoE 嘅 expert 設計係點？
+  options:
+    d: 64 個 fine-grained experts 加每個 token 都會激活嘅 shared experts
+    a: 8 個大 experts 配 top-2 routing
+    b: Soft MoE 配 256 slots
+    c: Top-1 routing 配 1000+ experts
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '22.3'
+  question: DeepSeekMoE 入面 shared experts 嘅用途係咩？
+  options:
+    b: 處理 universal patterns（syntax、基本 knowledge）令 routed experts 可以 specialise
+    a: 喺 inference 嗰陣取代 router
+    c: 當 routed experts 失敗時做後備
+    d: 平衡 devices 之間嘅 load
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '22.4'
+  question: Soft MoE 同標準 MoE routing 有咩分別？
+  options:
+    a: 消滅 discrete routing — 每個 expert slot 收到所有 tokens 嘅 soft weighted combination
+    b: 用 top-3 代替 top-2
+    c: 只訓練 expert networks，唔訓練 router
+    d: 用 reinforcement learning 決定 routing
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '22.5'
+  question: Soft MoE 嘅缺點係咩？
+  options:
+    d: 每個 slot 更高 compute 因為所有 tokens 同所有 slots 互動
+    a: Router collapse 風險更高
+    b: 唔可以用 backpropagation 訓練
+    c: 只適用於 2 個 experts
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '22.6'
+  question: DeepSeekMoE 嘅 device-level aux loss 係為咗：
+  options:
+    a: 防止 tokens 集中喺一個 GPU device 度
+    b: 降低整體 model loss
+    c: 改善 expert specialisation
+    d: 唔使再用 capacity factor
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '22.7'
+  question: Mixture of Attention Heads（MoA）將 MoE 應用喺：
+  options:
+    c: Attention heads 而唔係 FFN layers
+    a: Embedding layer
+    b: Output projection
+    d: Layer normalization
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '22.8'
+  question: Fine-grained experts（細啲但多啲）嘅主要好處係咩？
+  options:
+    c: Smoother knowledge distribution 同 finer-grained token-expert combination
+    a: 減少 memory 使用
+    b: 更簡單嘅 training dynamics
+    d: 更少 communication overhead
+  answer: c
+  difficulty: 2
+  tags: []
+

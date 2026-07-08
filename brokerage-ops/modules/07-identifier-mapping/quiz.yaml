@@ -1,0 +1,120 @@
+- id: '7.1'
+  question: Which mapping pattern describes a cross-listed stock where one ISIN maps to different exchange codes on multiple venues?
+  options:
+    a: 1:1 mapping
+    b: N:1 mapping
+    c: 1:N mapping
+    d: Lossy mapping
+  answer: c
+  explanation: 1:N mapping occurs when one canonical identifier (ISIN) maps to multiple exchange-specific identifiers. A cross-listed stock has the same ISIN but trades under different exchange codes on NYSE, LSE, HKSE, etc. The OMS must preserve venue context when routing.
+  difficulty: 1
+  tags:
+  - concept
+- id: '7.2'
+  question: A Bloomberg Ticker 'SAP GY Equity' includes the venue context 'GY' (Xetra). When converted to ISIN DE0007164600, the ISIN does not encode venue. The EMS routes to a different venue. What mapping pattern caused this?
+  options:
+    a: Lossy mapping — venue information was dropped during conversion
+    b: 1:1 mapping — identifiers mapped correctly
+    c: Time-dependent mapping — the ticker was stale
+    d: N:1 mapping — multiple tickers mapped to one ISIN
+  answer: a
+  explanation: "Lossy mapping: the Bloomberg Ticker encodes venue context (GY = Xetra), but ISIN does not carry venue information. Converting Bloomberg Ticker to ISIN discards the venue detail. The OMS must preserve routing metadata separately from the identifier."
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.3'
+  question: An OMS uses both Bloomberg and Reuters as market data sources. The same stock is labeled AAPL US Equity by Bloomberg and AAPL.O by Reuters. Both have the same ISIN. How should the OMS aggregate positions for limit checks?
+  options:
+    a: Calculate limits separately for each vendor's label
+    b: Use ISIN as the golden key to aggregate positions — treat both labels as the same product
+    c: Use the Bloomberg Ticker as primary and ignore Reuters data
+    d: Use a new identifier that replaces both
+  answer: b
+  explanation: Different vendors' proprietary identifiers may diverge, but ISIN is the consistent cross-vendor key. Aggregating by ISIN prevents the same product from being counted twice against limits. Aggregating by vendor label would overstate available limits.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '7.4'
+  question: An OMS converts Bloomberg Ticker to ISIN internally. For a Swiss equity, the ISIN is correct, but the Swiss custodian needs VALOREN for settlement. The cross-reference table has no VALOREN mapping. What happens?
+  options:
+    a: The trade settles normally using ISIN
+    b: The trade executes but Swiss settlement fails because VALOREN is missing
+    c: The EMS rejects the order before execution
+    d: VALOREN is automatically derived from the ISIN
+  answer: b
+  explanation: This is a booking failure due to a mapping gap. The OMS handles pre-trade correctly and the EMS routes the trade, but the post-trade Swiss settlement system (SIX SIS) requires VALOREN — the trade executes but cannot settle. The missing VALOREN mapping causes an STP break.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '7.5'
+  question: In which phase is CUSIP the primary identifier for US markets?
+  options:
+    a: Order entry
+    b: Execution routing
+    c: Pre-trade compliance
+    d: Clearing
+  answer: d
+  explanation: "The booking/conversion table maps phases to identifiers: order entry uses Bloomberg Ticker/RIC, execution routing uses RIC/exchange code/FIGI, trade booking uses ISIN/CUSIP, clearing uses CUSIP (US), SEDOL (UK), VALOREN (CH), and settlement uses ISIN."
+  difficulty: 1
+  tags:
+  - terminology
+- id: '7.6'
+  question: A cross-listed stock has different Bloomberg Tickers per exchange (HSBA LN Equity, HSBC HK Equity) but one ISIN. What mapping pattern is this, and why does the OMS care?
+  options:
+    a: N:1 — multiple identifiers map to one canonical ISIN, so limit aggregation must resolve to the same ISIN
+    b: 1:N — one ticker maps to many ISINs
+    c: 1:1 — each ticker maps to exactly one ISIN
+    d: Lossy — information is dropped in conversion
+  answer: a
+  explanation: "N:1 mapping: multiple identifiers from different systems map to a single canonical identifier. The ISIN is the golden key that consolidates positions and limits. Aggregating by Bloomberg Ticker would treat the desks as separate instruments and overstate limits."
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.7'
+  question: An OMS cross-reference table cannot distinguish pre-rename from post-rename mappings after a company renames. What is missing from the table?
+  options:
+    a: An audit log of changes
+    b: More vendor data feeds
+    c: A temporal dimension (effective date / end date)
+    d: ISIN coverage
+  answer: c
+  explanation: Identifier mappings change over time due to corporate actions. A cross-reference table without a temporal dimension (effective date/end date) cannot distinguish pre-rename from post-rename mappings, so some OMS vendors update while others stay stale.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.8'
+  question: In a Security Master, which identifier is best suited as the internal golden key?
+  options:
+    a: Bloomberg Ticker
+    b: ISIN
+    c: Reuters RIC
+    d: Exchange code (e.g., AAPL)
+  answer: b
+  explanation: ISIN is standardized, globally unique, and remains stable throughout a product's lifecycle. Bloomberg Ticker and RIC are proprietary and may change with corporate actions or vendor rule changes. Exchange codes may repeat across markets. ISIN is the only cross-vendor consistent key.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.9'
+  question: A US-only stock's ISIN maps to exactly one CUSIP. This is an example of which mapping pattern?
+  options:
+    a: 1:1 mapping
+    b: N:1 mapping
+    c: 1:N mapping
+    d: Lossy mapping
+  answer: a
+  explanation: 1:1 mapping is the simplest case — one identifier maps to exactly one other identifier. No ambiguity, so the OMS can perform a straightforward lookup. 1:N and N:1 arise with cross-listings and multi-vendor inputs.
+  difficulty: 1
+  tags:
+  - concept
+- id: '7.10'
+  question: A UK equity underwent a corporate action yesterday. The cross-reference table still maps to the stale SEDOL. The EMS accepts the order, the custodian books with the correct ISIN, but the clearing house (LCH) uses the stale SEDOL. What happens?
+  options:
+    a: The trade is rejected before execution
+    b: The trade settles normally
+    c: The OMS cancels the order
+    d: "The trade is stuck: executed but clearing fails"
+  answer: d
+  explanation: The EMS accepts the order (SEDOL lookup succeeds), the trade executes, and booking to the custodian uses the correct ISIN. But the clearing house uses the stale SEDOL, so clearing fails — the trade is executed but not settled. The OMS needs event-driven sync tied to corporate actions, not just daily batch updates.
+  difficulty: 3
+  tags:
+  - scenario

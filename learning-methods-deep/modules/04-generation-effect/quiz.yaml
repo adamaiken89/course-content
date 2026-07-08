@@ -1,0 +1,121 @@
+- id: '4.1'
+  question: What does the generation effect demonstrate?
+  options:
+    a: Producing information during study improves later retrieval compared to passive
+      reading
+    b: Reading information multiple times improves retention more than active recall
+    c: Visual learning is more effective than textual learning
+    d: Generating information only helps when the generation is successful
+  answer: a
+  explanation: The generation effect (Slamecka & Graf, 1978) shows that producing
+    — even attempting to produce — information creates stronger memory traces than
+    passive exposure.
+  difficulty: 1
+  tags:
+  - concept
+- id: '4.2'
+  question: Which of the following is NOT one of the five generation patterns for
+    learning tools?
+  options:
+    a: Cloze deletion
+    b: Active reading
+    c: Prediction
+    d: Error-spotting
+  answer: b
+  explanation: 'Active reading is still passive consumption. The five generation patterns
+    are: cloze, predict, error-spot, self-explain, and free recall — all require producing
+    information.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.3'
+  question: According to transfer-appropriate processing, when does the generation
+    effect produce the best results?
+  options:
+    a: When generation difficulty is as high as possible
+    b: When the learner generates the same information multiple times
+    c: When the generation type matches the retrieval demands of the real task
+    d: When generation is combined with visual diagrams
+  answer: c
+  explanation: Transfer-appropriate processing means memory is strongest when encoding
+    operations match retrieval operations. If the real task requires free recall,
+    train with free recall generation, not cloze.
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.4'
+  question: 'A medical student trains by filling in the blank: ''A patient with chest
+    pain and ST-elevation has {STEMI}.'' The real exam requires diagnosing STEMI from
+    symptom lists. What''s the mismatch?'
+  options:
+    a: The real exam is easier than the training task
+    b: The blank is too easy to fill
+    c: There is no mismatch — cloze is always effective
+    d: The generation type (cloze) does not match real retrieval (pattern recognition)
+  answer: d
+  explanation: The cloze task provides the diagnosis trigger (ST-elevation + chest
+    pain) and asks for the label. Real diagnosis requires recognizing the pattern
+    from raw symptoms — different retrieval operation. Free recall or error-spot would
+    match better.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '4.5'
+  question: What is the optimal generation success rate for calibration?
+  options:
+    a: Around 80%
+    b: 50% (challenging but achievable)
+    c: 100% (ensures success)
+    d: 30% (maximum difficulty for strongest effect)
+  answer: a
+  explanation: ~80% success rate balances generation benefit with manageable struggle.
+    Lower risks frustration (can't generate), higher means gap is too small (trivial
+    generation).
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.6'
+  question: A learner scores 95% on single-blank cloze questions. What should the
+    system do next?
+  options:
+    a: Increase cloze difficulty by using harder terminology
+    b: Advance to multiple-blank cloze or predict tasks
+    c: Add more single-blank questions for reinforcement
+    d: Reduce context cues to increase difficulty
+  answer: b
+  explanation: 95% success means single-blank cloze is no longer at the productive
+    edge. The system should increase generation demand by advancing to the next pattern
+    (multiple-blank cloze or predict).
+  difficulty: 2
+  tags:
+  - application
+- id: '4.7'
+  question: Failed generation (trying to generate but getting it wrong) produces what
+    effect compared to passive reading?
+  options:
+    a: Worse retention because the wrong answer interferes
+    b: Equal retention — the attempt doesn't matter, only correct info does
+    c: Better retention — the attempt itself activates relevant knowledge
+    d: Better retention only if the learner also reads the correct answer
+  answer: c
+  explanation: Even failed generation strengthens memory because the attempt activates
+    relevant knowledge structures. The act of searching memory — even without success
+    — leaves a trace. The correct answer then connects to this activated context.
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.8'
+  question: 'A learning tool blanks random words in sentences: ''The {quick} brown
+    fox {jumps} over the {lazy} dog.'' Why is this ineffective?'
+  options:
+    a: The blanks are too close together
+    b: There are too many blanks in one sentence
+    c: The sentence is too short for generation to work
+    d: The blanks test trivial pattern-matching, not semantic understanding
+  answer: d
+  explanation: Good generation tasks blank key concepts that require understanding.
+    Random word blanking tests predictability ('the X brown fox') not understanding.
+    The learner can fill without engaging the concept.
+  difficulty: 2
+  tags:
+  - scenario

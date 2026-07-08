@@ -1,0 +1,108 @@
+- id: cum.33
+  type: mcq
+  source_modules:
+  - 18
+  question: In Mixture-of-Experts, what problem does the auxiliary load-balancing loss solve?
+  options:
+    a: Expert parameters diverge during training
+    b: Router sends tokens mostly to a few experts, leaving others unused
+    c: Experts forget their specialised knowledge
+    d: The capacity factor becomes too large
+  answer: b
+  explanation: Router collapse causes load imbalance. The auxiliary loss (importance/load/z-loss) penalises imbalanced routing so all experts get trained.
+  difficulty: 2
+  tags:
+  - cross-module
+  - training
+- id: cum.34
+  type: mcq
+  source_modules:
+  - 17
+  question: Inside a MoE transformer layer, what does the router do?
+  options:
+    a: Sends each token to the top-k most relevant experts, then combines their outputs
+    b: Trains every expert on every token to keep them general
+    c: Merges all expert weights into one dense feed-forward matrix
+    d: Replaces attention with expert operations
+  answer: a
+  explanation: A learned gating function scores experts per token, activates the top-k, and the weighted sum of their outputs feeds the next layer.
+  difficulty: 1
+  tags:
+  - concept
+  - mechanism
+- id: cum.35
+  type: cloze
+  source_modules:
+  - 18
+  question: An auxiliary load-balancing loss pushes the router to distribute tokens {uniformly} across experts instead of collapsing onto a few.
+  answer: uniformly
+  explanation: Balanced routing keeps all experts trained and avoids the collapse where a few experts receive most tokens.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: cum.36
+  type: mcq
+  source_modules:
+  - 19
+  question: What does research on expert specialisation typically find?
+  options:
+    a: Experts show loose topical specialisation and often route together with shared circuits, not hard hand-assigned topics
+    b: Each expert cleanly owns one semantic topic such as math or code
+    c: Specialisation is fixed at initialization and never changes
+    d: Experts do not specialise at all once training finishes
+  answer: a
+  explanation: Learned expert groupings are soft and layer-dependent; clean topic ownership is mostly an intuition, not what probes reveal.
+  difficulty: 3
+  tags:
+  - concept
+  - synthesis
+- id: cum.37
+  type: cloze
+  source_modules:
+  - 17
+  question: MoE FLOPs stay low per token because only {top}-k experts are activated, while the rest idle.
+  answer: top
+  explanation: Activating a small number of experts per token is the source of MoE's sparse-activation efficiency.
+  difficulty: 2
+  tags:
+  - mechanism
+  - concept
+- id: cum.38
+  type: mcq
+  source_modules:
+  - 18
+  question: Which router failure harms MoE training the most?
+  options:
+    a: Uniform routing that gives every expert an equal share
+    b: Capacity factor set exactly to 1.0
+    c: Using shared experts alongside routed ones
+    d: Router collapse, where most tokens are sent to one or a few experts and others starve
+  answer: d
+  explanation: Collapse starves most experts of gradients and prediction signal, wasting capacity — the exact failure the load-balancing loss prevents.
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: cum.39
+  type: tf
+  source_modules:
+  - 20
+  statement: An expert that receives no tokens for many steps stops receiving gradient updates and can stay dead for the rest of training.
+  answer: true
+  explanation: Dead experts get no gradient, so they never recover on their own; load-balancing losses and router tricks are designed to avoid them.
+  difficulty: 2
+  tags:
+  - concept
+  - synthesis
+- id: cum.40
+  type: tf
+  source_modules:
+  - 19
+  statement: Within a layer, most experts encode fairly similar computation; clean topic-level specialisation is weaker than often assumed.
+  answer: true
+  explanation: Layer-level expert probes show large shared components; specialisation is real but partial and distributed across layers.
+  difficulty: 3
+  tags:
+  - concept
+  - synthesis

@@ -1,0 +1,120 @@
+- id: '2.1'
+  question: After a 4:1 stock split, how should a GTC limit sell order for 1000 shares @ $200 be adjusted?
+  options:
+    a: 1000 shares @ $50
+    b: 4000 shares @ $50
+    c: 4000 shares @ $200
+    d: 250 shares @ $200
+  answer: b
+  explanation: "After a split, share count increases and price decreases. 4:1 split: qty × 4 = 4000, price ÷ 4 = $50. Total value stays the same ($200K)."
+  difficulty: 1
+  tags:
+  - calculation
+- id: '2.2'
+  question: Which corporate action does not require adjusting GTC orders?
+  options:
+    a: 4:1 stock split
+    b: 1:10 reverse split
+    c: $0.50 per share cash dividend
+    d: Stock delisting (M&A/buyout)
+  answer: c
+  explanation: Cash dividends don't change the stock's quantity or price structure, so GTC orders don't need adjustment. A/B/D all directly affect order parameters.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.3'
+  question: Who is normally responsible for processing corporate action adjustments (such as a stock split) before they reach the OMS?
+  options:
+    a: The trader desk
+    b: The exchange
+    c: The EMS vendor
+    d: The back-office / corporate actions team
+  answer: d
+  explanation: A stock split is a corporate action normally handled by the back-office/corporate actions team, not automatically by the OMS. The OMS receives adjustment notices from the corporate actions system, then applies them per classification.
+  difficulty: 1
+  tags:
+  - concept
+- id: '2.4'
+  question: What is the current standard settlement cycle for US equities (NYSE/NASDAQ)?
+  options:
+    a: T+0 (same-day settlement)
+    b: T+2
+    c: T+3
+    d: T+1 (next business day after trade date)
+  answer: d
+  explanation: US equities moved from T+2 to T+1 settlement in May 2024. The OMS must use different settlement handling logic for T+1 equities vs T+2 bonds.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.5'
+  question: Lot size affects minimum order quantity checks. What must the OMS validate regarding lot size?
+  options:
+    a: Minimum order quantity must satisfy qty % lot size == 0
+    b: Lot size only matters for institutional accounts
+    c: Order price must be a multiple of lot size
+    d: Lot size is only relevant for bonds
+  answer: a
+  explanation: US equities have lot size 1, but some historically older markets (Taiwan, Hong Kong) use 1000 or 100 shares. The suitability/pre-trade engine must verify qty % lot size == 0.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.6'
+  question: A client account is in USD but the product is JPY-denominated. Which exchange rate should the pre-trade limit comparison use?
+  options:
+    a: Spot FX rate to convert the product value into the client's base currency
+    b: Historical average rate
+    c: The previous day's closing rate
+    d: No conversion; compare values directly
+  answer: a
+  explanation: Convert the product value into the client's base currency using the spot FX rate before comparing. Stale rates could overestimate or underestimate the limit, so the pre-trade system needs a real-time FX feed.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.7'
+  question: After the OMS receives a corporate action notice, what is the correct processing sequence?
+  options:
+    a: Immediately adjust all affected orders, then notify the trader
+    b: Notify the trader, adjust after confirmation, then send FIX 35=G cancel/replace requests
+    c: Cancel all affected orders immediately, then re-enter them
+    d: Wait for regulatory guidance before processing
+  answer: b
+  explanation: Traders must first be notified of the pending adjustment. After they are informed (or confirm), modify orders via FIX Order Cancel/Replace Request (35=G). Directly updating internal state or canceling without notice causes problems.
+  difficulty: 3
+  tags:
+  - application
+- id: '2.8'
+  question: A trader places a GTC buy order at $50. The stock announces a 2:1 split and the system does not adjust the order before the ex-date. After the split the price goes from $100 to $50. What happens to the order?
+  options:
+    a: The order stays at $50, and since the stock is now $50, it fills correctly
+    b: The order price stays at $50, but the order is effectively wrong (it should have been adjusted)
+    c: The system auto-cancels the order
+    d: The order price becomes $25
+  answer: b
+  explanation: Because the system didn't adjust, the order is still at $50. The correct adjusted price should be $25 ($50 ÷ 2). If it fills at $50, the trader pays double the correct price. This is a system bug.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '2.9'
+  question: A company is acquired and its stock is delisted (M&A/buyout). What should the OMS do with open GTC orders?
+  options:
+    a: Cancel all GTC orders and notify holding clients
+    b: Adjust quantity x4 and price /4
+    c: Leave the orders unchanged
+    d: Convert the orders to day orders
+  answer: a
+  explanation: For M&A/buyout the target stock is delisted, so all GTC orders must be cancelled and holding clients notified. Splits adjust qty/price; only metadata changes keep orders valid.
+  difficulty: 1
+  tags:
+  - concept
+- id: '2.10'
+  question: A company changes its name and ticker after a rebranding. What is the impact on open GTC orders?
+  options:
+    a: All GTC orders must be cancelled
+    b: Order quantity and price must be adjusted
+    c: Update the symbol/name in the system; GTC orders remain valid
+    d: Orders must be re-sent to the EMS from scratch
+  answer: c
+  explanation: Name/ticker change is metadata-only. The OMS updates the symbol and name, and GTC orders survive unchanged. Only actions affecting quantity and price (splits, stock dividends) require adjustment.
+  difficulty: 2
+  tags:
+  - concept

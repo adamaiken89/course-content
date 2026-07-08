@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "定期存款將 {本金} 鎖定 {一段時間} 換取 {較高利息}, 提前提取通常 {冇利息}。"
+  answer: "本金、一段時間、較高利息、冇利息"
+  explanation: "定存係最傳統嘅穩健工具, 鎖定換高息, 但有流動性懲罰。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "國庫券 (T-Bill) 用 {折扣價} 發行, 到期取 {票面值}, 賺 {差價}, 唔派 {利息}。"
+  answer: "折扣價、票面值、差價、利息"
+  explanation: "T-Bill 折扣發行, 唔派息, 賺買入價同票面值嘅差價。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.3"
+  question: "貨幣市場基金 (MMF) 投資於 {短期債務工具} (≤1 年), NAV 通常維持 {1 美元/單位}, 流動性 {高} (T+0/T+1)。"
+  answer: "短期債務工具、1 美元/單位、高"
+  explanation: "MMF 投資短期債, 理論上極低違約風險, 隨時可以贖回。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.4"
+  question: "債券核心結構: 發行機構借 {本金}, 承諾 {定期派息 Coupon} 同 {到期還本 Face Value}。"
+  answer: "本金、定期派息 Coupon、到期還本 Face Value"
+  explanation: "債券 = 借據, 票面利率 + 到期還本。Module 15/16 詳細講。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "短期國庫券 (3-12 個月) 喺金融界被視為 {無風險利率 Rf 基準}, Sharpe 公式入面嘅 Rf 通常用佢。"
+  answer: "無風險利率 Rf 基準"
+  explanation: "違約風險近乎 0 + 高流動性, 係金融界「無風險」嘅 proxy。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.6"
+  question: "投資工具選擇策略: {應急錢} 放 {MMF/活期}, {1 年內確定回報} 放 {短期定存/T-Bill}, {3-5 年目標} 放 {中期定存/5-10 年債}, {10 年以上} 放 {長期債/股票}。"
+  answer: "應急錢、MMF/活期、1 年內確定回報、短期定存/T-Bill、3-5 年目標、中期定存/5-10 年債、10 年以上、長期債/股票"
+  explanation: "唔同期限用唔同工具, 唔好將應急錢鎖 5 年定存。"
+  difficulty: 3
+  tags: [concept, application]
+
+- id: "c.7"
+  question: "{保本} 唔等於 {保值}, 因為 {通脹} 會蠶食實際購買力。"
+  answer: "保本、保值、通脹"
+  explanation: "定存 / T-Bill 保本但跑輸通脹, 實質購買力下降。"
+  difficulty: 1
+  tags: [concept, misconception]
+
+- id: "c.8"
+  question: "退休人士嘅 300 萬配置: {30% MMF} (應急) + {30% 1-2 年定存} + {30% 5-10 年政府債} + {10% 大盤 ETF}。"
+  answer: "30% MMF、30% 1-2 年定存、30% 5-10 年政府債、10% 大盤 ETF"
+  explanation: "分散工具 + 分散期限, 平衡流動性同回報。唔好全部鎖單一工具。"
+  difficulty: 3
+  tags: [scenario, application]
+
+- id: "c.9"
+  question: "T-Bill 嘅風險包括 {再投資風險} (到期後利率跌)、{通脹風險} (實質回報跌)、{利率風險} (持有期二手市場價跌)、{流動性風險} (危機時短期)。"
+  answer: "再投資風險、通脹風險、利率風險、流動性風險"
+  explanation: "「零風險」只係 marketing, 真正零風險資產唔存在。"
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "c.10"
+  question: "債券種類 (按風險由低至高): {政府債} < {政府機構債} < {公司債} < {高息債} < {新興市場債}。"
+  answer: "政府債、政府機構債、公司債、高息債、新興市場債"
+  explanation: "風險越高, 票面利率越高, 違約可能性越大。"
+  difficulty: 2
+  tags: [terminology, comparison]

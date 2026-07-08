@@ -1,0 +1,134 @@
+- id: '12.1'
+  question: 買入一間公司嘅股票代表?
+  options:
+    a: 借錢俾公司
+    b: 擁有公司一部份
+    c: 政府擔保
+    d: 一定獲利
+  answer: b
+  explanation: 股票 = 股權 (Equity), 買入即擁有公司 N 股嘅 K/N 部份。有投票權, 賺股息 + 資本利得, 但亦承擔公司經營風險,
+    股價可跌至 0。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.2'
+  question: 主動基金 (Active Fund) 同 ETF 最大嘅分別係?
+  options:
+    a: ETF 唔可以即日買賣
+    b: 主動基金回報一定高過 ETF
+    c: 主動基金由基金經理主動揀股, ETF 多數被動追指數
+    d: 主動基金只可以買股票
+  answer: c
+  explanation: 主動基金靠基金經理揀股跑贏指數, 但 SPIVA 報告顯示 85%+ 跑輸。ETF 多數被動跟指數, 費用低, 長線多數跑贏主動基金平均。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '12.3'
+  question: S&P SPIVA 報告顯示過去 15 年, 美股主動股票基金跑輸指數嘅比例大約?
+  options:
+    a: 50%
+    b: 85%+
+    c: 10%
+    d: 30%
+  answer: b
+  explanation: 'S&P SPIVA 報告 15 年數據: 85%+ 主動基金跑輸 S&P 500。20 年數字仲高。呢個係公開數據, 唔係講法。'
+  difficulty: 1
+  tags:
+  - terminology
+  - data
+- id: '12.4'
+  question: ETF 嘅「授權參與者 (AP)」做咩?
+  options:
+    a: 管理基金經理
+    b: 創造 / 贖回 ETF 份額, 套利保持價格 ≈ NAV
+    c: 監管 ETF 嘅政府機構
+    d: ETF 嘅客戶服務
+  answer: b
+  explanation: AP 係大行 (高盛/摩根), 當 ETF 價偏離 NAV, 佢哋創造 / 贖回份額套利, 拉返 ETF 價 ≈ NAV。呢個機制令
+    ETF 公平, 唔似舊式封閉基金有大幅溢價。
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '12.5'
+  question: 你月儲 $5,000 想 long-term 投資, 邊個策略最穩陣?
+  options:
+    a: 擺晒做活期
+    b: All-in 一隻個股, 集中火力
+    c: 月供 1 隻大盤 ETF, 持有 10 年以上
+    d: 月供 3 隻主動基金
+  answer: c
+  explanation: '研究: 月供大盤 ETF 10 年以上嘅散戶, 多數跑贏月供主動基金同炒個股嘅同輩。費用低 + 機械跟指數 + 行為偏差少。'
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '12.6'
+  question: 以下邊個唔係 ETF 嘅優勢?
+  options:
+    a: 保本 (一定唔會蝕)
+    b: 透明度高 (每日披露持倉)
+    c: 費用低 (0.03-0.5%/年)
+    d: 即時買賣, 有限價盤
+  answer: a
+  explanation: ETF 唔保本, 同股票一樣會跌。佢嘅優勢係費用低、流動性高、分散、透明度高。但市場跌, ETF 都跌, 唔可以當定存。
+  difficulty: 1
+  tags:
+  - misconception
+  - concept
+- id: '12.7'
+  question: 你揀 3 隻個股 (全部港股科技), 認為「分散咗」, 但其實分散效果有限, 因為?
+  options:
+    a: 3 隻股加埋一定輸
+    b: 個股唔可以分散
+    c: 3 隻太少, 要 10 隻以上
+    d: 3 隻同類 (港股科技), 相關性 +0.7
+  answer: d
+  explanation: 3 隻港股科技股 (騰訊/美團/阿里) 相關性 +0.7, 跌市一齊跌。真正分散要跨資產 + 跨地區 + 跨行業, 3 隻同類約等於
+    1 隻大盤 ETF 嘅分散效果。
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '12.8'
+  question: 主動基金跑輸指數嘅 3 個主要原因?
+  options:
+    a: 交易成本、現金拖累、行為偏差
+    b: 政府監管、稅務、上市費
+    c: 指數太難、經理太懶、客戶太多
+    d: 經理冇讀書、客戶冇錢、市場太大
+  answer: a
+  explanation: '三大原因: 交易成本(頻買賣累積 1-2%)、現金拖累(留 5% 現金應付贖回牛市跑輸)、行為偏差(經理都係人, 跌市恐慌斬倉)。指數機械跟,
+    避開全部。'
+  difficulty: 2
+  tags:
+  - concept
+- id: '12.9'
+  question: 你睇 YouTube KOL 推介 3 隻個股, 應該?
+  options:
+    a: 80% 大盤 ETF + 20% 自己研究嘅個股, 唔好盲跟
+    b: 全部買, 因為 KOL 一定準
+    c: 賣晒所有嘢, All-in KOL 推介
+    d: 即刻 All-in 100 萬
+  answer: a
+  explanation: KOL 推介多數係情緒化 + 利益衝突, 唔可以盲跟。80% ETF 核心 (穩陣跟大市) + 20% 個股衛星 (自己研究), 平衡風險同機會。
+  difficulty: 2
+  tags:
+  - scenario
+  - misconception
+- id: '12.10'
+  question: 槓桿 / 反向 ETF 適合長揸 (5-10 年) 嗎?
+  options:
+    a: 適合, 只要指數升就贏
+    b: 適合, 但要有大本金
+    c: 適合, 槓桿放大回報
+    d: 唔適合, 每日 rebalance 蠶食, 長期偏離指數
+  answer: d
+  explanation: 槓桿 / 反向 ETF 每日 reset, 即使指數橫行, ETF 都會因為波動而損失(波動拖累效應)。長揸 5-10 年必輸。呢類工具只適合短炒
+    (1-10 日) 同有經驗嘅人。
+  difficulty: 3
+  tags:
+  - concept
+  - misconception
+

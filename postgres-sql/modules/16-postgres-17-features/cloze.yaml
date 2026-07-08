@@ -1,0 +1,60 @@
+- id: "c.1"
+  question: "The EXPLAIN option that reports optimizer memory used per plan node is called {MEMORY}."
+  answer: "MEMORY"
+  explanation: "EXPLAIN (MEMORY) shows planner memory consumption for each node; pair it with VERBOSE for full detail."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "The EXPLAIN option that must run with ANALYZE and measures row-to-output conversion cost is {SERIALIZE}."
+  answer: "SERIALIZE"
+  explanation: "EXPLAIN (SERIALIZE, ANALYZE) isolates how much time is spent formatting result rows for the client."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.3"
+  question: "A query with huge {serialize} time is bottlenecked by output conversion, not by scans or joins."
+  answer: "serialize"
+  explanation: "Per-node serialize times reveal when expensive casting or formatting of output rows dominates the query."
+  difficulty: 2
+  tags: [concept]
+- id: "c.4"
+  question: "{JSON_TABLE} maps JSON paths into a typed relational row set usable inside FROM."
+  answer: "JSON_TABLE"
+  explanation: "It declares COLUMNS with types and PATH expressions plus ON EMPTY behavior, producing regular SQL rows."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.5"
+  question: "Before PG17, MERGE could not show what it wrote; the {RETURNING} clause (added in PG17) returns merged rows."
+  answer: "RETURNING"
+  explanation: "MERGE RETURNING closes the loop that previously needed a follow-up SELECT after the merge."
+  difficulty: 1
+  tags: [concept]
+- id: "c.6"
+  question: "PG17's {streaming I/O} reads sequential blocks in bulk, roughly doubling COPY export throughput."
+  answer: "streaming I/O"
+  explanation: "Sequential scans and COPY stream block reads instead of one round trip per block; random point lookups gain little."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "Btree {multi-value} search lets one index probe pass several equality values to the tree, speeding IN-list lookups."
+  answer: "multi-value"
+  explanation: "With several values per probe, internal btree pages are traversed fewer times than value-by-value."
+  difficulty: 2
+  tags: [concept]
+- id: "c.8"
+  question: "PG17 allows a {NOT VALID} check constraint to prune partitions during planning without a long write lock."
+  answer: "NOT VALID"
+  explanation: "Add CHECK ... NOT VALID cheaply for pruning, then run VALIDATE CONSTRAINT as a background scan to prove correctness."
+  difficulty: 2
+  tags: [concept]
+- id: "c.9"
+  question: "Running {VALIDATE CONSTRAINT} after a NOT VALID check still requires a full table scan, so budget off-peak time."
+  answer: "VALIDATE CONSTRAINT"
+  explanation: "The cheap part is adding NOT VALID; proving the check holds requires scanning every row once."
+  difficulty: 3
+  tags: [process]
+- id: "c.10"
+  question: "Incremental sort first appeared in PostgreSQL {13}, not 17; later releases improved and capped it."
+  answer: "13"
+  explanation: "PG13 introduced incremental sort; PG16 and PG17 made more plans choose it and bounded its memory use."
+  difficulty: 2
+  tags: [comparison]

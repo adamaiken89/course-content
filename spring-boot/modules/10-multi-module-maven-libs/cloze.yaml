@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: A {reactor} resolves sibling module dependencies from the current build rather than installed artifacts."
+  answer: "reactor"
+  explanation: "The reactor's co-build consistency is what separate versioned repos cannot provide."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: A BOM centralizes versions through {dependencyManagement}, which pins versions without adding jars."
+  answer: "dependencyManagement"
+  explanation: "Managing versions without adding dependencies is what prevents transitive leak to consumers."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.3"
+  question: "Complete: In an api/impl split, the {api} module holds DTOs and interfaces and never depends on implementation frameworks."
+  answer: "api"
+  explanation: "The contract stays framework-free so consumers inherit nothing they did not choose."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.4"
+  question: "Complete: JPMS uses {module-info}.java to make api/impl boundaries structural, enforced by the compiler via exports and requires."
+  answer: "module-info"
+  explanation: "A compile-time structural boundary cannot be silently broken the way a convention-only boundary can."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Complete: One repo, one version, one release — this {lockstep} cost of a reactor is what separate repos trade away for version drift."
+  answer: "lockstep"
+  explanation: "The reactor couples ships of all modules; independent repos break coupling but risk version divergence."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.6"
+  question: "Complete: The {Rule of Three} says extract a shared library only when the same logic appears a third time."
+  answer: "Rule of Three"
+  explanation: "Waiting until the third occurrence reveals the contract shape before you pay for the abstraction."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.7"
+  question: "Complete: The shared-lib {nightmare} occurs when every module depends on one common module, so every dependency it declares lands on every classpath."
+  answer: "nightmare"
+  explanation: "A blast radius of the whole repo turns every dependency change into a cross-team negotiation."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Complete: During migration, an import of the platform {BOM} first normalizes versions so all modules resolve the same versions before code moves."
+  answer: "BOM"
+  explanation: "Version drift must be removed before extraction; otherwise moving code carries the drift with it."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.9"
+  question: "Complete: Consumers depend only on the api module, which keeps them free to {swap} implementations without changing code."
+  answer: "swap"
+  explanation: "The api/impl split's payoff is interchangeable implementations behind a stable contract."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.10"
+  question: "Complete: Enforcing boundaries requires {rules} or tooling — Maven Enforcer, ArchUnit, or JPMS — because habit alone lets the first violation ship."
+  answer: "rules"
+  explanation: "Convention-only boundaries fail the first time a developer is in a hurry; enforced rules cannot be skipped."
+  difficulty: 2
+  tags: [concept]

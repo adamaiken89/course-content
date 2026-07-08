@@ -1,0 +1,119 @@
+- id: "3.1"
+  question: "Which DGS release is the first with native Jackson 3 support wired in as the default on Boot 4?"
+  options:
+    a: "DGS 11.0"
+    b: "DGS 12.0.0"
+    c: "DGS 10.0"
+    d: "DGS 13.0"
+  answer: b
+  explanation: "DGS 12.0.0 (April 2026) is the first DGS with native Jackson 3. DGS 11.0 supported Boot 4 but shipped the Jackson 2 mapper integration."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "3.2"
+  question: "Which DgsJsonMapper adapter is the default in DGS 12 when Jackson 3 is on the classpath?"
+  options:
+    a: "Jackson3DgsJsonMapperAdapter"
+    b: "Jackson2DgsJsonMapperAdapter"
+    c: "Default DgsJsonMapperAdapter"
+    d: "JsonBMapperAdapter"
+  answer: a
+  explanation: "Jackson3DgsJsonMapperAdapter auto-configures by default. The Jackson 2 adapter is opt-in via the graphql-dgs-jackson2 module."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "3.3"
+  question: "Both Jackson 2 and Jackson 3 are on the classpath. Which property forces a specific JSON mapper in DGS 12?"
+  options:
+    a: "spring.jackson.legacy-fallback"
+    b: "dgs.json.mapper.choice"
+    c: "dgs.graphql.preferred-json-mapper"
+    d: "graphql.dgs.mapper"
+  answer: c
+  explanation: "dgs.graphql.preferred-json-mapper accepts jackson3 or jackson2 to pick the backend when both versions are present."
+  difficulty: 2
+  tags: [concept]
+
+- id: "3.4"
+  question: "What role does the DgsJsonMapper play in DGS 12?"
+  options:
+    a: "A required replacement for JSONB"
+    b: "A Jackson 2 only utility"
+    c: "A GraphQL schema parser"
+    d: "A Jackson-agnostic interface that plugs any JSON backend"
+  answer: d
+  explanation: "DgsJsonMapper abstracts serialization, deserialization, and JSON-path work so DGS supports Jackson 3 and Jackson 2 through one code path."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "3.5"
+  question: "A field named reviews lives on the Product type, not on Query. Which annotation resolves it?"
+  options:
+    a: "@DgsData with parentType Product"
+    b: "@DgsQuery"
+    c: "@DgsMutation"
+    d: "@DgsSchemaType"
+  answer: a
+  explanation: "@DgsData with parentType Product and field reviews binds a nested field resolver. @DgsQuery only binds root Query fields."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "3.6"
+  question: "In a schema-first DGS project, where does the API contract live and how do fetchers map to it?"
+  options:
+    a: "In Java interfaces read via reflection"
+    b: "In resources/schema .graphqls files, mapped 1:1 to DgsComponent fetchers"
+    c: "In application.properties"
+    d: "In a generated database schema"
+  answer: b
+  explanation: "GraphQL schema files under resources/schema define the contract. DGS wires query and mutation names to annotated fetcher methods at startup."
+  difficulty: 2
+  tags: [concept]
+
+- id: "3.7"
+  question: "A gateway asks your subgraph to contribute fields to an Order entity owned by another subgraph. The federation payload carries only the id. What do you implement?"
+  options:
+    a: "A @DgsQuery returning the whole Order"
+    b: "A DataLoader keyed by query name"
+    c: "An @DgsEntityFetcher for Order that rebuilds the entity from the reference map"
+    d: "A REST fallback controller"
+  answer: c
+  explanation: "@DgsEntityFetcher for Order receives the partial reference map and reassembles the local part of the entity for the gateway."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "3.8"
+  question: "You return the record ProductReviewSummary from a fetcher in a DGS 12 app. How is it serialized?"
+  options:
+    a: "Through a hard-coded Gson converter"
+    b: "Through the deprecated ObjectMapper only"
+    c: "Not serialized, DGS skips unknown types"
+    d: "Through the configured DgsJsonMapper, so Jackson 3 rules apply"
+  answer: d
+  explanation: "Fetcher return values serialize through the auto-configured DgsJsonMapper, so Jackson 3 rules govern records, immutability, and custom serializers."
+  difficulty: 1
+  tags: [concept]
+
+- id: "3.9"
+  question: "What do the new DgsGraphQLClient and DgsMonoGraphQLClient interfaces change compared with the deprecated client constructors?"
+  options:
+    a: "They remove reactive support"
+    b: "They program against DgsJsonMapper instead of a raw ObjectMapper"
+    c: "They require a RestClient converter"
+    d: "They drop query variables"
+  answer: b
+  explanation: "The Dgs client interfaces pass a DgsJsonMapper, so clients share the same Jackson 3 configuration as the server. The ObjectMapper based constructors are deprecated."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "3.10"
+  question: "A field is renamed in the schema and the team hand-writes fetchers with no codegen. What is the first failure a client hits?"
+  options:
+    a: "A compile error in the server build"
+    b: "A schema validation exception at startup"
+    c: "A runtime GraphQL error or null field deep in a client page"
+    d: "A Gradle daemon crash"
+  answer: c
+  explanation: "Without codegen the schema-to-code mapping is unverified until runtime, so the renamed field surfaces as a GraphQL error or an empty payload in production."
+  difficulty: 3
+  tags: [scenario]

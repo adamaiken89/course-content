@@ -1,0 +1,119 @@
+- id: "13.1"
+  question: "What does @WebMvcTest load into the test context?"
+  options:
+    a: "The full application context including databases and message brokers"
+    b: "Web-layer beans such as controllers and MVC config but not services"
+    c: "Only the GraphQL schema and data fetchers"
+    d: "Nothing except the test class itself"
+  answer: b
+  explanation: "The slice keeps web autoconfiguration and controllers but leaves services and repositories out for the test to mock."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "13.2"
+  question: "What replaces the deprecated @MockBean in new Boot 4 slice tests?"
+  options:
+    a: "@Autowired on a stub class"
+    b: "@WebMock"
+    c: "@MockitoBean"
+    d: "@TestConfiguration"
+  answer: c
+  explanation: "Spring deprecates @MockBean since Framework 6.2 and the bean-override API uses @MockitoBean for mocks."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "13.3"
+  question: "Why does a slice test start so much faster than a full @SpringBootTest?"
+  options:
+    a: "It skips assertion overhead"
+    b: "It runs on a smaller container"
+    c: "It compiles fewer test classes"
+    d: "It brings up minimal autoconfiguration without databases or brokers"
+  answer: d
+  explanation: "Modular autoconfiguration plus excluded collaborators leave a small context that boots in milliseconds."
+  difficulty: 1
+  tags: [concept]
+
+- id: "13.4"
+  question: "A @WebMvcTest POST request returns 403 although the handler exists. Security 7 is on the classpath. Why?"
+  options:
+    a: "CSRF rejects the token-less mutating request before the controller runs"
+    b: "The mock service returned null"
+    c: "JsonPath cannot parse the response"
+    d: "The controller is not annotated with @RestController"
+  answer: a
+  explanation: "Security 7 enables CSRF for all endpoints, so MockMvc state-changing requests need csrf() or the security filters off."
+  difficulty: 2
+  tags: [concept]
+
+- id: "13.5"
+  question: "Which annotation gives a MockMvc slice request an authenticated principal?"
+  options:
+    a: "@WebMvcTest"
+    b: "@WithMockUser"
+    c: "@MockitoBean"
+    d: "@Transactional"
+  answer: b
+  explanation: "TestUser support fills the security context before filters evaluate, so the request is seen as authenticated."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "13.6"
+  question: "In a @GraphQlTest DGS test, which class executes a query against the sliced context like a real client?"
+  options:
+    a: "RestTemplate"
+    b: "WebTestClient"
+    c: "GraphQLTestTemplate"
+    d: "JdbcTemplate"
+  answer: c
+  explanation: "GraphQLTestTemplate runs the query through the DGS components and real Jackson mapper without any HTTP server."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "13.7"
+  question: "A test must prove a service transaction commits across two repositories. What is the right context?"
+  options:
+    a: "Full @SpringBootTest, because the question crosses persistence layers a slice does not load"
+    b: "@WebMvcTest with a repository mock"
+    c: "@GraphQlTest with a service mock"
+    d: "No test can verify transactions"
+  answer: a
+  explanation: "Slice contexts mock the persistence layer, so a real commit cannot be proven there. Cross-layer wiring belongs to the full context."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "13.8"
+  question: "How do you assert the value of a field nested in the JSON a MockMvc response returns?"
+  options:
+    a: "With a schema validator"
+    b: "By casting the body to a Map"
+    c: "With verify() on the controller"
+    d: "With jsonPath such as jsonPath('$.quantity').value(3)"
+  answer: d
+  explanation: "jsonPath walks the response body with dot paths, letting assertions target a single field directly."
+  difficulty: 2
+  tags: [formula]
+
+- id: "13.9"
+  question: "A slice test only cares about serialization and wants no auth gate and no CSRF check. What works?"
+  options:
+    a: "@MockitoBean the security chain"
+    b: "@AutoConfigureMockMvc addFilters(false)"
+    c: "Send a fake bearer token"
+    d: "Disable the controller"
+  answer: b
+  explanation: "Disabling MockMvc filters removes security and CSRF from the slice, leaving pure controller behavior."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "13.10"
+  question: "In a slice test the stub for a service lives in which given-when-then phase?"
+  options:
+    a: "Neither, stubs belong to setup only"
+    b: "Then, next to the assertions"
+    c: "Given, before the request is performed"
+    d: "When, inside the perform call"
+  answer: c
+  explanation: "The given phase arranges mock behavior; the when phase performs the request; the then phase asserts and verifies."
+  difficulty: 3
+  tags: [concept]

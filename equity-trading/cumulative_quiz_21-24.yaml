@@ -1,0 +1,127 @@
+- id: cum.51
+  type: mcq
+  source_modules:
+  - 21
+  question: Which EMH form says technical analysis cannot generate excess returns?
+  options:
+    a: Weak form
+    b: Semi-strong form
+    c: Strong form
+    d: All three
+  answer: a
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.52
+  type: tf
+  source_modules:
+  - 21
+  statement: Strong form EMH says all information including private is reflected in prices.
+  answer: true
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.53
+  type: cloze
+  source_modules:
+  - 22
+  question: Losses hurt about {2} times more than equivalent gains feel good — this is {loss aversion}.
+  answer: '2'
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.54
+  type: mcq
+  source_modules:
+  - 22
+  question: 'Disposition effect describes:'
+  options:
+    a: Selling winners too early and holding losers too long
+    b: Buying winners and selling losers
+    c: Holding both winners and losers equally
+    d: Trading based on news
+  answer: a
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.55
+  type: cloze
+  source_modules:
+  - 22
+  question: Anchoring bias causes traders to fixate on a {reference point} like purchase price.
+  answer: reference point
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.56
+  type: mcq
+  source_modules:
+  - 23
+  question: 'Reg NMS Rule 611 is also called:'
+  options:
+    a: Access Rule
+    b: Sub-Penny Rule
+    c: Order Protection Rule
+    d: Best Execution Rule
+  answer: c
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.57
+  type: mcq
+  source_modules:
+  - 23
+  question: 'Trading on material non-public information is illegal when:'
+  options:
+    a: You overhear it in public
+    b: An insider discloses it in breach of duty for personal benefit
+    c: You read it in an SEC filing
+    d: Your analyst deduces it from public data
+  answer: b
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.58
+  type: tf
+  source_modules:
+  - 23
+  - 24
+  statement: Spoofing involves entering orders with intent to cancel before execution.
+  answer: true
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.59
+  type: cloze
+  source_modules:
+  - 24
+  question: Best execution requires considering {price}, speed, likelihood, and cost.
+  answer: price
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.60
+  type: mcq
+  source_modules:
+  - 21
+  - 22
+  question: 'January effect is considered:'
+  options:
+    a: Proof of strong form EMH
+    b: An anomaly that challenges EMH
+    c: A regulatory requirement
+    d: A type of insider trading
+  answer: b
+  difficulty: 3
+  tags:
+  - cross-module
+  - synthesis

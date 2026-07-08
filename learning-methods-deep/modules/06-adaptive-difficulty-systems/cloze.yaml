@@ -1,0 +1,91 @@
+- id: c.1
+  question: 'Complete: Item {difficulty} is a static property of each question. Learner
+    {ability} is dynamically tracked per session.'
+  answer: difficulty, ability
+  explanation: Difficulty classifies the question (1=recall, 2=comprehension, 3=application).
+    Ability is the learner's current state tracked via streak and current_difficulty.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 'Complete: Ease-weighted sorting prioritizes {weak cards} — those with
+    the lowest easeFactor from FSRS-5 history.'
+  answer: weak cards
+  explanation: Cards with low easeFactor (frequently forgotten) appear first, ensuring
+    the learner addresses their weakest areas when attention is highest.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: 'Complete: The streak threshold for advancing difficulty is {3} consecutive
+    correct answers.'
+  answer: '3'
+  explanation: 3 correct in a row provides reliable evidence of stable performance
+    at current level before advancing difficulty.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: 'Complete: After a wrong answer, current_difficulty {decreases by 1} (minimum
+    1) — this is reverse-on-failure.'
+  answer: decreases by 1
+  explanation: Immediate difficulty drop on wrong answer prevents frustration spiral.
+    The learner gets a chance to rebuild with easier questions.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.5
+  question: 'Complete: The skip window shows questions with difficulty less than or
+    equal to {current_difficulty + 1}.'
+  answer: current_difficulty + 1
+  explanation: This provides challenge one step above current ability while ensuring
+    the learner can answer at least ~80% of questions.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: 'Complete: Reverse-on-failure drops difficulty immediately to prevent
+    {frustration spiral} — repeated failure at too-hard level.'
+  answer: frustration spiral
+  explanation: Multiple failures at the same hard level create learned helplessness.
+    Dropping difficulty rebuilds confidence and maintains the deliberate practice
+    sweet spot (~80% success).
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: 'Complete: A STREAK_THRESHOLD of {1} would advance difficulty after every
+    correct answer, risking premature advancement from lucky guesses.'
+  answer: '1'
+  explanation: Single correct answer could be luck. Three provides stable signal.
+    Each level should be tested with multiple questions before advancing.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: 'Complete: Learning ability is reset {per session} — each new session
+    starts at current_difficulty = 1 with streak = 0.'
+  answer: per session
+  explanation: This is a design choice. Alternatively, session could restore last
+    session's difficulty. Per-session reset gives the learner a fresh start each time.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.9
+  question: 'Complete: The three difficulty levels map to: 1 = {Recall}, 2 = Comprehension,
+    3 = Application.'
+  answer: Recall
+  explanation: Difficulty 1 questions test direct terminology and basic facts. Difficulty
+    2 requires applying concepts. Difficulty 3 requires multi-step reasoning and transfer.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.10
+  question: 'Complete: Adaptive difficulty bridges content ({static question bank})
+    and learning (dynamic state tracking).'
+  answer: static question bank
+  explanation: The questions are fixed in difficulty. The adaptation comes from which
+    questions are shown and in what order, based on the learner's changing state.
+  difficulty: 2
+  tags:
+  - concept

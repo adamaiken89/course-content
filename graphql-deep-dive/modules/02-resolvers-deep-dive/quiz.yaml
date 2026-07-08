@@ -1,0 +1,136 @@
+- id: '2.1'
+  question: What is the correct resolver signature?
+  options:
+    a: (parent, args, context, info) => data
+    b: (args, context, info) => data
+    c: (obj, params, ctx, ast) => data
+    d: (source, args, ctx, resolveInfo) => data
+  answer: a
+  explanation: Standard signature is (parent, args, context, info). Some frameworks
+    alias (source, args, context, info).
+  difficulty: 2
+  tags: []
+- id: '2.2'
+  question: When does the default resolver trigger?
+  options:
+    d: Only when no custom resolver is defined for a field
+    a: Always — GraphQL uses it internally
+    b: Only for scalar fields
+    c: Only for query root fields
+  answer: d
+  explanation: Default resolver runs when no custom resolver is defined. It reads
+    parent[fieldName]. Works for any field type.
+  difficulty: 2
+  tags: []
+- id: '2.3'
+  question: Resolver `User.posts` needs userId from parent. Where does it come from?
+  options:
+    b: parent.id
+    a: args.userId
+    c: context.userId
+    d: info.parentType
+  answer: b
+  explanation: parent (first arg) carries the return value of the parent field resolver
+    — in this case the User object, so parent.id gives the userId.
+  difficulty: 2
+  tags: []
+- id: '2.4'
+  question: A server creates fresh DB connection per request in context factory. What
+    is the problem?
+  options:
+    d: Database connections should be pooled, not created per-request
+    a: No problem — this is best practice
+    b: Context cannot hold promises
+    c: DB connections must be in info, not context
+  answer: d
+  explanation: Creating DB connections per-request wastes resources and adds latency.
+    Use a connection pool initialized at server startup; inject via lightweight data
+    source wrappers in context.
+  difficulty: 2
+  tags: []
+- id: '2.5'
+  question: 'Resolver throws `new GraphQLError(''fail'', { extensions: { code: ''DB_ERROR''
+    } })`. What response shape?'
+  options:
+    c: 'data: { fieldName: null }, errors: [{ message: ''fail'', extensions: { code:
+      ''DB_ERROR'' } }]'
+    a: 'data: null, errors: [{ message: ''fail'' }]'
+    b: 'data: null, errors: [{ message: ''fail'', extensions: { code: ''DB_ERROR''
+      } }]'
+    d: HTTP 500, no response body
+  answer: c
+  explanation: 'Field-level error: the field becomes null, error object includes message
+    + extensions. data is not null unless the field is the root query.'
+  difficulty: 2
+  tags: []
+- id: '2.6'
+  question: 'Schema: `type Query { user(id: ID!): User! }` `type User { id: ID! email:
+    String! }`. Resolver for Query.user returns null. What happens?'
+  options:
+    a: data is null because User! propagated null to root
+    b: Response data.user is null, error in errors[]
+    c: Email field resolves as null
+    d: Request succeeds with data.user = null
+  answer: a
+  explanation: Query.user returns type User! (non-null). Resolver returning null causes
+    null to propagate up to the parent — which is the root Query type. Since Query
+    is the root execution type, data becomes null entirely.
+  difficulty: 2
+  tags: []
+- id: '2.7'
+  question: Which directive-based argument wrapper verifies the user has required
+    role before resolver executes?
+  options:
+    c: '@auth'
+    a: '@deprecated'
+    b: '@skip'
+    d: '@include'
+  answer: c
+  explanation: '@auth is a custom directive pattern that wraps resolver execution
+    with authentication/authorization checks. Not a built-in directive.'
+  difficulty: 2
+  tags: []
+- id: '2.8'
+  question: Two resolvers need same expensive computation per request. Where to cache
+    it?
+  options:
+    b: context object
+    a: Module-level global variable
+    c: Database
+    d: info object
+  answer: b
+  explanation: context is per-request and mutable. Store computed results on context
+    so sibling resolvers reuse them. Global variable leaks across requests. DB is
+    too slow. info is read-only.
+  difficulty: 2
+  tags: []
+- id: '2.9'
+  question: What is the default resolver behavior when parent has field `createdAt`
+    but schema field is `created_at`?
+  options:
+    b: Returns null — field name must match exactly
+    a: Works — default resolver is case-insensitive
+    c: Throws error
+    d: Automatically camelCases parent keys
+  answer: b
+  explanation: Default resolver reads parent[fieldName]. Schema field `created_at`
+    looks for parent.created_at, not parent.createdAt. You must write a custom resolver
+    to map between naming conventions.
+  difficulty: 2
+  tags: []
+- id: '2.10'
+  question: 'Context contains { currentUser, dataSources }. Resolver for Query.comments
+    calls dataSources.comments.getAll() returning 1000 comments. Client only asked
+    for first 3 via `comments(first: 3)`. What is the inefficiency?'
+  options:
+    a: Resolver fetches all 1000 but only 3 are serialized in response
+    b: No inefficiency — GraphQL automatically truncates
+    c: DataSources are not cached
+    d: CurrentUser is not used
+  answer: a
+  explanation: Resolver fetches all data — GraphQL only serializes what client requested.
+    This is over-fetching at the resolver level. Use args (first, after) in the resolver
+    to limit the DB query, not the response.
+  difficulty: 2
+  tags: []
+

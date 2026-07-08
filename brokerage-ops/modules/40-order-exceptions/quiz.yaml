@@ -1,0 +1,128 @@
+- id: '40.1'
+  question: Upon receiving a new order, the OMS first performs what check?
+  options:
+    a: Pre-trade validation
+    b: Market quote confirmation
+    c: Settlement date confirmation
+    d: Commission calculation
+  answer: a
+  explanation: The OMS performs pre-trade validation first, including risk limit checks, symbology resolution, market status, and compliance checks. Any failure returns a new order rejected status with a reason code.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '40.2'
+  question: Which of the following would NOT cause a cancel/replace reject?
+  options:
+    a: Order partially filled
+    b: Order fully filled
+    c: New price identical to the original order
+    d: Price change exceeds market protection limits
+  answer: c
+  explanation: Cancel/replace rejects typically occur when the order is executed, partially filled, or the price change exceeds market protection limits. A new price identical to the original is not itself a reject reason, though it may still fail other checks.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '40.3'
+  question: A trade executes at $52.30 when the reference market price is $50.10 (a 4.4% deviation) and is flagged as a trade break. What is the most critical check?
+  options:
+    a: Immediately send a cancel request to the counterparty
+    b: Check tick-level market price at the execution moment — the market may have moved sharply
+    c: Auto-adjust the price to the reference and resubmit
+    d: Ignore the break because deviation is under 5%
+  answer: b
+  explanation: Whether a trade break is real depends on market conditions at execution. If the market moved sharply (news event, large order) after the snapshot, a 4.4% deviation can be valid. Check tick-level real-time prices, not snapshot prices.
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '40.4'
+  question: Upon receiving a cancel/replace request, how should ops process it?
+  options:
+    a: Directly modify the price on the original order and resend
+    b: Ignore the request and adjust after the order executes
+    c: Send cancel and new order simultaneously
+    d: Send a cancel request for the original order first, then submit as a new order
+  answer: d
+  explanation: "The correct approach is the two-step method: send a cancel request for the original order (especially if partially filled), then submit as a new order. Direct modification triggers a reject, and simultaneous send may cause race conditions."
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '40.5'
+  question: When a DTCC CNS fail occurs, what action does DTCC automatically take?
+  options:
+    a: Auto-borrow securities to maintain settlement continuity
+    b: Cancel the trade
+    c: Report the fail to the SEC
+    d: Freeze the failing participant's account
+  answer: a
+  explanation: DTCC CNS auto-borrows securities from the participant network to maintain settlement continuity, but the failing seller must still pay daily fail charges and proactively close out before the deadline. Automation mitigates disruption; the cost remains.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '40.6'
+  question: A desk resends a rejected order unchanged after reason code 105 (risk limit breach). What happens?
+  options:
+    a: The order executes with a risk override
+    b: The limit check is skipped on resubmission
+    c: The order is rejected again — the pre-trade check fails identically until the limit is raised or the order is split
+    d: The order is queued for manual approval automatically
+  answer: c
+  explanation: The pre-trade check fails identically on resubmission, so the order is rejected again. The desk must request a limit increase or split the order before resubmitting.
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+- id: '40.7'
+  question: A client requests cancellation of an order that has already filled. What is the correct handling?
+  options:
+    a: Force the cancel and reverse the execution
+    b: Confirm the execution status and notify the client — a filled order cannot be cancelled
+    c: Mark the order short exempt
+    d: Submit a new cancel request with a new ClOrdID
+  answer: b
+  explanation: A filled order cannot be cancelled. The workflow is to confirm execution status and notify the client — you cannot force a cancel. Fill, exchange acceptance, past cancel window, and regulatory halts are all cancel-reject causes.
+  difficulty: 1
+  tags:
+  - scenario
+  - terminology
+- id: '40.8'
+  question: The same order executes twice after a FIX session disconnect/reconnect. What is the most likely cause and the first step?
+  options:
+    a: Unauthorized symbol — the broker absorbs the loss
+    b: Wrong side — request a reversal
+    c: Price outside range — adjust to reference price
+    d: Duplicate execution from an uncertain FIX session status — identify the duplicate, notify the counterparty, and request a cancel/bust
+  answer: d
+  explanation: "A FIX session disconnect/reconnect leaves the status of the execution report uncertain, and an OMS resend can produce a duplicate execution. Workflow: identify the duplicate execution reports, notify the counterparty, and request a cancel/bust."
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '40.9'
+  question: A client authorized to trade only equities finds options executed in the account. What is the correct handling?
+  options:
+    a: Determine responsibility, have the broker absorb the loss, apply a correction, and strengthen the authorization matrix
+    b: Leave the trade as is since it already executed
+    c: Ask the client to accept the options position
+    d: Cancel the trade unilaterally without notifying anyone
+  answer: a
+  explanation: "An executed product outside the client's authorization scope is an unauthorized symbol break. Workflow: determine the responsible party, the broker absorbs the loss and applies a correction, then strengthen the authorization matrix to prevent recurrence."
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '40.10'
+  question: A DVP trade fails because the buyer has funds ready but the seller lacks securities. What is the appropriate remedial action?
+  options:
+    a: Buyer waits indefinitely for delivery
+    b: Cancel the entire trade
+    c: The seller borrows securities or initiates a buy-in to complete delivery
+    d: The buyer is charged a CNS fail fee
+  answer: c
+  explanation: In a DVP fail where the seller is short securities, the seller borrows securities or initiates a buy-in, leading to delayed delivery. Where the buyer lacks funds, the workflow is to notify the client and delay settlement.
+  difficulty: 3
+  tags:
+  - scenario
+  - application

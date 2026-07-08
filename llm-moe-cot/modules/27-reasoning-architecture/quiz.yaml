@@ -1,0 +1,81 @@
+- id: '27.1'
+  question: Implicit reasoning 同 explicit reasoning 有乜分別？
+  options:
+    c: Implicit 係 single forward pass 就計到答案；explicit 會 generate intermediate tokens
+    a: Implicit 用 MoE；explicit 用 dense models
+    b: Implicit 係 for image tasks；explicit 係 for text
+    d: Implicit 用 RL 訓練；explicit 用 supervised learning
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '27.2'
+  question: PRM 係咩嘅縮寫？
+  options:
+    c: Process Reward Model
+    a: Parameter Reward Model
+    b: Positive Reinforcement Mechanism
+    d: Partial Reasoning Module
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '27.3'
+  question: PRM 同 ORM 嘅 training signal 有咩唔同？
+  options:
+    d: PRM 獎勵每一步；ORM 只獎勵最終答案
+    a: PRM 用 human feedback；ORM 用 automated metrics
+    b: PRM 係 for language tasks；ORM 係 for image tasks
+    c: PRM train 個 router；ORM train 啲 experts
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '27.4'
+  question: STaR (Self-Taught Reasoner) 嘅主要創新係乜？
+  options:
+    a: Bootstraps reasoning 透過 generate CoT、filter 正確、再 fine-tune
+    b: 用 process reward models
+    c: Train 一個獨立嘅 verifier model
+    d: 用 tree search 嚟 generate training data
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '27.5'
+  question: DeepSeek R1 展現咗啲乜 emergent behaviour？
+  options:
+    a: Self-verification、reflection、同 long CoT
+    b: 拒絕回答難題
+    c: 自主 code generation
+    d: Multi-agent collaboration
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '27.6'
+  question: Self-improvement loop 入面 verifier 唔完美嘅話會出咩問題？
+  options:
+    d: 模型會利用 verifier 嘅盲點 (reward hacking)
+    a: 模型會變得更準確
+    b: Verifier 會自動改進
+    c: 模型會停止 generate reasoning steps
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '27.7'
+  question: 俾同一個 inference budget，通常邊個表現好啲？
+  options:
+    b: 10 條 parallel CoT paths 用 majority vote
+    a: 1 個 ToT 有 10 個 nodes
+    c: 1 條好長嘅 CoT path
+    d: Single token greedy decoding
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '27.8'
+  question: Process reward models 嘅主要限制係乜？
+  options:
+    b: 佢哋需要好貴嘅 step-level labels，仲假設 linear decomposability
+    a: 佢哋 detect 唔到 partial reasoning errors
+    c: 佢哋只係啱 MoE architectures
+    d: 佢哋係所有 task 上都比 ORM 差
+  answer: b
+  difficulty: 2
+  tags: []
+

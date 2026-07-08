@@ -1,0 +1,121 @@
+- id: cum.41
+  type: mcq
+  source_modules:
+  - 17
+  question: 'Correlation ranges between:'
+  options:
+    a: 0 and 1
+    b: -1 and 1
+    c: -infinity and infinity
+    d: 0 and 100
+  answer: b
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.42
+  type: cloze
+  source_modules:
+  - 17
+  question: Beta measures how much a stock moves relative to the {market}.
+  answer: market
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.43
+  type: mcq
+  source_modules:
+  - 18
+  question: 'The Kelly criterion guides you to choose the position size that:'
+  options:
+    a: Assigns equal weight to every holding
+    b: Ignores the probability of winning
+    c: Maximizes expected long-run growth
+    d: Removes all risk from the portfolio
+  answer: c
+  difficulty: 3
+  tags:
+  - cross-module
+  - concept
+- id: cum.44
+  type: tf
+  source_modules:
+  - 19
+  statement: Value at Risk (VaR) tells you the maximum possible loss.
+  answer: false
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.45
+  type: mcq
+  source_modules:
+  - 19
+  question: 'VaR measures:'
+  options:
+    a: Maximum possible loss
+    b: Loss threshold at given confidence
+    c: Average loss in tail
+    d: Portfolio beta
+  answer: b
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.46
+  type: mcq
+  source_modules:
+  - 20
+  question: A drawdown of 50% requires what gain to recover?
+  options:
+    a: 50%
+    b: 75%
+    c: 100%
+    d: 150%
+  answer: c
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.47
+  type: cloze
+  source_modules:
+  - 18
+  question: Sharpe ratio = (portfolio return - {risk free rate}) / {standard deviation}.
+  answer: risk free rate
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.48
+  type: tf
+  source_modules:
+  - 19
+  - 20
+  statement: During a market crisis, asset correlations tend to decrease, improving diversification.
+  answer: false
+  difficulty: 3
+  tags:
+  - cross-module
+  - synthesis
+- id: cum.49
+  type: cloze
+  source_modules:
+  - 19
+  question: A stop-loss order exits a position when price touches a preset {stop price}.
+  answer: stop price
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.50
+  type: cloze
+  source_modules:
+  - 18
+  question: Rebalancing realigns a portfolio back to its target {asset allocation}.
+  answer: asset allocation
+  difficulty: 1
+  tags:
+  - cross-module
+  - concept

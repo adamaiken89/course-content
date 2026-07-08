@@ -1,0 +1,114 @@
+- id: '11.1'
+  question: What are the five session types in the study protocol?
+  options:
+    a: LEARN, EXPLAIN, BLURT, REVIEW, MIXED
+    b: Read, write, test, review, repeat
+    c: Input, process, output, feedback, iterate
+    d: Study, quiz, grade, correct, advance
+  answer: a
+  explanation: LEARN (new material, 45-60min), EXPLAIN (Feynman gap probe, 15-20min),
+    BLURT (brain-dump retrieval, 10-15min), REVIEW (FSRS-5 spaced cards, 10-15min),
+    MIXED (all combined, 30-45min).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.2'
+  question: What is the highest-ROI session for long-term retention?
+  options:
+    a: LEARN — without new content, there's nothing to retain
+    b: REVIEW — daily 10-15min spaced repetition preserves previous investment
+    c: BLURT — brain-dump before review saves time
+    d: EXPLAIN — Feynman gap detection
+  answer: b
+  explanation: Daily REVIEW is highest-ROI because it preserves the retention of all
+    previous LEARN sessions. Without review, LEARN investment decays to ~30%. With
+    10-15min daily review, retention stays >85%.
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.3'
+  question: Why should REVIEW come before LEARN in a daily schedule?
+  options:
+    a: Review is shorter and easier — builds momentum
+    b: Learners prefer reviewing first
+    c: REVIEW before LEARN ensures retention baseline is maintained before adding
+      new material
+    d: FSRS-5 requires morning review for accuracy
+  answer: c
+  explanation: REVIEW first ensures previous modules' retention is maintained. New
+    LEARN builds on a solid foundation. If you LEARN first and run out of time, REVIEW
+    gets skipped — degrading prior retention.
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.4'
+  question: In the daily REVIEW session, why grade recall on a 5-point scale instead
+    of correct/incorrect?
+  options:
+    a: It takes less time than binary grading
+    b: Binary grading cannot be automated
+    c: The 5-point scale is easier for the learner
+    d: FSRS-5 uses the quality rating to calculate stability — quality 5 grows stability
+      more than quality 4
+  answer: d
+  explanation: Quality captures retrieval effort. Quality 5 (effortless) predicts
+    stronger retention than quality 4 (hesitated). FSRS-5 feeds the quality rating
+    into its stability formula, making future scheduling more accurate.
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.5'
+  question: What does the weekly template's Thursday MIXED session combine?
+  options:
+    a: BLURT of an earlier module + review + small learn session
+    b: Two full LEARN sessions back to back
+    c: Four consecutive REVIEW sessions
+    d: EXPLAIN only — no review or learning
+  answer: a
+  explanation: Thursday MIXED (30-45min) = BLURT(10min of an earlier module) → REVIEW(10min)
+    → LEARN(20min) → EXPLAIN(5min). It reconnects old and new material mid-week.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.6'
+  question: Why does the weekly template include a rest day (Sunday)?
+  options:
+    a: FSRS-5 penalizes study on rest days
+    b: Rest allows consolidation, and FSRS-5 does not penalize rest days
+    c: Rest days reset the streak counter
+    d: The learner needs to catch up on REVIEW
+  answer: b
+  explanation: A rest day allows consolidation. FSRS-5 does not penalize rest days
+    — due cards simply carry to the next day without stability damage.
+  difficulty: 1
+  tags:
+  - concept
+- id: '11.7'
+  question: A learner crams 4 LEARN sessions in a row with no REVIEW days. What happens
+    to retention?
+  options:
+    a: Retention stays high — new learning reinforces old
+    b: Retention improves because of spacing
+    c: Each module decays to ~30% within a week
+    d: Only the first module is affected
+  answer: c
+  explanation: Without review, each module decays to ~30% within a week. Cramming
+    produces a large quantity of rapidly decaying content — the opposite of the protocol's
+    design.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '11.8'
+  question: What is the recommended time budget for a daily REVIEW session?
+  options:
+    a: 45-60 minutes
+    b: 30-45 minutes
+    c: 5 minutes or less
+    d: 10-15 minutes
+  answer: d
+  explanation: 10-15 min daily prevents burnout and maintains consistency. Longer
+    budgets get skipped on busy days; shorter ones don't cover due cards. The weekly
+    template uses 15 minutes daily.
+  difficulty: 1
+  tags:
+  - terminology

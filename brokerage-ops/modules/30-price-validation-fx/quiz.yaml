@@ -1,0 +1,158 @@
+- id: '30.1'
+  question: In price validation, which asset class has the narrowest default tolerance
+    band?
+  options:
+    a: FX at +-0.3%
+    b: Large cap equities at +-0.3%
+    c: Fixed income at +-3%
+    d: Small cap equities at +-0.5%
+  answer: a
+  explanation: Default tolerance bands by asset class, FX +-0.3%, fixed income +-0.5%
+    (except high-yield), large cap equities +-1-2%, small cap equities +-3%. Band
+    width reflects each asset class's typical volatility.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '30.2'
+  question: What is the typical stale price threshold for a bond quote in the validation
+    engine?
+  options:
+    a: 15 minutes
+    b: 4 hours
+    c: 30 minutes
+    d: 1 week
+  answer: b
+  explanation: Stale price thresholds are equity 15 min, FX 30 min, bond 4 hours
+    (due to low OTC liquidity). Fallback is to use the last good price, an evaluated
+    price, or mark the quote as stale.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '30.3'
+  question: In cross-source price checking, what is the maximum allowed divergence
+    between exchange last sale and Bloomberg BGN?
+  options:
+    a: Less than 0.1%
+    b: Less than 5%
+    c: Less than 1%
+    d: Less than 0.3%
+  answer: c
+  explanation: Cross-source thresholds are Bloomberg BGN vs Reuters RIC under 0.5%,
+    exchange last vs Bloomberg BGN under 1%, and internal evaluated vs external source
+    under 2%. Divergence beyond these flags the price for manual review.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '30.4'
+  question: In price validation, what is the primary risk of setting tolerance bands
+    too narrow?
+  options:
+    a: Missing genuine pricing errors
+    b: System performance degradation
+    c: Increased data storage costs
+    d: Excessive false positives overwhelming the ops team with manual reviews
+  answer: d
+  explanation: Narrow bands flag normal volatility, producing too many false positives,
+    so ops cannot triage real issues in time. Best practice uses staged bands — a
+    soft limit (warning) and a hard limit (reject).
+  difficulty: 2
+  tags:
+  - concept
+- id: '30.5'
+  question: In price validation, what is the primary risk of setting tolerance bands
+    too wide?
+  options:
+    a: Missing genuine pricing errors
+    b: Excessive false positives
+    c: Higher data costs
+    d: Faster automated acceptance
+  answer: a
+  explanation: Wide bands let real pricing errors pass through uncaught. The two risks
+    trade off — narrow causes false positives, wide misses errors. Staged tolerance
+    bands balance both.
+  difficulty: 2
+  tags:
+  - concept
+- id: '30.6'
+  question: A pricing engine finds Bloomberg BGN and Reuters RIC diverge 0.7% on a
+    bond, outside the 0.5% cross-source threshold. What happens to the price?
+  options:
+    a: It is auto-accepted into NAV
+    b: It flags into the manual review queue for analyst sign-off
+    c: It is rejected and deleted from the system
+    d: The two values are averaged and accepted
+  answer: b
+  explanation: Cross-source divergence beyond threshold routes the price to the manual
+    review queue. The analyst checks which source is wrong and signs off or rejects.
+    Without the check the bad price would flow straight into NAV.
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '30.7'
+  question: What rate should NAV calculation use to remain replicable and auditable
+    across all portfolios?
+  options:
+    a: Today's spot rate at each query time
+    b: The trade-time spot rate
+    c: One unified daily fixing rate
+    d: A 3-day-old fixing rate
+  answer: c
+  explanation: NAV must use one unified daily fixing rate (e.g., WM/Reuters 16:00
+    fix) for consistency and auditability. Using spot at query time makes NAV non-replicable
+    and inconsistent across portfolios.
+  difficulty: 1
+  tags:
+  - concept
+- id: '30.8'
+  question: A broker discovers EUR/USD FX uses a 3-day-old fixing instead of today's
+    spot. If uncorrected, which area is most severely affected?
+  options:
+    a: Only that specific trade confirmation
+    b: Trade reports submitted to exchanges
+    c: Only fixed income position pricing
+    d: All foreign-currency holdings' USD equivalents — NAV, P&L, and risk all diverge
+  answer: d
+  explanation: FX rate is a multiplier — every foreign-currency position multiplies
+    the same wrong rate. This is a systemic pricing error, far broader in impact than
+    a single security price error.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '30.9'
+  question: A EUR bond prices at 98.20. The EUR/USD spot is 1.0920 but the engine uses
+    a 3-day-old fixing of 1.0850. How large is the USD-equivalent valuation difference
+    per bond?
+  options:
+    a: About $0.69
+    b: About $106.55
+    c: About $1.07
+    d: About $0.01
+  answer: a
+  explanation: USD value at spot = 98.20 x 1.0920 = 107.234; at old fixing = 98.20
+    x 1.0850 = 106.547. Difference = 0.687, about $0.69 per bond. A $500M portfolio
+    at 20% EUR allocation would show roughly $640,000 P&L variance.
+  difficulty: 3
+  tags:
+  - calculation
+  - application
+- id: '30.10'
+  question: In a multi-currency portfolio, why does NAV calculation use different rates
+    than trade settlement (fixing vs spot)?
+  options:
+    a: Both should use the spot rate for consistency
+    b: NAV needs consistency and auditability (fixing); trade settlement must reflect
+      actual cash flow (spot)
+    c: Both should use the daily fixing for simplicity
+    d: A 3-day-old fixing serves both purposes best
+  answer: b
+  explanation: Fixing rates (e.g., WM/Reuters 16:00 fix) ensure all portfolios use
+    the same rate on the same day — replicable and auditable. Spot rates reflect market
+    rates at actual trade time for settlement and real-time P&L. The two serve different
+    purposes and cannot substitute for each other.
+  difficulty: 2
+  tags:
+  - concept
+  - comparison

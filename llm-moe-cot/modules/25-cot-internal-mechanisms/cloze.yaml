@@ -1,0 +1,41 @@
+- id: c.1
+  question: CoT 有三個內部 phases：{problem encoding}、{step generation} 同 {answer extraction}。
+  answer: problem encoding / step generation / answer extraction
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: 喺 intervention tests 入面，如果編輯 reasoning step 會改變最終答案，reasoning 就係 {causal}。如果答案不變，reasoning
+    就係 {post-hoc rationalisation}。
+  answer: causal / post-hoc rationalisation
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: Induction heads 透過維持跨 reasoning steps 嘅 {coherence} 同 enable {cross-step attention} 嚟支持 CoT。
+  answer: coherence / cross-step attention
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: Faithfulness 隨 {task type}、{step position} 同 {model size} 而變化。
+  answer: task type / step position / model size
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: 越大嘅模型傾向越 {less faithful}，因為佢哋可以透過 {latent shortcuts} 解決 tasks 然後事後 rationalise。
+  answer: less faithful / latent shortcuts
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: Token efficiency 問題係 CoT 消耗 {many tokens}，限制咗 {context window} 同增加 {latency and cost}。
+  answer: many tokens / context window / latency and cost
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: Surface form bias 發生喺模型利用 {reasoning templates} 而唔係理解 steps 嘅 {actual content} 嗰陣。
+  answer: reasoning templates / actual content
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: Induction Heads 透過 {pattern matching} 複製之前出現過嘅序列，支撐 in-context 嘅逐步推理。
+  answer: pattern matching
+  difficulty: 2
+  tags: []

@@ -1,0 +1,81 @@
+- id: '20.1'
+  question: MoE 訓練入面 router collapse 係由咩引起？
+  options:
+    a: Positive feedback loop：多啲 tokens → 大啲 gradient → 更好 expert → 多啲 tokens
+    b: 太多 experts
+    c: Router parameters 嘅 learning rate 太低
+    d: 太多 load balancing loss
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '20.2'
+  question: 點解死咗嘅 expert 無辦法自然復活？
+  options:
+    d: Router 從唔揀佢 → zero gradient → 無 weight updates → 繼續死
+    a: 佢嘅 weights 喺 initial training 之後被 freeze 咗
+    b: 其他 experts 主動壓制佢
+    c: Load balancing loss 阻止死 expert 激活
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '20.3'
+  question: 邊種 initialization 策略有助防止早期 router imbalance？
+  options:
+    a: 將 router bias 初始化做細嘅負數
+    b: 將 router weights 初始化為零
+    c: 將所有 experts 初始化到一模一樣
+    d: 初始化 router 時唔用 bias
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '20.4'
+  question: 點解 router 應該用比 experts 低嘅 learning rate？
+  options:
+    b: Router 變得太快會令 expert training 唔一致
+    a: Router 參數少所以需要低啲 LR
+    c: Router gradients 本身就細啲
+    d: Auxiliary loss 已經提供足夠 router update
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '20.5'
+  question: 邊個係推薦嘅 MoE capacity warmup schedule？
+  options:
+    c: 初期高 capacity（穩定），然後逐步降到目標值
+    a: 初期低 capacity，後期高 capacity
+    b: 成個訓練期間 constant capacity
+    d: Capacity 永遠係 1.0；warmup 只影響 lr
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '20.6'
+  question: MoE 比 dense models 更高 gradient noise 嘅來源係咩？
+  options:
+    b: Token routing 嘅 nondeterminism — 同一個 input 可能激活唔同 experts
+    a: 更多參數一定會引起更多 noise
+    c: MoE 一定要做 gradient clipping
+    d: Load balancing loss 消除咗 noise
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '20.7'
+  question: 邊種策略有助復活死咗嘅 experts？
+  options:
+    d: 訓練期間加入 expert noise injection
+    a: 降低 load balancing loss weight
+    b: 永久提高 expert capacity factor
+    c: 移除所有 experts 剩係留低死嗰個
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '20.8'
+  question: DeepSeekMoE 將 expert down-projection 初始化為零有咩幫助？
+  options:
+    c: Expert 輸出初期係零 → router 初期唔受 expert quality 影響
+    a: 減少訓練期間嘅記憶體使用
+    b: 防止 expert 死亡
+    d: 增加 output activation scale
+  answer: c
+  difficulty: 2
+  tags: []
+

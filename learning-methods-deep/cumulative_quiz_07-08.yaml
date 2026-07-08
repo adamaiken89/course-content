@@ -1,0 +1,101 @@
+- id: cum.1
+  type: mcq
+  source_modules:
+  - 7
+  question: A content engineer generates 50 MCQs with prompt 'Generate diverse chemistry questions.' The output has 35 recall-level, 10 comprehension, 5 application. Which module's principles explain this distribution?
+  options:
+    a: Content engineering — AI output mirrors training data frequency without explicit distribution enforcement
+    b: FSRS-5 algorithm — difficulty is calibrated by ease factor
+    c: Adaptive difficulty — the difficulty ramp failed to advance
+    d: Persistence architecture — the prompt lacked engagement mechanics
+  answer: a
+  explanation: Without explicit topic/difficulty distribution enforcement, AI defaults to most common patterns in training data. The prompt should specify exact counts per difficulty level.
+  difficulty: 2
+  tags:
+  - cross-module
+- id: cum.2
+  type: mcq
+  source_modules:
+  - 7
+  question: What is the relationship between multi-shot prompting (Module 07) and Marva Collins' orchestrated success cycles (Module 02)?
+  options:
+    a: No relationship — content engineering and pedagogy are unrelated
+    b: Both use examples/experience to calibrate performance — multi-shot examples set quality bar, Marva's cycles build confidence through achievable challenges
+    c: Multi-shot replaces Marva's method entirely
+    d: Marva's method is for humans, multi-shot is for AI
+  answer: b
+  explanation: "Both modules share a principle: examples define the bar. Multi-shot prompting gives the AI quality examples to calibrate output. Marva's orchestrated success cycles give the learner achievable challenges to build confidence. Same mechanism, different domain."
+  difficulty: 3
+  tags:
+  - cross-module
+  - synthesis
+- id: cum.3
+  type: cloze
+  source_modules:
+  - 7
+  question: 'Complete: The prompt template must encode five things: role, {format}, difficulty, {constraints}, and quality rules.'
+  answer: format
+  explanation: The five template dimensions are role, format schema, difficulty spec, constraints, and quality rules. Missing ones make output inconsistent or unparseable.
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.4
+  type: mcq
+  source_modules:
+  - 7
+  question: A content engineering team uses Pass@k with k=1 for MCQ generation. Based on Module 07 principles, what quality issue is most likely?
+  options:
+    a: Questions will be too hard
+    b: Questions will be too easy
+    c: No quality issue — k=1 is optimal
+    d: Without candidate selection, quality is unpredictable — factual errors and weak distractors pass through unfiltered
+  answer: d
+  explanation: Pass@k generates k candidates and keeps the best. k=1 means no filtering — all generated content is accepted regardless of quality. k=3-5 filters bottom candidates and improves overall quality.
+  difficulty: 2
+  tags:
+  - scenario
+- id: cum.5
+  type: mcq
+  source_modules:
+  - 8
+  question: A question labeled difficulty 3 is answered correctly by a learner who only memorized the answer. What should quality control do?
+  options:
+    a: Accept it — the label is set by the generation prompt
+    b: Reject it — difficulty labels need post-generation validation
+    c: Escalate it to difficulty 1 automatically
+    d: Keep it but remove the explanation
+  answer: b
+  explanation: AI labeling is unreliable (label bias). Post-generation validation must check whether a difficulty-3 question can be answered by memorization alone. If so, relabel or regenerate.
+  difficulty: 2
+  tags:
+  - scenario
+- id: cum.6
+  type: tf
+  source_modules:
+  - 8
+  statement: 'True or False: ''A high-quality distractor should be obviously wrong so no one selects it.'''
+  answer: false
+  explanation: A high-quality distractor is plausible to someone with partial understanding. It tests a specific misconception. Obviously wrong distractors are easy to eliminate and don't discriminate understanding.
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.7
+  type: cloze
+  source_modules:
+  - 8
+  question: 'Complete: Distractor quality ranks: common {misconception} > partial truth > related concept > random fact.'
+  answer: misconception
+  explanation: A common-misconception distractor tests a real understanding gap. A random fact is easy to eliminate and fails to discriminate understanding.
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.8
+  type: tf
+  source_modules:
+  - 8
+  statement: Batch generation is more cost-efficient per prompt than issuing many single requests.
+  answer: true
+  explanation: Batch generation sends multiple generation requests in one call, which is cheaper per token and reduces overhead at scale.
+  difficulty: 1
+  tags:
+  - recall

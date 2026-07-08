@@ -1,0 +1,141 @@
+- id: '8.1'
+  question: 'CSS custom property var(--color-primary) resolves at:'
+  options:
+    d: Browser runtime — resolves per element via cascade
+    a: Build time (same as Sass)
+    b: Component mount time
+    c: JavaScript evaluation time
+  answer: d
+  explanation: CSS custom properties resolve in the browser via cascade. The value
+    depends on the nearest ancestor that sets the property. No build step or JS needed.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.2'
+  question: When ThemeProvider changes theme state, what actually re-renders?
+  options:
+    c: Only the element whose className changes (wrapping div)
+    a: Every component consuming CSS custom properties
+    b: All components in the app
+    d: Nothing — CSS custom properties cannot re-theme
+  answer: c
+  explanation: Only the wrapping div's className re-renders. CSS custom properties
+    cascade natively — child components see new values without re-rendering. This
+    is the performance advantage over runtime CSS-in-JS.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.3'
+  question: What is the recommended theme architecture for a React component library
+    consumed by external apps?
+  options:
+    a: CSS custom properties documented in README
+    b: ThemeProvider from styled-components
+    c: A React Context provider from the library
+    d: Inline styles with JavaScript objects
+  answer: a
+  explanation: CSS custom properties impose zero dependencies. Consumers override
+    them in their own CSS. No Context wrapping, no library import — just CSS. Standard
+    for library theming in 2026.
+  difficulty: 2
+  tags:
+  - application
+- id: '8.4'
+  question: 'What does `@scope(.card) { .title { font-size: 18px; } }` do?'
+  options:
+    b: Limits .title rule to elements within .card
+    a: Creates a CSS Module scoped to .card
+    c: Makes .title inherit from .card global scope
+    d: Restricts .title to first child only
+  answer: b
+  explanation: '`@scope(.card)` creates a cascade boundary. `.title` inside only matches
+    elements descendant from an element with class `card`. No tooling involved — native
+    CSS feature.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.5'
+  question: Which CSS custom property layer should change when applying a dark theme?
+  options:
+    b: Theme variant layer (--color-*)
+    a: Component implementation layer
+    c: Base definition layer (:root)
+    d: Space token layer
+  answer: b
+  explanation: Theme variant (.theme-dark) overrides base color variables. Component
+    styles reference var(--color-*) and update automatically. Don't change component
+    CSS per theme.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.6'
+  question: '.card { background: var(--card-bg, var(--color-surface, white)); } What
+    does this resolve to?'
+  options:
+    a: First tries --card-bg, then --color-surface, then white
+    b: Always white
+    c: --card-bg if set, else the browser default
+    d: Only --card-bg — fallbacks not supported
+  answer: a
+  explanation: var(--card-bg, var(--color-surface, white)) uses nested fallbacks.
+    If --card-bg is not set, tries --color-surface. If neither is set, uses white.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.7'
+  question: A button's background uses var(--button-bg). Toggling .theme-dark on root
+    changes it instantly. Why no React re-render?
+  options:
+    d: CSS custom properties are inherited — browser recalculates without JS
+    a: React batch-updates style changes
+    b: JavaScript is not involved in style resolution
+    c: theme-dark forces a full page reflow but not re-render
+  answer: d
+  explanation: 'CSS variables cascade: .theme-dark sets --button-bg on root, all children
+    inherit the new value. Browser''s style engine updates without React reconciliation.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.8'
+  question: How should a design system expose theme tokens to consumers?
+  options:
+    a: Document CSS custom property names and expected values
+    b: Export theme as JS object and provide merge function
+    c: Provide ThemeProvider wrapper component
+    d: Publish an npm package with variable injection
+  answer: a
+  explanation: 'CSS custom properties are the API. Consumers override --ds-color-primary:
+    #purple; in their CSS. No import, no Context, no build step.'
+  difficulty: 3
+  tags:
+  - scenario
+- id: '8.9'
+  question: What is `@scope`'s main limitation in 2026?
+  options:
+    b: Browser support — requires modern Chrome/Safari/Firefox
+    a: Doesn't work with any CSS framework
+    c: Cannot be combined with CSS custom properties
+    d: Not compatible with React SSR
+  answer: b
+  explanation: '@scope was added in Chrome 118, Safari 17.4, Firefox 128 (2024). Widely
+    supported in modern browsers but not in older versions. Safe for internal tools
+    or consumer-facing apps targeting modern browsers.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.10'
+  question: A design system uses CSS custom properties for theming. Consumer wants
+    brand-specific border-radius. What do they do?
+  options:
+    c: 'Write: :root { --ds-radius-md: 4px; }'
+    a: Wrap components in ThemeProvider border-radius prop
+    b: Pass className prop with border-radius override
+    d: Modify design system source code
+  answer: c
+  explanation: 'Override the CSS custom property. If design system uses --ds-radius-md:
+    8px, consumer sets :root { --ds-radius-md: 4px; } in their CSS. No component code
+    changes.'
+  difficulty: 2
+  tags:
+  - application
+

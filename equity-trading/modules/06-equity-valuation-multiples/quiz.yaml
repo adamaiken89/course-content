@@ -1,0 +1,139 @@
+- id: '6.1'
+  question: Which multiple is calculated as market price per share divided by earnings
+    per share over the past twelve months?
+  options:
+    a: Forward P/E
+    b: P/B ratio
+    c: PEG ratio
+    d: Trailing P/E
+  answer: d
+  explanation: Trailing P/E uses last twelve months (LTM) actual earnings. Forward
+    P/E uses projected future earnings.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.2'
+  question: A stock trades at $80 with trailing EPS of $4.00 and forward EPS estimate
+    of $5.00. What is the forward P/E?
+  options:
+    a: 16.0x
+    b: 20.0x
+    c: 18.0x
+    d: 12.5x
+  answer: a
+  explanation: Forward P/E = price / forward EPS = $80 / $5.00 = 16.0x.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '6.3'
+  question: 'EV/EBITDA is preferred over P/E when comparing firms with different:'
+  options:
+    a: Revenue growth rates
+    b: Management quality
+    c: Capital structures and tax rates
+    d: Dividend policies
+  answer: c
+  explanation: EV/EBITDA is capital-structure-neutral because Enterprise Value includes
+    debt and EBITDA excludes interest, taxes, depreciation, and amortization.
+  difficulty: 1
+  tags:
+  - concept
+- id: '6.4'
+  question: A company has market cap $500M, total debt $200M, cash $50M, and EBITDA
+    $100M. What is its EV/EBITDA multiple?
+  options:
+    a: 5.0x
+    b: 6.5x
+    c: 7.0x
+    d: 4.5x
+  answer: b
+  explanation: EV = market cap + debt - cash = $500M + $200M - $50M = $650M. EV/EBITDA
+    = $650M / $100M = 6.5x.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '6.5'
+  question: Which ratio is most useful for valuing financial institutions like banks?
+  options:
+    a: EV/EBITDA
+    b: P/E
+    c: P/B
+    d: PEG
+  answer: c
+  explanation: P/B (Price-to-Book) is preferred for banks because assets are primarily
+    financial instruments carried at mark-to-market value, making book value a relevant
+    valuation metric.
+  difficulty: 1
+  tags:
+  - concept
+- id: '6.6'
+  question: A company trades at P/E of 22x with expected EPS growth of 11% per year.
+    What is its PEG ratio?
+  options:
+    a: '1.5'
+    b: '2.0'
+    c: '2.5'
+    d: '3.0'
+  answer: b
+  explanation: PEG = P/E / growth rate = 22 / 11 = 2.0. PEG below 1.0 is typically
+    considered undervalued, above 2.0 overvalued.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '6.7'
+  question: In comparable company analysis, which step correct order?
+  options:
+    a: Select peer group → calculate multiples → apply multiples to target → derive
+      valuation range
+    b: Calculate multiples → select peer group → derive valuation range → apply multiples
+      to target
+    c: Apply multiples to target → select peer group → calculate multiples → derive
+      valuation range
+    d: Derive valuation range → select peer group → calculate multiples → apply multiples
+      to target
+  answer: a
+  explanation: 'Standard workflow: pick peers first, compute median/mean multiples,
+    apply those to target''s metrics, then determine implied valuation range.'
+  difficulty: 1
+  tags:
+  - scenario
+- id: '6.8'
+  question: Which of the following will cause the P/E ratio to be misleading?
+  options:
+    a: Company with no debt
+    b: Company with negative earnings
+    c: Company with high revenue growth
+    d: Company paying dividends
+  answer: b
+  explanation: When earnings are negative, P/E becomes meaningless. In such cases
+    EV/Sales or P/B may be more appropriate.
+  difficulty: 1
+  tags:
+  - concept
+- id: '6.9'
+  question: Two firms have identical EV/EBITDA of 10x but different P/E ratios. Which
+    factor most likely explains the P/E difference?
+  options:
+    a: Different revenue amounts
+    b: Different share prices
+    c: Different market capitalizations
+    d: Different levels of financial leverage
+  answer: d
+  explanation: Higher debt increases interest expense, reducing net income and raising
+    P/E (lower denominator) while EV/EBITDA stays constant since it is pre-interest.
+  difficulty: 3
+  tags:
+  - comparison
+- id: '6.10'
+  question: 'Forward P/E of 15x means an investor expects to recoup investment in:'
+  options:
+    a: 5 years if earnings grow at 15% annually
+    b: 15 years if forward earnings materialize as projected
+    c: 10 years if earnings remain constant
+    d: 7.5 years if earnings double
+  answer: b
+  explanation: P/E of 15x implies 15 years of earnings to equal the purchase price,
+    assuming forward earnings estimate is met. Years-to-payback = P/E ratio.
+  difficulty: 3
+  tags:
+  - concept

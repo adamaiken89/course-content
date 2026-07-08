@@ -1,0 +1,119 @@
+- id: "16.1"
+  question: "You deployed the JSON encoder but Splunk shows one unparsed message field per event and no level field. What is the most likely cause?"
+  options:
+    a: "The appender used the default messageFormat=text instead of json"
+    b: "The batch interval is set to 5000 ms"
+    c: "The LogstashEncoder is applied at the root level"
+    d: "The search includes a sourcetype filter"
+  answer: a
+  explanation: "With messageFormat=text the HEC appender wraps the raw line instead of preserving JSON fields. Setting messageFormat=json keeps level, trace_id, and duration_ms as fields."
+  difficulty: 1
+  tags: [structured-logging, diagnostics]
+
+- id: "16.2"
+  question: "After adding a trace ID filter, two different requests on the same thread show the same trace_id in Splunk. What is the most likely cause?"
+  options:
+    a: "includeMdcKeyName omits trace_id"
+    b: "The HEC token was reused across environments"
+    c: "MDC was put but never removed in a finally block"
+    d: "The console appender drops MDC values"
+  answer: c
+  explanation: "A leaked MDC value survives on the reused thread and labels the next request. Removing trace_id in a finally block guarantees cleanup even on exceptions."
+  difficulty: 1
+  tags: [mdc, correlation]
+
+- id: "16.3"
+  question: "Which logback element is responsible for posting buffered events to the Splunk HEC endpoint?"
+  options:
+    a: "LogstashEncoder"
+    b: "HttpEventCollectorLogbackAppender"
+    c: "OncePerRequestFilter"
+    d: "Batch_size_count"
+  answer: b
+  explanation: "HttpEventCollectorLogbackAppender transports events to HEC. The encoder only shapes the payload, and the filter only handles correlation."
+  difficulty: 1
+  tags: [hec, pipeline]
+
+- id: "16.4"
+  question: "You must find the slowest checkout endpoints. Which search answers the question?"
+  options:
+    a: "index=checkout sourcetype=app_json | stats count by level"
+    b: "index=checkout sourcetype=app_json | timechart count by endpoint"
+    c: "index=checkout sourcetype=app_json | head 100"
+    d: "index=checkout sourcetype=app_json | stats avg(duration_ms) by endpoint | sort - avg(duration_ms)"
+  answer: d
+  explanation: "Averaging duration_ms per endpoint and sorting descending ranks the slowest services. Count and timechart only report volume, not latency."
+  difficulty: 2
+  tags: [spl, verification]
+
+- id: "16.5"
+  question: "A scheduled alert must page only when the error rate on one endpoint crosses 5 percent without repeating for other endpoints. Which alert design fits?"
+  options:
+    a: "A search grouped by endpoint with a rate threshold, throttled per endpoint"
+    b: "A single global error count threshold"
+    c: "A trigger on every ERROR log event"
+    d: "A 24-hour throttle for all alerts"
+  answer: a
+  explanation: "Grouping by endpoint and comparing the ERROR ratio to the threshold isolates the broken service, and per-endpoint throttling prevents repeat pages."
+  difficulty: 2
+  tags: [alerts, errors]
+
+- id: "16.6"
+  question: "INFO lines carry trace_id but the ERROR stack trace lines from the same request do not. What is the most likely cause?"
+  options:
+    a: "trace_id is only emitted at debug level"
+    b: "Splunk drops ERROR events"
+    c: "The exception logger runs where MDC was cleared, or the filter never stamped the request"
+    d: "The index reached its quota"
+  answer: c
+  explanation: "Stack traces logged outside the request context, or after the filter cleared the MDC, miss trace_id. Log exceptions inside the request context, for example via a controller advice."
+  difficulty: 2
+  tags: [mdc, exceptions]
+
+- id: "16.7"
+  question: "A dashboard timechart of requests by status is empty even though events exist. What should you check first?"
+  options:
+    a: "The search index name"
+    b: "Whether the status field is actually extracted on the events"
+    c: "The dashboard color theme"
+    d: "The HEC batch interval"
+  answer: b
+  explanation: "If status was only embedded in the message text and never emitted as a field, the by status clause finds nothing. Verify the field exists in the raw events first."
+  difficulty: 2
+  tags: [dashboards, field-extraction]
+
+- id: "16.8"
+  question: "An alert runs every 15 minutes with search window earliest=-5m. What is wrong with this setup?"
+  options:
+    a: "Nothing; window and schedule are unrelated"
+    b: "The alert will fire far too often"
+    c: "Throttling becomes useless"
+    d: "The window is shorter than the schedule, so events are skipped and the rate is sampled"
+  answer: d
+  explanation: "A 5-minute window with a 15-minute schedule never sees two-thirds of the time. Set the window to match or exceed the schedule period."
+  difficulty: 3
+  tags: [alerts, scheduling]
+
+- id: "16.9"
+  question: "On Kubernetes you want to avoid embedding the HEC token in the application image. What is the best alternative?"
+  options:
+    a: "Log JSON to stdout and ship with a collector that owns the HEC config"
+    b: "Hardcode the token as a constant in the code"
+    c: "Disable logging in production"
+    d: "Write events to a file and upload them manually"
+  answer: a
+  explanation: "The collector holds the token and HEC URL in cluster config, decoupling the app from transport and letting credentials rotate without redeploying the image."
+  difficulty: 3
+  tags: [architecture, kubernetes]
+
+- id: "16.10"
+  question: "A new app shows no data in Splunk at all. Which first step is the most diagnostic?"
+  options:
+    a: "Rebuild the dashboard from scratch"
+    b: "Increase batch_size_count"
+    c: "Verify console JSON output, then check the HEC appender errors and the search index"
+    d: "Change the sourcetype"
+  answer: c
+  explanation: "Checking whether structured logs even leave the app, then confirming the appender posts without errors, isolates the broken stage before touching the dashboard or index."
+  difficulty: 1
+  tags: [pipeline, diagnostics]

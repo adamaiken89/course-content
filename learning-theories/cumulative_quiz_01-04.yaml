@@ -1,0 +1,109 @@
+- id: cum.1
+  type: mcq
+  question: Which strategy most directly targets the working memory bottleneck during learning?
+  source_modules:
+  - 1
+  - 2
+  options:
+    a: Reading the chapter twice for more exposure
+    b: Chunking related ideas into a few meaningful units
+    c: Highlighting every important sentence
+    d: Keeping unrelated tabs open while studying
+  answer: b
+  explanation: Chunking packs several items into one WM unit, increasing effective capacity. More exposure and highlighting do not increase capacity; multitasking drains it.
+  difficulty: 2
+  tags:
+  - cross-module
+  - synthesis
+- id: cum.2
+  type: mcq
+  question: Based on the forgetting curve, when should a first review of new material happen?
+  source_modules:
+  - 4
+  options:
+    a: Right before a future exam only
+    b: Never — re-reading is enough
+    c: Soon after learning, then at expanding intervals
+    d: After 30 days so the material feels new again
+  answer: c
+  explanation: Recall decays fastest right after learning, so the first review should come soon, with subsequent reviews spaced at expanding intervals.
+  difficulty: 1
+  tags:
+  - recall
+  - cross-module
+- id: cum.3
+  type: cloze
+  question: 'Complete: Encoding is stronger when new material is related to prior knowledge, and retrieval is easier when the review context matches the study context — the {encoding specificity} principle.'
+  answer: encoding specificity
+  explanation: Tulving's encoding specificity principle says cues present at encoding also work best at retrieval.
+  difficulty: 3
+  tags:
+  - concept
+  - cross-module
+  source_modules:
+  - 3
+- id: cum.4
+  type: tf
+  statement: Total study time matters more than the spacing pattern, so cramming in one long session is as effective as distributed practice.
+  answer: false
+  explanation: Spacing (distributed practice) reliably beats massed cramming even when total time is identical — the spacing effect.
+  difficulty: 2
+  tags:
+  - misconception
+  - cross-module
+  source_modules:
+  - 4
+- id: cum.5
+  type: mcq
+  question: Which best describes the capacity of long-term memory?
+  source_modules:
+  - 1
+  options:
+    a: About 7 plus or minus 2 meaningful chunks
+    b: Effectively unlimited storage for facts and skills
+    c: Capped at roughly 1,000 discrete items per lifetime
+    d: Only retains information for about 30 seconds
+  answer: b
+  explanation: The 7 plus or minus 2 limit describes working memory. Long-term memory has effectively unlimited storage capacity.
+  difficulty: 1
+  tags:
+  - terminology
+  - misconception
+- id: cum.6
+  type: cloze
+  question: 'In cognitive load theory, the load imposed by the task''s inherent difficulty is {intrinsic} load, while load caused by poor instructional design is extraneous load.'
+  answer: intrinsic
+  explanation: Intrinsic load comes from the task itself; extraneous load comes from how the material is presented; germane load is the effort that builds schemas.
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+  source_modules:
+  - 2
+- id: cum.7
+  type: mcq
+  question: Which instructional choice creates unnecessary extraneous load?
+  source_modules:
+  - 2
+  options:
+    a: Placing a diagram directly beside its matched labels
+    b: Splitting a diagram and its captions across different pages
+    c: Chunking related steps into one worked example
+    d: Sequencing explanations from simple to complex
+  answer: b
+  explanation: Splitting related information forces back-and-forth searching — split-attention effect, a classic source of extraneous load.
+  difficulty: 3
+  tags:
+  - application
+  - misconception
+- id: cum.8
+  type: tf
+  statement: Working memory and short-term memory are the same system.
+  answer: false
+  explanation: Working memory actively manipulates information (holding, organizing, updating), while classic short-term memory is a passive storage view.
+  difficulty: 1
+  tags:
+  - terminology
+  - misconception
+  source_modules:
+  - 1

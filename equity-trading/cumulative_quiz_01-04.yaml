@@ -1,0 +1,117 @@
+- id: cum.1
+  type: mcq
+  source_modules:
+  - 1
+  - 2
+  question: What distinguishes common stock from preferred stock?
+  options:
+    a: Common has fixed dividends
+    b: Preferred has voting rights
+    c: Preferred has priority in bankruptcy
+    d: Common is senior to preferred
+  answer: c
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.2
+  type: cloze
+  source_modules:
+  - 2
+  question: NYSE is an {auction} market. Nasdaq is a {dealer} market.
+  answer: auction
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.3
+  type: tf
+  source_modules:
+  - 3
+  statement: A market order guarantees the execution price.
+  answer: false
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.4
+  type: mcq
+  source_modules:
+  - 4
+  question: Which participant provides liquidity by posting limit orders?
+  options:
+    a: Retail trader using market orders
+    b: Market maker
+    c: HFT firm using arbitrage
+    d: Pension fund rebalancing
+  answer: b
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.5
+  type: mcq
+  source_modules:
+  - 1
+  question: 'Market capitalization equals:'
+  options:
+    a: Shares outstanding times current price
+    b: Book value of equity
+    c: Annual earnings times share count
+    d: Free cash flow minus debt
+  answer: a
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall
+- id: cum.6
+  type: cloze
+  source_modules:
+  - 2
+  question: Dark pools are {private} venues, often ATS platforms, that keep orders off the public SIP.
+  answer: private
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.7
+  type: cloze
+  source_modules:
+  - 3
+  question: The price difference between the best bid and best ask is the {spread}.
+  answer: spread
+  difficulty: 1
+  tags:
+  - cross-module
+  - terminology
+- id: cum.8
+  type: tf
+  source_modules:
+  - 3
+  - 4
+  statement: Dark pools display quotes publicly on the SIP.
+  answer: false
+  difficulty: 2
+  tags:
+  - cross-module
+  - synthesis
+- id: cum.9
+  type: cloze
+  source_modules:
+  - 4
+  question: A {block trade} is a very large order, often negotiated off-exchange to reduce market impact.
+  answer: block trade
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.10
+  type: tf
+  source_modules:
+  - 3
+  statement: A limit order guarantees execution at its limit price.
+  answer: false
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept

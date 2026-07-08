@@ -1,0 +1,81 @@
+- id: '25.1'
+  question: Chain-of-thought reasoning 嘅三個 phases 係邊三個？
+  options:
+    c: Problem encoding, step generation, answer extraction
+    a: Tokenisation, generation, verification
+    b: Plan, execute, evaluate
+    d: Forward pass, backward pass, fine-tuning
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '25.2'
+  question: 喺 intervention tests 入面，如果編輯 reasoning step 會改變最終答案，reasoning 係：
+  options:
+    b: Causal / faithful
+    a: Post-hoc rationalisation
+    c: Unstable
+    d: Unreliable
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '25.3'
+  question: 邊種 task type 通常顯示更高嘅 CoT faithfulness？
+  options:
+    d: Math reasoning
+    a: Commonsense reasoning
+    b: Creative writing
+    c: Translation
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '25.4'
+  question: 研究指出模型 size 同 faithfulness 之間有咩關係？
+  options:
+    a: 越大型嘅模型越唔 faithful（多啲 latent shortcuts）
+    b: 越大型嘅模型越 faithful
+    c: 模型 size 對 faithfulness 冇影響
+    d: 越大型嘅模型一定用更長嘅 reasoning chains
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '25.5'
+  question: CoT 嘅 token efficiency 問題係乜？
+  options:
+    b: CoT 消耗好多 tokens，限制 context window 同增加 latency/cost
+    a: Tokens 太大搞到處理冇效率
+    c: Token embedding dimension 限制 reasoning depth
+    d: CoT 期間生成嘅 tokens 唔可以 cached
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '25.6'
+  question: CoT 嘅 surface form bias 指緊：
+  options:
+    a: 模型利用 reasoning templates 而唔係理解內容
+    b: 模型偏好某啲字型
+    c: 偏向更短嘅 reasoning chains
+    d: 偏向 chain 入面較早出現嘅答案
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '25.7'
+  question: Activation patching experiments 點樣測試 faithfulness？
+  options:
+    d: 將一個 forward pass 嘅 reasoning steps 換做唔同嘅 steps 然後量度答案變化
+    a: 逐個移除 attention heads
+    b: 喺 hidden states 上面 train 一個 linear probe
+    c: 計算 loss 對 input tokens 嘅 gradient
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '25.8'
+  question: 關於 CoT faithfulness 嘅邊個陳述最準確？
+  options:
+    c: Faithfulness 隨 task、step position 同 model size 而變化
+    a: Faithfulness 係 binary——模型要唔跟 steps 就唔跟
+    b: 所有 LLMs 喺所有 tasks 上都同樣 faithful
+    d: Faithfulness 隨 temperature 增加
+  answer: c
+  difficulty: 2
+  tags: []
+

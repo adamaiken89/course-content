@@ -1,0 +1,121 @@
+- id: '8.1'
+  question: What is the highest-quality type of distractor for an MCQ?
+  options:
+    a: A common misconception that partially informed learners believe
+    b: A random fact from the same domain
+    c: A nearly identical answer with one word changed
+    d: An obviously wrong answer that no one would pick
+  answer: a
+  explanation: Common misconceptions test real understanding gaps. Partial truth distractors
+    are medium quality. Random fact and obviously wrong options are low quality —
+    easy to eliminate.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.2'
+  question: What is the primary cause of topic clustering in AI-generated question
+    banks?
+  options:
+    a: The prompt was too long
+    b: AI favors subtopics that appear more frequently in training data
+    c: Educational content is inherently clustered
+    d: The temperature parameter was set too high
+  answer: b
+  explanation: 'AI generates questions weighted by training data frequency. Without
+    explicit topic distribution enforcement, ~70% of questions cluster around a few
+    well-known subtopics. Solution: specify exact counts per subtopic in the prompt.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.3'
+  question: A content engineer generates 100 MCQs on 'photosynthesis' without diversity
+    enforcement. What distribution is most likely?
+  options:
+    a: Uniform across all subtopics — AI naturally covers everything
+    b: ~50% on C4 pathway, ~50% on CAM photosynthesis
+    c: ~70% on light reaction and Calvin cycle, ~0% on C4 and CAM
+    d: All 100 on chlorophyll structure
+  answer: c
+  explanation: AI output distribution mirrors training data frequency. Core photosynthesis
+    topics (light reaction, Calvin cycle) dominate. Rare subtopics like C4 and CAM
+    receive little coverage without explicit prompting.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '8.4'
+  question: After generating an MCQ labeled difficulty 3, validation shows the question
+    can be answered by direct recall of a single fact. What does this indicate?
+  options:
+    a: The question is correctly labeled — difficulty 3 allows recall
+    b: The validation check is incorrect
+    c: Difficulty 3 questions should always test recall
+    d: The question is actually difficulty 1 — the AI labeling is unreliable without
+      post-generation validation
+  answer: d
+  explanation: 'AI may output a labeled-difficulty-3 question that is actually difficulty
+    1 (label bias). Post-generation validation must check: can this be answered by
+    memorization alone? Difficulty 3 requires multi-step reasoning or transfer to
+    novel scenarios.'
+  difficulty: 3
+  tags:
+  - scenario
+- id: '8.5'
+  question: Why are common-misconception distractors better than random-fact distractors?
+  options:
+    a: They test whether the learner can distinguish a real misconception from the
+      correct concept
+    b: They are easier to write
+    c: They are always the correct answer
+    d: They make the question harder for every learner equally
+  answer: a
+  explanation: A common-misconception distractor is plausible to a partial learner
+    — it discriminates understanding. Random facts are easy to eliminate even when
+    you don't know the answer, so they don't test anything.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.6'
+  question: A question labeled difficulty 3 has no scenario and no multi-step reasoning.
+    Which difficulty is it most likely to actually be?
+  options:
+    a: Difficulty 3 — the label is correct
+    b: Difficulty 1 — answerable by memorization alone
+    c: Difficulty 2 — scenarios are optional
+    d: Cannot determine without student data
+  answer: b
+  explanation: Difficulty 3 requires multi-step reasoning or transfer to a novel scenario.
+    If a labeled-3 question can be answered by direct recall, it is actually difficulty
+    1 — the label is unreliable without validation.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '8.7'
+  question: What is the most effective prompt constraint for preventing answer position
+    bias in a batch of generated questions?
+  options:
+    a: Require the answer to always be A
+    b: Increase the temperature parameter
+    c: Specify the recent answer sequence, e.g., 'last 5 answers were A,B,C,D,A'
+    d: Ask for more options per question
+  answer: c
+  explanation: Explicitly constraining the answer sequence prevents clustering of
+    the same letter. Alternatively, rotate answers after generation against a target
+    distribution (e.g., 25% each).
+  difficulty: 2
+  tags:
+  - scenario
+- id: '8.8'
+  question: Which cost optimization avoids regenerating content for the same topic
+    and difficulty repeatedly?
+  options:
+    a: Batch generation
+    b: Fallback to static content for difficulty 1
+    c: Increasing the number of candidates k
+    d: Caching generated content by topic:difficulty key
+  answer: d
+  explanation: Caching stores generated content keyed by topic and difficulty, reusing
+    it instead of regenerating. Batch generation lowers per-token cost; fallback avoids
+    generation entirely for low-value static content.
+  difficulty: 2
+  tags:
+  - concept

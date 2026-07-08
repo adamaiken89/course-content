@@ -1,0 +1,137 @@
+- id: '3.1'
+  question: 現金流嘅核心公式係咩?
+  options:
+    a: 投資回報 = 本金 × 利率
+    b: 通脹 = 物價升幅
+    c: 資產 = 負債 + 權益
+    d: 月儲蓄 = 月收入 - 月支出
+  answer: d
+  explanation: '現金流公式: 月儲蓄 = 月收入 - 月支出。永遠成立。正數代表有儲蓄, 負數代表負債。Option a 係會計公式, c 係投資公式,
+    d 係通脹公式, 都唔係現金流。'
+  difficulty: 1
+  tags:
+  - formula
+- id: '3.2'
+  question: 點解理財嘅第一步係「先儲蓄, 後投資」?
+  options:
+    a: 因為投資回報一定高過儲蓄
+    b: 因為儲蓄回報比投資高
+    c: 因為投資有風險, 冇儲蓄底輸少少就破產; 儲蓄一定唔會輸
+    d: 因為政府規定要先儲蓄後投資
+  answer: c
+  explanation: 儲蓄放喺受存款保障嘅戶口一定唔會輸; 投資有可能輸晒。如果冇穩定儲蓄底, 投資市場跌 20% 你就被迫止損賣資產, 反而蝕底。所以先儲蓄,
+    後投資, 等儲蓄夠 cover 風險先開始投資。
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.3'
+  question: 「應急錢」應該擺喺邊種工具?
+  options:
+    a: 定期存款 (高利息)
+    b: 活期戶口 (即時攞到)
+    c: 加密貨幣 (高回報)
+    d: 股票戶口 (高回報)
+  answer: b
+  explanation: '應急錢嘅核心係「即刻攞到」。活期戶口可以 ATM 即時提款; 定期存款提前攞會罰息(可能 0 利息); 股票/加密貨幣蝕價風險高,
+    應急時可能被迫賤賣。Trade-off: 放棄 2-3% 高回報, 換取靈活性, 值得。'
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '3.4'
+  question: 應急錢目標一般係幾多個月必要支出?
+  options:
+    a: 12 個月以上
+    b: 24 個月以上
+    c: 1 個月
+    d: 3-6 個月
+  answer: d
+  explanation: '統計上香港平均搵工時間 2-4 個月。3 個月太緊, 6 個月較安心。目標: 單身/雙薪 3 個月; 已婚/有仔女 6 個月。12+
+    個月會 over-saved, 失去投資機會成本。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.5'
+  question: 你月入 $25,000, 月儲蓄 $5,000, 儲蓄率係幾多? 健康嗎?
+  options:
+    a: 20%, 健康
+    b: 10%, 需要調整
+    c: 5%, 不健康
+    d: 50%, 過度儲蓄
+  answer: a
+  explanation: 儲蓄率 = 5,000 ÷ 25,000 = 20%。20% 屬於健康水平, 可以開始考慮投資。10% 勉強合格, < 10% 需要調整,
+    > 30% 過度儲蓄(失去投資機會)。
+  difficulty: 2
+  tags:
+  - calculation
+  - scenario
+- id: '3.6'
+  question: 點解儲蓄要「分戶口」, 唔好 all-in 一個?
+  options:
+    a: 因為一個戶口有存款上限
+    b: 因為政府規定要分戶口
+    c: 因為分戶口可避免「心理賬戶」混淆, 旅行錢唔會被當應急錢使咗
+    d: 因為分戶口有稅務優惠
+  answer: c
+  explanation: 心理學叫「mental accounting」(心理賬戶)。分開戶口, 旅行錢、應急錢、退休錢分開擺, 唔會因為見到「旅行錢」就走去買
+    iPhone, 違反原意。分戶口係自我控制工具, 唔係法律或稅務要求。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '3.7'
+  question: 你月必要支出 $12,000, 想 6 個月應急錢, 目標金額係幾多?
+  options:
+    a: $72,000
+    b: $144,000
+    c: $24,000
+    d: $36,000
+  answer: a
+  explanation: '12,000 × 6 = 72,000。Option a 係 2 個月, b 係 3 個月, d 係 12 個月。應急錢計法: 月必要支出
+    × 目標月數。'
+  difficulty: 2
+  tags:
+  - calculation
+- id: '3.8'
+  question: 你儲蓄率長期 < 10%, 最應該做嘅嘢係?
+  options:
+    a: 重新審視必要支出, 削減非必要開支; 同時增加收入來源
+    b: 借錢先使未來錢
+    c: 買保險就算
+    d: 即刻開投資戶口搏高回報
+  answer: a
+  explanation: '儲蓄率 < 10% 代表現金流唔健康, 唔可以靠投資補救 (投資輸咗會更差)。正確做法: 1) 審視支出, 削減非必要 (例如訂閱服務/外賣);
+    2) 增加收入 (加班/兼職/技能提升)。儲蓄率回到 20% 先考慮投資。Option a 會放大風險, c 會陷入債務陷阱, d 解決唔到根本問題。'
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '3.9'
+  question: 「先 pay 自己」嘅儲蓄策略, 點解比「慳錢」更容易持續?
+  options:
+    a: 因為慳錢係法律要求, 先 pay 自己係自願
+    b: 因為先 pay 自己將儲蓄自動化, 唔使每次諗「應唔應該儲」
+    c: 因為先 pay 自己有利息回報
+    d: 因為慳錢會影響信用評分
+  answer: b
+  explanation: 「先 pay 自己」意思係每月出糧後即時將部分 (例如 20%) 自動轉去獨立儲蓄戶口, 然後用剩低嘅使。呢個方法將儲蓄變成自動化習慣,
+    唔使每月掙扎「應唔應該儲」。研究顯示自動化儲蓄嘅人儲蓄率持續高 2-3 倍。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '3.10'
+  question: 你阿明儲蓄率 5%, 應急錢 1 個月, 月儲 $1,500。佢下個月失業, 最可能發生咩事?
+  options:
+    a: 佢可以用儲蓄過渡, 3 個月搵到新工
+    b: 佢要靠信用卡/私人貸款過渡, 1 個月內破產風險高
+    c: 佢可以即刻賣股票套現
+    d: 佢可以向政府申請失業救濟金即時 cover
+  answer: b
+  explanation: '儲蓄率 5% 偏低, 應急錢 1 個月太短。失業後 1 個月就會用晒儲蓄, 餘下要靠借貸度日, 容易陷入債務陷阱。Solution:
+    先增加儲蓄率到 20%, 應急錢累積到 3-6 個月, 先係穩健狀態。Option c 假設佢有股票, d 失業救濟審批需時, 唔即時。'
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+

@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: GraphQL reports failures in the {blank} array while resolved fields stay inside data."
+  answer: "errors"
+  explanation: "The errors array is the home of every field-level failure, alongside the partial data"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: The {blank} map on a GraphQL error carries stable machine-readable codes for clients to branch on."
+  answer: "extensions"
+  explanation: "Codes such as AUTH_REQUIRED or NOT_FOUND live in extensions while the message stays for humans"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: A DGS error handler is declared as a method on a component and annotated with {blank}."
+  answer: "@DgsExceptionHandler"
+  explanation: "The annotation binds one exception type to a structured GraphQL error with extensions"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "Complete: Spring Security 7 enables {blank} protection for all endpoints by default, which 403s stateless GraphQL POSTs."
+  answer: "CSRF"
+  explanation: "The grace period of form-only CSRF is over, so APIs must either send tokens or disable it with a documented stateless reason"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.5"
+  question: "Complete: The removed authorization DSL is replaced by {blank} in Spring Security 7."
+  answer: "authorizeHttpRequests"
+  explanation: "authorizeRequests was dropped, so every rule now chains off authorizeHttpRequests"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "Complete: Disabling CSRF is only defensible when authentication uses a non-cookie mechanism such as a {blank} token flow."
+  answer: "Bearer"
+  explanation: "With no cookie in the trust domain there is nothing to CSRF, but the decision must be documented because it removes a default shield"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "Complete: A query that maps the full schema through the DGS endpoint is called {blank}, and needs explicit read access."
+  answer: "introspection"
+  explanation: "Introspection reveals every type and field early in the request, so it gets its own guard separate from mutation writes"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Complete: Securing at the security chain and again inside resolvers is called {blank} in depth."
+  answer: "defense"
+  explanation: "The chain authenticates the caller and the resolver enforces per-entity rules so a single bypass cannot open the whole API"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.9"
+  question: "Complete: A non-null schema field backed by a {blank} resolver method must throw a mapped error or return a sentinel instead of silent null."
+  answer: "@Nullable"
+  explanation: "The JSpecify contract from module 08 forces the mismatch to be resolved inside the resolver, never shipped as implicit null"
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.10"
+  question: "Complete: When a root field fails the whole data object is {blank} while a deep field failure only nullifies that field."
+  answer: "null"
+  explanation: "Root failure leaves nothing to fill, so data is null at the top; deeper failure still ships a partial object with an errors entry"
+  difficulty: 3
+  tags: [concept]

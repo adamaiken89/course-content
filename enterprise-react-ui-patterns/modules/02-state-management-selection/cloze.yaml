@@ -1,0 +1,54 @@
+- id: "c.21"
+  question: "When draft data, selected program, validation errors, and modal flags scatter across useState and context with no placement rule, that is called {state spaghetti}."
+  answer: "state spaghetti"
+  explanation: "State spaghetti means values live wherever a developer happened to put them, so every feature re-fights the same re-render storm."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.22"
+  question: "Wrapping the whole app in one {context} provider makes every keystroke re-render every consumer, because the provider value is a new object each render."
+  answer: "context"
+  explanation: "Context offers no per-slice subscription; a new value object fails Object.is and re-renders all consumers of the provider."
+  difficulty: 1
+  tags: [scenario]
+- id: "c.23"
+  question: "The decision matrix asks about scope, write {frequency}, persistence, sync, and re-render cost before choosing where state lives."
+  answer: "frequency"
+  explanation: "How hot a value is decides how much subscription isolation you need; context is fine for rare writes and fatal at typing frequency."
+  difficulty: 1
+  tags: [concept]
+- id: "c.24"
+  question: "The mental model: state lives where its consumers {branch} first, and frequency drives isolation."
+  answer: "branch"
+  explanation: "Place a value at the first fork in the consumer graph; the readership decides the floor, the write frequency decides the isolation you need."
+  difficulty: 2
+  tags: [concept]
+- id: "c.25"
+  question: "A selector that returns a spread like ({ ...s.drafts[programId] }) creates a new object every snapshot, defeating Object.is equality; selectors need stable {references}."
+  answer: "references"
+  explanation: "New identity per snapshot makes the component subscribe to everything. Select primitives, the stable stored slice, or useShallow for multi-field reads."
+  difficulty: 2
+  tags: [concept]
+- id: "c.26"
+  question: "The zustand {persist} middleware serializes the batch draft to localStorage and rehydrates it on boot, giving reload survival."
+  answer: "persist"
+  explanation: "persist writes a slice under a named key and restores it on startup, so cross-screen drafts survive a page reload."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.27"
+  question: "In this course's framing, context is {dependency injection} with a per-change re-render tax, not a global state solution."
+  answer: "dependency injection"
+  explanation: "Context delivers a value down the tree; its cost is that every consumer re-renders when the provider value changes, so keep it read-mostly."
+  difficulty: 3
+  tags: [concept]
+- id: "c.28"
+  question: "React 19's {useSyncExternalStore} is the primitive zustand builds on to subscribe to an external store without tearing."
+  answer: "useSyncExternalStore"
+  explanation: "useSyncExternalStore lets React read consistent external snapshots; zustand's slice selectors sit on top of it."
+  difficulty: 3
+  tags: [terminology]
+- id: "c.29"
+  question: "In the cross-screen test, two screens render against the same store, typing happens in one, and the summary shows the text; the cross-screen proof runs through the {store}, not props."
+  answer: "store"
+  explanation: "Cross-screen sharing is proven by rendering two components reading one zustand store; the test drives behavior, not implementation."
+  difficulty: 2
+  tags: [scenario]

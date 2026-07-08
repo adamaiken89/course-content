@@ -1,0 +1,119 @@
+- id: "1.1"
+  question: "What runtime boundary does Spring Boot 4.0 target?"
+  options:
+    a: "Jakarta EE 11"
+    b: "Jakarta EE 9"
+    c: "Java EE 8"
+    d: "J2EE 1.4"
+  answer: a
+  explanation: "Boot 4 sits on Jakarta EE 11 (Servlet 6.1, JPA 3.2, Bean Validation 3.1). Earlier EE levels are Boot 3.x territory."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "1.2"
+  question: "A team wants to keep using Undertow as web server in Boot 4. What happens?"
+  options:
+    a: "Works fine, Undertow is still supported"
+    b: "Needs an extra dependency toggle"
+    c: "Fails: Undertow support was removed in Boot 4"
+    d: "Only works with GraalVM native"
+  answer: c
+  explanation: "Undertow never caught up to Servlet 6.1 and was removed. Use Tomcat 11.0.x or Jetty 12.1.x."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "1.3"
+  question: "Which config approach fails earliest and with the clearest message if a property is misspelled?"
+  options:
+    a: "@Value with default"
+    b: "Constructor-bound @ConfigurationProperties"
+    c: "Environment.getProperty with try/catch"
+    d: "System.getenv"
+  answer: b
+  explanation: "Constructor-bound properties validate the whole prefix at startup binding. @Value-style lookups surface only at runtime use."
+  difficulty: 2
+  tags: [concept]
+
+- id: "1.4"
+  question: "In Boot 4, binding @ConfigurationProperties to which field shape is unsupported?"
+  options:
+    a: "Private fields with getters/setters"
+    b: "Immutable records"
+    c: "Public mutable fields"
+    d: "Constructor parameters"
+  answer: c
+  explanation: "Boot 4 removed binding to public fields. Use private fields + accessors or constructor binding/records."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "1.5"
+  question: "You define your own ObjectMapper bean with spring-boot-jackson on classpath. What does Boot's auto-configuration do?"
+  options:
+    a: "Overwrites your bean unconditionally"
+    b: "Fails the app with a conflict error"
+    c: "Ignores your bean and uses the default silently"
+    d: "Backs off: @ConditionalOnMissingBean sees yours first"
+  answer: d
+  explanation: "Auto-configuration classes use @ConditionalOnMissingBean: user beans take precedence, the auto-configured JsonMapper backs off."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "1.6"
+  question: "Where are auto-configuration classes declared in Boot 4?"
+  options:
+    a: "META-INF/spring/AutoConfiguration.imports"
+    b: "spring.factories"
+    c: "application.properties"
+    d: "pom.xml"
+  answer: a
+  explanation: "Auto-configuration classes are listed in META-INF/spring/AutoConfiguration.imports. spring.factories was removed."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "1.7"
+  question: "Which packaging style makes a whole flow a single subtree and maps cleanly to Boot 4 module boundaries?"
+  options:
+    a: "Layered: controllers/, services/, repositories/"
+    b: "Feature: orders/, billing/, users/"
+    c: "Single package for everything"
+    d: "Package-per-annotation"
+  answer: b
+  explanation: "Feature-based packaging groups controller, service, repository and GraphQL fetcher per flow, easing module extraction later."
+  difficulty: 1
+  tags: [concept]
+
+- id: "1.8"
+  question: "Which web server does Boot 4 NOT support?"
+  options:
+    a: "Tomcat 11.0"
+    b: "Jetty 12.1"
+    c: "Undertow"
+    d: "Netty (reactive)"
+  answer: c
+  explanation: "Undertow was removed for lack of Servlet 6.1. Tomcat 11.0, Jetty 12.1, and Netty (reactive) remain supported."
+  difficulty: 1
+  tags: [concept]
+
+- id: "1.9"
+  question: "After switching a service from classic starters to one focused Boot 4 modular artifact, what improves first?"
+  options:
+    a: "Compile-time correctness of business logic"
+    b: "Startup time and classpath size"
+    c: "Database transaction semantics"
+    d: "GraphQL schema validation"
+  answer: b
+  explanation: "Modular starters pull only the autoconfigure modules you use, trimming startup and classpath bloat. Business behavior is unchanged."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "1.10"
+  question: "A reviewer rejects a PR with 'inject PaymentGateway via field injection'. Which justification is the strongest fit for Boot 4-era code?"
+  options:
+    a: "Field injection makes beans lazy"
+    b: "Field injection breaks virtual threads"
+    c: "Constructor injection is required by Jackson 3"
+    d: "Constructor injection keeps dependencies explicit, final, and unit-testable without Spring"
+  answer: d
+  explanation: "Constructor injection with final fields makes dependencies explicit, immutable, and constructible with plain new in tests. The other claims are false."
+  difficulty: 3
+  tags: [comparison]

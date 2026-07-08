@@ -1,0 +1,120 @@
+- id: '17.1'
+  question: In FIX Protocol, which message type is used for RFQ (Request for Quote)?
+  options:
+    a: 35=D (New Order Single)
+    b: 35=8 (Execution Report)
+    c: 35=W (Request for Quote)
+    d: 35=0 (Heartbeat)
+  answer: c
+  explanation: 35=W is the Request for Quote, used for quoting, especially fixed income or illiquid products. Market makers respond with 35=j (Quote), and the client then decides whether to send 35=D for execution.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '17.2'
+  question: Which description of the DUCO (Dual Control) process is incorrect?
+  options:
+    a: Requires two people to independently approve the same order
+    b: A single manager's approval is sufficient because the manager has final authority
+    c: Either approver rejects and the order is rejected
+    d: If approval times out, the order auto-rejects
+  answer: b
+  explanation: DUCO requires dual control — two independent approvals. Single-person approval violates the dual control principle and cannot prevent rogue trading or collusion. It is a regulatory mandate for brokerages.
+  difficulty: 2
+  tags:
+  - concept
+- id: '17.3'
+  question: A market maker responds to an RFQ with a Quote (35=j). Which tag identifies the quote expiry?
+  options:
+    a: 131=QuoteReqID
+    b: 117=QuoteID
+    c: 146=NoRelatedSym
+    d: 62=ValidUntilTime
+  answer: d
+  explanation: 'Key Quote tags: 117=QuoteID, 132=BidPx, 133=OfferPx, 134=BidSize, 135=OfferSize, and 62=ValidUntilTime for quote expiry. 131=QuoteReqID and 146=NoRelatedSym belong to the RFQ (35=W).'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '17.4'
+  question: In an RFQ flow for an illiquid product, after a client picks the market maker's price, which FIX message executes the trade?
+  options:
+    a: 35=D (New Order Single)
+    b: 35=W (Request for Quote)
+    c: 35=j (Quote)
+    d: 35=R (Quote Request)
+  answer: a
+  explanation: The RFQ flow is — client sends 35=W, market maker responds with 35=j, client picks a price, then client sends 35=D to execute. Quotes and RFQs are pre-trade; only 35=D enters the order.
+  difficulty: 2
+  tags:
+  - concept
+- id: '17.5'
+  question: Which FIX message is the alternative RFQ form often used for equities/futures, requesting quotes from multiple market makers?
+  options:
+    a: 35=j
+    b: 35=D
+    c: 35=R (Quote Request)
+    d: 35=8
+  answer: c
+  explanation: 35=R (Quote Request) is similar to 35=W but often used for equities/futures to request quotes from multiple market makers. The response is 35=S (Quote) or 35=A (Quote Acknowledgement).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '17.6'
+  question: In the DUCO workflow, what happens if the approval times out (e.g., no response within 30 minutes)?
+  options:
+    a: The order auto-releases and proceeds to the EMS
+    b: The order is converted to a market order
+    c: Only one approval becomes sufficient
+    d: The order auto-rejects
+  answer: d
+  explanation: DUCO is fail-closed. If either approver rejects or the approval times out, the order is rejected. The hold releases and the order never reaches the EMS.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '17.7'
+  question: Why is DUCO (Dual Control) a regulatory hard requirement rather than optional?
+  options:
+    a: Because single approvals are too slow
+    b: Because two independent approvals prevent rogue trading and collusion that a single-person approval cannot stop
+    c: Because regulators require two signatures for tax purposes
+    d: Because it speeds up the pre-trade gate
+  answer: b
+  explanation: Dual control prevents a single authorized person from moving a high-risk order without independent review. Single-person approval creates a rogue-trading and collusion risk, which is why DUCO is mandatory for high-risk and over-limit orders.
+  difficulty: 2
+  tags:
+  - concept
+- id: '17.8'
+  question: 'OMS sends 35=W (RFQ) to three market makers. Maker A quotes $99.50-$99.80, Maker B quotes $99.45-$99.75, Maker C does not respond. What should the OMS do?'
+  options:
+    a: Select the lowest offer (Maker B at $99.75), verify ValidUntilTime has not expired, and send 35=D to Maker B
+    b: Randomly choose a responding maker
+    c: Send 35=D to all three makers
+    d: Cancel the RFQ and route to a lit exchange
+  answer: a
+  explanation: Collect all quotes, select the best price (lowest offer for a buy = $99.75 from Maker B), check whether ValidUntilTime has expired, then send 35=D to the winning maker. If the best quote has expired, re-RFQ.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '17.9'
+  question: Which of these FIX message types is NOT part of the pre-trade phase?
+  options:
+    a: 35=W (Request for Quote)
+    b: 35=j (Quote)
+    c: 35=8 (Execution Report)
+    d: 35=R (Quote Request)
+  answer: c
+  explanation: 35=8 (Execution Report) is the post-dispatch confirmation of fills and order status. 35=W, 35=R, and 35=j are pre-trade messages used for quoting and RFQ before an order exists.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '17.10'
+  question: Which orders typically trigger the DUCO workflow?
+  options:
+    a: Small retail cash orders
+    b: High-risk or over-limit orders flagged by the OMS
+    c: All market orders
+    d: Only sell orders
+  answer: b
+  explanation: The OMS flags high-risk or over-limit orders, holds them, and requests approval from a compliance officer and a second authorized trader. Small ordinary orders do not require dual control.
+  difficulty: 3
+  tags:
+  - scenario

@@ -1,0 +1,120 @@
+- id: '6.1'
+  question: What is the main difference between ISIN and CUSIP?
+  options:
+    a: ISIN is a global standard (ISO 6166), CUSIP is primarily used in US and Canadian markets
+    b: ISIN is only used in the US, CUSIP is the European standard
+    c: They are functionally identical, just different names
+    d: ISIN is for stocks, CUSIP is for bonds
+  answer: a
+  explanation: ISIN is the ISO 6166 global standard (2-letter country + 9 chars + 1 check digit). CUSIP is the dominant US/Canada identifier (9 alphanumeric chars). They serve different roles in settlement systems.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.2'
+  question: What is the VALOREN identifier used for?
+  options:
+    a: Identifying Swiss securities on SIX Swiss Exchange
+    b: Japanese equities settlement
+    c: Australian market identification
+    d: Global options clearing
+  answer: a
+  explanation: VALOREN is the Swiss security identifier used by SIX Swiss Exchange and SIX SIS for Swiss market settlement. It is typically a 7-digit numeric code (e.g., VALOR 1234567).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.3'
+  question: What is the structure of an ISIN?
+  options:
+    a: A 3-letter country prefix + 6 numeric characters + 2 check digits
+    b: A 9-character alphanumeric code with no country prefix
+    c: A 2-letter country prefix + 9 alphanumeric country-specific characters + 1 check digit
+    d: A 7-digit purely numeric code
+  answer: c
+  explanation: ISIN is a 2-letter country prefix + 9 alphanumeric country-specific characters + 1 check digit. CUSIP is 9 characters, VALOREN is 7 digits. Unlike VALOREN, ISIN is alphanumeric.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '6.4'
+  question: A DTCC study found that approximately what percentage of STP (Straight-Through Processing) failures originate from identifier mapping issues?
+  options:
+    a: 10%
+    b: 25%
+    c: 40%
+    d: 70%
+  answer: c
+  explanation: "Approximately 40% of STP breaks stem from identifier mapping failures. Common causes include: missing mappings for newly issued securities, one end not updated after corporate actions, multi-identifier conflicts from cross-listings, and inconsistent multi-vendor mappings."
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.5'
+  question: Which identifier is the global cross-border settlement and regulatory reporting standard?
+  options:
+    a: Bloomberg Ticker
+    b: ISIN
+    c: FIGI
+    d: Reuters RIC
+  answer: b
+  explanation: ISIN is the standard for cross-border settlement and regulatory reporting, used by custodians, DTCC, and regulators. It is globally unique and consistent across markets, unlike proprietary identifiers such as Bloomberg Ticker and RIC.
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.6'
+  question: What is the primary purpose of the FIGI identifier?
+  options:
+    a: US market settlement and clearing
+    b: UK market identification
+    c: Swiss securities settlement
+    d: An open-standard cross-system mapping bridge
+  answer: d
+  explanation: FIGI (Financial Instrument Global Identifier) is a global open standard designed as a cross-system mapping bridge for OMS and multi-vendor integration. It is not a settlement standard like CUSIP or VALOREN.
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.7'
+  question: In which primary region is the SEDOL identifier used?
+  options:
+    a: US and Canada
+    b: UK and Ireland
+    c: Switzerland
+    d: Japan
+  answer: b
+  explanation: SEDOL (Stock Exchange Daily Official List) is used in the UK/Ireland, primarily by the LSE and UK settlement systems. CUSIP covers US/Canada, VALOREN covers Switzerland.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.8'
+  question: Which identifier is used for US market settlement and clearing by DTC and US broker-dealers?
+  options:
+    a: CUSIP
+    b: ISIN
+    c: VALOREN
+    d: FIGI
+  answer: a
+  explanation: CUSIP is the US/Canada settlement and clearing standard, used by DTC, US broker-dealers, and clearing houses. ISIN is the cross-border standard; the OMS needs both for different counterparties.
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.9'
+  question: A junior developer says CUSIP is just the first 9 characters of ISIN, so ISIN can always be derived from CUSIP. Why is this wrong in the general case?
+  options:
+    a: CUSIP and ISIN use incompatible character sets, so derivation always fails
+    b: ISIN is always shorter than CUSIP
+    c: Derivation only works for US/Canada instruments; it fails for UK (SEDOL), Swiss (VALOREN), and cross-listed securities
+    d: Derivation works correctly but is slower than a lookup
+  answer: c
+  explanation: Deriving ISIN from CUSIP only works for US/Canada instruments, where the ISIN's middle 9 characters happen to be the CUSIP. It fails for SEDOL, VALOREN, and cross-listed securities, and silently propagates stale CUSIP data. The cross-reference table must be maintained, not skipped.
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.10'
+  question: On IPO day, Bloomberg has a ticker for a newly issued stock, but CUSIP/ISIN have not yet been assigned or synced to the OMS cross-reference table. An order for the stock arrives. What is the likely result?
+  options:
+    a: The order fills normally because the mapping is derived automatically
+    b: The order is created directly in the settlement systems
+    c: The cross-reference table self-heals from the exchange feed
+    d: The order cannot be mapped to downstream identifiers and will be rejected or held for manual handling
+  answer: d
+  explanation: Newly issued securities are a common mapping failure cause. On IPO day Bloomberg may have a ticker while CUSIP/ISIN are not yet assigned or synced. Missing downstream mappings cause rejects or manual intervention until the cross-reference is populated.
+  difficulty: 3
+  tags:
+  - scenario

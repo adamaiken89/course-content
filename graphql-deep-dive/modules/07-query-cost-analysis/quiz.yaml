@@ -1,0 +1,131 @@
+- id: '7.1'
+  question: What is the primary purpose of depth limiting in GraphQL?
+  options:
+    a: Reject deeply nested queries that cause exponential resource usage
+    b: Prevent SQL injection attacks
+    c: Reduce network payload size
+    d: Enforce authentication on nested fields
+  answer: a
+  explanation: Depth limiting caps the maximum nesting depth. Without it, deeply nested
+    queries produce exponential node counts (b^d), overwhelming the server.
+  difficulty: 2
+  tags: []
+- id: '7.2'
+  question: In complexity scoring, what do multipliers represent?
+  options:
+    c: Arguments that scale the cost linearly with their value
+    a: Number of database queries per field
+    b: Server CPU cores needed
+    d: Number of nested fields under the parent
+  answer: c
+  explanation: Multipliers reference pagination or limit arguments. A field with weight
+    3 and multiplier 'first' where first=50 has cost 3 x 50 = 150.
+  difficulty: 2
+  tags: []
+- id: '7.3'
+  question: 'Field `search(term: String!, limit: Int)` has complexity weight 4 with
+    multiplier `limit`. Client sends `limit: 200`. What is the field''s cost?'
+  options:
+    d: '800'
+    a: '4'
+    b: '50'
+    c: '200'
+  answer: d
+  explanation: Cost = weight x multiplier value = 4 x 200 = 800.
+  difficulty: 2
+  tags: []
+- id: '7.4'
+  question: API uses cost-based rate limiting. Client has budget 5,000/min. Each request
+    costs 200. How many requests before rate limited?
+  options:
+    c: '25'
+    a: '50'
+    b: '200'
+    d: Unlimited — budget resets per query
+  answer: c
+  explanation: 5,000 / 200 = 25 requests per minute. After 25, budget exhausted until
+    reset.
+  difficulty: 2
+  tags: []
+- id: '7.5'
+  question: 'Query: `{ feed(first: 100) { items { comments(first: 10) { text } } }
+    }`. Feed weight=5 (multiplier: first), Comments weight=2 (multiplier: first).
+    Total cost?'
+  options:
+    b: 2,500
+    a: '500'
+    c: '700'
+    d: 5,000
+  answer: b
+  explanation: 'Feed: 5 x 100 = 500. Comments per feed item: 2 x 10 = 20, times 100
+    items = 2,000. Total = 500 + 2,000 = 2,500.'
+  difficulty: 2
+  tags: []
+- id: '7.6'
+  question: Which scenario is cost analysis better at preventing than query timeouts?
+  options:
+    a: Query with high complexity value that triggers expensive joins before returning
+      quickly
+    b: Query that hangs due to DB lock contention
+    c: Slow network connection between server and client
+    d: Query with syntax error
+  answer: a
+  explanation: Cost analysis rejects high-complexity queries before execution. Timeouts
+    only catch queries that actually take too long. An expensive but fast query slips
+    past timeouts.
+  difficulty: 2
+  tags: []
+- id: '7.7'
+  question: How do persisted queries differ from cost analysis?
+  options:
+    d: Persisted queries use an allowlist; cost analysis computes budget at runtime
+    a: Persisted queries are faster to execute
+    b: Cost analysis requires a build-time registration pipeline
+    c: They are identical concepts with different names
+  answer: d
+  explanation: Persisted queries pre-register approved query shapes (allowlist). Cost
+    analysis computes complexity at runtime and rejects expensive queries. PQ has
+    no runtime overhead but requires build pipeline.
+  difficulty: 2
+  tags: []
+- id: '7.8'
+  question: Persisted query hash matches a query that calls adminDashboard (marked
+    @trusted). Client sends hash without auth header. What happens?
+  options:
+    b: Query rejected — persisted queries do not skip auth checks
+    a: Query executes — persisted queries bypass auth
+    c: Only the trusted fields execute; non-trusted fields are skipped
+    d: Server crashes — invalid state
+  answer: b
+  explanation: Persisted queries replace cost analysis, not authentication. Auth checks
+    apply regardless of query delivery method. The @trusted directive would skip cost
+    analysis, not auth.
+  difficulty: 2
+  tags: []
+- id: '7.9'
+  question: Internal admin tool needs unlimited query complexity. Best approach?
+  options:
+    b: Header-based bypass keyed on internal network or API key role
+    a: Increase the global max complexity for all clients
+    c: Disable cost analysis entirely
+    d: Use persisted queries only for internal tools
+  answer: b
+  explanation: Header or API-key-based bypass lets trusted clients skip cost analysis
+    while protecting public clients. Global changes weaken security for everyone.
+  difficulty: 2
+  tags: []
+- id: '7.10'
+  question: Which npm libraries provide depth limiting and complexity estimation for
+    GraphQL?
+  options:
+    a: graphql-depth-limit and graphql-query-complexity
+    b: graphql-shield and graphql-rate-limit
+    c: express-graphql and apollo-server
+    d: graphql-cost-analysis and graphql-depth-check
+  answer: a
+  explanation: graphql-depth-limit validates max nesting depth. graphql-query-complexity
+    estimates per-query cost with configurable estimators. Both integrate as Apollo
+    validation rules.
+  difficulty: 2
+  tags: []
+

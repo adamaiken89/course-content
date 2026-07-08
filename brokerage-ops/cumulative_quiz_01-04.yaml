@@ -1,0 +1,114 @@
+- id: cum.1
+  type: mcq
+  question: "Which is the correct high-level order of the trade lifecycle phases?"
+  source_modules: [1]
+  options:
+    a: "Pre-Trade → Execution → Allocation → Settlement"
+    b: "Execution → Pre-Trade → Allocation → Settlement"
+    c: "Allocation → Pre-Trade → Execution → Settlement"
+    d: "Pre-Trade → Allocation → Execution → Settlement"
+  answer: a
+  explanation: "Pre-trade (suitability, pre-clearance, credit) runs first, then execution/routing/matching, then allocation to sub-accounts, then settlement (DVP/CNS)."
+  difficulty: 1
+  tags: [cross-module, concept]
+
+- id: cum.2
+  type: mcq
+  question: "An order passes suitability and credit checks, then needs to reach the venue for execution. Which system boundary does it cross?"
+  source_modules: [1]
+  options:
+    a: "Settlement system to custodian"
+    b: "EMS to OMS"
+    c: "OMS to EMS"
+    d: "Allocator to clearing house"
+  answer: c
+  explanation: "The OMS owns pre-trade checks and order state; the EMS owns venue connectivity and execution. Orders flow OMS → EMS at the execution boundary."
+  difficulty: 2
+  tags: [cross-module, concept]
+
+- id: cum.3
+  type: cloze
+  question: "A 2-for-1 {blank} doubles an equity holder's share count while halving the per-share price, leaving position market value unchanged."
+  source_modules: [2]
+  answer: stock split
+  explanation: "A stock split changes share count and price proportionally; total position value is preserved."
+  difficulty: 1
+  tags: [cross-module, terminology]
+
+- id: cum.4
+  type: mcq
+  question: "How do broker OMSs typically obtain new ETF shares that can be sold to clients?"
+  source_modules: [3]
+  options:
+    a: "The SEC mints new shares on demand"
+    b: "The OMS clones existing share records"
+    c: "ETFs are never created after inception"
+    d: "Authorized Participants assemble creation baskets and deliver them to the fund"
+  answer: d
+  explanation: "APs deliver the creation basket to the fund in exchange for new ETF shares (creation units); the secondary market supply clients buy comes from these units."
+  difficulty: 2
+  tags: [cross-module, concept]
+
+- id: cum.5
+  type: mcq
+  question: "A US Treasury bond is quoted at 101-16. What price is this?"
+  source_modules: [4]
+  options:
+    a: "101.16% of face value"
+    b: "101 and 16/32 percent of face value = 101.50"
+    c: "$101.16 per bond"
+    d: "A yield of 1.0116%"
+  answer: b
+  explanation: "US Treasuries quote in thirty-seconds: 101-16 means 101 + 16/32 = 101.50% of par."
+  difficulty: 2
+  tags: [cross-module, calculation]
+
+- id: cum.6
+  type: cloze
+  question: "Dirty price = clean price + {blank}; it is what the buyer actually pays the seller."
+  source_modules: [4]
+  answer: accrued interest
+  explanation: "The dirty (full/invoice) price adds accrued interest since the last coupon to the quoted clean price."
+  difficulty: 2
+  tags: [cross-module, formula]
+
+- id: cum.7
+  type: tf
+  statement: "For a standard fixed-coupon bond, when market yields rise the bond's price falls."
+  source_modules: [4]
+  answer: true
+  explanation: "Price and yield move inversely for option-free fixed coupon bonds: discounting fixed cash flows at a higher rate produces a lower price."
+  difficulty: 1
+  tags: [cross-module, concept]
+
+- id: cum.8
+  type: mcq
+  question: "Client instructions are matched to sub-account positions and confirmed with the custodian. Which lifecycle phase is this?"
+  source_modules: [1]
+  options:
+    a: "Execution"
+    b: "Pre-Trade"
+    c: "Allocation"
+    d: "Settlement"
+  answer: c
+  explanation: "Allocation distributes executed quantity across sub-accounts before settlement confirms delivery with the custodian."
+  difficulty: 1
+  tags: [cross-module, recall]
+
+- id: cum.9
+  type: tf
+  statement: "The clean price of a bond can exceed its dirty price."
+  source_modules: [4]
+  answer: false
+  explanation: "Dirty = clean + accrued interest, and accrued interest is non-negative between coupons, so dirty ≥ clean always."
+  difficulty: 2
+  tags: [cross-module, misconception]
+
+- id: cum.10
+  type: tf
+  statement: "In a typical brokerage stack, the OMS subscribes directly to exchange market data feeds for execution."
+  source_modules: [1]
+  answer: false
+  explanation: "Market data consumption and venue connectivity sit with the EMS/execution layer; the OMS owns order state, pre-trade checks, and allocations."
+  difficulty: 2
+  tags: [cross-module, misconception]

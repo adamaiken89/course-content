@@ -1,0 +1,103 @@
+- id: cum.57
+  type: mcq
+  source_modules:
+  - 29
+  question: Reasoning models such as o1 and R1 mainly extend capability by doing what?
+  options:
+    a: Scaling inference-time compute with RL-trained step evaluation and search
+    b: Compressing the model through pruning at deployment
+    c: Adding more decoder layers at runtime
+    d: Ignoring the chain and sampling one long answer
+  answer: a
+  explanation: These models spend more compute at inference, guided by reward-style step evaluation over longer chains, to solve harder problems.
+  difficulty: 2
+  tags:
+  - concept
+  - mechanism
+- id: cum.58
+  type: mcq
+  source_modules:
+  - 29
+  question: What is a core benefit of a multimodal MoE?
+  options:
+    a: Task-specific experts per modality add capacity without proportional dense-parameter cost
+    b: All modalities share one identical expert set so nothing new is learned
+    c: Modality experts remove the need for attention
+    d: Tokens from different modalities are never mixed
+  answer: a
+  explanation: Sparse routing lets the model grow modality-specific expertise while keeping per-token compute manageable, a natural extension of MoE to multimodal inputs.
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: cum.59
+  type: cloze
+  source_modules:
+  - 29
+  question: Test-time compute means spending more {tokens} and model evaluations on the answer before responding.
+  answer: tokens
+  explanation: Models that reason at inference spend extra tokens on chains, searches, or refinements, trading latency for correctness.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: cum.60
+  type: mcq
+  source_modules:
+  - 29
+  question: Agentic LLM systems are best described as which of these?
+  options:
+    a: Models that always answer in one shot without tools
+    b: Models that emit actions, observe feedback, and iterate in a loop until the task completes
+    c: Static pipelines with no model decisions
+    d: Ensembles that only choose the longest output
+  answer: b
+  explanation: "Agentic systems close the loop: they act, observe results, decide the next action, and repeat — often with tools and external state."
+  difficulty: 3
+  tags:
+  - concept
+  - application
+- id: cum.61
+  type: cloze
+  source_modules:
+  - 29
+  question: An open frontier question is whether scaling {test}-time compute can substitute for some amount of model-size scaling.
+  answer: test
+  explanation: If reasoning search offsets parameters, smaller models plus more inference compute may approach larger-model performance.
+  difficulty: 2
+  tags:
+  - theory
+  - synthesis
+- id: cum.62
+  type: tf
+  source_modules:
+  - 29
+  statement: o1-style reinforcement learning trains the model to evaluate and refine its own intermediate reasoning under a reward signal.
+  answer: true
+  explanation: RL over reasoning chains teaches step evaluation and refinement, not just final-answer fitting.
+  difficulty: 2
+  tags:
+  - concept
+  - mechanism
+- id: cum.63
+  type: tf
+  source_modules:
+  - 29
+  statement: Agentic loops always guarantee correct answers because the model is allowed to self-correct.
+  answer: false
+  explanation: Self-correction helps, but loops can still settle on wrong answers, drift, or fail to notice errors; guarantees do not follow from looping alone.
+  difficulty: 3
+  tags:
+  - misconception
+  - synthesis
+- id: cum.64
+  type: tf
+  source_modules:
+  - 29
+  statement: A plausible future direction is that reasoning search plus tool use raises capability beyond what pure pretraining scaling alone would provide.
+  answer: true
+  explanation: Test-time search and tool grounding add capability along a different axis than raw model size, a central hypothesis of frontier research.
+  difficulty: 2
+  tags:
+  - theory
+  - synthesis

@@ -1,0 +1,159 @@
+- id: '33.1'
+  question: What is the core principle of a golden copy strategy?
+  options:
+    a: Each field has a designated authoritative source, and downstream systems do
+      not touch raw vendor feeds directly
+    b: Each system maintains its own version for maximum flexibility
+    c: Use Bloomberg data exclusively as the single source
+    d: Reconcile all data weekly
+  answer: a
+  explanation: The golden copy has four principles — authority (designated source
+    per field), override logging, propagation (downstream via golden copy, not vendor
+    feeds), and backup (disaster recovery).
+  difficulty: 1
+  tags:
+  - concept
+- id: '33.2'
+  question: A broker uses the Consensus strategy for multi-source aggregation. Bloomberg
+    and Refinitiv give different Sector values for the same stock. What should the
+    system do?
+  options:
+    a: Pick a value at random
+    b: Flag the divergence for manual review
+    c: Always take Bloomberg's value
+    d: Average the two values
+  answer: b
+  explanation: Under Consensus, vendor divergence triggers a flag for manual review.
+    Depending on authority assignment, the team may switch to a Primary Source strategy
+    or set an auto-accept threshold.
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '33.3'
+  question: A RefData team chooses the Vendor Priority strategy (check Bloomberg first,
+    fallback to Refinitiv). What is its main disadvantage?
+  options:
+    a: Implementation complexity and high maintenance cost
+    b: Requires at least three vendors to operate
+    c: Systematic vendor errors propagate to all securities
+    d: Cannot handle corporate action events
+  answer: c
+  explanation: Vendor Priority is a single-path strategy — if Bloomberg has a systematic
+    error, it spreads to every security with no cross-checking mechanism. It suits
+    small brokers with resource-constrained RefData teams.
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '33.4'
+  question: A broker switches from Vendor Priority (Bloomberg primary) to the Consensus
+    strategy. What is the most likely initial observation?
+  options:
+    a: Manual review workload immediately decreases
+    b: No change in workload
+    c: System performance degrades
+    d: Manual review workload surges short-term — previously uncompared vendor differences
+      now trigger alerts
+  answer: d
+  explanation: Switching to Consensus surfaces many previously undetected Bloomberg-vs-Refinitiv
+    differences, causing a short-term manual review surge. Workload decreases only
+    after systematic resolution. This is typical migration pain.
+  difficulty: 3
+  tags:
+  - scenario
+  - comparison
+- id: '33.5'
+  question: A client system patches a raw Bloomberg feed directly to fix a price discrepancy,
+    bypassing the golden copy. What happens?
+  options:
+    a: Conflicting values spread across downstream systems, and the fix is overwritten
+      on the next sync
+    b: Nothing — the fix works as intended
+    c: Execution speeds improve
+    d: The vendor approves the direct patch
+  answer: a
+  explanation: All traffic must flow through the golden copy. Bypassing it means downstream
+    systems get conflicting values and the manual fix is overwritten on the next sync.
+    The golden copy is the single source of truth.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '33.6'
+  question: Under the Primary Source aggregation strategy, how is authority assigned?
+  options:
+    a: A consensus of three vendors decides each value
+    b: Each attribute has a clear owner — equities use exchange data, bonds use Bloomberg
+    c: Values are picked at random
+    d: The cheapest vendor always wins
+  answer: b
+  explanation: Primary Source gives each attribute a clear owner, e.g., equity price
+    from exchange data and bond price from Bloomberg. Its drawback is no cross-check
+    when the primary vendor errs, so it suits critical pricing data.
+  difficulty: 2
+  tags:
+  - concept
+- id: '33.7'
+  question: What is the main downside of the Consensus aggregation strategy?
+  options:
+    a: It has no downside
+    b: It is the slowest possible approach
+    c: It needs at least two vendors and is unusable with vendor lock-in
+    d: It cannot price equities
+  answer: c
+  explanation: Consensus requires at least two vendors to compare, so it is unusable
+    when a broker is locked into one vendor. It is best for non-critical attributes
+    like sector and industry classification.
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '33.8'
+  question: What is the vendor data quality SLA target for accuracy and missing rate?
+  options:
+    a: 90% accuracy, 10% missing
+    b: 95% accuracy, 5% missing
+    c: 98% accuracy, 2% missing
+    d: Accuracy at least 99.5%, missing rate at most 0.5%
+  answer: d
+  explanation: Vendor SLA targets include accuracy at least 99.5%, missing rate at
+    most 0.5%, real-time update latency within 15 min, reference latency T+1, and
+    new security notification within T+1.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '33.9'
+  question: Bloomberg discontinues data for a set of small Asian markets. What is the
+    first action RefData should take?
+  options:
+    a: Confirm the impact — which securities are affected and how broad the impact
+      is
+    b: Delete all affected records immediately
+    c: Notify clients before assessing impact
+    d: Do nothing and wait
+  answer: a
+  explanation: The sequence is, (1) confirm impact, (2) activate backup vendor feeds
+    (Refinitiv, ICE, or exchange direct), (3) validate backup completeness and accuracy,
+    (4) notify downstream systems of the source change, (5) assess whether a new vendor
+    is needed.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '33.10'
+  question: Which vendor type would a broker use for entity data such as issuer incorporation
+    and parent structure, typically for KYC and compliance screening?
+  options:
+    a: Bloomberg
+    b: D&B / S&P entity data
+    c: Exchange direct feed
+    d: ICE Data Services consolidated feed
+  answer: b
+  explanation: D&B and S&P provide issuer entity data (incorporation, parent structure)
+    on a per-entity per-year billing model, used for KYC and compliance screening.
+    Bloomberg covers reference data broadly but not entity/ownership data.
+  difficulty: 1
+  tags:
+  - terminology
+  - comparison

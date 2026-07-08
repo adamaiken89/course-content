@@ -1,0 +1,138 @@
+- id: '12.1'
+  question: What is the first thing you narrow in a systematic Splunk error triage?
+  options:
+    a: The index and sourcetype
+    b: The rex extraction pattern
+    c: The output table format
+    d: The dashboard layout
+  answer: a
+  explanation: 'Triage starts narrow: pick the index, then the sourcetype, then the time range, then filter for the error level. Each clause removes a whole class of noise.'
+  difficulty: 1
+  tags:
+  - triage
+  - index
+  - sourcetype
+- id: '12.2'
+  question: Why does adding a time range make a troubleshooting search faster?
+  options:
+    a: It converts results to CSV
+    b: Splunk only scans buckets overlapping the requested window
+    c: It disables field extraction
+    d: It compresses the events on disk
+  answer: b
+  explanation: Splunk searches only buckets that intersect the time range, so a tight window scans far fewer events and returns faster.
+  difficulty: 1
+  tags:
+  - time-range
+  - performance
+- id: '12.3'
+  question: Given `index=main sourcetype=app_logs level=ERROR earliest=-1h`, what does the `level=ERROR` clause do?
+  options:
+    a: It renames the error field
+    b: It sorts the results by level
+    c: It filters the search to error-level events
+    d: It sums the error count
+  answer: c
+  explanation: The level=ERROR term is a search-time filter that keeps only events whose level field equals ERROR, leaving the signal instead of all logs.
+  difficulty: 1
+  tags:
+  - triage
+  - filter
+  - spl
+- id: '12.4'
+  question: In `| eval is_err=if(level="ERROR",1,0) | stats sum(is_err) as errors count as total by app`, what does sum(is_err) compute?
+  options:
+    a: The total number of events per app
+    b: The number of ERROR-level events per app
+    c: The average duration per app
+    d: The number of distinct endpoints per app
+  answer: b
+  explanation: Each event gets 1 if it is ERROR and 0 otherwise, so sum(is_err) counts the error events. count counts all events, giving the denominator for the rate.
+  difficulty: 1
+  tags:
+  - eval
+  - stats
+  - error-rate
+- id: '12.5'
+  question: Why does Splunk keep a Java stacktrace as a single multi-line event instead of splitting it?
+  options:
+    a: Internal newlines inside a log entry are preserved
+    b: Splunk always merges 10 lines
+    c: Java disables newlines in logs
+    d: The indexer splits only CSV files
+  answer: a
+  explanation: Splunk preserves newlines that occur inside a single event, so the exception line and all stack frames stay together for one rex and one stats count.
+  difficulty: 1
+  tags:
+  - stacktrace
+  - events
+- id: '12.6'
+  question: In an error-rate search that divides errors by total, why compute a normalized percentage instead of just reporting the raw error count?
+  options:
+    a: The rate is easier to type
+    b: The rate ignores the app field
+    c: The rate cannot exceed 100
+    d: The rate is comparable across time windows and workloads
+  answer: d
+  explanation: A raw count depends on traffic volume; a percentage is normalized, so you can compare today against last week even when request volume changed.
+  difficulty: 2
+  tags:
+  - error-rate
+  - eval
+  - baseline
+- id: '12.7'
+  question: A dashboard shows an error graph, but users report an outage the panel does not show. What should you do first?
+  options:
+    a: Restart the application
+    b: Change the dashboard theme
+    c: Check the raw events behind the dashboard
+    d: Delete the dashboard
+  answer: c
+  explanation: 'Dashboards can be stale or built on a different search. Verify against raw events: inspect the source search, time range, and a few _raw samples before trusting any panel.'
+  difficulty: 2
+  tags:
+  - dashboard
+  - verification
+  - anti-pattern
+- id: '12.8'
+  question: You have `index=main trace_id=abc123 | sort _time`. What does sorting by _time accomplish?
+  options:
+    a: It deletes duplicate events
+    b: It groups events by endpoint
+    c: It computes average latency
+    d: It rebuilds the request journey across services in order
+  answer: d
+  explanation: Sorting by _time replays the request chronologically — gateway, order service, payments, database — localizing the failing hop before opening any single service.
+  difficulty: 2
+  tags:
+  - trace-id
+  - correlation
+  - sort
+- id: '12.9'
+  question: This search is meant to show the top 5 error types. What does `sort -count` do here?
+  options:
+    a: Sorts exception classes alphabetically
+    b: Sorts the count field in descending order
+    c: Removes the count field
+    d: Sorts events by time
+  answer: b
+  explanation: sort -count (no space needed between dash and field) sorts the count field descending, so the most frequent exception lands first; head 5 keeps the top five.
+  difficulty: 3
+  tags:
+  - sort
+  - rex
+  - top-errors
+- id: '12.10'
+  question: SPL `| timechart avg(duration_ms) by endpoint span=5m` shows one endpoint's line climbing. What is the correct next drill-down step?
+  options:
+    a: Add more endpoints to the chart
+    b: Search index=_internal
+    c: Increase the span to 30m
+    d: Filter that endpoint and inspect individual slow requests
+  answer: d
+  explanation: Find the worst endpoint on the timechart, then drill in with a filter and `where duration_ms > 1000` to inspect individual slow requests and their trace_ids.
+  difficulty: 3
+  tags:
+  - timechart
+  - latency
+  - drill-down

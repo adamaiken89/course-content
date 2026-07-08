@@ -1,0 +1,131 @@
+- id: cum.1
+  type: mcq
+  source_modules:
+  - 1
+  - 2
+  - 4
+  question: A forwarder ships events to an indexer. Which Splunk component turns raw bytes into parsed events with source/sourcetype/host metadata?
+  options:
+    a: Search head
+    b: Indexer
+    c: Heavy forwarder
+    d: Index-time parser
+  answer: d
+  difficulty: 1
+  tags:
+  - recall
+  - cross-module
+  - misconception
+- id: cum.2
+  type: mcq
+  source_modules:
+  - 1
+  - 4
+  question: An HttpEventCollectorLogbackAppender posts to https://splunk:8088/services/collector. What auth gating does the indexer require on that port?
+  options:
+    a: Basic auth username/password
+    b: A valid HEC token
+    c: A search-head session cookie
+    d: Client TLS certificate only
+  answer: b
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.3
+  type: mcq
+  source_modules:
+  - 3
+  - 4
+  question: Which SLF4J-friendly pattern passes structured key/value pairs into logback so an encoder can emit them as JSON fields?
+  options:
+    a: String concatenation with %d{ISO8601}
+    b: Parameterized event plus MDC
+    c: A per-package level override
+    d: An async appender queue size
+  answer: b
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: cum.4
+  type: mcq
+  source_modules:
+  - 2
+  - 4
+  question: A JVM app sends structured JSON direct to HEC on 8088. When must it instead write stdout for a forwarder to pick up?
+  options:
+    a: When the cluster already runs a heavy forwarder
+    b: Whenever the messageFormat is raw
+    c: When running as a container with stdout consumed by a collector
+    d: Only when batch_size_count exceeds 100
+  answer: c
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+  - misconception
+- id: cum.5
+  type: cloze
+  source_modules:
+  - 1
+  - 2
+  question: The canonical single-machine Splunk pipeline for forwarders is forwarder -> {blank} -> search head.
+  answer: indexer
+  explanation: Forwarders ship data; indexers ingest/parse/store; search heads run searches.
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.6
+  type: cloze
+  source_modules:
+  - 4
+  question: In HEC, setting type=raw is distinct from type=event; a raw upload forces the batch count to {blank}.
+  answer: '1'
+  explanation: Raw mode treats the payload as one event, no batching of multiple events.
+  difficulty: 2
+  tags:
+  - recall
+  - misconception
+- id: cum.7
+  type: cloze
+  source_modules:
+  - 3
+  question: In logback, {blank} carries per-request context (like traceId) that a pattern or encoder can copy into each event.
+  answer: MDC
+  explanation: MDC (Mapped Diagnostic Context) attaches key/value context per thread to logging events.
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.8
+  type: tf
+  source_modules:
+  - 2
+  statement: A heavy forwarder can run searches and index locally, whereas a light forwarder only forwards.
+  answer: true
+  explanation: Heavy forwarders add full parsing and can search; light forwarders just move data.
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.9
+  type: tf
+  source_modules:
+  - 4
+  statement: With type=event and messageFormat set, HEC batching combines many log events into a single POST with batch_size_count controlling the maximum.
+  answer: true
+  explanation: batch_size_count caps events per batch before the appender flushes to HEC.
+  difficulty: 3
+  tags:
+  - recall
+  - misconception
+- id: cum.10
+  type: tf
+  source_modules:
+  - 1
+  - 3
+  statement: 'An index is the finest-grained unit of storage: each sourcetype writes to its own dedicated index automatically.'
+  answer: false
+  explanation: Index vs sourcetype are independent; the app configures which index a sourcetype lands in.
+  difficulty: 3
+  tags:
+  - cross-module
+  - misconception

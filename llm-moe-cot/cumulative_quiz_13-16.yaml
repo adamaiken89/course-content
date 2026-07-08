@@ -1,0 +1,103 @@
+- id: cum.25
+  type: cloze
+  source_modules:
+  - 14
+  question: In process reward models (PRM), each reasoning step gets a reward signal, unlike outcome reward models (ORM) which only reward the {final answer}.
+  answer: final answer
+  explanation: ORM gives one reward at the end; PRM gives per-step rewards, enabling early error detection in long reasoning chains.
+  difficulty: 2
+  tags:
+  - cross-module
+  - training
+- id: cum.26
+  type: cloze
+  source_modules:
+  - 13
+  question: 'Induction heads implement prefix-matching: attend to the {previous occurrence} of the current token, then predict the continuation from that context.'
+  answer: previous occurrence
+  explanation: Induction heads are the minimal circuit behind in-context learning; they also support coherence of reasoning chains.
+  difficulty: 2
+  tags:
+  - cross-module
+  - mechanism
+- id: cum.27
+  type: mcq
+  source_modules:
+  - 13
+  question: Which best describes an emergent ability of large language models?
+  options:
+    a: A capability that is near-absent in small models but appears once a scale threshold is crossed
+    b: A capability explicitly programmed by the training pipeline
+    c: A capability that only exists in encoder-only models
+    d: A capability that decreases as models grow larger
+  answer: a
+  explanation: Emergent abilities show a sharp, threshold-like jump in capability as model scale crosses a critical point.
+  difficulty: 2
+  tags:
+  - concept
+  - terminology
+- id: cum.28
+  type: mcq
+  source_modules:
+  - 14
+  question: How does Direct Preference Optimization (DPO) differ from classical RLHF?
+  options:
+    a: It requires a large reward model trained on human feedback
+    b: It only fine-tunes the tokenizer instead of the weights
+    c: It replaces all human data with synthetic labels
+    d: It trains directly on pairwise preference data without a separate reward model or RL loop
+  answer: d
+  explanation: DPO re-derives the RL objective as a classification loss over preferences, removing the explicit reward model and PPO loop.
+  difficulty: 3
+  tags:
+  - concept
+  - comparison
+- id: cum.29
+  type: cloze
+  source_modules:
+  - 15
+  question: Reasoning benchmarks such as GSM8K evaluate a model on step-by-step {math} word problems.
+  answer: math
+  explanation: GSM8K is a set of grade-school math word problems used to measure multi-step reasoning quality.
+  difficulty: 1
+  tags:
+  - terminology
+  - recall
+- id: cum.30
+  type: mcq
+  source_modules:
+  - 16
+  question: Why does a Mixture-of-Experts model get more parameters without a proportional jump in compute cost?
+  options:
+    a: Only the top k experts compute for each token, so most parameters stay idle per forward pass
+    b: Expert parameters are stored in compressed float4 to cut FLOPs
+    c: The router halves the sequence length before the experts run
+    d: Experts share weights, so nothing extra is added
+  answer: a
+  explanation: Sparse activation means each token touches only its top-k experts; FLOPs grow sublinearly while total parameter count (and memory) still grows.
+  difficulty: 1
+  tags:
+  - concept
+  - mechanism
+- id: cum.31
+  type: cloze
+  source_modules:
+  - 14
+  question: RLHF tunes a model using a reward model trained on human {preferences} between candidate responses.
+  answer: preferences
+  explanation: Human pairwise comparisons train the reward model; the policy is then optimized against that reward, typically with PPO.
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: cum.32
+  type: tf
+  source_modules:
+  - 15
+  statement: Once a benchmark saturates (models score near the ceiling), it stops differentiating model quality and should be retired or refreshed.
+  answer: true
+  explanation: Saturated benchmarks lose resolving power; the field retires them or adds harder versions to keep measuring progress.
+  difficulty: 3
+  tags:
+  - concept
+  - synthesis

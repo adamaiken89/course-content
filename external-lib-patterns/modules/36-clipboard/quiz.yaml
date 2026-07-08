@@ -1,0 +1,153 @@
+- id: '36.1'
+  question: What security requirement must the page satisfy for navigator.clipboard.writeText
+    to work?
+  options:
+    a: HTTPS or localhost (secure context)
+    b: Page must be loaded over HTTP
+    c: Clipboard API requires no security constraints
+    d: Only works in incognito mode
+  answer: a
+  explanation: navigator.clipboard API requires a secure context (HTTPS or localhost).
+    Insecure HTTP contexts throw an error.
+  difficulty: 1
+  tags:
+  - clipboard
+  - security
+- id: '36.2'
+  question: Which MIME types should be included when copying rich content (e.g., a
+    table) to clipboard?
+  options:
+    a: text/html and text/plain
+    b: text/plain only
+    c: application/json and text/plain
+    d: text/html only
+  answer: a
+  explanation: Rich content copy should include both text/html (formatted, for rich
+    editors) and text/plain (fallback, for plain text targets).
+  difficulty: 1
+  tags:
+  - clipboard
+  - rich-content
+- id: '36.3'
+  question: What is the recommended approach for reading clipboard contents in a secure
+    context?
+  options:
+    c: navigator.clipboard.readText()
+    a: document.execCommand('paste')
+    b: window.clipboardData.getData('Text')
+    d: ClipboardEvent.clipboardData.getData() on read
+  answer: c
+  explanation: navigator.clipboard.readText() is the modern async API for reading
+    clipboard text. execCommand is deprecated. clipboardData on events is for paste
+    handling, not programmatic read.
+  difficulty: 2
+  tags:
+  - clipboard
+  - api
+- id: '36.4'
+  question: In React 19, why must clipboard hooks use 'use client'?
+  options:
+    d: navigator.clipboard is only available in browser environments, not on the server
+    a: Clipboard API reads are slow and block Server Components
+    b: Server Components cannot handle Promises
+    c: Clipboard API requires useState which is not available on server
+  answer: d
+  explanation: navigator is a browser global. Server Components execute on the server
+    where navigator does not exist. 'use client' marks the boundary.
+  difficulty: 2
+  tags:
+  - clipboard
+  - react-19
+  - server-components
+- id: '36.5'
+  question: What problem does paste sanitization primarily solve beyond security?
+  options:
+    c: Prevents layout corruption from Word/Excel inline styles
+    a: Reduces paste latency by skipping formatting
+    b: Increases clipboard read speed
+    d: Enables cross-origin clipboard access
+  answer: c
+  explanation: Word and Excel paste includes absolute positioning, mso-* styles, and
+    colgroup markup that clash with app CSS. Sanitization normalizes to semantic HTML.
+  difficulty: 2
+  tags:
+  - clipboard
+  - paste
+  - sanitization
+- id: '36.6'
+  question: Which React 19 feature is used in the useCopyToClipboard hook for non-urgent
+    state updates (copy feedback)?
+  options:
+    a: useTransition
+    b: useDeferredValue
+    c: useOptimistic
+    d: useSyncExternalStore
+  answer: a
+  explanation: useTransition marks the copied state update as low-priority, preventing
+    copy feedback from blocking urgent UI updates like typing.
+  difficulty: 2
+  tags:
+  - clipboard
+  - react-19
+  - useTransition
+- id: '36.7'
+  question: What is the legacy fallback for copying text when navigator.clipboard.writeText
+    is unavailable?
+  options:
+    b: document.execCommand('copy') with a hidden textarea
+    a: window.copyText()
+    c: navigator.clipboard.writeText() is available in all browsers
+    d: ClipboardEvent.clipboardData.setData()
+  answer: b
+  explanation: document.execCommand('copy') with a textarea.select() is the deprecated
+    but widely supported fallback for legacy browsers.
+  difficulty: 2
+  tags:
+  - clipboard
+  - polyfill
+- id: '36.8'
+  question: What permission status does clipboard-read typically start as in modern
+    browsers?
+  options:
+    b: prompt
+    a: granted
+    c: denied
+    d: unavailable
+  answer: b
+  explanation: clipboard-read permission starts as 'prompt' and triggers a browser
+    permission dialog. clipboard-write is auto-granted in secure contexts.
+  difficulty: 3
+  tags:
+  - clipboard
+  - permissions
+- id: '36.9'
+  question: Which of the following triggers is NOT sufficient for clipboard API access?
+  options:
+    d: DOMContentLoaded event handler
+    a: click event handler
+    b: keydown event handler
+    c: touchstart event handler
+  answer: d
+  explanation: Clipboard API requires a user gesture (click, keydown, touchstart).
+    DOMContentLoaded fires automatically without user interaction.
+  difficulty: 3
+  tags:
+  - clipboard
+  - user-gesture
+- id: '36.10'
+  question: When the React Compiler is enabled, what happens to the copy callback
+    in useCopyToClipboard?
+  options:
+    b: It is automatically memoized, removing the need for useCallback wrapping
+    a: It becomes a Server Action automatically
+    c: It is transformed to use execCommand instead of navigator.clipboard
+    d: It is stripped from the bundle because clipboard code is server-only
+  answer: b
+  explanation: React Compiler auto-memoizes functions and values, so the useCallback
+    wrapper around the copy function is no longer necessary.
+  difficulty: 3
+  tags:
+  - clipboard
+  - react-19
+  - react-compiler
+

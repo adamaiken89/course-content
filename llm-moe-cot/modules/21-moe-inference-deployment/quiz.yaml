@@ -1,0 +1,81 @@
+- id: '21.1'
+  question: 點解 MoE inference 永遠係 memory-bound？
+  options:
+    d: 每個 token 要從 VRAM load 全部 E 個 experts，雖然得 k 個活躍
+    a: MoE 需要嘅 compute 多過 memory bandwidth
+    b: Expert parallelism 一定會造成 communication bottlenecks
+    c: MoE 模型嘅 KV cache 更大
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '21.2'
+  question: Expert parallelism 用咩通訊模式？
+  options:
+    c: All-to-all：tokens 送去 hosting 所需 expert 嘅 GPU
+    a: 從 router broadcast 去所有 experts
+    b: Ring：tokens 喺 GPUs 之間順序傳遞
+    d: 如果 experts 被 replicate 就唔需要通訊
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '21.3'
+  question: 喺 dynamic batching 入面，tokens 喺每個 decoder step 點樣被處理？
+  options:
+    a: Tokens 按揀咗嘅 expert 分組，然後每個 expert 處理自己組
+    b: 所有 tokens 通過所有 experts
+    c: Tokens 排隊等下一個可用 expert
+    d: 每個 token 順序通過佢嘅 top experts
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '21.4'
+  question: MoE 邊個組件對 quantization 最敏感？
+  options:
+    d: Router layer
+    a: Expert FFN layers
+    b: Embedding layers
+    c: Layer normalization
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '21.5'
+  question: 喺 dynamic batching 入面，超出 expert capacity 嘅 tokens 會點？
+  options:
+    b: 被 drop（嗰層無 expert computation）
+    a: 被 route 去下一個可用 expert
+    c: 排隊等下一 batch
+    d: 暫時激活額外 experts
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '21.6'
+  question: 點解 MoE speculative decoding 比 dense speculative decoding 難？
+  options:
+    b: Expert KV cache 要預先 fill 定，routing divergence 降低 acceptance rate
+    a: MoE 模型用唔到 draft models
+    c: Draft models 都要係 MoE
+    d: Expert parallelism 阻止 speculative execution
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '21.7'
+  question: Router weights 建議用咩 precision？
+  options:
+    c: FP16/BF16 — router 決定 expert selection 所以準確度重要
+    a: INT4 — router 細所以低 precision 省 memory
+    b: FP8 — 同 expert layers 一樣
+    d: INT8 — 質素同 memory 之間平衡
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '21.8'
+  question: 點解 MoE 比 dense 嘅 speedup 低過 k/E 比率？
+  options:
+    a: 每個 token 要將全部 E 個 experts load 入 VRAM，memory bandwidth 成為 bottleneck
+    b: Routing tokens 嘅 communication overhead 主導
+    c: Auxiliary loss 降低 inference throughput
+    d: Expert parallelism 降低每個 token 嘅有效 compute
+  answer: a
+  difficulty: 2
+  tags: []
+

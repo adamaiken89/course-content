@@ -1,0 +1,72 @@
+- id: c.1
+  question: 'Complete: The Hook cycle phases are: {trigger}, action, reward, and {investment}.'
+  answer: trigger, investment
+  explanation: Trigger prompts action, action produces reward, reward leads to investment,
+    investment makes the next trigger more effective.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 'Complete: {External} triggers are notifications and calendar reminders.
+    {Internal} triggers are habits and automatic behaviors.'
+  answer: External, Internal
+  explanation: Goal is to move from external to internal. Fixed-time notifications
+    build the habit pattern; after ~3 weeks, the habit becomes automatic.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: 'Complete: Streak mechanics need {freeze}s to cover accidental misses
+    and a {recovery} path to rebuild after breaks.'
+  answer: freeze, recovery
+  explanation: Freezes reduce shame of breaking streak. Recovery paths provide 'Day
+    1 of new streak' framing rather than 'Day 0'.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: 'Complete: {Zero} streak after a miss triggers shame and all-or-nothing
+    thinking. {Consistency} percentage reframes failure as partial progress.'
+  answer: Zero, Consistency
+  explanation: Zero says 'you failed completely.' 14/15 days (93%) says 'you're doing
+    great, just a small blip.' Same data, different framing.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: 'Complete: Effort attribution builds {growth} mindset. Ability attribution
+    is {fixed} — failure implies ''not talented.'''
+  answer: growth, fixed
+  explanation: Effort is controllable — learners can choose to practice more. Ability
+    is perceived as fixed — failure threatens identity, leading to quitting.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: 'Complete: Marva Collins feedback reframes {corrective} feedback as care:
+    ''This error means you''re ready to learn the {next level}.'''
+  answer: corrective, next level
+  explanation: Reframing mistakes as growth signals — not failures — builds persistence.
+    The error is evidence of learning at the boundary of ability.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: 'Complete: FSRS-5 quality {feedback} during review provides per-card quality
+    ratings (1-5) that guide the learner to the {source} material.'
+  answer: feedback, source
+  explanation: Quality 1 (blackout) means 'not yet encoded — return to source material.'
+    Quality 5 means 'effortless — increase interval.' Each quality level suggests
+    a specific next action.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: 'Complete: External rewards can undermine {intrinsic} motivation through
+    the {overjustification} effect.'
+  answer: intrinsic, overjustification
+  explanation: When learners attribute effort to external rewards, their internal
+    drive drops. When rewards stop, motivation falls below baseline.
+  difficulty: 2
+  tags:
+  - concept

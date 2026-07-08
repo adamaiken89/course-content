@@ -1,0 +1,124 @@
+- id: '36.1'
+  question: What is the core distinction between regulatory reporting and record-keeping?
+  options:
+    a: Record-keeping is voluntary; regulatory reporting is mandatory
+    b: Regulatory reporting follows a specified format and strict deadlines; record-keeping has no real-time submission requirement but must be retained for specified years
+    c: Regulatory reporting only applies to equity trades
+    d: Record-keeping must be submitted to regulators daily
+  answer: b
+  explanation: Reporting must follow a specified schema and deadlines, with fines and enforcement as consequences of error. Record-keeping has no real-time requirement but must be retained 3-7 years for regulator access. Both serve different but complementary legal obligations.
+  difficulty: 1
+  tags:
+  - concept
+  - comparison
+- id: '36.2'
+  question: FINRA TRACE requires corporate bond trades to be reported within what timeframe?
+  options:
+    a: By T+1 settlement date
+    b: Real-time at execution
+    c: Within 1 hour after market close
+    d: Within 15 minutes of execution
+  answer: d
+  explanation: TRACE requires secondary market corporate bond trades to be reported within 15 minutes of execution. Exceeding 15 minutes constitutes a late trade, requiring a separate late trade notification.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '36.3'
+  question: Which of the following transactions is exempt from FINRA TRACE reporting?
+  options:
+    a: Repurchase Agreement (Repo)
+    b: Secondary market investment grade corporate bond trade
+    c: High yield corporate bond trade
+    d: Convertible bond trade
+  answer: a
+  explanation: Repurchase agreements (repos) are TRACE-exempt. Primary issuance is also exempt but must be reported at settlement. Investment grade, high yield, and convertible bonds all require reporting within 15 minutes.
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '36.4'
+  question: A TRACE submission is rejected for a format error 5 minutes after execution, and the corrected report is resubmitted within the 15-minute window. What is the compliance status?
+  options:
+    a: Late trade — requires a late trade notification
+    b: Exempt — the rejection voids the reporting obligation
+    c: Compliant — a TRACE reject is not a late report if the corrected resubmission is within the 15-minute window
+    d: Non-compliant — any rejection counts as a late report
+  answer: c
+  explanation: A TRACE reject is not a late report. If the reject occurs within the 15-minute window and the corrected resubmission is made in time, it still counts as compliant. The first submission AFTER 15 minutes is the late event.
+  difficulty: 2
+  tags:
+  - concept
+- id: '36.5'
+  question: SEC Rule 613 (CAT) requires order lifecycle event timestamps at what precision?
+  options:
+    a: Millisecond
+    b: Nanosecond
+    c: Microsecond
+    d: Second
+  answer: b
+  explanation: CAT requires nanosecond timestamp precision. Systems must use NTP synchronization. CAT reconstructs high-frequency trading order sequence and cross-market linkage, where nanosecond precision distinguishes events within the same millisecond.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '36.6'
+  question: A client order is routed to two exchanges, partially executes on each, and the remainder is cancelled. Which set of CAT events must be reported for this order?
+  options:
+    a: Only the executions
+    b: Only the initial receive and the final cancel
+    c: Every lifecycle event — received, routed, executed (both partials), and cancelled — linked by the same Chain ID
+    d: Only events occurring on a single exchange
+  answer: c
+  explanation: "CAT captures the complete order lifecycle: received, routed, executed (full or partial), and cancelled are all reportable events. All events under the same original order must link via the Chain ID / Order ID to rebuild the execution sequence."
+  difficulty: 3
+  tags:
+  - scenario
+  - concept
+- id: '36.7'
+  question: By what time must all CAT event records for a trading day be submitted?
+  options:
+    a: End of the same trading day
+    b: T+2 08:00 ET
+    c: Within 15 minutes of each event
+    d: T+1 08:00 ET
+  answer: d
+  explanation: CAT requires all event records to be submitted by T+1 08:00 ET. Corrections can be submitted any time through the 24/7 window.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '36.8'
+  question: A CAT report shows Order Received at 09:30:00.123456789 and Order Modified at 09:30:00.123456788 (10 nanoseconds earlier). What is wrong with this data?
+  options:
+    a: The modified-event timestamp is earlier than the receive event — physically impossible, indicating clock drift or reordered event sequence
+    b: Nothing — nanosecond differences are within tolerance
+    c: The timestamps are too precise for CAT
+    d: The order ID is duplicated
+  answer: a
+  explanation: "A modification requires the order to be received first, so a modify timestamp earlier than the receive timestamp is physically impossible. Cause: system clock drift or event sequence reordered in middleware. Fix: event sequencing numbers must be monotonic; timestamp is supplementary."
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '36.9'
+  question: Under FINRA TRACE, which two roles must a brokerage firm designate for reporting quality?
+  options:
+    a: Auditor and custodian
+    b: Clearing member and executing broker
+    c: Compliance Person and Technical Contact
+    d: Market maker and designated examiner
+  answer: c
+  explanation: Brokerage firms must designate a Compliance Person for internal monitoring of TRACE reporting quality and a Technical Contact for system connectivity and technical issues, supported by written supervisory procedures (WSP).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '36.10'
+  question: Which retention requirement applies to derivatives trade records under EMIR Article 9?
+  options:
+    a: 3 years
+    b: 10 years
+    c: 5 years
+    d: 7 years
+  answer: b
+  explanation: EMIR Article 9 requires derivatives trade record retention of 10 years. By contrast, MiFID II Article 25(3) requires transaction record retention of 5 years.
+  difficulty: 2
+  tags:
+  - terminology

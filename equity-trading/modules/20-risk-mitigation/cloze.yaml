@@ -1,0 +1,71 @@
+- id: c.1
+  question: Max drawdown = largest {peak-to-trough} decline. Drawdown of 40% requires
+    {66.7%} gain to recover. Drawdown of 50% requires {100%} gain.
+  answer: '[''peak-to-trough'', ''66.7%'', ''100%'']'
+  difficulty: 1
+  tags:
+  - calculation
+- id: c.2
+  question: Drawdown duration = time from {peak} to new {peak}. Recovery %
+    = {drawdown / (1 - drawdown)}.
+  answer: '[''peak'', ''peak'', ''drawdown / (1 - drawdown)'']'
+  difficulty: 2
+  tags:
+  - formula
+- id: c.3
+  question: 'Fixed fractional sizing: risk per trade = {fixed % of capital}. Position
+    size = {risk amount} / {stop distance}. If risk = $500, stop = $2, position =
+    {250} shares.'
+  answer: '[''fixed % of capital'', ''risk amount'', ''stop distance'', ''250'']'
+  difficulty: 2
+  tags:
+  - calculation
+- id: c.4
+  question: 'Kelly criterion: f = {(p × b - q) / b}. Practical traders use {fractional
+    Kelly} (25-50% of full) to reduce {variance} and {drawdown} risk.'
+  answer: '[''(p × b - q) / b'', ''fractional Kelly'', ''variance'', ''drawdown'']'
+  difficulty: 2
+  tags:
+  - formula
+- id: c.5
+  question: Risk per trade of 1% after 10 losses = {0.99^10 = 90.4%} of capital remaining.
+    5% risk after 10 losses = {0.95^10 = 59.9%} remaining. {1%} risk per trade is standard.
+  answer: '[''0.99^10 = 90.4%'', ''0.95^10 = 59.9%'', ''1%'']'
+  difficulty: 2
+  tags:
+  - calculation
+- id: c.6
+  question: Tail risk = extreme moves beyond {3} standard deviations. Markets have
+    {fat tails}. 3-sigma events occur {3-17}× more often than Gaussian predicts.
+  answer: '[''3'', ''fat tails'', ''3-17'']'
+  difficulty: 1
+  tags:
+  - concept
+- id: c.7
+  question: '1987 crash: {22-sigma} in Gaussian terms. Strategy for tail risk: buy
+    {out-of-the-money puts} as {insurance}.'
+  answer: '[''22-sigma'', ''out-of-the-money puts'', ''insurance'']'
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: CVaR (Expected Shortfall) averages the {tail} beyond VaR. Large gap between
+    VaR and CVaR indicates {fat tails}. Normal distribution has {small} gap.
+  answer: '[''tail'', ''fat tails'', ''small'']'
+  difficulty: 2
+  tags:
+  - concept
+- id: c.9
+  question: 'Tail hedging strategies: long OTM {puts}, {trend-following}, and specialized
+    tail {risk} funds like {Universa}.'
+  answer: '[''puts'', ''trend-following'', ''risk'', ''Universa'']'
+  difficulty: 2
+  tags:
+  - concept
+- id: c.10
+  question: 'Loss 20% → need {25%} gain. Loss 40% → need {66.7%} gain. Loss 80% →
+    need {400%} gain. Reason: {asymmetric} math of drawdown recovery.'
+  answer: '[''25%'', ''66.7%'', ''400%'', ''asymmetric'']'
+  difficulty: 1
+  tags:
+  - calculation

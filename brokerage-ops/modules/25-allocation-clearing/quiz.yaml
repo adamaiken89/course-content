@@ -1,0 +1,120 @@
+- id: '25.1'
+  question: A block trade fills partially (only 75% executed). To treat all clients fairly, which method should the OMS allocation engine use?
+  options:
+    a: FIFO — earliest-submitting clients get full allocation first
+    b: Pro-rata — proportionally reduce all client allocations
+    c: LIFO — latest-submitting clients get priority
+    d: Random allocation
+  answer: b
+  explanation: Pro-rata shrinks every account's allocation proportionally so all clients share the partial-fill impact fairly. FIFO can leave later accounts with zero allocation, potentially violating fiduciary duty for ERISA accounts.
+  difficulty: 2
+  tags:
+  - concept
+- id: '25.2'
+  question: In institutional trading, what is the main difference between affirmation and confirmation?
+  options:
+    a: They are identical — just different terminology
+    b: Affirmation is used for retail; confirmation for institutional
+    c: Affirmation is a T+0 intent confirmation; confirmation is the T+1 formal legal document
+    d: Affirmation is sent by the SEC; confirmation by the client
+  answer: c
+  explanation: Affirmation happens on T+0 so the institutional client and broker agree on trade details early. Confirmation is the T+1 formal confirmation, admissible as evidence. Retail has no affirmation step.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '25.3'
+  question: Since May 28, 2024, what is the settlement cycle for US stocks and ETFs?
+  options:
+    a: T+1
+    b: T+0
+    c: T+2
+    d: T+3
+  answer: a
+  explanation: The SEC shortened US equity settlement from T+2 to T+1 effective May 28, 2024. US Treasuries remain T+0, FX spot stays T+2.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '25.4'
+  question: What is the primary function of NSCC CNS (Continuous Net Settlement)?
+  options:
+    a: Match buy and sell orders during execution
+    b: Calculate trading commissions
+    c: Generate regulatory reports
+    d: Net each participant's post-trade buys and sells into a single net position to reduce settlement volume
+  answer: d
+  explanation: CNS nets already-executed trades post-trade — each participant's buys and sells combine into one net position. Matching happens at execution, not in CNS. CNS also handles comparison and NSCC guarantees fund settlement.
+  difficulty: 2
+  tags:
+  - concept
+- id: '25.5'
+  question: Which allocation timing model must be used for ERISA / fiduciary accounts?
+  options:
+    a: Post-trade — for maximum flexibility
+    b: Pre-trade — ratios set before order placement and strictly followed
+    c: FIFO
+    d: On-the-day random allocation
+  answer: b
+  explanation: Pre-trade allocation sets ratios before placement and is required for fiduciary/ERISA accounts; ratios must be strictly followed. Post-trade allocation is flexible but GIPS requires completion before T+1 with timestamps.
+  difficulty: 2
+  tags:
+  - concept
+- id: '25.6'
+  question: What is the settlement cycle for US Treasuries?
+  options:
+    a: T+1
+    b: T+2
+    c: T+0 (same day)
+    d: T+3
+  answer: c
+  explanation: US Treasuries settle T+0 same-day, a long-standing convention. US stocks/ETFs are T+1 since May 2024, FX spot and European equities are T+2.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '25.7'
+  question: Why does the institutional market need affirmation on T+0 while retail does not?
+  options:
+    a: Institutional orders split across many accounts, each with different settlement instructions — T+0 affirmation leaves time to fix errors before settlement
+    b: Retail orders are too small for regulators to care
+    c: The SEC requires affirmation only for retail trades
+    d: Institutions do not trust their brokers
+  answer: a
+  explanation: An institutional block may split across 50 accounts with different settlement instructions. Errors found at T+1 leave no time to fix before settlement, so both sides verify details on T+0. Retail has a single account with fixed instructions — no affirmation needed.
+  difficulty: 2
+  tags:
+  - concept
+- id: '25.8'
+  question: A client fails to affirm by T+0, but the broker already sent DTC settlement instructions. What happens on T+1?
+  options:
+    a: The trade settles automatically the next day
+    b: DTCC cancels the trade
+    c: The SEC receives an automatic alert
+    d: DSD/DK — CNS marks the trade unconfirmed and it cannot auto-settle; if unresolved it becomes a fail with NSCC buy-in risk
+  answer: d
+  explanation: A missed T+0 affirmation puts the trade in DSD (Don't Settle / DK) status — CNS cannot auto-settle an unconfirmed trade. If unresolved before cut-off it is flagged as a fail, potentially triggering NSCC buy-in penalties.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '25.9'
+  question: What is the correct order of the CNS (Continuous Net Settlement) process?
+  options:
+    a: DTC settlement → CNS netting → trade comparison
+    b: CNS netting → trade comparison → DTC settlement
+    c: Trade comparison → CNS netting → DTC settlement
+    d: Matching → allocation → confirmation
+  answer: c
+  explanation: 'CNS runs three steps: (1) trade comparison ensuring buyer and seller agree, (2) CNS netting aggregating positions into net amounts, (3) DTC settlement executing securities transfer while NSCC guarantees fund settlement.'
+  difficulty: 1
+  tags:
+  - concept
+- id: '25.10'
+  question: What was the SEC's primary motivation for shortening the US equity settlement cycle from T+2 to T+1 in 2024?
+  options:
+    a: Increase broker revenue from faster cycles
+    b: Reduce settlement (counterparty) risk by shrinking the window in which a party could default
+    c: Match the European T+2 convention
+    d: Reduce regulatory reporting volume
+  answer: b
+  explanation: Shrinking the settlement window reduces counterparty risk. The shorter cycle also pressures post-trade systems — affirmation must complete on T+0 with no buffer day, and STP rate must rise because manual intervention windows are gone.
+  difficulty: 3
+  tags:
+  - concept

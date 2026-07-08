@@ -1,0 +1,228 @@
+subject: Spring Boot 4.x for Senior Engineers
+language: en
+time_budget_hours: 27
+target_level: advanced
+prerequisites:
+  - Java 25 (or 21+)
+  - Maven
+  - GraphQL basics
+learning_objectives:
+  - Design production-grade Boot 4 APIs with DGS GraphQL 12 and Jackson 3
+  - Migrate Boot 3 applications to Boot 4 (modularization, AOT, removed APIs)
+  - Apply JSpecify null-safety across the whole codebase
+  - Secure Boot 4 APIs with Spring Security 7 defaults
+  - Manage multi-module Maven projects without shared-lib nightmare
+  - Debug, test, and observe Boot 4 apps with virtual threads
+  - Make informed architecture tradeoffs for team context
+
+modules:
+  - id: 1
+    name: Spring Boot 4 Foundations
+    time_hours: 1.5
+    prerequisites: []
+    topics:
+      - Jakarta EE 11 baseline (Servlet 6.1, JPA 3.2, Bean Validation 3.1)
+      - Feature-based packaging
+      - Regular beans vs @ConfigurationProperties
+      - Constructor injection with final fields
+      - Auto-configuration & @Conditional
+      - Boot 4 project structure & modular starters
+    type: foundation
+
+  - id: 2
+    name: Boot 4 Migration & Modularization
+    time_hours: 1.5
+    prerequisites: [1]
+    topics:
+      - Autoconfigure split into Spring Boot modules
+      - Modular vs classic starters
+      - AOT processing & removed APIs
+      - PropertyMapper null-source semantics
+      - Undertow removal & Jakarta EE 11 server options
+      - OpenRewrite migration path
+    type: foundation
+
+  - id: 3
+    name: DGS GraphQL Production Patterns
+    time_hours: 1.5
+    prerequisites: [1]
+    topics:
+      - DGS 12 on Boot 4
+      - Schema-first DataFetcher patterns
+      - Jackson 3 via DgsJsonMapper
+      - Input/output type conventions
+      - Query complexity & performance
+    type: core
+
+  - id: 4
+    name: GraphQL DataLoader & N+1
+    time_hours: 1.5
+    prerequisites: [3]
+    topics:
+      - N+1 query problem
+      - DataLoader batching & deduplication
+      - DGS DataLoader wiring
+      - Virtual threads & DataLoader interplay
+    type: core
+
+  - id: 5
+    name: GraphQL Errors & Security
+    time_hours: 1.5
+    prerequisites: [3, 8]
+    topics:
+      - GraphQL error handling patterns
+      - Type resolution & unions/interfaces
+      - Spring Security 7 integration
+      - CSRF implications for GraphQL endpoints
+      - Field-level authorization
+    type: core
+
+  - id: 6
+    name: Jackson 3 Deep Dive
+    time_hours: 1.5
+    prerequisites: [1]
+    topics:
+      - tools.jackson package & Jackson 3 migration
+      - Immutable JsonMapper builder
+      - Custom serializers/deserializers
+      - Polymorphic serialization & safe typing
+      - JSR-310 & parameter-names built in
+      - spring.jackson2 legacy fallback
+    type: core
+
+  - id: 7
+    name: MapStruct & DTO Mapping
+    time_hours: 1.5
+    prerequisites: [6]
+    topics:
+      - Null-safe mapping
+      - Deep mapping with nesting
+      - MapStruct vs ModelMapper vs manual
+      - Integration with DGS + Jackson 3
+    type: core
+
+  - id: 8
+    name: JSpecify Null Safety
+    time_hours: 1.5
+    prerequisites: [1, 6]
+    topics:
+      - Type-use vs declaration annotations
+      - "@Nullable, @NonNull, @NullMarked"
+      - Migration from org.springframework.lang
+      - NullAway static enforcement
+      - Records, Optional & Kotlin interop
+    type: core
+
+  - id: 9
+    name: Ports & Adapters (Hexagonal Architecture)
+    time_hours: 1.5
+    prerequisites: [1]
+    topics:
+      - Port interfaces, adapter implementations
+      - Relevance in modular Boot 4 era
+      - Indirection vs testability vs YAGNI
+      - When to use, when to skip
+    type: advanced
+
+  - id: 10
+    name: Multi-Module Maven & Shared Libs
+    time_hours: 1.5
+    prerequisites: [1, 2]
+    topics:
+      - Multi-module vs separate repos
+      - BOM & version management
+      - Module boundaries & JPMS
+      - Breaking the shared-lib nightmare
+      - Migration strategies
+    type: advanced
+
+  - id: 11
+    name: Dependency Injection Beyond Basics
+    time_hours: 1.5
+    prerequisites: [1]
+    topics:
+      - Scopes (singleton, request, prototype)
+      - Qualifiers & primary
+      - Conditional beans
+      - Circular dependency resolution
+      - Context propagation with virtual threads
+    type: intermediate
+
+  - id: 12
+    name: Spring Security 7
+    time_hours: 1.5
+    prerequisites: [1]
+    topics:
+      - CSRF enabled for API endpoints by default
+      - authorizeHttpRequests replaces authorizeRequests
+      - OAuth2.2 / OIDC
+      - Method security
+      - Jackson 3 safe default typing
+    type: core
+
+  - id: 13
+    name: Testing Web & GraphQL Slices
+    time_hours: 1.5
+    prerequisites: [3, 12]
+    topics:
+      - "@WebMvcTest, @GraphQlTest slices"
+      - MockitoBean transition
+      - DataFetcher unit tests
+      - Test secrets & property overrides
+    type: core
+
+  - id: 14
+    name: Testing Integration & Architecture
+    time_hours: 1.5
+    prerequisites: [13]
+    topics:
+      - Testcontainers for integration
+      - Repository build-time query checks
+      - Contract tests
+      - ArchUnit architecture rules
+    type: core
+
+  - id: 15
+    name: Observability & Debugging
+    time_hours: 1.5
+    prerequisites: [1]
+    topics:
+      - Actuator endpoints
+      - Micrometer 2 + OpenTelemetry tracing
+      - Structured logging & MDC with virtual threads
+      - Common debugging workflows
+    type: core
+
+  - id: 16
+    name: API Versioning & HTTP Clients
+    time_hours: 1.5
+    prerequisites: [1, 12]
+    topics:
+      - API versioning in @RequestMapping
+      - RestClient as first-class client
+      - HTTP Service Clients
+      - PropertyMapper null handling
+    type: core
+
+  - id: 17
+    name: Architecture Tradeoffs
+    time_hours: 1.5
+    prerequisites: [9, 10, 12]
+    topics:
+      - Monolith vs modular monolith vs services
+      - Spring Modulith
+      - Transaction boundaries
+      - Event-driven with Spring Events
+      - "CQRS: when overkill"
+    type: advanced
+
+  - id: 18
+    name: Putting It Together
+    time_hours: 1.5
+    prerequisites: [2, 5, 7, 8, 10, 14, 15, 16, 17]
+    topics:
+      - Boot 3 to Boot 4 refactor exercise
+      - Apply patterns from modules 1-17
+      - Multi-module restructuring
+      - Testing & observability setup
+    type: project

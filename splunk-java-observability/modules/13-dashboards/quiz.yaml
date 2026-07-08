@@ -1,0 +1,132 @@
+- id: '13.1'
+  question: What is a Splunk dashboard?
+  options:
+    a: A collection of panels, each running its own search when the page loads
+    b: A saved search that can email results on a schedule
+    c: A stored set of raw events that never re-queries
+    d: A data model definition for field extraction
+  answer: a
+  explanation: A dashboard is a set of panels; each panel holds its own SPL search and runs it when the page loads. Saving a search to email results is an alert action, not a dashboard.
+  difficulty: 1
+  tags:
+  - terminology
+  - dashboard
+- id: '13.2'
+  question: Which panel type shows a single number with a sparkline and a trend indicator?
+  options:
+    a: List panel
+    b: Pie chart
+    c: Single Value panel
+    d: Area chart
+  answer: c
+  explanation: Single Value renders one number with an optional sparkline and trend indicator. List shows raw events, pie shows category share, and area charts show time series.
+  difficulty: 1
+  tags:
+  - panels
+  - single-value
+- id: '13.3'
+  question: What is the fastest way to turn a working search into a dashboard panel?
+  options:
+    a: Retype the search inside a text panel
+    b: Create a scheduled alert instead
+    c: Export the results to CSV and upload as a lookup
+    d: Use Save As → Dashboard Panel
+  answer: d
+  explanation: Save As → Dashboard Panel turns the current search into a panel immediately. Retyping duplicates logic, and a CSV round-trip loses the live query.
+  difficulty: 1
+  tags:
+  - workflow
+  - save-as
+- id: '13.4'
+  question: Which search shape feeds a pie chart?
+  options:
+    a: '| timechart count by status'
+    b: '| stats count by level'
+    c: '| table app,count'
+    d: '| dedup app'
+  answer: b
+  explanation: A stats command with a by clause returns one row per category, which a pie chart turns into slices. timechart output has a time axis that a pie cannot show.
+  difficulty: 1
+  tags:
+  - visualization
+  - stats
+- id: '13.5'
+  question: Your team wants dashboard changes reviewed in the same PR flow as Java code. Which editor fits?
+  options:
+    a: Simple XML, because the source is diffable and versionable
+    b: Dashboard Studio, because drag and drop is faster
+    c: Simple XML, because it renders charts faster
+    d: Dashboard Studio, because it stores config in the repo
+  answer: a
+  explanation: Simple XML source lives in the app, so changes can be diffed, reviewed, and rolled back — observability-as-code. Dashboard Studio stores layout in the app and is hard to review.
+  difficulty: 2
+  tags:
+  - layout
+  - xml
+  - dashboard-studio
+- id: '13.6'
+  question: Which statement about simple XML dashboards is true?
+  options:
+    a: Panels are placed by pixel coordinates
+    b: Layout is created only by drag and drop
+    c: Inputs and tokens are not supported
+    d: Panels sit on a grid built from row and panel elements
+  answer: d
+  explanation: Simple XML arranges panels on a grid using row and panel elements. Dashboard Studio is the drag-drop editor; XML still supports inputs and tokens.
+  difficulty: 2
+  tags:
+  - layout
+  - xml
+- id: '13.7'
+  question: A dropdown input creates the token service, but the panel search uses app=$app$. What happens?
+  options:
+    a: Splunk maps the input to the app field automatically
+    b: The token is not substituted, so the search runs literal text and returns nothing
+    c: The dashboard fails to load
+    d: The input stays disabled until the names match
+  answer: b
+  explanation: Tokens substitute only when the name matches. A mismatch leaves literal $app$ in the search, which matches nothing, so the panel silently shows no data.
+  difficulty: 2
+  tags:
+  - tokens
+  - inputs
+- id: '13.8'
+  question: Clicking a chart cell jumps to a trace dashboard filtered to the clicked trace. What makes that work?
+  options:
+    a: Auto-refresh settings
+    b: A saved search lookup
+    c: Drilldown passing row tokens such as $row.traceId$
+    d: The global time picker
+  answer: c
+  explanation: Drilldown passes row tokens from the clicked cell to a new search or dashboard. Auto-refresh and the time picker do not carry per-cell context.
+  difficulty: 2
+  tags:
+  - drilldown
+  - navigation
+- id: '13.9'
+  question: A team dashboard is slow because every panel runs a wide search on every load. What is the best fix?
+  options:
+    a: Back heavy panels with cached results from scheduled saved searches and narrow the time ranges
+    b: Remove all time filters so searches return faster
+    c: Add more panels to spread the load
+    d: Set auto-refresh to five seconds
+  answer: a
+  explanation: Scheduled saved searches precompute results that panels read from cache, and narrow time ranges cut the work per search. Removing filters broadens the search, and auto-refresh makes load worse.
+  difficulty: 3
+  tags:
+  - performance
+  - scheduled-search
+- id: '13.10'
+  question: A line chart is fed by | stats count by level and the author expects lines per HTTP status. Why is that wrong?
+  options:
+    a: stats requires an index filter first
+    b: The chart type must be pie
+    c: level is an indexed field
+    d: stats produces no time axis, so a line chart over time has nothing to plot
+  answer: d
+  explanation: Line, area, and column charts need time buckets, which only timechart produces. stats collapses to categories with no time axis, so there is nothing to draw over time.
+  difficulty: 3
+  tags:
+  - scenario
+  - timechart
+  - visualization

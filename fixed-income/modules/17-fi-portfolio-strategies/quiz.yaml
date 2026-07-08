@@ -1,0 +1,146 @@
+- id: '17.1'
+  question: 'Portfolio with maturities concentrated in short + long maturities, skipping
+    intermediate:'
+  options:
+    a: Barbell
+    b: Bullet
+    c: Ladder
+    d: Immunization
+  answer: a
+  explanation: Barbell has short and long maturities, no intermediate. Higher convexity
+    than bullet at same duration.
+  difficulty: 1
+  tags:
+  - strategies
+  - barbell
+- id: '17.2'
+  question: 'Funding ratio is defined as:'
+  options:
+    b: Assets / Present value of liabilities
+    a: PV(liabilities) / Assets
+    c: Duration assets / Duration liabilities
+    d: Coupon income / Total return
+  answer: b
+  explanation: Funding ratio = Assets / PV(Liabilities). >1 means overfunded, <1 means
+    underfunded.
+  difficulty: 1
+  tags:
+  - strategies
+  - LDI
+- id: '17.3'
+  question: Manager expects yield curve to steepen. Which strategy is likely preferred?
+  options:
+    b: Bullet (concentrated intermediate maturities)
+    a: Barbell (short + long maturities)
+    c: Index replication
+    d: Cash flow matching
+  answer: b
+  explanation: Bullet concentrated in intermediate range avoids both short end (falling
+    yield = price gain missed) and long end (rising yield = price loss). Preferred
+    when curve steepening expected.
+  difficulty: 2
+  tags:
+  - strategies
+  - curve positioning
+- id: '17.4'
+  question: 'Key challenge unique to bond indexing (vs equity indexing):'
+  options:
+    d: Bonds mature and fall out of index, creating turnover
+    a: High management fees
+    b: Dividends complicate total return calculation
+    c: No benchmark available
+  answer: d
+  explanation: Bonds constantly mature and are replaced, creating ongoing turnover
+    not present in equity indices.
+  difficulty: 2
+  tags:
+  - strategies
+  - indexing
+- id: '17.5'
+  question: 'Immunization strategy aims to:'
+  options:
+    c: Match asset duration to liability horizon
+    a: Maximize total return regardless of risk
+    b: Eliminate all credit risk from portfolio
+    d: Achieve highest possible convexity
+  answer: c
+  explanation: Immunization sets portfolio duration = liability horizon so price risk
+    and reinvestment risk offset.
+  difficulty: 2
+  tags:
+  - strategies
+  - immunization
+- id: '17.6'
+  question: 'Ladder strategy primary advantage:'
+  options:
+    a: Predictable cash flows with constant reinvestment
+    b: Highest convexity of any strategy
+    c: Best performance in falling rate environments
+    d: Zero tracking error vs benchmark
+  answer: a
+  explanation: Ladder provides predictable cash flows as bonds mature at regular intervals,
+    with constant reinvestment at current rates.
+  difficulty: 1
+  tags:
+  - strategies
+  - ladder
+- id: '17.7'
+  question: HNW client in high tax bracket wants bond income. Which approach is best?
+  options:
+    c: Municipal bonds in taxable account
+    a: High-yield corporate bonds in taxable account
+    b: Treasury bonds in IRA
+    d: REITs in taxable account
+  answer: c
+  explanation: Municipal bonds are tax-exempt at federal level, ideal for taxable
+    accounts of high-tax-bracket investors.
+  difficulty: 2
+  tags:
+  - strategies
+  - private bank
+  - tax
+- id: '17.8'
+  question: 'Carry trade in fixed income means:'
+  options:
+    d: Borrowing short-term to invest in longer-term bonds
+    a: Buying bonds with highest coupon regardless of maturity
+    b: Selling CDS protection on investment grade names
+    c: Leveraging with options on bond futures
+  answer: d
+  explanation: Carry trade = borrow short (low rate), lend long (higher yield), profit
+    from positive carry if curve upward sloping.
+  difficulty: 2
+  tags:
+  - strategies
+  - carry
+- id: '17.9'
+  question: 'Surplus of a pension fund changes most directly with:'
+  options:
+    a: Changes in interest rates affecting both assets and liabilities
+    b: Stock market performance only
+    c: Credit rating of the plan sponsor
+    d: Dividend yield on equity holdings
+  answer: a
+  explanation: Interest rates affect both bond asset values and PV of liabilities
+    (discount rate). Surplus = Assets - PV(Liabilities).
+  difficulty: 2
+  tags:
+  - strategies
+  - LDI
+  - pension
+- id: '17.10'
+  question: Why does barbell strategy have higher convexity than bullet at same duration?
+  options:
+    b: Long maturity bond's convexity dominates the portfolio
+    a: Short maturity bonds have zero convexity
+    c: Duration calculation is inaccurate for barbell
+    d: Intermediate bonds have highest convexity
+  answer: b
+  explanation: Convexity increases with maturity squared. Long maturity bond in barbell
+    contributes outsized convexity relative to its weight.
+  difficulty: 3
+  tags:
+  - strategies
+  - convexity
+  - barbell
+

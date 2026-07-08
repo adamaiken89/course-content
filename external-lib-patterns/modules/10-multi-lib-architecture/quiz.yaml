@@ -1,0 +1,149 @@
+- id: '10.1'
+  question: A library is used in one file, unlikely to change, and is a de-facto standard.
+    What strategy?
+  options:
+    a: Embed — direct dependency, no wrapper
+    b: Abstract — always use adapter
+    c: Wrap — always wrap external libraries
+    d: Isolate — micro-frontend
+  answer: a
+  explanation: 'Embed when library is stable, single-use, and unlikely to change.
+    Wrapping adds unnecessary indirection. Example: a utility like uuid or clsx.'
+  difficulty: 1
+  tags:
+  - concept
+- id: '10.2'
+  question: What migration strategy keeps both libraries loaded simultaneously?
+  options:
+    b: Strangler Fig
+    a: Big Bang
+    c: Rewrite from scratch
+    d: Do nothing
+  answer: b
+  explanation: Strangler Fig gradually replaces library usage module by module while
+    both libraries coexist behind feature flags. Big Bang replaces all at once.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.3'
+  question: Adapter pattern solves which library versioning problem?
+  options:
+    d: Different modules using different library versions — adapter provides uniform
+      API regardless of underlying version
+    a: Bundle size
+    b: Tree-shaking
+    c: TypeScript compilation
+  answer: d
+  explanation: Adapter hides library version behind common interface. Module A uses
+    date-fns v2 adapter, Module B uses date-fns v3 adapter — both expose same DateAdapter.
+    Version conflicts isolated inside adapter files.
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.4'
+  question: What is the primary risk of Big Bang migration?
+  options:
+    b: Higher chance of regressions across entire app simultaneously
+    a: Slower than strangler fig
+    c: Requires feature flags
+    d: Cannot test in production
+  answer: b
+  explanation: Big Bang replaces all at once. If migration has bugs, entire app is
+    affected. Strangler Fig limits blast radius to one module at a time.
+  difficulty: 1
+  tags:
+  - concept
+- id: '10.5'
+  question: Library audit reveals 5 date libraries in app. What action?
+  options:
+    a: Consolidate to one library; audit purpose of each, remove duplicates
+    b: Keep all — each serves different purpose
+    c: Remove all — use native Date
+    d: Merge into one super-library
+  answer: a
+  explanation: 5 date libraries indicate governance failure. Audit each library's
+    usage. Keep only those with distinct, justified purpose (e.g., date-fns for general,
+    Temporal for calendar math). Remove duplicates.
+  difficulty: 2
+  tags:
+  - application
+- id: '10.6'
+  question: 'Polyglot chart architecture: Recharts for dashboards, D3 for custom viz.
+    When is this problematic?'
+  options:
+    a: When teams use Recharts for custom viz and D3 for dashboards — no clear boundaries
+    b: Never — polyglot is always good
+    c: When both libraries are same bundle size
+    d: When using TypeScript
+  answer: a
+  explanation: 'Polyglot works if each library has clear, documented context. Problems
+    arise when boundaries blur — teams use wrong library for wrong task. Document:
+    ''Recharts for standard business charts. D3 for custom visualizations only.'''
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.7'
+  question: Strangler Fig requires both libraries in bundle. How to minimize bundle
+    impact?
+  options:
+    c: Dynamic import of new library when feature flag enabled; code-split old library
+      removal
+    a: Do not use strangler fig — bundle will be too large
+    b: Load both libraries in one chunk
+    d: Compress both libraries
+  answer: c
+  explanation: Dynamic import (`await import('new-lib')`) ensures old and new libraries
+    are not loaded together unless flag is toggled. When migration completes, remove
+    old library dynamic import is removed.
+  difficulty: 3
+  tags:
+  - application
+- id: '10.8'
+  question: When does wrapping every library become an anti-pattern?
+  options:
+    b: When wrapper adds no constraints, defaults, or transformations — thin wrapper
+      indirection
+    a: Never — wrap all libraries
+    c: When any module uses more than 3 wrappers
+    d: When wrapper is 100+ lines
+  answer: b
+  explanation: Thin wrapper that passes every prop through adds indirection without
+    value. Wrap when you enforce constraints, set app defaults, or transform types.
+    Otherwise, embed directly.
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.9'
+  question: How to estimate migration cost from library A to library B?
+  options:
+    d: Count files importing library A × average effort per file (based on integration
+      depth)
+    a: Guess — no reliable method
+    b: Count library A's API surface used vs library B's API — if similar, migration
+      is free
+    c: Migration cost always equals bundle size difference
+  answer: d
+  explanation: Files × integration depth (simple import = 1h, complex component =
+    4h, deep lifecycle integration = 8h). API surface comparison helps but actual
+    effort depends on integration complexity.
+  difficulty: 2
+  tags:
+  - application
+- id: '10.10'
+  question: Team evaluates embedding or abstracting a chart library for a new dashboard.
+    The app currently has 2 charts in 1 file, expected to grow to 15 charts across
+    5 modules. What strategy?
+  options:
+    c: Abstract — expected growth to 15 charts across multiple modules justifies adapter
+      now
+    a: Embed — only 2 charts now, abstraction is premature
+    b: Use no library — CSS-only charts
+    d: Wait until 10 chart files — then abstract
+  answer: c
+  explanation: With expected growth to 15 charts across 5 modules, adding abstraction
+    early pays off. Adding it later requires retrofitting. Write adapter now, use
+    it for initial 2 charts. When migration happens, only adapter changes.
+  difficulty: 3
+  tags:
+  - application
+

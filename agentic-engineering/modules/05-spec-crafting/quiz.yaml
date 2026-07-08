@@ -1,0 +1,131 @@
+- id: '5.1'
+  question: Why does the spec 'Fix the login bug' fail for agent execution?
+  options:
+    d: 'Too many unknowns: which bug, which file, what behavior'
+    a: Agent cannot fix login bugs
+    b: Login bugs require manual intervention
+    c: The spec is too long
+  answer: d
+  explanation: Agent doesn't know which bug, which file, expected behavior, or how
+    to verify fix. Spec must be explicit.
+  difficulty: 1
+  tags:
+  - concept
+- id: '5.2'
+  question: What should you include in every agent spec?
+  options:
+    b: Scope, acceptance criteria, context, verification method
+    a: Full code implementation
+    c: Only the task name
+    d: Screenshot of expected UI
+  answer: b
+  explanation: Scope (files), acceptance criteria (measurable), context (patterns,
+    constraints), verification (how to confirm).
+  difficulty: 1
+  tags:
+  - procedure
+- id: '5.3'
+  question: A large feature (8+ files) should have what level of spec detail?
+  options:
+    c: Architecture guide + boundaries + file list. More agent autonomy.
+    a: Every line specified
+    b: Same as a 1-file bug fix
+    d: No spec - let agent figure everything out
+  answer: c
+  explanation: Large tasks benefit from architecture direction and boundaries, not
+    line-by-line specs. Agent needs room to explore and implement.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '5.4'
+  question: What information should you include in the 'Context' section of a spec?
+  options:
+    c: Business rules not in code, rejected approaches, constraints
+    a: Imports that the agent should use
+    b: Full git history
+    d: Framework documentation
+  answer: c
+  explanation: 'Context should include what agent cannot discover: business rules,
+    rejected approaches, performance/security constraints.'
+  difficulty: 2
+  tags:
+  - application
+- id: '5.5'
+  question: What is the risk of over-specifying a task?
+  options:
+    b: Wastes tokens, constrains agent's ability to leverage codebase patterns
+    a: Agent produces better code
+    c: No risk - more detail is always better
+    d: Agent runs faster
+  answer: b
+  explanation: Over-specifying constrains agent exploration and wastes tokens. If
+    spec is longer than implementation, write the code yourself.
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.6'
+  question: Which acceptance criterion is MEASURABLE?
+  options:
+    b: Returns 200 with user data. Returns 404 for unknown ID. Test covers both.
+    a: The feature should feel fast
+    c: Make it work well
+    d: Improve user experience
+  answer: b
+  explanation: Measurable criteria are specific and verifiable. 'Feel fast' and 'work
+    well' cannot be objectively checked.
+  difficulty: 1
+  tags:
+  - comparison
+- id: '5.7'
+  question: What is the key difference between specs for humans vs specs for agents?
+  options:
+    a: Humans fill gaps from context. Agents need explicit gap-filling.
+    b: No difference
+    c: Agent specs should be shorter
+    d: Human specs should be more detailed
+  answer: a
+  explanation: Humans infer missing details from experience and context. Agents execute
+    literally. Write with explicit gap-filling.
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.8'
+  question: Your spec includes 'Use the existing pattern.' What else might be needed?
+  options:
+    d: 'Reference to which file has the pattern: ''Follow pattern in src/hooks/useSort.ts'''
+    a: Nothing - agent will find it
+    b: Full pattern code
+    c: Git blame output
+  answer: d
+  explanation: Specify which file contains the pattern. 'Existing pattern' is too
+    vague — agent may look at wrong file.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '5.9'
+  question: Should you include rejected approaches in spec context?
+  options:
+    a: Yes - saves agent from re-exploring dead ends
+    b: No - let agent discover them
+    c: Only if there are more than 3
+    d: No - it limits creativity
+  answer: a
+  explanation: Rejected approaches save tokens and prevent agent from wasting time
+    on paths already ruled out.
+  difficulty: 2
+  tags:
+  - application
+- id: '5.10'
+  question: A medium-size feature (adding sort to a table). Which spec is best?
+  options:
+    a: Add sort to UserTable. Use existing useSort hook. Click header to toggle.
+    b: Add sort. Make it work.
+    c: Add sort by implementing sortComparator with merge sort algorithm...
+    d: npm install sort-table-lib and use it
+  answer: a
+  explanation: 'Medium detail: references existing pattern, specifies behavior, doesn''t
+    over-specify implementation. Agent can follow useSort hook pattern.'
+  difficulty: 3
+  tags:
+  - scenario
+

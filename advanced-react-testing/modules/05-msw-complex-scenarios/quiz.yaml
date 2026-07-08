@@ -1,0 +1,147 @@
+- id: '5.1'
+  question: MSW handles auth token refresh naturally because it...
+  options:
+    c: Operates at the HTTP level — the request/response chain is exercised naturally
+    a: Has built-in auth token management
+    b: Requires a special auth plugin
+    d: Automatically tracks session state
+  answer: c
+  explanation: MSW intercepts each HTTP request independently. An auth flow (login
+    → API call → 401 → refresh → retry) is exercised as real HTTP requests, not as
+    mock function calls. The sequence is natural.
+  difficulty: 1
+  tags:
+  - concept
+- id: '5.2'
+  question: How does MSW handle GraphQL operations?
+  options:
+    a: Matches operations by query/mutation name using graphql.query and graphql.mutation
+    b: Cannot handle GraphQL — REST only
+    c: Requires a separate GraphQL mocking library
+    d: Treats GraphQL as POST requests only
+  answer: a
+  explanation: MSW's graphql utility matches operations by name (e.g., graphql.query('GetUser')).
+    The handler receives variables and can return data or errors in standard GraphQL
+    format.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.3'
+  question: A GraphQL MSW handler uses variable `id` but the component sends variable
+    `userId`. What is the likely outcome?
+  options:
+    b: Handler ignores the variable and returns data — test may pass for wrong reason
+    a: MSW throws a variable mismatch error
+    c: Component receives correct data because handler ignores variables
+    d: GraphQL request fails with 400
+  answer: b
+  explanation: MSW passes variables to the handler. If the handler ignores them and
+    always returns the same data, the test passes. But the component is sending wrong
+    variable names — a real API would return wrong data. Add variable assertions in
+    handlers to catch this.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '5.4'
+  question: How do you simulate a network timeout in MSW?
+  options:
+    d: Return delay('infinite')
+    a: Return HttpResponse.error()
+    b: Return HttpResponse.timeout()
+    c: 'Return HttpResponse.json({ timeout: true })'
+  answer: d
+  explanation: delay('infinite') causes the handler to never respond, simulating a
+    timeout. HttpResponse.error() simulates a network error (request failed entirely).
+    These are different scenarios.
+  difficulty: 2
+  tags:
+  - application
+- id: '5.5'
+  question: How do you test file uploads with MSW?
+  options:
+    b: Use File constructor and userEvent.upload, handler reads formData
+    a: Cannot test file uploads — MSW does not support FormData
+    c: Upload files via direct XMLHttpRequest
+    d: Mock the file reading API instead
+  answer: b
+  explanation: 'Create a File object: `new File([''content''], ''file.jpg'', { type:
+    ''image/jpeg'' })`. Use userEvent.upload to simulate selection. MSW handler reads
+    via `request.formData()`.'
+  difficulty: 2
+  tags:
+  - application
+- id: '5.6'
+  question: What is the correct way to simulate a real network failure (not a 500
+    error)?
+  options:
+    a: HttpResponse.error()
+    b: 'HttpResponse.json({ error: ''Network error'' }, { status: 0 })'
+    c: HttpResponse.networkError()
+    d: throw new Error('Network failure')
+  answer: a
+  explanation: HttpResponse.error() returns a network-level error that simulates the
+    browser being unable to reach the server. This is different from a 500 server
+    error.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.7'
+  question: A handler returns paginated results based on query parameter `page`. What
+    is the risk of duplicating real API pagination logic in the handler?
+  options:
+    d: Handler logic may diverge from real API — tests pass but real app breaks
+    a: Test performance degrades
+    b: MSW does not support query parameters
+    c: Duplicate logic is always beneficial for test coverage
+  answer: d
+  explanation: Handler pagination logic is a simplified version of the real API. If
+    they diverge (different page sizes, different sorting), tests pass against the
+    handler but fail against the real API. Keep handler logic minimal.
+  difficulty: 3
+  tags:
+  - concept
+- id: '5.8'
+  question: When would you NOT use MSW and prefer module-level mocks?
+  options:
+    a: When testing non-HTTP protocols (WebSocket, WebRTC)
+    b: When the app has many API endpoints
+    c: When using GraphQL
+    d: MSW is always the right choice
+  answer: a
+  explanation: MSW only intercepts HTTP (fetch/XMLHttpRequest). Non-HTTP protocols
+    like WebSocket and WebRTC cannot be mocked with MSW. For those, extract logic
+    into testable abstractions or use real servers.
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.9'
+  question: A team uses MSW handlers for both Jest tests and Storybook stories. What
+    is the benefit?
+  options:
+    b: One source of truth for test data — consistent behavior across environments
+    a: Handlers must be duplicated in both environments
+    c: Storybook loads faster with MSW handlers
+    d: Jest tests can reuse Storybook stories
+  answer: b
+  explanation: Shared handlers ensure components render the same data in tests and
+    Storybook. This prevents discrepancies where a component looks correct in Storybook
+    but fails in tests due to different mock data.
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.10'
+  question: What is the best approach when a GraphQL mutation handler needs to update
+    state that affects subsequent query handlers?
+  options:
+    c: Use a shared in-memory store that both query and mutation handlers access
+    a: Each test must manually set all state before running
+    b: Use a database in tests
+    d: Re-create handlers for each test case
+  answer: c
+  explanation: A shared in-memory store (e.g., Map or plain object) between mutation
+    and query handlers enables realistic state changes. Mutation updates the store,
+    query reads from it — just like a real backend.
+  difficulty: 3
+  tags:
+  - scenario
+

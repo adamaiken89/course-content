@@ -1,0 +1,131 @@
+- id: '13.1'
+  question: Why is attention called the 'gatekeeper' of learning?
+  options:
+    a: Without attention, information cannot enter working memory for encoding
+    b: It controls the speed of reading
+    c: It regulates sleep
+    d: It determines intelligence
+  answer: a
+  explanation: Attention selects what enters WM from sensory input. Without it, nothing gets encoded.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '13.2'
+  question: What is 'switch cost' in the context of attention?
+  options:
+    b: The time and cognitive energy lost when shifting between tasks
+    a: The cost of buying a new device
+    c: The price of focus apps
+    d: The time to learn new software
+  answer: b
+  explanation: Each task switch requires disengagement, context loading, and inhibition — cognitive costs
+    that reduce productivity.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '13.3'
+  question: A student checks their phone for 30 seconds during study. What is the actual cost to learning?
+  options:
+    c: 10-15+ minutes — the switch cost to re-engage with the study material
+    a: 30 seconds
+    b: Nothing — short breaks help
+    d: Only if they replied to a message
+  answer: c
+  explanation: The switch cost (reloading task context, inhibiting prior task) far exceeds the interruption
+    duration.
+  difficulty: 2
+  tags:
+  - application
+- id: '13.4'
+  question: Which factor restores depleted attention most effectively?
+  options:
+    d: Sleep
+    a: Coffee
+    b: More study
+    c: Willpower
+  answer: d
+  explanation: Sleep is the primary restorative for attention. Naps and nature exposure also help. Willpower
+    is not restorative.
+  difficulty: 1
+  tags:
+  - concept
+- id: '13.5'
+  question: 'A student studies for 2 hours without breaks. After 90 minutes, they re-read the same paragraph
+    several times. This is:'
+  options:
+    a: Attention fatigue — diminishing returns from sustained effort
+    b: Deep work
+    c: Effective study technique
+    d: Flow state
+  answer: a
+  explanation: Attention depletes with use. After 60-90 minutes, encoding efficiency drops sharply. Breaks
+    restore capacity.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '13.6'
+  question: 'The most effective response when noticing your mind has wandered during study is:'
+  options:
+    b: Gently notice the wandering and return attention to the task
+    a: Get frustrated and push harder
+    c: Give up and take a long break
+    d: Switch to a different subject
+  answer: b
+  explanation: Acceptance + return is most efficient. Frustration activates emotional circuits, consuming
+    additional WM capacity.
+  difficulty: 2
+  tags:
+  - application
+- id: '13.7'
+  question: 'Research shows that the mere presence of a smartphone on a desk (even face-down, silenced):'
+  options:
+    c: Reduces available cognitive capacity because brain allocates resources to inhibit checking
+    a: Has no effect on focus
+    b: Improves focus through accountability
+    d: Only matters if the phone rings
+  answer: c
+  explanation: Smartphone presence alone creates an attentional cost — the brain suppresses the impulse
+    to check, consuming WM resources.
+  difficulty: 3
+  tags:
+  - concept
+- id: '13.8'
+  question: A student says 'I listed to podcasts while studying and I learn fine.' What's the most likely
+    explanation?
+  options:
+    d: They are unaware of the learning cost because the podcast feels undemanding
+    a: They are exceptional
+    b: Podcasts always improve learning
+    c: Podcasts don't compete with reading
+  answer: d
+  explanation: Learners are poor judges of encoding effectiveness. Background dialogue competes for phonological
+    loop — learning is impaired even if it doesn't feel like it.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '13.9'
+  question: 'The Pomodoro technique (25/5) supports attention by:'
+  options:
+    a: Creating urgency, containing interruptions, and restoring WM during breaks
+    b: Eliminating distractions
+    c: Increasing study time
+    d: Training multitasking
+  answer: a
+  explanation: Timer creates focus urgency. Short interval is sustainable. Breaks restore WM. Interruptions
+    postponed to break.
+  difficulty: 2
+  tags:
+  - concept
+- id: '13.10'
+  question: 'A student keeps their phone in another room while studying. This is an example of:'
+  options:
+    b: Environment design — the highest-leverage attention strategy
+    a: Overkill — not necessary
+    c: Cognitive training
+    d: Procrastination
+  answer: b
+  explanation: Environmental changes (remove phone) are more effective than willpower-based strategies
+    (resist phone). Design > willpower.
+  difficulty: 2
+  tags:
+  - application

@@ -1,0 +1,110 @@
+- id: "8.1"
+  question: "What does LATERAL allow a subquery to do?"
+  options:
+    a: "Refer to its own output recursively"
+    b: "Reference earlier items in the same FROM list"
+    c: "Access the entire database catalog"
+    d: "Materialize before the outer query"
+  answer: b
+  explanation: "LATERAL lets the inner query see rows of FROM items declared before it, enabling per-row probes."
+  difficulty: 1
+  tags: [terminology]
+- id: "8.2"
+  question: "A `CROSS JOIN LATERAL` subquery returning no rows causes that outer row to be..."
+  options:
+    a: "Kept with NULLs"
+    b: "Raised as an error"
+    c: "Duplicated"
+    d: "Dropped from the result"
+  answer: d
+  explanation: "CROSS JOIN requires a match, so zero inner rows eliminates the outer row; use LEFT JOIN LATERAL ON true to keep it with NULLs."
+  difficulty: 2
+  tags: [concept]
+- id: "8.3"
+  question: "Which join form keeps outer rows even when the LATERAL subquery is empty?"
+  options:
+    a: "CROSS JOIN LATERAL"
+    b: "INNER JOIN LATERAL"
+    c: "LEFT JOIN LATERAL ... ON true"
+    d: "FULL OUTER JOIN with a derived table"
+  answer: c
+  explanation: "LEFT JOIN LATERAL ... ON true preserves every outer row, filling lateral columns with NULL when nothing matches."
+  difficulty: 1
+  tags: [terminology]
+- id: "8.4"
+  question: "How does the planner evaluate a LATERAL subquery in the FROM list?"
+  options:
+    a: "Once per outer row, as a nested-loop apply"
+    b: "Once for the whole query, like a materialized view"
+    c: "In parallel across partitions only"
+    d: "Only if the inner query has GROUP BY"
+  answer: a
+  explanation: "LATERAL forces per-row evaluation — a nested loop where each outer row drives an inner probe."
+  difficulty: 2
+  tags: [concept]
+- id: "8.5"
+  question: "Which construct cleanly implements 'top 3 orders per account' with an indexed probe?"
+  options:
+    a: "CROSS JOIN LATERAL with ORDER BY AND LIMIT inside"
+    b: "A plain subquery that only sums"
+    c: "A self join with no index"
+    d: "GROUP BY with FILTER"
+  answer: a
+  explanation: "The inner LATERAL query orders by date and limits to 3, probing the (account_id, order_date) index per account."
+  difficulty: 2
+  tags: [application]
+- id: "8.6"
+  question: "What does `WITH ORDINALITY` in `unnest` provide?"
+  options:
+    a: "Distinct element counts"
+    b: "Automatic NULL filtering"
+    c: "A hash lookup"
+    d: "A position number per element"
+  answer: d
+  explanation: "With Ordinality emits a per-element position column, letting you reconstruct array or JSONB order after spreading."
+  difficulty: 1
+  tags: [terminology]
+- id: "8.7"
+  question: "A LATERAL query on 5M orders is slow. The most likely root cause is..."
+  options:
+    a: "LATERAL refuses to use indexes"
+    b: "unnest is disabled"
+    c: "The inner probe is not index-backed, forcing scans per outer row"
+    d: "The planner disables nested loops"
+  answer: c
+  explanation: "Each outer row runs the inner query; without an index on the probe column path the cost is rows x scan, which explodes at 5M rows."
+  difficulty: 2
+  tags: [scenario]
+- id: "8.8"
+  question: "You need per-account position info when spreading an array column. Which pair is required?"
+  options:
+    a: "LATERAL plus WITH ORDINALITY"
+    b: "A sequential scan"
+    c: "FILTER on the array"
+    d: "A window frame"
+  answer: a
+  explanation: "LATERAL unnest spreads the array per row; WITH ORDINALITY adds the positional index needed to reconstruct order."
+  difficulty: 1
+  tags: [application]
+- id: "8.9"
+  question: "For an unindexed inner table, which approach often outperforms LATERAL?"
+  options:
+    a: "Forcing MATERIALIZED"
+    b: "A window query or hash-style join the planner chooses"
+    c: "Increasing work_mem only"
+    d: "A recursive CTE"
+  answer: b
+  explanation: "LATERAL forces nested loops; without indexes the global, hash or window-based plans win on large unindexed data."
+  difficulty: 3
+  tags: [comparison]
+- id: "8.10"
+  question: "`geo_lookup(a.lat, a.lng)` inside LEFT JOIN LATERAL evaluates per..."
+  options:
+    a: "Database session"
+    b: "Outer placement row"
+    c: "Table, once when created"
+    d: "Query parse only"
+  answer: b
+  explanation: "LATERAL functions are applied once per outer row, making them available as aliased columns afterwards."
+  difficulty: 2
+  tags: [concept]

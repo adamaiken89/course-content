@@ -1,0 +1,118 @@
+- id: '7.1'
+  question: What are the five dimensions a prompt template must encode for reliable
+    educational content generation?
+  options:
+    a: Role, format, difficulty, constraints, quality rules
+    b: Topic, length, language, tone, format
+    c: Temperature, max tokens, top_p, frequency, presence
+    d: Title, description, options, answer, explanation
+  answer: a
+  explanation: Prompt templates encode role (expert educator), format (YAML/JSON schema),
+    difficulty (1-3 definitions), constraints (answer distribution, distractor rules),
+    and quality rules (factual accuracy).
+  difficulty: 1
+  tags:
+  - concept
+- id: '7.2'
+  question: What does Pass@k refer to in AI content generation?
+  options:
+    a: Generate k questions, return the k-th one
+    b: Generate k candidates, score them all, return the best
+    c: Pass the question through k validation checks
+    d: Generate one question, ask k reviewers to approve it
+  answer: b
+  explanation: Pass@k generates k candidates, scores each, and returns the highest-scoring.
+    k=3-5 is optimal; higher k improves quality with diminishing returns.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '7.3'
+  question: Why does multi-shot prompting outperform zero-shot for MCQ generation?
+  options:
+    a: Multi-shot requires fewer tokens than zero-shot
+    b: Zero-shot prompts are harder to write than multi-shot
+    c: Examples define the quality bar — the model learns the expected format, difficulty,
+      and style
+    d: Multi-shot allows the model to ignore instructions
+  answer: c
+  explanation: Multi-shot examples calibrate the model's output distribution — format,
+    difficulty level, answer position, explanation depth. The examples raise the quality
+    bar above what zero-shot instructions alone achieve.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.4'
+  question: If multi-shot examples all have answer = A, what bias appears in generated
+    questions?
+  options:
+    a: Questions become easier
+    b: Questions become harder
+    c: No effect — examples don't affect answer distribution
+    d: Generated questions disproportionately have answer = A
+  answer: d
+  explanation: The model learns the distribution from examples. If all examples have
+    answer A, the model over-indexes on answer A. Examples must have uniform answer
+    distribution to avoid position bias.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '7.5'
+  question: Why is the role definition ("You are an expert educator") important in
+    educational prompt engineering?
+  options:
+    a: It primes the model's behavior — activating teaching knowledge and clarity
+      standards
+    b: It increases the token count, giving the model more to work with
+    c: It is required for the YAML schema to parse
+    d: It has no effect; only the examples matter
+  answer: a
+  explanation: Role primes the model's latent distribution. "Expert educator" activates
+    pedagogical awareness, clarity standards, and teaching knowledge that a generic
+    assistant role would not trigger.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.6'
+  question: Why enforce a structured output schema (YAML/JSON) in the prompt?
+  options:
+    a: It makes the model generate longer answers
+    b: It makes the output parseable and validateable by the pipeline
+    c: It prevents factual errors in the answer
+    d: It is required for multi-shot prompting to work
+  answer: b
+  explanation: Structured schemas force the model to include all required fields in
+    a consistent format. The pipeline can parse and validate the output automatically,
+    rejecting malformed content.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.7'
+  question: A validation function checks `required = ['question', 'options', 'answer',
+    'explanation', 'difficulty']`. What does it catch?
+  options:
+    a: Factual errors in the question text
+    b: Distractors that are too similar
+    c: Missing or malformed fields in generated MCQs
+    d: Answers that are skewed toward one letter
+  answer: c
+  explanation: The schema validator checks that all required fields exist and have
+    valid values (answer in A-D, difficulty in 1-3). It does not check factual content
+    or distractor quality — those need separate scoring.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '7.8'
+  question: In the Pass@k quality scoring function, which dimension carries the highest
+    weight?
+  options:
+    a: Clarity
+    b: Answer distribution
+    c: Distractor plausibility
+    d: Factual correctness
+  answer: d
+  explanation: Factual correctness is weighted 40% — the most important dimension.
+    Distractor plausibility is 25%, clarity 15%, difficulty match 10%, answer distribution
+    10%.
+  difficulty: 1
+  tags:
+  - terminology

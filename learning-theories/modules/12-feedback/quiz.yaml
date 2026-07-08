@@ -1,0 +1,133 @@
+- id: '12.1'
+  question: What drives learning according to error-driven learning theory?
+  options:
+    a: Prediction error — the gap between expected and actual outcome
+    b: Reinforcement of correct responses
+    c: Negative reinforcement
+    d: Punishment of errors
+  answer: a
+  explanation: Prediction error signals the brain to update its model. The gap between what you expected
+    and what happened is the learning trigger.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.2'
+  question: Which type of feedback produces the strongest learning?
+  options:
+    b: Elaborative feedback (right/wrong + correct + explanation of why)
+    a: Outcome feedback (right/wrong)
+    c: Corrective feedback (right/wrong + correct answer)
+    d: No feedback
+  answer: b
+  explanation: Elaborative feedback explains the why — it fixes the underlying mental model, not just
+    the specific answer.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.3'
+  question: 'The ''feedback sandwich'' approach is problematic because:'
+  options:
+    c: The error signal is diluted between positive statements
+    a: It takes too long
+    b: Learners hate criticism
+    d: It only works for children
+  answer: c
+  explanation: Positive framing around criticism reduces the salience of the error signal. Direct, specific
+    feedback is more effective.
+  difficulty: 2
+  tags:
+  - concept
+- id: '12.4'
+  question: When learning a procedural skill (e.g., surgery, piano), which feedback timing is best for
+    novices?
+  options:
+    d: Immediate — prevents practicing errors
+    a: Delayed — let them figure it out
+    b: No feedback — best for creativity
+    c: Random timing
+  answer: d
+  explanation: Novices need immediate feedback to prevent reinforcing incorrect procedures. Delay comes
+    later for transfer.
+  difficulty: 2
+  tags:
+  - application
+- id: '12.5'
+  question: A student answers a practice question incorrectly, reads the correct answer, and moves on.
+    What's missing?
+  options:
+    a: Error analysis — understanding WHY the error occurred
+    b: Time spent studying
+    c: Motivation
+    d: Nothing — this is effective
+  answer: a
+  explanation: Reading the correct answer provides corrective feedback but not elaborative. Without analyzing
+    the error cause, the root gap persists.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '12.6'
+  question: 'A brain''s prediction error signal is strongest when:'
+  options:
+    b: There is a large gap between prediction and outcome
+    a: The prediction is close to correct
+    c: No prediction was made
+    d: The outcome is expected
+  answer: b
+  explanation: Larger prediction errors = stronger learning signals (up to a point). Surprising outcomes
+    produce the biggest model updates.
+  difficulty: 2
+  tags:
+  - concept
+- id: '12.7'
+  question: 'A student tracks error types in a log over 2 weeks. This primarily helps with:'
+  options:
+    c: Identifying recurring patterns and root causes
+    a: Motivation
+    b: Speeding up problem-solving
+    d: Memory consolidation
+  answer: c
+  explanation: Error logs reveal patterns. A student might discover 70% of errors come from one specific
+    concept — that's where to focus.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '12.8'
+  question: Why should feedback be applied immediately after receiving it?
+  options:
+    d: Both B and C
+    a: To save time
+    b: To link the correction to the error trace while it's still active
+    c: To avoid forgetting the feedback
+  answer: d
+  explanation: Immediate application links the correction to the error context and prevents the feedback
+    itself from being forgotten.
+  difficulty: 2
+  tags:
+  - application
+- id: '12.9'
+  question: 'A teacher tells a student: ''Your essay structure is weak. Here are 3 specific ways to improve
+    thesis statements.'' This is an example of:'
+  options:
+    a: Elaborative feedback
+    b: Outcome feedback
+    c: Corrective feedback
+    d: Feedback sandwich
+  answer: a
+  explanation: It identifies the specific issue AND provides actionable improvement strategies — elaborative
+    feedback.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '12.10'
+  question: 'The guidance hypothesis states that:'
+  options:
+    b: Immediate feedback helps initial learning but may hinder transfer; delayed feedback helps transfer
+    a: Teachers should always guide students
+    c: Feedback should only come from experts
+    d: Self-feedback is always better than external feedback
+  answer: b
+  explanation: Immediate guidance prevents error practice early on. Delayed feedback forces self-detection
+    of errors, which aids transfer.
+  difficulty: 3
+  tags:
+  - concept

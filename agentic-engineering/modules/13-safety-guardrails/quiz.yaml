@@ -1,0 +1,136 @@
+- id: '13.1'
+  question: What is the first safety measure to set for agent sessions?
+  options:
+    b: Hard limits on max tool calls per task
+    a: Disable internet access
+    c: Use a different AI model
+    d: No measures needed
+  answer: b
+  explanation: Hard limits (e.g., 20 tool calls per task) prevent infinite loops and
+    runaway token burn.
+  difficulty: 1
+  tags:
+  - procedure
+- id: '13.2'
+  question: What indicates an agent is in an infinite loop?
+  options:
+    c: Repeated file reads, same edits without convergence, no progress
+    a: Agent produces correct code quickly
+    b: Agent asks one clarifying question
+    d: Agent completes task and stops
+  answer: c
+  explanation: Repeated reads of same files, same type of edit without convergence,
+    response patterns repeating = loop.
+  difficulty: 1
+  tags:
+  - concept
+- id: '13.3'
+  question: What should you do when agent has edited the same function 5+ times without
+    fixing it?
+  options:
+    a: Stop. Context likely degraded or approach wrong. Restart.
+    b: Let it keep trying
+    c: Delete and rewrite from scratch
+    d: Ignore — it will converge eventually
+  answer: a
+  explanation: 3+ attempts same issue → stop and reassess. Don't brute force. Context
+    poisoned or approach wrong.
+  difficulty: 1
+  tags:
+  - scenario
+- id: '13.4'
+  question: Where should protected file lists be defined?
+  options:
+    a: In AGENTS.md — loaded every session, unambiguous
+    b: In a separate document
+    c: Verbally agreed with the team
+    d: In commit messages
+  answer: a
+  explanation: AGENTS.md loads every session. Specific file paths are unambiguous.
+    Generic 'be careful' is forgotten.
+  difficulty: 1
+  tags:
+  - application
+- id: '13.5'
+  question: How should you rollback if agent modified 5 files but only 2 changes are
+    good?
+  options:
+    d: Revert only the 2 bad files, keep the 3 good ones
+    a: Revert all 5 files
+    b: Start a new session
+    c: Manually undo each change
+  answer: d
+  explanation: 'Selective revert: revert specific bad files. Keep good changes. Agent
+    can do this: ''Revert bad.ts to HEAD.'''
+  difficulty: 2
+  tags:
+  - procedure
+- id: '13.6'
+  question: Why should you verify git status is clean BEFORE agent starts?
+  options:
+    b: Known good state = clear attribution of any new issues
+    a: Makes git history cleaner
+    c: Agent cannot work on dirty tree
+    d: Prevents merge conflicts
+  answer: b
+  explanation: Clean state before start means any new bugs are agent's fault, not
+    pre-existing. Clear attribution.
+  difficulty: 2
+  tags:
+  - concept
+- id: '13.7'
+  question: Agent needs to modify deployment config. Protected list says READ ONLY.
+    What should agent do?
+  options:
+    b: Stop and ask human for per-task approval
+    a: Modify anyway — the task needs it
+    c: Ignore the protected list
+    d: Create a new config file instead
+  answer: b
+  explanation: Protected means read-only unless per-task approval. Agent should request
+    approval specific to this modification.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '13.8'
+  question: What is the recommended guard when agent has tried the same fix 3 times?
+  options:
+    d: Stop and report to human
+    a: Try a 4th time — it might work
+    b: Undo all changes and restart
+    c: Delete affected files
+  answer: d
+  explanation: 3 attempts same approach → wrong approach or context degraded. Stop,
+    report, get guidance.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '13.9'
+  question: Which rollback action is appropriate for catastrophic failure (multiple
+    files corrupted)?
+  options:
+    c: git reset --hard to last known good commit
+    a: Revert specific files one by one
+    b: Delete repository and re-clone
+    d: Manual copy from backup
+  answer: c
+  explanation: Catastrophic = reset to last clean state. `git reset --hard` restores
+    everything. Quick and definitive.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '13.10'
+  question: Pre-flight check reveals typecheck is already failing before agent starts.
+    What to do?
+  options:
+    a: Stop. Fix pre-existing issues first. Agent starts from clean state.
+    b: Let agent start — it might fix typecheck
+    c: Ignore — typecheck is optional
+    d: Ask agent to work around the failures
+  answer: a
+  explanation: Pre-existing failures make attribution impossible. Fix first, then
+    agent starts clean. Any new failures = agent's fault.
+  difficulty: 3
+  tags:
+  - scenario
+

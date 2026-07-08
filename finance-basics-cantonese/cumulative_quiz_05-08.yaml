@@ -1,0 +1,114 @@
+- id: "cum.1"
+  type: mcq
+  source_modules: [5, 6, 7, 8]
+  question: "以下邊種戶口類型流動性最高?"
+  options:
+    a: "5 年定期存款"
+    b: "儲蓄戶口"
+    c: "活期/往來戶口"
+    d: "5 年債券"
+  answer: c
+  explanation: "活期戶口 T+0 提取, 流動性最高。定期/債券鎖定, 提前取 = 罰息或蝕價。"
+  difficulty: 1
+  tags: [cross-module, recall]
+
+- id: "cum.2"
+  type: mcq
+  source_modules: [5, 6, 7, 8]
+  question: "本金 $100,000, 年利率 5%, 5 年單利總利息?"
+  options:
+    a: "$5,000"
+    b: "$25,000"
+    c: "$30,000"
+    d: "$50,000"
+  answer: b
+  explanation: "單利: I = P × r × t = $100,000 × 5% × 5 = $25,000。複利 A = P(1+r)^t = $127,628, 利息 $27,628。"
+  difficulty: 2
+  tags: [formula, calculation]
+
+- id: "cum.3"
+  type: cloze
+  source_modules: [5, 6, 7, 8]
+  question: "{Rule of 72} 快速估算: 年回報率 {6%} 時, 本金 {12 年} 翻倍。"
+  answer: "Rule of 72、6%、12 年"
+  explanation: "72 ÷ 6% = 12 年。Rule of 72 係 mental math, 真正倍增期 = ln(2)/ln(1+r)。"
+  difficulty: 1
+  tags: [formula, terminology]
+
+- id: "cum.4"
+  type: tf
+  source_modules: [5, 6, 7, 8]
+  statement: "通脹對儲戶有利, 因為購買力上升。"
+  answer: false
+  explanation: "錯。通脹對儲戶有害, 名義金額唔變, 但實質購買力下跌。3% 通脹 30 年後 $100 萬購買力 = $100 萬 / 1.03^30 ≈ $41 萬。"
+  difficulty: 1
+  tags: [concept, misconception]
+
+- id: "cum.5"
+  type: tf
+  source_modules: [5, 6, 7, 8]
+  statement: "APR 同 APY 嘅分別係 APY 包括複利效應, 比較投資回報時用 APY 先公平。"
+  answer: true
+  explanation: "APR (Annual Percentage Rate) 唔計複利, APY (Annual Percentage Yield) 包括複利。比較時用 APY 先至公平。"
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "cum.6"
+  type: mcq
+  source_modules: [5, 6, 7, 8]
+  question: "本金 $10,000, 5% APR 連續複利 10 年, 終值大約?"
+  options:
+    a: "$16,470"
+    b: "$16,487"
+    c: "$15,000"
+    d: "$16,289"
+  answer: b
+  explanation: "連續複利: A = P × e^(rt) = $10,000 × e^(0.05×10) = $10,000 × e^0.5 ≈ $10,000 × 1.6487 = $16,487。比年複利 ($16,289) 略高, 比單利 ($15,000) 高好多。"
+  difficulty: 3
+  tags: [formula, calculation]
+
+- id: "cum.7"
+  type: cloze
+  source_modules: [5, 6, 7, 8]
+  question: "本金 $50,000, 4% APR 月複利, 1 年後終值 = {$50,000 × (1 + 0.04/12)^12} ≈ {$52,016}。"
+  answer: "$50,000 × (1 + 0.04/12)^12、$52,016"
+  explanation: "月複利: A = P(1+r/n)^(nt)。比年複利高, 因為複利次數多。"
+  difficulty: 3
+  tags: [formula, calculation]
+
+- id: "cum.8"
+  type: mcq
+  source_modules: [5, 6, 7, 8]
+  question: "你揀銀行時, 邊項最重要?"
+  options:
+    a: "利率 + 服務 + 便利 + 安全性"
+    b: "廣告"
+    c: "分行地點"
+    d: "員工態度"
+  answer: a
+  explanation: "揀銀行綜合考慮: 利率 (回報)、服務 (ATM/App)、便利 (地點/24h)、安全性 (FDIC/存款保障)。唔好淨睇一個因素。"
+  difficulty: 1
+  tags: [concept, application]
+
+- id: "cum.9"
+  type: tf
+  source_modules: [5, 6, 7, 8]
+  statement: "香港銀行受存款保障計劃保障, 上限 HK$500,000 / 存款人 / 銀行。"
+  answer: false
+  explanation: "錯。香港存款保障上限係 HK$500,000 (50 萬) / 存款人 / 銀行, 唔係 HK$500,000。應該記住 50 萬上限。"
+  difficulty: 2
+  tags: [terminology, misconception]
+
+- id: "cum.10"
+  type: mcq
+  source_modules: [5, 6, 7, 8]
+  question: "以下邊個係定存嘅「流動性懲罰」?"
+  options:
+    a: "利率較高"
+    b: "提前取 = 罰息 (通常 0 利息)"
+    c: "本金有保障"
+    d: "可以月供"
+  answer: b
+  explanation: "定存鎖定資金換高息, 提前取 = 罰息 (通常 0 利息)。呢個就係流動性懲罰, 唔可以隨時拎返錢。"
+  difficulty: 1
+  tags: [concept, terminology]

@@ -1,0 +1,91 @@
+- id: '18.1'
+  question: MoE 訓練入面嘅 router collapse 係乜？
+  options:
+    d: Router 送大部份 tokens 去同一幾個 experts，其他餓死
+    a: Router parameters 因為 gradient 爆炸變 NaN
+    b: Router 停止學習，永遠輸出均勻分佈
+    c: Expert networks 對特定 token 類型 overfit
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '18.2'
+  question: Importance loss 懲罰啲乜？
+  options:
+    b: 唔平均嘅 router probability 分佈
+    a: 每 batch 處理嘅 tokens 總數
+    c: Router logits 嘅 magnitude
+    d: 死咗嘅 experts 數量
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '18.3'
+  question: Load loss 同 importance loss 有咩分別？
+  options:
+    a: Load loss 懲罰唔平均嘅 token 數量；importance loss 懲罰唔平均嘅概率
+    b: Load loss 淨係喺 inference 時應用
+    c: Load loss 用 expert capacity 而 importance loss 用 router variance
+    d: 佢哋係同一種 loss 嘅唔同名
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '18.4'
+  question: z-loss (DeepSeek) 防止：
+  options:
+    d: Router logits 無限增長
+    a: 死 experts 重新激活
+    b: 因為 capacity 溢出而 drop tokens
+    c: Gradient accumulation 錯誤
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '18.5'
+  question: 喺 expert-choice routing，邊個決定邊個 expert 處理邊個 token？
+  options:
+    c: Expert 根據 router scores 全球揀 top-k tokens
+    a: Token 自己嘅 router logits
+    b: 隨機分配，均勻分佈俾 experts
+    d: 同一個 token 之前嘅 expert 分配
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '18.6'
+  question: Capacity factor 1.0 即係：
+  options:
+    a: 每個 expert 處理剛好理想均分數量，冇寬裕
+    b: 所有 tokens 被每個 expert 處理
+    c: Experts 有無限 capacity
+    d: 同一時間只得一個 expert 活躍
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '18.7'
+  question: 喺 token-choice routing，當 token 超過 expert capacity 會點？
+  options:
+    b: Token 淨係經過 residual connection（冇 expert 輸出）
+    a: Token 喺下一個 batch 處理
+    c: Token 被隨機重新分配去另一個 expert
+    d: Expert 動態增加 capacity
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '18.8'
+  question: Mixtral 8x7B 點樣喺冇 auxiliary loss 下處理 load balancing？
+  options:
+    a: Top-2 gating 加 CF=1.25 自然平衡 experts
+    b: 用 expert-choice routing
+    c: 強制所有 experts 處理同樣數量 tokens，唔理 router
+    d: 只用 z-loss 做 regularisation
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '18.9'
+  question: 當 auxiliary loss weight (α) 太高嘅常見問題係：
+  options:
+    c: Router 忽略 token 內容，唔理相關性都均勻分配
+    a: Expert networks 停止學習
+    b: Gradients 爆炸，訓練發散
+    d: Capacity factor 變無效
+  answer: c
+  difficulty: 2
+  tags: []
+

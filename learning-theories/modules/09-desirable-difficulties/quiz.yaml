@@ -1,0 +1,133 @@
+- id: '9.1'
+  question: Which of the following is a desirable difficulty?
+  options:
+    a: Retrieving information from memory rather than re-reading
+    b: Poor font choice in a textbook
+    c: Background noise during study
+    d: Disorganized lecture slides
+  answer: a
+  explanation: Retrieval practice is a desirable difficulty — it feels harder but enhances long-term learning.
+    The others are undesirable obstacles.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.2'
+  question: Why do learners consistently judge desirable difficulties as ineffective?
+  options:
+    b: Fluency illusion — easy processing feels like learning
+    a: They've never tried them
+    c: They are actually ineffective for most people
+    d: Teachers recommend against them
+  answer: b
+  explanation: Learners mistake ease of processing (fluency) for mastery. Desirable difficulties feel
+    hard = feel unproductive, even when they work.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.3'
+  question: Which is NOT one of Bjork's four main desirable difficulties?
+  options:
+    c: Highlighting
+    a: Spacing
+    b: Retrieval practice
+    d: Interleaving
+  answer: c
+  explanation: 'Highlighting is shallow processing, not a desirable difficulty. The four main types: spacing,
+    retrieval, interleaving, variation.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.4'
+  question: 'A difficulty is ''desirable'' when:'
+  options:
+    d: It induces productive cognitive processing that enhances long-term retention
+    a: It's extremely hard
+    b: It feels frustrating
+    c: It takes more time
+  answer: d
+  explanation: The key is productive processing — the difficulty must engage mechanisms like retrieval,
+    elaboration, or discrimination.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.5'
+  question: 'A student tries to learn calculus by jumping straight into complex integration problems.
+    They get all answers wrong. This difficulty is:'
+  options:
+    a: Undesirable — retrieval fails completely, no productive processing occurs
+    b: Desirable — struggle builds character
+    c: Desirable — integration is inherently hard
+    d: Neither — difficulty is irrelevant
+  answer: a
+  explanation: When all attempts fail, no encoding occurs. The difficulty must be calibrated so that effortful
+    retrieval can succeed.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '9.6'
+  question: According to Bjork's model, what happens to storage strength over time?
+  options:
+    b: It never declines — once encoded, it persists
+    a: It decays just like retrieval strength
+    c: It increases only during sleep
+    d: It depends on the subject
+  answer: b
+  explanation: Storage strength (encoding depth) is permanent. Retrieval strength (accessibility) decays
+    and needs maintenance.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.7'
+  question: 'A student studies with varied examples of the same concept rather than identical repetitions.
+    This desirable difficulty is called:'
+  options:
+    c: Variation
+    a: Spacing
+    b: Retrieval practice
+    d: Interleaving
+  answer: c
+  explanation: Variation — practicing with different examples forces abstraction of the underlying principle
+    rather than surface pattern matching.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '9.8'
+  question: What signals that a difficulty has crossed from desirable to undesirable?
+  options:
+    d: The learner cannot retrieve or process at all
+    a: The learner feels challenged
+    b: The learner makes some errors
+    c: The learner feels slightly frustrated
+  answer: d
+  explanation: 'Complete failure = no learning. The Goldilocks zone: effortful but achievable. If retrieval
+    is impossible, the difficulty is too high.'
+  difficulty: 3
+  tags:
+  - scenario
+- id: '9.9'
+  question: Why do cramming (massed practice) sessions produce rapid retrieval strength gains but poor
+    long-term storage?
+  options:
+    a: Rapid retrieval strength gains are shallow — they don't build storage strength
+    b: Cramming triggers deeper encoding
+    c: Cramming requires less sleep
+    d: Massed practice is always better
+  answer: a
+  explanation: Massed practice inflates retrieval strength quickly without building durable storage. Desirable
+    difficulties sacrifice short-term gains for long-term durability.
+  difficulty: 3
+  tags:
+  - concept
+- id: '9.10'
+  question: Which scenario involves a desirable difficulty?
+  options:
+    b: Mixed practice problems from 4 different chapters
+    a: A confusing textbook with no diagrams
+    c: A flickering light during a lecture
+    d: An instructor who speaks too fast
+  answer: b
+  explanation: Interleaving (mixed practice) is a desirable difficulty. The others are undesirable obstacles
+    that add extraneous load.
+  difficulty: 2
+  tags:
+  - scenario

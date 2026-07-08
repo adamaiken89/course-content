@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: A window function returns one row per input row while {aggregating} over a related subset."
+  answer: "aggregating"
+  explanation: "Unlike GROUP BY, windows keep every row and attach the group value alongside it."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.2"
+  question: "Complete: Among a tie of equal scores, ROW_NUMBER assigns values in an {arbitrary} order."
+  answer: "arbitrary"
+  explanation: "ROW_NUMBER is 1,2,3... even among ties; use RANK/DENSE_RANK to handle ties intentionally."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: RANK leaves {gaps} after ties, while DENSE_RANK continues with the next integer."
+  answer: "gaps"
+  explanation: "Tie handling: RANK (1,1,3) keeps gaps, DENSE_RANK (1,1,2) removes them for contiguous ranks."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.4"
+  question: "Complete: To read the value N rows earlier in the window use {lag} with offset N."
+  answer: "lag"
+  explanation: "LAG(expr, offset, default) walks backward; LEAD walks forward."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Complete: A running total uses the default frame, which sums from UNBOUNDED PRECEDING to {CURRENT} ROW."
+  answer: "CURRENT"
+  explanation: "Default frame is RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW — a natural cumulative sum."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Complete: A moving 30-day average needs ROWS BETWEEN 29 PRECEDING AND CURRENT {ROW}."
+  answer: "ROW"
+  explanation: "ROWS gives an exact row count; RANGE would include ties and differ from 30 physical rows."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "c.7"
+  question: "Complete: In EXPLAIN, window functions appear as a {WindowAgg} plan node."
+  answer: "WindowAgg"
+  explanation: "WindowAgg consumes a partition-sorted input — usually after a Sort node."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Complete: To reuse one window definition for several functions, name it with the {WINDOW} clause."
+  answer: "WINDOW"
+  explanation: "WINDOW w AS (...) declares a frame once; functions reference it with OVER w."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.9"
+  question: "Complete: A window with no {PARTITION} BY treats the whole result set as one group."
+  answer: "PARTITION"
+  explanation: "PARTITION BY splits rows into independent windows; omitting it makes one partition for all rows."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.10"
+  question: "Complete: Referencing a window alias in WHERE fails because WHERE runs {before} windows are computed."
+  answer: "before"
+  explanation: "Filter window results in an outer query; WHERE cannot see them at filter time."
+  difficulty: 3
+  tags: [concept]

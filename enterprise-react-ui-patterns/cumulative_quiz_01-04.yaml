@@ -1,0 +1,131 @@
+- id: cum.1
+  type: mcq
+  source_modules:
+  - 1
+  - 2
+  question: Which symptom signals a container has decayed into a god component that the state decision matrix was meant to prevent?
+  options:
+    a: It holds one state value consumed by a single leaf
+    b: It mixes unrelated state slices, effects, and render logic for several UI regions
+    c: It only forwards props to children
+    d: It reads theme from context
+  answer: b
+  difficulty: 1
+  tags:
+  - cross-module
+  - container-pattern
+- id: cum.2
+  type: cloze
+  source_modules:
+  - 1
+  - 2
+  question: A smart container should own state and data flow, while {leaves} receive props and slots so markup stays local to each region.
+  answer: leaves
+  difficulty: 1
+  tags:
+  - cross-module
+  - slots
+- id: cum.3
+  type: tf
+  source_modules:
+  - 2
+  statement: A zustand selector that returns a fresh object literal on every computed run is safe for memoized consumers.
+  answer: false
+  difficulty: 2
+  tags:
+  - cross-module
+  - selector
+- id: cum.4
+  type: mcq
+  source_modules:
+  - 3
+  - 4
+  question: When the application zod schema changes, what ordering keeps the mock server contract honest?
+  options:
+    a: Update the MSW response first, then fix tests to match
+    b: Snapshot the old response so history stays green
+    c: Update the zod schema first, then let shared schema parsing drive MSW responses
+    d: Freeze the schema and change only the UI
+  answer: c
+  difficulty: 2
+  tags:
+  - cross-module
+  - msw
+  - schema-first
+- id: cum.5
+  type: cloze
+  source_modules:
+  - 3
+  question: Snapshot tests should only be used when the output is {structural}, not when volatile wiring is under test.
+  answer: structural
+  difficulty: 2
+  tags:
+  - cross-module
+  - snapshot
+- id: cum.6
+  type: mcq
+  source_modules:
+  - 2
+  - 3
+  question: Which property makes a render seam genuinely testable across the mock-server layer?
+  options:
+    a: The seam exposes structured slots and data props so a MSW contract can drive it end to end
+    b: The seam inlines its fetch call so tests exercise real networking
+    c: The seam reads global window state directly
+    d: The seam hides all behavior behind one effect
+  answer: a
+  difficulty: 2
+  tags:
+  - cross-module
+  - seam
+  - msw
+- id: cum.7
+  type: tf
+  source_modules:
+  - 4
+  statement: Importing the zod schema into both the application and the mock server prevents contract drift by construction.
+  answer: true
+  difficulty: 1
+  tags:
+  - cross-module
+  - schema-first
+- id: cum.8
+  type: cloze
+  source_modules:
+  - 1
+  - 4
+  question: In React 19, refs pass through as a {prop} instead of requiring forwardRef, which simplifies the stable seam between a container and its inputs.
+  answer: prop
+  difficulty: 1
+  tags:
+  - cross-module
+  - react-19
+  - ref-as-prop
+- id: cum.9
+  type: mcq
+  source_modules:
+  - 1
+  - 3
+  question: Which approach verifies slot wiring without pinning volatile internals?
+  options:
+    a: Pause on animated element positions
+    b: Store whole-page HTML snapshots after every render
+    c: Mock every hook return by hand
+    d: Assert rendered children against given slot props via a small structural snapshot or a Playwright journey over the mock contract
+  answer: d
+  difficulty: 1
+  tags:
+  - cross-module
+  - snapshot
+  - slots
+- id: cum.10
+  type: tf
+  source_modules:
+  - 3
+  statement: A Playwright journey test of the portal works against MSW over a contract, so no real backend is required.
+  answer: true
+  difficulty: 1
+  tags:
+  - cross-module
+  - e2e
+  - msw

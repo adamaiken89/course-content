@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "A published REST API is immutable, so an old version must keep its shape until it is removed — that stable shape is the {contract} consumers rely on."
+  answer: contract
+  explanation: "Once external clients parse a response, the shape is a contract; changing it in place silently corrupts every consumer."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Of the classic strategies, the URL {path} prefix is visible in logs and caches well while polluting the namespace with version markers."
+  answer: path
+  explanation: "A version embedded in the path makes the cache key include the version, but every endpoint repeats the prefix and analytics fill with version noise."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "The Accept header strategy keeps URLs clean, but a pure-URL {cache} key mixes versions because the URL is identical for v1 and v2."
+  answer: cache
+  explanation: "Caching must key on the negotiated media type, otherwise a URL-keyed cache serves one version's response to the other version's client."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "Spring 7 first-class versioning lets you declare a version on a handler {mapping} and the framework negotiates the strategy to route the request."
+  answer: mapping
+  explanation: "Version negotiation lives in the web stack rather than in a hand-rolled filter, routing each request to the matching versioned handler."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "The {Sunset} header carries a concrete removal date so clients can migrate off an old version before its handlers disappear."
+  answer: Sunset
+  explanation: "A dated removal promise turns an ambiguous deprecation into a deadline clients can enforce, completing the warn, sunset, remove rhythm."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "RestClient's fluent chain of get, uri, retrieve, and body replaces RestTemplate, whose auto-configuration became {opt-in} in Boot 4."
+  answer: opt-in
+  explanation: "Boot stopped silently wiring a RestTemplate bean most teams should not use, pushing the fluent RestClient as the first-class default."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "HTTP Service Clients turn a plain interface with {exchange} methods into a generated RestClient-backed proxy bean."
+  answer: exchange
+  explanation: "Methods marked like @GetExchange and @PostExchange declare the URI and parameters, and Spring implements the interface as a ready client bean."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "A v2 handler that returns the v1 response object is a bug, because the {payload} version must match the mapping version."
+  answer: payload
+  explanation: "Versioning is about the served contract, not the annotation. Each versioned handler must pair with its own versioned DTO."
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.9"
+  question: "Internal services that deploy in lockstep may skip versioning, but public consumers get the guarantee that v1 stays {stable} until declared dead."
+  answer: stable
+  explanation: "Internal contracts can coordinate deploys together; public APIs cannot, so old versions must hold their exact shape for outside consumers."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.10"
+  question: "A dead version's route should return {410} Gone after its Sunset date, never a silently changed body."
+  answer: "410"
+  explanation: "The 410 status tells clients the resource is gone and gone for good, matching the deprecation policy instead of serving a different schema."
+  difficulty: 3
+  tags: [terminology]

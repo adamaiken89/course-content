@@ -1,0 +1,131 @@
+- id: '3.1'
+  question: What are the three phases of memory?
+  options:
+    a: Encoding, storage, retrieval
+    b: Input, processing, output
+    c: Attention, rehearsal, recall
+    d: Sensory, working, long-term
+  answer: a
+  explanation: 'Memory operates in three sequential phases: encoding (input), storage (maintenance), and
+    retrieval (access).'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.2'
+  question: 'The encoding specificity principle states that:'
+  options:
+    b: Retrieval is best when context matches between study and test
+    a: More encoding always equals better memory
+    c: Encoding happens only during sleep
+    d: All encoding is equally effective
+  answer: b
+  explanation: 'Tulving''s principle: the memory trace includes context cues. Matching those cues at retrieval
+    improves access.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.3'
+  question: 'A student studies vocabulary in the library, then takes the test in a noisy cafeteria. They
+    perform worse than expected. Most likely cause:'
+  options:
+    c: Context-dependent memory failure — mismatch between study and test environments
+    a: Interference from other students
+    b: The material was too difficult
+    d: Retroactive interference
+  answer: c
+  explanation: Encoding specificity predicts context mismatch hurts retrieval. Library cues absent in
+    cafeteria.
+  difficulty: 2
+  tags:
+  - application
+- id: '3.4'
+  question: Which retrieval measure provides the STRONGEST evidence that learning has occurred?
+  options:
+    d: Recall (essay/blank page)
+    a: Recognition (multiple choice)
+    b: Relearning (faster second time)
+    c: Familiarity rating
+  answer: d
+  explanation: Recall requires retrieval without cues — hardest test of memory. Recognition is easier
+    (cues present).
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.5'
+  question: 'Repeating a phone number in your head until you dial it is an example of:'
+  options:
+    a: Maintenance rehearsal
+    b: Elaborative rehearsal
+    c: Deep encoding
+    d: Systems consolidation
+  answer: a
+  explanation: Maintenance rehearsal keeps info in WM without deeper encoding. It produces weak, brittle
+    memories.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.6'
+  question: Which study strategy produces the DEEPEST encoding?
+  options:
+    b: Explaining how new concepts relate to your own experience
+    a: Re-reading a chapter
+    c: Highlighting key sentences
+    d: Listening to a lecture recording
+  answer: b
+  explanation: Self-reference and elaboration force deep processing — connecting new info to existing
+    knowledge structures.
+  difficulty: 2
+  tags:
+  - application
+- id: '3.7'
+  question: 'A student re-learns Spanish vocabulary in 2 hours that originally took 10 hours. This demonstrates:'
+  options:
+    c: Savings from relearning — storage strength persisted
+    a: Poor initial encoding
+    b: Encoding specificity
+    d: Interference
+  answer: c
+  explanation: Faster relearning indicates storage strength survived even though retrieval strength was
+    low.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.8'
+  question: 'You study while happy. You take the test while sad. Your memory is worse than expected. This
+    is:'
+  options:
+    d: State-dependent memory
+    a: Decay
+    b: Interference
+    c: Retroactive interference
+  answer: d
+  explanation: 'State-dependent memory: internal state (mood) is part of the encoding context. Mismatch
+    at retrieval impairs access.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.9'
+  question: Which of the following would BEST strengthen encoding of a new concept?
+  options:
+    a: Explaining it to someone and giving an example from your life
+    b: Writing it 10 times
+    c: Reading it aloud 5 times
+    d: Highlighting the definition in yellow
+  answer: a
+  explanation: Explaining + self-referencing forces elaboration and organization — deep processing.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '3.10'
+  question: 'Consolidation of memories primarily occurs during:'
+  options:
+    b: Sleep
+    a: Studying
+    c: Exercise
+    d: Eating
+  answer: b
+  explanation: Sleep plays a critical role in consolidating memories — transferring from hippocampus to
+    neocortex for long-term storage.
+  difficulty: 1
+  tags:
+  - concept

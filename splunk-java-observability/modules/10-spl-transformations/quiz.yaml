@@ -1,0 +1,119 @@
+- id: "10.1"
+  question: "Which of the following is a transforming (non-streaming) SPL command?"
+  options:
+    a: "eval"
+    b: "stats"
+    c: "rex"
+    d: "where"
+  answer: b
+  explanation: "stats consumes many events and emits a summary table, so it is transforming. eval, rex, and where all process events one at a time (streaming)."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "10.2"
+  question: "What does `| stats dc(user_id)` return?"
+  options:
+    a: "Total number of log events that mention user_id"
+    b: "Sum of the numeric user_id values"
+    c: "One row per user_id"
+    d: "Number of distinct user_id values"
+  answer: d
+  explanation: "dc() = distinct count. It counts unique user_id values, like COUNT(DISTINCT user_id). With no by-clause it returns a single row."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "10.3"
+  question: "Which command extracts a named field from raw text using a regex?"
+  options:
+    a: "rex"
+    b: "spath"
+    c: "stats"
+    d: "sort"
+  answer: a
+  explanation: "rex extracts fields from _raw (or another field) using Perl regex named groups, e.g. | rex \"userId=(?<user_id>\\d+)\"."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "10.4"
+  question: "`| rex field=_raw \"userId=(\\d+)\"` — which field does it create?"
+  options:
+    a: "A field named userId containing the captured digits"
+    b: "A field named _raw"
+    c: "No named field (the positional group is discarded)"
+    d: "A field named group1"
+  answer: c
+  explanation: "Positional capture groups (...) do not name a field, so nothing is created. You need a named group like (?<user_id>\\d+)."
+  difficulty: 2
+  tags: [application]
+
+- id: "10.5"
+  question: "Given events with fields duration_ms = 250 and http_status = 500, what is the result of `| eval status = if(http_status >= 500, \"error\", \"ok\")`?"
+  options:
+    a: "status = 500"
+    b: "status = \"error\""
+    c: "status = true"
+    d: "status = \"ok\""
+  answer: b
+  explanation: "if(cond, true_val, false_val). 500 >= 500 is true, so status gets the string \"error\"."
+  difficulty: 1
+  tags: [application]
+
+- id: "10.6"
+  question: "What does this pipeline output for the given event? `_raw` = \"12:04:03 ErrorType=Timeout op=checkout\" — `| rex \"ErrorType=(?<error_type>\\w+)\" | where error_type=\"Timeout\"`"
+  options:
+    a: "No events (rex failed)"
+    b: "An error field named ErrorType"
+    c: "The event is dropped because error_type does not exist"
+    d: "The event passes through unchanged"
+  answer: d
+  explanation: "rex extracts error_type=Timeout; where then matches it, so the event is kept and passes to the next command."
+  difficulty: 2
+  tags: [application]
+
+- id: "10.7"
+  question: "After running `| stats count by service`, you add `| where count > 10`. What does the final table contain?"
+  options:
+    a: "Only services with more than 10 events"
+    b: "Raw events for services with more than 10 events"
+    c: "All services, plus a count column"
+    d: "One row per raw event where count is > 10"
+  answer: a
+  explanation: "where after stats filters the aggregated summary table rows (the count column), not the original events. Services with count <= 10 disappear."
+  difficulty: 2
+  tags: [application]
+
+- id: "10.8"
+  question: "Which pipeline correctly shows the most common error type per hour?"
+  options:
+    a: "index=checkout | timechart span=1h count by error_type | rex \"ErrorType=(?<error_type>\\w+)\""
+    b: "index=checkout | stats count by error_type | timechart span=1h"
+    c: "index=checkout | rex \"ErrorType=(?<error_type>\\w+)\" | timechart span=1h count by error_type"
+    d: "index=checkout | rex \"ErrorType=(?<error_type>\\w+)\" | timechart count by error_type"
+  answer: c
+  explanation: "error_type must be extracted (rex) before the timechart groups by it. Option a extracts after the collapse so error_type never exists; b and d are malformed or missing span."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "10.9"
+  question: "You run `index=checkout | stats count, avg(duration_ms) by operation`. An event lacks the operation field. What happens to it?"
+  options:
+    a: "The search errors out"
+    b: "It lands in an empty/null operation group"
+    c: "It is assigned operation = \"unknown\""
+    d: "It is discarded from count"
+  answer: b
+  explanation: "by-grouping puts events without the field into a null/empty bucket; the total count still includes them. Same behavior as group-by in SQL."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "10.10"
+  question: "Which search finds the 5 services with the highest error counts?"
+  options:
+    a: "index=checkout level=ERROR | head 5 | stats count by service | sort + count"
+    b: "index=checkout level=ERROR | stats count by service | head 5 | sort + count"
+    c: "index=checkout level=ERROR | sort - count | stats count by service | head 5"
+    d: "index=checkout level=ERROR | stats count by service | sort - count | head 5"
+  answer: d
+  explanation: "Aggregate first (stats count by service), then sort descending by count, then take the top 5. a, b, and c sort or truncate before the aggregated counts are sorted."
+  difficulty: 3
+  tags: [scenario]

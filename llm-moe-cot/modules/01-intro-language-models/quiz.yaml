@@ -1,0 +1,137 @@
+- id: '1.1'
+  question: Language model 嘅核心任務係乜？
+  options:
+    b: 計算 token sequence 嘅概率
+    a: 理解句子嘅意思
+    c: 分類句子嘅情感
+    d: 將文字翻譯成另一種語言
+  answer: b
+  explanation: LM 本質係估計 P(w₁,w₂,...,wₙ)，唔係 understanding。理解、翻譯、情感分類係 downstream tasks。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.2'
+  question: n-gram model 用乜嘢假設簡化 probability 計算？
+  options:
+    a: Markov assumption
+    b: Bayesian assumption
+    c: Conditional independence assumption
+    d: Gaussian assumption
+  answer: a
+  explanation: Markov assumption — 當前 word 只依賴前 n-1 個 words，解決 chain rule 嘅稀疏性問題。
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.3'
+  question: n-gram model 面對 unseen n-gram 時，以下邊個技術係必須嘅？
+  options:
+    c: Smoothing
+    a: Embedding
+    b: Dropout
+    d: Batch normalisation
+  answer: c
+  explanation: 冇 smoothing，unseen n-gram 嘅 Count=0 → P=0 → 全句 perplexity infinite。Smoothing
+    分配少量 probability 俾 unseen events。
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.4'
+  question: Embedding layer 嘅主要作用係乜？
+  options:
+    a: 將 discrete token 映射到 dense vector space
+    b: 增加 model 參數數量
+    c: 計算 token 之間嘅 attention
+    d: 做 dimensionality reduction
+  answer: a
+  explanation: Embedding 將 one-hot (sparse, 高維) 轉成 dense vector (低維)，similar words
+    有 similar vectors，解決 sparse representation 嘅 generalisation 問題。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.5'
+  question: RNN LM 相比 n-gram 嘅最大優勢係乜？
+  options:
+    b: 理論上可以 capture unlimited context
+    a: 更易 parallelise
+    c: 唔需要 training
+    d: 唔怕 gradient vanishing
+  answer: b
+  explanation: RNN 嘅 hidden state carry 前面所有 context（理論上），n-gram 最多睇 n-1 個字。但實際受 gradient
+    vanishing 限制，effective context 有限。而且 RNN 唔 parallelisable。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '1.6'
+  question: Transformer 取代 RNN 做 language model 嘅關鍵原因係乜？
+  options:
+    d: Transformer 可以 parallelise sequence 嘅計算
+    a: Transformer 參數更少
+    b: Transformer 唔需要 attention
+    c: Transformer 只係 RNN 嘅 rename
+  answer: d
+  explanation: RNN 必須 sequential（hidden state t 依賴 t-1），GPU 無法 parallelise over sequence
+    length。Transformer 嘅 self-attention 可以一次過處理成個 sequence。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '1.7'
+  question: LLM 嘅 emergent abilities 最準確嘅描述係？
+  options:
+    c: 超過某個 scale threshold 後突然出現嘅能力
+    a: 所有 LLM 都有完全相同嘅 abilities
+    b: train 得耐自然有嘅能力
+    d: data augmentation 產生嘅能力
+  answer: c
+  explanation: Scaling laws 顯示 model size/data/compute 三者 scaling → predictable 嘅
+    performance → emergent abilities。但學術界對 emergence 係真 phase transition 定係 metric
+    artifact 仲有爭論。
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.8'
+  question: Temperature=0 嘅 decoding 點解唔 guarantee 正確 output？
+  options:
+    a: Deterministic output 仍然基於 model 嘅 probability distribution，如果個 distribution
+      assign 高概率俾錯答案，argmax 會 consistently 揀錯
+    b: Temperature=0 係隨機 sampling
+    c: Temperature=0 只對中文 work
+    d: Temperature=0 係 deprecated
+  answer: a
+  explanation: Temperature=0 → argmax (greedy decoding) → deterministic。但 model 嘅
+    probability distribution 可能 wrong calibration — 最高概率嘅 token 唔等於正確答案。Deterministic
+    ≠ correct。
+  difficulty: 3
+  tags:
+  - application
+  - scenario
+- id: '1.9'
+  question: 一個 bigram model 見到 training set 從未出現過嘅詞對 (wᵢ, wⱼ)，冇 smoothing 嘅情況下 perplexity
+    會係？
+  options:
+    b: infinite (∞)
+    a: '0'
+    c: '1'
+    d: 等於 vocab size
+  answer: b
+  explanation: Count(wᵢ, wⱼ) = 0 → P(wⱼ|wᵢ) = 0 → P(sentence) = 0 → perplexity = 2^(-1/N
+    * log 0) → infinite。呢個就係 smoothing 必須存在嘅原因。
+  difficulty: 3
+  tags:
+  - formula
+  - scenario
+- id: '1.10'
+  question: Neural LM 嘅 embedding 解決 n-gram 嘅邊個核心問題？
+  options:
+    d: Data sparsity — similar words 有 similar vectors，可以 generalise 去 unseen contexts
+    a: Computation speed
+    b: Model size
+    c: Training time
+  answer: d
+  explanation: n-gram 每個 word 係 discrete symbol，unseen n-gram 即係 Count=0。Embedding
+    將 words 映射到 continuous space — 「蘋果」「香蕉」vectors 相近，所以 model 見過「食香蕉」就可以 generalise
+    去「食蘋果」。
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+

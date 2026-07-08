@@ -1,0 +1,119 @@
+- id: "16.1"
+  question: "Why is a published REST API treated as immutable and versioned?"
+  options:
+    a: "Version control forbids editing deployed code"
+    b: "Consumers parse it as a stable contract that must not change shape in place"
+    c: "JSON encoding rejects fields added after release"
+    d: "Spring Boot requires at least two versions of every endpoint"
+  answer: b
+  explanation: "Once external clients parse a response shape, changing it in place silently corrupts their data. Versioning keeps the old shape reachable while new shapes ship alongside."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "16.2"
+  question: "Which versioning strategy puts the version in the URL, for example /v2/orders?"
+  options:
+    a: "Accept header strategy"
+    b: "Query param strategy"
+    c: "Media type parameter strategy"
+    d: "URL path prefix strategy"
+  answer: d
+  explanation: "The path prefix strategy embeds the version in the path itself, which makes it visible in logs and caches well, at the cost of polluting the namespace."
+  difficulty: 1
+  tags: [comparison]
+
+- id: "16.3"
+  question: "What does the Sunset header tell a consumer of an old API version?"
+  options:
+    a: "When that version will be removed from service"
+    b: "The current schema version of the response"
+    c: "How long the server has been running"
+    d: "Which media types the endpoint accepts"
+  answer: a
+  explanation: "Sunset carries a concrete removal date so clients can schedule migration before the handler disappears. It is the dated half of the deprecation rhythm."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "16.4"
+  question: "A proxy cache in front of your API keys purely on the request URL. Which versioning strategy is most likely to serve one version's response to another version's client?"
+  options:
+    a: "URL path prefix"
+    b: "Custom authentication header"
+    c: "Accept header"
+    d: "None, URL-keyed caches are always version-safe"
+  answer: c
+  explanation: "With the Accept strategy the URL stays identical across versions, so a pure-URL cache key mixes v1 and v2 responses. The cache key must include the negotiated media type."
+  difficulty: 1
+  tags: [scenario]
+
+- id: "16.5"
+  question: "What is the main practical problem with query param versioning (?version=2) on a public API?"
+  options:
+    a: "It requires clients to parse the response body"
+    b: "It caches poorly and pollutes analytics with meaningless URLs"
+    c: "It forbids content negotiation entirely"
+    d: "It can only express one version per deployment"
+  answer: b
+  explanation: "The URL family is treated as one resource by proxies and analytics, so responses mix versions and metrics are noisy. It is trivial to build but weak at the edges."
+  difficulty: 2
+  tags: [comparison, concept]
+
+- id: "16.6"
+  question: "What does Spring 7 first-class versioning support mean conceptually?"
+  options:
+    a: "You must keep hand-written version filters in front of every controller"
+    b: "Versioning works only with RestTemplate"
+    c: "You declare a version on a handler mapping and the framework negotiates the strategy to route the request"
+    d: "Each version needs its own standalone application"
+  answer: c
+  explanation: "Spring 7 builds version negotiation into the web stack: declare the version on the mapping and requests are routed to the matching versioned handler via the chosen strategy."
+  difficulty: 2
+  tags: [concept]
+
+- id: "16.7"
+  question: "In Boot 4, how does RestTemplate auto-configuration behave?"
+  options:
+    a: "It is opt-in, steering teams toward RestClient"
+    b: "It stays enabled by default for all apps"
+    c: "It was removed from Spring entirely"
+    d: "It activates only under WebFlux"
+  answer: a
+  explanation: "RestTemplate is still available but Boot no longer wires it silently. RestClient is the first-class fluent client, and RestTemplate is configured only when explicitly requested."
+  difficulty: 2
+  tags: [concept]
+
+- id: "16.8"
+  question: "What is an HTTP Service Client in modern Spring?"
+  options:
+    a: "A RestController that serves JSON to other services"
+    b: "A servlet filter that rewrites request URLs"
+    c: "An interface with exchange methods that Boot implements as a RestClient-backed proxy bean"
+    d: "A WebSocket endpoint for long-lived connections"
+  answer: c
+  explanation: "Declare methods with @GetExchange and @PostExchange plus uri templates, and Spring generates a typed client bean. No hand-written request plumbing is needed."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "16.9"
+  question: "Your service ships v2 and immediately deletes all v1 handlers. A partner is still on v1. What happens?"
+  options:
+    a: "The partner silently receives the v2 schema"
+    b: "The partner breaks, because consumers migrate on their own schedule and deletion needs a stated Sunset date"
+    c: "Nothing, Spring keeps v1 mappings forever"
+    d: "The server returns a 409 conflict for all traffic"
+  answer: b
+  explanation: "Immediate removal breaks clients with no time to move. The deprecation rhythm announces, returns a Sunset date, and only then removes the handler for a dead route."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "16.10"
+  question: "You adopt Accept-header versioning behind a URL-keyed cache. What change makes the cache safe?"
+  options:
+    a: "Switch to caching on query params instead"
+    b: "Add a Sunset header to cached responses"
+    c: "Disable the Accept header on the client"
+    d: "Include the negotiated media type in the cache key"
+  answer: d
+  explanation: "Same URL plus different Accept values means the URL alone cannot identify the version. Keying on the negotiated media type separates v1 and v2 cache entries."
+  difficulty: 3
+  tags: [scenario, comparison]

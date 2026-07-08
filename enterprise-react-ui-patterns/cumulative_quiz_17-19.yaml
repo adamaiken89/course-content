@@ -1,0 +1,129 @@
+- id: cum.41
+  type: mcq
+  source_modules:
+  - 17
+  - 18
+  question: A refetch races with a retry that is still backing off. Which guard pair resolves it?
+  options:
+    a: The AbortController aborts the stale refetch while the scoped retry backs off on the new failure
+    b: The retry waits for the refetch forever
+    c: Both run and the last one wins with no guard
+    d: Refetch is blocked until offline stripe disappears
+  answer: a
+  difficulty: 3
+  tags:
+  - cross-module
+  - abort
+  - backoff
+- id: cum.42
+  type: cloze
+  source_modules:
+  - 17
+  question: On unmount, the effect {abort}s the in-flight request so no late state commits from a dead component.
+  answer: aborts
+  difficulty: 1
+  tags:
+  - cross-module
+  - abort-controller
+- id: cum.43
+  type: tf
+  source_modules:
+  - 19
+  statement: An undo command stack can grow without bound because the browser reclaims memory automatically.
+  answer: false
+  difficulty: 2
+  tags:
+  - cross-module
+  - undo
+- id: cum.44
+  type: mcq
+  source_modules:
+  - 18
+  - 19
+  question: Offline, user edits queue, then the stripe clears. How do flush order and failure ladder cooperate?
+  options:
+    a: The queue flushes newest-first to freshen the server
+    b: The ladder drops failures silently
+    c: The queue flushes in order while the failure ladder demotes a stuck item to delayed retry instead of hiding it
+    d: Flush waits for a manual reload
+  answer: c
+  difficulty: 3
+  tags:
+  - cross-module
+  - offline-queue
+  - failure-ladder
+- id: cum.45
+  type: cloze
+  source_modules:
+  - 19
+  question: The undo stack stores {commands} whose inverse can be re-applied to roll state back predictably.
+  answer: commands
+  difficulty: 1
+  tags:
+  - cross-module
+  - undo
+- id: cum.46
+  type: mcq
+  source_modules:
+  - 17
+  - 19
+  question: Autosave runs in the background while the user keeps editing. Which policy prevents lost or out-of-order writes?
+  options:
+    a: Let every save fire and accept server-side ordering
+    b: Disable editing while a save is in flight
+    c: Save only on blur so all other edits are dropped
+    d: Serialize autosaves and abort the stale draft upload only to merge the latest dirty values
+  answer: d
+  difficulty: 3
+  tags:
+  - cross-module
+  - autosave
+  - serialization
+- id: cum.47
+  type: cloze
+  source_modules:
+  - 18
+  question: Error boundaries are {scoped} per feature island so a failed panel cannot blank the whole shell.
+  answer: scoped
+  difficulty: 1
+  tags:
+  - cross-module
+  - error-boundary
+- id: cum.48
+  type: tf
+  source_modules:
+  - 18
+  statement: Exponential backoff retries the request at the same fixed interval on every attempt.
+  answer: false
+  difficulty: 1
+  tags:
+  - cross-module
+  - backoff
+- id: cum.49
+  type: mcq
+  source_modules:
+  - 17
+  - 18
+  question: User edits contradict a just-incoming server value. Between stale-guard and dirty-vs-refetch merge, what applies?
+  options:
+    a: The server overwrites the dirty fields
+    b: Dirty fields win and are re-synced on the next reconcile
+    c: The conflict shows a generic modal
+    d: The page silently reloads
+  answer: b
+  difficulty: 3
+  tags:
+  - cross-module
+  - dirty-merge
+  - stale-guard
+- id: cum.50
+  type: tf
+  source_modules:
+  - 19
+  statement: Multi-tab BroadcastChannel sync should replay a tab's own undo commands back into that same tab without dedupe.
+  answer: false
+  difficulty: 2
+  tags:
+  - cross-module
+  - broadcast-channel
+  - undo

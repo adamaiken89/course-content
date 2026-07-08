@@ -1,0 +1,129 @@
+- id: '7.1'
+  question: 'The testing effect refers to:'
+  options:
+    a: Retrieving information from memory strengthens it for future retrieval
+    b: Tests measuring what students have learned
+    c: Students perform better on tests they study for
+    d: Multiple-choice tests are harder than recall tests
+  answer: a
+  explanation: 'The testing effect: the act of retrieval changes the memory trace itself, making it stronger.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '7.2'
+  question: After studying a chapter, which activity produces the BEST long-term retention?
+  options:
+    b: Closing the book and writing everything you recall
+    a: Re-reading the chapter
+    c: Highlighting key points
+    d: Listening to a summary recording
+  answer: b
+  explanation: Free recall (closed-book brain dump) is retrieval practice — the strongest learning strategy.
+  difficulty: 2
+  tags:
+  - application
+- id: '7.3'
+  question: In Roediger & Karpicke's study, which group performed BEST on a 1-week delayed test?
+  options:
+    c: Retrieval practice (closed-book recall)
+    a: Study once
+    b: Re-study multiple times
+    d: All groups performed equally
+  answer: c
+  explanation: Retrieval practice group scored 61% vs ~40% for re-study groups — 50% better despite feeling
+    worse during study.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.4'
+  question: Why does retrieval practice feel harder than re-reading?
+  options:
+    d: It requires active construction of memory traces, which is cognitively demanding
+    a: It uses more physical energy
+    b: Re-reading is also hard
+    c: There is no difference in difficulty
+  answer: d
+  explanation: Retrieval requires effortful search and reconstruction. This difficulty IS the learning
+    signal.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.5'
+  question: A student tries to recall a fact but draws a complete blank. They check the answer. Was this
+    attempt useful?
+  options:
+    a: Yes — failed retrieval still primes memory for deeper encoding when feedback arrives
+    b: No — wasted time
+    c: Yes — but only if they guessed
+    d: No — they should have studied more first
+  answer: a
+  explanation: Even failed retrieval attempts produce learning benefits (Kornell et al. 2009). The effort
+    strengthens the trace.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '7.6'
+  question: Which provides the STRONGEST retrieval practice?
+  options:
+    b: Free recall — blank page, no cues
+    a: Multiple-choice quiz
+    c: Fill-in-the-blank with word bank
+    d: True/false questions
+  answer: b
+  explanation: Free recall has no external cues — the hardest and most effective form of retrieval practice.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '7.7'
+  question: A student reviews flashcards by looking at the term and reading the definition on the back.
+    What's wrong?
+  options:
+    c: This is recognition, not recall. The student should recall the definition BEFORE flipping
+    a: Nothing — this is effective
+    b: Flashcards are always ineffective
+    d: Reading aloud is better than silent reading
+  answer: c
+  explanation: Reading the answer is recognition. The learning benefit comes from recalling it before
+    checking.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '7.8'
+  question: Which mechanism does NOT explain why retrieval practice works?
+  options:
+    d: Retrieval increases the total study time
+    a: Elaboration during retrieval activates related information
+    b: Retrieval strengthens the neural pathway used to access the memory
+    c: Retrieval reveals gaps that re-reading hides
+  answer: d
+  explanation: The benefit isn't from more time — it's from the specific cognitive operations during retrieval.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.9'
+  question: 'Immediately after retrieval practice, a student feels they learned less than the re-reading
+    group. This feeling is:'
+  options:
+    a: An illusion caused by the difficulty of retrieval — the opposite is true
+    b: Accurate — re-reading is better
+    c: A sign to switch strategies
+    d: Not relevant to learning
+  answer: a
+  explanation: Fluency from re-reading creates illusion of learning. Difficulty from retrieval creates
+    actual learning. Trust the data, not the feeling.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '7.10'
+  question: What is the recommended proportion of study time that should be retrieval practice?
+  options:
+    b: At least 50% — study for encoding, then spend equal time retrieving
+    a: 0% — retrieval is for assessment only
+    c: 100% — never study, only test yourself
+    d: 10% — retrieval is supplementary
+  answer: b
+  explanation: Read for initial encoding (50% of time), then spend the rest on retrieval. Never re-read
+    when you could be retrieving.
+  difficulty: 2
+  tags:
+  - application

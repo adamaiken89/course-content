@@ -1,0 +1,101 @@
+subject: "Advanced React Testing"
+language: en
+time_budget_hours: 30
+target_level: advanced
+domain: "React frontend engineering"
+prerequisites:
+  - "React with hooks (useState, useEffect, useContext)"
+  - "Basic Jest / Vitest experience"
+  - "React Testing Library fundamentals (render, screen, fireEvent)"
+learning_objectives:
+  - "Evaluate test ROI at each level to make informed testing decisions"
+  - "Design test suites that enable safe refactoring of complex dependencies"
+  - "Apply systematic gap analysis to discover missing negative case handling"
+  - "Structure component architecture to be testable and refactor-safe"
+  - "Use test feedback to detect architectural debt (hook overuse, coupling, flakiness)"
+  - "Integrate testing strategy with CI to maintain evolutionary codebase"
+
+modules:
+  - id: 1
+    name: "Testing ROI & Boundaries"
+    time_hours: 1.5
+    prerequisites: []
+    topics: [test-levels, cost-analysis, boundaries, refactoring]
+
+  - id: 2
+    name: "Query Strategy & Test Maintainability"
+    time_hours: 1.5
+    prerequisites: [1]
+    topics: [queries, accessibility, refactor-resistance, selector-priority, data-testid-discipline]
+
+  - id: 3
+    name: "Component Contracts"
+    time_hours: 1.5
+    prerequisites: [2]
+    topics: [composition, prop-injection, contract-tests, refactor-rules, as-prop]
+
+  - id: 4
+    name: "MSW: Mock as Contract"
+    time_hours: 1.5
+    prerequisites: [3]
+    topics: [msw-setup, handler-contracts, lifecycle, refactor-safety]
+
+  - id: 5
+    name: "MSW: Complex Scenarios"
+    time_hours: 1.5
+    prerequisites: [4]
+    topics: [auth-flows, graphql, file-uploads, dependency-mixing]
+
+  - id: 6
+    name: "State Architecture Under Test"
+    time_hours: 1.5
+    prerequisites: [4]
+    topics: [zustand, store-setstate, async-init, state-testing, multi-paradigm]
+
+  - id: 7
+    name: "Custom Hooks: Component-Integrated"
+    time_hours: 1.5
+    prerequisites: [5, 6]
+    topics: [hooks-testing, consumer-tests, coupling-detection]
+
+  - id: 8
+    name: "React 19: Architecture Guard"
+    time_hours: 1.5
+    prerequisites: [7]
+    topics: [react-compiler, useMemo-overuse, useEffect-detection, hook-audit, error-boundary]
+
+  - id: 9
+    name: "Negative Case Discovery"
+    time_hours: 1.5
+    prerequisites: [7, 8]
+    topics: [gap-analysis, error-path-mapping, impl-discovery, edge-case-tooling]
+
+  - id: 10
+    name: "Snapshots as Architecture Guard"
+    time_hours: 1.5
+    prerequisites: [8, 9]
+    topics: [snapshot-strategy, structural-stability, random-parts, evolution]
+
+  - id: 11
+    name: "Flaky Root Cause Elimination"
+    time_hours: 1.5
+    prerequisites: [9]
+    topics: [flakiness, test-isolation, retry, ci-integration, act-warnings]
+
+  - id: 12
+    name: "Async & Race Conditions"
+    time_hours: 1.5
+    prerequisites: [10]
+    topics: [fake-timers, concurrent-react, race-detection, async-refactor]
+
+  - id: 13
+    name: "Integration & Dependency Mixing"
+    time_hours: 1.5
+    prerequisites: [11, 12]
+    topics: [multi-store, multi-service, mock-boundaries, state-machines, storybook-playwright]
+
+  - id: 14
+    name: "Capstone: Refactor Under Test"
+    time_hours: 1.5
+    prerequisites: [13]
+    topics: [characterization-tests, safe-refactor, architecture-guard, git-stash-workflow]

@@ -1,0 +1,119 @@
+- id: "11.1"
+  question: "What is the default bean scope in Spring?"
+  options:
+    a: "prototype"
+    b: "singleton"
+    c: "request"
+    d: "session"
+  answer: b
+  explanation: "singleton is the default, one shared instance per ApplicationContext, which suits stateless services"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "11.2"
+  question: "When do you use a role-based qualifier instead of one named after an implementation class?"
+  options:
+    a: "Never, implementation names are more precise"
+    b: "Only when the bean is a singleton"
+    c: "When swapping the implementation should not force renaming every injection point"
+    d: "When the bean has a conditional annotation"
+  answer: c
+  explanation: "A role-based qualifier decouples injection points from the concrete class so a swap touches only the bean definition"
+  difficulty: 2
+  tags: [comparison]
+
+- id: "11.3"
+  question: "A @ConditionalOnBean bean is declared before the bean it checks for. What happens?"
+  options:
+    a: "The condition sees no matching bean yet and the conditional bean backs off"
+    b: "The condition waits until the other bean is built"
+    c: "The conditional bean always registers anyway"
+    d: "The container throws at startup"
+  answer: a
+  explanation: "Conditions are evaluated against the context as built so far, so declaration order decides what the condition sees"
+  difficulty: 2
+  tags: [concept]
+
+- id: "11.4"
+  question: "Two singletons A and B are both constructor-injected and depend on each other. What does Boot 4 do at startup?"
+  options:
+    a: "Injects a lazy proxy into both and starts"
+    b: "Starts and fails on the first method call"
+    c: "Builds B first then A"
+    d: "Fails fast with BeanCurrentlyInCreationException"
+  answer: d
+  explanation: "Constructor injection cannot create either bean first, so the cycle surfaces as a startup failure before any request"
+  difficulty: 2
+  tags: [concept]
+
+- id: "11.5"
+  question: "What is the proper fix for a constructor-injected circular dependency?"
+  options:
+    a: "Annotate one dependency with @Lazy"
+    b: "Redesign so both beans depend on a third extracted bean"
+    c: "Switch one dependency to field injection"
+    d: "Change the cycle to a prototype scope"
+  answer: b
+  explanation: "@Lazy and setter or field injection only postpone the problem with proxies, while extracting shared logic removes the cycle"
+  difficulty: 3
+  tags: [comparison]
+
+- id: "11.6"
+  question: "What is the default state of virtual threads in Boot 4?"
+  options:
+    a: "Disabled unless you opt in"
+    b: "Enabled only with a custom executor"
+    c: "Enabled by default"
+    d: "Available only in the reactive stack"
+  answer: c
+  explanation: "spring.threads.virtual.enabled defaults to true in Boot 4, so Spring-managed code may run on virtual threads"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "11.7"
+  question: "What job does ContextSnapshot perform in a virtual-thread application?"
+  options:
+    a: "Pools virtual threads for reuse"
+    b: "Captures SecurityContext, request attributes, and MDC and re-establishes them on another thread"
+    c: "Replaces thread-local storage with shared memory"
+    d: "Blocks the request thread until the worker finishes"
+  answer: b
+  explanation: "ContextSnapshot captures thread-local context at one point and re-applies it on the worker thread that runs the task"
+  difficulty: 2
+  tags: [concept]
+
+- id: "11.8"
+  question: "A @Async method reads SecurityContextHolder and runs on a plain executor with virtual threads. What does it see?"
+  options:
+    a: "The caller's SecurityContext copied automatically"
+    b: "An empty or anonymous context that fails security checks"
+    c: "The context of the last thread that used the pool"
+    d: "A compile error at build time"
+  answer: b
+  explanation: "A plain executor never propagates thread-locals, so the worker thread starts with no SecurityContext"
+  difficulty: 3
+  tags: [scenario]
+
+- id: "11.9"
+  question: "A config field is null and PropertyMapper copies it to a target property. What happens?"
+  options:
+    a: "The target is set to null"
+    b: "PropertyMapper throws IllegalArgumentException"
+    c: "The target keeps its previous value because null sources are skipped"
+    d: "The application fails to start"
+  answer: c
+  explanation: "PropertyMapper skips null sources by default and only binds them when chained with always()"
+  difficulty: 1
+  tags: [concept]
+
+- id: "11.10"
+  question: "A singleton ReportService injects a prototype-scoped ExportCursor via constructor. How many cursor instances exist after the first export?"
+  options:
+    a: "One new cursor per export call"
+    b: "One cursor shared by all exports for the life of the singleton"
+    c: "Two cursors per request"
+    d: "A new singleton and a new prototype per call"
+  answer: b
+  explanation: "The prototype is instantiated once during wiring and cached by the singleton, so the fresh-instance promise is lost"
+  difficulty: 3
+  tags: [scenario]

@@ -1,0 +1,92 @@
+- id: c.1
+  question: 'Complete: The Feynman Technique is a {gap detection} loop, not a teaching
+    or summarization method.'
+  answer: gap detection
+  explanation: The core purpose is revealing what you don't know, not transmitting
+    knowledge to others.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 'Complete: The four steps of the Feynman Technique are: Choose, Explain
+    simply, {Detect gap}, and Refine.'
+  answer: Detect gap
+  explanation: Gap detection is the critical step that distinguishes Feynman from
+    simple summarization.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: 'Complete: A {jargon bridge} occurs when a learner uses a technical term
+    as a shortcut instead of explaining the underlying mechanism in plain language.'
+  answer: jargon bridge
+  explanation: Jargon bridges are the most common gap signal — the learner knows the
+    term but not the mechanism.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: 'Complete: When a learner says ''the framework handles it'' without explaining
+    the mechanism, they are treating the system as a {black box}.'
+  answer: black box
+  explanation: Black box gap signals indicate the learner knows the input and output
+    but not the internal process.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: 'Complete: The Feynman Technique works because explaining to someone with
+    no {background knowledge} forces you to make every step explicit.'
+  answer: background knowledge
+  explanation: The imagined audience (child) has none of your assumptions, so you
+    cannot skip steps.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: 'Complete: In AI-driven Feynman interactions, the {cycles count} — how
+    many refine-probe cycles are needed — serves as a measurable proxy for understanding
+    depth.'
+  answer: cycles count
+  explanation: More cycles = more gaps = weaker initial understanding. This metric
+    is useful for tracking progress over time.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: 'Complete: Free-form explanation is preferred over multiple-choice for
+    Feynman because gaps often appear in the {structure of reasoning}, not in isolated
+    facts.'
+  answer: structure of reasoning
+  explanation: MCQ tests factual recall. Feynman exposes how facts connect — or fail
+    to connect — in the learner's mind.
+  difficulty: 3
+  tags:
+  - application
+- id: c.8
+  question: 'Complete: The five gap signals are: jargon bridge, black box, {missing
+    causality}, no analogy, and edge-case blind.'
+  answer: missing causality
+  explanation: Missing causality means the learner states X causes Y but cannot explain
+    the mechanism or reason.
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.9
+  question: 'Complete: After detecting a gap, the learner should {return to source
+    material} to close the specific gap before re-explaining.'
+  answer: return to source material
+  explanation: The refine step is not guessing or rephrasing — it's consulting the
+    original source to understand the missing piece.
+  difficulty: 1
+  tags:
+  - process
+- id: c.10
+  question: 'Complete: An AI probe that asks ''What happens if the input is invalid?''
+    tests for the {edge-case blind} gap signal.'
+  answer: edge-case blind
+  explanation: Learners who understand the happy path but not failure modes have an
+    edge-case blind gap.
+  difficulty: 3
+  tags:
+  - application

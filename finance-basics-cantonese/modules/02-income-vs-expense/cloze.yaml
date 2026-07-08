@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "打工收月薪屬於 {主動收入}, 物業收租屬於 {被動收入}, 賣樓套現屬於 {一次性收入}。"
+  answer: "主動收入、被動收入、一次性收入"
+  explanation: "收入分三類: 主動(用時間換錢)、被動(setup 之後定期有錢, 唔使持續做)、一次性(一筆過大額, 之後冇)。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "支出分 {必要}、{想要} 同 {儲蓄} 三類。50/30/20 規則嘅比例係 必要 50%、想要 30%、儲蓄 {20%}。"
+  answer: "必要、想要、儲蓄、20%"
+  explanation: "50/30/20 係常見預算規則, 儲蓄至少 20% 係財務健康嘅最低線。"
+  difficulty: 1
+  tags: [terminology, formula]
+
+- id: "c.3"
+  question: "淨收入 = {收入} - {支出}。如果支出大過收入, 淨收入係 {負數}, 即係 {入不敷支}。"
+  answer: "收入、支出、負數、入不敷支"
+  explanation: "淨收入負數代表要動用儲蓄或負債去填, 持續落去會清晒儲蓄甚至破產。"
+  difficulty: 1
+  tags: [terminology, formula]
+
+- id: "c.4"
+  question: "現金流分三種: {正現金流}(收入 > 支出)、{負現金流}(收入 < 支出)、{打和/收支平衡}(收入 = 支出)。"
+  answer: "正現金流、負現金流、打和/收支平衡"
+  explanation: "現金流方向決定財務健康。正現金流累積資產, 負現金流累積負債。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "儲蓄率 = {儲蓄額} / {收入}。理想儲蓄率至少 {20%}。"
+  answer: "儲蓄額、收入、20%"
+  explanation: "儲蓄率係儲蓄佔收入比例。20% 係最低線, 失業 3-6 個月都有 buffer。"
+  difficulty: 2
+  tags: [formula, concept]
+
+- id: "c.6"
+  question: "記帳嘅目的唔係知道使幾多, 係 {分項分析, 知邊度可以改善}。"
+  answer: "分項分析, 知邊度可以改善"
+  explanation: "人對自己使錢嘅記憶永遠比實際少 30-50%。記帳要分項(必要/想要/儲蓄), 先有改善方向。"
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "c.7"
+  question: "Bitcoin 升值但你未賣, 唔算 {收入}, 只係 {資本增值}。要賣咗先變現金, 期間唔可以有 cash flow。"
+  answer: "收入、資本增值"
+  explanation: "收入係定期/重複嘅 cash flow(租金/利息/股息)。資產價格升跌係資本增值, 唔賣就冇現金。"
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "c.8"
+  question: "MPF(強積金) 係 {強迫性退休儲蓄}, {65 歲} 先可以攞(最早), 應急唔到, 需要額外儲 {應急基金}。"
+  answer: "強迫性退休儲蓄、65 歲、應急基金"
+  explanation: "MPF 鎖到退休, 應急基金(3-6 個月支出)要另儲, 唔可以靠 MPF。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.9"
+  question: "「想要」支出超標嘅改善方法: 唔好即刻 cut 0%, 應該 {分階段減}, {2-3 個月}內降到目標比例, 將省返嘅 {撥入儲蓄}。"
+  answer: "分階段減、2-3 個月、撥入儲蓄"
+  explanation: "即刻 cut 0% 難持續, 分階段減平衡改善速度同可持續性。"
+  difficulty: 3
+  tags: [scenario, application]
+
+- id: "c.10"
+  question: "「收入高」唔等於「{財務健康}」, 重點係 {儲蓄率}。收入 $50,000 儲蓄率 5% 唔健康; 收入 $25,000 儲蓄率 30% 健康。"
+  answer: "財務健康、儲蓄率"
+  explanation: "儲蓄率係關鍵指標, 唔好同人比, 同自己目標比。"
+  difficulty: 3
+  tags: [concept, application]

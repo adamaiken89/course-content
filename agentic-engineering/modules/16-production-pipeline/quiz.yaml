@@ -1,0 +1,131 @@
+- id: '16.1'
+  question: When should agent verification gates run relative to commit?
+  options:
+    d: Before commit — gates pass before agent presents diff
+    a: After commit — CI catches everything
+    b: Never — verification is human responsibility
+    c: Only on Fridays
+  answer: d
+  explanation: Pre-commit verification. Agent runs typecheck → lint → tests → only
+    then presents diff. CI should never catch what agent already verified.
+  difficulty: 1
+  tags:
+  - procedure
+- id: '16.2'
+  question: What should agent's role be in PR workflow?
+  options:
+    a: Review and comment. Human merges.
+    b: Full write access to merge PRs autonomously
+    c: No involvement in PRs
+    d: Only write PR descriptions, no review
+  answer: a
+  explanation: Agent reviews, comments, authors PRs. But merge is human responsibility.
+    Safety boundary.
+  difficulty: 1
+  tags:
+  - concept
+- id: '16.3'
+  question: What does MCP (Model Context Protocol) provide?
+  options:
+    c: Extended tool capabilities via server plugins
+    a: Faster agent responses
+    b: Better AI models
+    d: Automatic code generation
+  answer: c
+  explanation: 'MCP servers add tool capabilities: GitHub API, filesystem access,
+    database queries, browser automation.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '16.4'
+  question: Which MCP server enables agent to create PRs automatically?
+  options:
+    b: GitHub server
+    a: Filesystem server
+    c: SQLite server
+    d: Puppeteer server
+  answer: b
+  explanation: GitHub MCP provides PR creation, commenting, issue management, repo
+    operations.
+  difficulty: 1
+  tags:
+  - application
+- id: '16.5'
+  question: What's a common anti-pattern for hooks?
+  options:
+    d: Hook runs full test suite (15 min) on every pre-commit
+    a: Hooks run fast (<1s)
+    b: Hooks have escape hatches
+    c: Hooks log all actions
+  answer: d
+  explanation: Slow hooks frustrate developers and get bypassed. Full suite is for
+    CI. Pre-commit hook should be fast (typecheck + lint + related tests).
+  difficulty: 2
+  tags:
+  - concept
+- id: '16.6'
+  question: What is the recommended approach for multi-repo agent workflow?
+  options:
+    c: One repo per session. Shared patterns in cross-repo skill.
+    a: Load all repos in one session
+    b: Agent handles repos independently without coordination
+    d: Manual only — agents can't handle multi-repo
+  answer: c
+  explanation: Context can't hold all repos. One per session keeps focus. Shared skill
+    for cross-repo patterns.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '16.7'
+  question: CI catches a type error after agent's PR. What went wrong?
+  options:
+    a: Agent skipped pre-commit typecheck gate
+    b: Normal — CI catches things agent misses
+    c: Typecheck cannot be automated
+    d: CI is misconfigured
+  answer: a
+  explanation: 'Agent should have caught this with pre-commit typecheck. Either gate
+    not enforced or skipped. Fix: enforce in AGENTS.md.'
+  difficulty: 2
+  tags:
+  - scenario
+- id: '16.8'
+  question: When designing a pre-commit hook, what is most important?
+  options:
+    b: Fast — developers won't use slow hooks
+    a: Comprehensive — check everything
+    c: Silent — no output unless error
+    d: Random — vary checks each time
+  answer: b
+  explanation: Speed is most important for hooks developers actually use. Fast (<1s)
+    typecheck + lint is better than 15-min full suite that gets bypassed.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '16.9'
+  question: What is the purpose of a post-deploy hook?
+  options:
+    a: Run smoke tests and notify team after deployment
+    b: Revert deploy if issues found
+    c: Prevent deploy during business hours
+    d: Delete old deploy artifacts
+  answer: a
+  explanation: 'Post-deploy: verify deployment succeeded (smoke tests), notify team,
+    update deployment tracking.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '16.10'
+  question: Agent has GitHub MCP configured. What's a reasonable permission boundary?
+  options:
+    b: Read + comment + PR creation. No merge. No admin.
+    a: Full repo admin access
+    c: Only read access
+    d: Only write access to main branch
+  answer: b
+  explanation: Agent needs read (analyze), comment (review), PR create (author). Merge
+    and admin are human responsibilities. Restrict to minimum permissions.
+  difficulty: 3
+  tags:
+  - scenario
+

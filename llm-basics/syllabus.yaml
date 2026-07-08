@@ -1,0 +1,62 @@
+subject: "大型語言模型基礎 — 由零開始了解 LLM"
+language: yue
+time_budget_hours: 12
+target_level: beginner
+domain: "LLM basics, large language models, AI foundations"
+prerequisites: []
+learning_objectives:
+  - "Understand what a language model is and how it predicts text"
+  - "Explain how text becomes numbers that computers can process"
+  - "Understand the basic structure — attention and transformer pipeline"
+  - "Comprehend the training process: pretraining, instruction tuning, alignment"
+  - "Describe mixture-of-experts and chain-of-thought at a conceptual level"
+  - "Build foundation to read advanced LLM courses confidently"
+
+modules:
+  - id: 1
+    name: "語言模型係做緊乜？"
+    time_hours: 1.5
+    prerequisites: []
+    topics: [language model, next-word prediction, LLM everyday use]
+
+  - id: 2
+    name: "文字點樣變成數字？"
+    time_hours: 1.5
+    prerequisites: [1]
+    topics: [tokenization, subword, embedding, vector space]
+
+  - id: 3
+    name: "神經網絡係乜？"
+    time_hours: 1.5
+    prerequisites: [1, 2]
+    topics: [neuron, layer, gradient descent, training loop]
+
+  - id: 4
+    name: "Attention 概念"
+    time_hours: 1.5
+    prerequisites: [3]
+    topics: [attention mechanism, self-attention, context, lookup]
+
+  - id: 5
+    name: "Transformer 整體流程"
+    time_hours: 1.5
+    prerequisites: [4]
+    topics: [transformer architecture, encoder-decoder, layer stack, residual connections]
+
+  - id: 6
+    name: "訓練 LLM 完整流程"
+    time_hours: 1.5
+    prerequisites: [3]
+    topics: [pretraining, instruction tuning, alignment, RLHF, compute cost]
+
+  - id: 7
+    name: "MoE 混合專家模型"
+    time_hours: 1.5
+    prerequisites: [5]
+    topics: [mixture of experts, sparse model, router, expert specialization]
+
+  - id: 8
+    name: "CoT 思維鏈與推理"
+    time_hours: 1.5
+    prerequisites: [1]
+    topics: [chain of thought, reasoning, step-by-step, prompting]

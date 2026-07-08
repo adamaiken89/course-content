@@ -1,0 +1,130 @@
+- id: '1.1'
+  question: 錢嘅三大功能包括以下邊三樣?
+  options:
+    a: 交換媒介、價值尺度、價值儲存
+    b: 購買力、利率、通脹
+    c: 存款、貸款、投資
+    d: 現金、支票、信用卡
+  answer: a
+  explanation: '錢嘅三大功能係經濟學家定義: 交換媒介(用嚟買嘢)、價值尺度(比較嘢幾貴)、價值儲存(儲起將來用)。其他選項係金錢相關概念, 但唔係三大功能。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.2'
+  question: 點解比特幣 (Bitcoin) 暫時仲未完全做到「價值尺度」嘅功能?
+  options:
+    a: 因為 Bitcoin 唔受任何政府承認
+    b: 因為 Bitcoin 總量太少, 揸 Bitcoin 嘅人唔夠多
+    c: 因為 Bitcoin 嘅價格波動太大, 唔適合做穩定嘅計價單位
+    d: 因為 Bitcoin 唔可以用嚟買嘢
+  answer: c
+  explanation: Bitcoin 已經可以用嚟買部分嘢(交換媒介 OK), 亦有人儲(BTC 持倉者)(價值儲存 OK), 但價格波動太大(一日 ±10%),
+    商戶唔會用 BTC 嚟訂價, 所以仲未做到「價值尺度」。
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.3'
+  question: 世界上最早嘅紙幣係喺邊個國家出現?
+  options:
+    a: 中國宋朝
+    b: 意大利
+    c: 英國
+    d: 美國
+  answer: a
+  explanation: 北宋時期(約 1024 年)四川出現「交子」, 係世界上最早嘅紙幣, 比歐洲早幾百年。交子本身冇價值, 靠政府/商號背書。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.4'
+  question: 「法幣」(Fiat money) 嘅關鍵特徵係乜?
+  options:
+    a: 由黃金儲備支持, 可兌換等值黃金
+    b: 由政府宣布為合法支付工具, 靠政府信用運作
+    c: 由國際組織(IMF)統一發行
+    d: 只能用喺一個城市, 唔可以跨境使用
+  answer: b
+  explanation: 法幣(Fiat 係拉丁文「就係咁」)靠政府宣布為合法支付工具, 強制通用。1971 年美元脫離金本位之後, 全球主要貨幣都係法幣, 唔再對應黃金。
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.5'
+  question: 辛巴威 2008 年嘅通脹情況點解咁嚴重?
+  options:
+    a: 因為國際社會停止援助
+    b: 因為辛巴威冇加入 WTO
+    c: 因為辛巴威冇銀行
+    d: 因為政府大量印銀紙, 法幣信用崩潰
+  answer: d
+  explanation: 辛巴威政府為咗應付財政赤字, 不斷印新銀紙, 導致嚴重通脹(2008 年通脹率達 89.7 sextillion percent)。法幣一旦失去信用,
+    鈔票就變廢紙。
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.6'
+  question: 你阿媽同你講「我張 $1000 紙幣入面有 1000 蚊價值, 因為政府印嘅」, 呢句話啱唔啱?
+  options:
+    a: 錯晒, 紙幣本身係一張紙, 冇內在價值, 靠政府信用
+    b: 錯晒, 政府印銀紙冇成本, 所以冇價值
+    c: 啱, 因為紙幣係政府法定貨幣
+    d: 啱, 因為紙幣本身有內在價值
+  answer: a
+  explanation: 紙幣本身只係一張印咗字嘅紙, 冇內在價值(唔似金/銀有工業/裝飾用途)。佢有 1000 蚊嘅購買力, 係因為政府信用 + 強制通用 +
+    大家肯收, 唔係因為張紙本身值錢。
+  difficulty: 2
+  tags:
+  - concept
+  - misconception
+- id: '1.7'
+  question: 影響兩種法幣之間匯率嘅因素, 以下邊項唔係?
+  options:
+    a: 兩國通脹率差距
+    b: 兩國利率差距
+    c: 兩國天氣
+    d: 貿易順逆差
+  answer: c
+  explanation: 匯率受通脹差、利率差、貿易差、政治穩定、市場預期等影響。天氣(短期自然災害除外的 macro 影響)唔直接影響匯率。天氣會間接影響農產品供應,
+    但唔係匯率嘅主因。
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.8'
+  question: 外匯市場每日交易量大約幾多?
+  options:
+    a: 幾千億美元
+    b: 幾萬億美元
+    c: 幾百億美元
+    d: 一萬億美元以下
+  answer: b
+  explanation: 全球外匯市場每日交易量約 7 萬億美元(2022 BIS 數據), 係全球最大嘅金融市場, 比股票市場大幾倍。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.9'
+  question: 你阿明想儲蓄, 你會點建議佢?
+  options:
+    a: 全部攞去買 Bitcoin, 因為電子貨幣係未來
+    b: 分散喺現金、戶口、定期, 考慮到流動性、安全、回報
+    c: 全部攞去床下底, 因為最安全
+    d: 全部攞去買股票, 因為回報最高
+  answer: b
+  explanation: 錢嘅「價值儲存」功能, 唔代表要 All-in 一種方式。考慮流動性(要使時攞到)、安全性(唔會輸晒)、回報(對抗通脹), 分散存放係最基本嘅資產配置。Bitcoin/股票波動大,
+    床下底無回報, 都唔係單一最佳選擇。
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '1.10'
+  question: 你帶住一疊現金去北極探險, 當地人唔接受你張紙, 你會點做?
+  options:
+    a: 去北極央行要求對換當地貨幣
+    b: 燒晒啲紙取暖
+    c: 用現金硬食, 迫當地人收
+    d: 嘗試以物易物, 或用當地人接受嘅嘢(鹽/工具)交換
+  answer: d
+  explanation: 錢嘅本質係「大家都肯收」。北極當地人唔收你嘅 HKD 紙幣, 呢疊紙就唔再係「錢」(冇做到交換媒介)。解決方法係以物易物或用當地人接受嘅交換媒介。呢個例子正正顯示錢嘅本質係「共識」,
+    唔係「紙」本身。
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+

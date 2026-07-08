@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Commands like eval, where, rex, and spath that process one event at a time are called {streaming} commands."
+  answer: "streaming"
+  explanation: "Streaming commands pass events through one at a time without reducing row count."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "A {transforming} command such as stats reduces many events into a summary table."
+  answer: "transforming"
+  explanation: "Transforming commands collapse many events into summary rows."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "In `| stats avg(duration_ms) by service`, the {by} clause defines the grouping and omitting it returns a single {row} for the entire result set."
+  answer: "by; row"
+  explanation: "by groups results; without it, stats collapses everything into one row."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "To count distinct values of a field, use {dc()} (distinct count)."
+  answer: "dc()"
+  explanation: "dc(user_id) returns the number of unique user_id values, not the row count."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "To pull a nested value like order.total out of a JSON message, use the {spath} command."
+  answer: "spath"
+  explanation: "spath extracts fields from structured JSON/XML by path; bare `| spath` auto-extracts top-level keys."
+  difficulty: 2
+  tags: [application]
+
+- id: "c.6"
+  question: "rex extracts fields with Perl-regex {named} groups like `(?<user_id>\\d+)`; positional groups create no {field}."
+  answer: "named; field"
+  explanation: "Only named groups (?<name>...) become fields. Positional groups (...) are discarded."
+  difficulty: 2
+  tags: [application]
+
+- id: "c.7"
+  question: "`| eval bucket = round(duration_ms, -1)` rounds duration_ms to the nearest {10}."
+  answer: "10"
+  explanation: "A negative digits argument in round() rounds to tens: -1 means nearest 10."
+  difficulty: 2
+  tags: [application]
+
+- id: "c.8"
+  question: "The `if()` function takes three arguments: the {condition}, the value if true, and the value if {false}."
+  answer: "condition; false"
+  explanation: "if(cond, true_val, false_val) is a ternary; omitting the false value is a syntax error."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.9"
+  question: "`| timechart span=1h avg(duration_ms) by operation` aggregates into time {buckets} of one hour and draws one series per {operation}."
+  answer: "buckets; operation"
+  explanation: "timechart is stats bucketed by time; span sets bucket width, by sets the series split."
+  difficulty: 3
+  tags: [application]
+
+- id: "c.10"
+  question: "Pipeline discipline: extract and {filter} before you aggregate, because stats collapses rows and later commands only see the {summary} table."
+  answer: "filter; summary"
+  explanation: "Filter early and cheaply; after a transforming command, per-event fields are gone and only summary columns remain."
+  difficulty: 3
+  tags: [scenario]

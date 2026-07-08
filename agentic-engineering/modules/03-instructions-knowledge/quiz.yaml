@@ -1,0 +1,134 @@
+- id: '3.1'
+  question: What is the purpose of AGENTS.md?
+  options:
+    a: Providing per-project static instructions loaded at session start
+    b: Logging agent activity during sessions
+    c: Storing authentication tokens
+    d: Configuring the AI model parameters
+  answer: a
+  explanation: AGENTS.md contains project conventions, testing approaches, and boundaries.
+    Loaded automatically at session start.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.2'
+  question: Where should you document a fact discovered during work (e.g., 'auth middleware
+    is in middleware.ts')?
+  options:
+    b: CLAUDE.md
+    a: AGENTS.md
+    c: package.json
+    d: README.md
+  answer: b
+  explanation: CLAUDE.md stores dynamic facts discovered during sessions. AGENTS.md
+    is for static instructions you write upfront.
+  difficulty: 1
+  tags:
+  - application
+- id: '3.3'
+  question: How often should you compress a session for complex tasks?
+  options:
+    a: Every 30-50 turns or when context exceeds 70%
+    b: Every 5 turns
+    c: Only at end of day
+    d: Never - compression loses information
+  answer: a
+  explanation: 30-50 turns or >70% context is good cadence. Too early (5 turns) is
+    premature. Too late degrades quality.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '3.4'
+  question: What should you INCLUDE when compressing a session?
+  options:
+    a: Design decisions made and rejected alternatives
+    b: Full error traces from failed builds
+    c: Every tool output verbatim
+    d: Git commit history
+  answer: a
+  explanation: Keep design decisions, rejected alternatives, file paths created, patterns
+    established. Drop raw error traces and noise.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '3.5'
+  question: A pattern appears in 3+ projects. Where should it live?
+  options:
+    c: Custom skill (global, all repos)
+    a: CLAUDE.md of each project
+    b: A readme file
+    d: Screenshot for reference
+  answer: c
+  explanation: Patterns generalizing across projects should be elevated to custom
+    skills. Per-project files require duplication.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.6'
+  question: Which is an example of a GOOD AGENTS.md instruction?
+  options:
+    d: 'Test: vitest + @testing-library/react. Coverage ≥80%. One test per component.'
+    a: Write good code
+    b: Be careful with dependencies
+    c: Try your best
+  answer: d
+  explanation: Specific, actionable instructions beat vague encouragement. Name the
+    framework, threshold, and pattern.
+  difficulty: 1
+  tags:
+  - comparison
+- id: '3.7'
+  question: What wins if AGENTS.md contradicts CLAUDE.md?
+  options:
+    d: AGENTS.md - it's explicit instructions
+    a: CLAUDE.md - it's more recent
+    b: Neither - ask the user
+    c: Whichever has more detail
+  answer: d
+  explanation: AGENTS.md is authoritative static instructions. CLAUDE.md is discovered
+    facts that may be stale.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.8'
+  question: What should you do when you notice the agent repeatedly asking the same
+    question?
+  options:
+    c: Add the answer to AGENTS.md
+    a: Ignore - it will learn eventually
+    b: Restart the session
+    d: Switch to a different AI model
+  answer: c
+  explanation: Repeated questions indicate missing context. Add answer to AGENTS.md
+    so every future session benefits.
+  difficulty: 1
+  tags:
+  - scenario
+- id: '3.9'
+  question: What is the promotion path for knowledge discovered in a session?
+  options:
+    b: Session → noticed pattern → AGENTS.md → if general → skill
+    a: Keep it only in that session
+    c: Directly to publication
+    d: Discard after session ends
+  answer: b
+  explanation: Pattern elevates from session memory to project config to global skill
+    as it proves generalizable.
+  difficulty: 3
+  tags:
+  - procedure
+- id: '3.10'
+  question: Context is at 90%. You have 10 more minutes on this task. What should
+    you do?
+  options:
+    b: Compress now, finish in same session
+    a: Keep working - task almost done
+    c: Restart fresh, lose last decisions
+    d: Ignore context - it adjusts automatically
+  answer: b
+  explanation: Compress proactively before context degrades. Finish task in same session.
+    Don't push through near-empty context.
+  difficulty: 2
+  tags:
+  - scenario
+

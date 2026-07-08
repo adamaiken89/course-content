@@ -1,0 +1,60 @@
+- id: "c.1"
+  question: "ANALYZE writes {histogram} bounds plus MCV lists to pg_statistic."
+  answer: histogram
+  explanation: "Bucket bounds summarize the value distribution for range predicates."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "Functional dependencies in extended statistics stop per-column {selectivity} multiplication."
+  answer: selectivity
+  explanation: "Correlated columns get realistic combined row estimates."
+  difficulty: 2
+  tags: [concept]
+- id: "c.3"
+  question: "The {correlation} statistic measures column order vs physical heap order."
+  answer: correlation
+  explanation: "High |corr| lets the planner trust index scans fetch few pages."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.4"
+  question: "UPDATE/DELETE leaves {dead} tuples that VACUUM must reclaim."
+  answer: dead
+  explanation: "Old versions become dead once no snapshot sees them."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.5"
+  question: "HOT updates skip writing new {index} entries when no indexed column changes."
+  answer: index
+  explanation: "The chain lives in one page until vacuum walks it."
+  difficulty: 1
+  tags: [process]
+- id: "c.6"
+  question: "Autovacuum fires at 50 plus {scale_factor} times reltuples dead rows."
+  answer: scale_factor
+  explanation: "Default 0.2 means 20% of the table must die before vacuum runs."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "Specialized multi-column {statistics} fix plans that look correct on paper but assume independence."
+  answer: statistics
+  explanation: "dependencies/ndistinct/mcv extensions are declared with CREATE STATISTICS."
+  difficulty: 2
+  tags: [concept]
+- id: "c.8"
+  question: "Routine VACUUM reuses pages but shrinking the file needs {VACUUM FULL} or table rewrite."
+  answer: VACUUM FULL
+  explanation: "A full rewrite compacts the physical file; routine vacuum only marks pages reusable."
+  difficulty: 2
+  tags: [process]
+- id: "c.9"
+  question: "n_dead_tup in pg_stat_user_tables shows tuples awaiting {vacuum}."
+  answer: vacuum
+  explanation: "Watch it to catch tables crossing the autovacuum threshold."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.10"
+  question: "PG19 adds {parallel} autovacuum to spread one table's vacuum work across workers."
+  answer: parallel
+  explanation: "Big-table vacuum speeds up on multi-core machines."
+  difficulty: 3
+  tags: [comparison]

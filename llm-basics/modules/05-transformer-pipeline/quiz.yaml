@@ -1,0 +1,116 @@
+- id: '5.1'
+  question: Transformer block 嘅兩個主要部分係？
+  options:
+    a: Self-Attention + FFN
+    b: Tokenizer + Embedding
+    c: Encoder + Decoder
+    d: Training + Inference
+  answer: a
+  explanation: 每個 Transformer block 由 self-attention（資訊交換）同 FFN（資訊處理）組成，加上 residual
+    connections 同 layer norm。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.2'
+  question: Residual connection（殘差連接）嘅主要用途係？
+  options:
+    a: 加快運算速度
+    b: 解決 vanishing gradient 問題
+    c: 減少參數量
+    d: 令 output 更長
+  answer: b
+  explanation: Residual connection 俾 gradient 一條 shortcut 由 output 直接流返 input，令 deep
+    network 都可以 train 到。冇佢，超過 10-20 層就好難 train。
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.3'
+  question: Decoder-only architecture 嘅 attention 有乜限制？
+  options:
+    a: 每個字只可以望後面嘅字
+    b: 每個字可以望晒全部字
+    c: 每個字只可以望前面嘅字
+    d: Attention 次數有限制
+  answer: c
+  explanation: Decoder-only 用 causal attention（masked attention），每個 token 只可以 attend
+    到前面嘅 tokens，唔可以睇後面。因為生成文字嗰陣，你只有前面嘅字。
+  difficulty: 1
+  tags:
+  - concept
+- id: '5.4'
+  question: Output layer 點樣由 vector 變成 token probability？
+  options:
+    a: 直接 output vector
+    b: Random sampling
+    c: Tokenizer reverse
+    d: Unembedding（linear layer + softmax）
+  answer: d
+  explanation: 最後嘅 vector 經過 unembedding matrix（linear layer）變成 vocab_size 個 scores，再用
+    softmax 變成 probability distribution。
+  difficulty: 2
+  tags:
+  - process
+- id: '5.5'
+  question: Attention 同 FFN 嘅角色分別係？
+  options:
+    a: Attention 做 communication，FFN 做 computation
+    b: Attention 做 computation，FFN 做 communication
+    c: 兩者做同一樣嘢
+    d: FFN 係 optional
+  answer: a
+  explanation: Attention = 資訊交換，每個字睇其他字嘅 context。FFN = 資訊處理，每個字獨立 transform 佢嘅 representation。兩者缺一不可。
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.6'
+  question: Transformer 愈 deep（愈多 layers）有乜好處？
+  options:
+    a: 更快 inference
+    b: 可以 capture 愈抽象嘅概念
+    c: 需要更少 training data
+    d: 唔會有 vanishing gradient
+  answer: b
+  explanation: 底層 capture surface features，中層 capture 語義，高層 capture 抽象概念。愈深 layers
+    可以逐步 refine representation。
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.7'
+  question: Positional encoding 嘅用途係？
+  options:
+    a: 加快 training
+    b: 減少 vocab size
+    c: 俾模型知道字嘅順序
+    d: 增加 accuracy
+  answer: c
+  explanation: Attention 本身係 position-agnostic — 唔知字嘅先後。Positional encoding 加一個位置
+    signal 俾每個 token，等模型知道句子入面字嘅順序。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.8'
+  question: 以下邊個係 decoder-only model？
+  options:
+    a: BERT
+    b: T5
+    c: Word2Vec
+    d: GPT
+  answer: d
+  explanation: GPT 係 decoder-only。BERT 係 encoder-only，T5 係 encoder-decoder。Word2Vec
+    係 static embedding，唔係 transformer。
+  difficulty: 1
+  tags:
+  - scenario
+- id: '5.9'
+  question: Residual connection 嘅公式（概念上）係？
+  options:
+    a: Output = Input + Attention(Input)
+    b: Output = Input × Attention(Input)
+    c: Output = Attention(Input) - Input
+    d: Output = max(Input, Attention(Input))
+  answer: a
+  explanation: Output = Input + Attention(Input)。Original input 直接加 attention 嘅 output，俾
+    gradient 一條 shortcut 流返去 input。
+  difficulty: 3
+  tags:
+  - concept

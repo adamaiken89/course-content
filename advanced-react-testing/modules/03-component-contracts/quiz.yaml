@@ -1,0 +1,184 @@
+- id: '3.1'
+  question: A component test asserts on a CSS class name. When the class is renamed,
+    the test fails. What is the problem?
+  options:
+    d: Test asserts on implementation detail, not contract
+    a: CSS was renamed incorrectly
+    b: Class names should be stable
+    c: Test needs a CSS snapshot
+  answer: d
+  explanation: CSS classes are implementation details. The component contract is about
+    visible behavior and content, not styling mechanism. Users do not see class names.
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.2'
+  question: What is the primary problem with prop injection (passing props through
+    intermediate components)?
+  options:
+    a: Every intermediate component must change when a new feature is added
+    b: Performance — more props means more re-renders
+    c: TypeScript cannot type props across 3+ levels
+    d: Props are harder to mock in tests
+  answer: a
+  explanation: Prop injection creates coupling. Adding a feature requires touching
+    every component in the chain. Composition patterns (context, slots) eliminate
+    this coupling.
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.3'
+  question: Which pattern isolates rendering from data fetching, making both independently
+    testable?
+  options:
+    d: Container/presenter pattern
+    a: Prop injection
+    b: Inline data fetching
+    c: Higher-order components
+  answer: d
+  explanation: Container/presenter separates data logic (container) from rendering
+    (presenter). Test presenter with props, test container with store mocks. Changes
+    to data fetching do not affect presenter tests.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.4'
+  question: 'A Profile component reads user data from Zustand store. A test renders
+    it and asserts on the user name. Refactoring: the store slice is renamed from
+    `user` to `currentUser`. What happens?'
+  options:
+    d: Test passes — the component updates its store reference, test does not care
+      about store internals
+    a: Test breaks — must update the store reference
+    b: Test breaks — store state must be set differently
+    c: Test must be rewritten
+  answer: d
+  explanation: The test sets store state via `useUserStore.setState()`. The store
+    slice name is an implementation detail of the component. The test cares about
+    visible output, not internal store paths.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '3.5'
+  question: Which test assertion style is more refactor-resistant?
+  options:
+    a: 'expect(await screen.findByRole(''heading'', { name: /john/i })).toBeInTheDocument()'
+    b: expect(mockFetch).toHaveBeenCalledWith('/api/users/1')
+    c: expect(container.querySelector('.user-name')).toHaveTextContent('John')
+    d: expect(screen.getByTestId('user-name')).toHaveTextContent('John')
+  answer: a
+  explanation: B tests visible behavior (heading rendered). A tests API call (implementation),
+    C tests CSS class (implementation), D tests testId (implementation). Only B survives
+    refactors that change how data is fetched or styled.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '3.6'
+  question: A component passes 8 props through 3 levels to reach a deeply nested child.
+    Adding a 9th prop requires updating 4 components. What pattern should replace
+    this?
+  options:
+    b: Context/store pattern — child reads directly from store
+    a: Prop drilling with default values
+    c: Global variables
+    d: Combine all 8 props into a single object
+  answer: b
+  explanation: Context/store lets the child read what it needs directly. Intermediate
+    components do not change when new features are added. This decouples the component
+    tree from data flow.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '3.7'
+  question: A test block has 5 assertions checking name, email, avatar, role, and
+    join date. The avatar breaks. What happens in CI?
+  options:
+    c: Test fails on first assertion, you fix and re-run, next assertion fails — 5
+      CI rounds for 1 bug
+    a: All 5 assertions run, 4 pass, 1 fails
+    b: Only the avatar assertion runs
+    d: Test runner skips the avatar assertion
+  answer: c
+  explanation: Assertions in the same `it` block stop at the first failure. Each CI
+    round only reveals one failure. Separate tests catch all failures in one run,
+    fixing them in one round.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.8'
+  question: When refactoring a component, which change SHOULD break tests?
+  options:
+    c: Removing the user name from the rendered output
+    a: Renaming a CSS class from .card to .profile-card
+    b: Changing a `<div>` to `<section>` with same content
+    d: Switching from class component to function component
+  answer: c
+  explanation: C changes the contract — the component no longer renders the user name.
+    Tests should break to flag this spec change. A, B, D are internal refactors that
+    preserve the contract.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '3.9'
+  question: A Developer wants to add `useUserStore` to a test. What is the correct
+    approach to set store state before rendering?
+  options:
+    b: 'Call `useUserStore.setState({ user: testUser })` before render'
+    a: Mock the entire store module with jest.mock
+    c: Pass user as a prop to override store
+    d: Render the component and wait for store to populate
+  answer: b
+  explanation: setState is the direct way to pre-populate store state for a test.
+    It avoids mocking the entire module and keeps the test focused on the component,
+    not the store wiring.
+  difficulty: 2
+  tags:
+  - application
+- id: '3.10'
+  question: A component test needs 3 providers (Theme, Router, Store). What is the
+    maintainable approach?
+  options:
+    a: Create a single TestWrapper utility that includes all providers
+    b: Wrap each test in all 3 providers
+    c: Mock all context values with jest.mock
+    d: Use beforeEach to set up providers globally
+  answer: a
+  explanation: 'A single TestWrapper centralizes provider setup. When a new provider
+    is added, one file changes instead of every test. Pass the wrapper via `render(<Component
+    />, { wrapper: TestWrapper })`.'
+  difficulty: 2
+  tags:
+  - application
+- id: '3.11'
+  question: A `<Button as="a" href="/profile">Profile</Button>` renders as `<a>`.
+    What should the test assert?
+  options:
+    b: 'It is accessible as a button role — `getByRole(''button'', { name: /profile/i
+      })`'
+    a: It renders an `<a>` tag
+    c: It has an href attribute
+    d: It does not render a `<button>` tag
+  answer: b
+  explanation: Polymorphic components should preserve the same accessible role regardless
+    of rendered element. The test asserts on the role contract, not the HTML tag.
+    The component should add role='button' when as='a'.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.12'
+  question: How do you test that a polymorphic component forwards refs to the underlying
+    DOM element?
+  options:
+    c: Create a React ref, pass to component with as='a', assert ref.current.tagName
+      is 'A'
+    a: It cannot be tested — refs are opaque
+    b: Use container.querySelector to find the element
+    d: Ref forwarding is guaranteed — no test needed
+  answer: c
+  explanation: Create a ref with `React.createRef()`, render with `as="a"` and pass
+    `ref={ref}`, then assert `ref.current.tagName === 'A'`. This validates the ref
+    forwarding contract.
+  difficulty: 2
+  tags:
+  - application
+

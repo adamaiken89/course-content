@@ -1,0 +1,60 @@
+- id: "c.1"
+  question: "In a composite B-tree index, put {equality} columns before range columns so narrowing stops early."
+  answer: equality
+  explanation: "Range column ends pruning; only equality predicates narrow the scan."
+  difficulty: 1
+  tags: [concept]
+- id: "c.2"
+  question: "Columns added with INCLUDE are stored in the leaves only, enabling an index-{only scan} with no heap fetch."
+  answer: only scan
+  explanation: "Index-only scans return payload straight from the leaf pages."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.3"
+  question: "A {partial} index covers only rows matching a WHERE predicate, shrinking space and maintenance cost."
+  answer: partial
+  explanation: "Partial indexes are built over subsets of a table."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.4"
+  question: "An expression index is used only when the query uses the same expression written {textually} in the WHERE clause."
+  answer: textually
+  explanation: "The planner matches expressions by form, not by derivation."
+  difficulty: 2
+  tags: [concept]
+- id: "c.5"
+  question: "The multicolumn index (a, b, c) is effective only when the query does not skip {b} after matching a."
+  answer: b
+  explanation: "Leftmost prefix rule: leading columns must be present in the query."
+  difficulty: 2
+  tags: [concept]
+- id: "c.6"
+  question: "A query with WHERE col = 'x' AND col != 'y' matches indexes with this {contradiction}: use of NOT NULL."
+  answer: contradiction
+  explanation: "check that only one branch actually returns rows; the index can prune based on the equality column."
+  difficulty: 2
+  tags: [process]
+- id: "c.7"
+  question: "UNIQUE {NULLS NOT DISTINCT} restricts a column to at most one NULL row."
+  answer: NULLS NOT DISTINCT
+  explanation: "By default NULLs are considered distinct so many NULLs pass uniqueness."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.8"
+  question: "Zero-cardinality indexes get ignored because a scan that matches a large {fraction} of rows prefers the sequential scan."
+  answer: fraction
+  explanation: "Selectivity below the planner's cost crossover favors seq scan."
+  difficulty: 3
+  tags: [concept]
+- id: "c.9"
+  question: "The cost trade-off: index write overhead is paid on every {insert} or update touching indexed columns."
+  answer: insert
+  explanation: "Fresh index entries are written by each write transaction."
+  difficulty: 3
+  tags: [process]
+- id: "c.10"
+  question: "The B-tree index's operator class decides which {comparison} operators the planner can use with it."
+  answer: comparison
+  explanation: "Different opclasses support different operator families."
+  difficulty: 2
+  tags: [concept]

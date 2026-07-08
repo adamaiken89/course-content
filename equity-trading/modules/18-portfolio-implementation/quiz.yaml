@@ -1,0 +1,138 @@
+- id: '18.1'
+  question: 'Portfolio returns 16% with 20% volatility. Risk-free rate is 4%. Sharpe
+    ratio is:'
+  options:
+    a: '0.6'
+    b: '0.8'
+    c: '1.0'
+    d: '0.5'
+  answer: a
+  explanation: Sharpe = (16% - 4%) / 20% = 12% / 20% = 0.60.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '18.2'
+  question: 'Which portfolio has the best risk-adjusted return? A: return 18%, σ 25%;
+    B: return 12%, σ 10%; C: return 22%, σ 30%. r_f = 3%.'
+  options:
+    a: Portfolio A
+    b: Cannot determine
+    c: Portfolio C
+    d: Portfolio B
+  answer: d
+  explanation: Sharpe A = (18-3)/25 = 0.60. Sharpe B = (12-3)/10 = 0.90. Sharpe C
+    = (22-3)/30 = 0.63. Portfolio B has highest Sharpe — best risk-adjusted return
+    despite lowest raw return.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '18.3'
+  question: What does the efficient frontier represent?
+  options:
+    a: Maximum return for each risk level
+    b: Minimum risk portfolio regardless of return
+    c: All possible asset combinations
+    d: Risk-free asset combinations only
+  answer: a
+  explanation: Efficient frontier = set of portfolios offering maximum expected return
+    for each risk level. Portfolios below frontier are suboptimal.
+  difficulty: 1
+  tags:
+  - concept
+- id: '18.4'
+  question: Trader has 62% win rate, avg win = 1.5%, avg loss = 1.0%. Full Kelly recommends
+    what fraction?
+  options:
+    a: 10%
+    b: 29%
+    c: 37%
+    d: 45%
+  answer: c
+  explanation: b = 1.5/1.0 = 1.5. f* = (0.62 × 1.5 - 0.38) / 1.5 = (0.93 - 0.38) /
+    1.5 = 0.55 / 1.5 = 0.367 = 37%.
+  difficulty: 3
+  tags:
+  - calculation
+- id: '18.5'
+  question: Why do most traders use fractional Kelly instead of full Kelly?
+  options:
+    a: Full Kelly is illegal in most jurisdictions
+    b: Fractional Kelly reduces variance and drawdown risk
+    c: Full Kelly requires daily rebalancing
+    d: Fractional Kelly has higher expected return
+  answer: b
+  explanation: Full Kelly maximizes growth rate but with extreme volatility (50%+
+    drawdowns). Fractional Kelly (25-50%) preserves most growth with much smoother
+    equity curve.
+  difficulty: 2
+  tags:
+  - concept
+- id: '18.6'
+  question: 'Initial weights 60/40 stocks/bonds. Stocks rally 25%, bonds drop 5%.
+    New drift is:'
+  options:
+    a: 62/38
+    b: 55/45
+    c: 60/40 unchanged
+    d: 65/35
+  answer: d
+  explanation: Start $60K stocks + $40K bonds. Stocks = $60K × 1.25 = $75K. Bonds
+    = $40K × 0.95 = $38K. Total = $113K. Stocks = 75/113 = 66.4%. Bonds = 38/113 =
+    33.6%. ~65/35.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '18.7'
+  question: What is the tangency portfolio on the efficient frontier?
+  options:
+    a: Minimum variance portfolio
+    b: Portfolio with highest Sharpe ratio
+    c: Portfolio with highest return
+    d: Equal-weight portfolio
+  answer: b
+  explanation: Tangency portfolio = point where Capital Market Line touches efficient
+    frontier. It has maximum Sharpe ratio — optimal when leverage at risk-free rate
+    available.
+  difficulty: 2
+  tags:
+  - concept
+- id: '18.8'
+  question: 'Rebalancing forces selling winners and buying losers. This is mechanically:'
+  options:
+    a: Momentum strategy
+    b: Contrarian strategy
+    c: Passive strategy
+    d: Arbitrage strategy
+  answer: b
+  explanation: Rebalancing is contrarian — sells assets that have risen, buys those
+    that have fallen. Captures mean reversion premium over time.
+  difficulty: 2
+  tags:
+  - concept
+- id: '18.9'
+  question: 'Sharpe ratio limitation is that it:'
+  options:
+    a: Cannot compare different asset classes
+    b: Uses total risk not just systematic risk
+    c: Assumes returns are normally distributed
+    d: Requires daily data
+  answer: c
+  explanation: Sharpe ratio uses standard deviation as risk measure, which assumes
+    normal distribution. Markets have fat tails — Sharpe can overstate risk-adjusted
+    performance in strategies with tail risk.
+  difficulty: 2
+  tags:
+  - concept
+- id: '18.10'
+  question: 'Capital Market Line combines:'
+  options:
+    a: Two risky assets only
+    b: Risk-free asset and tangency portfolio
+    c: All portfolios on efficient frontier
+    d: Only bonds and stocks
+  answer: b
+  explanation: CML = line from risk-free rate through tangency portfolio (max Sharpe).
+    Any point on CML = mix of risk-free asset and tangency portfolio.
+  difficulty: 2
+  tags:
+  - concept

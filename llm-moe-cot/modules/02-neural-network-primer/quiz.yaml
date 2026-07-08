@@ -1,0 +1,130 @@
+- id: '2.1'
+  question: Linear layer y = Wx + b 嘅 W 控制乜嘢 transformation？
+  options:
+    a: Rotation + scaling (affine)
+    b: Only translation
+    c: Non-linear squashing
+    d: Probability normalisation
+  answer: a
+  explanation: W 做 rotation + scaling（線性變換），b 做 translation。冇 non-linear activation
+    疊加嘅話，多層 linear = 單層 linear。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.2'
+  question: 點解疊多層 linear layer 唔增加 expressivity？
+  options:
+    a: 因為 linear ∘ linear = linear
+    b: 因為 linear layer 參數太少
+    c: 因為 gradient 傳唔到
+    d: 因為 softmax 限制咗
+  answer: a
+  explanation: W₂(W₁x + b₁) + b₂ = (W₂W₁)x + (W₂b₁ + b₂) = W'x + b' — 仍然係 linear。Non-linear
+    activation 先令 network 可以 model 非線性關係。
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.3'
+  question: ReLU 嘅定義係乜？
+  options:
+    c: ReLU(x) = max(0, x)
+    a: ReLU(x) = 1 / (1 + e⁻ˣ)
+    b: ReLU(x) = tanh(x)
+    d: ReLU(x) = x · σ(x)
+  answer: c
+  explanation: ReLU = max(0, x)。簡單、快、解決 sigmoid 嘅 vanishing gradient 問題。但可能 dead ReLU（input
+    < 0 就 gradient=0）。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.4'
+  question: Softmax 嘅 temperature 參數 T > 1 會令 probability distribution 點樣？
+  options:
+    b: 更平滑 (smooth/flat)
+    a: 更尖銳 (sharp)
+    c: 唔變
+    d: 所有 probability 變 0
+  answer: b
+  explanation: Softmax(zᵢ/T) — T>1 放大分母，令分佈更平滑 (softer)，增加 exploration。T<1 令分佈更尖銳
+    (sharper)，接近 argmax。
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.5'
+  question: Cross-entropy loss 最低可以係幾多？
+  options:
+    a: '0'
+    b: '-1'
+    c: '1'
+    d: infinite
+  answer: a
+  explanation: L = -Σ y · log(p)。如果 p(correct) = 1.0 → log(1) = 0 → loss = 0。實際上因為
+    softmax 永遠 assign 唔到 exact 1.0，loss 只會趨近 0。
+  difficulty: 2
+  tags:
+  - formula
+- id: '2.6'
+  question: Backpropagation 係基於數學上嘅邊條 rule？
+  options:
+    b: Chain rule
+    a: Product rule
+    c: Bayes rule
+    d: L'Hôpital's rule
+  answer: b
+  explanation: ∂L/∂W₁ = ∂L/∂y · ∂y/∂W₁ — chain rule 逐層傳遞 gradient。
+  difficulty: 1
+  tags:
+  - concept
+- id: '2.7'
+  question: Vanishing gradient 嘅主要成因係乜？
+  options:
+    d: Activation function 嘅 gradient 細過 1，疊乘後趨近 0
+    a: Learning rate 太大
+    b: Data 唔夠
+    c: Too many parameters
+  answer: d
+  explanation: 每層 gradient scale < 1，叠乘 → 指數衰減 → 前面層 gradient ≈ 0 → learn 唔到。Sigmoid
+    尤其嚴重（max gradient = 0.25）。
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.8'
+  question: Embedding 相比 one-hot 嘅核心優勢係乜？
+  options:
+    b: Similar tokens 有 similar vectors，可以 generalise
+    a: 更少參數
+    c: 唔需要 training
+    d: 可以直接計 similarity
+  answer: b
+  explanation: One-hot 所有 pairs dot=0（正交），「蘋果」同「橙」完全獨立。Embedding 嘅 continuous space
+    令語義相近嘅 tokens vectors 相近 → generalise 去 unseen contexts。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '2.9'
+  question: Softmax output 係咪 calibrated probability？
+  options:
+    d: 唔係，softmax output = model 嘅相對偏好，唔等於真實置信度
+    a: 係，因為加埋 = 1
+    b: 只係對 binary classification 係
+    c: 係，因為 exp 放大咗差異
+  answer: d
+  explanation: Softmax output 係 model 內部 logits 嘅相對比例，唔係真實概率。Model 可能 softmax=0.99
+    但實際得 60% 準確（miscalibration）。
+  difficulty: 3
+  tags:
+  - concept
+- id: '2.10'
+  question: MLP 處理 sequence 嘅 fundamental problem 係乜？
+  options:
+    c: MLP 需要固定維度 input，而且冇內建位置感知
+    a: MLP 太慢
+    b: MLP 參數太少
+    d: MLP 唔 support softmax
+  answer: c
+  explanation: 句子長度可變，MLP 嘅 fixed-size input 唔適合。而且 MLP 嘅 position-independent weights
+    分唔到「我食飯」同「飯食我」。
+  difficulty: 2
+  tags:
+  - application
+

@@ -1,0 +1,128 @@
+- id: '3.1'
+  question: What character prefix denotes a variable in GraphQL?
+  options:
+    b: $
+    a: '@'
+    c: '&'
+    d: ':'
+  answer: b
+  explanation: '$ prefix declares and references variables. @ is for directives. :
+    is for type annotations. & is not used.'
+  difficulty: 2
+  tags: []
+- id: '3.2'
+  question: How do you request the same field twice with different arguments?
+  options:
+    a: Use aliases
+    b: Use fragments
+    c: Use variables
+    d: Cannot — fields must be unique
+  answer: a
+  explanation: 'Aliases rename fields: `first: users(limit: 5)` and `all: users(limit:
+    100)` can coexist.'
+  difficulty: 2
+  tags: []
+- id: '3.3'
+  question: 'Query `query GetUser($id: ID!) { user(id: $id) { name } }`. Variable
+    values sent separately. What advantage?'
+  options:
+    c: Query text is cacheable separately from variable values
+    a: Smaller HTTP requests
+    b: Variables are optional
+    d: Server re-validates types per execution
+  answer: c
+  explanation: Persisted queries rely on static query text being cached server-side.
+    Variables change per call without invalidating the query cache.
+  difficulty: 2
+  tags: []
+- id: '3.4'
+  question: 'Interface Searchable with shared field `title`. Types: Article and Video
+    each have unique fields. How to query both with shared + unique fields in one
+    query?'
+  options:
+    a: Query title + inline fragments on Article and Video
+    b: Query title only — cannot access type-specific fields
+    c: Query title + separate queries for each type
+    d: Use @skip to toggle fields
+  answer: a
+  explanation: Query shared field (title) directly on interface, then use inline fragments
+    `... on Article { ... }` and `... on Video { ... }` for type-specific fields.
+  difficulty: 2
+  tags: []
+- id: '3.5'
+  question: 'What does @skip(if: true) do?'
+  options:
+    b: Excludes the field
+    a: Includes the field
+    c: Throws an error
+    d: Returns null for the field
+  answer: b
+  explanation: '@skip(if: true) excludes the field from the response. @include(if:
+    true) includes it. They are logical opposites.'
+  difficulty: 2
+  tags: []
+- id: '3.6'
+  question: 'Query: `query { user(id: "1") { name posts { title } } }`. Server responses
+    with errors array containing 3 errors. What does data look like?'
+  options:
+    d: data.user.posts elements may be null where errors occurred
+    a: data is null
+    b: data.user is null
+    c: data.user.name is null
+  answer: d
+  explanation: Errors resolve at the field level. If 3 posts errored, those 3 elements
+    would be null. Other fields resolve normally.
+  difficulty: 2
+  tags: []
+- id: '3.7'
+  question: 'Fragment `fragment X on User { name email }`. Query: `query { user(id:
+    "1") { ...X posts { title } } }`. Where is `X` expanded?'
+  options:
+    b: Both — server validates and expands
+    a: Server-side during execution
+    c: Client-side before sending
+    d: Neither — fragment is a reference
+  answer: b
+  explanation: Server validates fragment type-consistency and expands it into the
+    selection set during execution. The response includes the expanded fields.
+  difficulty: 2
+  tags: []
+- id: '3.8'
+  question: Which operation types does GraphQL support?
+  options:
+    a: query, mutation, subscription
+    b: query, mutation
+    c: get, post, subscribe
+    d: select, insert, watch
+  answer: a
+  explanation: 'Three operation types: query (read), mutation (write), subscription
+    (event stream).'
+  difficulty: 2
+  tags: []
+- id: '3.9'
+  question: Client must show a dashboard with user count, recent orders, and top products.
+    All three available under single Query root. How many round trips?
+  options:
+    d: One — all under a single query
+    a: Three — each is a separate entry point
+    b: Depends on network conditions
+    c: Two — resolve parallelizable fields
+  answer: d
+  explanation: All three fields can be selected in one query. GraphQL executes resolvers
+    in parallel where dependencies allow. One round trip replaces three REST calls.
+  difficulty: 2
+  tags: []
+- id: '3.10'
+  question: 'Query: `query GetUser { a: user(id: "1") { name } b: user(id: "2") {
+    name } }`. Response shape?'
+  options:
+    c: '{ data: { a: { name: "Alice" }, b: { name: "Bob" } } }'
+    a: '{ data: { users: [{ name: "Alice" }, { name: "Bob" }] } }'
+    b: '{ data: { user: [{ name: "Alice" }, { name: "Bob" }] } }'
+    d: Error — duplicate user field
+  answer: c
+  explanation: Aliases rename fields in response. Both resolvers run independently.
+    No array — each alias is a separate key in the response object.
+  difficulty: 2
+  tags: []
+

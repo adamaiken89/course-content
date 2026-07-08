@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "The {LogstashEncoder} class from net.logstash.logback.encoder emits one {JSON object} per log line that Splunk can parse into fields."
+  answer: "LogstashEncoder"
+  explanation: "LogstashEncoder serializes each log event as a JSON object with @timestamp, level, logger_name, thread_name, message, MDC fields, and customFields."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Static app context such as service and env is injected into every event via the {customFields} element in logback-spring.xml."
+  answer: "customFields"
+  explanation: "The <customFields> element holds static JSON key/value pairs that LogstashEncoder merges into every event, making them queryable Splunk fields."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "The design principle is one event = one {JSON object} = one Splunk event, so high-value fields should be {flat} keys rather than nested objects."
+  answer: "JSON object"
+  explanation: "A compact one-line JSON object maps 1:1 to one Splunk event; nested objects are harder to query, so prefer flat top-level keys."
+  difficulty: 2
+  tags: [application]
+
+- id: "c.4"
+  question: "Keys placed into the {MDC} are merged into every JSON event automatically, but must be {removed} in a finally block to avoid leakage across pooled threads."
+  answer: "MDC"
+  explanation: "LogstashEncoder includes MDC entries as JSON fields; without removal in finally, reused threads carry stale request IDs into unrelated requests."
+  difficulty: 2
+  tags: [application]
+
+- id: "c.5"
+  question: "A servlet filter should call {MDC.put} at request entry and {MDC.remove} in a finally block so each request's correlation context stays isolated."
+  answer: "MDC.put"
+  explanation: "MDC.put seeds the thread-local context (requestId/traceId/userId); MDC.remove in finally guarantees cleanup even when the request throws."
+  difficulty: 2
+  tags: [application]
+
+- id: "c.6"
+  question: "SplunkCimLogEvent provides CIM field constants such as {COMMON_TRANSACTION_ID} and {COMMON_REASON} for Splunk Enterprise Security and data model compliance."
+  answer: "COMMON_TRANSACTION_ID"
+  explanation: "CIM constants standardize event fields so ES and data models correlate events across sources without custom extraction."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Attach a full exception stacktrace to a CIM event by calling {addThrowableWithStacktrace} so the throwable is formatted for indexing and searching."
+  answer: "addThrowableWithStacktrace"
+  explanation: "addThrowableWithStacktrace(throwable) formats the stack for search; addField(key, value) only adds plain key/value context."
+  difficulty: 2
+  tags: [application]
+
+- id: "c.8"
+  question: "Always log exceptions with the throwable, e.g. log.error(\"failed\", e), never {e.getMessage()}, because the message-only form loses the full {stacktrace}."
+  answer: "e.getMessage()"
+  explanation: "log.error(e.getMessage()) drops the stack and often leaves an unsearchable value like null; passing the throwable preserves the multi-line stacktrace field."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "c.9"
+  question: "Field values with unbounded variety, such as full URLs with query parameters, are {high-cardinality} and should be trimmed or hashed to protect index size and {search speed}."
+  answer: "high-cardinality"
+  explanation: "Each unique value consumes index space and slows search; trimming to the path or hashing reduces cardinality while preserving correlation."
+  difficulty: 3
+  tags: [terminology]
+
+- id: "c.10"
+  question: "Prefer {ISO8601 UTC} timestamps in log content so Splunk maps them cleanly to {_time} at parse time, and redact {PII} or tokens before logging for compliance."
+  answer: "ISO8601 UTC"
+  explanation: "UTC ISO8601 timestamps avoid ambiguous local-time correlation across DCs; Splunk maps _time at parse. Sensitive data must be redacted pre-log for cost and compliance."
+  difficulty: 3
+  tags: [application]

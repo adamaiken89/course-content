@@ -1,0 +1,96 @@
+- id: "cum.11"
+  type: mcq
+  source_modules: [5, 6]
+  question: "Which encoder produces the structured JSON event shape (customFields, MDC as fields) used at the source before ingestion?"
+  options:
+    a: "SplunkCimLogEvent writer"
+    b: "logstash-logback-encoder LogstashEncoder"
+    c: "PatternLayout with %m%n"
+    d: "HttpEventCollectorLogbackAppender raw mode"
+  answer: b
+  difficulty: 1
+  tags: [recall]
+- id: "cum.12"
+  type: mcq
+  source_modules: [6, 7]
+  question: "Given INDEXED_EXTRACTIONS=JSON, fields are extracted at index time. What does the indexer write so the search head can reference field=value without re-extracting from _raw?"
+  options:
+    a: "The raw event only"
+    b: "Search-time extractions via props.conf"
+    c: "Extracted key/value segments plus a TSIDX/structure"
+    d: "A run-time regex in transforms.conf"
+  answer: c
+  difficulty: 2
+  tags: [synthesis, cross-module]
+- id: "cum.13"
+  type: mcq
+  source_modules: [6, 7, 8]
+  question: "Which decision creates the risk of many distinct high-cardinality values and is best avoided when designing fields at the source?"
+  options:
+    a: "snake_case field names"
+    b: "Embedding request-unique IDs as a new indexed field"
+    c: "Omitting nulls"
+    d: "Keeping types stable across events"
+  answer: b
+  difficulty: 2
+  tags: [synthesis, cross-module, misconception]
+- id: "cum.14"
+  type: mcq
+  source_modules: [7]
+  question: "A line in transforms.conf writes REGEX=([^=]+)=(?<field>.+); FORMAT=field::$1. What is the purpose of DEST_KEY=_meta in this search-time field extraction?"
+  options:
+    a: "Delete the extracted value after indexing"
+    b: "Store fields in event metadata along with TRANSFORMS- application"
+    c: "Force index-time storage in the TSIDX bloom"
+    d: "Deduplicate repeated values across events"
+  answer: b
+  difficulty: 2
+  tags: [recall, misconception]
+- id: "cum.15"
+  type: cloze
+  source_modules: [7]
+  question: "In Splunk search, {blank}::value (double-colon notation) searches across all indexed fields that embed attribute namespaces."
+  answer: "field"
+  explanation: "field::value form, e.g. 'foo::{bar}', queries structured/namespaced keys during search."
+  difficulty: 3
+  tags: [recall]
+- id: "cum.16"
+  type: cloze
+  source_modules: [6]
+  question: "In props.conf, {blank} controls how the indexer splits a raw stream into individual events."
+  answer: "LINE_BREAKER"
+  explanation: "LINE_BREAKER defines the regex boundary separating one event from the next."
+  difficulty: 1
+  tags: [recall]
+- id: "cum.17"
+  type: cloze
+  source_modules: [6]
+  question: "The props.conf stamp parsing pair {blank} and TIME_FORMAT (plus TZ) tells the indexer where and how to read the event timestamp."
+  answer: "TIME_PREFIX"
+  explanation: "TIME_PREFIX finds the timestamp location; TIME_FORMAT parses its shape."
+  difficulty: 1
+  tags: [recall]
+- id: "cum.18"
+  type: tf
+  source_modules: [5, 8]
+  statement: "Structured events logged with MDC-as-fields plus customFields raise the overall field cardinality and can slow searches if every event carries a unique trace_id as an indexed field."
+  answer: true
+  explanation: "High-cardinality indexed fields inflate TSIDX and degrade search performance."
+  difficulty: 2
+  tags: [synthesis, cross-module, misconception]
+- id: "cum.19"
+  type: tf
+  source_modules: [6, 7]
+  statement: "The bucket lifecycle moves buckets from hot to warm to cold, and after finalization the indexer still makes those buckets searchable."
+  answer: true
+  explanation: "Rolling hot buckets to warm/cold keeps data searchable while managing size host limits."
+  difficulty: 1
+  tags: [recall]
+- id: "cum.20"
+  type: tf
+  source_modules: [7, 8]
+  statement: "Index-time extraction via INDEXED_EXTRACTIONS=JSON stores each JSON field into individual indexed metadata the same way a search-time regex would."
+  answer: false
+  explanation: "Index-time extraction writes extracted metadata into the index; search-time regex runs at search, different storage path."
+  difficulty: 3
+  tags: [cross-module, misconception]

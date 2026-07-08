@@ -1,0 +1,145 @@
+- id: '11.1'
+  question: How do you add Framer Motion animations to a third-party Button component?
+  options:
+    c: Use motion(Button) — returns a motion-enhanced component
+    a: Wrap with motion.div — but lose Button's built-in functionality
+    b: Button does not support animation — use CSS instead
+    d: Copy Button internals into a motion component
+  answer: c
+  explanation: motion(Component) wraps any component with motion capabilities — forwards
+    ref, accepts motion props, preserves original component's API.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.2'
+  question: What is the purpose of AnimatePresence?
+  options:
+    b: Plays exit animations when a child component unmounts, then removes it from
+      DOM
+    a: Controls animation timing and easing
+    c: Provides animation presets for common patterns
+    d: Detects when animated elements are visible in viewport
+  answer: b
+  explanation: AnimatePresence tracks children by key. When key disappears from render
+    output, Framer Motion plays the exit animation defined on that element, then unmounts
+    it.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.3'
+  question: With AnimatePresence mode='popLayout', what happens during exit?
+  options:
+    d: Exiting element immediately removes its layout — remaining elements animate
+      to fill gap
+    a: Exiting element maintains its layout space until animation completes
+    b: Exit and enter animations play simultaneously
+    c: popLayout is not a valid mode
+  answer: d
+  explanation: popLayout removes layout space immediately on exit, so surrounding
+    elements animate to new positions without waiting. sync plays enter/exit simultaneously.
+    wait plays exit then enter.
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.4'
+  question: What does layoutId enable in Framer Motion?
+  options:
+    a: Shares identity between separate components so Framer Motion animates position/size
+      change as same element
+    b: Sorts animated elements by z-index
+    c: Assigns layout coordinates to motion elements
+    d: Defines animation sequence order
+  answer: a
+  explanation: layoutId tells Framer Motion that two separate components (e.g., thumbnail
+    and modal image) represent same element. Position/size transitions animate smoothly
+    instead of mount/unmount.
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.5'
+  question: How to respect user's reduced-motion preference in Framer Motion?
+  options:
+    c: Use useReducedMotion() hook — conditionally render non-animated fallback
+    a: 'Set prefers-reduced-motion: reduce in CSS'
+    b: Framer Motion automatically respects reduced-motion
+    d: Disable all animations via motionConfig
+  answer: c
+  explanation: useReducedMotion() reads prefers-reduced-motion media query. Wrapper
+    conditionally renders children without motion props when user prefers reduced
+    motion.
+  difficulty: 2
+  tags:
+  - application
+- id: '11.6'
+  question: Which animation property avoids triggering layout recalculations?
+  options:
+    d: transform
+    a: width
+    b: height
+    c: top
+  answer: d
+  explanation: Transform and opacity are GPU-composited — they do not trigger layout
+    or paint recalculations. Width, height, top, left all trigger layout recalc on
+    each frame.
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.7'
+  question: Two list items swap positions but share same key. What happens?
+  options:
+    b: Framer Motion treats them as same element — layout animates position change
+      without mount/unmount
+    a: AnimatePresence plays exit animation for first, enter for second
+    c: Items do not animate — keys must be unique
+    d: Both items animate independently to new positions
+  answer: b
+  explanation: Same key = same element identity. Framer Motion uses layout animation
+    (if layout prop set) to move element from old to new position. AnimatePresence
+    is not involved in same-key swaps.
+  difficulty: 3
+  tags:
+  - concept
+- id: '11.8'
+  question: What does variants' staggerChildren property do?
+  options:
+    a: Animates each child with a delay relative to previous child's animation start
+    b: Groups children into animation batches
+    c: Randomizes animation order for visual variety
+    d: Pauses animations on hover
+  answer: a
+  explanation: 'staggerChildren creates cascading delay: child 1 animates, then child
+    2 after staggerChildren delay, then child 3, etc. delayChildren adds initial delay
+    before first child starts.'
+  difficulty: 2
+  tags:
+  - terminology
+- id: '11.9'
+  question: Which transition type produces natural-feeling UI animations?
+  options:
+    b: spring — natural motion based on physics (stiffness, damping, mass)
+    a: tween — predictable, linear
+    c: inertia — velocity-based deceleration
+    d: keyframes — multi-step sequence
+  answer: b
+  explanation: Spring produces natural feel because real-world objects have mass,
+    stiffness, and damping. Tween is predictable but can feel robotic. Inertia is
+    for drag deceleration. Keyframes for multi-step.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.10'
+  question: When wrapping a third-party component with motion(), what must be forwarded?
+  options:
+    a: ref — motion components require ref forwarding for layout measurement and gesture
+      tracking
+    b: Children prop only
+    c: style prop only
+    d: key prop only
+  answer: a
+  explanation: motion() requires forwarded ref for internal layout measurement, gesture
+    detection, and scroll tracking. Without ref forwarding, motion props like layout,
+    drag, and whileInView will not work.
+  difficulty: 2
+  tags:
+  - concept
+

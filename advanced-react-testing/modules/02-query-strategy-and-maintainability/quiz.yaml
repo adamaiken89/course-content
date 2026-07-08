@@ -1,0 +1,179 @@
+- id: '2.1'
+  question: What is the primary reason Testing Library defines a query priority order?
+  options:
+    b: Refactor resistance — higher priority queries survive DOM changes
+    a: Performance optimization — getByRole is fastest
+    c: Simplicity — beginners should start with getByRole
+    d: Feature completeness — higher priority covers more cases
+  answer: b
+  explanation: Query priority exists for refactor resistance. getByRole queries the
+    accessibility tree, not the DOM tree. It survives wrapper changes, class renames,
+    and structural refactors.
+  difficulty: 1
+  tags:
+  - concept
+- id: '2.2'
+  question: Which query should be your default for finding interactive elements (buttons,
+    links, inputs)?
+  options:
+    b: getByRole
+    a: getByTestId
+    c: getByText
+    d: getByClassName
+  answer: b
+  explanation: getByRole is the default for interactive elements. It matches the accessibility
+    tree, which is the most stable representation of the component's purpose.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.3'
+  question: Your component changes from `<div className="card"><h2>Profile</h2></div>`
+    to `<section><h2>Profile</h2></section>`. Which test breaks?
+  options:
+    c: container.querySelector('.card')
+    a: 'screen.getByRole(''heading'', { name: /profile/i })'
+    b: screen.getByText(/profile/i)
+    d: screen.getByTestId('card')
+  answer: c
+  explanation: Queries using class names (C) or CSS selectors break on structural
+    changes. getByRole and getByText survive because the heading text and role are
+    unchanged.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '2.4'
+  question: When is getByTestId an acceptable choice?
+  options:
+    c: When no semantic role or text can identify the element (e.g., virtualized list
+      container)
+    a: For every element — it is the simplest query
+    b: When getByRole throws 'multiple elements found'
+    d: When testing CSS animations
+  answer: c
+  explanation: getByTestId is the last resort for cases where no semantic query can
+    identify the element. This is rare. Most 'hard to query' cases are actually accessibility
+    issues.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.5'
+  question: A developer keeps using getByPlaceholderText for form inputs. What is
+    the problem?
+  options:
+    d: Placeholder text disappears when user types — no stable query target
+    a: getByPlaceholderText is slower than getByLabelText
+    b: placeholder attribute is deprecated
+    c: There is no problem — it is a valid query
+  answer: d
+  explanation: Placeholder text is not a label. It disappears on user input, making
+    assertions unreliable. Use getByLabelText with a proper `<label>` or `aria-label`
+    instead.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.6'
+  question: You find that every button in your app requires getByTestId to query.
+    What does this reveal?
+  options:
+    a: Buttons lack accessible names — an accessibility issue
+    b: Buttons are inherently hard to query
+    c: Testing Library does not support button queries well
+    d: You need a custom wrapper for button queries
+  answer: a
+  explanation: 'If buttons need getByTestId, they likely lack accessible names (inner
+    text or aria-label). Fixing the accessibility makes getByRole(''button'', { name:
+    ... }) work — and improves accessibility for all users.'
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '2.7'
+  question: After a design system migration, your Button component changes from `<button>Submit</button>`
+    to `<span role="button" tabindex="0">Submit</span>`. Which query survives?
+  options:
+    d: Both B and C
+    a: screen.getByTestId('submit')
+    b: 'screen.getByRole(''button'', { name: /submit/i })'
+    c: screen.getByText(/submit/i)
+  answer: d
+  explanation: Both getByRole and getByText survive. getByRole finds the span with
+    role='button' and accessible name 'Submit'. getByText finds the text content.
+    Only getByTestId would break if testId is not carried over.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '2.8'
+  question: What tool helps discover the accessible roles available in a rendered
+    component?
+  options:
+    a: screen.logTestingPlaygroundURL() or logRoles
+    b: screen.debug()
+    c: container.querySelectorAll('*')
+    d: React DevTools
+  answer: a
+  explanation: logTestingPlaygroundURL() opens the Testing Playground to inspect roles.
+    logRoles prints all roles in the component. Both help find the right role-based
+    query.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.9'
+  question: A heading should always be queried with which query?
+  options:
+    c: 'getByRole(''heading'', { level: 1-6, name: ... })'
+    a: getByText — it displays text
+    b: getByTestId — headings are structural
+    d: getByTitle — headings have implied title
+  answer: c
+  explanation: Headings have the semantic role 'heading' with a level. Using getByRole
+    ensures the component is accessible (screen readers navigate by headings) and
+    the test survives structural changes.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.10'
+  question: Your form uses `<input aria-label="Email" />` with no visible label. What
+    query should you use?
+  options:
+    a: 'getByRole(''textbox'', { name: /email/i })'
+    b: getByTestId('email')
+    c: getByPlaceholderText('Email')
+    d: getByText('Email')
+  answer: a
+  explanation: getByRole with name matching aria-label is the correct query. Even
+    without a visible label, the aria-label provides the accessible name. This is
+    both accessible and refactor-resistant.
+  difficulty: 2
+  tags:
+  - application
+- id: '2.11'
+  question: Where should data-testid attributes be placed in a well-structured component
+    hierarchy?
+  options:
+    b: On leaf components only, one level below the test scope
+    a: On every element inside the component for maximum testability
+    c: Never — data-testid is always an anti-pattern
+    d: On the outermost wrapper div of the application
+  answer: b
+  explanation: 'data-testid marks composition boundaries: the slot where a leaf component
+    lives. Internals of the leaf use role/text queries from the leaf''s own tests.
+    This ensures leaf refactors do not break parent tests.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.12'
+  question: Your Design System replaces all `<div>` with `<Box>` that does not forward
+    data-testid. Which tests break?
+  options:
+    d: No tests break — test-ids are implementation details
+    a: All tests that use getByRole — roles are lost
+    b: Only tests that use getByTestId on those elements
+    c: Only tests that use getByTestId at the composition boundary (one level deep)
+  answer: d
+  explanation: If you followed the discipline (test-id only at composition boundary,
+    roles for internals), no tests break. Leaf-internal test-ids would break, but
+    those should never exist. Roles and text survive the migration.
+  difficulty: 3
+  tags:
+  - scenario
+

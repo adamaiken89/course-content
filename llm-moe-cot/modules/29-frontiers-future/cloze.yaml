@@ -1,0 +1,42 @@
+- id: c.1
+  question: Test-time compute scaling 提供咗 {inference-time} 嘅替代方案，畀 {training compute} 用嚟改善 reasoning。
+  answer: inference-time / training compute
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: Multimodal MoE 用 {modality-specific} 或者 {cross-modal} experts，由 shared 或 gated router 做 routing。
+  answer: modality-specific / cross-modal
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: o1-style models 用 {inference-time search} 喺 reasoning paths 上面，配合 {process-based rewards}。R1
+    用 {reinforcement learning with rule-based rewards}。
+  answer: inference-time search / process-based rewards / reinforcement learning with rule-based rewards
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: Agentic loop 嘅四個步驟係：{observe}、{plan}、{execute}、同 {reflect}。
+  answer: observe / plan / execute / reflect
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: 目前 agentic architectures 嘅根本限制係 {error accumulation} — 一個 planning mistake 會傳播到成個 loop。
+  answer: error accumulation
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: MoE 嘅 open problems 包括 {dead experts}、{faithful reasoning}、{safety at scale}、同 {energy efficiency}。
+  answer: dead experts / faithful reasoning / safety at scale / energy efficiency
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: 真正嘅 skill composition 係一個 open problem，因為 task vectors 唔會 {compose reliably} — 加兩個 capability
+    vectors 可能會 {interfere}。
+  answer: compose reliably / interfere
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: Reasoning Models 用 {test-time compute} 換取更強嘅推理，諗得耐啲答案準啲。
+  answer: test-time compute
+  difficulty: 2
+  tags: []

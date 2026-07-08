@@ -1,0 +1,134 @@
+- id: '19.1'
+  question: Which stop-loss type adjusts to changing market volatility?
+  options:
+    a: ATR-based stop
+    b: Fixed % stop
+    c: Break-even stop
+    d: Time stop
+  answer: a
+  explanation: ATR-based uses Average True Range to set distance proportional to volatility.
+    Fixed % ignores volatility — too tight in volatile stocks, too wide in quiet ones.
+  difficulty: 1
+  tags:
+  - concept
+- id: '19.2'
+  question: '95% VaR of $24K means:'
+  options:
+    a: Max daily loss is $24K
+    b: Portfolio value will be $24K lower in 95% of days
+    c: Expected daily loss is $24K
+    d: 95% chance daily loss ≤ $24K; 5% chance loss exceeds $24K
+  answer: d
+  explanation: VaR = threshold at confidence level. 95% VaR = $24K means 95% of days
+    loss ≤ $24K. Remaining 5%, loss exceeds $24K. VaR does NOT give max loss.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '19.3'
+  question: 'During the 1998 LTCM crisis, correlations across global bonds:'
+  options:
+    a: Remained at normal levels
+    b: Decreased, improving diversification
+    c: Spiked toward 1, causing simultaneous losses
+    d: Became negative, protecting LTCM
+  answer: c
+  explanation: LTCM models assumed normal correlations. Russia default caused correlation
+    spike to near 1. All positions fell simultaneously. $4.6B lost in 4 months.
+  difficulty: 1
+  tags:
+  - concept
+- id: '19.4'
+  question: Stock closes at $100, stop at $92. Overnight earnings miss. Stock opens
+    at $78. Stop executes at what price?
+  options:
+    a: $78 or slightly worse (slippage)
+    b: $92
+    c: $85 (midpoint)
+    d: Stop never triggers
+  answer: a
+  explanation: Stop becomes market order at open. Price gaps below stop to $78. Order
+    fills at $78 or worse. Stops do not protect against overnight gaps.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '19.5'
+  question: Which is a key limitation of parametric VaR?
+  options:
+    a: Requires too much data
+    b: Cannot be calculated for portfolios
+    c: Assumes normal distribution — markets have fat tails
+    d: Always underestimates expected return
+  answer: c
+  explanation: Parametric VaR assumes normal distribution. But markets have fat tails
+    — extreme events happen far more often than Gaussian predicts. This understates
+    tail risk.
+  difficulty: 1
+  tags:
+  - concept
+- id: '19.6'
+  question: 'Stock at $50, ATR(14) = $5. Using 2× ATR stop, exit price is:'
+  options:
+    a: $45
+    b: $40
+    c: $42
+    d: $47
+  answer: b
+  explanation: Stop = entry - 2 × ATR = $50 - 2 × $5 = $50 - $10 = $40.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '19.7'
+  question: 'Correlation risk refers to:'
+  options:
+    a: Risk that correlations remain constant
+    b: Risk that correlations become unmeasurable
+    c: Risk of negative correlations
+    d: Risk that correlations spike during crises, reducing diversification
+  answer: d
+  explanation: Correlation risk = correlations change when you need them most. During
+    crises, correlations approach 1. Diversification fails exactly when needed.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '19.8'
+  question: 'Trailing stop at 10%. Buy at $80. Price hits $120 then drops to $100.
+    Exit price is:'
+  options:
+    a: $100
+    b: $108
+    c: $96
+    d: $72
+  answer: b
+  explanation: Trailing stop = 10% below highest price ($120). Stop at $120 - $12
+    = $108. Price drops to $100 → stop triggers at $108. Profit = $28/share.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '19.9'
+  question: Which best protects against gap risk?
+  options:
+    a: Options (put) and reduced position before events
+    b: Tight fixed % stop
+    c: Mental stop
+    d: Daily rebalancing
+  answer: a
+  explanation: Only options protect against gaps (guaranteed fill at strike). Position
+    sizing ensures gap doesn't blow account. Tight stops and mental stops fail in
+    gaps.
+  difficulty: 2
+  tags:
+  - concept
+- id: '19.10'
+  question: '95% VaR = $50K, CVaR = $80K. Large gap indicates:'
+  options:
+    a: Low portfolio risk
+    b: Fat tails — tail losses worse than normal distribution
+    c: Calculation error
+    d: Portfolio is fully hedged
+  answer: b
+  explanation: CVaR averages tail beyond VaR. Large VaR-to-CVaR gap = fat tails. Normal
+    distribution would have smaller CVaR ~$60K for same VaR. $80K CVaR means tail
+    losses are severe.
+  difficulty: 2
+  tags:
+  - concept

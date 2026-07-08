@@ -1,0 +1,158 @@
+- id: '28.1'
+  question: A block trade fills partially (only 75% executed). To treat all clients
+    fairly, which method should the OMS allocation engine use?
+  options:
+    a: Pro-rata — proportionally reduce all client allocations
+    b: FIFO — earliest-submitting clients get full allocation first
+    c: LIFO — latest-submitting clients get priority
+    d: Random allocation
+  answer: a
+  explanation: Pro-rata ensures all clients share the partial fill impact proportionally.
+    FIFO may leave some clients with zero allocation, potentially violating fiduciary
+    duty for ERISA accounts.
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '28.2'
+  question: In institutional trading, what is the main difference between affirmation
+    and confirmation?
+  options:
+    a: They are identical, just different terminology
+    b: Affirmation is T+0 intent confirmation; confirmation is T+1 formal confirmation
+    c: Affirmation is used for retail; confirmation for institutional
+    d: Affirmation is sent by the client; confirmation is sent by the SEC
+  answer: b
+  explanation: Affirmation happens on T+0, letting institutional clients and the broker
+    agree on trade details early. Confirmation is the T+1 formal legal record. The
+    retail market has no affirmation process.
+  difficulty: 1
+  tags:
+  - terminology
+  - comparison
+- id: '28.3'
+  question: Since May 28, 2024, what is the settlement cycle for US stocks and ETFs?
+  options:
+    a: T+0
+    b: T+2
+    c: T+1
+    d: T+3
+  answer: c
+  explanation: The SEC shortened US equity settlement from T+2 to T+1 (effective
+    2024/5/28). US Treasuries remain T+0, FX spot remains T+2.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '28.4'
+  question: What is the core difference between DVP (Delivery Versus Payment) and
+    FOP (Free of Payment)?
+  options:
+    a: DVP is for domestic markets; FOP is for international markets
+    b: DVP is used by buyers; FOP is used by sellers
+    c: They function identically, only fee rates differ
+    d: DVP requires cash and securities to exchange simultaneously; FOP transfers
+      securities only, no cash involved
+  answer: d
+  explanation: DVP ensures delivery versus payment — no cash, no delivery. FOP transfers
+    securities ownership only, with cash flow handled outside the settlement system.
+    DVP is for buy/sell trades; FOP is for collateral or internal transfers.
+  difficulty: 1
+  tags:
+  - terminology
+  - comparison
+- id: '28.5'
+  question: What is the primary function of NSCC CNS (Continuous Net Settlement)?
+  options:
+    a: Calculate net differences between broker-dealers' buys and sells to reduce
+      settlement volume
+    b: Match buy and sell orders during execution
+    c: Calculate trading commissions
+    d: Generate regulatory reports
+  answer: a
+  explanation: CNS nets already-executed trades in the post-trade phase — each participant's
+    buys and sells are combined into a single net position. This is not matching (that
+    is the execution phase), nor fee calculation or regulatory reporting.
+  difficulty: 2
+  tags:
+  - concept
+- id: '28.6'
+  question: A buyer settles a trade using DVP and expects to definitely receive the
+    stock because payment was made. Why might this assumption be wrong?
+  options:
+    a: DVP guarantees delivery in every case
+    b: DVP ensures payment and receipt are simultaneous, but if the seller lacks securities
+      in DTC, DVP cannot force delivery — CNS must initiate a buy-in
+    c: DVP automatically converts to FOP on failure
+    d: DTCC covers the loss from its own funds
+  answer: b
+  explanation: DVP only guarantees simultaneity, not delivery. If the seller has insufficient
+    securities in DTC, the buy-in must be initiated via CNS. DVP reduces counterparty
+    risk but does not eliminate it.
+  difficulty: 3
+  tags:
+  - scenario
+  - concept
+- id: '28.7'
+  question: After a settlement failure, when does NSCC initiate the buy-in process?
+  options:
+    a: T+1 same day
+    b: Between T+3 and T+5
+    c: After T+5
+    d: Buy-in is triggered at the broker's discretion
+  answer: c
+  explanation: CNS allows short-term open fails (typically T+3 to T+5). Beyond T+5,
+    NSCC forcibly initiates buy-in — buying securities in the market, with price differences
+    and penalties charged to the defaulting party.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '28.8'
+  question: Brokerage executes a block trade allocated to 50 accounts, each with its
+    own settlement instruction. One account's DVP/RVP flag is accidentally cleared
+    during migration (defaults to FOP). What happens?
+  options:
+    a: Trade settles normally, no impact
+    b: DTCC automatically rejects the entire trade
+    c: SEC receives an automatic alert
+    d: DTC only transfers securities, no cash settlement triggered — seller doesn't
+      get paid, broker must advance funds
+  answer: d
+  explanation: FOP transfers securities ownership only. The buyer's account receives
+    shares, but the seller receives no payment. If the broker-dealer already paid
+    the seller, this becomes an advance to the buyer, creating credit risk. Common
+    but dangerous post-trade pipeline error.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '28.9'
+  question: A brokerage's post-trade STP rate is 88%. What is the most reasonable
+    interpretation of this number?
+  options:
+    a: 88% of trades completed from execution to settlement fully automatically; 12%
+      required some form of manual intervention
+    b: The brokerage used 88% of available system capacity
+    c: 88% of trades were successful; 12% failed
+    d: 88% of clients chose auto-settlement
+  answer: a
+  explanation: STP Rate = (Automated Trades / Total Trades) x 100%. 88% means 12%
+    of trades had manual intervention. World-class standard is above 95%; below 85%
+    indicates excessive ops cost.
+  difficulty: 1
+  tags:
+  - concept
+- id: '28.10'
+  question: What is the basis for calculating the SEC Section 31 fee?
+  options:
+    a: Buy-side transaction value
+    b: Sell-side transaction value (total value of sell orders)
+    c: Number of shares traded
+    d: Number of trades
+  answer: b
+  explanation: SEC Section 31 fee is calculated on sell-side transaction value to
+    fund SEC regulatory operations. FINRA TAF is calculated per share with a per-trade
+    cap.
+  difficulty: 2
+  tags:
+  - terminology
+  - concept

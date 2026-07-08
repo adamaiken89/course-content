@@ -1,0 +1,62 @@
+- id: c.1
+  question: Transformer pipeline 由 raw text 開始，經過{tokenization}、{embedding}、{transformer
+    blocks}，最後 output{probability distribution}。
+  answer: tokenization，embedding，transformer blocks，probability distribution
+  explanation: 呢個係完整 pipeline，每個 component 你已經喺前面 modules 學過。
+  difficulty: 2
+  tags:
+  - process
+- id: c.2
+  question: Decoder-only architecture 用{causal attention}，每個 token 只可以望{前面}嘅 token，唔可以望{後面}嘅
+    token。
+  answer: causal attention，前面，後面
+  explanation: 呢個限制係因為 decoder 嘅 job 係生成文字 — 生成嗰陣只有前面嘅字。
+  difficulty: 1
+  tags:
+  - concept
+- id: c.3
+  question: Residual connection 嘅公式：Output = {Input} + {Attention(Input)}。
+  answer: Input，Attention(Input)
+  explanation: Residual connection 令 gradient 可以直接流返 input，解決 deep network 嘅 vanishing
+    gradient 問題。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.4
+  question: Attention 負責{communication}（資訊交換），FFN 負責{computation}（資訊處理）。
+  answer: communication，computation
+  explanation: 呢個分工理解咗之後，你就明點解 Transformer block 需要兩個 component。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: Output layer 用{unembedding matrix}將 vector 變成 vocab_size 個 scores，再用{softmax}變成
+    probability distribution。
+  answer: unembedding matrix，softmax
+  explanation: Unembedding 係 embedding 嘅 reverse — 將 vector 映射返去 token space。
+  difficulty: 3
+  tags:
+  - process
+- id: c.6
+  question: 一個 Transformer block 包含{self-attention}、{residual connection}、{FFN}同{layer
+    norm}。
+  answer: self-attention，residual connection，FFN，layer norm
+  explanation: 呢四個 component 組成基本 building block，重複 N 次就係 deep transformer。
+  difficulty: 1
+  tags:
+  - process
+- id: c.7
+  question: Residual connection 令 gradient 有一條{shortcut}由 output 直接流返 input，解決{vanishing
+    gradient}問題。
+  answer: shortcut，vanishing gradient
+  explanation: Deep network 越深 gradient 越細，residual connection 令 training 更容易。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: Attention 做{communication}（資訊交換），FFN 做{computation}（資訊處理），兩者缺一不可。
+  answer: communication，computation
+  explanation: Attention 令字同字交換資訊，FFN 每個字獨立 transform 自己嘅 representation。
+  difficulty: 2
+  tags:
+  - concept

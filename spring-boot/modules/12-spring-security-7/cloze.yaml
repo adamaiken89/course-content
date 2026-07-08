@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: Security 7 enables {blank} protection for all endpoints including APIs."
+  answer: "CSRF"
+  explanation: "The CSRF filter rejects state-changing requests that carry no token unless the app disables it deliberately for stateless auth."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: The removed authorizeRequests method is replaced by {blank} in Security 7."
+  answer: "authorizeHttpRequests"
+  explanation: "Request authorization rules now build through a lambda over requestMatchers."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: A stateless flow stores the principal in a {blank} scoped to the request rather than in the HTTP session."
+  answer: "SecurityContextRepository"
+  explanation: "Keeping the context per request with STATELESS policy avoids server-side session state."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "Complete: CSRF protects requests authenticated by {blank} because the browser auto-sends that credential, but not bearer-header credentials."
+  answer: "cookies"
+  explanation: "The attack relies on automatic credential sending, which only applies to cookie auth."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "Complete: Disabling CSRF is safe only when authentication is not {blank} based."
+  answer: "cookie"
+  explanation: "Cookie-session apps must keep CSRF because the browser auto-sends the session cookie."
+  difficulty: 3
+  tags: [application]
+
+- id: "c.6"
+  question: "Complete: Method-level rules like @PreAuthorize activate through the {blank} annotation."
+  answer: "@EnableMethodSecurity"
+  explanation: "The annotation turns on annotation-based method security for @PreAuthorize and @Secured."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "Complete: Security 7 expresses the role hierarchy through an authorities-based {blank}."
+  answer: "GrantedAuthoritiesMapper"
+  explanation: "The mapper expands the principal authority set at authentication time."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "Complete: OAuth2 client configuration {blank} were restructured in Security 7 and must be re-mapped on upgrade."
+  answer: "properties"
+  explanation: "Boot 3 property blocks for clients and providers no longer map directly onto Boot 4."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.9"
+  question: "Complete: The Spring Authorization Server code merged into {blank} as a single artifact."
+  answer: "Spring Security"
+  explanation: "One artifact means the authorization server and resource server version together."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.10"
+  question: "Complete: Polymorphic JSON deserialization must pass a {blank} so payload type names cannot select arbitrary classes."
+  answer: "PolymorphicTypeValidator"
+  explanation: "Without it the type name in the payload drives instantiation, a deserialization RCE vector."
+  difficulty: 3
+  tags: [application]

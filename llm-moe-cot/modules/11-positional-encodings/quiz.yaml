@@ -1,0 +1,122 @@
+- id: '11.1'
+  question: 點解 self-attention 需要 positional encodings？
+  options:
+    b: Self-attention 係 permutation-invariant — 無論輸入次序點樣，輸出都一樣
+    a: Softmax function 會移除次序資訊
+    c: Token embeddings 預設唔包含位置資訊
+    d: Residual stream 會破壞 positional signals
+  answer: b
+  difficulty: 2
+  tags:
+  - recall
+  - core
+- id: '11.2'
+  question: Sinusoidal PE 喺唔同維度用咩 frequency scheme？
+  options:
+    a: Frequency 指數下降：θ_i = 10000^(-2i/d_model)
+    b: 所有維度都用單一 frequency 10000
+    c: Frequency 由 1 到 d_model 線性增加
+    d: 每次訓練隨機抽樣 frequencies
+  answer: a
+  difficulty: 2
+  tags:
+  - recall
+  - formula
+- id: '11.3'
+  question: Learned position embeddings 嘅主要限制係乜？
+  options:
+    b: 無法 extrapolate 到比最大訓練長度更長嘅 sequences
+    a: 需要複雜 regularization 先 train 得到
+    c: 計算上比 fixed encodings 貴好多
+    d: 對稱位置會產生相同 vectors
+  answer: b
+  difficulty: 2
+  tags:
+  - recall
+  - limitation
+- id: '11.4'
+  question: 有個 researcher 話 T5 relative bias 每個可能 offset 用一個參數。點解長 sequence 時唔係咁？
+  options:
+    a: T5 用 log-bucketing — 附近 offsets 用獨立 buckets，遠啲嘅 offsets 共用 buckets
+    b: T5 用 sinusoidal functions 代替 learned parameters
+    c: T5 只 attend 到固定 window 內嘅 local context
+    d: T5 從 token 次序隱式計位置，唔需要 explicit bias
+  answer: a
+  difficulty: 2
+  tags:
+  - application
+  - design
+- id: '11.5'
+  question: 咩數學性質令 RoPE 可以從 absolute rotations 計出 relative position？
+  options:
+    c: Rotations 可組合：R(i)^T R(j) = R(j - i)
+    a: Rotation matrices 可交換：R(i)R(j) = R(j)R(i)
+    b: Rotations 係正交：R(i)^T R(i) = I
+    d: Rotations 係冪等：R(i)^2 = R(2i)
+  answer: c
+  difficulty: 2
+  tags:
+  - recall
+  - reasoning
+- id: '11.6'
+  question: 喺 RoPE 入面，遠距離 tokens 之間嘅 attention score 同近距離比較會點？
+  options:
+    d: 遠距離 tokens 嘅 attention 趨向零，因為 high-frequency dimensions 快速振盪而互相抵消
+    a: 遠距離 tokens 因為 rotation 累積而得到更高 attention
+    b: 遠距離 tokens 得分相似 — RoPE 唔區分距離
+    c: Attention 喺所有距離上設計成均勻
+  answer: d
+  difficulty: 2
+  tags:
+  - application
+  - analysis
+- id: '11.7'
+  question: 你用 linear position interpolation 將 4k-context RoPE model 擴展到 32k。有咩副作用？
+  options:
+    c: 附近 tokens 更難區分，因為佢哋嘅 rotation difference 縮細咗
+    a: Model 因為更大 rotation matrices 而變慢
+    b: 所有 attention 無論位置都變成均勻
+    d: Memory 用量隨 rotation frequency 二次增長
+  answer: c
+  difficulty: 2
+  tags:
+  - application
+  - analysis
+- id: '11.8'
+  question: 關於 ALiBi 嘅陳述，邊個係 FALSE？
+  options:
+    d: 每個 attention head 用同一個 slope m
+    a: ALiBi 將 bias -m|x_i - x_j| 加到 attention logits
+    b: ALiBi 唔會將位置資訊加到 input embeddings
+    c: ALiBi 可以 extrapolate 到比訓練長好多嘅 sequences
+  answer: d
+  difficulty: 2
+  tags:
+  - recall
+  - misconception
+- id: '11.9'
+  question: 點解 NoPE（無 position encoding）喺 decoder-only transformers 度都 work？
+  options:
+    a: Causal mask 創造咗時間順序 — model 知道邊啲 tokens 喺前面
+    b: Token embeddings 本身就透過意思編碼咗位置
+    c: FFN layers 從 gradient flow 隱式學到位置
+    d: NoPE 唔 work — 所有實用 model 都需要 explicit position encoding
+  answer: a
+  difficulty: 2
+  tags:
+  - recall
+  - reasoning
+- id: '11.10'
+  question: NTK-aware scaling for RoPE context extension 保留 high-frequency dimensions
+    而 scaling 低 frequencies。點解？
+  options:
+    b: High frequencies 區分附近位置（local resolution）— 慢化佢哋會 blur 相鄰 tokens
+    a: High frequencies 編碼長距離結構，需要保留
+    c: Low frequencies 無論如何都唔俾 model 用
+    d: NTK theory 要求所有 frequencies 均勻 scaling
+  answer: b
+  difficulty: 2
+  tags:
+  - application
+  - analysis
+

@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "利息分兩種: {單利} (只計本金) 同 {複利} (本金+利息再賺息)。"
+  answer: "單利、複利"
+  explanation: "單利 = 本金 × 利率 × 時間, 利息拎走唔再計。複利 = 本金 + 利息一齊再賺息, 「利叠利」。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "單利公式: 利息 = {P × r × t} (本金 × 利率 × 時間)。"
+  answer: "P × r × t"
+  explanation: "注意利率要用小數 (4% = 0.04), 時間要用年。e.g. $100,000 × 0.04 × 5 = $20,000 利息 (5 年單利)。"
+  difficulty: 1
+  tags: [formula]
+
+- id: "c.3"
+  question: "複利公式 (年計息): 終值 = {P × (1 + r)^t}。"
+  answer: "P × (1 + r)^t"
+  explanation: "e.g. $100,000 × (1.04)^5 = $121,665。多次計息公式: P × (1 + r/n)^(n×t)。"
+  difficulty: 1
+  tags: [formula]
+
+- id: "c.4"
+  question: "Rule of 72 公式: 本金翻倍年數 ≈ {72 / 年利率(%)}, 適合 {5-12%} 利率範圍。"
+  answer: "72 / 年利率(%)、5-12%"
+  explanation: "e.g. 6% 利率 → 約 12 年翻倍; 4% 利率 → 約 18 年翻倍。超出 5-12% 範圍有 ±10% 誤差。"
+  difficulty: 2
+  tags: [formula, concept]
+
+- id: "c.5"
+  question: "信用卡係典型 {複利} (月結複利), 所以卡數越滾越大。年利率 {30%} 嘅卡數, 1 年後本 + 息接近 35% 增長。"
+  answer: "複利、30%"
+  explanation: "卡數唔還 = 30% 複利。**卡數係普通人最大嘅財務陷阱**。最低還款只還利息, 本金永遠還唔清。"
+  difficulty: 2
+  tags: [concept, scenario]
+
+- id: "c.6"
+  question: "30 年後, $100,000 本金用 4% 單利終值 {$220,000}, 4% 複利終值 {$324,340}, 差 $104,340, 反映 {時間放大複利效應}。"
+  answer: "$220,000、$324,340、時間放大複利效應"
+  explanation: "短期 (1-3 年) 單 vs 複差距小, 長期 (20-30 年) 差距大。30 年時間放大複利效應近 47%。"
+  difficulty: 2
+  tags: [calculation, scenario]
+
+- id: "c.7"
+  question: "同樣每月儲 $3,000 (8% 年回報), 25 歲開始到 65 歲退休嘅終值, 係 35 歲先開始嘅 {2.3 倍} — 分別只在於遲咗 {10 年} 起步。"
+  answer: "2.3 倍、10 年"
+  explanation: "25 歲開始滾 40 年: ~$10.5M; 35 歲開始滾 30 年: ~$4.5M。差 10 年, 終值差 2.3 倍。**時間係複利嘅朋友, 越早開始, 滾存年期越長**。"
+  difficulty: 2
+  tags: [scenario, concept]
+
+- id: "c.8"
+  question: "$10,000 用 {複利} 10 年變 $20,000 需要年利率 {7.18%}。用 {單利} 需要 {10%}。"
+  answer: "複利、7.18%、單利、10%"
+  explanation: "$20,000 = $10,000 × (1+r)^10 → r = 7.18%。單利 r = 10%。複利低 2.82% 已經達標, 證明威力。"
+  difficulty: 3
+  tags: [calculation, comparison]
+
+- id: "c.9"
+  question: "本金 $50,000, 利率 3.5%, 30 年複利, 終值大約係本金嘅 {2.8 倍}; 同期單利只有本金嘅 {2.05 倍}, 多出嚟嘅全部係 {利叠利} 嘅成果。"
+  answer: "2.8 倍、2.05 倍、利叠利"
+  explanation: "複利終值 = $50,000 × (1.035)^30 ≈ $140,340 (本金 × 2.81)。單利終值 = $50,000 + $50,000 × 3.5% × 30 = $102,500 (本金 × 2.05)。差約 $37,840。"
+  difficulty: 3
+  tags: [calculation, scenario]
+
+- id: "c.10"
+  question: "複利嘅殺手鐧: 早期 {平}, 後期 {指數爆發}。第 1 年差距細, 第 10 年差距幾百蚊, 第 30 年差距幾萬蚊。"
+  answer: "平、指數爆發"
+  explanation: "呢個就係「複利曲線」嘅特徵。相傳愛因斯坦講過: Compound interest is the eighth wonder of the world. (呢句係咪真係佢講, 其實冇人肯定。)"
+  difficulty: 2
+  tags: [concept]

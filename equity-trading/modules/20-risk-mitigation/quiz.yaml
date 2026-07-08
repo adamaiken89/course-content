@@ -1,0 +1,133 @@
+- id: '20.1'
+  question: 'Account drops from $150K peak to $90K trough. Max drawdown is:'
+  options:
+    a: 40%
+    b: 60%
+    c: 25%
+    d: 50%
+  answer: a
+  explanation: 'MDD = (peak - trough) / peak = ($150K - $90K) / $150K = 40%. Gain
+    needed to recover: 40% / (1 - 0.40) = 66.7%.'
+  difficulty: 1
+  tags:
+  - calculation
+- id: '20.2'
+  question: 'Account loses 60% of value. Gain needed to recover is:'
+  options:
+    a: 60%
+    b: 100%
+    c: 150%
+    d: 200%
+  answer: c
+  explanation: Recovery % = drawdown / (1 - drawdown) = 0.60 / 0.40 = 150%. $100 becomes
+    $40, needs $60 gain on $40 = 150% to reach $100. Asymmetric math.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '20.3'
+  question: 'Trader risks 1% of $80K capital. Stop distance is $4. Position size is:'
+  options:
+    a: 100 shares
+    b: 50 shares
+    c: 400 shares
+    d: 200 shares
+  answer: d
+  explanation: Risk = $80K × 1% = $800. Stop distance = $4/share. Position = $800
+    / $4 = 200 shares.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '20.4'
+  question: Which best describes tail risk?
+  options:
+    a: Risk of extreme moves beyond normal distribution predictions
+    b: Same as VaR
+    c: Risk eliminated by diversification
+    d: Risk of small daily losses
+  answer: a
+  explanation: Tail risk = fat tails. Markets produce 3-sigma events 3-17× more often
+    than Gaussian predicts. 1987 crash was 22-sigma in Gaussian terms.
+  difficulty: 1
+  tags:
+  - concept
+- id: '20.5'
+  question: Two portfolios have same 95% VaR. CVaR(A) = $40K, CVaR(B) = $90K. Which
+    has greater tail risk?
+  options:
+    a: Portfolio A
+    b: Same — identical VaR
+    c: Portfolio B
+    d: Cannot determine
+  answer: c
+  explanation: CVaR = average loss in tail beyond VaR. Higher CVaR = worse tail losses.
+    Same VaR but different tail shapes — B has much fatter tail.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '20.6'
+  question: 'Kelly recommends 35% position. Prudent trader should:'
+  options:
+    a: Use full 35% for maximum growth
+    b: Use fractional Kelly (e.g., 10-17%) to reduce variance
+    c: Inverse Kelly — bet 65%
+    d: Ignore Kelly entirely
+  answer: b
+  explanation: Full Kelly maximizes growth but with extreme drawdowns possible. Fractional
+    Kelly (25-50% of Kelly bet) reduces variance while preserving most growth.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '20.7'
+  question: Which statement about recovery math is correct?
+  options:
+    a: 30% loss needs 30% gain to recover
+    b: Losses don't affect compounding
+    c: 30% loss needs 15% gain to recover
+    d: 30% loss needs 42.9% gain to recover
+  answer: d
+  explanation: 'Recovery = d / (1-d) = 0.30 / 0.70 = 42.9%. Asymmetric: 30% loss on
+    $100 = $70. Need $30 gain on $70 = 42.9%. Many traders underestimate recovery
+    difficulty.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '20.8'
+  question: Which is a tail hedging strategy?
+  options:
+    a: Tight fixed % stops
+    b: Long out-of-the-money puts
+    c: Increasing position size during volatility
+    d: Daily rebalancing
+  answer: b
+  explanation: OTM puts act as insurance — pay small premium, profit big during crashes.
+    Tail risk funds (Universa) use this strategy. Trend-following also captures tails.
+  difficulty: 1
+  tags:
+  - concept
+- id: '20.9'
+  question: 'Trader risks 5% per trade. 10 consecutive losses reduce account by:'
+  options:
+    a: 40%
+    b: 50%
+    c: 60%
+    d: 25%
+  answer: a
+  explanation: 'Each loss = 5% of current capital (not initial). After 10 losses:
+    0.95^10 = 0.599 → ~40% drawdown. Compounding losses are severe even with moderate
+    risk per trade.'
+  difficulty: 2
+  tags:
+  - calculation
+- id: '20.10'
+  question: '3-sigma market events in Gaussian vs reality:'
+  options:
+    a: Gaussian predicts correctly
+    b: Gaussian says 0.3% probability; reality 1-5% of days
+    c: Reality matches Gaussian exactly
+    d: Markets have fewer tails than Gaussian
+  answer: b
+  explanation: 'Gaussian: 3-sigma = 0.3% prob (~1 in 333 days). Reality: 3-sigma moves
+    occur 1-5% of days = 3-17× more often. This is fat tail evidence.'
+  difficulty: 2
+  tags:
+  - concept

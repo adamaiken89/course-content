@@ -1,0 +1,119 @@
+- id: "11.1"
+  question: "In SLF4J/Logback, what is the MDC (Mapped Diagnostic Context)?"
+  options:
+    a: "A dedicated Splunk index used for storing trace events"
+    b: "A per-thread key-value map that Logback appends to every log line emitted on that thread"
+    c: "A Spring annotation that autogenerates trace IDs"
+    d: "A network protocol for shipping logs to the HEC"
+  answer: b
+  explanation: "The MDC is thread-local state that appenders add to every log event on that thread. It is not an index, annotation, or protocol."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "11.2"
+  question: "Which MDC key is conventionally used to store the identifier that correlates all log lines of one user request?"
+  options:
+    a: "timestamp"
+    b: "logger"
+    c: "traceId"
+    d: "httpStatus"
+  answer: c
+  explanation: "traceId (or requestId) holds the per-request correlation identifier. The other options are existing fields, not correlation keys."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "11.3"
+  question: "Which SPL command groups events that share a field value into one logical transaction?"
+  options:
+    a: "rex"
+    b: "transaction"
+    c: "timechart"
+    d: "dedup"
+  answer: b
+  explanation: "transaction joins events by shared field values into one row with event_count and duration. rex extracts fields, timechart buckets by time, dedup removes duplicates."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "11.4"
+  question: "Why must a OncePerRequestFilter clear the MDC in a finally block?"
+  options:
+    a: "To keep the appender from writing the traceId field"
+    b: "To speed up request processing"
+    c: "Because the MDC is global and shared across threads"
+    d: "So a trace ID set for one request does not leak into later requests on the same thread"
+  answer: d
+  explanation: "If cleanup is skipped on exceptions, the leftover traceId contaminates subsequent requests on that thread, corrupting correlation."
+  difficulty: 1
+  tags: [concept]
+
+- id: "11.5"
+  question: "Which component is the idiomatic place to read an incoming X-Trace-Id header and store it in the MDC in a Spring Boot app?"
+  options:
+    a: "A OncePerRequestFilter that sets the MDC and clears it in a finally block"
+    b: "A @RestController method that logs the header manually"
+    c: "A scheduled job that polls for new headers"
+    d: "The Splunk HEC appender configuration"
+  answer: a
+  explanation: "A filter runs once per request before the controller and wraps the whole request, so it can set and later clear the context. Controllers, jobs, and appenders cannot guarantee that scope."
+  difficulty: 2
+  tags: [application]
+
+- id: "11.6"
+  question: "Service A calls Service B over HTTP. How does B get the same traceId into its own MDC?"
+  options:
+    a: "B generates a fresh random UUID and hopes it matches"
+    b: "A stores the traceId in a database that B queries"
+    c: "A's HTTP client interceptor copies the MDC key into an outgoing request header that B's filter reads back"
+    d: "Correlation across services is impossible"
+  answer: c
+  explanation: "Propagation works by forwarding the ID in an HTTP header. The client interceptor reads the MDC and sets the header; the downstream OncePerRequestFilter reads it back into its own MDC."
+  difficulty: 2
+  tags: [application]
+
+- id: "11.7"
+  question: "A task submitted to a thread pool logs without the traceId even though the submitting thread set it. Why?"
+  options:
+    a: "The MDC is shared by all threads by default"
+    b: "Logback deletes MDC values after every log statement"
+    c: "The traceId exceeded the maximum field length"
+    d: "MDC is thread-local and pool workers start with an empty context"
+  answer: d
+  explanation: "MDC state belongs to one thread. Pooled worker threads do not inherit the submitting thread's context, so the traceId is missing unless explicitly copied."
+  difficulty: 2
+  tags: [concept]
+
+- id: "11.8"
+  question: "Which two options restore MDC values when work runs on a thread pool?"
+  options:
+    a: "A TaskDecorator on ThreadPoolTaskExecutor or logback's ContextAwareExecutorService"
+    b: "Storing traceId in a static global variable"
+    c: "Replacing MDC with a ConcurrentHashMap"
+    d: "Forcing all async work onto the request thread"
+  answer: a
+  explanation: "Both copy the MDC context before the task runs and clean it after. A static variable breaks concurrency; a map replacement loses MDC semantics; the last option defeats the point of a pool."
+  difficulty: 2
+  tags: [application]
+
+- id: "11.9"
+  question: "Which pipeline shows the full journey of one request across services, ordered by duration?"
+  options:
+    a: "index=main | transaction trace_id maxspan=60s | stats count by trace_id"
+    b: "index=main | rex trace_id | sort duration desc | transaction trace_id"
+    c: "index=main sourcetype=app_logs | transaction trace_id maxspan=60s | sort duration desc"
+    d: "index=main | fields trace_id | transaction trace_id maxspan=60s | head 10"
+  answer: c
+  explanation: "transaction groups by trace_id, then sort duration desc ranks the request journeys. a destroys the duration with stats, b sorts before grouping, d throws away everything but the id."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "11.10"
+  question: "When would you prefer `| stats values(_raw) by trace_id` over `| transaction trace_id`?"
+  options:
+    a: "When events never share a trace_id field"
+    b: "When the result set is huge and the search head has little memory"
+    c: "When you need maxspan and maxpause boundaries"
+    d: "When you need the automatic duration field"
+  answer: b
+  explanation: "transaction buffers events in search-head memory until boundaries close; stats is lighter. transaction is required for boundaries, event_count, and the computed duration."
+  difficulty: 3
+  tags: [comparison]

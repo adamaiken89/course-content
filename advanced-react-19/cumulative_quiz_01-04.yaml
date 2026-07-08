@@ -1,0 +1,132 @@
+- type: mcq
+  question: Which three pillars define React 19 architecture per the course mental model?
+  options:
+    b: Actions, Transitions, React Compiler
+    a: Hooks, classes, portals
+    c: Redux, Saga, Reselect
+    d: Suspense only
+  answer: b
+  explanation: React 19 reframes the model around Actions (mutations), Transitions (non-blocking updates),
+    and the Compiler (auto-memoization).
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.1
+  source_modules:
+  - 1
+- type: mcq
+  question: What does a Server Action integrate automatically that a plain fetch call does not?
+  options:
+    c: Pending state across the tree via useFormStatus and progressive enhancement
+    a: SQL injection protection
+    b: CSS scoping
+    d: Bundle minification
+  answer: c
+  explanation: Actions wire pending/error state, form reset, and JS-disabled fallbacks; raw fetch handles
+    none of that.
+  difficulty: 2
+  tags:
+  - concept
+  id: cum.2
+  source_modules:
+  - 2
+- type: mcq
+  question: Where is use(promise) allowed to suspend?
+  options:
+    a: Inside any component render under a Suspense boundary
+    b: Only in event handlers
+    c: Only in useEffect
+    d: Nowhere — it is server-only
+  answer: a
+  explanation: use() unwraps promises during render and suspends to the nearest boundary, unlike useEffect-based
+    fetching.
+  difficulty: 2
+  tags:
+  - concept
+  id: cum.3
+  source_modules:
+  - 3
+- type: tf
+  statement: useTransition marks updates as interruptible so input stays responsive during heavy re-renders.
+  answer: true
+  explanation: Transitions run at lower priority; urgent updates like typing can interleave.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.4
+  source_modules:
+  - 4
+- id: cum.5
+  type: cloze
+  question: Server Actions replace the old pattern of API route + fetch + three useStates by {auto-managing
+    pending state} across the component tree.
+  answer: auto-managing pending state
+  difficulty: 2
+  tags:
+  - synthesis
+  source_modules:
+  - 2
+- type: mcq
+  question: 'Review advanced-react-19 module 1: which statement reflects the module''s core guidance?'
+  options:
+    d: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    b: Patterns never have costs
+    c: Always rewrite existing code first
+  answer: d
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.6
+  source_modules:
+  - 1
+- type: mcq
+  question: 'Review advanced-react-19 module 2: which statement reflects the module''s core guidance?'
+  options:
+    b: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: b
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.7
+  source_modules:
+  - 2
+- type: mcq
+  question: 'Review advanced-react-19 module 3: which statement reflects the module''s core guidance?'
+  options:
+    a: Apply the documented pattern with its stated tradeoffs
+    b: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: a
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.8
+  source_modules:
+  - 3
+- type: mcq
+  question: 'Review advanced-react-19 module 4: which statement reflects the module''s core guidance?'
+  options:
+    c: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    b: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: c
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.9
+  source_modules:
+  - 4

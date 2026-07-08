@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "名義利率 (Nominal Rate) 係指 {印喺宣傳單張嘅利率}, 唔考慮 {複利次數}; 實質利率 (Effective Rate) 係指 {真實回報}, 包括 {複利效應}。"
+  answer: "印喺宣傳單張嘅利率、複利次數、真實回報、複利效應"
+  explanation: "名義係表面數字, 實質係真銀紙。兩個可以差幾個 percent。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "APR (Annual Percentage Rate) 係 {借貸嘅總成本年化}, 包括 {利息 + 手續費 + 其他費用}, 用 {單利} 計。"
+  answer: "借貸嘅總成本年化、利息 + 手續費 + 其他費用、單利"
+  explanation: "信用卡/按揭/私貸用, 美國 Truth in Lending Act 規定要寫。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "APY (Annual Percentage Yield) 係 {存款嘅真實年回報率}, 包括 {複利效應}。"
+  answer: "存款嘅真實年回報率、複利效應"
+  explanation: "定存/活期/債券用, 真實回報, 一個 number 直接講「1 年後拎幾多」。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "EAR 公式係 {(1 + APR/n)ⁿ - 1}, 入面 n 代表 {每年複利次數}。"
+  answer: "(1 + APR/n)ⁿ - 1、每年複利次數"
+  explanation: "用呢條公式自己計實質回報。月複利 n=12, 日複利 n=365。"
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.5"
+  question: "連續複利公式係 {A = P × eʳᵗ}, 入面 e 約等於 {2.71828}, 係 {自然對數底數}。"
+  answer: "A = P × eʳᵗ、2.71828、自然對數底數"
+  explanation: "e 同 π 一樣, 數學常數, 唔會變。連續複利係 (n → ∞) 數學極限。"
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.6"
+  question: "「2% 月息」嘅信用卡, 實際年利率 (EAR) 約 {26.82%}, 計法係 {(1 + 0.24/12)¹² - 1}。"
+  answer: "26.82%、(1 + 0.24/12)¹² - 1"
+  explanation: "月複利效應令真實比名義 24% 高 2.82%。"
+  difficulty: 2
+  tags: [calculation]
+
+- id: "c.7"
+  question: "4.8% APR 月複利嘅定存, 實際 APY 約 {4.92%}, 計法係 {(1 + 0.048/12)¹² - 1}。"
+  answer: "4.92%、(1 + 0.048/12)¹² - 1"
+  explanation: "月複利略高過 4.8% 名義。"
+  difficulty: 2
+  tags: [calculation]
+
+- id: "c.8"
+  question: "借貸要睇 {APR}, 越低越好; 存款要睇 {APY}, 越高越好。"
+  answer: "APR、APY"
+  explanation: "借貸包費用用 APR, 存款包複利用 APY, 唔可以亂用。"
+  difficulty: 1
+  tags: [application]
+
+- id: "c.9"
+  question: "$10000 放 1 年, 5% 名義, 月複利實際拎到 {$10511.62}, 日複利拎 {$10512.67}, 連續複利拎 {$10512.71}。"
+  answer: "$10511.62、$10512.67、$10512.71"
+  explanation: "月→日→連續差距愈來愈細。連續複利係 (n → ∞) 數學極限。"
+  difficulty: 3
+  tags: [calculation]
+
+- id: "c.10"
+  question: "影響 EAR 高低嘅因素包括 {APR 大小} 同 {每年複利次數 n}, n 愈大 EAR 愈{高}。"
+  answer: "APR 大小、每年複利次數 n、高"
+  explanation: "APR 愈大 / n 愈大, EAR 愈高。但 n 大到某個位, EAR 升幅愈來愈細。"
+  difficulty: 2
+  tags: [formula, concept]

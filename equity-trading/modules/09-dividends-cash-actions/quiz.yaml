@@ -1,0 +1,120 @@
+- id: '9.1'
+  question: On which date does a stock first trade without the right to receive a declared dividend?
+  options:
+    a: Declaration date
+    b: Ex-dividend date
+    c: Record date
+    d: Payable date
+  answer: b
+  explanation: Ex-dividend date is the first day the stock trades without dividend entitlement. Buyers on or after this date do not receive the declared dividend.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.2'
+  question: A stock trades at $80 and pays a $0.50 cash dividend. What is the expected price adjustment on ex-date?
+  options:
+    a: No change
+    b: Drop by approximately $0.50
+    c: Drop by approximately $0.25
+    d: Increase by approximately $0.50
+  answer: b
+  explanation: Price drops by approximately the dividend amount ($0.50) on ex-date to prevent arbitrage. The dividend value transfers from stock price to cash.
+  difficulty: 1
+  tags:
+  - concept
+- id: '9.3'
+  question: A stock pays $3.00 annual dividend and trades at $75. What is the dividend yield?
+  options:
+    a: 2.5%
+    b: 3.0%
+    c: 4.0%
+    d: 5.0%
+  answer: c
+  explanation: Yield = Annual dividend / Stock price = $3.00 / $75 = 4.0%. Higher yield indicates more income per dollar invested.
+  difficulty: 1
+  tags:
+  - calculation
+- id: '9.4'
+  question: Why does the stock price adjust downward on the ex-dividend date?
+  options:
+    a: Company value decreases when cash leaves
+    b: To prevent arbitrage between buyers and sellers
+    c: SEC regulation requires price adjustment
+    d: Both A and B
+  answer: d
+  explanation: The price drops because the company's cash decreases (A) AND to eliminate arbitrage opportunity — buying just before ex-date and selling after would otherwise yield risk-free profit (B).
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.5'
+  question: Which type of dividend conserves company cash?
+  options:
+    a: Cash dividend
+    b: Stock dividend
+    c: Special dividend
+    d: Quarterly dividend
+  answer: b
+  explanation: Stock dividend issues additional shares instead of cash. No cash leaves the company. Useful when company wants to reward shareholders while preserving cash.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.6'
+  question: For dividend capture strategy to be profitable, what must happen after the ex-date?
+  options:
+    a: Stock price must gap fill (recover the dividend drop)
+    b: Stock price must drop further
+    c: Dividend must double
+    d: Holding period must exceed one year
+  answer: a
+  explanation: After ex-date price drop, the stock must recover (gap fill) for the strategy to profit. Otherwise, the dividend gain is offset by price decline, and taxes make it a net loss.
+  difficulty: 2
+  tags:
+  - strategy
+- id: '9.7'
+  question: What is the minimum holding period for a dividend to qualify for lower capital gains tax rates?
+  options:
+    a: 30 days during 90-day period around ex-date
+    b: 60 days during 121-day period around ex-date
+    c: 90 days during 180-day period around ex-date
+    d: 365 days from purchase date
+  answer: b
+  explanation: Qualified dividend treatment requires holding stock >60 days during the 121-day period beginning 60 days before ex-date. This prevents traders from buying just for the dividend.
+  difficulty: 3
+  tags:
+  - tax
+- id: '9.8'
+  question: Stock price drops 30% but dividend per share stays the same. What happens to dividend yield?
+  options:
+    a: Yield decreases
+    b: Yield stays the same
+    c: Yield increases
+    d: Cannot determine without dividend amount
+  answer: c
+  explanation: Yield = Annual dividend / Price. Price falls, so denominator shrinks, yield rises. A 30% price drop with unchanged dividend means yield increases by ~43%. This is called the yield floor effect.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '9.9'
+  question: A 10% stock dividend results in which of the following?
+  options:
+    a: 10% increase in shareholder value
+    b: 10% more shares at proportionally lower price
+    c: 10% cash payment to shareholders
+    d: 10% reduction in shares outstanding
+  answer: b
+  explanation: 10% stock dividend = 10 extra shares per 100 owned. Share price adjusts down proportionally (~9.1%). Total value unchanged. No cash involved.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.10'
+  question: A company with declining stock price maintains its dividend. Which effect helps support the stock price?
+  options:
+    a: Dividend yield increases, attracting income investors
+    b: Dividend yield decreases, attracting growth investors
+    c: Ex-date price adjustment becomes smaller
+    d: Stock becomes more volatile
+  answer: a
+  explanation: As price falls, dividend yield rises. Higher yield attracts income-focused investors who buy for the dividend, potentially creating a price floor. This is the yield floor effect that makes dividend stocks less volatile during downturns.
+  difficulty: 3
+  tags:
+  - scenario

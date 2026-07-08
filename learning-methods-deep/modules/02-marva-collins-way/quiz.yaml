@@ -1,0 +1,120 @@
+- id: '2.1'
+  question: What is Marva Collins' core philosophy regarding student failure?
+  options:
+    a: Failure is temporary and must be overcome through persistence and scaffolding
+    b: Failure is acceptable if the student tried hard
+    c: Failure indicates the student has reached their learning capacity
+    d: Failure should be minimized by lowering expectations
+  answer: a
+  explanation: Collins believed failure is a temporary state, not a fixed category.
+    Every student can learn with sufficient persistence and support.
+  difficulty: 1
+  tags:
+  - concept
+- id: '2.2'
+  question: In Collins' method, what should a teacher do when a student gives a correct
+    answer?
+  options:
+    a: Praise the student and move to the next topic
+    b: Ask 'Can you prove it?' to verify depth of understanding
+    c: Reward with easier problems to build confidence
+    d: Ask the student to help a struggling peer
+  answer: b
+  explanation: Correct answers may be lucky guesses. 'Can you prove it?' verifies
+    the student understands the reasoning, not just the answer. This prevents illusions
+    of understanding.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.3'
+  question: What is an 'orchestrated success cycle' in Collins' pedagogy?
+  options:
+    a: Providing easy tasks first to build confidence before attempting hard ones
+    b: Celebrating every attempt regardless of outcome
+    c: Setting up tasks slightly above current ability with scaffolding to ensure
+      success through effort
+    d: Grouping students by ability to ensure appropriate challenge levels
+  answer: c
+  explanation: Orchestrated success means deliberately engineering situations where
+    effort leads to achievement, then attributing success to effort. This builds both
+    competence and growth mindset.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.4'
+  question: Why is attributing success to effort rather than talent important for
+    long-term persistence?
+  options:
+    a: Students prefer effort praise because it feels more authentic
+    b: Effort praise is easier for teachers to deliver consistently
+    c: Talent attribution only works for naturally gifted students
+    d: Effort attribution encourages growth mindset; talent attribution can lead to
+      avoidance of challenge
+  answer: d
+  explanation: Effort attribution → 'I succeeded because I worked hard' → student
+    increases effort when facing difficulty. Talent attribution → 'I succeeded because
+    I'm smart' → student avoids hard problems to protect the 'smart' label.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.5'
+  question: What should an AI tutor do when a student says 'I don't know' according
+    to Collins' method?
+  options:
+    a: Ask 'What DO you know about it? Start there' to activate prior knowledge
+    b: Provide a hint or show the correct answer
+    c: Skip to a simpler question
+    d: Explain the concept from scratch
+  answer: a
+  explanation: Collins would never accept 'I don't know' as a stopping point. Asking
+    'What DO you know?' activates prior knowledge and gives a starting point for Socratic
+    probing.
+  difficulty: 2
+  tags:
+  - application
+- id: '2.6'
+  question: A student answers correctly 3 times in a row. According to Collins' method,
+    what should the AI do?
+  options:
+    a: Advance to the next topic
+    b: Ask a question that tests the boundary conditions or counterexamples
+    c: Reduce scaffolding since mastery is demonstrated
+    d: Provide easier questions to maintain the success streak
+  answer: b
+  explanation: Collins constantly probed for depth. After correct answers, she would
+    ask boundary questions ('what would change your mind?', 'what's a counterexample?')
+    to test the limits of understanding.
+  difficulty: 3
+  tags:
+  - application
+- id: '2.7'
+  question: What does 'discipline as love' mean in Collins' classroom?
+  options:
+    a: Strict punishment for incomplete work
+    b: Rewarding compliance with affection
+    c: Enforcing high standards because the teacher believes the student can meet
+      them
+    d: Allowing natural consequences to teach responsibility
+  answer: c
+  explanation: Discipline as love means correcting students because you believe they
+    can do better. 'If I didn't care, I'd let you fail.' The discipline is paired
+    with unwavering belief in the student's potential.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.8'
+  question: A learning app implements Collins' method. After 5 consecutive wrong answers
+    on a question, what should happen?
+  options:
+    a: Auto-skip to next question to avoid frustration
+    b: Show the correct answer and ask the student to memorize it
+    c: Reduce question difficulty to Collins' level
+    d: Break the question into sub-questions and require success on each before returning
+      to the main question
+  answer: d
+  explanation: Collins would escalate scaffolding, not lower the bar. Breaking into
+    sub-questions gives targeted support while maintaining the original expectation
+    of mastery.
+  difficulty: 3
+  tags:
+  - scenario

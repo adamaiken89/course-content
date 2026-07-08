@@ -1,0 +1,127 @@
+- id: '41.1'
+  question: What is the response-time target and handler for a P0 (Critical) alert?
+  options:
+    a: Under 15 minutes — team lead plus escalation
+    b: Under 1 hour — ops analyst
+    c: Under 24 hours — auto-logged or scheduled
+    d: Under 5 minutes — incident management team only
+  answer: a
+  explanation: P0 (Critical) alerts — trades that cannot settle, monetary loss risk, or regulatory violation — require a response under 15 minutes handled by the team lead with escalation. P1 is under 1 hour by an ops analyst; P2 is under 24 hours, auto-logged or scheduled.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '41.2'
+  question: A CNS fail alert is routed to the trade support team instead of the settlement team. What is the most likely outcome?
+  options:
+    a: The alert is auto-resolved without action
+    b: The trade support team handles it faster
+    c: The alert sits with the wrong handler, the acknowledgement SLA passes, and the fail ages — escalation and settlement costs accumulate
+    d: Routing does not matter because all teams see the same queue
+  answer: c
+  explanation: Routing must match exception type. If a CNS fail lands with the wrong team, it sits unacknowledged, the SLA passes, and the fail ages while costs accumulate. Routing rules classify by exception type, product class, account, and time of day.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '41.3'
+  question: A team's P1 exception MTTR mean is 20 minutes, but audit finds most P1 exceptions took 5 hours to begin processing. What is the most likely cause?
+  options:
+    a: MTTR calculation formula is wrong
+    b: A few fast-resolution exceptions skew the mean — outliers mask slow processing
+    c: Too many P1 exceptions to count
+    d: System timestamps are incorrect
+  answer: b
+  explanation: The mean is skewed by outliers. Review the median (unaffected by extremes) and P95 (shows worst case). If mean = 20 min but P95 = 6 hours, most exceptions are processed slowly but masked by a few quick closures.
+  difficulty: 2
+  tags:
+  - concept
+  - calculation
+- id: '41.4'
+  question: Reconciliation finds internal position greater than custodian position. What is the most likely risk?
+  options:
+    a: The broker has understated its holdings
+    b: The custodian's client service is insufficient
+    c: Timing differences are the only explanation
+    d: The broker may sell securities it does not actually hold — an overstated position risks sell-side settlement failure
+  answer: d
+  explanation: Internal > custody (overstated position) means the broker believes it holds securities it does not — potentially leading to sell-side settlement failure, unauthorized trading, or client claims. Understated is the safer direction.
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '41.5'
+  question: In reconciliation break severity, what is the threshold that triggers critical immediate escalation?
+  options:
+    a: Position difference greater than 5% of internal position
+    b: Position difference greater than 1%
+    c: Any non-zero difference
+    d: Cash differences only
+  answer: a
+  explanation: Break severity = |custody - internal| / internal. Under 1% is a warning with automatic recheck, 1-5% is manual investigation, and above 5% is critical with immediate escalation.
+  difficulty: 1
+  tags:
+  - terminology
+  - formula
+- id: '41.6'
+  question: An alert is assigned to the primary handler but is not acknowledged within the SLA. What happens next?
+  options:
+    a: The alert is auto-resolved
+    b: The alert is closed and logged
+    c: The alert escalates to the team lead
+    d: The alert waits for the next business day
+  answer: c
+  explanation: "The escalation rule: if not acknowledged within SLA, the alert escalates to the team lead. If not resolved within SLA, it escalates to the manager, and critical alerts past overtime reach the incident management team."
+  difficulty: 2
+  tags:
+  - concept
+- id: '41.7'
+  question: What are the MTTR targets for exception resolution by severity?
+  options:
+    a: P0 < 15 min, P1 < 1 hr, P2 < 24 hrs
+    b: P0 < 30 min, P1 < 4 hrs, P2 < 24 hrs
+    c: P0 < 1 hr, P1 < 4 hrs, P2 < 24 hrs
+    d: P0 < 30 min, P1 < 1 hr, P2 < 8 hrs
+  answer: b
+  explanation: MTTR targets are P0 under 30 minutes, P1 under 4 hours, and P2 under 24 hours. MTTR is the average time from exception creation to resolution, tracked against a rolling 30-day average.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '41.8'
+  question: Exception volume spikes in a given week coincide with a major system upgrade. What should the ops team do with this information?
+  options:
+    a: Ignore it — volume spikes are random
+    b: Lower all alert thresholds to catch more exceptions
+    c: Automate all exception handling immediately
+    d: Correlate the spike with the event in spike analysis to identify a systemic cause
+  answer: d
+  explanation: Volume trend spike analysis correlates exception volume with events such as market volatility, system upgrades, or new product launches. This identifies whether spikes trace to a systemic cause rather than independent events.
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '41.9'
+  question: A symbology auto-correction runs against a corrupted mapping table. What is the risk?
+  options:
+    a: Auto-correction propagates errors across many trades — automation needs confidence thresholds that force manual review below them
+    b: Auto-correction is always safe because it is deterministic
+    c: The corruption only affects informational alerts
+    d: Manual review would be slower and less accurate in all cases
+  answer: a
+  explanation: Auto-resolution without sufficient validation is dangerous — a corrupted mapping table auto-propagates errors. Automation should set confidence thresholds; below the threshold, force manual review.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '41.10'
+  question: Which of the following is a common cause of a cash mismatch in custody-vs-internal reconciliation?
+  options:
+    a: Security identifier difference
+    b: Trade side difference
+    c: FX conversion rate or fee/commission calculation difference
+    d: Order type difference
+  answer: c
+  explanation: Cash mismatch common causes include FX conversion rate differences, fee/commission calculation differences, interest or dividend accrual differences, and settlement cash flow timing differences.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept

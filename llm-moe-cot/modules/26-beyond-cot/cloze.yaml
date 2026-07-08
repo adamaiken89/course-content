@@ -1,0 +1,42 @@
+- id: c.1
+  question: Tree-of-Thoughts 透過 {searching over multiple reasoning branches} 嚟擴展 CoT，而唔係跟 {single linear
+    path}。
+  answer: searching over multiple reasoning branches / single linear path
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: Self-consistency 透過 {sampling multiple reasoning paths} 同 {voting on the most common answer}
+    嚟改善 accuracy。
+  answer: sampling multiple reasoning paths / voting on the most common answer
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: ReAct 結合 {reasoning} 同 {actions}，例如 tool use 同 environment feedback。
+  answer: reasoning / actions
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: Graph-of-Thoughts 透過允許 reasoning graph 入面嘅 {merging branches} 同 {cycles} 嚟擴展 ToT。
+  answer: merging branches / cycles
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: Cumulative reasoning 有個 pipeline：{decompose}、{solve}、{verify}、{accumulate} 同 {synthesize}。
+  answer: decompose / solve / verify / accumulate / synthesize
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: Self-consistency 用 {5-10} 個 parallel paths 通常就足夠；超過 {20} 之後回報遞減。
+  answer: 5-10 / 20
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: Iterative refinement (self-refine) 讓模型 {generate}、{review}、{identify issues} 同 {regenerate}。
+  answer: generate / review / identify issues / regenerate
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: Self-Consistency 對同一條問題採樣多條 reasoning paths，再用 {majority vote} 揀出最終答案。
+  answer: majority vote
+  difficulty: 2
+  tags: []

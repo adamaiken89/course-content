@@ -1,0 +1,81 @@
+- id: '23.1'
+  question: 點解標準 LLMs 喺 multi-step reasoning 表現得差？
+  options:
+    a: Fixed layer count 冇提供 scratch space 畀 intermediate results
+    b: 佢哋有太多 parameters
+    c: 佢哋唔可以跨多個 sentences 用 attention
+    d: 佢哋淨係用 single-token prediction 嚟 train
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '23.2'
+  question: Chain-of-thought 點樣幫 reasoning？
+  options:
+    c: 將中間計算 externalising 做 generated tokens
+    a: 喺 inference 時增加 layers 數量
+    b: Fine-tune 個模型喺 reasoning tasks 上面
+    d: 縮細 attention window 嚟專注喺 key tokens
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '23.3'
+  question: Wei 2022 報告 CoT 喺 math word problems 上面嘅 accuracy 提升係幾多？
+  options:
+    d: 18% → 58%
+    a: 50% → 80%
+    b: 5% → 95%
+    c: Direct 同 CoT 表現差唔多
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '23.4'
+  question: CoT 嘅 faithfulness 問題係問：
+  options:
+    b: 模型係咪真係用佢講出嚟嘅 reasoning steps 去計算答案
+    a: 模型可唔可以為問題生成準確嘅 steps
+    c: 模型可唔可以喺長 chains 入面保持 coherence
+    d: 模型嘅 training data 係咪包含 reasoning exemplars
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '23.5'
+  question: 邊個最適合形容 anti-faithfulness (Turpin 2023)？
+  options:
+    a: 插入無關嘅資訊改變咗 reasoning steps 但答案仍然正確
+    b: 模型跟住 reasoning steps 但 steps 有錯
+    c: 模型為解決唔到嘅問題 hallucinate steps
+    d: 模型拒絕生成 reasoning steps
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '23.6'
+  question: CoT 對邊種 task 最冇幫助？
+  options:
+    b: 審美判斷同創意
+    a: Multi-digit arithmetic
+    c: Multi-hop QA
+    d: Symbolic reasoning
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '23.7'
+  question: 加 'double-check your reasoning' 落 CoT 會點？
+  options:
+    c: 部分改善——幫到 arithmetic 但可能會增加 rationalisation surface
+    a: Faithfulness 一定會增加
+    b: 模型一定會生成更長但同樣準確嘅 chains
+    d: 冇效果——模型 ignore 咗 meta-instructions
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '23.8'
+  question: Scratchpad analogy 喺 CoT 入面指緊乜嘢？
+  options:
+    d: Generated tokens 用嚟做 intermediate states 嘅 working memory
+    a: 用嚟做 reasoning 嘅 fine-tuning data
+    b: 一個分開嘅模型嚟 verify reasoning steps
+    c: Transformer 嘅 key-value cache
+  answer: d
+  difficulty: 2
+  tags: []
+

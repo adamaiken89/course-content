@@ -1,0 +1,114 @@
+- id: "cum.1"
+  type: mcq
+  source_modules: [9, 10, 11, 12]
+  question: "以下邊種風險可以透過分散化完全消除?"
+  options:
+    a: "系統風險"
+    b: "通脹風險"
+    c: "非系統風險 (個別公司)"
+    d: "市場風險"
+  answer: c
+  explanation: "非系統風險係個別公司/行業風險, 透過買齊唔同股票/行業可分散。系統風險影響整個市場, 分散唔到。"
+  difficulty: 1
+  tags: [cross-module, recall]
+
+- id: "cum.2"
+  type: mcq
+  source_modules: [9, 10, 11, 12]
+  question: "A 基金回報 8%, σ=5%, B 基金回報 12%, σ=18%, Rf=4%。邊個 Sharpe 高?"
+  options:
+    a: "A (0.8) > B (0.44)"
+    b: "B (1.6) > A (0.8)"
+    c: "一樣"
+    d: "唔可以計"
+  answer: a
+  explanation: "A: (8-4)/5 = 0.8。B: (12-4)/18 = 0.44。A 比較好, 每單位風險賺更多回報。"
+  difficulty: 2
+  tags: [formula, calculation]
+
+- id: "cum.3"
+  type: cloze
+  source_modules: [9, 10, 11, 12]
+  question: "5 種主要風險: {市場風險}、{信用風險}、{流動性風險}、{通脹風險}、{匯率風險}。"
+  answer: "市場風險、信用風險、流動性風險、通脹風險、匯率風險"
+  explanation: "Module 9 講 5 種風險類型, 每種有對沖方法。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "cum.4"
+  type: tf
+  source_modules: [9, 10, 11, 12]
+  statement: "高回報 = 高風險係必然定律, 任何高回報投資必定對應高風險。"
+  answer: false
+  explanation: "錯。「高回報 = 高風險」係平均關係, 唔係必然。可能 (a) 短期偶發, (b) 集中風險, (c) 流動性低。應該用 Sharpe Ratio 評估「每單位風險換幾多回報」。"
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "cum.5"
+  type: tf
+  source_modules: [9, 10, 11, 12]
+  statement: "分散化可以同時降低系統風險同非系統風險。"
+  answer: false
+  explanation: "錯。分散化只可以降低非系統風險 (個別公司/行業), 系統風險 (整個市場) 避唔到。S&P 500 ETF 都仲有 15% 標準差, 全部係系統風險。"
+  difficulty: 1
+  tags: [concept, terminology]
+
+- id: "cum.6"
+  type: mcq
+  source_modules: [9, 10, 11, 12]
+  question: "短期國庫券 (3-12 個月) 喺金融界被視為?"
+  options:
+    a: "高風險高回報"
+    b: "無風險利率 (Rf) 基準"
+    c: "投機工具"
+    d: "唔流通"
+  answer: b
+  explanation: "短期國庫券違約風險近乎 0, 二手市場活躍, 係金融界「無風險利率」基準, Sharpe 公式嘅 Rf 通常用佢。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "cum.7"
+  type: cloze
+  source_modules: [9, 10, 11, 12]
+  question: "Sharpe Ratio 公式 {S = (R - Rf) / σ}, 分子 {R - Rf}, 分母 {σ}。"
+  answer: "S = (R - Rf) / σ、R - Rf、σ"
+  explanation: "衡量「每承擔 1 單位風險, 賺到幾多額外回報」。"
+  difficulty: 2
+  tags: [formula, terminology]
+
+- id: "cum.8"
+  type: mcq
+  source_modules: [9, 10, 11, 12]
+  question: "以下邊個係債券嘅結構?"
+  options:
+    a: "股權, 有投票權"
+    b: "借據, 派息 + 到期還本"
+    c: "商品, 價隨供需"
+    d: "貨幣"
+  answer: b
+  explanation: "債券 = 借據, 派 Coupon + 到期還本。股權 (股票) 先有投票權。"
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "cum.9"
+  type: tf
+  source_modules: [9, 10, 11, 12]
+  statement: "MMF 同定存一樣, 兩者都受存款保障計劃保障。"
+  answer: false
+  explanation: "錯。MMF (貨幣市場基金) 唔受存款保障, 因為佢係基金, 唔係存款。定存受 50 萬保障。MMF 風險極低但唔保本。"
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "cum.10"
+  type: mcq
+  source_modules: [9, 10, 11, 12]
+  question: "你而家 28 歲, 月入穩定, 20 年時間儲錢, 風險承受度應該?"
+  options:
+    a: "極低"
+    b: "中等"
+    c: "高 (因時間長可 recover)"
+    d: "零"
+  answer: c
+  explanation: "年輕 + 收入穩定 + 長線目標 → 風險承受度通常較高。但唔等於 All-in 比特幣, 仍要分散。"
+  difficulty: 2
+  tags: [scenario, application]

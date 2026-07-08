@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "SLF4J is a {facade} over logging backends; the active backend is selected at runtime from the {classpath}."
+  answer: "facade, classpath"
+  explanation: "App code only sees the SLF4J API; the backend JAR on the classpath decides the actual implementation."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Spring Boot's default logging backend is {Logback}, pulled in by spring-boot-starter-logging."
+  answer: "Logback"
+  explanation: "spring-boot-starter-logging brings logback-classic. Swap starters to use Log4j2 instead."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "The SLF4J level between DEBUG and WARN is {INFO}."
+  answer: "INFO"
+  explanation: "Order low to high: TRACE, DEBUG, INFO, WARN, ERROR."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.4"
+  question: "A logger inherits its effective {level} from its parent logger unless it {overrides} it explicitly."
+  answer: "level, overrides"
+  explanation: "Named loggers form a hierarchy; tuning one package changes its children unless they override."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "MDC is a {thread-local} key/value map populated on request entry."
+  answer: "thread-local"
+  explanation: "Each thread sees its own context; async worker threads start empty unless you copy the map."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.6"
+  question: "The Logback conversion word that renders an MDC value is {X}, as in %X{requestId}."
+  answer: "X"
+  explanation: "%X{key} is the pattern syntax; the key name goes between the braces."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "Parameterized logging like log.info(\"user {} paid\", id) defers {string} formatting until the message is actually emitted."
+  answer: "string"
+  explanation: "When the level is disabled, arguments are never concatenated — a cheap boolean check is all that runs."
+  difficulty: 2
+  tags: [application]
+
+- id: "c.8"
+  question: "In java.util.logging the highest built-in level is {SEVERE}, which the SLF4J binding maps to {ERROR}."
+  answer: "SEVERE, ERROR"
+  explanation: "JUL's ladder (SEVERE > WARNING > INFO > FINE > FINEST) does not match SLF4J's, hence the mapping trap."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.9"
+  question: "An AsyncAppender must pair a bounded queue with a {discard} policy so a full queue never blocks the app thread."
+  answer: "discard"
+  explanation: "Discard (never-block) drops low-priority events when the queue is full, protecting request latency and heap."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.10"
+  question: "In application.yml, per-package tuning uses logging.{level}.<package>, e.g. logging.level.com.myco=DEBUG."
+  answer: "level"
+  explanation: "The property is logging.level.<package>=LEVEL; Spring Boot wires it to the matching named logger."
+  difficulty: 1
+  tags: [terminology]

@@ -1,0 +1,147 @@
+- id: '9.1'
+  question: What does code coverage measure?
+  options:
+    a: Which lines of code executed during tests
+    b: Which code paths were verified correct
+    c: How many bugs were found
+    d: How much of the API contract is tested
+  answer: a
+  explanation: Coverage measures execution, not verification. A line can execute with
+    a value that happens to work but misses edge cases. NaN, null, empty, and boundary
+    values exist on already-covered lines.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.2'
+  question: An API returns 200, 400, 401, 404, and 500. Your tests cover 200 and 400.
+    What is the gap?
+  options:
+    b: Missing tests for 401, 404, and 500 — each error code is a test case
+    a: No gap — 200 and 400 cover the main paths
+    c: 500 is a server error — frontend cannot handle it differently
+    d: Error codes are backend concerns, not test concerns
+  answer: b
+  explanation: Every documented API error code implies a frontend behavior. 401 →
+    redirect to login. 404 → show not found. 500 → show generic error. Each missing
+    test is a potential production bug.
+  difficulty: 1
+  tags:
+  - concept
+- id: '9.3'
+  question: A function checks `if (value <= 0) throw Error`. The value NaN passes
+    through. Why?
+  options:
+    b: NaN <= 0 evaluates to false in JavaScript
+    a: The function was not called with NaN
+    c: NaN is converted to 0
+    d: JavaScript automatically fixes NaN
+  answer: b
+  explanation: NaN <= 0 is false. This means the guard does not catch NaN. A test
+    with value NaN would reveal this missing guard and lead to adding `!Number.isFinite(value)`
+    check.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.4'
+  question: Which discovery method would find the missing test for null user data
+    when API returns 200 with null?
+  options:
+    d: Both B and C
+    a: Coverage report
+    b: Implementation review — read the code and find the `if (!user)` branch
+    c: API contract review — contract says 'returns User | null'
+  answer: d
+  explanation: Implementation review shows the `!user` branch (often untested). Contract
+    review shows `User | null` return type — null is a valid response that needs testing.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.5'
+  question: 'A component renders different states: loading, success, empty, error.
+    How many test cases does state machine analysis suggest?'
+  options:
+    a: 7 — each state + transitions between them (idle → loading → success, idle →
+      loading → error, etc.)
+    b: 1 — happy path (success)
+    c: 4 — one for each state (loading, success, empty, error)
+    d: 2 — loading and success
+  answer: a
+  explanation: Machine state analysis tests each state AND each transition. 3 states
+    × transitions = 7 cases. Missing transitions (e.g., error → retry → loading →
+    success) are common bug sources.
+  difficulty: 3
+  tags:
+  - concept
+- id: '9.6'
+  question: 'A type is `page?: number`. What edge cases should you test beside undefined?'
+  options:
+    d: 0, -1, 1.5, NaN, 999999999
+    a: Only 0 and -1
+    b: Only undefined — it is optional
+    c: Only positive integers
+  answer: d
+  explanation: 'Type number includes many invalid values. Test: 0 (often means ''no
+    results''), -1 (negative boundary), 1.5 (non-integer), NaN, very large (overflow/performance),
+    and the valid positive range.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.7'
+  question: Which tool is most effective for discovering missing implementation guards?
+  options:
+    c: Systematic negative test discovery — write tests for unexpected inputs
+    a: ESLint
+    b: TypeScript strict mode
+    d: Code coverage reports
+  answer: c
+  explanation: Systematic negative test discovery finds missing guards by testing
+    inputs the developer did not anticipate (NaN, null, empty, boundary values). TypeScript
+    and lint catch different categories of errors.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.8'
+  question: How should large sets of negative test cases be organized?
+  options:
+    b: test.each tables grouping related scenarios
+    a: One test case per file
+    c: All in a single test block
+    d: Separate describe blocks per case
+  answer: b
+  explanation: test.each tables group related scenarios (all API errors, all input
+    validations) into readable tables. They make gaps visible — missing rows are clearly
+    missing test cases.
+  difficulty: 1
+  tags:
+  - application
+- id: '9.9'
+  question: A negative test fails. Investigation shows the component does not handle
+    401 at all. What should you do?
+  options:
+    c: 'File a bug: add 401 handling to the component, then the test passes'
+    a: Remove the test — the code does not handle it
+    b: Skip the test with a TODO comment
+    d: Change the test to expect no error
+  answer: c
+  explanation: The test discovered a missing implementation guard. This is the highest
+    value outcome of negative testing. The test reveals what should be built. Fix
+    the component, then the test validates the fix.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '9.10'
+  question: A team has 100 positive tests and 5 negative tests. What is the likely
+    gap?
+  options:
+    a: Likely missing many negative cases — most components have 10-20 edge cases
+    b: Good balance — positive tests are more important
+    c: 5 negative tests is sufficient for most apps
+    d: Negative tests should equal positive tests exactly
+  answer: a
+  explanation: A typical component has 10-20 negative test cases (error paths, boundaries,
+    state transitions). 5 negative tests across an entire suite suggests most edge
+    cases are untested.
+  difficulty: 2
+  tags:
+  - scenario
+

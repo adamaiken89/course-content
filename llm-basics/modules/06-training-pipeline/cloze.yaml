@@ -1,0 +1,60 @@
+- id: c.1
+  question: Pretraining 用大量{raw text}數據，透過{next token prediction}做 training signal，產生一個{base
+    model}。
+  answer: raw text，next token prediction，base model
+  explanation: 呢個係最貴嘅 stage — 幾千個 GPU 行幾個月。
+  difficulty: 1
+  tags:
+  - process
+- id: c.2
+  question: Instruction tuning 用{instruction-response pairs}去教 model 點樣{跟指示}同{回答問題}。
+  answer: instruction-response pairs，跟指示，回答問題
+  explanation: Base model 有知識但唔識「答問題」。Instruction tuning 教佢 output format。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.3
+  question: RLHF 三步：人類{比較 outputs} → {train reward model} → {RL training} optimize
+    for reward。
+  answer: 比較 outputs，train reward model，RL training
+  explanation: RLHF 係最 common 嘅 alignment 方法，但近年 DPO 愈來愈流行。
+  difficulty: 3
+  tags:
+  - process
+- id: c.4
+  question: Alignment 嘅目的係令 LLM 符合{HHH}原則：{Helpful}、{Honest}、{Harmless}。
+  answer: HHH，Helpful，Honest，Harmless
+  explanation: 呢三個原則係 alignment research 嘅核心指導方針。
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.5
+  question: Training cost 由高到低：{pretraining} >> {instruction tuning} > {alignment}。
+  answer: pretraining，instruction tuning，alignment
+  explanation: Pretraining 佔整體成本嘅 95%+。Instruction tuning 同 alignment 相對平。
+  difficulty: 2
+  tags:
+  - comparison
+- id: c.6
+  question: Instruction tuning 唔增加模型嘅{知識}或{reasoning}能力 — 只係改變{output format}。
+  answer: 知識，reasoning，output format
+  explanation: 模型嘅「聰明」嚟自 pretraining。Instruction tuning 只係教佢點樣跟指示答問題。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: Base model 有知識但唔識{答問題}，instruction tuning 用{instruction-response pairs}填呢個
+    gap。
+  answer: 答問題，instruction-response pairs
+  explanation: Base model 只係學識生成文字，冇人教過佢「點樣回答問題」呢個 format。
+  difficulty: 1
+  tags:
+  - process
+- id: c.8
+  question: RLHF 用{reward model}去 judge 模型 output 好壞，再透過{RL training}令模型 optimize for
+    reward。
+  answer: reward model，RL training
+  explanation: 人類比較 outputs 去 train reward model，然後用 RL 令 main model 學識 produce 高分 output。
+  difficulty: 3
+  tags:
+  - process

@@ -1,0 +1,141 @@
+- id: '6.1'
+  question: 'Agency MBS are backed by:'
+  options:
+    b: Mortgage pools guaranteed by Fannie/Freddie/Ginnie
+    a: Corporate credit
+    c: Auto loans
+    d: Municipal revenue
+  answer: b
+  explanation: Agency MBS = mortgages securitized by Ginnie Mae (explicit govt guarantee)
+    or Fannie/Freddie (implicit).
+  difficulty: 1
+  tags:
+  - terminology
+  - mbs
+- id: '6.2'
+  question: SMM = 1%. What is approximate CPR?
+  options:
+    c: 11.4%
+    a: 6%
+    b: 12%
+    d: 1%
+  answer: c
+  explanation: CPR = 1 - (1-0.01)^12 = 1 - 0.99^12 = 1 - 0.8864 = 11.36%. ~11.4%
+  difficulty: 2
+  tags:
+  - calculation
+  - prepayment
+- id: '6.3'
+  question: What happens to agency MBS prepayment when mortgage rates fall 1%?
+  options:
+    b: Prepayment increases significantly
+    a: Prepayment decreases
+    c: No effect
+    d: Prepayment stops
+  answer: b
+  explanation: Rate drop → refinancing wave → prepayment spikes. More borrowers refinance
+    to lower rate.
+  difficulty: 1
+  tags:
+  - scenario
+  - prepayment
+- id: '6.4'
+  question: In CMO sequential pay structure, which tranche receives principal first?
+  options:
+    a: Sequential A
+    b: Z-tranche
+    c: IO tranche
+    d: Sequential C
+  answer: a
+  explanation: Sequential A receives all principal until fully paid, then B, then
+    C, then Z. A has shortest average life.
+  difficulty: 2
+  tags:
+  - terminology
+  - cmo
+- id: '6.5'
+  question: 'IO (Interest Only) tranche value is hurt most by:'
+  options:
+    d: Fast prepayments
+    a: Rising interest rates
+    b: Falling rates
+    c: Extension risk
+  answer: d
+  explanation: Prepayment reduces outstanding principal → less interest paid to IO.
+    Fast prepayment kills IO cash flows.
+  difficulty: 2
+  tags:
+  - scenario
+  - cmo
+- id: '6.6'
+  question: 'In senior/subordinate ABS structure, losses are absorbed first by:'
+  options:
+    a: Subordinate (first loss) tranche
+    b: Senior tranche
+    c: All tranches equally
+    d: Servicer
+  answer: a
+  explanation: Subordinate tranche absorbs first losses. This protects senior tranche
+    from default losses up to subordination level.
+  difficulty: 2
+  tags:
+  - terminology
+  - abs
+- id: '6.7'
+  question: 'Prepayment burnout means:'
+  options:
+    b: Prepayment slows as rate-sensitive borrowers have already refinanced
+    a: Prepayment speeds accelerate over time
+    c: Prepayment is constant
+    d: Borrowers stop paying mortgages
+  answer: b
+  explanation: 'Burnout: after refinancing wave, remaining borrowers are less rate-sensitive
+    → prepayment slows even if rates stay low.'
+  difficulty: 3
+  tags:
+  - terminology
+  - prepayment
+- id: '6.8'
+  question: Private bank client's MBS fund duration shortened unexpectedly. Likely
+    cause?
+  options:
+    c: Prepayments increased (refinancing wave)
+    a: Rates rose sharply
+    b: Defaults increased
+    d: Fund manager sold long bonds
+  answer: c
+  explanation: Prepayments return principal faster → shorter average life → shorter
+    duration. Contraction risk for MBS investors.
+  difficulty: 2
+  tags:
+  - scenario
+  - private-bank
+- id: '6.9'
+  question: Which ABS type typically has the longest weighted average life?
+  options:
+    a: Student loan ABS
+    b: Credit card ABS
+    c: Auto ABS
+    d: CLO
+  answer: a
+  explanation: 'Student loans: long amortization (10-30yr), low prepayment → long
+    WAL. Credit card: short revolving period. Auto: 3-7yr.'
+  difficulty: 3
+  tags:
+  - terminology
+  - abs
+- id: '6.10'
+  question: 'Contraction risk in MBS refers to:'
+  options:
+    d: Prepayment shortens bond life when rates fall
+    a: Default risk increasing
+    b: Extension of bond life when rates rise
+    c: Collateral pool shrinking due to credit losses
+  answer: d
+  explanation: 'Contraction risk: rates fall → prepayments rise → bond pays off early
+    → reinvest at lower rates. Extension risk is opposite.'
+  difficulty: 2
+  tags:
+  - terminology
+  - risk
+

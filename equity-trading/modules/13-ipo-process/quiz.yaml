@@ -1,0 +1,141 @@
+- id: '13.1'
+  question: In which underwriting arrangement does the investment bank bear the risk
+    of unsold shares?
+  options:
+    a: Firm commitment
+    b: Best efforts
+    c: Market making
+    d: Agency basis
+  answer: a
+  explanation: Firm commitment — underwriter buys entire offering and resells to public.
+    If shares don't sell, underwriter eats loss. Best efforts shifts risk to issuer.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '13.2'
+  question: During book-building, what happens if the order book shows 5x oversubscription
+    at the top of the filed price range?
+  options:
+    a: IPO is withdrawn
+    b: Price is set below the range to attract more buyers
+    c: Price is typically set at or above the top of the range
+    d: Shares are allocated via lottery
+  answer: c
+  explanation: Strong oversubscription signals high demand, allowing underwriter to
+    price at or above the filed range. E.g., Snowflake filed $75-$85 and priced at
+    $120.
+  difficulty: 1
+  tags:
+  - concept
+- id: '13.3'
+  question: A company IPOs at $40, first trade opens at $48, closes at $52. How much
+    'money was left on the table'?
+  options:
+    a: $12 per share
+    b: $8 per share
+    c: $4 per share
+    d: $0 — the company raised what it intended
+  answer: a
+  explanation: Money left on table = (first close - IPO price) = $52 - $40 = $12/share.
+    Measures cost of underpricing captured by institutional investors.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '13.4'
+  question: Which statement about lock-up periods is CORRECT?
+  options:
+    a: Lock-ups prevent all shareholders from selling for 90 days
+    b: Lock-ups only apply to institutional investors, not insiders
+    c: Lock-ups restrict insiders from selling for a specified period (typically 180
+      days)
+    d: Lock-ups are mandated by SEC for all IPOs
+  answer: c
+  explanation: Lock-ups are contractual, not SEC-mandated. They restrict insiders
+    from selling post-IPO. Typical period is 180 days.
+  difficulty: 1
+  tags:
+  - concept
+- id: '13.5'
+  question: What determines the first trade price on listing day?
+  options:
+    a: The opening cross process
+    b: The IPO price set night before
+    c: The underwriter's discretion
+    d: The previous day's close in private markets
+  answer: a
+  explanation: Opening cross collects all buy/sell orders and finds single clearing
+    price. First trade often differs from IPO price.
+  difficulty: 2
+  tags:
+  - concept
+- id: '13.6'
+  question: IPO priced at $50, first trade at $55. Gross proceeds = $500M on 10M shares.
+    Underwriter spread is 4%. What are net proceeds?
+  options:
+    a: $500M
+    b: $480M
+    c: $550M
+    d: $520M
+  answer: b
+  explanation: Net proceeds = Gross Proceeds - Underwriter Fee = $500M - ($500M ×
+    4%) = $500M - $20M = $480M.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '13.7'
+  question: What is the primary purpose of the SEC-mandated quiet period after an
+    IPO?
+  options:
+    a: Allow insiders to sell shares
+    b: Let the stock price stabilize
+    c: Prevent selective disclosure of forward-looking information
+    d: Give analysts time to publish research
+  answer: c
+  explanation: Quiet period (25 days) prevents company from making forward-looking
+    statements that could selectively benefit certain investors.
+  difficulty: 1
+  tags:
+  - concept
+- id: '13.8'
+  question: Company has $100M EBITDA. It IPOs at 15x EBITDA, issuing 20M shares. What
+    is IPO price per share?
+  options:
+    a: $50
+    b: $75
+    c: $100
+    d: $125
+  answer: b
+  explanation: Valuation = $100M × 15 = $1.5B. Price per share = $1.5B / 20M shares
+    = $75.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '13.9'
+  question: A lock-up expiry is expected next week. Which trading pattern is MOST
+    likely?
+  options:
+    a: Price dips 2-5% with elevated volume as insiders sell
+    b: Price rallies sharply as buyers anticipate insider selling
+    c: No price impact since lock-ups are irrelevant
+    d: The exchange halts trading
+  answer: a
+  explanation: Lock-up expiry allows insiders to sell for first time, increasing supply.
+    Typical effect - 2-5% dip with 2-3x normal volume.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '13.10'
+  question: A small biotech with no revenue wants to IPO. Which underwriting type
+    is MOST likely?
+  options:
+    a: Firm commitment
+    b: Best efforts
+    c: Direct listing
+    d: Dutch auction
+  answer: b
+  explanation: Small/risky companies use best efforts because no bank will guarantee
+    deal. Best efforts shifts risk to issuer, which is acceptable when deal is too
+    uncertain for firm commitment.
+  difficulty: 2
+  tags:
+  - scenario

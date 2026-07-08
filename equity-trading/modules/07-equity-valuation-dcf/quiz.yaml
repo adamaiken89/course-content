@@ -1,0 +1,147 @@
+- id: '7.1'
+  question: Which cash flow metric represents cash available to all capital providers
+    (debt and equity) after operations and investments?
+  options:
+    a: FCFE
+    b: Dividend
+    c: Net Income
+    d: FCFF
+  answer: d
+  explanation: FCFF (Free Cash Flow to Firm) is cash available to both debt and equity
+    holders after operating expenses and capital expenditures. FCFE is only for equity
+    holders.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '7.2'
+  question: A company has EBIT of $100M, tax rate of 25%, D&A of $20M, CapEx of $30M,
+    and increase in working capital of $10M. What is FCFF?
+  options:
+    a: $55M
+    b: $65M
+    c: $75M
+    d: $85M
+  answer: a
+  explanation: FCFF = EBIT×(1-t) + D&A - CapEx - ΔWC = $100M×0.75 + $20M - $30M -
+    $10M = $75M + $20M - $40M = $55M.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '7.3'
+  question: Terminal value accounts for what portion of total DCF valuation for a
+    typical company?
+  options:
+    a: 10-20%
+    b: 30-40%
+    c: 50-60%
+    d: 70%+
+  answer: d
+  explanation: Terminal value often exceeds 70% of total DCF value because the explicit
+    forecast period (5-10 years) captures only a small fraction of a company's lifetime
+    cash flows.
+  difficulty: 1
+  tags:
+  - concept
+- id: '7.4'
+  question: 'Perpetuity growth method for terminal value: next year FCF = $50M, WACC
+    = 10%, perpetual growth = 3%. What is terminal value?'
+  options:
+    a: $500M
+    b: $714M
+    c: $667M
+    d: $833M
+  answer: b
+  explanation: TV = FCF_(n+1) / (WACC - g) = $50M / (0.10 - 0.03) = $50M / 0.07 =
+    $714M.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '7.5'
+  question: Which is NOT a component of WACC calculation?
+  options:
+    a: Cost of equity
+    b: Risk-free rate
+    c: Revenue growth rate
+    d: Cost of debt after tax
+  answer: c
+  explanation: WACC = (E/V)×Ke + (D/V)×Kd×(1-t). Revenue growth rate is used in FCF
+    projections, not WACC itself. Risk-free rate feeds into cost of equity via CAPM.
+  difficulty: 1
+  tags:
+  - concept
+- id: '7.6'
+  question: Using CAPM, cost of equity = risk-free rate + beta × equity risk premium.
+    Risk-free rate = 4%, beta = 1.2, equity risk premium = 5%. What is cost of equity?
+  options:
+    a: 9.0%
+    b: 8.0%
+    c: 10.0%
+    d: 11.0%
+  answer: c
+  explanation: Ke = 4% + 1.2 × 5% = 4% + 6% = 10.0%. Beta of 1.2 means stock is 20%
+    more volatile than market.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '7.7'
+  question: A firm has equity value $800M, debt $200M, cost of equity 12%, pre-tax
+    cost of debt 4%, tax rate 25%. What is WACC?
+  options:
+    a: 10.2%
+    b: 9.6%
+    c: 10.8%
+    d: 9.0%
+  answer: a
+  explanation: E/V = 800/1000 = 0.8, D/V = 200/1000 = 0.2. After-tax Kd = 4%×(1-0.25)
+    = 3%. WACC = 0.8×12% + 0.2×3% = 9.6% + 0.6% = 10.2%.
+  difficulty: 3
+  tags:
+  - calculation
+- id: '7.8'
+  question: 'Scenario: DCF yields fair value of $45/share. Current price is $60. WACC
+    assumption is 9%. If WACC is actually 8%, fair value becomes $52. If 7%, $62.
+    What does this reveal?'
+  options:
+    a: Stock is clearly overvalued regardless of assumptions
+    b: Valuation is sensitive to WACC — stock may be fairly valued at lower WACC
+    c: DCF is unreliable and should not be used
+    d: Terminal value assumption must be wrong
+  answer: b
+  explanation: Fair value ranges from $45 to $62 depending on WACC. At 7% WACC, fair
+    value ($62) exceeds market price ($60), suggesting stock could be undervalued.
+    Sensitivity analysis shows assumption risk.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '7.9'
+  question: Why is interest tax-deductible treatment applied only to cost of debt
+    in WACC?
+  options:
+    a: Interest payments reduce taxable income, creating a tax shield
+    b: Equity dividends are also tax-deductible
+    c: Debt is cheaper than equity for all companies
+    d: Tax rate only applies to debt holders
+  answer: a
+  explanation: Interest expense is tax-deductible, so government effectively subsidizes
+    part of debt cost. After-tax cost of debt = pre-tax rate × (1 - tax rate). Equity
+    has no such tax shield.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.10'
+  question: In terminal value estimation, exit multiple method uses EBITDA_n × selected
+    multiple. What risk does this method carry compared to perpetuity growth?
+  options:
+    a: It ignores time value of money
+    b: It assumes company will be sold at a specific future multiple, which may not
+      reflect market conditions at that time
+    c: It cannot be used for companies with negative EBITDA
+    d: It produces lower terminal values than perpetuity growth
+  answer: b
+  explanation: Exit multiple method assumes a specific EBITDA multiple years into
+    the future. Market multiples fluctuate with cycles, so the assumed exit multiple
+    may be too high or low. Perpetuity growth avoids this but assumes constant growth
+    forever.
+  difficulty: 2
+  tags:
+  - comparison

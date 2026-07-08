@@ -1,0 +1,110 @@
+- id: "8.1"
+  question: "What is the core idea of open-config-as-state for a dialog that serves multiple intents?"
+  options:
+    a: "Dialog state is one object { intent, entityId, payload }"
+    b: "One prop per intent, rendered with if branches"
+    c: "Reuse the same component but hide unrelated fields"
+    d: "Store every intent configuration in a global constant"
+  answer: a
+  explanation: "The dialog state is the open config — which intent, which entity, which payload. The intent keys a config map that supplies all behavior. Booleans (b) are the naive anti-pattern, (c) hides fields instead of modeling intent, (d) is about where the config lives, not what state means."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "8.2"
+  question: "Why does workflow-modal state move to a zustand store instead of staying in module 7 style local useState?"
+  options:
+    a: "Zustand is required for all modal dialogs"
+    b: "Multiple triggers across screens (batch bar, table row, batch summary) all open the same dialog"
+    c: "Local state cannot render a dialog at all"
+    d: "The config map only works inside a store"
+  answer: b
+  explanation: "Module 7's local state works when one component owns the trigger. Here triggers are spread across screens and must all open the same dialog instance — the cross-screen access is what earns a zustand store. (a) overgeneralizes; (c) is false; (d) confuses config map with state."
+  difficulty: 1
+  tags: [concept, comparison]
+- id: "8.3"
+  question: "In the workflowConfig map, what does each intent entry supply?"
+  options:
+    a: "Only the dialog title"
+    b: "A list of boolean flags for the dialog body"
+    c: "Title, fields, validation, confirm label, and submit action"
+    d: "The ARIA roles and focus-trap settings"
+  answer: c
+  explanation: "The config map packs the full behavior: title, fields, validation, confirmLabel, submitAction. ARIA and focus (d) belong to DialogShell from module 7. Booleans (b) are the anti-pattern this map replaces."
+  difficulty: 1
+  tags: [terminology]
+- id: "8.4"
+  question: "A codebase has <Modal isAdd={true} isEdit={true}> and it renders the add form. Which statement best describes what is wrong?"
+  options:
+    a: "Nothing — the booleans happened to work"
+    b: "React will throw a rendering error"
+    c: "The component is too slow to render two forms"
+    d: "The boolean combination is a dead state that the render logic resolves arbitrarily"
+  answer: d
+  explanation: "Intents are configurations, not presence flags. Invalid combinations like isAdd AND isEdit are dead states with no defined meaning; the render logic just picks one branch arbitrarily. The design offered no way to even express the error."
+  difficulty: 2
+  tags: [scenario]
+- id: "8.5"
+  question: "The batch summary ('submit 5 applications') opens a different flow than add/edit. What does this tell you?"
+  options:
+    a: "It is a different intent with distinct confirm text and more steps — the workflowConfig map handles it"
+    b: "It needs its own separate modal component from scratch"
+    c: "It should reuse the add intent with a count prop"
+    d: "It proves the state machine is unnecessary"
+  answer: a
+  explanation: "Distinct title, confirm label, and step count make it a distinct intent entry in the config map, with the state machine providing multi-step behavior. (b) abandons reuse; (c) corrupts the add intent; (d) is backwards — the multi-step flow is why the state machine exists."
+  difficulty: 2
+  tags: [scenario]
+- id: "8.6"
+  question: "In the state machine editing → confirming → submitting → done, what directly triggers the transition editing → confirming?"
+  options:
+    a: "A valid form submit"
+    b: "A close attempt while the payload is dirty"
+    c: "The server responding with an error"
+    d: "The user pressing the submit button on the confirming step"
+  answer: b
+  explanation: "A dirty close attempts to leave the dialog with unsaved changes; the guard routes to the confirming (discard?) step instead of closing. Valid submit goes editing → submitting; server error goes submitting → editing, never editing → confirming."
+  difficulty: 1
+  tags: [terminology]
+- id: "8.7"
+  question: "A dialog opens on 'Edit grades' with saved values prefilled. The user changes nothing and clicks close. The dirty guard should..."
+  options:
+    a: "Show the discard-confirm step because the dialog once had payload"
+    b: "Submit the unchanged form first"
+    c: "Close immediately because nothing changed since open"
+    d: "Always block closing until the user confirms"
+  answer: c
+  explanation: "Dirty means changed relative to the snapshot taken at open. A prefill that was never edited is not dirty, so the guard must compare current draft to open-time payload (or use a touched flag), never against null. (a) is exactly the bug in the Spot-the-Mistake example."
+  difficulty: 2
+  tags: [scenario]
+- id: "8.8"
+  question: "In the RTL test for opening the dialog from a table row, which assertion best proves the right intent config rendered?"
+  options:
+    a: "expect(screen.getByText('Edit grades')).toBeInTheDocument()"
+    b: "Assert that focus is inside the dialog"
+    c: "Snapshot the whole dialog including the state machine step"
+    d: "Assert the heading AND the intent-specific confirm label and fields"
+  answer: d
+  explanation: "A bare getByText can match a page header that exists before the dialog opens — a false positive. Asserting the heading plus the intent-specific confirm label and fields distinguishes add from edit. Focus (b) tests DialogShell, and structural snapshots (c) pin structure, not behavior."
+  difficulty: 2
+  tags: [scenario]
+- id: "8.9"
+  question: "The submit test routes through server.use(contract.updateGrades) from MSW. What is being pinned?"
+  options:
+    a: "The exact POST contract the app sends to the server"
+    b: "The visual styling of the success state"
+    c: "The focus-trapping behavior of DialogShell"
+    d: "The number of times the dialog re-renders"
+  answer: a
+  explanation: "An MSW handler stands in for the real endpoint and pins the request contract — method, URL, body shape. That is the module 3 'MSW contract' idea. Styling and focus belong to other tests; re-render counts are a performance concern."
+  difficulty: 3
+  tags: [scenario]
+- id: "8.10"
+  question: "The nested-workflow variant needs 'Add application' to chain a prerequisite dialog. The cleanest approach is..."
+  options:
+    a: "Increase the config map to break the add intent into ten smaller intents"
+    b: "Store a stack of open intents with a parent reference and render a second layer above the current dialog"
+    c: "Render a raw second modal inside the first with duplicated shell code"
+    d: "Block the second dialog entirely and show a toast"
+  answer: b
+  explanation: "Nesting means a second open with a new intent and a parent reference, layered above the current dialog — same shell, same config map, one extra stack in the store. (a) explodes the config space; (c) duplicates DialogShell; (d) avoids the actual need."
+  difficulty: 3
+  tags: [scenario]

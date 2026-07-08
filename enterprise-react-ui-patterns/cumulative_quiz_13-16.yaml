@@ -1,0 +1,131 @@
+- id: cum.31
+  type: mcq
+  source_modules:
+  - 13
+  - 14
+  question: A user changes program, triggering a cascade and remote validation, while the previous program response still flies in. Which guard wins?
+  options:
+    a: The request-id guard drops the stale response so only the latest program drives validation
+    b: Both responses merge so the newer field wins
+    c: The cascade waits for both responses
+    d: Validation results are ignored after first success
+  answer: a
+  difficulty: 2
+  tags:
+  - cross-module
+  - cascade
+  - request-id
+- id: cum.32
+  type: cloze
+  source_modules:
+  - 13
+  question: Changing the program node {reset}s dependent cohort and campus fields before new option lists load.
+  answer: resets
+  difficulty: 1
+  tags:
+  - cross-module
+  - dependent-fields
+- id: cum.33
+  type: tf
+  source_modules:
+  - 15
+  statement: Formula-injection only matters for user-pasted CSV rows, not for generated output files.
+  answer: false
+  difficulty: 2
+  tags:
+  - cross-module
+  - csv
+  - security
+- id: cum.34
+  type: mcq
+  source_modules:
+  - 14
+  - 15
+  question: Batch submit partially fails and the CSV import found bad rows. Which recovery matches both failure models?
+  options:
+    a: Roll back the whole batch on any failure
+    b: Treat every row as independent, settle per item, and give resubmit-failed over a staged error report
+    c: Hide failed rows from the report
+    d: Block resubmission once anything fails
+  answer: b
+  difficulty: 2
+  tags:
+  - cross-module
+  - batch
+  - csv
+- id: cum.35
+  type: cloze
+  source_modules:
+  - 14
+  question: Resubmitting only the failed items works because the batch state machine keys on {runId} for idempotency.
+  answer: runId
+  difficulty: 1
+  tags:
+  - cross-module
+  - idempotency
+- id: cum.36
+  type: mcq
+  source_modules:
+  - 13
+  - 16
+  question: A program select triggers async loading of cohort options. What serving keeps screen readers informed and focus sane?
+  options:
+    a: The select stays disabled until the page reloads
+    b: Rely on native select change events alone
+    c: A busy live region announces loading and focus moves to the first enabled descendant control
+    d: Announce only the final DOM change with no focus move
+  answer: c
+  difficulty: 2
+  tags:
+  - cross-module
+  - live-region
+  - combobox
+- id: cum.37
+  type: cloze
+  source_modules:
+  - 16
+  question: Each dependent-field group is wrapped in a fieldset with a {legend}, so keyboard navigation names the group context.
+  answer: legend
+  difficulty: 1
+  tags:
+  - cross-module
+  - fieldset
+- id: cum.38
+  type: tf
+  source_modules:
+  - 15
+  statement: Per-row zod validation runs while rows are staged, before any row is committed, so the report lists rejections cleanly.
+  answer: true
+  difficulty: 1
+  tags:
+  - cross-module
+  - csv
+  - staging
+- id: cum.39
+  type: mcq
+  source_modules:
+  - 15
+  - 16
+  question: After CSV stage, how should the error report surface failures accessibly?
+  options:
+    a: As console-only logs to keep the page quiet
+    b: As one silent banner
+    c: As an outline-only visual list
+    d: As a status live region announcing accepted and rejected counts plus a focusable summary list
+  answer: d
+  difficulty: 1
+  tags:
+  - cross-module
+  - csv
+  - live-region
+- id: cum.40
+  type: tf
+  source_modules:
+  - 14
+  statement: Optimistic batch updates must roll back when per-item settle reports failure, item by item.
+  answer: true
+  difficulty: 1
+  tags:
+  - cross-module
+  - optimistic
+  - rollback

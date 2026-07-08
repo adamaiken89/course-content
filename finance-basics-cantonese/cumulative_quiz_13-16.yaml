@@ -1,0 +1,114 @@
+- id: "cum.1"
+  type: mcq
+  source_modules: [13, 14, 15, 16]
+  question: "P/E Ratio 嘅計算公式?"
+  options:
+    a: "P/E = 股價 / 每股盈利 (EPS)"
+    b: "P/E = EPS / 股價"
+    c: "P/E = 股價 × EPS"
+    d: "P/E = 股價 + EPS"
+  answer: a
+  explanation: "P/E = Price per share / Earnings per share。例: 股價 $100, EPS $5, P/E = 20, 即係用 20 年回本 (假設盈利不變)。"
+  difficulty: 1
+  tags: [formula, terminology]
+
+- id: "cum.2"
+  type: mcq
+  source_modules: [13, 14, 15, 16]
+  question: "Common Stock 同 Preferred Stock 嘅主要分別?"
+  options:
+    a: "Common 有投票權, Preferred 派固定股息但無投票權"
+    b: "Preferred 有投票權, Common 派固定股息"
+    c: "兩者一樣"
+    d: "Common 派固定股息, Preferred 投票權"
+  answer: a
+  explanation: "Common = 普通股, 有投票權, 派息浮動。Preferred = 優先股, 派固定股息, 通常無投票權, 清算優先。"
+  difficulty: 1
+  tags: [terminology, comparison]
+
+- id: "cum.3"
+  type: cloze
+  source_modules: [13, 14, 15, 16]
+  question: "債券 4 個關鍵元素: {面值}、{票面利率}、{到期日}、{市場價格}。"
+  answer: "面值、票面利率、到期日、市場價格"
+  explanation: "面值 (Face Value)、票面利率 (Coupon Rate)、到期日 (Maturity)、市場價格 (Market Price)。"
+  difficulty: 1
+  tags: [terminology, recall]
+
+- id: "cum.4"
+  type: tf
+  source_modules: [13, 14, 15, 16]
+  statement: "高 P/E 一定代表股價貴, 唔抵買。"
+  answer: false
+  explanation: "錯。高 P/E 可以反映 (a) 高成長預期 (科技股 P/E 30+ 仍升), (b) 短期盈利低 (recovery 期), (c) 行業特性 (軟件股高 P/E)。應該睇 Forward P/E + 同業比較 + 成長率。"
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "cum.5"
+  type: tf
+  source_modules: [13, 14, 15, 16]
+  statement: "Modified Duration 越高, 債券對利率變動越敏感。"
+  answer: true
+  explanation: "對。MD 量度債券價格對利率變動嘅敏感度。MD=5, 利率升 1% → 價格跌 5%。MD 越高, 利率風險越大。"
+  difficulty: 1
+  tags: [concept, terminology]
+
+- id: "cum.6"
+  type: mcq
+  source_modules: [13, 14, 15, 16]
+  question: "Big 3 信用評級機構包括?"
+  options:
+    a: "Moody's, S&P, IMF"
+    b: "Moody's, S&P, Fitch"
+    c: "S&P, Fitch, Bloomberg"
+    d: "Moody's, Fitch, Reuters"
+  answer: b
+  explanation: "Big 3: Moody's (Aaa 等), S&P (AAA 等), Fitch (同 S&P)。都係美國 + 歐美混合, 壟斷全球評級市場。"
+  difficulty: 1
+  tags: [terminology, recall]
+
+- id: "cum.7"
+  type: cloze
+  source_modules: [13, 14, 15, 16]
+  question: "股價 {100}、EPS {5}, P/E = {20}。即係 {用 20 年回本} (假設盈利不變)。"
+  answer: "100、5、20、用 20 年回本"
+  explanation: "P/E = 20 意思係投資者願意用 20 年回本, 或者盈利嘅 20 倍買入。"
+  difficulty: 2
+  tags: [formula, calculation]
+
+- id: "cum.8"
+  type: mcq
+  source_modules: [13, 14, 15, 16]
+  question: "票面 4%, 買入價 $9,500, 面值 $10,000。Current Yield 係?"
+  options:
+    a: "4.0%"
+    b: "3.81%"
+    c: "4.21%"
+    d: "5.0%"
+  answer: c
+  explanation: "Current Yield = 年派息 / 買入價 = $400 / $9,500 = 4.21%。買入價低過面值, Yield 高過票面。"
+  difficulty: 2
+  tags: [calculation, formula]
+
+- id: "cum.9"
+  type: tf
+  source_modules: [13, 14, 15, 16]
+  statement: "Convexity 修正 Duration 嘅直線假設, 反映價格-收益凸曲線。"
+  answer: true
+  explanation: "對。Duration 用直線 (tangent) 估計, 現實係凸曲線, Convexity 修正。凸曲線對投資者有利 (升賺多, 跌蝕少)。"
+  difficulty: 2
+  tags: [concept, formula]
+
+- id: "cum.10"
+  type: mcq
+  source_modules: [13, 14, 15, 16]
+  question: "預期未來一年利率會跌, 你揀咩策略?"
+  options:
+    a: "短 Duration"
+    b: "長 Duration + 高 Convexity"
+    c: "全部擺 MMF"
+    d: "完全唔買債"
+  answer: b
+  explanation: "預期利率跌 → 揸長 Duration 因為價格升幅大; 高 Convexity (Zero-Coupon / 低 Coupon 長債) 進一步放大升幅。"
+  difficulty: 3
+  tags: [scenario, application]

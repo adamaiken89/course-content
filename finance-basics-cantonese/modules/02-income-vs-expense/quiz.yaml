@@ -1,0 +1,130 @@
+- id: '2.1'
+  question: 以下邊項屬於「主動收入」?
+  options:
+    a: 打工收月薪
+    b: 股票派息
+    c: 賣樓套現
+    d: 物業收租
+  answer: a
+  explanation: 主動收入係用時間/勞力換嘅錢, 打工係典型例子。物業收租同股票派息係被動收入, 賣樓係一次性收入。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.2'
+  question: 以下邊項「唔係」被動收入?
+  options:
+    a: 藍籌股每年派息
+    b: 自己開餐廳請人打理, 每月有 profit
+    c: 版稅/專利費
+    d: Bitcoin 升值 (你未賣)
+  answer: d
+  explanation: Bitcoin 升值係資本增值 (Capital Gain), 唔賣就唔係 cash flow, 唔係「收入」。前 3 項都係定期有
+    cash 入口, 屬於被動收入嘅形式。
+  difficulty: 2
+  tags:
+  - concept
+  - misconception
+- id: '2.3'
+  question: 50/30/20 預算規則, 儲蓄應該佔幾多?
+  options:
+    a: 20%
+    b: 30%
+    c: 50%
+    d: 10%
+  answer: a
+  explanation: '50/30/20 規則: 必要 50%, 想要 30%, 儲蓄/投資 20%。儲蓄 20% 係財務健康嘅最低線。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.4'
+  question: 以下邊一項屬於「想要」支出?
+  options:
+    a: 自己煮午餐
+    b: Netflix 月費
+    c: 返工車費
+    d: 租金
+  answer: b
+  explanation: Netflix 係娛樂, 唔睇都唔會死, 屬於「想要」。租金同返工車費係必要, 自己煮午餐係必要(飲食)。
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.5'
+  question: 你阿明每月收入 $30,000, 支出 $32,000, 淨收入係幾多?
+  options:
+    a: $2,000
+    b: $0
+    c: -$2,000
+    d: $30,000
+  answer: c
+  explanation: 淨收入 = 收入 - 支出 = 30,000 - 32,000 = -2,000。負數代表入不敷支, 要動用儲蓄或負債去填。
+  difficulty: 1
+  tags:
+  - calculation
+- id: '2.6'
+  question: 你收入 $40,000, 支出 $39,000, 每月儲 $1,000。儲蓄率係幾多?
+  options:
+    a: 2.5%
+    b: 5%
+    c: 20%
+    d: 1%
+  answer: a
+  explanation: 儲蓄率 = 儲蓄 / 收入 = 1,000 / 40,000 = 2.5%。2.5% 儲蓄率太低, 失業 1 個月就歸 0, 唔健康。理想至少
+    20%。
+  difficulty: 2
+  tags:
+  - calculation
+- id: '2.7'
+  question: 點解「記帳」係理財嘅第一步?
+  options:
+    a: 因為政府要求
+    b: 因為人對自己使錢嘅記憶永遠比實際少 30-50%, 要分項分析先知改善邊度
+    c: 因為會計師需要
+    d: 因為可以用嚟報稅
+  answer: b
+  explanation: 認知偏誤令你記錯自己使幾多。記帳目的唔係知道總額, 係分項(必要/想要/儲蓄), 先有改善方向。
+  difficulty: 2
+  tags:
+  - concept
+  - misconception
+- id: '2.8'
+  question: 以下邊個情況最危險?
+  options:
+    a: 收入 $20,000, 支出 $20,000, 收支平衡
+    b: 收入 $50,000, 支出 $45,000, 儲蓄率 10%
+    c: 收入 $20,000, 支出 $18,000, 儲蓄率 10%
+    d: 收入 $50,000, 支出 $55,000, 負現金流
+  answer: d
+  explanation: 負現金流(支出 > 收入)係最危險, 會累積負債, 最終可能破產。A 雖然儲蓄率低但安全, B 一樣, D 雖冇儲但至少打和。C 持續落去會清晒儲蓄
+    → 負債 → 破產。
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '2.9'
+  question: 你阿明朋友話:「我份工交強積金, 所以我有儲蓄, 唔使另外再儲。」呢句話啱唔啱?
+  options:
+    a: 啱, MPF 已經係儲蓄
+    b: 啱, 因為 MPF 投資股票, 會升值
+    c: 錯, MPF 係強迫性退休儲蓄, 65 歲先可以攞, 應急唔到, 需要額外儲蓄
+    d: 錯, 因為 MPF 一定蝕錢
+  answer: c
+  explanation: MPF 係強迫性退休儲蓄, 65 歲先可以攞(最早), 中間鎖住。應急基金(3-6 個月支出)要另儲, 唔可以靠 MPF。MPF 投資回報亦唔保證,
+    視乎市況。
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '2.10'
+  question: 你記帳 1 個月, 發現「想要」支出佔 55%, 嚴重超標(目標 30%)。你會點做?
+  options:
+    a: 接受現狀, 改變好難
+    b: '分階段減: 2-3 個月內由 55% 降到 30%, 將省返嘅撥入儲蓄'
+    c: 加多份兼職, 唔 cut 支出
+    d: 即刻 cut 晒所有想要, 0%
+  answer: b
+  explanation: 分階段減最實際, 即刻 cut 0% 難持續, 加兼職治標不治本。C 平衡咗改善速度同可持續性。
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+

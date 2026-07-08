@@ -1,0 +1,73 @@
+- id: c.1
+  question: 'Complete: The five session types are: {LEARN}, EXPLAIN, {BLURT}, REVIEW,
+    and MIXED.'
+  answer: LEARN, BLURT
+  explanation: LEARN for new material (45-60min), EXPLAIN for Feynman gap probe (15-20min),
+    BLURT for brain-dump retrieval (10-15min), REVIEW for FSRS-5 spaced cards (10-15min),
+    MIXED for combined practice (30-45min).
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 'Complete: Daily {REVIEW} is the highest-ROI session because it preserves
+    {retention} of all previous LEARN sessions.'
+  answer: REVIEW, retention
+  explanation: Without daily review, LEARN investment decays to ~30%. With 10-15min
+    daily review, retention stays >85%.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: 'Complete: REVIEW should come {before} LEARN in daily scheduling to maintain
+    {retention baseline}.'
+  answer: before, retention baseline
+  explanation: REVIEW first ensures previous modules are maintained. If REVIEW is
+    last, it often gets skipped when time runs short.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: 'Complete: The {MIXED} session combines BLURT, REVIEW, and a small LEARN
+    session — it reconnects old and {new} material mid-week.'
+  answer: MIXED, new
+  explanation: Thursday MIXED = BLURT(10min) → REVIEW(10min) → LEARN(20min) → EXPLAIN(5min).
+    It bridges earlier modules and current learning.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: 'Complete: A rest day allows {consolidation}, and FSRS-5 does not {penalize}
+    rest days.'
+  answer: consolidation, penalize
+  explanation: Due cards simply carry to the next day without stability damage. Rest
+    is part of the design, not a failure.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: 'Complete: Grade recall honestly on a {1-5} scale — FSRS-5 uses the quality
+    rating to update {stability}.'
+  answer: 1-5, stability
+  explanation: Quality 5 (effortless) grows stability more than quality 4 (hesitated).
+    Honest grading makes the model accurate.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: 'Complete: Time-box daily REVIEW to 10-15 minutes to prevent {burnout}
+    and maintain {consistency}.'
+  answer: burnout, consistency
+  explanation: A small daily budget is sustainable. Longer budgets get skipped on busy
+    days, breaking the habit.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.8
+  question: 'Complete: Without review, a LEARN session''s retention decays to ~{30%}
+    within a week — the {forgetting} curve erases the investment.'
+  answer: 30%, forgetting
+  explanation: The forgetting curve drops rapidly without reinforcement. Daily REVIEW
+    resets the curve at higher stability each time.
+  difficulty: 2
+  tags:
+  - concept

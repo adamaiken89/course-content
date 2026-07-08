@@ -1,0 +1,60 @@
+- id: "c.1"
+  question: "The time-ordered UUID variant for append-like B-tree inserts is {uuidv7}."
+  answer: "uuidv7"
+  explanation: "uuidv7 embeds a timestamp, keeping generated keys near-monotonic so index writes stay local."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "PG18's {uuidv4}() is a native alias for the older gen_random_uuid() function."
+  answer: "uuidv4"
+  explanation: "PG18 added uuidv4() and uuidv7() plus uuid_extract_timestamp() to read the time back out of a v7 key."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.3"
+  question: "In PG18, asynchronous I/O (AIO) can speed up scans and {vacuum} workloads by issuing multiple reads in flight."
+  answer: "vacuum"
+  explanation: "AIO lets several I/Os overlap, but it is plumbing — you gain on scan/vacuum-heavy workloads without query changes."
+  difficulty: 2
+  tags: [concept]
+- id: "c.4"
+  question: "PG18's {skip scan} lets a multicolumn B-tree query use the index even when the leading columns are absent from the WHERE clause."
+  answer: "skip scan"
+  explanation: "It hops over non-matching leading-column values instead of scanning whole ranges; a fallback, not a license to misorder indexes."
+  difficulty: 2
+  tags: [concept]
+- id: "c.5"
+  question: "In PG18, virtual {generated} columns (computed on read, not stored) became the default behavior for generated columns."
+  answer: "generated"
+  explanation: "PG14 had only STORED generated columns; PG18 makes computed-on-read the default, saving disk for derivable values."
+  difficulty: 2
+  tags: [concept]
+- id: "c.6"
+  question: "PG18's {NOT NULL} constraint added as NOT VALID takes only SHARE UPDATE EXCLUSIVE, so no long write lock."
+  answer: "NOT NULL"
+  explanation: "Add NOT NULL NOT VALID cheaply, then VALIDATE CONSTRAINT as a background scan; earlier this required a heavier lock."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "PG19's {REPACK} / REPACK CONCURRENTLY is designed to replace VACUUM FULL and CLUSTER for bloat reorgs."
+  answer: "REPACK"
+  explanation: "Repack rewrites rows densely, optionally in index order; the CONCURRENTLY variant avoids a long write block via a shadow copy."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.8"
+  question: "For atomic get-or-create, PG19's INSERT ON CONFLICT DO {SELECT} returns the existing row instead of performing a no-op update."
+  answer: "SELECT"
+  explanation: "ON CONFLICT DO SELECT sidesteps dead tuples and is around 4x faster than the old DO NOTHING plus retry pattern."
+  difficulty: 2
+  tags: [concept]
+- id: "c.9"
+  question: "The module that provides official planner hints, from EXPLAIN PLAN_ADVICE to SET pg_plan_advice.advice, is {pg_plan_advice}."
+  answer: "pg_plan_advice"
+  explanation: "It reports matched / partially matched / not matched so you know whether a hint really took effect."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.10"
+  question: "PG19's {GROUP BY ALL} groups by every output column that is not an aggregate, removing the forgotten-column bug."
+  answer: "GROUP BY ALL"
+  explanation: "Writing GROUP BY ALL states intent once; the planner list grows from your SELECT rather than a hand-maintained list."
+  difficulty: 2
+  tags: [concept]

@@ -1,0 +1,144 @@
+- id: '1.1'
+  question: A company has $500M in assets and $300M in debt. It goes bankrupt and
+    liquidates. How much do equity holders receive?
+  options:
+    a: $500M
+    b: $300M
+    c: $0
+    d: $200M
+  answer: d
+  explanation: Equity = residual claim. Assets ($500M) minus debt ($300M) = $200M
+    for equity holders. If debt > assets, equity gets $0.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.2'
+  question: Which of the following is TRUE about preferred stock compared to common
+    stock?
+  options:
+    a: Preferred stock dividends are typically fixed and cumulative
+    b: Preferred stockholders have voting rights
+    c: Preferred stock always has higher price appreciation potential
+    d: Preferred stock is junior to common stock in bankruptcy
+  answer: a
+  explanation: Preferred dividends are fixed (stated rate) and typically cumulative
+    — missed payments accrue. Preferred has no voting rights, lower upside, and is
+    senior to common in bankruptcy.
+  difficulty: 1
+  tags:
+  - comparison
+- id: '1.3'
+  question: A company authorized 200M shares, issued 150M, and has 10M treasury shares.
+    How many shares are outstanding?
+  options:
+    a: 200M
+    b: 150M
+    c: 140M
+    d: 160M
+  answer: c
+  explanation: Outstanding = Issued - Treasury = 150M - 10M = 140M. Authorized is
+    the legal maximum, not the current count.
+  difficulty: 1
+  tags:
+  - calculation
+- id: '1.4'
+  question: Stock price is $80, shares outstanding are 500M, net income is $4B. What
+    is the market cap?
+  options:
+    a: $4B
+    b: $40B
+    c: $80B
+    d: $400B
+  answer: b
+  explanation: Market cap = $80 × 500M = $40B. Market cap is a function of price ×
+    shares, not earnings.
+  difficulty: 1
+  tags:
+  - calculation
+- id: '1.5'
+  question: A company executes a 2-for-1 stock split. What happens to market cap immediately
+    after?
+  options:
+    a: Doubles
+    b: Halves
+    c: Stays the same
+    d: Increases by 50%
+  answer: c
+  explanation: Stock split doubles share count but halves price. Market cap ($80 ×
+    500M vs $40 × 1B) stays constant. Splits change share count and price but not
+    company value.
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.6'
+  question: Which statement about treasury shares is CORRECT?
+  options:
+    a: Treasury shares receive dividends
+    b: Treasury shares have voting rights
+    c: Treasury shares are issued but not outstanding
+    d: Treasury shares increase the number of authorized shares
+  answer: c
+  explanation: Treasury shares are repurchased by the company. They are issued (were
+    once sold) but no longer outstanding — no voting rights, no dividends.
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.7'
+  question: Company A has market cap $50B and $10B cash. Company B has market cap
+    $40B and $30B cash. Which company's operating business is valued higher by the
+    market?
+  options:
+    a: Company A — its enterprise value is higher
+    b: Company B — it has more cash
+    c: They are equal — market cap already reflects cash
+    d: Cannot determine from information given
+  answer: a
+  explanation: Enterprise Value = Market Cap + Debt - Cash. A's EV = $50B + 0 - $10B
+    = $40B. B's EV = $40B + 0 - $30B = $10B. The market values A's operating business
+    at $40B vs B's at $10B. Market cap alone masks the cash component.
+  difficulty: 3
+  tags:
+  - scenario
+  - calculation
+- id: '1.8'
+  question: A preferred stock pays $5 annual dividend per share. Current price is
+    $100. What is the dividend yield?
+  options:
+    a: 2%
+    b: 5%
+    c: 10%
+    d: 20%
+  answer: b
+  explanation: Dividend yield = Annual dividend ÷ Price = $5 ÷ $100 = 5%. This is
+    typical for preferred stock — behaves like a fixed-income instrument.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '1.9'
+  question: In bankruptcy, what is the correct order of payment priority?
+  options:
+    a: Common → Preferred → Debt
+    b: Preferred → Debt → Common
+    c: Debt → Preferred → Common
+    d: Debt → Common → Preferred
+  answer: c
+  explanation: Debt holders are senior — paid first. Then preferred stock. Then common
+    stock (residual). Common equity holders bear the most bankruptcy risk.
+  difficulty: 1
+  tags:
+  - concept
+  - comparison
+- id: '1.10'
+  question: Fund manager says 'We only invest in mid-cap stocks.' Which market cap
+    range typically qualifies as mid-cap?
+  options:
+    a: $50M - $300M
+    b: $300M - $2B
+    c: $2B - $10B
+    d: $10B - $200B
+  answer: c
+  explanation: Mid-cap = $2B - $10B. Small-cap = $300M - $2B. Large-cap = $10B - $200B.
+    Index funds track size-based indices (S&P 400 MidCap, S&P 600 SmallCap).
+  difficulty: 1
+  tags:
+  - terminology

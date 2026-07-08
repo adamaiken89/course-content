@@ -1,0 +1,71 @@
+- id: c.1
+  question: Retail order flow is often routed to {wholesalers} for execution. The
+    broker receives payment called {payment for order flow}.
+  answer: wholesalers
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: Market makers profit primarily from the {spread} — buying at {bid} and
+    selling at {ask}.
+  answer: spread
+  difficulty: 1
+  tags:
+  - concept
+- id: c.3
+  question: Institutions use {algorithmic trading} to execute large orders. Common
+    algos include {VWAP} and {TWAP}.
+  answer: algorithmic trading
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.4
+  question: HFT firms use {co-location} to reduce latency. Their servers sit next
+    to exchange {matching engines}.
+  answer: co-location
+  difficulty: 1
+  tags:
+  - concept
+- id: c.5
+  question: A block trade of 10,000+ shares typically executes with a {discount} (for
+    sells) or {premium} (for buys) relative to market price, reflecting the {liquidity
+    premium}.
+  answer: discount
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.6
+  question: Payment for Order Flow means retail traders get {zero commissions} but
+    may receive {slightly worse fills} than exchange execution.
+  answer: zero commissions
+  difficulty: 2
+  tags:
+  - scenario
+- id: c.7
+  question: NYSE DMMs are {obligated} to maintain fair and orderly markets even during
+    stress. HFT firms can {stop quoting} at any time.
+  answer: obligated
+  difficulty: 2
+  tags:
+  - comparison
+- id: c.8
+  question: Retail investors account for approximately {25%} of daily US equity volume.
+  answer: 25%
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.9
+  question: Block desks at investment banks facilitate {upstairs market} transactions
+    — matching large buyers and sellers {off-exchange} at negotiated prices.
+  answer: upstairs market
+  difficulty: 3
+  tags:
+  - concept
+- id: c.10
+  question: When a market maker takes the other side of a block trade, they take {principal
+    risk} — the risk that the stock moves against them before they can {distribute}
+    the position.
+  answer: principal risk
+  difficulty: 3
+  tags:
+  - concept

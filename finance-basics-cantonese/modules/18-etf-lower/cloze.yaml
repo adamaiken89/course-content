@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "ETF 嘅特殊結構係 {Creation/Redemption 機制}, 由 {Authorized Participant} 作中介, 將 {一籃子股票} 換成 {ETF 單位} (或反)。"
+  answer: "Creation/Redemption 機制、Authorized Participant、一籃子股票、ETF 單位"
+  explanation: "AP 係大型做市商, 創造/贖回令新單位供應靈活, 市價接近 NAV。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.2"
+  question: "ETF 3 種追蹤方法: {Full Replication} (全部成份股)、{Sampling} (抽樣)、{Synthetic} (Swap 模擬)。"
+  answer: "Full Replication、Sampling、Synthetic"
+  explanation: "Full 最準, Sampling 低成本, Synthetic 可投資限制市場但有對手風險。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Tracking Error = {ETF 實際回報 - 指數實際回報}, 來源包括 {管理費 + 現金拖累 + 再投資時機 + 稅務 + 借券}。"
+  answer: "ETF 實際回報 - 指數實際回報、管理費 + 現金拖累 + 再投資時機 + 稅務 + 借券"
+  explanation: "大寬基 ETF Tracking Error < 0.05%/年, 越低越貼近指數。"
+  difficulty: 2
+  tags: [formula, concept]
+
+- id: "c.4"
+  question: "ETF vs 互惠基金: {ETF} 可開市內即時賣, {互惠基金} 收市後按 NAV 計; {ETF} 費用通常較低, {ETF} 稅務高效 (In-kind Redemption)。"
+  answer: "ETF、互惠基金、ETF、ETF"
+  explanation: "兩者各有好處, 對一般投資者 ETF 較平 + 較靈活。"
+  difficulty: 2
+  tags: [comparison, concept]
+
+- id: "c.5"
+  question: "In-kind Redemption 用 {股票} 換 ETF 單位, {唔觸發 CG 稅}。互惠基金現金贖回 {觸發 CG 稅}。"
+  answer: "股票、唔觸發 CG 稅、觸發 CG 稅"
+  explanation: "稅務差異令 ETF 投資者稅後回報通常高 0.1-0.3%/年。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.6"
+  question: "槓桿 ETF 適合 {短炒 (1 日 - 1 週)}, 長期持有會 {decay} 因為 {每日 reset}。"
+  answer: "短炒 (1 日 - 1 週)、decay、每日 reset"
+  explanation: "槓桿 ETF 唔適合長揸, 會因為波動 path 蝕底。"
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "c.7"
+  question: "ETF 5 種類型: {寬基指數} (VOO)、{行業/主題} (XLK)、{地區/國家} (EWH 港股)、{Smart Beta} (VTV Value)、{槓桿/反向} (SSO 2x)。"
+  answer: "寬基指數、行業/主題、地區/國家、Smart Beta、槓桿/反向"
+  explanation: "5 種類型對應唔同投資目標, 寬基做核心, 其他做衛星。"
+  difficulty: 2
+  tags: [terminology, classification]
+
+- id: "c.8"
+  question: "揀 ETF 客觀指標: {Expense Ratio 低好}、{AUM 大好}、{Tracking Error 低好}、{Bid-Ask Spread 低好}、{Physical Replication} (避 Synthetic)。"
+  answer: "Expense Ratio 低好、AUM 大好、Tracking Error 低好、Bid-Ask Spread 低好、Physical Replication"
+  explanation: "避開明星經理 marketing, 揀 ETF 靠客觀數據。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.9"
+  question: "港股最常見寬基 ETF {2800 盈富基金} 跟 {恒生指數}。美國寬基 {VOO (Vanguard S&P 500)} 0.03% ER。"
+  answer: "2800 盈富基金、恒生指數、VOO (Vanguard S&P 500)"
+  explanation: "兩隻都係低費寬基 ETF 嘅代表。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.10"
+  question: "$100 萬投資 30 年年化 8%, ETF 0.05% vs 互惠 0.5%, 終值差距 ~{$200K}。0.45% 費用 30 年複利蝕 {18%} 嘅總回報。"
+  answer: "$200K、18%"
+  explanation: "0.45% 看似細, 30 年複利後變 18% 嘅總回報, ETF 低費威力。"
+  difficulty: 3
+  tags: [calculation, application]

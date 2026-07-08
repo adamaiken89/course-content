@@ -1,0 +1,168 @@
+- id: '6.1'
+  question: What is the primary purpose of store encapsulation in Zustand?
+  options:
+    d: To hide internal implementation details so components depend on a stable public
+      API
+    a: To reduce the bundle size of the application
+    b: To prevent runtime errors from TypeScript type mismatches
+    c: To enforce immutability of all store state
+  answer: d
+  explanation: Store encapsulation creates a boundary between internal implementation
+    (private fields, cache, raw data) and the public API (selectors + actions). Components
+    depend on the stable public API, so internal refactors never break consumers.
+  difficulty: 1
+  tags:
+  - concept
+- id: '6.2'
+  question: What does the underscore prefix (`_`) convention signal in a Zustand store?
+  options:
+    b: The field is internal — components should not read it directly
+    a: The field is computed asynchronously
+    c: The field is deprecated and will be removed
+    d: The field is only available in development mode
+  answer: b
+  explanation: Fields prefixed with `_` are internal implementation details. The convention
+    signals that components should not read these fields directly. It is a team convention,
+    not enforced by Zustand or TypeScript at runtime.
+  difficulty: 1
+  tags:
+  - concept
+- id: '6.3'
+  question: A team has a store file with barrel export (index.ts). A component imports
+    `useSearchStore` from the raw store file instead of using barrel exports. What
+    is the best enforcement mechanism?
+  options:
+    b: Configure ESLint no-restricted-imports rule to block imports from */store.ts
+      outside store directory
+    a: Rename the store file so it is harder to find
+    c: Add a comment in the store file saying 'do not import directly'
+    d: Move the store definition into the barrel file
+  answer: b
+  explanation: Convention without enforcement is suggestion. ESLint's no-restricted-imports
+    blocks raw store imports at compile time. Code review and documentation help,
+    but lint rules provide automated enforcement.
+  difficulty: 2
+  tags:
+  - application
+  - pattern
+- id: '6.4'
+  question: 'You are refactoring a store: changing `_cache` from a plain object to
+    a `WeakMap`. The public selectors are unchanged. How many components should you
+    modify?'
+  options:
+    a: Zero — if public selectors are unchanged and components only use selectors
+    b: All components that import the store
+    c: All components that read `_cache` directly
+    d: All components that use the `useCache` selector
+  answer: a
+  explanation: 'If components only consume public selectors (which return the same
+    shape), the internal refactor is invisible. Zero component changes. This is the
+    value of encapsulation: internal changes decoupled from consumer code.'
+  difficulty: 1
+  tags:
+  - concept
+- id: '6.5'
+  question: A store has a field `isLoading` that both components (for showing spinners)
+    and internal actions (for gating retry logic) read. Where should `isLoading` be
+    categorized?
+  options:
+    c: Public — it serves dual purpose and both consumers read the same value
+    a: Internal — prefix with `_isLoading`
+    b: Split into `_isLoadingInternal` and `isLoadingPublic`
+    d: Store it in module-scoped state instead
+  answer: c
+  explanation: Encapsulation means components should not depend on fields that only
+    exist for internal bookkeeping. A field that serves both purposes is correctly
+    public. Components show spinners, actions check retry gates — both read the same
+    boolean.
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '6.6'
+  question: Which approach provides the strongest encapsulation for data that must
+    never reach components (e.g., WebSocket connection manager)?
+  options:
+    a: Store it as a module-scoped variable outside the create() callback
+    b: Store it as a `_` prefixed field in the Zustand store
+    c: Store it in React context
+    d: Store it in a ref inside a component
+  answer: a
+  explanation: Module-scoped variables are truly private — not part of the store type,
+    invisible in devtools, inaccessible via getState(). The `_` prefix is convention;
+    module scope is enforcement. Use for data that must never leak (connections, batches,
+    secrets).
+  difficulty: 2
+  tags:
+  - concept
+  - pattern
+- id: '6.7'
+  question: An OrderSummary component computes `total = subtotal - discount + tax`.
+    After refactoring, the store exposes `useCartTotal()` selector. What is the benefit?
+  options:
+    d: Component no longer knows discount rules, tax rates, or item structure — pricing
+      logic is centralized in the store
+    a: Component re-renders fewer times
+    b: TypeScript can infer the total type automatically
+    c: The discount logic runs faster in the store
+  answer: d
+  explanation: Moving computation to a selector encapsulates pricing logic. If discount
+    rules change, only the selector changes — all consuming components are unaffected.
+    The component's job is rendering, not implementing business rules.
+  difficulty: 2
+  tags:
+  - application
+  - concept
+- id: '6.8'
+  question: A test needs to verify that `processRawFeed` correctly filters archived
+    notifications. What is the best testing approach?
+  options:
+    b: Import the pure function directly and test it with various inputs
+    a: Render a React component with a mock store and check the DOM
+    c: Create a Zustand store with test data and call store.getState().processRawFeed()
+    d: Use end-to-end browser tests
+  answer: b
+  explanation: Pure functions are the most testable — no store, no React, no mocking.
+    `processRawFeed(raw)` takes input, returns output. Test with different raw data
+    shapes. This is faster, more isolated, and more reliable than testing through
+    the store or DOM.
+  difficulty: 1
+  tags:
+  - concept
+  - testing
+- id: '6.9'
+  question: A selector `useCartSummary` returns `{ subtotal, tax, total }`. Every
+    store change re-renders the component even when values are identical. What is
+    the fix?
+  options:
+    c: Use Zustand's `shallow` equality comparator on the selector
+    a: Move the selector into the component body
+    b: Add `useCallback` to the selector
+    d: Split the store into smaller stores
+  answer: c
+  explanation: The selector returns a new object reference each call, causing re-render.
+    `useStore(selector, shallow)` compares values instead of references. Alternatively,
+    split into individual primitive selectors (useSubtotal, useTax, useTotal) that
+    return stable numbers.
+  difficulty: 3
+  tags:
+  - application
+  - performance
+- id: '6.10'
+  question: Store v1 has `_rawApiResponse` as an internal field. Store v2 restructures
+    to use `_normalizedData` and removes `_rawApiResponse`. Components that use the
+    public API (selectors) are unaffected. What principle does this demonstrate?
+  options:
+    a: Internal state versioning without breaking consumers
+    b: Backwards compatibility through type coercion
+    c: Store migration via middleware
+    d: Lazy initialization of private fields
+  answer: a
+  explanation: When public selectors remain stable, internal state can be freely restructured
+    — renamed, removed, added. The public API contract (selector return types) is
+    the stability boundary. Internal state versioning is invisible to consumers who
+    only use selectors.
+  difficulty: 1
+  tags:
+  - concept
+

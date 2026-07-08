@@ -1,0 +1,45 @@
+- id: c.1
+  question: Router collapse 透過 {positive feedback loop} 發生：多啲 tokens → 多啲 updates
+    → 更好 expert → {多啲 tokens 被 route 去佢嗰度}。
+  answer: positive feedback loop / 多啲 tokens 被 route 去佢嗰度
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: 死咗嘅 expert 收到 {零} gradient 因為 router {從唔揀佢}，所以佢嘅 weights 永遠唔 update。
+  answer: 零 / 從唔揀佢
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: MoE 比 dense models 有更高 gradient {variance}，因為 token routing 係 {nondeterministic}
+    嘅，而且大部分 experts 每步得到 {zero gradient}。
+  answer: variance / nondeterministic / zero gradient
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: Router parameters 應該用 {較低} 嘅 learning rate 而唔係 expert parameters，以確保 {consistent
+    routing}。
+  answer: 較低 / consistent routing
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: High capacity factor（{cf > 1.0}）喺訓練初期提供更多 {per-expert tokens} 用嚟穩定 gradient
+    flow。
+  answer: cf > 1.0 / per-expert tokens
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: Auxiliary load balancing loss 初期應該 {高} 以保持穩定，然後喺 router 穩定後 {gradually
+    reduced}。
+  answer: 高 / gradually reduced
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: 將 router bias 初始化做 {細嘅負數} 令所有 experts 初期一樣吸引，防止早期 {imbalance}。
+  answer: 細嘅負數 / imbalance
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: Expert noise injection 喺訓練期間強制 {exploration}，有助於 {防止} expert 死亡。
+  answer: exploration / 防止
+  difficulty: 2
+  tags: []

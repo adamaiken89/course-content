@@ -1,0 +1,91 @@
+- id: '15.1'
+  question: MMLU 係設計嚟量度啲乜嘢？
+  options:
+    b: 橫跨 57 個科目嘅世界知識
+    a: Code generation 能力
+    c: 多輪對話質素
+    d: 安全性同無害性
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '15.2'
+  question: 喺 benchmark 評估入面，'saturation' 係咩意思？
+  options:
+    a: 模型接近天花板，benchmark 再分唔到高低
+    b: 模型訓練已經收斂咗
+    c: Benchmark 數據集太細
+    d: 評估需要太多運算
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '15.3'
+  question: 邊個方法檢測由訓練數據洩漏引致嘅 contamination？
+  options:
+    b: Perplexity 檢查——喺 benchmark 上 perplexity 低得可疑
+    a: 準確度檢查——準確度高得可疑
+    c: 延遲檢查——推論快得可疑
+    d: 記憶體檢查——模型細得可疑
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '15.4'
+  question: Expected Calibration Error (ECE) 量度啲乜？
+  options:
+    c: Model confidence 同實際準確度之間嘅 alignment
+    a: 模型訓練時校準需要幾耐
+    b: 收斂前嘅訓練步數
+    d: 推論時嘅記憶體用量
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '15.5'
+  question: 一個 well-calibrated 模型即係：
+  options:
+    d: 當模型話 80% 信心，佢大約 80% 時間係啱嘅
+    a: 模型準確度等於 100%
+    b: 模型永遠唔表達不確定性
+    c: 訓練 loss 已經收斂到最低
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '15.6'
+  question: LLM-as-Judge 評估係乜？
+  options:
+    a: 用強 LLM（例如 GPT-4）評價回應質素
+    b: 用人類專家評價 LLM 輸出
+    c: 等模型喺錦標賽入面比賽
+    d: 用單元測試驗證正確性
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '15.7'
+  question: LLM-as-Judge 評估入面一個已知嘅 bias 係：
+  options:
+    d: Position bias——偏好第一個或最後一個顯示嘅回應
+    a: 佢永遠偏好短啲嘅回應
+    b: 佢只能評估 code
+    c: 佢需要至少 1000 個回應先收斂
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '15.8'
+  question: LMSYS 嘅 Arena Elo 用咩嚟排模型名次？
+  options:
+    a: 嚟自 pairwise battles 嘅匿名人類偏好投票
+    b: 自動化 benchmark 分數
+    c: 模型喺 held-out data 上嘅 perplexity
+    d: 推論速度同效率
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '15.9'
+  question: 點解 benchmark 會跟 Release → Saturation → Replacement 嘅生命週期？
+  options:
+    c: 模型改善到接近天花板，降低咗區分能力
+    a: Benchmark 太貴 run
+    b: 研究人員對評估失去興趣
+    d: API 提供者棄用舊 benchmark
+  answer: c
+  difficulty: 2
+  tags: []
+

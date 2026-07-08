@@ -1,0 +1,150 @@
+- id: '9.1'
+  question: Which date library is tree-shakable and currently recommended for new
+    apps?
+  options:
+    c: date-fns
+    a: Day.js
+    b: Luxon
+    d: Moment.js
+  answer: c
+  explanation: date-fns is tree-shakable (import only functions you use), TypeScript-native,
+    immutable, and stable. Moment.js is deprecated. Day.js is mutable and not tree-shakable.
+    Luxon is larger bundle.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.2'
+  question: What is the recommended long-term strategy for date handling?
+  options:
+    b: Use date-fns now with adapter; add Temporal adapter when native browser support
+      ships (ES2025+)
+    a: Use Temporal immediately with polyfill
+    c: Never migrate — date-fns is future-proof
+    d: Use Moment.js — it still works
+  answer: b
+  explanation: Temporal is stage 4 and shipping in browsers 2025+. Start with date-fns
+    adapter. When Temporal is available, add Temporal adapter implementation. Polyfill
+    is too large for production.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.3'
+  question: How should user timezone preference be stored?
+  options:
+    b: IANA timezone string (e.g., Asia/Kolkata)
+    a: UTC offset (e.g., +05:30)
+    c: Numeric offset in hours
+    d: User's IP address — detect on every request
+  answer: b
+  explanation: IANA timezone string accounts for DST changes and historical timezone
+    changes. UTC offset does not handle DST. Detect via `Intl.DateTimeFormat().resolvedOptions().timeZone`.
+  difficulty: 1
+  tags:
+  - concept
+- id: '9.4'
+  question: JavaScript Date stores milliseconds since epoch (UTC). What goes wrong
+    when displayed directly?
+  options:
+    a: toString(), getHours(), getDate() use local timezone, not UTC — same Date shows
+      different times in different timezones
+    b: Nothing — Date always displays correctly
+    c: Date stores local time, not UTC
+    d: Date cannot be serialized
+  answer: a
+  explanation: Date.getTime() is UTC. But Date.toString(), getHours(), getDate() use
+    runtime local timezone. User in Tokyo sees different display than user in New
+    York for same Date object. Use timezone-aware formatting.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.5'
+  question: DateAdapter.format(date, 'yyyy-MM-dd') formats the same across date-fns,
+    Day.js, and Temporal?
+  options:
+    d: 'No — each library uses different pattern tokens (date-fns: yyyy-MM-dd, Day.js:
+      YYYY-MM-DD, Temporal: Intl)'
+    a: Yes — all use same pattern tokens
+    b: Pattern tokens are standardized
+    c: Only date-fns supports formatting
+  answer: d
+  explanation: date-fns uses Unicode token format (yyyy-MM-dd). Day.js uses Moment-style
+    tokens (YYYY-MM-DD). Temporal uses Intl.DateTimeFormat options. Adapter hides
+    these differences — consumers use adapter.format() with app-defined token format.
+  difficulty: 3
+  tags:
+  - comparison
+- id: '9.6'
+  question: Why is testing timezone logic difficult?
+  options:
+    a: Intl and Temporal use system timezone — mocking timezone requires environment-level
+      changes
+    b: Timezones cannot be tested
+    c: Timezone logic is always correct
+    d: Tests run in UTC only
+  answer: a
+  explanation: Timezone formatting depends on system locale and timezone. Use libraries
+    with injectable timezone (date-fns-tz formatInTimeZone, Temporal.TimeZone.from).
+    Tests set explicit timezone in function calls, not system timezone.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.7'
+  question: DatePickerAdapter maps between Date and picker library's date type. Why
+    is this needed?
+  options:
+    c: Date pickers accept different date objects (Dayjs, Moment, Luxon DateTime)
+    a: Date pickers do not accept JavaScript Date
+    b: Adapter improves performance
+    d: All date pickers accept Date natively
+  answer: c
+  explanation: MUI X DatePicker accepts Dayjs or date-fns date. AntD DatePicker accepts
+    Moment. React DatePicker accepts Date. DatePickerAdapter converts app's Date to
+    picker-specific type.
+  difficulty: 2
+  tags:
+  - application
+- id: '9.8'
+  question: A user schedules a meeting for 3 PM in New York. What should be stored?
+  options:
+    d: UTC timestamp + IANA timezone (America/New_York)
+    a: 3 PM as local time string
+    b: UTC timestamp only
+    c: Unix timestamp only
+  answer: d
+  explanation: Store UTC timestamp (absolute point in time) + IANA timezone (original
+    context). Timezone is needed to display '3 PM ET' and to convert to other timezones.
+    UTC alone loses original timezone context.
+  difficulty: 3
+  tags:
+  - application
+- id: '9.9'
+  question: DurationAdapter covers addDuration, formatDuration, humanized duration.
+    What makes formatDuration tricky across libraries?
+  options:
+    a: Libraries produce different output ('2 hours 30 minutes' vs '2h 30m' vs '150
+      minutes') — need locale-appropriate humanization
+    b: Duration formatting is standardized
+    c: Durations cannot be formatted
+    d: Only Day.js supports duration formatting
+  answer: a
+  explanation: formatDuration output varies by library and locale. date-fns formatDuration
+    returns '2 hours 30 minutes'. Day.js humanize returns '2 hours'. Temporal with
+    Intl returns locale-specific. Adapter standardizes output format.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.10'
+  question: When would you NOT abstract date library behind adapter?
+  options:
+    b: When app uses only Date.now() and simple toString()
+    a: When app is used globally with multiple timezones
+    c: When app performs complex calendar math
+    d: When app formats dates with user locale
+  answer: b
+  explanation: If app only uses Date.now() and toISOString() (no formatting, no timezone,
+    no calendar operations), abstraction is overhead. Add adapter when you call format,
+    add, diff, or timezone functions.
+  difficulty: 2
+  tags:
+  - concept
+

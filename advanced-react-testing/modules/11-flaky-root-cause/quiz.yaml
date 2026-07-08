@@ -1,0 +1,108 @@
+- id: '11.1'
+  question: What is the most common cause of flaky tests?
+  options:
+    b: Async timing issues — insufficient waiting for elements
+    a: Network failures in CI
+    c: Third-party library bugs
+    d: Test runner configuration
+  answer: b
+  explanation: 'Most flaky tests are timing-related: elements not rendered when assertion runs, async
+    calls not resolved. Using findBy and waitFor instead of arbitrary timeouts fixes most cases.'
+  difficulty: 1
+  tags:
+  - concept
+- id: '11.2'
+  question: What should replace `await new Promise(r => setTimeout(r, 2000))` in tests?
+  options:
+    b: await screen.findByText(/target/i) — wait for the actual element
+    a: jest.useFakeTimers() with advanceTimersByTime
+    c: A longer timeout
+    d: Remove the wait entirely
+  answer: b
+  explanation: findBy queries wait for elements to appear. They adapt to timing variations. Arbitrary
+    setTimeout assumes a fixed time, which varies between machines and CI.
+  difficulty: 1
+  tags:
+  - application
+- id: '11.3'
+  question: Test A adds an item to the cart store. Test B runs next and fails because the cart is not
+    empty. What is the root cause?
+  options:
+    a: State leakage — store not reset between tests
+    b: Test B has a bug
+    c: Tests should be run in a specific order
+    d: Cart store is broken
+  answer: a
+  explanation: Zustand stores are singletons. Test A's state persists into Test B. Reset all stores in
+    afterEach to prevent leakage.
+  difficulty: 1
+  tags:
+  - concept
+- id: '11.4'
+  question: A test passes locally every time but fails 50% in CI. What is the likely cause?
+  options:
+    c: CI runs faster/slower, exposing a timing race condition
+    a: Test runner version mismatch
+    b: Node version differs
+    d: Operating system differences
+  answer: c
+  explanation: CI machines have different performance characteristics. A timing assumption that works
+    locally (element renders in 200ms) may fail on slower CI. Use findBy for adaptive waits.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '11.5'
+  question: A test passes in isolation but fails when run with the full suite. What is the most likely
+    cause?
+  options:
+    a: Test order dependency — shared state modified by another test
+    b: Memory issues
+    c: Too many tests running in parallel
+    d: CPU throttling
+  answer: a
+  explanation: Tests that pass in isolation but fail in a suite almost always have shared state pollution.
+    Another test modifies a store, module mock, or global that this test depends on.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '11.6'
+  question: What does an act() warning indicate in a React test?
+  options:
+    d: A state update happened outside React's batching context — test may miss unflushed renders
+    a: The test uses act() incorrectly
+    b: React is about to crash
+    c: The component has a bug
+  answer: d
+  explanation: act() warnings mean a state update (setState, effect) fired outside act()'s batching. React
+    may have unflushed renders. The test might pass today but flake when timing changes.
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.7'
+  question: What is the correct response to an act() warning in a passing test?
+  options:
+    c: Fix the root cause (usually waiting for the async update with findBy/waitFor)
+    a: Suppress console.warn — the test passes, warning is noise
+    b: Add jest.retryTimes(3) — it will pass eventually
+    d: Ignore it — act() warnings are harmless
+  answer: c
+  explanation: 'act() warnings signal timing instability. Fixing them prevents future flakiness. The most
+    common fix: use `await screen.findByText()` instead of `screen.getByText()` to wait for state updates.'
+  difficulty: 2
+  tags:
+  - concept
+- question: Two test files mutate the same localStorage key. Each passes alone, fails together. Root cause
+    category?
+  options:
+    a: Network timing
+    b: Shared mutable state across tests — fix with per-test reset or unique keys
+    c: React version mismatch
+    d: Snapshot drift
+  answer: b
+  explanation: Order-dependent failures point to leaked shared state. Reset storage between tests or namespace
+    keys per test file.
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+  id: '11.8'

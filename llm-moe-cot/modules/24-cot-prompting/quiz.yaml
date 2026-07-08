@@ -1,0 +1,81 @@
+- id: '24.1'
+  question: Kojima 2022 報告用 zero-shot CoT 喺 MultiArith 上面嘅 accuracy 提升係幾多？
+  options:
+    b: ~17% → ~78%
+    a: ~50% → ~90%
+    c: ~10% → ~40%
+    d: Zero-shot CoT 比 direct 表現更差
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '24.2'
+  question: 點解 'Let's think step by step' 會觸發 reasoning behaviour？
+  options:
+    d: 佢激活模型嘅 training distribution 趨向 step-by-step solutions
+    a: 佢內部增加 temperature parameter
+    b: 佢繞過 tokenisation step
+    c: 佢令模型用更多 attention heads
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '24.3'
+  question: Auto-CoT 比起 manual few-shot CoT 嘅主要優勢係乜？
+  options:
+    c: 佢透過 clustering 自動揀 diverse exemplars
+    a: 佢生成更長嘅 reasoning chains
+    b: 佢完全消除 prompt sensitivity
+    d: 佢減少 50% token 用量
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '24.4'
+  question: 邊個因素通常導致 few-shot CoT 最大嘅 accuracy swing？
+  options:
+    d: Exemplar choice (20-40% swing)
+    a: Step granularity (5-15% swing)
+    b: Formatting (5-10% swing)
+    c: Trigger phrase (5-15% swing)
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '24.5'
+  question: Plan-and-Solve CoT 有兩個 stages。係邊兩個？
+  options:
+    a: Plan and solve
+    b: Generate and verify
+    c: Explore and exploit
+    d: Reason and act
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '24.6'
+  question: Self-consistency 點樣改善 accuracy？
+  options:
+    a: Sampling 多個 CoT paths 然後對答案做 majority voting
+    b: Fine-tune 喺正確嘅 reasoning paths 上面
+    c: 用更大嘅模型嚟做 verification
+    d: 增加 temperature 嚟鼓勵 exploration
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '24.7'
+  question: 將 CoT 應用喺新 task 嘅建議第一步係乜？
+  options:
+    b: 試 zero-shot CoT 用 'Let's think step by step'
+    a: 收集 100 個 exemplars 做 few-shot
+    c: Train 一個 PRM
+    d: 建立一個 Tree-of-Thoughts search
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '24.8'
+  question: 點解 exemplar order 喺 few-shot CoT 入面咁重要？
+  options:
+    c: Autoregressive generation 嘅 primacy/recency bias 影響學到嘅 pattern
+    a: Order 決定咗邊個 training data 被載入
+    b: 模型淨係可以 attend 到第一個 exemplar
+    d: Order 改變咗完整 prompt 嘅 tokenisation
+  answer: c
+  difficulty: 2
+  tags: []
+

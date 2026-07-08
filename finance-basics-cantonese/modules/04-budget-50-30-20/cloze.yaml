@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "50/30/20 規則: 50% {Needs} + 30% {Wants} + 20% {儲蓄}。"
+  answer: "Needs、Wants、儲蓄"
+  explanation: "由 Harvard 教授 Elizabeth Warren 提出, 簡單預算法。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "預算唔係 {慳錢/限制}, 係 {知道錢去咗邊}。"
+  answer: "慳錢/限制、知道錢去咗邊"
+  explanation: "預算 = 預先分配收入, 唔係限制使錢。50/30/20 預留 30% 畀 wants。"
+  difficulty: 1
+  tags: [concept, misconception]
+
+- id: "c.3"
+  question: "分辨 Needs 同 Wants 嘅方法: 「{冇咗會唔會即刻出問題?}」會 = Need, 唔會 = Want。"
+  answer: "冇咗會唔會即刻出問題?"
+  explanation: "Example: 「我需要 Starbucks」— 唔係, 你需要咖啡因, 茶可代。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.4"
+  question: "「先 {pay 自己}」意思係出糧後即時將儲蓄部分 {自動轉賬} 去獨立戶口, 然後先使剩低。"
+  answer: "pay 自己、自動轉賬"
+  explanation: "自動化儲蓄, 確保一定做到, 唔係「用到最後先儲」。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.5"
+  question: "你月入 $30,000, 跟 50/30/20, 儲蓄金額 = ${6,000}。"
+  answer: "6,000"
+  explanation: "30,000 × 20% = 6,000。"
+  difficulty: 2
+  tags: [calculation]
+
+- id: "c.6"
+  question: "當 actual needs 超過 50% (e.g. 75%), 唔係 {放棄 50/30/20}, 應該 {解決 root cause: 搬屋/煮飯/交通}。"
+  answer: "放棄 50/30/20、解決 root cause: 搬屋/煮飯/交通"
+  explanation: "50/30/20 係 reference, 唔係死規則。Actual 偏離太多反映生活成本過高, 要解決根本原因。"
+  difficulty: 3
+  tags: [scenario, application]
+
+- id: "c.7"
+  question: "零基預算每月需要 {30-60 分鐘} 計劃, 比 50/30/20 嘅 {5 分鐘} 失敗率 {高}。"
+  answer: "30-60 分鐘、5 分鐘、高"
+  explanation: "自動化 + 簡單規則先可持續。零基預算太花時間, 失敗率高。"
+  difficulty: 2
+  tags: [concept, comparison]
+
+- id: "c.8"
+  question: "預算追蹤最低門檻方法: {信用卡月結單} + 簡單 {spreadsheet}。"
+  answer: "信用卡月結單、spreadsheet"
+  explanation: "月結單已分類, 只需 add 關鍵字同計總和。"
+  difficulty: 1
+  tags: [concept, application]
+
+- id: "c.9"
+  question: "Wants 30% 包括: {外食、旅行、訂閱、娛樂、新衫} 等「想要」但非必要嘅嘢。"
+  answer: "外食、旅行、訂閱、娛樂、新衫"
+  explanation: "Wants 係「想要」非必要; Needs 係「冇咗即刻出問題」嘅嘢。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.10"
+  question: "預算「{恰好用晒 wants 30%}」反映 wants 預算太緊, 應根據 {lifestyle} 調整比例。"
+  answer: "恰好用晒 wants 30%、lifestyle"
+  explanation: "預算係 reference, 唔係死規則, 要根據實際彈性調整 (e.g. 25/35/20)。"
+  difficulty: 3
+  tags: [scenario, application]

@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: JSpecify annotations are {blank} so they attach to a specific type position rather than a whole declaration."
+  answer: "type-use"
+  explanation: "Type-use placement lets nullness compose with generic arguments and array dimensions"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: Spring Framework 7 and Boot 4 deprecated the org.springframework.lang annotations in favor of {blank}."
+  answer: "org.jspecify.annotations"
+  explanation: "The JSpecify package carries Nullable, NonNull, NullMarked and NullUnmarked as the new null contract"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: Under JSpecify the annotation sits {blank} the modifier and immediately before the return type."
+  answer: "after"
+  explanation: "The migrated form writes public Nullable Account rather than placing the annotation before the type name"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Complete: Adding {blank} to package-info.java makes every type in that package non-null by default."
+  answer: "@NullMarked"
+  explanation: "The package marker inverts the default so Nullable becomes the explicit opt-out"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.5"
+  question: "Complete: A package without @NullMarked is {blank} rather than non-null, so tooling stays conservative."
+  answer: "unspecified"
+  explanation: "Unspecified is distinct from non-null and gives checkers no assumption to rely on"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Complete: NullAway runs inside the {blank} compiler plugin to fail builds on nullability violations."
+  answer: "Error Prone"
+  explanation: "NullAway is a check within Error Prone and is wired in through the compiler annotation processor paths"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "Complete: Kotlin compilers treat JSpecify as the {blank} of truth for null safety and fail the build on mismatches."
+  answer: "source"
+  explanation: "A nullable Java return maps to the nullable Kotlin type and the Kotlin build rejects any non-null assignment"
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.8"
+  question: "Complete: A record canonical constructor parameter can carry {blank} so the generated accessor may return null."
+  answer: "@Nullable"
+  explanation: "Type-use nullness on the component flows through the accessor as the declared contract"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.9"
+  question: "Complete: Optional is the right return when the caller is expected to compose absence with {blank} and flatMap."
+  answer: "map"
+  explanation: "Container semantics chain absence through map and flatMap while a plain Nullable return fits a one-off lookup"
+  difficulty: 3
+  tags: [comparison]
+
+- id: "c.10"
+  question: "Complete: NullAway forbids dereferencing {blank} fields inside constructors, so assign from the constructor parameter instead."
+  answer: "@Nullable"
+  explanation: "Reading a nullable field inside a constructor is a NullAway error and the parameter-driven pattern avoids it"
+  difficulty: 3
+  tags: [concept]

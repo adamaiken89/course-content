@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "The encoder class that emits structured events as JSON is {blank}, and fixed dimensions such as service and env are injected through {blank}."
+  answer: "LogstashEncoder, customFields"
+  explanation: "LogstashEncoder serializes log events to JSON, and customFields adds the fixed service and env dimensions to every line."
+  difficulty: 1
+  tags: [structured-logging]
+
+- id: "c.2"
+  question: "A {blank} is put into the MDC by a filter and removed in a {blank} block so threads are not contaminated across requests."
+  answer: "trace_id, finally"
+  explanation: "The filter stamps trace_id into the MDC and removes it in finally so pooled threads never leak context into the next request."
+  difficulty: 1
+  tags: [mdc, correlation]
+
+- id: "c.3"
+  question: "The HEC appender posts events using the configured {blank} and {blank}, buffering them into batches."
+  answer: "url, token"
+  explanation: "The URL points at the HEC endpoint on port 8088, and the token authenticates the stream; batch settings group events for transport."
+  difficulty: 1
+  tags: [hec]
+
+- id: "c.4"
+  question: "To count events per level the search is index=checkout {blank} followed by stats count by {blank}."
+  answer: "sourcetype=app_json, level"
+  explanation: "The sourcetype scopes the stream to structured app events, then stats count by level groups them by severity."
+  difficulty: 1
+  tags: [spl]
+
+- id: "c.5"
+  question: "When structured fields are missing in Splunk, check that the {blank} encoder is applied and the appender uses messageFormat={blank}."
+  answer: "LogstashEncoder, json"
+  explanation: "LogstashEncoder produces the JSON and messageFormat=json preserves it through the HEC transport; both are required for fields to appear."
+  difficulty: 2
+  tags: [structured-logging, diagnostics]
+
+- id: "c.6"
+  question: "An alert on error rate computes errs with a conditional count of ERROR events and compares the ratio against {blank} grouped {blank}."
+  answer: "a threshold, by endpoint"
+  explanation: "Grouping by endpoint with a per-endpoint threshold isolates the failing service so one bad deploy does not page for every endpoint."
+  difficulty: 2
+  tags: [alerts]
+
+- id: "c.7"
+  question: "The dashboard shows total {blank} in a single-value panel, requests by {blank} in a timechart, and top {blank} in a table."
+  answer: "errors, status, exceptions"
+  explanation: "Single-value summarizes error count, the timechart shows status distribution over time, and the table ranks the most frequent exceptions."
+  difficulty: 2
+  tags: [dashboards]
+
+- id: "c.8"
+  question: "The alert search window should be {blank} or longer than the {blank} or events are skipped between runs."
+  answer: "equal to, schedule interval"
+  explanation: "A window shorter than the schedule samples only part of the data; matching or exceeding it covers every interval."
+  difficulty: 2
+  tags: [alerts, scheduling]
+
+- id: "c.9"
+  question: "On Kubernetes, log structured events to {blank} and let a {blank} own the HEC transport configuration."
+  answer: "stdout, collector"
+  explanation: "Collector-based shipping keeps the token and URL in cluster config, decoupling the app image from transport details."
+  difficulty: 3
+  tags: [architecture, kubernetes]
+
+- id: "c.10"
+  question: "The acceptance order is: emit {blank} logs, stamp a {blank} per request, ship via {blank}, then verify with SPL."
+  answer: "structured JSON, trace_id, HEC"
+  explanation: "Structured emit gives queryable fields, trace_id gives correlation, HEC gives transport, and SPL verifies fields, time, and latency."
+  difficulty: 3
+  tags: [pipeline, capstone]

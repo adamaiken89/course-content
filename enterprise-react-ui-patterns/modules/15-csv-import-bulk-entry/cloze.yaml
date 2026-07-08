@@ -1,0 +1,54 @@
+- id: "c.151"
+  question: "`split(',')` is not CSV parsing — {quoted} commas, `\"\"` escapes, embedded newlines, CRLF, and the BOM all break it."
+  answer: "quoted"
+  explanation: "A real parser honors quoting; naive splits mis-file rows silently."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.152"
+  question: "Columns `Program Code`, `program code`, and `PROGRAM CODE` all map to one key via {header} normalization."
+  answer: "header"
+  explanation: "Lowercase/strip/empty-pass normalization keeps legacy headers from becoming lost columns."
+  difficulty: 1
+  tags: [process, terminology]
+- id: "c.153"
+  question: "A cell leading with `=`, `+`, `-`, or `@` is {formula} injection — rejected at parse, reported by row."
+  answer: "formula"
+  explanation: "Spreadsheet operators are expression triggers; rejection beats echoing a neutralized half."
+  difficulty: 2
+  tags: [terminology, security]
+- id: "c.154"
+  question: "Inbound cells must be rendered by React's default {escaping}, never dangerouslySetInnerHTML."
+  answer: "escaping"
+  explanation: "Default escaping renders hostile bytes as text; innerHTML parses them as executable DOM."
+  difficulty: 1
+  tags: [concept, security]
+- id: "c.155"
+  question: "Each import row lands in a per-row {verdict} — never all-or-nothing, never a silent abort."
+  answer: "verdict"
+  explanation: "One malformed grade routes to the error lane while the rest stage; honesty per row."
+  difficulty: 2
+  tags: [concept]
+- id: "c.156"
+  question: "Import errors are categorized with source {row} numbers and downloadable as a fix-and-reimport CSV."
+  answer: "row"
+  explanation: "Actionable reports locate the line in the source file so the user closes the loop."
+  difficulty: 2
+  tags: [process, terminology]
+- id: "c.157"
+  question: "Valid import rows {stage} into the draft store, tagged source import, indistinguishable from manual drafts."
+  answer: "stage"
+  explanation: "Mapping through the same zod schema makes imported and hand-typed drafts one type."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "c.158"
+  question: "The staged drafts live in the draft store and the query {cache} stays untouched until the engine commits."
+  answer: "cache"
+  explanation: "Staging is client truth; only the batch engine's success invalidates server views."
+  difficulty: 2
+  tags: [comparison]
+- id: "c.159"
+  question: "Re-importing the same file is deduplicated by a stable per-draft {fingerprint}; writes dedupe by the engine's runId+itemId."
+  answer: "fingerprint"
+  explanation: "Same intake twice is one intake; reconciliation machinery generalizes in m17."
+  difficulty: 3
+  tags: [concept, process]

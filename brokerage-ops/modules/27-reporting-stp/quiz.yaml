@@ -1,0 +1,120 @@
+- id: '27.1'
+  question: A brokerage's post-trade STP rate is 88%. What is the most reasonable interpretation of this number?
+  options:
+    a: 88% of trades were successful; 12% failed
+    b: 88% of trades completed from execution to settlement fully automatically; 12% required some manual intervention
+    c: The brokerage used 88% of available system capacity
+    d: 88% of clients chose auto-settlement
+  answer: b
+  explanation: STP Rate = (Automated Trades ÷ Total Trades) × 100%. 88% means 12% of trades had manual intervention. World-class is >95%; below 85% indicates excessive ops cost.
+  difficulty: 1
+  tags:
+  - concept
+- id: '27.2'
+  question: What is the main difference between FINRA's OATS and CAT for institutional trades?
+  options:
+    a: OATS applies to fixed income; CAT applies to equities
+    b: They are functionally identical — just different names
+    c: OATS tracks the order journey from entry to execution; CAT is a more comprehensive audit trail including end-client account attribution
+    d: OATS is managed by NSCC; CAT is managed by DTC
+  answer: c
+  explanation: OATS is order-level tracking of the full journey. CAT covers orders plus account info and attribution to end clients, aiming to replace OATS and multiple blue sheet requests. Both are FINRA/SEC systems.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '27.3'
+  question: FINRA's TRACE covers post-trade reporting for which asset class?
+  options:
+    a: Fixed income — corporate bonds, municipal bonds, ABS
+    b: US equities
+    c: Options
+    d: FX spot
+  answer: a
+  explanation: TRACE (FINRA) covers fixed income post-trade reporting on T+1 (some T+0). OATS and CAT cover equity and option order audit trails.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '27.4'
+  question: What does STP (Straight-Through Processing) mean in post-trade?
+  options:
+    a: Only settlement is automated
+    b: Only allocation is automated
+    c: Manual approval is required at every step
+    d: The complete flow — allocation → affirmation → clearing → settlement — completes without manual intervention
+  answer: d
+  explanation: STP means the entire post-trade lifecycle runs end-to-end automatically. Any manual touchpoint lowers the STP rate.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '27.5'
+  question: What is the world-class institutional brokerage STP rate benchmark?
+  options:
+    a: 100%
+    b: '>95%'
+    c: 85–95%
+    d: '<85%'
+  answer: b
+  explanation: 'Industry benchmarks: world class >95% (top-tier), good 85–95% (most large brokerages), needs improvement <85% (excessive manual intervention and cost).'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '27.6'
+  question: Which is a legitimate reason a trade cannot fully STP?
+  options:
+    a: An allocation engine bug — any manual touchpoint reflects a system design problem
+    b: STP is banned for institutional clients
+    c: A first-time new account that has no settlement instruction template yet
+    d: No trade can ever be STP'd
+  answer: c
+  explanation: First-time accounts, complex cross-border trades needing manual confirmation, temporary account info changes, and special compliance approvals are legitimate manual touchpoints. Unreasonable intervention (allocation bugs, unsynchronized master data) reflects system design problems.
+  difficulty: 2
+  tags:
+  - concept
+- id: '27.7'
+  question: 'An ops lead says: "STP rate 94% is above the 90% target — the 3 failed allocations are negligible." What is wrong with this?'
+  options:
+    a: 94% is actually below the target
+    b: Failed allocations carry real cost — buy-in risk, penalty fees, labor hours, client complaints — and in the T+1 era there is no buffer day to fix them
+    c: Failed allocations genuinely do not matter
+    d: STP rate should always be 100%
+  answer: b
+  explanation: The 3 fails carry buy-in risk, penalties, labor hours and client complaints, and T+1 gives no buffer day to fix them. STP should be tracked by risk-weighted failure count, not just a headline percentage.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '27.8'
+  question: 'NSCC''s nightly trade comparison batch finds 5 trades unmatched, even though affirmation completed earlier that day. What is the most likely cause?'
+  options:
+    a: The NSCC network was down
+    b: The venue matched at the wrong price
+    c: The client cancelled after affirming
+    d: CTM uses the client''s internal account ID while NSCC uses DTC participant numbers — the cross-reference table is not synchronized
+  answer: d
+  explanation: This is a classic inter-system reconciliation problem — a time lag or mapping error between the CTM affirmation platform and NSCC. If the account-ID cross-reference is not synchronized, affirmation succeeds but NSCC cannot match.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '27.9'
+  question: Which is a common cause of STP failure?
+  options:
+    a: A very high STP rate
+    b: Allocation instruction format errors or expired account IDs
+    c: Too much automation in the flow
+    d: Excess liquidity on the exchange
+  answer: b
+  explanation: Common STP failure causes include allocation format errors/expired account IDs, uncompleted affirmation, settlement instruction mismatch (DVP/RVP flag, custodian code), and cross-market instruction translation errors.
+  difficulty: 2
+  tags:
+  - concept
+- id: '27.10'
+  question: What is the timing requirement for CAT (Consolidated Audit Trail) reporting?
+  options:
+    a: Annual
+    b: Weekly
+    c: Real-time plus T+1
+    d: On request only
+  answer: c
+  explanation: CAT covers all NMS stocks and options with real-time plus T+1 reporting via the CAT Reporter Portal API. OATS is same-day via the FINRA web interface; TRACE is T+1 (some T+0).
+  difficulty: 2
+  tags:
+  - concept

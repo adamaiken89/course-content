@@ -1,0 +1,130 @@
+- id: '10.1'
+  question: What is the standard FFN structure inside a transformer block?
+  options:
+    d: up_proj → activation → down_proj
+    a: down_proj → activation → up_proj
+    b: activation → up_proj → down_proj
+    c: up_proj → down_proj → activation
+  answer: d
+  explanation: 'FFN: up-projection (d_model → d_ff) → activation (nonlinearity) →
+    down-projection (d_ff → d_model). Activation breaks linearity of two stacked transforms.'
+  difficulty: 2
+  tags: []
+- id: '10.2'
+  question: What problem does GELU solve that ReLU does not?
+  options:
+    a: ReLU causes dying neurons — gradients of zero for negative inputs
+    b: ReLU is too expensive to compute
+    c: ReLU doesn't work with layer normalization
+    d: ReLU only works for encoder models
+  answer: a
+  explanation: 'Dying ReLU: weights push pre-activation negative → output 0 → gradient
+    0 → permanent silence. GELU has nonzero gradient everywhere.'
+  difficulty: 2
+  tags: []
+- id: '10.3'
+  question: 'SwiGLU uses 3 matrices: W_gate, W_value, W_down. Standard FFN uses 2:
+    W₁, W₂. How does Llama keep total FFN parameters equal?'
+  options:
+    d: Reduce d_ff to ~2/3 of standard
+    a: Use larger d_model instead
+    b: Add extra attention heads
+    c: Remove bias terms
+  answer: d
+  explanation: 'Standard: 2 × d_model × 4d_model = 8d_model² params. SwiGLU: 3 × d_model
+    × (8/3)d_model = 8d_model². d_ff ≈ 2.67× d_model instead of 4×.'
+  difficulty: 2
+  tags: []
+- id: '10.4'
+  question: What does the FFN act as, according to Geva et al. (2021)?
+  options:
+    a: Key-value memory
+    b: Positional encoding
+    c: Attention controller
+    d: Output normalizer
+  answer: a
+  explanation: Up-projection stores key patterns. Down-projection stores value outputs.
+    Each neuron activates when input matches its key pattern. ~5-10% of neurons fire
+    per input.
+  difficulty: 2
+  tags: []
+- id: '10.5'
+  question: A model has d_model=4096, d_ff=11008 (standard FFN). What fraction of
+    layer FLOPs is FFN (assume seq=2048)?
+  options:
+    b: ~67%
+    a: ~25%
+    c: ~50%
+    d: ~85%
+  answer: b
+  explanation: 'FFN: 2 × 4096 × 11008 = 90M FLOPs. Attention: QKV (3×4096²) + score
+    (2×2048×4096) + output (4096²) ≈ 50M + 16M + 16M = 68M. FFN: 90M/(68M+90M) ≈ 57%
+    — closer to 2/3 for longer seq where d_ff dominates.'
+  difficulty: 2
+  tags: []
+- id: '10.6'
+  question: Which activation function is used by LLaMA 2 and LLaMA 3?
+  options:
+    b: SwiGLU
+    a: ReLU
+    c: GELU
+    d: GeGLU
+  answer: b
+  explanation: LLaMA family uses SwiGLU (Swish-gated FFN). SwiGLU was published by
+    Shazeer (2020) and adopted by LLaMA, PaLM, and Mistral.
+  difficulty: 2
+  tags: []
+- id: '10.7'
+  question: Switching from SwiGLU to standard ReLU FFN at same parameter count. What
+    is the expected effect?
+  options:
+    a: Worse perplexity — SwiGLU's gating is empirically superior
+    b: Better perplexity — ReLU is well-studied
+    c: No change — activation function doesn't affect quality
+    d: Training becomes impossible
+  answer: a
+  explanation: SwiGLU's multiplicative gating enables conditional computation. Empirically
+    ~1.5-2× training efficiency vs standard ReLU FFN at same param count.
+  difficulty: 2
+  tags: []
+- id: '10.8'
+  question: What percentage of FFN neurons typically activate (non-negligible output)
+    for a given input?
+  options:
+    b: 5-10%
+    a: 40-50%
+    c: 80-90%
+    d: 100%
+  answer: b
+  explanation: FFN activation is sparse. ~5-10% of d_ff neurons fire significantly
+    for any input. Each neuron acts as an 'expert' detecting a specific pattern.
+  difficulty: 2
+  tags: []
+- id: '10.9'
+  question: You train a 7B LLM. After 30k steps, 15% of FFN neurons output exactly
+    0 for all inputs. Which activation did you likely use, and what should you change?
+  options:
+    c: ReLU — switch to GELU or SwiGLU
+    a: GELU — switch to ReLU
+    b: SwiGLU — reduce d_ff
+    d: GeGLU — reduce d_model
+  answer: c
+  explanation: 'Dying ReLU: 15% dead rate is classic symptom. Switch to GELU (smooth,
+    no dead neurons) or SwiGLU (gated, also smooth).'
+  difficulty: 2
+  tags: []
+- id: '10.10'
+  question: A student says FFN is less important than attention because FFN 'just
+    adds nonlinearity'. What is wrong with this reasoning?
+  options:
+    c: FFN consumes ~2/3 of FLOPs and stores factual knowledge as key-value memory
+    a: Nothing — attention truly does the hard work
+    b: FFN decides which tokens to attend to
+    d: FFN is only needed during training, not inference
+  answer: c
+  explanation: FFN dominates compute (~2/3 FLOPs), stores knowledge (key-value memory),
+    and removing FFN hurts quality more than removing attention at moderate sequence
+    lengths. It is not a helper — it is primary computation.
+  difficulty: 2
+  tags: []
+

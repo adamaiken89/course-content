@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "The domain core states what it needs through plain Java interfaces such as OrderRepository, PaymentGateway, and Clock — these named contracts are {ports}."
+  answer: "ports"
+  explanation: "Ports are interfaces owned by the core and named for what it needs. Adapters implement them, so the core never names a concrete technology."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Boot fits the pattern naturally because Spring resolves adapter beans into core services through constructor {injection}, leaving the core free of annotations."
+  answer: "injection"
+  explanation: "Constructor injection sends adapter beans into plain core constructors - the same wiring style from module 01 - so the core carries no @Autowired or field annotations."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.3"
+  question: "When tests pass a Map-backed repository and a fixed Clock to new PricingService(...), they are using in-memory {test doubles} standing in for the real adapters."
+  answer: "test doubles"
+  explanation: "Test doubles implement a port in memory so rule tests run at CPU speed. The core cannot tell a double from the JPA bean - that blindness is the payoff."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.4"
+  question: "The JPA adapter converts a persisted entity back into the domain Order through a {mapper}, so no persistence annotation ever reaches the core."
+  answer: "mapper"
+  explanation: "The mapper lives inside the adapter and translates between the JPA entity and the plain domain model. It is part of the cost of the pattern worth weighing."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "A port interface with exactly one implementation, no test double, and thin logic is not architecture - it is {decoration}."
+  answer: "decoration"
+  explanation: "The interface merely mirrors its single implementation. A port earns its cost from a real second implementation, a test double, or framework churn."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "A rules-heavy pricing engine is the case that pays for the hexagon, while a five-table admin CRUD is the case to {skip} it."
+  answer: "skip"
+  explanation: "Thin rules with one persistence implementation fit a transactional script. Mapping and wiring cost more than the benefit - YAGNI says introduce ports only when a second implementation appears."
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.7"
+  question: "Modularization governs compile-time structure, while ports and adapters govern {runtime} dependency direction - the two are orthogonal and complementary."
+  answer: "runtime"
+  explanation: "Modularization fixes which classes may import which at compile time; the hexagon fixes which way dependencies point at runtime. A module boundary can host a port with its adapters."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.8"
+  question: "Dependency inversion means high-level policy no longer imports low-level detail; both depend on the {interface} the core names."
+  answer: "interface"
+  explanation: "Both the core policy and the adapter detail implement or call the same port interface. That shared dependency is what lets the core run against any implementation."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.9"
+  question: "Spring sits at the {edge} of the hexagon - adapter beans are wired into a core that would build and run with plain new in a plain test."
+  answer: "edge"
+  explanation: "The framework is an outer concern. Because the core depends only on ports, a test can construct services without a Spring context, a database, or the network."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.10"
+  question: "Moving from Postgres to another database for an order service replaces only the {adapter}; the core and its ports never change."
+  answer: "adapter"
+  explanation: "Each technology gets its own adapter behind the same port. Swapping vendors is swapping one adapter implementation - the reason the pattern shines under framework churn."
+  difficulty: 3
+  tags: [comparison]

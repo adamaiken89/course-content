@@ -1,0 +1,132 @@
+- id: '10.1'
+  question: What makes scripted skills different from flexible (LLM-only) skills?
+  options:
+    a: Scripted skills produce deterministic output, same input → same output
+    b: Scripted skills are slower
+    c: Scripted skills cannot run bash commands
+    d: Scripted skills use more tokens
+  answer: a
+  explanation: Scripts are deterministic. LLM instructions are interpreted fresh each
+    time. Scripts for reliability, LLM for judgment.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.2'
+  question: Why is `npm test || true` considered bad practice?
+  options:
+    b: It silently swallows test failures
+    a: It runs tests twice
+    c: True is not a valid command
+    d: It only runs npm, not tests
+  answer: b
+  explanation: '`|| true` suppresses the exit code. Test failures are hidden from
+    caller. Always fail loud on check failures.'
+  difficulty: 1
+  tags:
+  - concept
+- id: '10.3'
+  question: What does it mean for a script to be idempotent?
+  options:
+    a: Running multiple times with same state produces same result
+    b: Runs exactly once
+    c: Cannot be stopped once started
+    d: Only runs on Fridays
+  answer: a
+  explanation: 'Idempotent: safe to re-run. Same starting state → same ending state.
+    No cumulative side effects.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.4'
+  question: Which is GOOD log output for a deploy script?
+  options:
+    d: '[deploy] Env: staging, Commit: abc123. Build: ✅ (34s). Tests: ✅ (142/142).
+      Deploy: ✅.'
+    a: Running deploy...
+    b: Doing stuff...
+    c: Command executed
+  answer: d
+  explanation: 'Good logs: prefix, inputs, step results, metrics, final status. Enables
+    debugging without re-running.'
+  difficulty: 1
+  tags:
+  - application
+- id: '10.5'
+  question: A script's primary path fails with transient error. What fallback pattern?
+  options:
+    c: Retry once, then escalate if still failing
+    a: Exit immediately
+    b: Ignore and continue
+    d: Delete all files
+  answer: c
+  explanation: Retry once for transient failures. If still fails, escalate (log +
+    exit). Don't silently continue if step is critical.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '10.6'
+  question: What is the purpose of dry-run mode in a script?
+  options:
+    d: Prints what it WOULD do without side effects
+    a: Makes script run faster
+    b: Runs in a different programming language
+    c: Deletes test files
+  answer: d
+  explanation: Dry-run = preview mode. Shows intended changes without executing them.
+    Essential for testing destructive operations.
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.7'
+  question: Which is MOST commonly skipped in quality checklist?
+  options:
+    b: Edge case testing (empty input, missing files)
+    a: Dry-run mode
+    c: Idempotency check
+    d: Dependency documentation
+  answer: b
+  explanation: Edge cases are most commonly skipped. Script works on happy path but
+    crashes on empty directory, missing file, or network timeout.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '10.8'
+  question: A script running on CI fails with 'file not found.' What should logs contain?
+  options:
+    b: Expected file path, search locations tried, current working directory, permissions
+    a: Error occurred
+    c: File not found. Try again.
+    d: Something went wrong
+  answer: b
+  explanation: Good error logs include what was expected, what was checked, and runtime
+    context (cwd, permissions). Enough info to fix without re-running.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '10.9'
+  question: A config file is optional. Script doesn't find it. What should happen?
+  options:
+    a: Use defaults, log warning, continue
+    b: Script crashes
+    c: Create empty config file
+    d: Ask user for input
+  answer: a
+  explanation: Optional file = fallback to defaults. Log warning so user knows default
+    was used. Don't crash for optional dependencies.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '10.10'
+  question: What does the 'human escape hatch' in quality checklist mean?
+  options:
+    c: Override flags (--force, --skip) so human can bypass checks if needed
+    a: Script cannot be stopped by human
+    b: Script notifies human after completion
+    d: Human must approve each step
+  answer: c
+  explanation: 'Override flags let humans bypass checks in exceptional situations.
+    Critical for production: sometimes you need to force-deploy despite warnings.'
+  difficulty: 3
+  tags:
+  - concept
+

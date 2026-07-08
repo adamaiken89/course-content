@@ -1,0 +1,128 @@
+- id: '10.1'
+  question: Where should filters, sort, and page for a tracker grid live?
+  options:
+    a: In a component's useState
+    b: In the URL search params
+    c: In a hidden global variable
+    d: In a config file
+  answer: b
+  explanation: View state is positional and shareable — the URL survives refresh and gives back-button semantics.
+  difficulty: 1
+  tags:
+  - concept
+  - scenario
+- id: '10.2'
+  question: A reviewer types a filter, reloads the page, and the view resets to default. What's missing?
+  options:
+    d: A better caching layer for rows
+    a: Filters serialized into the URL
+    b: A faster sort algorithm
+    c: LocalStorage for the filter input
+  answer: a
+  explanation: Component memory dies on reload; URL params rehydrate the view from the address itself.
+  difficulty: 1
+  tags:
+  - scenario
+- id: '10.3'
+  question: What should happen to the page param when a filter changes?
+  options:
+    c: It resets to page 1
+    d: It stays wherever it was
+    a: It doubles
+    b: It is removed permanently
+  answer: c
+  explanation: Keeping page 8 while filtering a different universe produces wrong or empty results.
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '10.4'
+  question: Which is the correct query-key design for the grid?
+  options:
+    c: Key by the returned rows JSON
+    d: 'Key by view identity: page, filters, sort'
+    a: Key by component mount count
+    b: One constant key for all views
+  answer: d
+  explanation: Keying by identity lets the cache reuse views (back-button = cache hit); keying by result defeats caching.
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '10.5'
+  question: Why does selection need a cross-screen store instead of grid-local useState?
+  options:
+    d: It avoids TypeScript generics
+    a: The batch bar and batch review consume the selected ids elsewhere
+    b: It makes the grid render faster
+    c: Local state cannot hold Sets
+  answer: a
+  explanation: Selection is cross-screen intent consumed by the batch bar (m14); the ledger survives navigation.
+  difficulty: 2
+  tags:
+  - scenario
+  - comparison
+- id: '10.6'
+  question: Select all labeled 'all 3,000 matching' selects only 50 visible ids. What is the core mistake?
+  options:
+    a: The Set is incorrectly sorted
+    b: It implemented select-visible, not select-all-matching
+    c: The ids are strings not numbers
+    d: Nothing — 50 is the correct count
+  answer: b
+  explanation: Select-all-matching needs the server's total-match count; selecting mounted rows is a different operation.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '10.7'
+  question: Which tool keeps the search input responsive while the grid renders a lagged filter?
+  options:
+    a: useMemo
+    b: useCallback
+    c: useDeferredValue
+    d: useLayoutEffect
+  answer: c
+  explanation: useDeferredValue renders the expensive list with a lagged value, so typing never competes with the grid.
+  difficulty: 2
+  tags:
+  - formula
+  - react-19
+- id: '10.8'
+  question: A heavy filter tab swap must not block interaction. Which React 19 API applies?
+  options:
+    a: useTransition
+    b: useSyncExternalStore
+    c: useImperativeHandle
+    d: createPortal
+  answer: a
+  explanation: useTransition wraps the swap in a transition so the update renders non-blockingly with an isPending flag.
+  difficulty: 2
+  tags:
+  - formula
+  - react-19
+- id: '10.9'
+  question: Pushing every keystroke of 'program=Co...' into history breaks the back button. What pattern pairs with typing?
+  options:
+    d: Replace instead of push on intermediate states
+    a: Flush all states into one giant param
+    b: Disable history entirely
+    c: Queue pushes in a ref
+  answer: d
+  explanation: Initial interaction pushes; intermediate rapid states replace so history records user intent, not keystroke noise.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '10.10'
+  question: Where does the row data for the tracker belong?
+  options:
+    d: In the selection zustand store
+    a: In the URL
+    b: In the query cache, keyed by view
+    c: In a module-level mutable array
+  answer: b
+  explanation: Row data is server-derived; the query cache (m12) owns it. zustand is for client-authored cross-screen intent.
+  difficulty: 1
+  tags:
+  - concept

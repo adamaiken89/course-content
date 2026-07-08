@@ -1,0 +1,54 @@
+- id: "c.111"
+  question: "Virtualization renders only the rows in the viewport plus {overscan}, keeping the DOM a window onto the data."
+  answer: "overscan"
+  explanation: "A few hidden rows stay mounted so fast scrolling doesn't flash blank."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.112"
+  question: "A {spacer} of items.length × itemH makes the scrollbar match all rows while only the window is mounted."
+  answer: "spacer"
+  explanation: "Without it the scrollbar represents the window, not the dataset."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.113"
+  question: "Row {memoization} protects rows from re-rendering, but requires stable props — inline callbacks break it."
+  answer: "memoization"
+  explanation: "memo compares props by reference; a fresh closure identity defeats equality every render."
+  difficulty: 2
+  tags: [concept]
+- id: "c.114"
+  question: "The window's rows are positioned with an absolute top equal to startIndex × {itemH}."
+  answer: "itemH"
+  explanation: "Translation lines the window slice up with the spacer so scroll position maps to data."
+  difficulty: 2
+  tags: [formula]
+- id: "c.115"
+  question: "`{useDeferredValue}` on the search input decouples keystroke responsiveness from the heavy list render."
+  answer: "useDeferredValue"
+  explanation: "The input renders with the fresh value while the list follows with the deferred one."
+  difficulty: 1
+  tags: [terminology, react-19]
+- id: "c.116"
+  question: "A fixed `.slice(0, N)` produces a {fetch}, not a window — scrolling past N shows blank."
+  answer: "fetch"
+  explanation: "Real windows derive from scrollTop and translate; fixed slices ignore the scrollbar."
+  difficulty: 2
+  tags: [concept]
+- id: "c.117"
+  question: "Benchmark ratios matter more than absolutes because hardware differs while the order-of-magnitude {gap} transfers."
+  answer: "gap"
+  explanation: "A 50× mount-time difference holds across machines; single-second numbers don't."
+  difficulty: 2
+  tags: [concept]
+- id: "c.118"
+  question: "The React Compiler automates {memoization} but cannot reduce DOM node count — virtualization stays architectural."
+  answer: "memoization"
+  explanation: "Compiler handles caching derived renders, not windowing the DOM."
+  difficulty: 2
+  tags: [comparison]
+- id: "c.119"
+  question: "A DOM of ~60,000 nodes explains the ~120 {MB} memory figure versus ~8 MB virtualized."
+  answer: "MB"
+  explanation: "Unmounted rows carry no DOM or vdom — node count is memory pressure."
+  difficulty: 1
+  tags: [scenario]

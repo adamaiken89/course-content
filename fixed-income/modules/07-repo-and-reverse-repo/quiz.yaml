@@ -1,0 +1,142 @@
+- id: '7.1'
+  question: 'In a repo transaction, the borrower:'
+  options:
+    d: Receives cash and delivers collateral
+    a: Lends cash and receives collateral
+    b: Buys a bond outright
+    c: Issues new debt
+  answer: d
+  explanation: Repo borrower sells security today (delivers collateral), receives
+    cash, repurchases later at higher price.
+  difficulty: 1
+  tags:
+  - terminology
+  - repo
+- id: '7.2'
+  question: 'Haircut of 5% on $50M collateral means cash lent is:'
+  options:
+    a: $47.5M
+    b: $50M
+    c: $52.5M
+    d: $45M
+  answer: a
+  explanation: Haircut = (collateral - cash) / collateral. Cash = 50M × (1-0.05) =
+    $47.5M.
+  difficulty: 1
+  tags:
+  - calculation
+  - repo
+- id: '7.3'
+  question: 'Special repo rate below GC rate indicates:'
+  options:
+    c: Specific security in high demand (short sellers)
+    a: General funding shortage
+    b: Central bank intervention
+    d: Market stress
+  answer: c
+  explanation: 'Special rate: short-sellers need specific bond → lend cash at below-GC
+    rate to borrow that bond.'
+  difficulty: 2
+  tags:
+  - terminology
+  - repo
+- id: '7.4'
+  question: Which typically has the HIGHEST repo haircut?
+  options:
+    b: High yield corporate bonds
+    a: Treasuries
+    c: Agency MBS
+    d: TIPS
+  answer: b
+  explanation: 'HY corporates: higher price volatility, lower liquidity → higher haircut
+    (10-20%). Treasuries: lowest (0.5-2%).'
+  difficulty: 2
+  tags:
+  - terminology
+  - risk
+- id: '7.5'
+  question: 'Tri-party repo involves:'
+  options:
+    b: Third-party agent managing collateral and settlement
+    a: Three bond issuers
+    c: Three different currencies
+    d: Central bank, dealer, hedge fund
+  answer: b
+  explanation: 'Tri-party: bank (BNY/JPM) handles collateral valuation, margin, settlement.
+    Reduces operational friction.'
+  difficulty: 2
+  tags:
+  - terminology
+  - mechanics
+- id: '7.6'
+  question: A 10% haircut on $200M collateral position means borrower puts up how
+    much equity?
+  options:
+    d: $20M
+    a: $10M
+    b: $30M
+    c: $200M
+  answer: d
+  explanation: Borrower equity = collateral × haircut = $200M × 10% = $20M. Borrows
+    $180M, puts up $20M.
+  difficulty: 2
+  tags:
+  - calculation
+  - leverage
+- id: '7.7'
+  question: Collateral value falls below loan amount. What happens?
+  options:
+    a: 'Margin call: borrower must post additional collateral or cash'
+    b: Nothing — repo is fixed
+    c: Loan is forgiven
+    d: Lender keeps collateral
+  answer: a
+  explanation: Repo marked to market daily. Collateral decline → margin call. Borrower
+    adds cash/securities or faces default.
+  difficulty: 2
+  tags:
+  - scenario
+  - mechanics
+- id: '7.8'
+  question: Hedge fund borrows $80M in repo against $100M collateral. Haircut?
+  options:
+    c: 20%
+    a: 10%
+    b: 25%
+    d: 80%
+  answer: c
+  explanation: Haircut = (100-80)/100 = 20%. Fund puts up $20M equity.
+  difficulty: 2
+  tags:
+  - calculation
+  - leverage
+- id: '7.9'
+  question: 'Private bank client: ''My bond fund repo financing cost rose suddenly.''
+    Most likely?'
+  options:
+    a: GC repo rate spiked due to quarter-end reserve shortage
+    b: Fed cut rates
+    c: Bond fund credit rating improved
+    d: Collateral value increased
+  answer: a
+  explanation: 'Quarter-end: bank balance sheet constraints → repo rates spike (e.g.,
+    2019 repo spike). GC rate directly impacts financing cost.'
+  difficulty: 3
+  tags:
+  - scenario
+  - private-bank
+- id: '7.10'
+  question: 'SOFR replaced LIBOR as repo benchmark because:'
+  options:
+    b: SOFR is based on actual repo transactions (not estimated)
+    a: SOFR is higher than LIBOR
+    c: LIBOR was too volatile
+    d: SOFR includes unsecured lending
+  answer: b
+  explanation: SOFR = Secured Overnight Financing Rate. Based on actual Treasury repo
+    transactions. LIBOR was estimated and manipulation-prone.
+  difficulty: 2
+  tags:
+  - terminology
+  - benchmarks
+

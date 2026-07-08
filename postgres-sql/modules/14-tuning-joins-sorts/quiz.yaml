@@ -1,0 +1,110 @@
+- id: "14.1"
+  question: "Best join node when the outer input is 20 rows and the inner join key is indexed?"
+  options:
+    a: "Nested Loop"
+    b: "Hash Join"
+    c: "Merge Join"
+    d: "Sort Merge Scan"
+  answer: a
+  explanation: "Tiny outer × index probe on inner gives ~20 probes; building any hash or sort outweighs it."
+  difficulty: 1
+  tags: [concept]
+- id: "14.2"
+  question: "What does a Hash Join need from its inputs?"
+  options:
+    a: "both inputs fully sorted on the join key"
+    b: "an index on the inner table"
+    c: "a hash key and enough memory (work_mem) for the build"
+    d: "a bitmap over the probe side"
+  answer: c
+  explanation: "Hash builds a table for one side then probes; no sorting or index required, but spills if the build exceeds memory."
+  difficulty: 2
+  tags: [concept]
+- id: "14.3"
+  question: "When does Merge Join appear in a plan?"
+  options:
+    a: "an index exists on the outer join key only"
+    b: "both inputs arrive already sorted on the join key"
+    c: "the query has no equality predicate"
+    d: "the work_mem has been raised above 1GB"
+  answer: b
+  explanation: "Merge consumes two sorted streams lock-step; sort nodes appear unless an index supplies order."
+  difficulty: 2
+  tags: [comparison]
+- id: "14.4"
+  question: "Default work_mem value in PostgreSQL?"
+  options:
+    a: "1MB"
+    b: "8MB"
+    c: "16MB"
+    d: "4MB"
+  answer: d
+  explanation: "Default is 4MB per sort/hash operation — small, so heavy joins spill unless raised."
+  difficulty: 1
+  tags: [terminology]
+- id: "14.5"
+  question: "EXPLAIN (ANALYZE, BUFFERS) shows 'Hash Batches: 16' and Buffers: temp read on the hash node. Primary fix?"
+  options:
+    a: "raise work_mem for the query or session"
+    b: "disable hash join"
+    c: "increase max_connections"
+    d: "add a covering index on the probe side"
+  answer: a
+  explanation: "Batches > 1 means the build spilled to temp files; a bigger per-op work_mem keeps it in RAM."
+  difficulty: 3
+  tags: [scenario]
+- id: "14.6"
+  question: "What core benefit gives Bitmap Heap Scan over plain Index Scan?"
+  options:
+    a: "reads rows in sorted tuple order"
+    b: "avoids the planner entirely"
+    c: "dedups heap pages so each page is fetched once"
+    d: "skips the visibility map"
+  answer: c
+  explanation: "The index scan marks a bitmap of pages; the heap scan then fetches each touched page a single time."
+  difficulty: 2
+  tags: [concept]
+- id: "14.7"
+  question: "Parallel full joins became possible in which PostgreSQL?"
+  options:
+    a: "PG15"
+    b: "PG17"
+    c: "PG13"
+    d: "PG16"
+  answer: d
+  explanation: "PostgreSQL 16 added parallelism to hash joins and nested-loop joins."
+  difficulty: 1
+  tags: [comparison]
+- id: "14.8"
+  question: "Incremental Sort was introduced in which release?"
+  options:
+    a: "PG17"
+    b: "PG13"
+    c: "PG10"
+    d: "PG19"
+  answer: b
+  explanation: "PG13 (Vondra). PG17 later improved it; it is not a PG17-new feature."
+  difficulty: 3
+  tags: [comparison]
+- id: "14.9"
+  question: "enable_presorted_aggregate (PG16+) lets the planner sort only which part of an aggregation?"
+  options:
+    a: "the hash buckets"
+    b: "the outer join keys"
+    c: "the grouping keys before DISTINCT or ORDER BY aggregates"
+    d: "the LIMIT window"
+  answer: c
+  explanation: "Presorts only the distinct/order-by aggregate inputs instead of a full top-level sort."
+  difficulty: 3
+  tags: [concept]
+- id: "14.10"
+  question: "ORDER BY created_at DESC, id LIMIT 20 with index (created_at DESC, id DESC). Which plan node is absent?"
+  options:
+    a: "Sort"
+    b: "Index Scan"
+    c: "Limit"
+    d: "Index Only Scan"
+  answer: a
+  explanation: "The index walk returns rows already in the requested order, so no Sort node is added."
+  difficulty: 2
+  tags: [concept, scenario]

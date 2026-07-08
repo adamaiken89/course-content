@@ -1,0 +1,69 @@
+- id: c.1
+  question: The accounting equation states that assets equal {blank} plus equity.
+  answer: liabilities
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: On the income statement, {blank} is calculated as revenue minus cost of
+    goods sold.
+  answer: gross profit
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: The {blank} shows a company's financial position at a single point in
+    time, listing assets, liabilities, and equity.
+  answer: balance sheet
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: Cash flow from {blank} includes activities like issuing stock, repaying
+    debt, and paying dividends.
+  answer: financing
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: Return on equity is calculated as net income divided by average shareholders'
+    {blank}.
+  answer: equity
+  difficulty: 2
+  tags:
+  - formula
+- id: c.6
+  question: When actual earnings differ from analyst consensus estimates, this is
+    called an earnings {blank}.
+  answer: surprise
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.7
+  question: The {blank} ratio measures a company's ability to pay short-term obligations,
+    calculated as current assets divided by current liabilities.
+  answer: current
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.8
+  question: Under the {blank} principle, revenue is recorded when earned, not when
+    cash is received.
+  answer: revenue recognition
+  difficulty: 2
+  tags:
+  - concept
+- id: c.9
+  question: A company with debt-to-equity ratio of 2.0 has {blank} as much debt as
+    equity.
+  answer: twice
+  difficulty: 2
+  tags:
+  - formula
+- id: c.10
+  question: Net income after tax appears at the bottom of the income statement and
+    is also called the {blank}.
+  answer: bottom line
+  difficulty: 3
+  tags:
+  - terminology

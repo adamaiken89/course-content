@@ -1,0 +1,59 @@
+- id: c.1
+  question: CoT 將複雜問題{decompose}成多個{簡單步驟}，逐步 solve 每個步驟，最後{combine}答案。
+  answer: decompose，簡單步驟，combine
+  explanation: 呢個係 CoT 嘅核心機制 — 將大問題拆細。
+  difficulty: 1
+  tags:
+  - process
+- id: c.2
+  question: Zero-shot CoT 最出名嘅 prompt 係「{Let's think step by step}」。
+  answer: Let's think step by step
+  explanation: 就係咁簡單 — 一句 prompt 就大幅提升 reasoning accuracy。
+  difficulty: 1
+  tags:
+  - scenario
+- id: c.3
+  question: CoT 唔係{真 reasoning}，而係{pattern matching}嘅一種 sophisticated form。
+  answer: 真 reasoning，pattern matching
+  explanation: 呢個 critical perspective 好重要 — CoT look like reasoning 但唔係。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.4
+  question: Self-consistency：同一問題問{多次}，每個有唔同{reasoning path}，然後{majority vote}揀最 common
+    答案。
+  answer: 多次，reasoning path，majority vote
+  explanation: Multiple reasoning paths → more robust answer。
+  difficulty: 2
+  tags:
+  - process
+- id: c.5
+  question: CoT 最危險係{convincing but wrong} — steps 睇落合理但 final answer 錯。
+  answer: convincing but wrong
+  explanation: 呢個係 CoT 嘅最大陷阱 — 因為 steps 合理，用家會信任錯誤嘅 final answer。
+  difficulty: 3
+  tags:
+  - concept
+- id: c.6
+  question: Zero-shot CoT 唔係次次 work，所以有{Few-shot CoT} — 俾 2-3 個「問題 + 逐步思考 + 答案」嘅{例子}，
+    然後問新問題。
+  answer: Few-shot CoT，例子
+  explanation: Few-shot 俾模型示範想要嘅 reasoning format，令 CoT 更 reliable。
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.7
+  question: CoT 改變咗模型嘅「{thinking budget}」— 俾更多 tokens 去 generate{intermediate steps}，每一步嘅
+    conditional probability 更準確。
+  answer: thinking budget，intermediate steps
+  explanation: CoT 唔改變 weights，但俾更多空間俾 pattern matching 去 work properly。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: 用 CoT 唔可以{guarantee}答案正確 — 佢提升準確率，但唔係萬能。
+  answer: guarantee
+  explanation: CoT 降低錯誤機會但唔保證啱，尤其係 steps 睇落合理但 final answer 錯嗰種情況。
+  difficulty: 1
+  tags:
+  - concept

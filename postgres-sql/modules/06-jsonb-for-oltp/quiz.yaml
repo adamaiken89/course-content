@@ -1,0 +1,110 @@
+- id: "6.1"
+  question: "Which Postgres type is parsed, deduplicated, and indexable?"
+  options:
+    a: "json"
+    b: "jsonb"
+    c: "text"
+    d: "xml"
+  answer: b
+  explanation: "jsonb parses input, removes duplicate keys, sorts them, and stores a binary tree; it is the only one of the two that supports GIN indexes."
+  difficulty: 1
+  tags: [terminology]
+- id: "6.2"
+  question: "What does the `->>` operator return when applied to a jsonb value?"
+  options:
+    a: "jsonb"
+    b: "text"
+    c: "integer"
+    d: "a postgres array"
+  answer: b
+  explanation: "`->>` extracts the value as text; `->` keeps it as jsonb. Cast text values explicitly before numeric comparison."
+  difficulty: 1
+  tags: [terminology]
+- id: "6.3"
+  question: "Which pair of functions is the best way to find rows where the jsonb `attrs` column contains key `color` with value `blue` at the top level?"
+  options:
+    a: "`?` + `->>`"
+    b: "`#>#`"
+    c: "`->` + `@>`"
+    d: "merge operator ||"
+  answer: a
+  explanation: "`attrs ? 'color'` checks existence and `attrs ->> 'color' = 'blue'` checks the value; alternatively `attrs @> '{\"color\": \"blue\"}'` does both in one containment test."
+  difficulty: 2
+  tags: [application]
+- id: "6.4"
+  question: "Which GIN operator class supports the existence operator `?` on jsonb?"
+  options:
+    a: "jsonb_ops"
+    b: "jsonb_path_ops"
+    c: "gin_trgm_ops"
+    d: "both classes equally"
+  answer: a
+  explanation: "jsonb_ops (default) indexes keys, values, and pairs, so `?` works. jsonb_path_ops indexes whole paths only and drops `?` support (but is faster for `@>`)."
+  difficulty: 1
+  tags: [concept]
+- id: "6.5"
+  question: "An analyst runs `WHERE attrs @> '{\"price\": 100}'` and finds nothing, though a row clearly has price 100. What explains it?"
+  options:
+    a: "The GIN index is stale"
+    b: "`@>` requires exact nested structure matching"
+    c: "jsonb drops the price key"
+    d: "`@>` only works on arrays"
+  answer: b
+  explanation: "`@>` is strict containment: the target must appear with identical key nesting. If price lives under a nested object, the flat test fails even when the value is present."
+  difficulty: 2
+  tags: [scenario]
+- id: "6.6"
+  question: "Which jsonpath operator returns true if *any* element of an array path matches the filter?"
+  options:
+    a: "@@"
+    b: "->>"
+    c: "@?"
+    d: "?|"
+  answer: c
+  explanation: "`@?` asks 'does any item match the pattern'. `@@` requires the whole-document predicate to hold."
+  difficulty: 1
+  tags: [concept]
+- id: "6.7"
+  question: "Why does a GIN index NOT speed up `WHERE (attrs ->> 'price')::numeric < 100`?"
+  options:
+    a: "GIN is disabled by default"
+    b: "GIN indexes membership and containment, not numeric range scans"
+    c: "The extract makes a non-sargable left-hand side"
+    d: "Both b and c"
+  answer: d
+  explanation: "GIN cannot produce a value ordering, and the function on the extracted value further blocks range planning. Promote price to a real numeric column with a B-tree index."
+  difficulty: 2
+  tags: [comparison]
+- id: "6.8"
+  question: "A report scans `attrs ->> 'family'` on every row. Which construct lets you index the extraction?"
+  options:
+    a: "A generated column holding the extracted value"
+    b: "A GIN index on the whole attrs column"
+    c: "A partial index on a boolean"
+    d: "It cannot be indexed under any design"
+  answer: a
+  explanation: "A STORED (or virtual) generated column materializes the extraction as a real column, which you can index with a plain B-tree and ANALYZE to get a histogram."
+  difficulty: 2
+  tags: [application]
+- id: "6.9"
+  question: "Both `attrs @> '{\"a\": 1}'` and `attrs @@ '$.a == 1'` can answer the same question. What is the deciding factor between them?"
+  options:
+    a: "Syntax preference only; behavior identical"
+    b: "@@ supports index use on both operator classes, `@>` only on jsonb_ops"
+    c: "@> is strict containment, `@@` is a path-expression predicate"
+    d: "@@ cannot be used in WHERE"
+  answer: c
+  explanation: "`@>` matches exact structure; `@@` evaluates a jsonpath predicate against the document. GIN indexes both under jsonb_ops, so choose by expressiveness."
+  difficulty: 2
+  tags: [comparison]
+- id: "6.10"
+  question: "For a catalog where every product shares the same ten stable typed keys, which storage choice is best?"
+  options:
+    a: "One jsonb column with a GIN index"
+    b: "Named relational columns, indexes on the hot ones"
+    c: "jsonb plus one huge generated column"
+    d: "Serialize the row to text"
+  answer: b
+  explanation: "When keys are stable, typed, and filtered, relational columns give type safety, integrity, histograms, and range scans. Reserve JSONB for genuinely sparse or rapidly changing attributes."
+  difficulty: 3
+  tags: [scenario]

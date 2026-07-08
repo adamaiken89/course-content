@@ -1,0 +1,129 @@
+- id: '16.1'
+  question: 'Near transfer refers to applying knowledge to:'
+  options:
+    a: A context very similar to the learning context
+    b: A completely different domain
+    c: No context at all
+    d: Only theoretical problems
+  answer: a
+  explanation: Near transfer = similar context. Far transfer = different context. Zero transfer = no application.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '16.2'
+  question: Why do students often fail to transfer math skills from symbolic equations to word problems?
+  options:
+    b: Surface features differ even though the structure is the same
+    a: Word problems are harder
+    c: Symbolic equations are not math
+    d: Word problems use different operations
+  answer: b
+  explanation: Surface features (apples, cars, money) hide the underlying structure (linear equation).
+    Students don't recognize the equation.
+  difficulty: 2
+  tags:
+  - concept
+- id: '16.3'
+  question: Which practice strategy produces the BEST transfer?
+  options:
+    c: 10 different surface contexts with the same underlying structure
+    a: Same problem repeated 10 times
+    b: Studying the theory only
+    d: 10 different structures in the same surface context
+  answer: c
+  explanation: Varied practice with diverse surface features teaches the learner to recognize the structure
+    under different appearances.
+  difficulty: 2
+  tags:
+  - application
+- id: '16.4'
+  question: 'Transfer-appropriate processing means:'
+  options:
+    d: Memory is better when cognitive operations at test match those at study
+    a: Transfer happens automatically
+    b: Processing should be shallow
+    c: Only near transfer is important
+  answer: d
+  explanation: Match between encoding and retrieval operations improves performance. Study format should
+    match test format.
+  difficulty: 2
+  tags:
+  - concept
+- id: '16.5'
+  question: 'A student studies for a multiple-choice test by practicing free recall. This is a:'
+  options:
+    a: Mismatch — free recall uses different cognitive operations than recognition
+    b: Good match — recall is harder than recognition
+    c: Perfect strategy
+    d: Both formats produce the same learning
+  answer: a
+  explanation: 'Transfer-appropriate processing: multiple-choice tests recognition, not recall. However,
+    recall practice produces deeper learning overall — the tradeoff is worth it.'
+  difficulty: 3
+  tags:
+  - scenario
+- id: '16.6'
+  question: 'Analogical reasoning transfers knowledge by:'
+  options:
+    b: Mapping structural relationships from a familiar domain to an unfamiliar one
+    a: Memorizing surface features
+    c: Ignoring structure entirely
+    d: Repeating analogies without understanding
+  answer: b
+  explanation: Analogy finds structural alignment between source and target domains, transferring the
+    relational framework.
+  difficulty: 2
+  tags:
+  - concept
+- id: '16.7'
+  question: 'An artist learns color theory for painting and applies it to digital design. This is:'
+  options:
+    c: Far transfer — different medium, same underlying principles
+    a: Zero transfer
+    b: Near transfer
+    d: Negative transfer
+  answer: c
+  explanation: Painting and digital design have different surface features but share the structural principles
+    of color theory.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '16.8'
+  question: Which mechanism does NOT explain why transfer often fails?
+  options:
+    d: Overlearning
+    a: Context-dependent encoding
+    b: Surface features obscuring structure
+    c: Insufficient varied practice
+  answer: d
+  explanation: Overlearning (continued practice beyond mastery) actually helps transfer. The others all
+    impair transfer.
+  difficulty: 3
+  tags:
+  - concept
+- id: '16.9'
+  question: 'Comparing two problems side by side and identifying their structural similarity is called:'
+  options:
+    a: Analogical comparison
+    b: Blocked practice
+    c: Massed practice
+    d: Highlighting
+  answer: a
+  explanation: Comparing cases highlights shared structure and separates it from surface features — key
+    for transfer.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '16.10'
+  question: 'The ultimate goal of all learning strategies taught in this course is:'
+  options:
+    b: Transfer — using knowledge in new situations
+    a: Higher test scores
+    c: Faster reading
+    d: Better note-taking
+  answer: b
+  explanation: Transfer is the practical goal of learning. Knowledge that can't be used outside the study
+    context is incomplete.
+  difficulty: 1
+  tags:
+  - concept

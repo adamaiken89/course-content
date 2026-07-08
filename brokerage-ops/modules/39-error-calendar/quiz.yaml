@@ -1,0 +1,126 @@
+- id: '39.1'
+  question: A TRACE amendment is submitted with reason code 105. What does this code indicate?
+  options:
+    a: Late trade reporting — the original report was not submitted on time
+    b: Administrative error — wrong CUSIP or price
+    c: Counterparty error
+    d: Cancelled trade agreed by both parties
+  answer: a
+  explanation: "TRACE amendment reason code 105 is late trade reporting. Codes: 101 administrative, 102 trade side, 103 counterparty, 104 allocation, 105 late reporting, 201 cancelled trade, 202 trade break."
+  difficulty: 1
+  tags:
+  - terminology
+- id: '39.2'
+  question: What is the time limit for correcting a missing event in a CAT report without additional justification?
+  options:
+    a: End of T+0 same day
+    b: Within 30 days
+    c: No time limit
+    d: T+3 calendar days
+  answer: d
+  explanation: CAT allows T+3 calendar days for corrections without additional justification. Beyond T+3, a late correction must include a reason for the delay. The 24/7 window allows amendment at any time, but T+3 is the no-explanation window.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '39.3'
+  question: An ops team argues that because the CAT correction window is 24/7, correcting a data error two weeks later does not matter. What is wrong with this reasoning?
+  options:
+    a: CAT rejects corrections after T+1
+    b: CAT accepts corrections any time, but the T+3 correction benchmark still applies — late corrections are data-quality errors that draw escalating fines
+    c: Corrections are not allowed after trade date
+    d: CAT has no correction mechanism
+  answer: b
+  explanation: CAT accepts corrections any time through the 24/7 window, but the T+3 correction benchmark still applies. Late corrections are data-quality errors that draw escalating fines, so timing still matters.
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+- id: '39.4'
+  question: A broker discovers 30 TRACE reports from yesterday had incorrect CUSIPs due to a corrupted system mapping table. How should the error be handled?
+  options:
+    a: Single administrative error — correct each one individually
+    b: No action needed — TRACE does not support amendments
+    c: Systemic material error — pause the feed, submit corrections, notify FINRA compliance, and fix the root cause
+    d: Cancel all trades and re-report from scratch
+  answer: c
+  explanation: "A corrupted mapping table is a systemic control failure, not a one-off human error. Required: pause the TRACE feed, submit corrections for all 30 trades, notify the FINRA compliance contact, fix the mapping table, and review why validation did not catch it."
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '39.5'
+  question: How are material versus administrative errors handled differently in the error workflow?
+  options:
+    a: Material errors get immediate fixes plus regulator notification; administrative errors follow the standard amendment window
+    b: Both are corrected at the next quarterly review
+    c: Administrative errors require immediate regulator notification
+    d: Material errors can wait for the normal amendment cycle
+  answer: a
+  explanation: The severity workflow routes material errors to immediate fix plus regulator notification, while administrative errors go through the standard amendment window. Either way, root cause analysis follows.
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '39.6'
+  question: Which TRACE amendment reason code indicates a full trade break (cancellation) agreed by both parties?
+  options:
+    a: '101'
+    b: '104'
+    c: '105'
+    d: '202'
+  answer: d
+  explanation: Reason code 202 is a trade break (full cancellation). Code 201 is a cancelled trade agreed by both parties, 104 is an allocation error, and 105 is late trade reporting.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '39.7'
+  question: Why does FINRA impose significantly higher fines for systemic errors than for isolated human errors?
+  options:
+    a: Systemic errors are always larger in dollar amount
+    b: Systemic errors reflect control and governance failures — lack of monitoring, validation, and prevention mechanisms
+    c: Human errors are never fined
+    d: FINRA only fines firms over $1B in assets
+  answer: b
+  explanation: Systemic errors reflect control failures — the broker lacks proper monitoring, validation, and prevention. FINRA views this as governance failure. The penalty structure incentivizes investment in reporting infrastructure rather than accepting fines as a cost of doing business.
+  difficulty: 2
+  tags:
+  - concept
+- id: '39.8'
+  question: Which FINRA TRACE violation carries the most severe penalty tier?
+  options:
+    a: Late TRACE (15 min - 1 hr)
+    b: Late TRACE (> 1 hr)
+    c: Missed TRACE
+    d: CAT data quality errors
+  answer: c
+  explanation: Missed TRACE is the most severe — first violation $5,000-25,000 escalating to $500,000+ for severe or systemic cases. Late TRACE within an hour starts as a letter of caution, and CAT data quality errors carry their own lower tier.
+  difficulty: 1
+  tags:
+  - terminology
+  - comparison
+- id: '39.9'
+  question: Which of the following appears on a quarterly regulatory reporting cadence?
+  options:
+    a: SEC Rule 606 order routing report and SEC Rule 605 execution quality report
+    b: TRACE corporate bond reports
+    c: FINRA Rule 4560 short interest report
+    d: Large Trader Form 13H update
+  answer: a
+  explanation: Rule 606 order routing and Rule 605 execution quality reports are quarterly. TRACE bond reports are daily (15-minute window), Rule 4560 short interest is monthly, and Form 13H is updated annually.
+  difficulty: 2
+  tags:
+  - terminology
+  - comparison
+- id: '39.10'
+  question: A broker submits an amended report for a trade with an error. What does a complete audit trail require?
+  options:
+    a: Replace the original report entirely so only the corrected version exists
+    b: Submit the amendment without referencing the original
+    c: Delete the original record from internal books
+    d: Retain the original report plus the amendment — with reference ID, changed fields, reason, and time
+  answer: d
+  explanation: The original report plus the amendment forms the complete audit trail. The amendment must carry the reference ID, changed fields, reason, and time. Intentional false submission violates SEC Rule 10b-5.
+  difficulty: 3
+  tags:
+  - scenario
+  - concept

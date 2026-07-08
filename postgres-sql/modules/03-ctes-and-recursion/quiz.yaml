@@ -1,0 +1,119 @@
+- id: "3.1"
+  question: In PostgreSQL 12+, what happens to a simple CTE that is referenced exactly once?
+  options:
+    a: it is always materialized into a temp table
+    b: it is inlined like a subquery by default
+    c: it is cached and reused across statements
+    d: it raises a warning
+  answer: b
+  explanation: Since PG12 the planner inlines single-use CTEs, enabling condition pushdown; MATERIALIZED forces separate materialization.
+  difficulty: 1
+  tags: [concept]
+
+- id: "3.2"
+  question: Which keyword forces a CTE to be computed once into a stored intermediate and never inlined?
+  options:
+    a: NOT MATERIALIZED
+    b: CACHED
+    c: TEMP
+    d: MATERIALIZED
+  answer: d
+  explanation: MATERIALIZED (PG12+) runs the CTE once and stores a temp result, at the cost of blocking condition pushdown.
+  difficulty: 1
+  tags: [terminology]
+
+- id: "3.3"
+  question: A data-modifying CTE (INSERT ... RETURNING) is always materialized. Why?
+  options:
+    a: to save memory
+    b: because its side effects must run exactly once
+    c: because RETURNING needs parallel workers
+    d: to make EXPLAIN simpler
+  answer: b
+  explanation: A data-modifying CTE has side effects, so it must execute exactly once — inlining could duplicate or drop it.
+  difficulty: 2
+  tags: [concept]
+
+- id: "3.4"
+  question: In a recursive CTE, what stops the recursion from repeating forever?
+  options:
+    a: the recursive term inlines into the main query
+    b: the base term is always empty
+    c: the recursive term eventually produces zero new rows
+    d: a LIMIT in the base term
+  answer: c
+  explanation: Recursion repeats the recursive term; when it yields no new rows it terminates — optionally with early cut at a depth/cycle guard.
+  difficulty: 2
+  tags: [concept]
+
+- id: "3.5"
+  question: Walking a referral graph where cycles exist, which clause is REQUIRED to prevent infinite recursion?
+  options:
+    a: CYCLE
+    b: SEARCH
+    c: MATERIALIZED
+    d: GROUPING
+  answer: a
+  explanation: CYCLE records visited keys and cuts re-visits; without it cyclic data recurses until a limit is hit.
+  difficulty: 2
+  tags: [terminology]
+
+- id: "3.6"
+  question: "Scenario: the base term of a RECURSIVE query returns a single root row; each recursive round expands one edge. Which SQL best expresses a walk for all descendants?"
+  options:
+    a: LEFT JOIN with the recursive name on the right
+    b: join the recursive name to itself for depth times
+    c: JOIN source table ON source.parent = recursive.id
+    d: UNION with a static list of ids
+  answer: c
+  explanation: Each round, the recursive term joins source rows whose parent matches a row already in the running result — that walk defines descendants.
+  difficulty: 2
+  tags: [scenario]
+
+- id: "3.7"
+  question: Which of the following is a valid reason a single-use CTE should NOT use MATERIALIZED?
+  options:
+    a: it blocks index-only scans
+    b: it prevents the planner from pushing outer conditions into the CTE
+    c: it forces NESTED LOOP
+    d: it disables parallel workers
+  answer: b
+  explanation: Materialization stores a full intermediate result, so outer filters cannot be pushed into the CTE body — often the wrong choice when used once.
+  difficulty: 3
+  tags: [concept]
+
+- id: "3.8"
+  question: What is the effect of SEARCH DEPTH FIRST in a recursive CTE?
+  options:
+    a: it terminates recursion earlier
+    b: it assigns a stable row-order column for depth-first traversal
+    c: it converts the result to breadth-first
+    d: it deduplicates the base term
+  answer: b
+  explanation: SEARCH ... SET adds an ordering column so the result streams in the requested traversal order.
+  difficulty: 3
+  tags: [terminology]
+
+- id: "3.9"
+  question: Between data-modifying CTEs, how is the output of one INSERT made available to the next statement in the same WITH?
+  options:
+    a: through the WAL
+    b: through a temp table
+    c: it is not possible
+    d: RETURNING
+  answer: d
+  explanation: RETURNING makes the inserted rows visible to subsequent CTEs or the main query, all within one transaction.
+  difficulty: 2
+  tags: [concept]
+
+- id: "3.10"
+  question: Your SELECT inside WITH is used once and is huge. The best default is which statement?
+  options:
+    a: prefer inlining so filters can push down; add MATERIALIZED only if EXPLAIN shows a problem
+    b: always MATERIALIZED to cache
+    c: never use WITH for big queries
+    d: split into a materialized view and refresh nightly
+  answer: a
+  explanation: Inlining is the PG12+ default for single-use CTEs and is usually right; MATERIALIZED is a measured exception, not a default.
+  difficulty: 3
+  tags: [scenario]

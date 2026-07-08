@@ -1,0 +1,132 @@
+- id: '16.1'
+  question: What is the multiplier for ES (E-mini S&P 500) futures?
+  options:
+    a: $20
+    b: $100
+    c: $50
+    d: $10
+  answer: c
+  explanation: ES multiplier = $50. Each 1 point move in ES = $50 P&L per contract.
+    NQ multiplier = $20.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '16.2'
+  question: ES at 4,500. Trader buys 1 contract. ES moves to 4,510. What is P&L?
+  options:
+    a: $250
+    b: $1,000
+    c: $500
+    d: $125
+  answer: c
+  explanation: Move = 10 points. P&L = 10 × $50 multiplier = $500.
+  difficulty: 1
+  tags:
+  - calculation
+- id: '16.3'
+  question: What distinguishes single-stock futures from stock options?
+  options:
+    a: SSF require premium; options require margin
+    b: SSF have linear payoff; options have non-linear payoff
+    c: SSF are always cash-settled; options are physically settled
+    d: SSF have no leverage; options have leverage
+  answer: b
+  explanation: SSF payoff is linear (P&L = change in stock × contract size). Option
+    payoff is non-linear (convex). SSF uses margin; options use premium.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '16.4'
+  question: A pension fund shorts ES futures. What is the MOST likely reason?
+  options:
+    a: Speculate on market rally
+    b: Generate dividend income
+    c: Hedge portfolio without selling stocks
+    d: Arbitrage between ES and SPY options
+  answer: c
+  explanation: Short ES hedges equity exposure without liquidating holdings. Avoids
+    tax and transaction costs. If market drops, futures gain offsets portfolio loss.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '16.5'
+  question: 'Protective put strategy involves:'
+  options:
+    a: Own stock, sell call
+    b: Own stock, buy put
+    c: Short stock, buy call
+    d: Short stock, sell put
+  answer: b
+  explanation: Protective put = own stock + buy put. Put acts as insurance against
+    price drop. Max loss = stock cost - strike + premium paid.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '16.6'
+  question: Portfolio has $1M SPY exposure. You buy 20 SPY puts at $475 strike for
+    $8 each. SPY drops 10% to $450. What is net portfolio loss after hedge?
+  options:
+    a: $100,000
+    b: $34,000
+    c: $50,000
+    d: $16,000
+  answer: b
+  explanation: Portfolio loss = $100,000. Put payout = ($475 - $450) × 20 × 100 =
+    $50,000. Hedge cost = $16,000. Net = $100,000 - $50,000 + $16,000 = $34,000 loss.
+  difficulty: 3
+  tags:
+  - calculation
+- id: '16.7'
+  question: AAPL at $180. Buy 100 shares ($18,000) vs buy 1 $180 call at $5 ($500).
+    AAPL rises to $198 (10%). What is call return on capital?
+  options:
+    a: 10%
+    b: 100%
+    c: 260%
+    d: 50%
+  answer: c
+  explanation: Call profit = ($18 - $5) × 100 = $1,300. Return = $1,300/$500 = 260%.
+    Stock return = $1,800/$18,000 = 10%.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '16.8'
+  question: ES at 4,500. Initial margin $12,000. ES drops 50 points. What is % return
+    on margin?
+  options:
+    a: -1.1%
+    b: -10.4%
+    c: -20.8%
+    d: -5%
+  answer: c
+  explanation: P&L = -50 × $50 = -$2,500. Return = -$2,500/$12,000 = -20.8%. Notional
+    move = -50/4500 = -1.1%, but margin amplifies ~19x.
+  difficulty: 3
+  tags:
+  - calculation
+- id: '16.9'
+  question: 'Covered call strategy involves:'
+  options:
+    a: Own stock, buy put
+    b: Own stock, sell call
+    c: Short stock, buy call
+    d: Short stock, sell put
+  answer: b
+  explanation: Covered call = own stock + sell call. Generates premium income but
+    caps upside at strike price. Used for income generation.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '16.10'
+  question: 'SSF buyer and option buyer differ in that SSF buyer has:'
+  options:
+    a: Right to exercise, option buyer has obligation
+    b: Obligation to settle, option buyer has right
+    c: Limited loss, option buyer has unlimited loss
+    d: No leverage, option buyer has leverage
+  answer: b
+  explanation: SSF buyer has obligation to settle at expiry (both sides obligated).
+    Option buyer has right, not obligation (can let expire worthless).
+  difficulty: 2
+  tags:
+  - comparison

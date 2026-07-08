@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Language model 嘅核心係計算{token sequence}嘅概率，而唔係理解意思。"
+  answer: "token sequence"
+  explanation: "Probability estimation 係 LM 嘅 fundamental task，所有 downstream capabilities 由此衍生。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "n-gram 用{Markov assumption}嚟簡化 — 當前 word 只依賴前 n-1 個 words。"
+  answer: "Markov assumption"
+  explanation: "呢個 assumption 解決咗 chain rule 嘅稀疏性問題，但亦係 n-gram 嘅 fundamental limitation（miss long-range context）。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "冇{smoothing}嘅 n-gram model 面對 unseen n-gram 會 assign P=0，成句概率變 0。"
+  answer: "smoothing"
+  explanation: "Smoothing (add-k, Kneser-Ney) 係 n-gram 必須嘅 component，唔係 optional。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.4"
+  question: "Embedding 將{discrete} symbol (one-hot) 映射到{dense vector space}。"
+  answer: "discrete, dense vector space"
+  explanation: "呢個 mapping 係 neural LM 核心創新 — continuous representation 容許 generalisation。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "RNN 嘅{hidden state}理論上 carry 前面所有 context，但實際上受{gradient vanishing}限制。"
+  answer: "hidden state, gradient vanishing"
+  explanation: "長序列嘅 gradient vanishing 令 RNN 實際 effective context 遠比理論 short。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Transformer 取代 RNN 嘅關鍵原因係可以{parallelise} sequence 嘅計算。"
+  answer: "parallelise"
+  explanation: "Self-attention 一次過睇晒成個 sequence，唔似 RNN 要逐個 token 行。"
+  difficulty: 1
+  tags: [comparison]
+
+- id: "c.7"
+  question: "Kaplan et al. (2020) 發現 model size、data size、compute 三者之間有{power-law relationship}。"
+  answer: "power-law relationship"
+  explanation: "Scaling laws 令 LLM 嘅 performance predictable — scaling 三者同時提升 → 可預測嘅 improvement。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "超過某個 scale threshold 後 LLM 出現細 model 做唔到嘅能力，叫{emergent abilities}。"
+  answer: "emergent abilities"
+  explanation: "例子：數學推理、code generation、in-context learning。學術界對 emergence 嘅本質仲有爭論。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.9"
+  question: "LLM 嘅 hallucination 係{feature}唔係 bug — 因為 model 嘅 job 係 generate plausible continuation，唔係 recall facts。"
+  answer: "feature"
+  explanation: "呢個認知對 building LLM apps 極重要 — 你要 design system 圍繞 probabilistic nature，唔係 fight against it。"
+  difficulty: 3
+  tags: [application]
+
+- id: "c.10"
+  question: "Temperature=0 用{greedy decoding / argmax}，output deterministic 但唔 guarantee correct。"
+  answer: "greedy decoding (argmax)"
+  explanation: "Deterministic output 仍然基於 calibrated (or miscalibrated) probability distribution。"
+  difficulty: 2
+  tags: [concept]

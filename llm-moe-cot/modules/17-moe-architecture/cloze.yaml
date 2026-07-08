@@ -1,0 +1,48 @@
+- id: c.1
+  question: MoE layer 用 {expert pool} 同 {router network} 取代單一 FFN。Router 計算 {expert
+    logits} 並經 {TopK(softmax(scores), k)} 揀 top-k experts。
+  answer: expert pool / router network / expert logits / TopK(softmax(scores), k)
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: 喺 {token-choice} routing，每個 token 揀佢嘅 top-k experts。喺 {expert-choice}
+    routing，每個 expert 揀 top-k tokens。
+  answer: token-choice / expert-choice
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: Capacity factor 控制 {expert capacity} = ceil(capacity_factor × tokens_per_expert_ideal)。被
+    drop 嘅 tokens {skip expert computation}，淨係經過 {residual connection}。
+  answer: expert capacity / skip expert computation / residual connection
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: Noisy top-k routing 加 {gaussian noise} 落 router logits 嚟鼓勵 decision boundaries
+    附近嘅 {exploration}。
+  answer: gaussian noise / exploration
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: Switch Transformer 用 {top-1} routing，多達 {2048} 個 experts。Mixtral 用 {top-2}
+    同 8 個 experts。
+  answer: top-1 / 2048 / top-2
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: Shared experts (DeepSeekMoE) 捕捉 {common knowledge}；routed experts 喺特定
+    pattern 上 {specialise}。
+  answer: common knowledge / specialise
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: Expert dropout 隨機 drop 選中嘅 expert 輸出，用 {1/(1-p)} 縮放剩低嘅輸出。呢個防止 {expert
+    co-adaptation}。
+  answer: 1/(1-p) / expert co-adaptation
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: Gating weights G_i 控制對應 expert 嘅 {gradient strength}——細 G_i 表示 {weak gradient}
+    同潛在 expert deadness。
+  answer: gradient strength / weak gradient
+  difficulty: 2
+  tags: []

@@ -1,0 +1,119 @@
+- id: "12.1"
+  question: "Under Spring Security 7 in Boot 4, what is the CSRF default for API endpoints such as REST POST handlers?"
+  options:
+    a: "CSRF is disabled for any endpoint that returns JSON"
+    b: "CSRF protection is enabled for all endpoints including APIs"
+    c: "CSRF applies only to form-login POST requests"
+    d: "CSRF is opt-in via a csrfEnabled flag"
+  answer: b
+  explanation: "Security 7 enables CSRF for every endpoint. Boot 3 applied it mainly to form login, so stateless API POSTs that sailed before now 403 without a token."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "12.2"
+  question: "What is the status of the authorizeRequests method in Spring Security 7?"
+  options:
+    a: "Removed and must be replaced with authorizeHttpRequests"
+    b: "Deprecated but still compiles with a warning"
+    c: "Renamed to authorizeMvcRequests"
+    d: "Unchanged from Security 6"
+  answer: a
+  explanation: "The method was deleted from the API, not deprecated. Existing Boot 3 config fails to compile and must move to authorizeHttpRequests."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "12.3"
+  question: "Why does CSRF protection add no security for a stateless Bearer-token API?"
+  options:
+    a: "Bearer tokens are encrypted by the server"
+    b: "The JWT contains its own nonce"
+    c: "Nothing sends the credential automatically on a state-changing request"
+    d: "CSRF only applies to WebSocket connections"
+  answer: c
+  explanation: "CSRF exploits the browser auto-sending cookies. A stateless bearer flow has no cookie to auto-send, so the attack the filter blocks cannot happen."
+  difficulty: 2
+  tags: [concept]
+
+- id: "12.4"
+  question: "In a stateless Security 7 flow, what role does a request-scoped SecurityContextRepository play?"
+  options:
+    a: "It caches the JWT in Redis for offline validation"
+    b: "It signs every response body"
+    c: "It manages the CSRF token store"
+    d: "It holds the authenticated principal for the current request without a server session"
+  answer: d
+  explanation: "The repository scopes the SecurityContext to the request attribute. Combined with STATELESS session policy, no HTTP session is created."
+  difficulty: 2
+  tags: [concept]
+
+- id: "12.5"
+  question: "A cookie-session web app copies a stateless API config that calls csrf.disable. What is the main risk?"
+  options:
+    a: "Users must log in more often"
+    b: "State-changing requests become forgeable because the browser auto-sends the session cookie"
+    c: "The app loses the ability to use Bearer tokens"
+    d: "JWT validation stops working"
+  answer: b
+  explanation: "Cookie-session auth is exactly the case CSRF protects. The browser auto-sends the cookie on every request, so an attacker can forge state-changing calls."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "12.6"
+  question: "How does authorizeHttpRequests differ from the removed authorizeRequests?"
+  options:
+    a: "It runs at the controller level instead of the filter chain"
+    b: "It only supports permitAll rules"
+    c: "It uses a lambda with requestMatchers instead of deprecated Ant matchers"
+    d: "It requires a database of rules"
+  answer: c
+  explanation: "The new API takes a lambda and builds rules from requestMatchers. Rules evaluate in order and anyRequest is the final catch-all."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "12.7"
+  question: "How does Security 7 model the role hierarchy for method security?"
+  options:
+    a: "As an authorities-based GrantedAuthoritiesMapper"
+    b: "As a properties file with comma-separated roles"
+    c: "As XML role inheritance"
+    d: "As a database table named role_hierarchy"
+  answer: a
+  explanation: "The hierarchy is now an authorities mapping such as RoleHierarchyAuthoritiesMapper over a RoleHierarchyImpl. The old role bean no longer applies."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "12.8"
+  question: "What happened to the Spring Authorization Server in Boot 4?"
+  options:
+    a: "It was renamed Spring OpenID"
+    b: "It was split into two separate artifacts"
+    c: "It now runs only on GraalVM"
+    d: "Its code merged into Spring Security as a single artifact"
+  answer: d
+  explanation: "The standalone framework folded into Spring Security. One artifact means one version train and one upgrade path."
+  difficulty: 2
+  tags: [concept]
+
+- id: "12.9"
+  question: "A service deserializes polymorphic JSON that clients can shape, with no PolymorphicTypeValidator. Why is that dangerous?"
+  options:
+    a: "The payload type name can select a class the server never intended to instantiate"
+    b: "JSON arrays cannot be parsed without a validator"
+    c: "The validator is only needed for XML"
+    d: "Polymorphic types always fail with a 400"
+  answer: a
+  explanation: "Untrusted type names drive class instantiation, a classic deserialization RCE vector. The validator restricts allowed types to a safe package list."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "12.10"
+  question: "What does secure-by-default mean for a Boot 4 developer?"
+  options:
+    a: "Security config is generated by a wizard"
+    b: "No security code is ever needed"
+    c: "Boot ships safe defaults and the job is to make the default right for your API"
+    d: "The platform disables security in production mode"
+  answer: c
+  explanation: "Defaults like CSRF-on-for-all protect by default. Developers tune the default to the API threat model instead of bolting security on later."
+  difficulty: 1
+  tags: [concept]

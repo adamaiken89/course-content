@@ -1,0 +1,148 @@
+- id: '1.1'
+  question: Which pattern converts one library's interface to another without changing
+    consumer code?
+  options:
+    a: Adapter
+    b: Facade
+    c: Wrapper
+    d: Decorator
+  answer: a
+  explanation: Adapter converts interface A to interface B so consumers depend on
+    target interface. Facade simplifies complex subsystem. Wrapper composes component
+    with app defaults. Decorator extends behavior.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.2'
+  question: Your team uses three different chart libraries. You need a unified API
+    for bar/line/pie charts. Which pattern?
+  options:
+    b: Adapter per library — each implements a common IChart interface
+    a: Single Facade over all three libraries
+    c: Wrapper per chart type
+    d: No abstraction — let each team choose their own API
+  answer: b
+  explanation: Adapter converts each library's API to common IChart interface. Facade
+    would hide too much. Wrapper per chart type duplicates effort. No abstraction
+    makes migration impossible.
+  difficulty: 2
+  tags:
+  - application
+- id: '1.3'
+  question: Which is a sign of a 'thin wrapper' anti-pattern?
+  options:
+    b: Wrapper passes every prop through without transformation
+    a: Wrapper adds default props and constrains options
+    c: Wrapper provides an escape hatch to native library instance
+    d: Wrapper is used in exactly one component
+  answer: b
+  explanation: Thin wrapper passes all props unchanged — adds indirection without
+    value. Defaults, constraints, and escape hatches are useful additions. Usage count
+    does not determine thickness.
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.4'
+  question: When should you skip wrapping a library?
+  options:
+    c: Library is a de-facto standard like React itself
+    a: Library is used in 20+ components
+    b: Library has complex lifecycle management
+    d: Team expects to evaluate alternatives next quarter
+  answer: c
+  explanation: De-facto standards with near-zero migration probability (React, TypeScript)
+    do not need wrapping. Libraries with broad usage, complex lifecycle, or potential
+    replacement candidates should be wrapped.
+  difficulty: 2
+  tags:
+  - application
+- id: '1.5'
+  question: A Facade pattern exposes getNativeInstance() for advanced use. How to
+    manage this?
+  options:
+    b: Document that escape hatch voids abstraction guarantees and track usage in
+      code review
+    a: Remove escape hatch — defeats abstraction
+    c: Make getNativeInstance() return a proxied version that logs usage
+    d: Only expose getNativeInstance() in development builds
+  answer: b
+  explanation: Documenting and tracking escape hatch usage is pragmatic. Removing
+    it hurts power users. Proxying/logging adds complexity. Dev-only breaks production
+    edge cases.
+  difficulty: 3
+  tags:
+  - concept
+- id: '1.6'
+  question: Which scenario makes abstraction pay off most?
+  options:
+    a: Library has high migration likelihood and is used across modules
+    b: Library is universally used by all teams for diverse needs
+    c: Library is used in one file by one developer
+    d: Library is extremely simple (< 5 API methods)
+  answer: a
+  explanation: 'Abstraction pays off when library has realistic replacement candidates
+    AND broad usage. Single-file usage: refactor when migration happens. Simple libs:
+    direct dependency fine.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.7'
+  question: A wrapper exposes library-specific prop names (e.g., 'freezeColumns' for
+    AG Grid). What anti-pattern is this?
+  options:
+    a: Leaky abstraction
+    b: Thin wrapper
+    c: God abstraction
+    d: Golden wrapper
+  answer: a
+  explanation: 'Leaky abstraction exposes library-specific concepts to consumers.
+    FreezeColumns is AG Grid concept. Clean abstraction would expose ''columns: {
+    frozen: boolean }'' or similar app-level concept.'
+  difficulty: 2
+  tags:
+  - terminology
+- id: '1.8'
+  question: Why is adding abstraction during migration problematic?
+  options:
+    d: You discover needed API surface only mid-migration, leading to adapter that
+      mimics old API
+    a: Migration is when you most need abstraction
+    b: Abstraction during migration is always correct
+    c: Libraries do not support abstraction during migration
+  answer: d
+  explanation: Adding abstraction during migration is reactive — you build interface
+    based on old library's quirks instead of clean domain interface. Create abstraction
+    when library usage stabilizes.
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.9'
+  question: What distinguishes Facade from Adapter?
+  options:
+    d: Facade simplifies complex subsystem, Adapter converts one interface to another
+    a: Facade converts interface, Adapter simplifies subsystem
+    b: Both are identical — interchangeable terms
+    c: Facade wraps component, Adapter wraps API
+  answer: d
+  explanation: Facade provides simplified view of complex subsystem (reducing surface
+    area). Adapter converts one interface to another (preserving intent, changing
+    shape). Both are structural patterns with different intents.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.10'
+  question: Your team's single chart wrapper handles Recharts, visx, and D3. It has
+    2000 LOC and 15 configuration props. What anti-pattern?
+  options:
+    c: God abstraction — handles too many libraries in one component
+    a: Thin wrapper — still not abstracting enough
+    b: Leaky abstraction — exposes library internals
+    d: This is correct — single wrapper for all charts
+  answer: c
+  explanation: 'God abstraction tries to cover every library''s capabilities in one
+    component. Better: adapter per library (each implements IChart interface). Simpler,
+    testable, independently migratable.'
+  difficulty: 3
+  tags:
+  - application
+

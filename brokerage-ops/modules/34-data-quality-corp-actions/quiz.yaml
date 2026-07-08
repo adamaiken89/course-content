@@ -1,0 +1,158 @@
+- id: '34.1'
+  question: What are the four dimensions of data quality used in the RefData framework?
+  options:
+    a: Completeness, accuracy, timeliness, consistency
+    b: Speed, cost, quality, coverage
+    c: Price, volume, size, liquidity
+    d: Accuracy only
+  answer: a
+  explanation: The four dimensions are completeness (required fields have values),
+    accuracy (values match the authoritative source), timeliness (updates within SLA),
+    and consistency (cross-system values match).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '34.2'
+  question: ISIN checksum validation (ISO 6166) belongs to which data quality dimension?
+  options:
+    a: Completeness
+    b: Accuracy
+    c: Timeliness
+    d: Consistency
+  answer: b
+  explanation: Accuracy means values match the authoritative source. ISIN checksum,
+    CUSIP check digit, and ISO country code checks all verify accuracy. Completeness
+    covers missing fields, timeliness covers SLA updates, and consistency covers cross-system
+    matching.
+  difficulty: 2
+  tags:
+  - concept
+- id: '34.3'
+  question: In corporate action processing, missing which date directly causes portfolio
+    price display errors?
+  options:
+    a: Announcement date
+    b: Record date
+    c: Ex-date
+    d: Payable date
+  answer: c
+  explanation: Ex-date is the market price adjustment day. The master's price adjustment
+    factor must be active before market open. If not updated, all portfolio prices
+    are wrong. Missing the ex-date is the most expensive RefData error — one broker
+    paid $500K in compensation for a 2-day error.
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '34.4'
+  question: A vendor feed updates a bond's ISIN with a value that fails the ISO 6166
+    checksum. What happens to that record?
+  options:
+    a: The bad ISIN is broadcast to all downstream systems
+    b: The record is auto-deleted
+    c: The error is silently ignored
+    d: It is tagged INVALID_ISIN and routed to manual review — the bad identifier never
+      reaches downstream systems
+  answer: d
+  explanation: The ISIN checksum rule tags the record INVALID_ISIN and routes it to
+    manual review instead of broadcasting. The bad identifier never reaches downstream
+    systems.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '34.5'
+  question: ISS classifies 47 TDRs as Taiwan (TW) but Bloomberg classifies them as
+    Cayman Islands (KY), so the ingestion system leaves Country empty. What is the
+    root cause?
+  options:
+    a: Two vendors disagree and no authority is assigned for the Country field
+    b: A database storage bug
+    c: A simple typo in one record
+    d: A regulatory data freeze
+  answer: a
+  explanation: The root cause is a vendor consensus conflict — the system does not
+    know which value to pick. The team should confirm authority and auto-select the
+    designated vendor, keep dual fields for both values, or establish an override
+    workflow that locks a manually confirmed value.
+  difficulty: 3
+  tags:
+  - scenario
+  - concept
+- id: '34.6'
+  question: In the security master, how is a stock-for-stock merger handled?
+  options:
+    a: Deactivate both target and acquirer records
+    b: Add the target's master record, update the acquirer, and deactivate the target
+    c: No master change is needed
+    d: Create a single new merged security only
+  answer: b
+  explanation: A merger adds the target master, updates the acquirer, and deactivates
+    the target. Multi-legged events like merger plus cash election may require creating
+    multiple security master records.
+  difficulty: 2
+  tags:
+  - concept
+- id: '34.7'
+  question: How do ex-dates differ between the Taiwan and US markets for the same corporate
+    action?
+  options:
+    a: They are always the same date
+    b: US ex-date is the trading day before the record date
+    c: US ex-date is the business day after the record date; Taiwan's is the trading
+      day before
+    d: Taiwan ex-date is the business day after the record date
+  answer: c
+  explanation: Taiwan's ex-date is the trading day before the record date, while the
+    US ex-date is the business day after. Cross-border corporate actions may have
+    different ex-dates across markets, adding reconciliation complexity.
+  difficulty: 1
+  tags:
+  - terminology
+  - comparison
+- id: '34.8'
+  question: When a regular cash dividend is paid, what change does the security master
+    record?
+  options:
+    a: Deactivate the security
+    b: Create a new master record
+    c: No master change is needed
+    d: Update the dividend field and the price adjustment factor
+  answer: d
+  explanation: A cash dividend impacts the master through an updated dividend field
+    and a price adjustment factor. The payable date triggers cash distribution and
+    settlement system updates.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '34.9'
+  question: The DQ framework includes a timeliness alert for corporate actions. What
+    triggers an alert to the RefData lead?
+  options:
+    a: A corporate action announcement more than ex-date minus 3 days without an update
+    b: Any corporate action announcement at all
+    c: A security deactivation
+    d: An ISIN checksum failure
+  answer: a
+  explanation: The timeliness rule alerts when a corporate action announcement is
+    older than ex-date minus 3 days without an update. Timeliness checks ensure updates
+    land within SLA, before the ex-date.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '34.10'
+  question: Why can't corporate action processing be fully automated?
+  options:
+    a: It is too cheap to automate
+    b: Event classification needs economic-substance judgment, multi-leg exchange ratios
+      need verification, and vendor-vs-issuer conflicts need human decisions
+    c: Computers lack the processing power
+    d: Regulation bans automated corporate action processing
+  answer: b
+  explanation: The same announcement could be a stock split or stock dividend, requiring
+    economic-substance judgment. Multi-leg events need manual ratio verification,
+    vendor factors conflicting with issuer announcements need a human call, and some
+    markets chronically delay announcements.
+  difficulty: 2
+  tags:
+  - concept

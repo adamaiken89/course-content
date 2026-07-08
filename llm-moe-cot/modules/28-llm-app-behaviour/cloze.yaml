@@ -1,0 +1,43 @@
+- id: c.1
+  question: LLM output 係 {sampling from a probability distribution}。Temperature 控制個 distribution 有幾 {concentrated}
+    或者有幾 {flat}。
+  answer: sampling from a probability distribution / concentrated / flat
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: Hallucination 嘅根源包括 {knowledge boundary}、{training data noise}、同埋 RLHF 帶來嘅 {helpfulness pressure}。
+  answer: knowledge boundary / training data noise / helpfulness pressure
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: Self-consistency 可以 detect hallucination — 如果 N 個 generated answers {disagree}，模型可能係 {hallucinating}。
+  answer: disagree / hallucinating
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: Prompt brittleness 源自 {training distribution sensitivity}、{tokenisation edge cases}、同 {context
+    position effects}。
+  answer: training distribution sensitivity / tokenisation edge cases / context position effects
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: Jailbreaks 係 {special prompts}，專登設計嚟 bypass {safety training}。
+  answer: special prompts / safety training
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: 安全 defence layers 包括 {input filtering}、{output filtering}、{rate limiting}、同 {human review}。
+  answer: input filtering / output filtering / rate limiting / human review
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: RAG 可以減輕 hallucination，因為佢係 {grounding output in retrieved documents}，唔係淨係靠 {model's internal
+    knowledge}。
+  answer: grounding output in retrieved documents / model's internal knowledge
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: LLM 輸出隨機，係因為解碼時用咗 {temperature sampling} 嚟揀下一個 token。
+  answer: temperature sampling
+  difficulty: 2
+  tags: []

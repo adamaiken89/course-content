@@ -1,0 +1,54 @@
+- id: "c.41"
+  question: "A hand-written interface is an unverified promise: it is a {second description} of the shape that lives alongside the real API contract, and the two always drift."
+  answer: "second description"
+  explanation: "Two descriptions of one shape (a type + the real data) move apart because the compiler never checks the type against reality."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "c.42"
+  question: "The TypeScript type produced by `z.infer` is a {derived} artifact — change the schema, the type changes, so they cannot drift."
+  answer: "derived"
+  explanation: "z.infer projects the static type from the schema instead of hand-writing a duplicate description."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "c.43"
+  question: "Inside a form, a failed parse is an expected outcome, so forms use {safeParse}; the throwing `parse` belongs at the fetch boundary."
+  answer: "safeParse"
+  explanation: "safeParse returns { success, data | error } so validation errors flow into UI state rather than throwing mid-typing."
+  difficulty: 2
+  tags: [concept, scenario]
+- id: "c.44"
+  question: "A wrong API response should fail loudly, so throwing `parse` belongs at the {trust boundary} where data enters the app."
+  answer: "trust boundary"
+  explanation: "At the fetch boundary, malformed data must crash loudly instead of fizzling into NaN three screens later."
+  difficulty: 2
+  tags: [concept, scenario]
+- id: "c.45"
+  question: "In the mental model 'one schema, three consumers', the schema is the {contract} between the client and the mock server that everyone reads."
+  answer: "contract"
+  explanation: "Form validation, type inference, and API response parsing all read one schema; nobody writes their own copy."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "c.46"
+  question: "`z.coerce.date()` applies {coercion} — converting a string like a raw ISO date into a genuine `Date` at parse time."
+  answer: "coercion"
+  explanation: "Coercion runs during parsing so the schema's type is truthful about the value it produces."
+  difficulty: 2
+  tags: [terminology, comparison]
+- id: "c.47"
+  question: "Per-field validation errors travel with the form state, while server resources like the program list travel with the {query cache} (m12)."
+  answer: "query cache"
+  explanation: "Field errors are local, high-frequency state; server resources are fetched, cached, and invalidated in the TanStack Query cache."
+  difficulty: 2
+  tags: [concept, comparison]
+- id: "c.48"
+  question: "The schema validates {structure}, while the i18n layer handles locale presentation of numbers and dates — keep the schema locale-independent."
+  answer: "structure"
+  explanation: "The schema asks whether the data is a valid shape; presentation like '8,5' vs '8.5' is an i18n concern (m13)."
+  difficulty: 2
+  tags: [concept, comparison]
+- id: "c.49"
+  question: "From m3's vocabulary, the schema is a {seam} — a narrow, pure boundary you can test in isolation with MSW contract tests."
+  answer: "seam"
+  explanation: "Schema-based seams let contract tests, form tests, and journey tests verify the same shape independently."
+  difficulty: 3
+  tags: [concept, process]

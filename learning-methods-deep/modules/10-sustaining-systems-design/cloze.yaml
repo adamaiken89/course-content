@@ -1,0 +1,71 @@
+- id: c.1
+  question: 'Complete: Implementation intentions specify {time}, context, and {action}.'
+  answer: time, action
+  explanation: 'Format: ''At [time] in [location], I will [action].'' This automates
+    the decision to start studying.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 'Complete: {Friction} reduction means minimizing steps between intention
+    and action. Widgets and one-tap starts are examples.'
+  answer: Friction
+  explanation: Each additional step between wanting to study and actually studying
+    is a point where the learner may give up. Remove steps to improve follow-through.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: 'Complete: External rewards can undermine {intrinsic} motivation through
+    the {overjustification} effect.'
+  answer: intrinsic, overjustification
+  explanation: When learners attribute effort to external rewards, their internal
+    drive drops. When rewards stop, motivation falls below baseline.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.4
+  question: 'Complete: A goal like "study more" lacks {time}, context, and action.
+    An {implementation intention} supplies all three.'
+  answer: time, implementation intention
+  explanation: Vague goals require a fresh decision every day. Implementation intentions
+    predecide when, where, and what — the behavior fires automatically.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: 'Complete: {Mastery} breakdown shows percent complete per topic, while
+    weak-topic highlighting points to the {next} work.'
+  answer: Mastery, next
+  explanation: Mastery satisfies; weak-topic highlights guide. Together they show
+    progress and make the next step obvious.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: 'Complete: Context-dependent cues match difficulty to {time of day} — hardest
+    cards in the {morning}, light review in the evening.'
+  answer: time of day, morning
+  explanation: Fresh brain handles hard material; tired evening brain handles light
+    review. Matching content to cognitive state reduces the cost of studying.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: 'Complete: Consistency {percentage} reframes a single miss as partial progress
+    instead of {failure}.'
+  answer: percentage, failure
+  explanation: 14/15 days (93%) says 'great, small blip.' A zero streak says 'you failed.'
+    Same data, different framing — and different persistence outcomes.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: 'Complete: A {stability} map shows per-card FSRS retention growth, turning
+    the SRS algorithm into visible {motivation}.'
+  answer: stability, motivation
+  explanation: "Visualizing 'your stability has grown 3x' makes the algorithm's benefit
+    concrete — the learner sees the system working."
+  difficulty: 2
+  tags:
+  - concept

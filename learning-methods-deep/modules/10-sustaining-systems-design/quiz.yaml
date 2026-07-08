@@ -1,0 +1,118 @@
+- id: '10.1'
+  question: What is an implementation intention?
+  options:
+    a: 'A specific plan: ''At 7:30 AM in my kitchen, I will review my 5 due cards'''
+    b: 'A goal statement: ''I will study more'''
+    c: A reward system for completing tasks
+    d: A notification schedule for the app
+  answer: a
+  explanation: Implementation intentions specify time + context + action. They automate
+    the decision to start studying — reducing willpower depletion. Vague goals like
+    'study more' lack the specificity to trigger automatic behavior.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.2'
+  question: After a missed study day, which metric better supports learner persistence?
+  options:
+    a: 'Current streak: 0 days — motivates starting fresh'
+    b: 'Consistency: 14/15 days (93%) — reframes miss as minor blip'
+    c: Removing streak display entirely
+    d: Showing the missed day in red with negative emphasis
+  answer: b
+  explanation: Consistency percentage reframes a single miss as partial progress (93%
+    is excellent). A zero streak feels like failure. The psychological impact of 'all
+    or nothing' is devastating to persistence.
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.3'
+  question: What is the primary problem with using external rewards (points, badges,
+    leaderboards) for learning persistence?
+  options:
+    a: They cost too much to implement
+    b: Learners don't understand points systems
+    c: They can undermine intrinsic motivation (overjustification effect)
+    d: Badges take too long to design
+  answer: c
+  explanation: 'Overjustification effect: when external rewards are given for intrinsically
+    motivated behavior, the learner attributes their effort to the reward, not to
+    their own interest. When rewards stop, motivation drops below baseline. Progress
+    visualization doesn''t have this problem.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.4'
+  question: Which design pattern reduces the steps between wanting to study and actually
+    studying?
+  options:
+    a: Adding more menu options for power users
+    b: Requiring login before every review session
+    c: Showing a motivational quote before the review
+    d: Widget on the home screen that starts review in one tap
+  answer: d
+  explanation: Each step between intention and action is a point where the learner
+    may give up. A widget that starts review in one tap removes the friction. Login,
+    navigation, and extra options add friction.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '10.5'
+  question: What makes "At 7:30 AM in my kitchen, I will review 5 due cards" work
+    better than "I will study more"?
+  options:
+    a: It specifies time + context + action, so the behavior fires automatically
+    b: It is shorter and easier to remember
+    c: It has a concrete reward attached
+    d: It is more aspirational
+  answer: a
+  explanation: Implementation intentions predecide when, where, and what. The specific
+    trigger (7:30 AM + kitchen) automates the start decision, so willpower isn't needed
+    daily.
+  difficulty: 1
+  tags:
+  - concept
+- id: '10.6'
+  question: Which progress visualization directly shows the learner the benefit of
+    spaced repetition?
+  options:
+    a: Streak counter
+    b: FSRS stability map showing retention growth
+    c: Number of cards in the deck
+    d: Time spent per session
+  answer: b
+  explanation: A stability map ("your stability has grown 3x since last month") makes
+    the algorithm's benefit visible. This turns the SRS system itself into motivation.
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.7'
+  question: Context-dependent cues in a learning app should match content difficulty
+    to...
+  options:
+    a: The learner's age
+    b: The number of installed apps
+    c: The time of day and energy level
+    d: The current season
+  answer: c
+  explanation: Fresh morning brain → hardest due cards. Tired evening brain → light
+    review. Matching content difficulty to cognitive state reduces the perceived cost
+    of studying.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '10.8'
+  question: A dashboard shows mastery breakdown, weak topic highlights, and a forecast
+    of due cards. What is the primary purpose of this combination?
+  options:
+    a: To entertain the user with data visualizations
+    b: To replace streak tracking entirely
+    c: To encourage longer study sessions
+    d: To show progress AND make the next step obvious
+  answer: d
+  explanation: Mastery shows what's been learned (satisfaction), weak-topic highlights
+    point to the next work, and the forecast prepares for upcoming load. Together
+    they guide the next action.
+  difficulty: 2
+  tags:
+  - concept

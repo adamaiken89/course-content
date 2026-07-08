@@ -1,0 +1,60 @@
+- id: "c.1"
+  question: "Nested Loop cost grows like outer rows times inner {probe} cost."
+  answer: probe
+  explanation: "Each outer row triggers one index access on the inner side."
+  difficulty: 2
+  tags: [concept]
+- id: "c.2"
+  question: "Hash Join builds into memory and spills batches to {temp} files when work_mem is exceeded."
+  answer: temp
+  explanation: "Overflow batches are written to temp files, shown as Hash Batches: N."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.3"
+  question: "Merge Join needs both inputs {sorted} on the join key."
+  answer: sorted
+  explanation: "Without index-ordered input, Sort nodes appear below the merge."
+  difficulty: 1
+  tags: [concept]
+- id: "c.4"
+  question: "The default {work_mem} is 4MB per operation."
+  answer: work_mem
+  explanation: "Per sort/hash op; raise it for heavy joins but beware memory multiplication."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.5"
+  question: "Bitmap Index Scan + Bitmap Heap Scan dedup so each heap {page} is fetched once."
+  answer: page
+  explanation: "The page bitmap collapses overlapping candidates into single fetches."
+  difficulty: 2
+  tags: [concept]
+- id: "c.6"
+  question: "PG16 brought {parallel} hash joins and nested-loop joins."
+  answer: parallel
+  explanation: "Workers cooperatively build/probe the join."
+  difficulty: 2
+  tags: [comparison]
+- id: "c.7"
+  question: "Incremental Sort (PG13+) exploits an already-{sorted} prefix instead of a full sort."
+  answer: sorted
+  explanation: "It sorts only within runs sharing the presorted prefix."
+  difficulty: 2
+  tags: [concept]
+- id: "c.8"
+  question: "Rows-estimate deviation above ~10x usually means stale {statistics} rather than a broken plan."
+  answer: statistics
+  explanation: "ANALYZE refresh fixes most wild estimate-vs-actual mismatches."
+  difficulty: 3
+  tags: [process]
+- id: "c.9"
+  question: "A 'Batches: 16' hash spill is fixed by raising {work_mem}, not by disabling hash join."
+  answer: work_mem
+  explanation: "More per-op memory keeps the build resident."
+  difficulty: 2
+  tags: [process]
+- id: "c.10"
+  question: "A LIMIT k query with ORDER BY matching an index needs no Sort, only an index {scan} and the limit."
+  answer: scan
+  explanation: "Index order sidesteps the sort node entirely."
+  difficulty: 3
+  tags: [scenario]

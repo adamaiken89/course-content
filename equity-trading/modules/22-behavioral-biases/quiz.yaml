@@ -1,0 +1,141 @@
+- id: '22.1'
+  question: A trader refuses to sell a stock at $40 because they bought it at $60
+    and want to break even. Which bias?
+  options:
+    a: Recency bias
+    b: Overconfidence
+    c: Confirmation bias
+    d: Anchoring
+  answer: d
+  explanation: Anchoring fixes on the $60 reference price. The stock's current value
+    has nothing to do with purchase price.
+  difficulty: 1
+  tags:
+  - scenario
+- id: '22.2'
+  question: According to Odean (1998), disposition effect costs retail investors approximately
+    how much in annual returns?
+  options:
+    a: 1-2%
+    b: 3-4%
+    c: 8-10%
+    d: 15-20%
+  answer: b
+  explanation: Odean found disposition effect cost retail investors roughly 3-4% annually
+    by selling winners too early and holding losers too long.
+  difficulty: 1
+  tags:
+  - fact
+- id: '22.3'
+  question: Which bias causes investors to seek information confirming existing beliefs
+    while ignoring contradictory evidence?
+  options:
+    a: Herd mentality
+    b: Confirmation bias
+    c: Recency bias
+    d: Disposition effect
+  answer: b
+  explanation: Confirmation bias leads traders to read bullish articles on holdings
+    while dismissing short-seller reports.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '22.4'
+  question: After the 2008 financial crisis, many investors avoided stocks for years
+    and missed the bull market. Which bias?
+  options:
+    a: Anchoring
+    b: Overconfidence
+    c: Recency bias
+    d: Prospect theory
+  answer: c
+  explanation: Recency bias overweighted the 2008 crash, causing investors to extrapolate
+    recent losses indefinitely and miss recovery.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '22.5'
+  question: Prospect theory states losses feel approximately how many times worse
+    than equivalent gains?
+  options:
+    a: Equal magnitude
+    b: 1.5x
+    c: 5x
+    d: 2x
+  answer: d
+  explanation: Loss aversion ratio is approximately 2:1. Losing $100 feels as bad
+    as gaining $200 feels good.
+  difficulty: 1
+  tags:
+  - concept
+- id: '22.6'
+  question: Barber & Odean found men trade 45% more than women, resulting in 2.65%
+    lower annual returns. Which bias?
+  options:
+    a: Confirmation bias
+    b: Loss aversion
+    c: Overconfidence
+    d: Herding
+  answer: c
+  explanation: Overconfidence causes excessive trading. Men are more overconfident
+    than women on average, leading to higher volume and lower net returns.
+  difficulty: 2
+  tags:
+  - fact
+- id: '22.7'
+  question: What is the disposition effect?
+  options:
+    a: Buying stocks that recently performed well
+    b: Selling winners too early and holding losers too long
+    c: Following trading decisions of other investors
+    d: Overweighting recent information in decisions
+  answer: b
+  explanation: Disposition effect is selling winning positions too early (locking
+    in small gains) while holding losing positions too long (hoping for rebound).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '22.8'
+  question: Which behavioral concept explains why traders evaluate outcomes relative
+    to purchase price rather than absolute wealth?
+  options:
+    a: Diminishing sensitivity
+    b: Mental accounting
+    c: Reference dependence
+    d: Regret aversion
+  answer: c
+  explanation: Reference dependence means people evaluate outcomes relative to a reference
+    point (e.g., purchase price), not absolute wealth. This is a key feature of prospect
+    theory.
+  difficulty: 2
+  tags:
+  - concept
+- id: '22.9'
+  question: Odean (1998) found retail investors realized gains what percent more often
+    than losses?
+  options:
+    a: 25%
+    b: 50%
+    c: 75%
+    d: 100%
+  answer: b
+  explanation: Odean found investors realized gains 50% more often than losses, directly
+    demonstrating the disposition effect.
+  difficulty: 2
+  tags:
+  - fact
+- id: '22.10'
+  question: A trader piles into a rapidly rising cryptocurrency because everyone on
+    social media is buying. Which bias?
+  options:
+    a: Anchoring
+    b: Overconfidence
+    c: Confirmation bias
+    d: Herding
+  answer: d
+  explanation: Herding means following the crowd rather than independent analysis.
+    Social media hype creates feedback loop — more buyers attract more buyers, inflating
+    bubbles.
+  difficulty: 1
+  tags:
+  - scenario

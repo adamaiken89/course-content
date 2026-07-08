@@ -1,0 +1,119 @@
+- id: "2.1"
+  question: What lives under the org.springframework.boot.modules namespace in Boot 4?
+  options:
+    a: A build-time code generator for native images
+    b: The OpenRewrite migration recipes
+    c: Small, focused auto-configuration modules
+    d: The legacy spring.factories registry
+  answer: c
+  explanation: Boot 4 splits the monolithic spring-boot-autoconfigure jar into small modules, each auto-configuring one technology, under org.springframework.boot.modules.
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "2.2"
+  question: Which statement about classic versus modular starters is true?
+  options:
+    a: Classic starters are removed in Boot 4
+    b: Classic starters remain supported and pull a dependency tree
+    c: Modular starters are required to use Spring Data JPA
+    d: Modular starters contain no dependencies, only interfaces
+  answer: b
+  explanation: Classic aggregate starters stay fully supported in 4.0. Modular starters are an optional small-footprint alternative.
+  difficulty: 1
+  tags: [concept, comparison]
+
+- id: "2.3"
+  question: Why was Undertow support removed from Boot 4?
+  options:
+    a: It was too slow under load testing
+    b: It is proprietary and unlicensed for servers
+    c: It never reached Servlet 6.1 compatibility
+    d: Security vulnerabilities made it unsupportable
+  answer: c
+  explanation: Undertow never achieved Servlet 6.1 support, which Jakarta EE 11 requires, so Boot 4 dropped it. Tomcat 11 and Jetty 12 remain.
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "2.4"
+  question: What happened to RestTemplate auto-configuration in Boot 4?
+  options:
+    a: The RestTemplate bean is wired only if you opt in
+    b: RestTemplate itself was deleted from the framework
+    c: RestTemplate now uses virtual threads exclusively
+    d: RestTemplate auto-configuration moved to spring-cloud
+  answer: a
+  explanation: RestTemplate auto-config is now opt-in. Apps relying on the auto-configured bean must restore it or migrate to RestClient.
+  difficulty: 2
+  tags: [concept, scenario]
+
+- id: "2.5"
+  question: What does Boot 4 PropertyMapper do with a source value that is null, by default?
+  options:
+    a: An IllegalStateException at startup
+    b: A silent copy of null into the target
+    c: Skipped unless you call .always()
+    d: Wrapped in an Optional that is ignored
+  answer: c
+  explanation: Boot 4 skips null sources by default; .always() explicitly forces the copy, preserving old implicit behavior only where you ask for it.
+  difficulty: 3
+  tags: [concept, calculation]
+
+- id: "2.6"
+  question: Which is the correct way to fix @ConfigurationProperties that relied on public mutable fields?
+  options:
+    a: Add @Deprecated to every public field
+    b: Convert to private fields with a constructor or accessors
+    c: Keep fields public but mark the class final
+    d: Move the binding to application.properties
+  answer: b
+  explanation: Boot 4 removed binding to public fields. Immutable storage via constructors or accessors (record style) is the supported path.
+  difficulty: 3
+  tags: [concept, scenario]
+
+- id: "2.7"
+  question: What is the practical effect of Spring Data processing repository queries at build time?
+  options:
+    a: Queries run faster at request time automatically
+    b: Repositories are generated as native binaries
+    c: Query result caching is enabled by default
+    d: A typo in a derived query method fails the build, not the first request
+  answer: d
+  explanation: Build-time processing binds and validates derived query methods during compilation, catching errors before deployment.
+  difficulty: 3
+  tags: [concept, scenario]
+
+- id: "2.8"
+  question: How does OpenRewrite help the 4.0 migration?
+  options:
+    a: It rewrites imports, deprecated signatures, and property names automatically
+    b: It upgrades the database schema alongside the code
+    c: It generates the modular starter dependency list
+    d: It recompiles 3.x bytecode against 4.0 jars
+  answer: a
+  explanation: The Boot 4 OpenRewrite recipe applies mechanical rewrites in a branch, letting you review a small, attributable diff.
+  difficulty: 1
+  tags: [terminology, process]
+
+- id: "2.9"
+  question: Which statement about migrating to Boot 4 is NOT true?
+  options:
+    a: Undertow deployments must move to Tomcat or Jetty
+    b: Virtual threads must be enabled manually after upgrading
+    c: Jackson 2 serializer APIs were renamed
+    d: authorizeRequests() must be replaced by authorizeHttpRequests()
+  answer: b
+  explanation: Virtual threads are enabled by default in Boot 4. The other three are genuine migration concerns.
+  difficulty: 2
+  tags: [comparison, scenario]
+
+- id: "2.10"
+  question: In what order should a mature team roll out the 4.0 upgrade?
+  options:
+    a: Modular starters, then version bump, then test fixes
+    b: OpenRewrite, then modular starters, then client rewrites
+    c: Property switches, then OpenRewrite, then tests
+    d: Baseline tests, OpenRewrite, breakage fixes, property switches, optional footprint work
+  answer: d
+  explanation: Change one axis per release - mechanically rewrite, fix breakages, flip behavior via properties, and only then consider footprint changes like modular starters.
+  difficulty: 1
+  tags: [process, comparison]

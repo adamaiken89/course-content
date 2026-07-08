@@ -1,0 +1,60 @@
+- id: c.1
+  question: The {weak} form of EMH states all past market data is reflected in current prices. {Technical} analysis cannot beat the market under this form.
+  answer: weak
+  difficulty: 1
+  tags:
+  - concept
+- id: c.2
+  question: The {semi-strong} form of EMH states all publicly available information is reflected in prices. {Fundamental} analysis cannot generate excess returns under this form.
+  answer: semi-strong
+  difficulty: 1
+  tags:
+  - concept
+- id: c.3
+  question: The {strong} form of EMH claims even {insider} information is already reflected in stock prices. This form is mostly {rejected} by empirical evidence.
+  answer: strong
+  difficulty: 2
+  tags:
+  - concept
+- id: c.4
+  question: The {January} effect describes small-cap stocks outperforming large-caps in January. One explanation is {tax-loss} harvesting selling in December.
+  answer: January
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.5
+  question: The {momentum} anomaly says stocks that performed well over the past {3-12} months continue to outperform. This contradicts {weak-form} EMH.
+  answer: momentum
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: The {value} premium describes low {price-to-book} stocks outperforming high P/B stocks over long horizons.
+  answer: value
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.7
+  question: The {size} effect describes small-cap stocks earning higher {risk-adjusted} returns than large-cap stocks.
+  answer: size
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.8
+  question: Under semi-strong EMH, buying a stock the day after an earnings {beat} would not generate {excess} returns because the information is already {priced in}.
+  answer: beat
+  difficulty: 2
+  tags:
+  - scenario
+- id: c.9
+  question: Once an anomaly is {published}, traders compete to exploit it and the anomaly tends to {weaken}. This is consistent with semi-strong EMH — public knowledge gets priced in.
+  answer: published
+  difficulty: 3
+  tags:
+  - concept
+- id: c.10
+  question: The {January} effect weak explanation is {window dressing} — funds remove risky stocks from year-end reports, then buy them back in January.
+  answer: January
+  difficulty: 2
+  tags:
+  - concept

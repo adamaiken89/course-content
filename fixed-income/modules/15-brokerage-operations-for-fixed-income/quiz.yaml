@@ -1,0 +1,139 @@
+- id: '15.1'
+  question: Which phase follows trade execution in the trade life cycle?
+  options:
+    a: Trade capture and confirmation
+    b: Settlement
+    c: Margin call
+    d: Reporting
+  answer: a
+  explanation: Execution → capture → confirmation/affirmation → clearing → settlement.
+  difficulty: 1
+  tags:
+  - terminology
+  - trade-life-cycle
+- id: '15.2'
+  question: 'Prime brokerage provides all EXCEPT:'
+  options:
+    a: Credit rating
+    b: Financing (repo)
+    c: Securities lending
+    d: Custody and settlement
+  answer: a
+  explanation: Prime brokers provide financing, lending, custody, execution. Credit
+    ratings are from rating agencies.
+  difficulty: 1
+  tags:
+  - terminology
+  - prime-brokerage
+- id: '15.3'
+  question: 'Typical initial margin requirement for Treasury bonds:'
+  options:
+    d: 2-10%
+    a: 50%
+    b: 20-30%
+    c: 0%
+  answer: d
+  explanation: 'Treasuries: low volatility, high liquidity → low margin (2-10%). HY
+    corporates: 10-30%.'
+  difficulty: 2
+  tags:
+  - terminology
+  - margin
+- id: '15.4'
+  question: 'Margin call triggers when:'
+  options:
+    c: Equity falls below maintenance margin requirement
+    a: Interest rates fall
+    b: Bond matures
+    d: Client requests withdrawal
+  answer: c
+  explanation: If equity/position value drops below maintenance requirement → broker
+    demands more cash/securities.
+  difficulty: 2
+  tags:
+  - scenario
+  - margin
+- id: '15.5'
+  question: 'TRACE requires corporate bond trade reporting within:'
+  options:
+    b: 15 minutes
+    a: 1 hour
+    c: End of day
+    d: Next business day
+  answer: b
+  explanation: 'TRACE: report within 15 minutes of trade execution. Dramatically increased
+    post-trade transparency.'
+  difficulty: 2
+  tags:
+  - terminology
+  - reporting
+- id: '15.6'
+  question: 'SSI fraud involves:'
+  options:
+    d: Criminals changing settlement instructions to divert payments
+    a: Trading fake bonds
+    b: Insider trading
+    c: Market manipulation
+  answer: d
+  explanation: 'SSI fraud: hackers send fake instructions → settlement payment goes
+    to attacker''s account. Major operational risk.'
+  difficulty: 2
+  tags:
+  - terminology
+  - risk
+- id: '15.7'
+  question: 'Private bank client: $50M bonds, $10M equity. Current leverage?'
+  options:
+    a: 5x
+    b: 2x
+    c: 10x
+    d: 50x
+  answer: a
+  explanation: Leverage = total position / equity = $50M / $10M = 5x
+  difficulty: 1
+  tags:
+  - calculation
+  - leverage
+- id: '15.8'
+  question: If bond position falls 5% and equity was $10M on $50M position, new leverage?
+  options:
+    b: 5.26x
+    a: 4.75x
+    c: 5.0x
+    d: 6.0x
+  answer: b
+  explanation: New position = $47.5M. Loss = $2.5M. Equity = $10M - $2.5M = $7.5M.
+    Leverage = $47.5M / $7.5M = 5.26x
+  difficulty: 2
+  tags:
+  - calculation
+  - leverage
+- id: '15.9'
+  question: 'STP (Straight-Through Processing) reduces:'
+  options:
+    b: Operational risk (manual errors, delays)
+    a: Credit risk
+    c: Interest rate risk
+    d: Market risk
+  answer: b
+  explanation: STP automates trade processing end-to-end. Reduces manual intervention,
+    errors, settlement fails.
+  difficulty: 2
+  tags:
+  - terminology
+  - operations
+- id: '15.10'
+  question: 'Archegos 2021 collapse highlighted risk of:'
+  options:
+    c: Concentrated leverage through prime brokers without proper risk controls
+    a: Sovereign default
+    b: Treasury settlement fails
+    d: Muni bond default
+  answer: c
+  explanation: 'Archegos: concentrated, levered total return swaps. Prime brokers
+    failed to monitor aggregate exposure → forced liquidation.'
+  difficulty: 3
+  tags:
+  - scenario
+  - risk
+

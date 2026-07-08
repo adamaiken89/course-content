@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "債券 4 個關鍵元素係 {面值}、{票面利率}、{到期日} 同 {市場價格}。"
+  answer: "面值、票面利率、到期日、市場價格"
+  explanation: "面值 = 到期還本金額, 票面利率 = 年派息佔面值百分比, 到期日 = 還本日, 市場價格 = 二手市場成交價。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "年派息 = {面值 × 票面利率}。例如面值 $10,000, 票面 4% → 每年 {派 $400}。"
+  answer: "面值 × 票面利率、派 $400"
+  explanation: "派息公式直接: 面值 × 票面利率。半年派即係除 2。"
+  difficulty: 1
+  tags: [formula, calculation]
+
+- id: "c.3"
+  question: "發行人 4 種類別, 風險由低至高: {政府/主權} < {政府機構} < {市政} < {公司}。"
+  answer: "政府/主權、政府機構、市政、公司"
+  explanation: "政府違約風險最低, 公司最高。市政 (美國州/市政府) 因為有稅務優惠, 風險中等。"
+  difficulty: 2
+  tags: [terminology, comparison]
+
+- id: "c.4"
+  question: "信用評級 {AAA/Aaa} 最高, {BB/Ba} 已屬 {Junk Bond / High Yield}, 違約風險高。"
+  answer: "AAA/Aaa、BB/Ba、Junk Bond / High Yield"
+  explanation: "投資級別底線係 BBB-/Baa3。BB 或以下要謹慎, 高息係補償風險。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.5"
+  question: "{Zero-Coupon} 債券唔派息, {折扣} 價發行, 到期取 {面值}, 鎖定回報率。"
+  answer: "Zero-Coupon、折扣、面值"
+  explanation: "Zero-Coupon 適合已知未來需要嘅錢, e.g. 10 年後畀首期。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.6"
+  question: "{Callable Bond} 允許 {發行人提前贖回}, 利率下跌時發行人會贖回再發低息債, 投資者面對 {再投資風險}。"
+  answer: "Callable Bond、發行人提前贖回、再投資風險"
+  explanation: "Callable 債票面通常高 0.5-1% 作為補償, 投資者要考慮呢個 trade-off。"
+  difficulty: 3
+  tags: [concept, terminology]
+
+- id: "c.7"
+  question: "{Convertible Bond} 可以 {轉成股票}, 好處係 {公司升你跟升, 公司跌你有債底保障}。"
+  answer: "Convertible Bond、轉成股票、公司升你跟升, 公司跌你有債底保障"
+  explanation: "可轉債票面通常低過普通債, 因為內含股票選擇權價值。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.8"
+  question: "{TIPS} 係美國發行嘅 {通脹掛鈎} 國債, {本金} 隨通脹調整, 係真正 {保本 + 保值} 嘅政府債。"
+  answer: "TIPS、通脹掛鈎、本金、保本 + 保值"
+  explanation: "TIPS 解決咗政府債嘅通脹風險, 通脹 3% → 面值加 3%, 派息跟住加。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.9"
+  question: "Current Yield 公式 = {年派息 / 買入價}。買入價 < 面值 → Current Yield {高過} 票面。"
+  answer: "年派息 / 買入價、高過"
+  explanation: "Current Yield 反映你實際買入後嘅年回報率, 同票面可能唔同。"
+  difficulty: 2
+  tags: [formula, concept]
+
+- id: "c.10"
+  question: "政府債嘅 4 種風險: {利率風險} (升二手價跌)、{再投資風險} (到期後低息)、{通脹風險} (實質回報跌)、{主權違約風險} (罕見但唔係 0)。"
+  answer: "利率風險、再投資風險、通脹風險、主權違約風險"
+  explanation: "「零風險」只係 marketing, 真正零風險資產唔存在。"
+  difficulty: 2
+  tags: [concept, terminology]

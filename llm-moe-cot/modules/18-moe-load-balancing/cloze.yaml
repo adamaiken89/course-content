@@ -1,0 +1,46 @@
+- id: c.1
+  question: Router collapse 發生喺 {all tokens are routed to the same expert}。被餓死嘅 experts
+    {never learn useful representations}。
+  answer: all tokens are routed to the same expert / never learn useful representations
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: Importance loss 懲罰 {uneven router probabilities}。Load loss 懲罰 {uneven
+    token counts per expert}。
+  answer: uneven router probabilities / uneven token counts per expert
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: '{z-loss} 透過懲罰 router logits 嘅平方 magnitude 嚟穩定佢哋，防止極端 {peaky softmax distributions}。'
+  answer: z-loss / peaky softmax distributions
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: 喺 expert-choice routing，每個 expert 全球 {picks top-k tokens}。呢個保證 {zero load
+    imbalance} by construction。
+  answer: picks top-k tokens / zero load imbalance
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: Capacity factor = {expert_capacity / ideal_uniform_split}。更高 CF → {fewer
+    dropped tokens but more compute}。
+  answer: expert_capacity / ideal_uniform_split / fewer dropped tokens but more compute
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: Expert deadness 發生喺 expert 長時間得到 {very low router probability}。用 {reset
+    or increased aux loss} 減輕。
+  answer: very low router probability / reset or increased aux loss
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: 喺 Switch Transformer，auxiliary loss 公式係 {E · Σ_i f_i · P_i}，鼓勵 {uniform
+    routing fractions}。
+  answer: E · Σ_i f_i · P_i / uniform routing fractions
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: 被 drop 嘅 tokens 喺 MoE 淨係經過 {residual connection}，{no expert contribution}。
+  answer: residual connection / no expert contribution
+  difficulty: 2
+  tags: []

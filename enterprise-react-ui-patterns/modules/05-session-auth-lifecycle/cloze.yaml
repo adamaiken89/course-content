@@ -1,0 +1,54 @@
+- id: "c.51"
+  question: "Checking `token != null` once treats the session as a {boolean}, which cannot represent the recoverable state where a token exists but is {expired}. Answer the first blank."
+  answer: "boolean"
+  explanation: "A boolean collapses the lifecycle into logged-in or logged-out. Recoverable states like expired-but-refreshable are invisible to it."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "c.52"
+  question: "Checking `token != null` once treats the session as a boolean, which cannot represent the recoverable state where a token exists but is {expired}. Answer the second blank."
+  answer: "expired"
+  explanation: "A token can exist and be dead. The expired state must be observable so the app can silently refresh instead of pretending the session is fine."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "c.53"
+  question: "Concurrent requests that hit a dead token share a single {refresh} request; the rest await the shared promise and replay with the fresh token."
+  answer: "refresh"
+  explanation: "One-flight refresh: the first requester owns the refresh promise; waiting callers subscribe to it instead of firing their own."
+  difficulty: 2
+  tags: [concept, application]
+- id: "c.54"
+  question: "When a 401 arrives, the request is parked in a {retry queue} and replayed after the shared refresh resolves."
+  answer: "retry queue"
+  explanation: "Failed requests are queued, not discarded, so no student request is lost when the token rotates. The queue drains once the refresh lands."
+  difficulty: 2
+  tags: [concept, application]
+- id: "c.55"
+  question: "The mental model: a session is a {state machine}, not a boolean - anonymous, authenticating, authenticated, expired, refreshing."
+  answer: "state machine"
+  explanation: "Every state maps to UI behavior: expired can show a reconnect note, refreshing disables actions, anonymous shows login. A boolean cannot hold these."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "c.56"
+  question: "In this client-only course the token lives {in-memory} in the zustand store, so XSS cannot scrape it and reload returns to anonymous."
+  answer: "in-memory"
+  explanation: "Without a real server there is no httpOnly cookie to set, so the in-memory token in the store is the safest client token - and it forces the boot lifecycle anyway."
+  difficulty: 2
+  tags: [comparison, scenario]
+- id: "c.57"
+  question: "In production, the enterprise-preferred token carrier is an {httpOnly cookie}, which JavaScript never sees."
+  answer: "httpOnly cookie"
+  explanation: "httpOnly cookies survive reload and are invisible to injected scripts, closing the XSS exfiltration path that localStorage leaves open."
+  difficulty: 2
+  tags: [comparison, security]
+- id: "c.58"
+  question: "The RouteGuard redirects anonymous sessions to login while remembering the {returnTo} destination, so re-login restores the student to their screen."
+  answer: "returnTo"
+  explanation: "Preserving the intended route means the student lands back on their work after login - the redirect never loses context."
+  difficulty: 2
+  tags: [scenario, application]
+- id: "c.59"
+  question: "The draft outlives the session because the draft store syncs through zustand's {persist} middleware to localStorage, leaving the token in memory only."
+  answer: "persist"
+  explanation: "Persistence applies to the student's work, not to credentials. The draft survives logout and reload; the token does not and should not."
+  difficulty: 3
+  tags: [concept, application]

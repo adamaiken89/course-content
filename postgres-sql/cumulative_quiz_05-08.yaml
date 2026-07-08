@@ -1,0 +1,120 @@
+- id: cum.11
+  type: mcq
+  source_modules:
+  - 5
+  question: "Which clause restricts a single aggregate to a subset of rows without a WHERE?"
+  options:
+    a: "HAVING"
+    b: "FILTER (WHERE ...)"
+    c: "DISTINCT"
+    d: "OVER (PARTITION BY ...)"
+  answer: b
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.12
+  type: mcq
+  source_modules:
+  - 6
+  question: "Which GIN operator class does NOT provide the ? key-existence operator?"
+  options:
+    a: "jsonb_ops"
+    b: "jsonb_path_ops"
+    c: "btree_gin"
+    d: "gin_trgm_ops"
+  answer: b
+  difficulty: 2
+  tags:
+  - cross-module
+  - comparison
+- id: cum.13
+  type: mcq
+  source_modules:
+  - 7
+  question: "Why does a MERGE without a unique index on its ON clause take broad row locks?"
+  options:
+    a: "The planner converts it to an index scan"
+    b: "Any row can match, so many candidates must be locked"
+    c: "MVCC needs the snapshot updated"
+    d: "The ON clause only filters the target rows"
+  answer: d
+  difficulty: 3
+  tags:
+  - cross-module
+  - scenario
+- id: cum.14
+  type: mcq
+  source_modules:
+  - 8
+  question: "A top-N-per-group query via LATERAL pairs which inner clause?"
+  options:
+    a: "ORDER BY ... LIMIT n"
+    b: "GROUP BY with HAVING"
+    c: "DISTINCT ON with window rank"
+    d: "WINDOW frame boundaries"
+  answer: a
+  difficulty: 2
+  tags:
+  - cross-module
+  - scenario
+- id: cum.15
+  type: cloze
+  source_modules:
+  - 5
+  question: "On a super-aggregate row the {grouping} function returns 1 for the column that rolled up."
+  answer: grouping
+  difficulty: 2
+  tags:
+  - cross-module
+  - formula
+- id: cum.16
+  type: cloze
+  source_modules:
+  - 6
+  question: "The @> operator on jsonb tests strict {containment} of one document in another."
+  answer: containment
+  difficulty: 1
+  tags:
+  - cross-module
+  - terminology
+- id: cum.17
+  type: cloze
+  source_modules:
+  - 7
+  question: "ON CONFLICT DO UPDATE reads the row that would have been inserted through the {excluded} pseudorow."
+  answer: excluded
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.18
+  type: tf
+  source_modules:
+  - 6
+  statement: "jsonb stores object keys in their exact insertion order."
+  answer: false
+  difficulty: 1
+  tags:
+  - cross-module
+  - misconception
+- id: cum.19
+  type: tf
+  source_modules:
+  - 7
+  statement: "For a conflicting row, INSERT ON CONFLICT DO NOTHING returns no row from RETURNING."
+  answer: true
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.20
+  type: tf
+  source_modules:
+  - 8
+  statement: "CROSS JOIN LATERAL drops outer rows for which the inner query returns nothing."
+  answer: true
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept

@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "香港零售銀行主要提供 4 種戶口: {往來}、{儲蓄}、{定期} 同 {外幣}。"
+  answer: "往來、儲蓄、定期、外幣"
+  explanation: "往來戶口用日常, 儲蓄戶口放短期儲蓄, 定期存款鎖定高息, 外幣戶口持有外幣。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "港元定存 3 個月 4% 年利率, 本金 $100,000 嘅到期利息係 $100,000 × 4% × (3/12) = {$1,000}。"
+  answer: "$1,000"
+  explanation: "利息 = 本金 × 年利率 × (期/月數)。3 個月即 1/4 年, 所以係 4% × 1/4 = 1% 嘅本金。"
+  difficulty: 2
+  tags: [calculation, formula]
+
+- id: "c.3"
+  question: "應急錢應該放 {儲蓄戶口} (即時攞到), 唔好放 {定期} (急用要罰息)。"
+  answer: "儲蓄戶口、定期"
+  explanation: "應急錢 3 個條件: 即時攞、安全、有少少息。儲蓄戶口符合晒。定存鎖定會被罰息。"
+  difficulty: 1
+  tags: [concept, application]
+
+- id: "c.4"
+  question: "外幣戶口嘅主要 3 個用途係 {投資} (買美股)、{旅行} (換 JPY) 同 {對沖} (分散貨幣風險)。"
+  answer: "投資、旅行、對沖"
+  explanation: "對新手嚟講, 未做過投資/未去旅行前, 唔使開外幣戶口。大部分港元定存 + 信用卡外幣功能已夠用。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "{找換店} (尤其旺角/中環) 通常 spread 較窄 (0.2-0.5%), 銀行通常 0.5-1.5%。"
+  answer: "找換店"
+  explanation: "換大額 ($30,000+) 前要 compare, 用計算機計真實 cost (包括手續費)。唔好假設「銀行最平」。"
+  difficulty: 2
+  tags: [concept, comparison]
+
+- id: "c.6"
+  question: "新手揀銀行嘅建議: 傳統銀行 {1 個} + Virtual Bank {1 個} 就夠, 唔使開第 3 個。"
+  answer: "1 個、1 個"
+  explanation: "超過 4 個戶口 (1 往來 + 1 儲蓄 + 1 定期 + 1 virtual) 難管理, 浪費時間。"
+  difficulty: 1
+  tags: [concept, application]
+
+- id: "c.7"
+  question: "戶口管理 4 個原則: {自動轉賬}、{定期 review}、{唔好太多戶口}、{小心最低結餘罰款}。"
+  answer: "自動轉賬、定期 review、唔好太多戶口、小心最低結餘罰款"
+  explanation: "自動轉賬係「Pay Yourself First」, 定期 review 保持平衡, 唔超過 4 個戶口, 留意 inactive account 罰款。"
+  difficulty: 2
+  tags: [process, application]
+
+- id: "c.8"
+  question: "目標儲蓄 (旅行/置業) 應該放 {定期} (較高息), 並拆做 {幾份} (3/6/12 個月) 避免全部同時到期。"
+  answer: "定期、幾份"
+  explanation: "拆短中期方便 renewal 靈活, 唔好全部同期鎖死。萬一有更佳投資機會/減息周期, 可以 partial 調整。"
+  difficulty: 2
+  tags: [application, process]
+
+- id: "c.9"
+  question: "港元定存利率 {跟美息} (聯繫匯率), 2022-2023 美息高峰時部分銀行定存 {4-5%}, 2024 開始減息回落。"
+  answer: "跟美息、4-5%"
+  explanation: "港元聯繫匯率跟 USD, 所以港元利率大致跟美息。留意美聯儲息率走勢, 預判港元定存走勢。"
+  difficulty: 2
+  tags: [concept, scenario]
+
+- id: "c.10"
+  question: "戶口分配 {6 個月生活費} (約 $60,000) 放儲蓄戶口 (應急錢), 剩低 $140,000 拆做 {3-6 個月定存} (到期 renew)。"
+  answer: "6 個月生活費、3-6 個月定存"
+  explanation: "保流動性 (急用攞到), 拎較高息 (定存)。全部鎖定定期 = 急用時冇錢/被罰息。"
+  difficulty: 3
+  tags: [application, scenario]

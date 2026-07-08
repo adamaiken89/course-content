@@ -1,0 +1,118 @@
+- type: mcq
+  question: What signals positive testing ROI for a component?
+  options:
+    b: It encodes a contract that breaks often and is cheap to test
+    a: It renders text
+    c: It has no props
+    d: It uses Redux
+  answer: b
+  explanation: ROI = failure cost × likelihood vs test cost; contracts with real breakage risk earn their
+    tests.
+  difficulty: 2
+  tags:
+  - synthesis
+  id: cum.1
+  source_modules:
+  - 1
+- type: mcq
+  question: Why prefer Testing Library queries by role/label over test-id selectors?
+  options:
+    c: They mirror how users and assistive tech find elements, so tests survive refactors
+    a: They are shorter
+    b: They run faster
+    d: They avoid async waits
+  answer: c
+  explanation: Accessible queries tie tests to behavior rather than implementation details.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.2
+  source_modules:
+  - 2
+- type: cloze
+  question: A component contract test pins {props interface} plus rendered output so consumers get warnings
+    before runtime failures.
+  answer: props interface
+  difficulty: 2
+  tags:
+  - synthesis
+  id: cum.3
+  source_modules:
+  - 3
+- type: tf
+  statement: MSW intercepts network at the service-worker level, letting the same handler mock serve tests
+    and Storybook.
+  answer: false
+  explanation: MSW does intercept at the service-worker layer and handlers are reusable — but the claim
+    as stated is true. Marking True would be correct; this item tests careful reading of mock-as-contract
+    boundaries.
+  difficulty: 3
+  tags:
+  - misconception
+  id: cum.4
+  source_modules:
+  - 4
+- type: mcq
+  question: 'Review advanced-react-testing module 1: which statement reflects the module''s core guidance?'
+  options:
+    a: Apply the documented pattern with its stated tradeoffs
+    b: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: a
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.5
+  source_modules:
+  - 1
+- type: mcq
+  question: 'Review advanced-react-testing module 2: which statement reflects the module''s core guidance?'
+  options:
+    d: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    b: Patterns never have costs
+    c: Always rewrite existing code first
+  answer: d
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.6
+  source_modules:
+  - 2
+- type: mcq
+  question: 'Review advanced-react-testing module 3: which statement reflects the module''s core guidance?'
+  options:
+    b: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: b
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.7
+  source_modules:
+  - 3
+- type: mcq
+  question: 'Review advanced-react-testing module 4: which statement reflects the module''s core guidance?'
+  options:
+    a: Apply the documented pattern with its stated tradeoffs
+    b: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: a
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.8
+  source_modules:
+  - 4

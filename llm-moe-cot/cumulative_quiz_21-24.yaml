@@ -1,0 +1,108 @@
+- id: cum.41
+  type: tf
+  source_modules:
+  - 22
+  statement: In MoE, increasing the number of experts always improves model quality because more specialised knowledge can be stored.
+  answer: false
+  explanation: More experts raise memory and communication costs without proportional quality gain, and make load balancing harder; huge counts like Switch 2048 need top-1 routing.
+  difficulty: 2
+  tags:
+  - cross-module
+  - misconception
+- id: cum.42
+  type: tf
+  source_modules:
+  - 24
+  statement: Self-consistency (majority voting across multiple CoT paths) and Tree-of-Thoughts (search over reasoning branches) both explore multiple reasoning trajectories, but ToT uses search with backtracking while self-consistency uses parallel independent samples.
+  answer: true
+  explanation: Self-consistency votes across independent samples; ToT searches branches with BFS/DFS and backtracking. Both go beyond a single CoT path.
+  difficulty: 1
+  tags:
+  - cross-module
+  - comparison
+- id: cum.43
+  type: mcq
+  source_modules:
+  - 21
+  question: Why is a MoE model's memory footprint larger than its FLOPs would suggest?
+  options:
+    a: All experts must remain resident in memory even though only a few are active per token
+    b: Expert weights are copied per GPU without sharing
+    c: The router duplicates the token embeddings
+    d: The KV cache is doubled for expert states
+  answer: a
+  explanation: Sparse activation limits FLOPs, but every expert's weights must be stored and loaded, so memory and bandwidth dominate MoE serving costs.
+  difficulty: 1
+  tags:
+  - concept
+  - mechanism
+- id: cum.44
+  type: cloze
+  source_modules:
+  - 22
+  question: In the Switch Transformer, only the single highest-scoring {expert} handles each token, cutting communication to the minimum.
+  answer: expert
+  explanation: "Switch uses top-1 routing: each token is sent to exactly one expert, minimising all-to-all communication at the cost of individual-expert imbalance."
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: cum.45
+  type: mcq
+  source_modules:
+  - 23
+  question: Why does chain-of-thought help with arithmetic problems?
+  options:
+    a: It searches the whole internet for the answer
+    b: It breaks the task into intermediate steps that reuse abilities the model already has
+    c: It increases the model's parameter count during inference
+    d: It activates hidden math experts in dense models
+  answer: b
+  explanation: CoT decomposes a hard problem into smaller, familiar steps, letting existing sub-abilities combine instead of failing at the whole task at once.
+  difficulty: 1
+  tags:
+  - concept
+  - mechanism
+- id: cum.46
+  type: cloze
+  source_modules:
+  - 24
+  question: CoT prompting asks the model to {explain} its intermediate reasoning before giving the final answer.
+  answer: explain
+  explanation: The model outputs a visible chain of reasoning steps, which improves accuracy on multi-step questions versus answering directly.
+  difficulty: 1
+  tags:
+  - terminology
+  - recall
+- id: cum.47
+  type: mcq
+  source_modules:
+  - 24
+  question: Zero-shot chain-of-thought is best described as which of these?
+  options:
+    a: Appending something like 'Let's think step by step' with no worked examples
+    b: Providing ten labelled demonstrations of reasoning
+    c: Fine-tuning the model on reasoning pairs
+    d: Running an external symbolic solver
+  answer: a
+  explanation: Zero-shot CoT adds a reasoning instruction or hint with no examples, and the model produces a chain on its own.
+  difficulty: 3
+  tags:
+  - terminology
+  - comparison
+- id: cum.48
+  type: mcq
+  source_modules:
+  - 21
+  question: On multi-GPU MoE-serving, expert placement must balance which factors?
+  options:
+    a: Memory, communication bandwidth, and load across devices
+    b: Exactly one expert per GPU regardless of size
+    c: Running all experts on the first GPU for cache locality
+    d: Disabling load balancing after training
+  answer: a
+  explanation: Experts are distributed across devices to fit memory, while routing must minimise cross-GPU all-to-all communication and keep devices balanced.
+  difficulty: 2
+  tags:
+  - concept
+  - synthesis

@@ -1,0 +1,60 @@
+- id: "c.1"
+  question: "In the FROM clause, { LATERAL } lets a subquery reference the row of an earlier item on its left."
+  answer: "LATERAL"
+  explanation: "The keyword turns a derived table into a per-row probe that sees outer rows."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "A LATERAL subquery is evaluated once per { outer } row, forming a nested-loop { apply }."
+  answer: "outer; apply"
+  explanation: "Each outer row drives an inner probe; the planner materializes this as a nested loop/apply."
+  difficulty: 2
+  tags: [concept]
+- id: "c.3"
+  question: "Use { LEFT } JOIN LATERAL ... ON true to keep outer rows that match nothing, filling lateral columns with { NULL }."
+  answer: "LEFT; NULL"
+  explanation: "CROSS JOIN LATERAL drops non-matching rows; LEFT with ON true keeps them."
+  difficulty: 2
+  tags: [concept]
+- id: "c.4"
+  question: "The classic top-N-per-group query uses LATERAL with an inner ORDER BY and a { LIMIT } inside the subquery."
+  answer: "LIMIT"
+  explanation: "LIMIT cuts the probe at N per group, ideally stopped by the index order rather than a full sort."
+  difficulty: 1
+  tags: [application]
+- id: "c.5"
+  question: "To spread an array column into rows while keeping element order, pair unnest with { WITH ORDINALITY }."
+  answer: "WITH ORDINALITY"
+  explanation: "The ordinality column records each element's position in the original array."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.6"
+  question: "For a fast LATERAL probe, the inner query must be served by an { index } on the join column path; without it each iteration { full-scans }."
+  answer: "index; full-scans"
+  explanation: "Nested-loop cost is outer_rows x inner_scan; an index makes the inner scan ~one lookup."
+  difficulty: 2
+  tags: [performance]
+- id: "c.7"
+  question: "A LATERAL function call like geo_lookup(a.lat, a.lng) runs once per { outer } row, and its result can be reused via the join { alias }."
+  answer: "outer; alias"
+  explanation: "The function result is bound to the lateral alias and usable in later clauses."
+  difficulty: 2
+  tags: [concept]
+- id: "c.8"
+  question: "A plain derived table in FROM runs { once }, without referencing outer rows; LATERAL makes it { per-row }."
+  answer: "once; per-row"
+  explanation: "That static behavior is exactly why plain subqueries cannot express top-N-per-group."
+  difficulty: 1
+  tags: [comparison]
+- id: "c.9"
+  question: "When the inner table is unindexed and large, a { hash } join or window plan the planner picks on its own usually beats forced nested loops."
+  answer: "hash"
+  explanation: "LATERAL forces the nested loop, which can degrade to rows x unindexed-scan on big data."
+  difficulty: 2
+  tags: [scenario]
+- id: "c.10"
+  question: "For JSONB order spread, unnesting with jsonb_array_elements inside LATERAL turns each array element into a { row }, addressable by position via { WITH ORDINALITY }."
+  answer: "row; WITH ORDINALITY"
+  explanation: "Together they reconstruct the array order while emitting one output row per element."
+  difficulty: 2
+  tags: [application]

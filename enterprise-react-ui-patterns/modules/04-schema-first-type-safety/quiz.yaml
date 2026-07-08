@@ -1,0 +1,110 @@
+- id: "4.1"
+  question: "What does a hand-written TypeScript interface provide at runtime?"
+  options:
+    a: "Runtime validation of the data"
+    b: "A claim the compiler assumes but never verifies"
+    c: "Automatic data coercion"
+    d: "A serialization format"
+  answer: b
+  explanation: "Interfaces are erased at compile time. They describe intent; nothing checks them against real data, so drift surfaces only at runtime."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "4.2"
+  question: "Which zod API derives the TypeScript type from a schema?"
+  options:
+    a: "z.infer"
+    b: "z.coerce"
+    c: "z.refine"
+    d: "z.array"
+  answer: a
+  explanation: "z.infer creates a static type from schema. z.coerce converts values, z.refine adds cross-field checks, z.array builds arrays."
+  difficulty: 1
+  tags: [terminology, formula]
+- id: "4.3"
+  question: "How does safeParse differ from parse?"
+  options:
+    a: "safeParse is slower but more accurate"
+    b: "parse returns errors, safeParse throws"
+    c: "safeParse returns { success, data | error }, parse throws on failure"
+    d: "There is no difference"
+  answer: c
+  explanation: "safeParse returns a discriminated result you can read into UI state; parse throws, which is appropriate only where failure should crash loudly."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "4.4"
+  question: "Where does throwing .parse() belong?"
+  options:
+    a: "Inside the form on every keystroke"
+    b: "In the grade averaging helper"
+    c: "In the mock server fixtures"
+    d: "At the fetch boundary when parsing a response"
+  answer: d
+  explanation: "The fetch boundary is a trust boundary — a malformed response should fail loudly. In forms, failure is expected, so safeParse fits."
+  difficulty: 2
+  tags: [scenario, concept]
+- id: "4.5"
+  question: "An interface declares grades: number[] but the server sends strings. The GPA preview shows NaN. What is the root cause?"
+  options:
+    a: "The hand-written interface was never verified against real data"
+    b: "The server is broken - the client is fine"
+    c: "TypeScript failed to compile correctly"
+    d: "React infinite-rendered the form"
+  answer: a
+  explanation: "The interface is a second description nobody checks. Without runtime verification (schema parse), the type and reality drift."
+  difficulty: 2
+  tags: [scenario, misconception]
+- id: "4.6"
+  question: "Where should per-field validation errors live, per ownership rules?"
+  options:
+    a: "In the TanStack Query cache"
+    b: "In the URL query string"
+    c: "Beside the form state in a local store"
+    d: "In the session store"
+  answer: c
+  explanation: "Field errors are high-frequency, per-field, local state that travels with the form. Server resources, not field errors, go in the Query cache."
+  difficulty: 2
+  tags: [scenario, comparison]
+- id: "4.7"
+  question: "When are plain TypeScript types sufficient instead of a runtime schema?"
+  options:
+    a: "When the team does not know zod"
+    b: "For internal-only shapes that never cross a boundary"
+    c: "Whenever an app has forms"
+    d: "Only for server-side code"
+  answer: b
+  explanation: "If one team owns both sides and nothing serializes, drift risk is zero. Runtime validation is only worth paying for at trust boundaries."
+  difficulty: 2
+  tags: [comparison, concept]
+- id: "4.8"
+  question: "What does z.coerce.date() accomplish?"
+  options:
+    a: "Formats a date for a specific locale"
+    b: "Validates a date is in the future"
+    c: "Converts a string like an ISO date into a real Date at parse time"
+    d: "Encodes the date into a number"
+  answer: c
+  explanation: "Coercion runs during parsing, so the resulting value is a genuine Date. A bare interface type asserts Date but never performs the conversion."
+  difficulty: 2
+  tags: [terminology, formula]
+- id: "4.9"
+  question: "applicationSchema refines that campusId is required when the program is not 'online'. Why encode this in the schema?"
+  options:
+    a: "So the same dependent rule feeds form validation and server checks"
+    b: "So the campus list never changes"
+    c: "Because zod forbids nullable fields"
+    d: "To speed up rendering"
+  answer: a
+  explanation: "A schema-level refine keeps one rule in one place - the form, the mock server, and batch rows all apply the identical dependent constraint."
+  difficulty: 3
+  tags: [scenario, application]
+- id: "4.10"
+  question: "CSV import maps each raw row to an application. A row puts grades as comma-separated text in one cell. What does the schema-first pipeline do?"
+  options:
+    a: "Rejects the whole file"
+    b: "Silently drops the row"
+    c: "Splits the cell into an array, then safeParse validates each grade with exact row-level errors"
+    d: "Treats the text as a single grade"
+  answer: c
+  explanation: "mapRow splits the cell, then the shared schema validates each element. Failures become row-level issues with exact paths, like form fields."
+  difficulty: 3
+  tags: [scenario, application]

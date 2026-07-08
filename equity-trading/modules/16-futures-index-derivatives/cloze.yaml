@@ -1,0 +1,69 @@
+- id: c.1
+  question: ES tick size = {0.25} index points. Each tick = ${12.50}. If ES moves
+    10 points, P&L = ${500}.
+  answer: '0.25'
+  difficulty: 1
+  tags:
+  - calculation
+- id: c.2
+  question: SSF payoff is {linear}. Option payoff is {non-linear}. SSF buyer has {obligation}
+    to settle. Option buyer has {right} to exercise.
+  answer: linear
+  difficulty: 2
+  tags:
+  - comparison
+- id: c.3
+  question: ES multiplier = ${50}. NQ multiplier = ${20}.
+  answer: '50'
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: A {protective put} is owning stock and buying a put. A {covered call}
+    is owning stock and selling a call.
+  answer: protective put
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.5
+  question: ES futures are {cash-settled}, meaning no physical delivery of stocks
+    at expiration.
+  answer: cash-settled
+  difficulty: 1
+  tags:
+  - concept
+- id: c.6
+  question: Futures margin is typically {5-10%} of notional value, providing {20:1}
+    to {10:1} leverage.
+  answer: 5-10%
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: In the hedging example, $1M SPY portfolio drops to $900,000. Protective
+    puts pay ${50,000}. Hedge cost is ${16,000}. Net loss = ${34,000}.
+  answer: '50000'
+  difficulty: 3
+  tags:
+  - calculation
+- id: c.8
+  question: Buying AAPL $180 call for $5 when AAPL is $180 gives 26:1 leverage — stock
+    return of 10% becomes option return of {260%}.
+  answer: 260%
+  difficulty: 2
+  tags:
+  - calculation
+- id: c.9
+  question: ES futures trade nearly {24h} and are used for {hedging}, directional
+    bets, and arbitrage.
+  answer: 24h
+  difficulty: 1
+  tags:
+  - concept
+- id: c.10
+  question: If AAPL drops 5% from $180 to $171, shares lose ${900}. Call option loses
+    {100%} of premium ($500).
+  answer: '900'
+  difficulty: 2
+  tags:
+  - calculation

@@ -1,0 +1,102 @@
+- id: '16.1'
+  question: Dense transformer scaling 嘅根本問題係乜？
+  options:
+    a: 每個 token 激活所有 parameters，所以運算同 parameter count 成線性
+    b: Dense model 用唔到 GPU parallelism
+    c: Dense model 太多 attention heads
+    d: Dense model 學唔到長距離依賴
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '16.2'
+  question: 邊個提出現代規模嘅第一個 MoE？
+  options:
+    c: Shazeer (2017)
+    a: Jacobs (1991)
+    b: Eigen (2013)
+    d: Vaswani (2017)
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '16.3'
+  question: 喺 sparse MoE 入面，router 計算啲乜？
+  options:
+    c: Expert scores (gates)——每個 token 要用邊啲 experts
+    a: Token embeddings
+    b: Attention probabilities
+    d: Expert parameters 嘅 loss gradients
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '16.4'
+  question: Mixtral 8x7B 有 ~47B 總參數但每個 token 只得 ~13B active。點解？
+  options:
+    b: 8 experts × 每個 7B params，top-2 active ≈ 13B
+    a: Router 用 dropout 關咗 34B params
+    c: 得 attention layers 計做 active
+    d: KV cache 為剩低嘅 parameters 減少記憶體
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '16.5'
+  question: MoE 解耦啲乜？
+  options:
+    b: Parameter count 同每個 token 嘅 compute
+    a: Training 同 inference
+    c: Attention 同 feed-forward layers
+    d: Encoder 同 decoder
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '16.6'
+  question: 邊個唔係 MoE 嘅成本？
+  options:
+    a: 同樣 FLOPs 下準確度低過 dense model
+    b: 更多記憶體儲存所有 experts
+    c: All-to-all 通訊開銷
+    d: Experts 之間嘅 load imbalance
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '16.7'
+  question: 如果 E=64 experts，top-k=2，每個 expert = dense FFN，每個 token 用咗幾多比例嘅 expert
+    compute？
+  options:
+    a: ~3%
+    b: 100%
+    c: ~50%
+    d: ~64%
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '16.8'
+  question: 邊個現代模型用 Switch Transformer 架構？
+  options:
+    d: Switch Transformer (Google, 1.6T params)
+    a: LLaMA
+    b: GPT-4
+    c: BERT
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '16.9'
+  question: 點解 load imbalance 除咗浪費 expert capacity 之外仲有問題？
+  options:
+    b: 超載 experts 變成運算瓶頸 (critical path)
+    a: 佢增加 GPU 記憶體用量
+    c: 佢降低 embedding 質素
+    d: 佢增加 attention 運算
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '16.10'
+  question: DeepSeek MoE 以咩聞名？
+  options:
+    d: Ultra-sparse routing 同細粒度 expert segmentation
+    a: 係第一個有超過 100 個 experts 嘅 MoE model
+    b: 用 attention 取代 FFN 做 expert
+    c: 係純 dense model 用 MoE loss 訓練
+  answer: d
+  difficulty: 2
+  tags: []
+

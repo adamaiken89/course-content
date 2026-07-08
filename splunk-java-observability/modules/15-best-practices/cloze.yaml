@@ -1,0 +1,70 @@
+- id: c.1
+  answer: GB, day, storage
+  explanation: Licensing is by daily indexed volume, so even never-searched events consume the license and disk budget.
+  difficulty: 1
+  tags:
+  - licensing
+  question: Splunk Enterprise licenses per {blank} indexed per {blank}. Every event stored costs money and {blank}.
+- id: c.2
+  answer: high, TSIDX, TSIDX
+  explanation: High-cardinality fields defeat compression and slow the time-series index. Bucket such fields into ranges.
+  difficulty: 2
+  tags:
+  - cardinality
+  question: A field with many distinct values has {blank} cardinality and degrades {blank} compression and {blank} search speed.
+- id: c.3
+  answer: eval
+  explanation: Bucket converts high-cardinality numeric values into low-cardinality ranges, preserving analysis while indexing efficiently.
+  difficulty: 2
+  tags:
+  - cardinality
+  question: Use the {blank} command to bucket noisy values like latency into ranges before they are indexed.
+- id: c.4
+  answer: plaintext
+  explanation: Source-level redaction means the secret never reaches disk; parse-time scrubbing is only a safety net.
+  difficulty: 1
+  tags:
+  - sensitive-data
+  question: Never emit passwords, tokens, or PII in {blank}. Redact at the source in the JVM, not only at parse time.
+- id: c.5
+  answer: SEDCMD
+  explanation: SEDCMD runs during parsing. Raw bytes may exist prior, so source-level masking remains essential.
+  difficulty: 1
+  tags:
+  - sensitive-data
+  question: props.conf {blank} can scrub patterns at parse time, but it is a safety net, not the primary defense.
+- id: c.6
+  answer: correlation, standard
+  explanation: Shared field conventions plus the Common Information Model let correlated queries span services reliably.
+  difficulty: 1
+  tags:
+  - structured-logging
+  question: Standardized keys such as error.code and duration_ms enable cross-service search. Mapping to the Common Information Model extends {blank}. Shared field names are {blank} across services.
+- id: c.7
+  answer: burn
+  explanation: SLO burn measures how fast the error budget is consumed; symptom-based alerts mirror real user impact.
+  difficulty: 2
+  tags:
+  - alerting
+  question: Alerts should be symptom-based, such as error rate or SLO {blank}, rather than static resource thresholds.
+- id: c.8
+  answer: runbook
+  explanation: Runbooks make alerts actionable; observability-as-code keeps alerts reviewable and mutable over time.
+  difficulty: 2
+  tags:
+  - alerting
+  question: Every alert requires a documented {blank} and owner, and alerts should live as observability-as-code in version control.
+- id: c.9
+  answer: search, sourcetype
+  explanation: Only log what you query. Separate indexes and sourcetypes allow independent retention and controlled license.
+  difficulty: 3
+  tags:
+  - licensing
+  question: Log only what you will {blank}. Segment data by index or sourcetype so per-index retention can be tuned.
+- id: c.10
+  answer: sample
+  explanation: Sampling beats logging every high-volume event; hot-loop logging explodes indexed bytes and cardinality.
+  difficulty: 3
+  tags:
+  - volume
+  question: For very high-volume events in hot loops, {blank} the event to control volume and cardinality.

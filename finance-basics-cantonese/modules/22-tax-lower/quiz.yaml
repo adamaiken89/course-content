@@ -1,0 +1,133 @@
+- id: '22.1'
+  question: 利得稅 2018 年起嘅兩級制?
+  options:
+    a: 一律 15%
+    b: 首 $2M = 5%, $2M+ = 16.5%
+    c: 首 $2M 免稅
+    d: 首 $2M = 8.25%, $2M+ = 16.5%
+  answer: d
+  explanation: '2018 起兩級制: 首 $2M 利潤 8.25%, $2M+ 16.5%。鼓勵中小企。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '22.2'
+  question: 兩級制 8.25% 優惠邊個可以享?
+  options:
+    a: 所有公司
+    b: 只一間關聯公司
+    c: 上市公司
+    d: 外國公司
+  answer: b
+  explanation: 兩級制 8.25% 優惠只適用一間關聯公司, 多間要 nominate 一間。
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '22.3'
+  question: 判定香港來源利潤嘅原則?
+  options:
+    a: Operation Test (合約/客戶/服務地)
+    b: 睇老闆國籍
+    c: 睇公司名
+    d: 睇公司註冊地
+  answer: a
+  explanation: 'Operation Test: 睇合約簽訂地、客戶所在地、服務提供地、付款地。唔係睇公司註冊地 (BVI 都可能係香港來源)。'
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '22.4'
+  question: 公司利潤 $3M, 利得稅?
+  options:
+    a: $3M × 8.25% = $247,500
+    b: $3M × 15% = $450,000
+    c: $3M × 16.5% = $495,000
+    d: $2M × 8.25% + $1M × 16.5% = $330,000
+  answer: d
+  explanation: '兩級制: 首 $2M × 8.25% = $165,000 + $1M × 16.5% = $165,000, 總 $330,000
+    (即 11% 平均稅率)。'
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '22.5'
+  question: 逾期交報稅表 (公司) 第一次罰款?
+  options:
+    a: $300
+    b: $1,200 + 5% 稅款
+    c: $5,000
+    d: $10,000
+  answer: b
+  explanation: '第一次逾期: $1,200 罰款 + 5% 稅款。第二次 (5 年內): $3,000 + 10% 稅款。蓄意逃稅: 監禁。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '22.6'
+  question: 自僱人士 vs 打工仔主要分別?
+  options:
+    a: 自僱有勞工保障, 打工冇
+    b: 自僱有 MPF 自動供款, 打工冇
+    c: 自僱自己搞 MPF + 報稅, 打工老闆搞
+    d: 自僱有有薪假, 打工冇
+  answer: c
+  explanation: 自僱自己搞 MPF 強制供款 (5% 上限 $1,500/月) + 自己報稅 + 冇勞工保障 + 冇有薪假。打工老闆供 + 自動報稅
+    + 有勞工保障。
+  difficulty: 1
+  tags:
+  - comparison
+  - concept
+- id: '22.7'
+  question: 香港有冇獨立資本利得稅?
+  options:
+    a: 有, 按持有期分級
+    b: 有, 17%
+    c: 冇, 但短炒視為經營要交利得稅
+    d: 有, 15%
+  answer: c
+  explanation: '香港冇獨立 CGT, 但稅局用 Badges of Trade 判定: 短炒/頻繁/融資 → 經營, 交利得稅 16.5%。長揸作投資
+    → 資本, 免稅。'
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '22.8'
+  question: 以下邊個屬於「經營」, 要交利得稅?
+  options:
+    a: 短炒 Bitcoin, 1 個月出入, 多次交易
+    b: 買樓自住 5 年, 賣出
+    c: 買入 Apple 股票作長期投資
+    d: 長揸 S&P 500 ETF 10 年收息
+  answer: a
+  explanation: '短炒 Bitcoin 符合 Badges of Trade: 持有期短、頻率高、可能融資 → 經營, 交利得稅 16.5%。其他都係資本,
+    免稅。'
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '22.9'
+  question: 以下邊個唔係合法節稅方法?
+  options:
+    a: 證明長揸屬資本免稅
+    b: 虛報開支, 將私人使費寫公司報銷
+    c: 善用兩級制公司利得稅
+    d: 善用免稅額 + TVC + 全扣減
+  answer: b
+  explanation: 虛報開支係逃稅, 會被罰款 + 補稅 + 監禁。合法節稅係用免稅額 / TVC / 兩級制。
+  difficulty: 1
+  tags:
+  - terminology
+  - misconception
+- id: '22.10'
+  question: 你老闆叫你開一人公司接 job, 改交利得稅 8.25%。最大風險?
+  options:
+    a: 以上都係
+    b: 假自僱, 仍當僱員交薪俸稅
+    c: 派息返自己時要再交稅
+    d: 公司有行政成本 (核數/秘書/登記)
+  answer: a
+  explanation: 假自僱風險、派息雙重課稅、公司行政成本。應該諮詢會計師 + 用 IRD56A 判定。
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+

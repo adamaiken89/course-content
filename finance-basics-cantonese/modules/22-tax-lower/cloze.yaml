@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "利得稅 2018 起 {兩級制}: 首 $2M = {8.25%}, $2M+ = {16.5%}。"
+  answer: "兩級制、8.25%、16.5%"
+  explanation: "兩級制鼓勵中小企, 但只一間關聯公司享 8.25% 優惠。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "{Operation Test} 判定香港來源利潤, 睇 {合約簽訂地}、{客戶所在地}、{服務提供地}、{付款地}。"
+  answer: "Operation Test、合約簽訂地、客戶所在地、服務提供地、付款地"
+  explanation: "唔係睇公司註冊地。BVI 公司都可能係香港來源, 要睇實際 Operations。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.3"
+  question: "利得稅申報流程: 稅局發 {BIR51 (公司) / BIR60 (個人)}, {1 個月} 內提交, 跟住稅局可能 {查帳 / 發問卷}, 最後發 {評稅通知書}。"
+  answer: "BIR51 (公司) / BIR60 (個人)、1 個月、查帳 / 發問卷、評稅通知書"
+  explanation: "逾期罰 $1,200 + 5% 稅款 (第一次) / $3,000 + 10% (第二次)。"
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "c.4"
+  question: "公司利潤 $3M, 利得稅 = {$2M × 8.25% + $1M × 16.5%} = $330,000, 平均稅率 {11%}。"
+  answer: "$2M × 8.25% + $1M × 16.5%、11%"
+  explanation: "兩級制平均稅率通常低過 16.5%, 對中小企有利。"
+  difficulty: 2
+  tags: [calculation, formula]
+
+- id: "c.5"
+  question: "自僱 vs 打工: 自僱 {自己搞 MPF + 報稅}, {冇有薪假}, {冇勞工保障}; 打工 {老闆搞 + 有勞工保障 + 有有薪假}。"
+  answer: "自己搞 MPF + 報稅、冇有薪假、冇勞工保障、老闆搞 + 有勞工保障 + 有有薪假"
+  explanation: "自僱靈活但風險大, 打工穩定但限制多。"
+  difficulty: 1
+  tags: [comparison, concept]
+
+- id: "c.6"
+  question: "自僱可扣稅開支: {辦公室租金}、{器材 (電腦/相機/軟件)}、{業務交通}、{應酬}、{進修}、{MPF 自願性供款}。"
+  answer: "辦公室租金、器材 (電腦/相機/軟件)、業務交通、應酬、進修、MPF 自願性供款"
+  explanation: "業務相關開支全部保留單據, 報稅時可扣減。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.7"
+  question: "香港 {冇獨立資本利得稅 CGT}, 但 {短炒視為經營} 交利得稅 {16.5%}。長揸作投資 {免稅}。"
+  answer: "冇獨立資本利得稅 CGT、短炒視為經營、16.5%、免稅"
+  explanation: "用 Badges of Trade 判定: 持有期、頻率、改良、融資、規模。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.8"
+  question: "Badges of Trade 5 個判斷: {持有期}、{買賣頻率}、{改良程度}、{融資方式}、{商業規模}。"
+  answer: "持有期、買賣頻率、改良程度、融資方式、商業規模"
+  explanation: "越似「經營」越多 badges: 短、頻、改良、借款、規模大。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.9"
+  question: "合法節稅方法: {善用免稅額 + TVC}、{全扣減業務開支}、{兩級制公司利得稅}、{證明長揸資本免稅}。"
+  answer: "善用免稅額 + TVC、全扣減業務開支、兩級制公司利得稅、證明長揸資本免稅"
+  explanation: "合法節稅 vs 逃稅 (虛報、隱瞞) 嘅分別。"
+  difficulty: 2
+  tags: [terminology, application]
+
+- id: "c.10"
+  question: "假自僱風險: 仍當 {僱員交薪俸稅}、{派息雙重課稅}、{公司行政成本}。應用 {IRD56A 判定} 真僱員。"
+  answer: "僱員交薪俸稅、派息雙重課稅、公司行政成本、IRD56A 判定"
+  explanation: "為慳稅搞假自僱風險大, 應該諮詢會計師 + 用 IRD56A 判定表格。"
+  difficulty: 3
+  tags: [scenario, application]

@@ -1,0 +1,69 @@
+- id: c.1
+  question: In {firm commitment} underwriting, the underwriter bears the risk of unsold
+    shares. In {best efforts} underwriting, the issuer bears that risk.
+  answer: firm commitment
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: The {book-building} process collects institutional orders at various price
+    levels to determine the {clearing price} for an IPO.
+  answer: book-building
+  difficulty: 1
+  tags:
+  - concept
+- id: c.3
+  question: An IPO that prices at $30 and closes at $36 on day one has a {pop} of
+    {20%}.
+  answer: pop
+  difficulty: 2
+  tags:
+  - calculation
+- id: c.4
+  question: A typical IPO lock-up period lasts {180} days, during which {insiders}
+    cannot sell their shares.
+  answer: '180'
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.5
+  question: The first trade price on listing day is determined through an {opening
+    cross} process, not at the {IPO price}.
+  answer: opening cross
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: Gross IPO proceeds minus underwriter {spread} equals {net proceeds} to
+    the issuer.
+  answer: spread
+  difficulty: 2
+  tags:
+  - calculation
+- id: c.7
+  question: The {quiet period} lasts {25} days after an IPO and restricts forward-looking
+    statements.
+  answer: quiet period
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.8
+  question: Underpricing is sometimes called a {pop} and the dollar amount is referred
+    to as {money left on table}.
+  answer: pop
+  difficulty: 2
+  tags:
+  - concept
+- id: c.9
+  question: A {roadshow} is when company management pitches the IPO to {institutional
+    investors} to generate demand.
+  answer: roadshow
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.10
+  question: Money left on table = ({first close} - {IPO price}) × shares offered.
+  answer: first close
+  difficulty: 2
+  tags:
+  - calculation

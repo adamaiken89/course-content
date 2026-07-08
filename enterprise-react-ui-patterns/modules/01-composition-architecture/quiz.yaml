@@ -1,0 +1,110 @@
+- id: "1.1"
+  question: "What is the first question to ask before structuring an enterprise screen?"
+  options:
+    a: "Which folder should hold the component"
+    b: "Who owns what — data, layout, display, behavior"
+    c: "How many lines the file should stay under"
+    d: "Which CSS framework to use"
+  answer: b
+  explanation: "Ownership is the organizing principle. Files, line counts, and styling are downstream concerns."
+  difficulty: 1
+  tags: [concept, scenario]
+- id: "1.2"
+  question: "Which symptom indicates a god component?"
+  options:
+    a: "One keystroke re-renders unrelated sections of the form"
+    b: "The component imports a global store for a single field"
+    c: "The file is written in TypeScript"
+    d: "The component uses the router"
+  answer: a
+  explanation: "Cross-feature re-render blast radius is the classic god component symptom: unrelated state changes share one render path."
+  difficulty: 2
+  tags: [scenario, concept]
+- id: "1.3"
+  question: "Which owns state, data fetching, and event handlers?"
+  options:
+    a: "Presentational children"
+    b: "The page shell"
+    c: "Smart containers"
+    d: "The layout style object"
+  answer: c
+  explanation: "Smart containers own logic and data; presentational children only render props."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "1.4"
+  question: "A team splits a god component into 25 tiny files without ownership rules. What happens?"
+  options:
+    a: "The component soup moves into a component forest"
+    b: "Re-renders are eliminated automatically"
+    c: "Architecture becomes perfect because components are small"
+    d: "Tests no longer need to mount anything"
+  answer: a
+  explanation: "Small files without ownership rules just scatter the same five concerns — the soup changes shape, not substance."
+  difficulty: 2
+  tags: [misconception, concept]
+- id: "1.5"
+  question: "What does the slot pattern let the page shell avoid knowing?"
+  options:
+    a: "The number of CSS media queries"
+    b: "The internals of the sections it seats"
+    c: "The version of React installed"
+    d: "The routing table"
+  answer: b
+  explanation: "Slots inject sections as JSX; the shell only places them, so it never learns their internals or data sources."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "1.6"
+  question: "When is the slot pattern overkill?"
+  options:
+    a: "When sections are stable and never change independently"
+    b: "When the page has more than three sections"
+    c: "When the app uses a global state store"
+    d: "When the team prefers context"
+  answer: a
+  explanation: "Slots pay off when regions differ and swap independently. A stable, fixed form rarely needs injection points."
+  difficulty: 2
+  tags: [comparison, scenario]
+- id: "1.7"
+  question: "What changed about refs in React 19 for function components?"
+  options:
+    a: "refs now require forwardRef always"
+    b: "refs were removed entirely"
+    c: "ref is passed as a normal prop to function components"
+    d: "refs only work in class components"
+  answer: c
+  explanation: "React 19 lets function components receive ref directly in props; forwardRef is no longer required."
+  difficulty: 2
+  tags: [terminology, react-19]
+- id: "1.8"
+  question: "A company adds the React Compiler. Why do component boundaries still matter?"
+  options:
+    a: "The compiler removes the need for any component structure"
+    b: "Boundaries now express ownership and testability, not just rendering"
+    c: "The compiler only works on presentational components"
+    d: "Boundaries mattered only before the compiler existed"
+  answer: b
+  explanation: "The compiler automates memoization, so the value of boundaries shifts from render speed to ownership separation."
+  difficulty: 2
+  tags: [comparison, concept]
+- id: "1.9"
+  question: "The aside panel is replaced with a new urgency block. What is the expected blast radius under slot composition?"
+  options:
+    a: "The page shell call site, one line, and possibly its test"
+    b: "The coupling inside the removed panel's implementation"
+    c: "Every shared layout component in the app"
+    d: "The data store schema"
+  answer: a
+  explanation: "Slot composition means only the call site swaps one JSX element; the old section's implementation is simply unmounted."
+  difficulty: 3
+  tags: [scenario, application]
+- id: "1.10"
+  question: "A validation panel needs the draft's field errors. Which placement matches ownership rules?"
+  options:
+    a: "The panel fetches errors from its own local store"
+    b: "Each input fetches its own errors on blur"
+    c: "The page shell holds errors to pass them everywhere"
+    d: "The form container owns draft state and passes errors as props"
+  answer: d
+  explanation: "The container owns form state including validation; presentational panels render props rather than fetch."
+  difficulty: 3
+  tags: [scenario, application]

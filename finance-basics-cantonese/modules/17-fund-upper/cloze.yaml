@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "NAV 全寫 {Net Asset Value}, 公式 {(基金總資產 - 基金總負債) / 流通單位數}, {每日} 計一次。"
+  answer: "Net Asset Value、(基金總資產 - 基金總負債) / 流通單位數、每日"
+  explanation: "NAV 反映每個單位代表嘅底層資產價值, 係基金買賣價嘅基礎。"
+  difficulty: 1
+  tags: [terminology, formula]
+
+- id: "c.2"
+  question: "基金 3 個角色: {Fund Manager 操盤}、{Custodian 託管資產}、{Unit Holder 出資}。"
+  answer: "Fund Manager 操盤、Custodian 託管資產、Unit Holder 出資"
+  explanation: "香港法例要求 Custodian 獨立於基金公司, 保障投資者。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "基金 4 種費用: {Front-end Load 申購費}、{Back-end Load 贖回費}、{Expense Ratio 年管理費}、{Performance Fee 表現費}。"
+  answer: "Front-end Load 申購費、Back-end Load 贖回費、Expense Ratio 年管理費、Performance Fee 表現費"
+  explanation: "4 種費用影響總回報, 長期複利蝕 20-40%。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.4"
+  question: "主動基金目標係 {跑贏指數 (Alpha)}, 被動基金目標係 {跟指數 (Beta)}。SPIVA 數據顯示 {80-90% 主動基金長期跑輸指數}。"
+  answer: "跑贏指數 (Alpha)、跟指數 (Beta)、80-90% 主動基金長期跑輸指數"
+  explanation: "大部分人揀被動 ETF 更著數。"
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "c.5"
+  question: "$10,000 申購基金, {3% Front-end Load} → 申購費 {$300} → 實際買到 {$9,700} 嘅基金單位。"
+  answer: "3% Front-end Load、$300、$9,700"
+  explanation: "Front-end Load 直接從申購金額扣減, 你實際投資額少咗。"
+  difficulty: 2
+  tags: [calculation, formula]
+
+- id: "c.6"
+  question: "$100,000 投資 30 年年化 8%, {0% 費用} 終值 $1M, {1% 費用} 終值 $760K, 差距 {$245,000}。費用影響 {20%+ 嘅長期回報}。"
+  answer: "0% 費用、1% 費用、$245,000、20%+ 嘅長期回報"
+  explanation: "費用看似細, 30 年複利後食咗 20-40% 嘅回報。"
+  difficulty: 3
+  tags: [calculation, application]
+
+- id: "c.7"
+  question: "對沖基金典型費用結構: {2% 管理費 + 20% 表現費}, 所以要 {跑贏指數 4-5%} 先打和。"
+  answer: "2% 管理費 + 20% 表現費、跑贏指數 4-5%"
+  explanation: "2/20 結構係行業標準, 大部分對沖基金長期跑輸指數。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.8"
+  question: "揀基金 checklist: {比較 Expense Ratio}、{睇 5+ 年 Track Record}、{考慮 AUM 規模}、{入場門檻}、{稅務效率}、{流動性}。"
+  answer: "比較 Expense Ratio、睇 5+ 年 Track Record、考慮 AUM 規模、入場門檻、稅務效率、流動性"
+  explanation: "揀基金要綜合考慮, 唔好淨睇過去 1 年回報。"
+  difficulty: 3
+  tags: [concept, application]
+
+- id: "c.9"
+  question: "主動基金過去 {5 年跑贏} 唔代表 {未來 5 年跑贏}, 因為 {5 年樣本太細, 可能有 mark-to-market 偶發}。"
+  answer: "5 年跑贏、未來 5 年跑贏、5 年樣本太細, 可能有 mark-to-market 偶發"
+  explanation: "短期回報係噪音, 長期 (10-15 年) 先見真章。"
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "c.10"
+  question: "常見揀基金誤解: {過去回報高 = 未來回報高}、{明星經理 = 必然好}、{規模大 = 穩陣}。"
+  answer: "過去回報高 = 未來回報高、明星經理 = 必然好、規模大 = 穩陣"
+  explanation: "呢 3 個都係 common pitfall, 應該睇 Expense Ratio + 10 年 Track Record + 規模適中。"
+  difficulty: 2
+  tags: [concept, misconception]

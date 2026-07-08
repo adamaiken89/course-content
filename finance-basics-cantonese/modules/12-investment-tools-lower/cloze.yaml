@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "買股票代表擁有 {公司一部份}, 有 {投票權}, 賺錢方式係 {股息} 同 {資本利得}。"
+  answer: "公司一部份、投票權、股息、資本利得"
+  explanation: "股票 = 股權, 有投票權, 兩種回報來源: 股息 (定期派) + 資本利得 (股價上升)。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "主動基金靠 {基金經理主動揀股}, 目標 {跑贏指數}, 但研究顯示 {85%+} 跑輸指數。"
+  answer: "基金經理主動揀股、跑贏指數、85%+"
+  explanation: "S&P SPIVA 報告 15 年數據: 85%+ 主動基金跑輸 S&P 500。港股更差。"
+  difficulty: 1
+  tags: [terminology, data]
+
+- id: "c.3"
+  question: "ETF 多數 {被動追指數}, 像 {股票} 一樣交易所買賣, 費用 {低} (0.03-0.5%/年)。"
+  answer: "被動追指數、股票、低"
+  explanation: "ETF 結合股票嘅即時買賣 + 基金嘅分散, 費用低, 適合長線。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "ETF 嘅 {授權參與者 AP} 做 {創造 / 贖回份額, 套利保持價格 ≈ NAV}。"
+  answer: "授權參與者 AP、創造 / 贖回份額, 套利保持價格 ≈ NAV"
+  explanation: "AP 係大行, 透過套利機制保持 ETF 價貼近 NAV, 避免大幅溢價 / 折讓。"
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.5"
+  question: "主動基金跑輸指數嘅 3 個原因: {交易成本} (頻買賣)、{現金拖累} (留 5%)、{行為偏差} (跌市恐慌)。"
+  answer: "交易成本、現金拖累、行為偏差"
+  explanation: "指數機械跟規則, 避開晒呢三個問題, 所以長線多數跑贏主動基金平均。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "新手懶人投資策略: {每月月供 1 隻大盤 ETF} (盈富/恒生/標普), {持有 10 年以上}, 享受 {複利}。"
+  answer: "每月月供 1 隻大盤 ETF、持有 10 年以上、複利"
+  explanation: "呢個係散戶贏面最高嘅策略, 月供平滑成本, 長揸享受複利同企業盈利增長。"
+  difficulty: 1
+  tags: [concept, application]
+
+- id: "c.7"
+  question: "進階散戶組合: {80% ETF 核心} + {20% 個股衛星}, 個股只買 {自己熟嘅行業}。"
+  answer: "80% ETF 核心、20% 個股衛星、自己熟嘅行業"
+  explanation: "核心 (大盤) 穩陣跟大市, 衛星 (個股) 用眼光賺 alpha, 平衡風險同回報。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.8"
+  question: "{槓桿} / {反向} ETF 唔適合長揸, 因為 {每日 rebalance 蠶食, 長期偏離指數}。"
+  answer: "槓桿、反向、每日 rebalance 蠶食, 長期偏離指數"
+  explanation: "呢類工具只適合短炒 (1-10 日), 5-10 年長揸必輸(波動拖累效應)。"
+  difficulty: 3
+  tags: [concept, misconception]
+
+- id: "c.9"
+  question: "真正分散要 {跨資產類別} (股/債/商品/黃金)、{跨地區} (港/美/歐/日)、{跨行業} (科技/醫療/消費/能源)。"
+  answer: "跨資產類別、跨地區、跨行業"
+  explanation: "10 隻港股科技股 ≠ 分散。要混合資產 + 跨地域 + 跨行業, 先至真正降風險。"
+  difficulty: 2
+  tags: [concept, application]
+
+- id: "c.10"
+  question: "ETF 嘅優勢: {費用低} (0.03-0.5%/年)、{即時買賣} (限價盤)、{透明度高} (每日披露)、{分散} (跟指數)。但 {唔保本}, 同股票一樣會跌。"
+  answer: "費用低、即時買賣、透明度高、分散、唔保本"
+  explanation: "ETF 唔等於定存, 市場跌都會跌。佢嘅優勢係結構性, 唔係保本。"
+  difficulty: 2
+  tags: [terminology, misconception]

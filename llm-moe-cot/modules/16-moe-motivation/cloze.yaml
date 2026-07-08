@@ -1,0 +1,43 @@
+- id: c.1
+  question: 喺 dense transformer 入面，每個 token 激活 {all parameters}，即係 FLOPs 同 {parameter
+    count} 成線性關係。
+  answer: all parameters / parameter count
+  difficulty: 2
+  tags: []
+- id: c.2
+  question: MoE 用 {router} 揀每個 token 要激活邊個參數子集 (experts)。呢個實現咗 {conditional computation}。
+  answer: router / conditional computation
+  difficulty: 2
+  tags: []
+- id: c.3
+  question: Shazeer (2017) 喺論文 {Outrageously Large Neural Networks} 提出第一個大規模 MoE。
+  answer: Outrageously Large Neural Networks
+  difficulty: 2
+  tags: []
+- id: c.4
+  question: 喺 MoE 入面，router 輸出計算為 g = {softmax(top-k(W_gate(x)))}。通常 k = {2}。
+  answer: softmax(top-k(W_gate(x))) / 2
+  difficulty: 2
+  tags: []
+- id: c.5
+  question: MoE {decouples parameter count from compute per token}。加更多 experts 增加
+    capacity，但唔會增加每個 token 嘅 FLOPs。
+  answer: decouples parameter count from compute per token
+  difficulty: 2
+  tags: []
+- id: c.6
+  question: MoE 嘅三個主要成本係：{memory}、{communication} 同 {load imbalance}。
+  answer: memory / communication / load imbalance
+  difficulty: 2
+  tags: []
+- id: c.7
+  question: Mixtral 8x7B 有 {8} 個 experts，用 top-{2} routing，總共 ~47B params 同 ~{13}B
+    active params。
+  answer: 8 / 2 / 13
+  difficulty: 2
+  tags: []
+- id: c.8
+  question: Load imbalance 用 auxiliary {load-balancing loss} 減輕，鼓勵均勻 expert utilisation。
+  answer: load-balancing loss
+  difficulty: 2
+  tags: []

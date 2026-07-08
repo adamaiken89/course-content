@@ -1,0 +1,60 @@
+- id: c.1
+  question: 電腦唔識字，只識{數字}。文字入模型之前一定要轉換成 model 可以處理嘅{數字表示}。
+  answer: 數字，數字表示
+  explanation: 呢個係最基本嘅認知 — transformer 做數學運算，唔可以直接處理文字。
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: Subword tokenization 將字詞拆成{常見碎片}，解決咗 word-level 嘅{OOV 問題}同 character-level
+    嘅{效率問題}。
+  answer: 常見碎片，OOV 問題，效率問題
+  explanation: Subword 係 best of both worlds — 處理到新字同時保持合理 sequence length。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.3
+  question: Embedding 將{語義關係}變成{幾何關係} — similar tokens 有 similar vectors。
+  answer: 語義關係，幾何關係
+  explanation: 呢個係 embedding 嘅核心 insight — 模型透過 vector 嘅 distance 去理解 token 之間嘅關係。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.4
+  question: Embedding matrix 唔係 hand-crafted 嘅，而係模型 training 嗰陣{end-to-end 學返嚟}嘅。一開始{random}，然後慢慢調整。
+  answer: end-to-end 學返嚟，random
+  explanation: 呢個區分好重要 — 現代 LLM 唔用 word2vec/GloVe，embedding 係 model 自己學嘅。
+  difficulty: 3
+  tags:
+  - process
+- id: c.5
+  question: One-hot encoding 太{wasteful} — embedding 嘅{dense vector}先 practical。
+  answer: wasteful，dense vector
+  explanation: One-hot vector 長度等於 vocab size（幾萬），但只有一個 1，其他都係 0。Embedding 用幾百到幾千維嘅
+    dense vector，更加 efficient。
+  difficulty: 1
+  tags:
+  - comparison
+- id: c.6
+  question: Tokenization 嘅三個選擇：{character-level}、{word-level}、同{subword} — 第三個係 best of both
+    worlds。
+  answer: character-level，word-level，subword
+  explanation: Character-level 長 sequence 貴，word-level 有 OOV 問題，subword 平衡兩者。
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.7
+  question: Tokenizer 對唔同語言嘅效率唔同 — 例如 English 通常{1 token/word}，某啲語言要{3-4 tokens/word}，
+    呢個係一種{語言偏見}。
+  answer: 1 token/word，3-4 tokens/word，語言偏見
+  explanation: Tokenizer 選擇直接影響模型喺唔同語言嘅表現 — 效率高嘅語言模型「睇得更平」。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.8
+  question: Embedding matrix 嘅 size 係{vocab_size} × {d_model}。
+  answer: vocab_size，d_model
+  explanation: Vocab size 通常 32k-128k，d_model 通常 512-8192。呢個 matrix 係模型 training 自己學返嚟。
+  difficulty: 2
+  tags:
+  - terminology

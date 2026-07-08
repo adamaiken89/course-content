@@ -1,0 +1,120 @@
+- id: '19.1'
+  question: What is the primary goal of Smart Order Routing (SOR)?
+  options:
+    a: Send all orders to the same exchange for liquidity concentration
+    b: Route orders to the best venue based on price, liquidity, and fees
+    c: Delay orders by 5 seconds for a better price
+    d: Ensure orders only execute in Dark Pools
+  answer: b
+  explanation: SOR finds the best execution conditions across multiple venues — price, liquidity depth, and fees. It does not concentrate into one venue, delay orders, or restrict to dark pools.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '19.2'
+  question: Which is a characteristic of a Lit Venue?
+  options:
+    a: Publicly displays bid/ask quantities and price levels
+    b: Does not publicly display order book information
+    c: Only allows algorithmic trading
+    d: Does not require SEC registration
+  answer: a
+  explanation: Lit Venues (like NYSE, NASDAQ) publicly display the full order book at each price level. Dark Pools do not publicly display this information.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '19.3'
+  question: What is the difference between BBO and NBBO?
+  options:
+    a: They are the same thing under different names
+    b: BBO covers options; NBBO covers equities
+    c: BBO is a single venue's best bid/offer; NBBO is the best bid/offer across all US venues, disseminated by the SIP
+    d: NBBO is computed only by direct feed users
+  answer: c
+  explanation: BBO (Best Bid/Offer) is one venue's current best prices. NBBO (National Best Bid/Offer) is the best bid and offer across all US venues, computed and disseminated by the Securities Information Processor (SIP).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '19.4'
+  question: 'Brokerage EMS receives 50K MSFT limit buy. NYSE shows 15K @ $449.95, NASDAQ shows 20K @ $449.95, ARCA shows 12K @ $449.96. What is the most reasonable SOR routing strategy?'
+  options:
+    a: Send all 50K to NYSE, let it absorb
+    b: Send all 50K to NASDAQ since it shows the most liquidity
+    c: Split across venues — 15K to NYSE, 20K to NASDAQ, 15K to ARCA
+    d: Wait until a single venue shows 50K liquidity
+  answer: c
+  explanation: SOR splits based on each venue's displayed depth. Sending all 50K to one venue causes price impact — the remainder fills at worse prices. Waiting for a single 50K venue violates best execution.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '19.5'
+  question: What is the primary advantage of a Dark Pool over a Lit Venue?
+  options:
+    a: Faster execution speed
+    b: Zero transaction fees
+    c: Guaranteed full fill
+    d: Reduced market impact for large orders
+  answer: d
+  explanation: Dark Pools do not publicly display order books, so large orders do not expose intent, reducing market impact. They do not guarantee faster, cheaper, or full fills.
+  difficulty: 1
+  tags:
+  - concept
+- id: '19.6'
+  question: What is the main limitation of the NBBO provided by the SIP (Securities Information Processor)?
+  options:
+    a: Latency of ~1-5ms — it is not a real-time market state
+    b: It does not include NYSE data
+    c: Cannot distinguish buy/sell direction
+    d: Only supports US equities, not ETFs
+  answer: a
+  explanation: The SIP aggregates all venue data before publishing NBBO, adding ~1-5ms latency. Firms using Direct Feed see market changes sooner and can trade ahead of SIP-based rivals.
+  difficulty: 2
+  tags:
+  - concept
+- id: '19.7'
+  question: The brokerage's in-house Dark Pool LX internally crosses 30K MSFT. What price condition must the fill satisfy?
+  options:
+    a: Must equal the NBBO mid-point exactly
+    b: Any price is fine because it is an internal trade
+    c: Must not be worse than NBBO — price improvement above NBBO is allowed, but a worse price violates best execution
+    d: Must equal the previous trade's fill price
+  answer: c
+  explanation: Best Execution duty requires dark pool fills not to be worse than NBBO. Price improvement (better than NBBO) is allowed, but a fill worse than NBBO may constitute a violation. Mid-point is common but not the only valid price.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '19.8'
+  question: An order needs full fill but a single venue shows insufficient depth. Which routing strategy is best?
+  options:
+    a: DMA — send to the trader-specified venue
+    b: Broker-Assisted — wait for broker callback
+    c: Cancel the order
+    d: Algo Routing — use TWAP or Implementation Shortfall to split across venues
+  answer: d
+  explanation: When order size exceeds a single venue's depth, Algo Routing auto-splits into smaller pieces across multiple venues, reducing market impact. DMA is unsuitable because the chosen venue may lack sufficient liquidity.
+  difficulty: 2
+  tags:
+  - application
+- id: '19.9'
+  question: A trader needs to execute a pair of arbitrage trades simultaneously on NYSE and NASDAQ. Which SOR setting is best?
+  options:
+    a: Disable SOR, use DMA to directly specify each child order's target venue
+    b: Enable SOR auto-routing so the system decides venues
+    c: Use a Dark Pool for all orders
+    d: Send orders to the broker for manual handling
+  answer: a
+  explanation: Arbitrage strategies need precise control over each child order's target venue and timing. SOR auto-routing would interfere, so DMA gives the trader direct control over routing.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '19.10'
+  question: What is the main advantage of a Direct Feed over the SIP?
+  options:
+    a: Provides historical data for all venues
+    b: Lower latency (microseconds vs milliseconds) — more real-time market data
+    c: Completely free
+    d: Includes predictive price movement analysis
+  answer: b
+  explanation: Direct Feed receives raw order book data directly from exchanges with ~10-50μs latency, while the SIP consolidates all venue data before publishing, adding ~1-5ms. Direct feed is why some firms also add FPGA acceleration.
+  difficulty: 2
+  tags:
+  - comparison

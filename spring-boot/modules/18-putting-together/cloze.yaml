@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: The capstone migration discipline is to change one {axis} per PR so a failure names a single suspect."
+  answer: "axis"
+  explanation: "One axis per change is the isolation rule from module 02 - config, build, null-safety, and client swaps each land in their own PR."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: The mutable public-field config bean is replaced in M1 by a private immutable {record} bound with constructor injection."
+  answer: "record"
+  explanation: "Constructor-bound records are the Boot 4 modular config style and replace setter-mutated beans that break when properties change shape."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: M2 splits the build into an {api} module holding interfaces and DTOs and an impl module holding services and controllers."
+  answer: "api"
+  explanation: "The api module is the dependency root - impl depends on api and never the reverse, which the reactor order enforces at build time."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Complete: M3 marks packages with {NullMarked} in package-info and compiles under NullAway so null edges fail at build time."
+  answer: "NullMarked"
+  explanation: "NullMarked makes non-null the default so unchecked nullable returns surface as compile errors instead of production NPEs."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "Complete: M4 swaps RestTemplate for a typed HTTP Service Client declaring {exchange} methods backed by RestClient."
+  answer: "exchange"
+  explanation: "GetExchange and PostExchange turn a plain interface into a generated proxy bean, giving typed client calls without hand-written plumbing."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Complete: A milestone acceptance gate must be {observable} - startup logs, build output, or a documented 403 - so anyone can verify it."
+  answer: "observable"
+  explanation: "Vague gates like 'reviewed' cannot be verified mechanically - an observable gate turns the milestone into a testable contract."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "Complete: DGS 12 and Jackson 3 power the GraphQL path in M5 while {MapStruct} generates the DTO mapping instead of hand-written code."
+  answer: "MapStruct"
+  explanation: "MapStruct replaces fragile hand-built mapping, which matters even more when GraphQL resolvers project the same data many ways."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.8"
+  question: "Complete: The M6 security sweep makes defaults {deny} and documents the 403 a POST receives without a CSRF token."
+  answer: "deny"
+  explanation: "Deny-by-default means every endpoint is closed until explicitly granted - a POST without CSRF then fails loudly with a documented 403."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.9"
+  question: "Complete: M7 uses WebMvcTest and DataJpaTest {slice} tests plus Testcontainers instead of booting the full application context."
+  answer: "slice"
+  explanation: "Slice tests cut startup time and isolate the web or persistence layer, while Testcontainers provide real Postgres in CI."
+  difficulty: 3
+  tags: [process]
+
+- id: "c.10"
+  question: "Complete: M9 guards transaction boundaries so Transactional appears only in services and adds a Spring {Modulith} rule that api never depends on impl."
+  answer: "Modulith"
+  explanation: "The Modulith guard automates the architecture check - illegal dependencies fail the build instead of drifting into the codebase."
+  difficulty: 3
+  tags: [process]

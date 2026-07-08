@@ -1,0 +1,137 @@
+- id: '18.1'
+  question: ETF 嘅特殊結構核心係?
+  options:
+    a: Mutual fund 開放式
+    b: Open-end fund 直接 IPO
+    c: Creation/Redemption 機制 + Authorized Participant
+    d: Closed-end fund 限價
+  answer: c
+  explanation: ETF 用 Creation/Redemption 機制, AP 用一籃子股票換 ETF 單位 (或反), 令新單位供應靈活, 市價接近
+    NAV。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '18.2'
+  question: 以下邊種唔係 ETF 嘅追蹤方法?
+  options:
+    a: Sampling
+    b: Synthetic
+    c: Random Walk
+    d: Full Replication
+  answer: c
+  explanation: '3 種追蹤方法: Full Replication (全複製)、Sampling (抽樣)、Synthetic (合成 + Swap)。Random
+    Walk 係統計學概念, 唔係 ETF 追蹤方法。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '18.3'
+  question: Tracking Error 嘅意思?
+  options:
+    a: ETF 實際回報同指數回報嘅差異
+    b: ETF 嘅折價率
+    c: ETF 嘅成交量
+    d: ETF 嘅標準差
+  answer: a
+  explanation: Tracking Error = ETF 實際回報 - 指數實際回報。大寬基 ETF 通常 < 0.05%/年, 反映費用 + 現金拖累等。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '18.4'
+  question: 以下邊個係 ETF 嘅好處?
+  options:
+    a: 開市內任何時間賣, 即時成交
+    b: Expense Ratio 較高
+    c: 只可以收市後贖回
+    d: 冇 Creation/Redemption
+  answer: a
+  explanation: ETF 可以開市內任何時間買賣, 即時成交, 流動性高。互惠基金要收市後按 NAV 計。費用方面 ETF 較低。
+  difficulty: 1
+  tags:
+  - concept
+  - comparison
+- id: '18.5'
+  question: ETF 用 In-kind Redemption, 對投資者最大好處係?
+  options:
+    a: 更快贖回
+    b: 稅務高效, 少觸發資本利得稅
+    c: 可以槓桿
+    d: 保證回報
+  answer: b
+  explanation: In-kind Redemption 用股票換 ETF 單位, 唔觸發 CG 稅。互惠基金現金贖回觸發 CG 稅。同樣回報 ETF 投資者稅後高
+    0.1-0.3%/年。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '18.6'
+  question: 你買咗 2x S&P 500 ETF 揸 1 年, 同期指數 +15%。預期回報?
+  options:
+    a: +15% (跟指數)
+    b: 0% (蝕 decay)
+    c: +30% (2x)
+    d: 略低過 +30% (decay), 約 +25-29%
+  answer: d
+  explanation: 槓桿 ETF 每日 reset, 1 年內波動 path 會蝕 decay。指數平穩升 15% 嘅理想情況下接近 30%, 但實際 path
+    通常略低。
+  difficulty: 2
+  tags:
+  - concept
+  - calculation
+- id: '18.7'
+  question: 以下邊隻係港股最常見嘅寬基 ETF?
+  options:
+    a: VOO
+    b: 2800 (盈富基金)
+    c: TQQQ
+    d: FXI
+  answer: b
+  explanation: 2800 係盈富基金 (Tracker Fund of Hong Kong), 跟恒生指數, 係香港最活躍嘅 ETF 之一。VOO 跟
+    S&P 500, TQQQ 3x 科技, FXI 中國大型股。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '18.8'
+  question: 揀 ETF 時, 邊項唔重要?
+  options:
+    a: 經理名氣
+    b: Expense Ratio
+    c: AUM 規模
+    d: Tracking Error
+  answer: a
+  explanation: '揀 ETF 客觀指標: Expense Ratio (低好)、AUM (大好)、Tracking Error (低好)、Bid-Ask
+    Spread (低好)。經理名氣唔重要, ETF 係被動跟指數, 唔靠個別經理。'
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '18.9'
+  question: Synthetic ETF 嘅最大風險係?
+  options:
+    a: 通脹風險
+    b: 匯率風險
+    c: 市場風險
+    d: 對手方風險 (Swap 對手違約)
+  answer: d
+  explanation: Synthetic ETF 用 Swap 模擬指數, Swap 對手 (通常係大行) 違約就會蝕底。Physical Replication
+    冇呢個問題。
+  difficulty: 2
+  tags:
+  - concept
+  - risk
+- id: '18.10'
+  question: 你 100 萬投資 30 年年化 8%, ETF 0.05% 年費 vs 互惠基金 0.5% 年費, 終值差距?
+  options:
+    a: $50,000
+    b: $200,000
+    c: $500,000
+    d: $0 (一樣)
+  answer: b
+  explanation: ETF 0.05% 終值 ≈ $100 萬 × 1.0795³⁰ ≈ $983K。互惠 0.5% 終值 ≈ $100 萬 × 1.075³⁰
+    ≈ $806K。差距約 $177K, 取近似 $200K。0.45% 費用 30 年複利蝕接近 18%。
+  difficulty: 3
+  tags:
+  - calculation
+  - application
+

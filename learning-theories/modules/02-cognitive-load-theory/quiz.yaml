@@ -1,0 +1,134 @@
+- id: '2.1'
+  question: Which type of cognitive load should instructional designers seek to minimize?
+  options:
+    a: Extraneous load
+    b: Intrinsic load
+    c: Germane load
+    d: Total load
+  answer: a
+  explanation: Extraneous load is caused by poor presentation and serves no learning purpose. Minimize
+    it.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.2'
+  question: A textbook places a diagram on page 3 and its explanation on page 5. What cognitive load problem
+    does this create?
+  options:
+    b: Split-attention effect
+    a: Intrinsic overload
+    c: Redundancy effect
+    d: Expertise reversal
+  answer: b
+  explanation: Split attention forces WM to hold diagram in memory while searching for explanation. Integrate
+    them.
+  difficulty: 2
+  tags:
+  - application
+- id: '2.3'
+  question: Which load type is described as 'mental effort directed at building schemas and deep understanding'?
+  options:
+    c: Germane load
+    a: Intrinsic load
+    b: Extraneous load
+    d: Cognitive load
+  answer: c
+  explanation: Germane load is the productive mental work of constructing and automating schemas.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.4'
+  question: A beginner programmer is given a complex problem to solve without any examples. According
+    to CLT, why is this ineffective?
+  options:
+    d: Means-ends search overloads WM with unproductive processing
+    a: The problem is too easy
+    b: Germane load is too high
+    c: Intrinsic load is too low
+  answer: d
+  explanation: Novices lack schemas. Problem-solving without guidance triggers means-ends search — high
+    extraneous load, low learning. Worked examples build schemas first.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.5'
+  question: A training video shows an animation with identical on-screen text and narration. This violates
+    which principle?
+  options:
+    a: Redundancy
+    b: Split-attention
+    c: Worked example
+    d: Expertise reversal
+  answer: a
+  explanation: 'Redundancy effect: presenting the same information through two channels forces WM to process
+    duplicate input.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.6'
+  question: An experienced data scientist is given a worked example of a basic regression. Why might this
+    hurt more than help?
+  options:
+    b: Expertise reversal effect — worked examples become redundant for experts
+    a: Intrinsic load is too high
+    c: Extraneous load is too low
+    d: Germane load is excessive
+  answer: b
+  explanation: As expertise grows, worked examples become unnecessary and even interfere. Experts benefit
+    from problem-solving.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '2.7'
+  question: What is the correct way to reduce intrinsic cognitive load?
+  options:
+    c: Sequence content into smaller sub-skills
+    a: Remove content to simplify
+    b: Add more worked examples
+    d: Use larger font size
+  answer: c
+  explanation: Intrinsic load cannot be reduced without removing content, but it can be sequenced — break
+    complex material into smaller, learnable chunks.
+  difficulty: 2
+  tags:
+  - application
+- id: '2.8'
+  question: Which study strategy MOST directly increases germane load?
+  options:
+    d: Self-explaining why each step in a solution works
+    a: Re-reading a textbook chapter
+    b: Listening to a lecture while doodling
+    c: Highlighting key sentences
+  answer: d
+  explanation: Self-explanation forces deep processing and schema construction — the essence of germane
+    load.
+  difficulty: 2
+  tags:
+  - application
+- id: '2.9'
+  question: 'A calculus textbook shows fully worked solutions for the first 5 problems, partially worked
+    for the next 5, and unsolved for the last 5. This technique is called:'
+  options:
+    a: Fading worked examples
+    b: Blocked practice
+    c: Interleaving
+    d: Distributed practice
+  answer: a
+  explanation: 'Fading gradually removes scaffolding: full example → partial → independent. Transitions
+    from high support to autonomy.'
+  difficulty: 3
+  tags:
+  - scenario
+- id: '2.10'
+  question: What must be true for learning to occur according to Cognitive Load Theory?
+  options:
+    b: Total load stays within working memory capacity
+    a: Total load equals intrinsic load
+    c: Extraneous load exceeds intrinsic load
+    d: Germane load is zero
+  answer: b
+  explanation: If total load (intrinsic + extraneous + germane) exceeds WM capacity, learning fails regardless
+    of effort.
+  difficulty: 1
+  tags:
+  - concept

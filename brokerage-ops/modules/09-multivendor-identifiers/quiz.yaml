@@ -1,0 +1,120 @@
+- id: '9.1'
+  question: In the futures contract code ESZ5, what do Z and 5 represent?
+  options:
+    a: Z = Chicago Mercantile Exchange, 5 = contract version
+    b: Z = December contract month, 5 = last digit of year (2025)
+    c: Z = cash settlement, 5 = physical delivery
+    d: Z = index futures, 5 = E-mini series
+  answer: b
+  explanation: "Futures contract codes use standard month codes: F(Jan) G(Feb) H(Mar) J(Apr) K(May) M(Jun) N(Jul) Q(Aug) U(Sep) V(Oct) X(Nov) Z(Dec). Z = December, 5 = 2025. ES = E-mini S&P 500."
+  difficulty: 2
+  tags:
+  - terminology
+- id: '9.2'
+  question: Which futures contract month code represents September?
+  options:
+    a: Z
+    b: H
+    c: M
+    d: U
+  answer: d
+  explanation: "Month codes: F(Jan) G(Feb) H(Mar) J(Apr) K(May) M(Jun) N(Jul) Q(Aug) U(Sep) V(Oct) X(Nov) Z(Dec). U = September, Z = December."
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.3'
+  question: In the OCC Symbol 'AAPL 250817 C 00250000', what does 00250000 represent?
+  options:
+    a: Contract number
+    b: Days until expiration
+    c: Strike price x 1000 (i.e., $250.00)
+    d: Option Delta value
+  answer: c
+  explanation: The last portion of the OCC Symbol is strike price x 1000. 00250000 ÷ 1000 = $250.00. This pairs with the equity option multiplier of 100.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '9.4'
+  question: Why can't options and futures use just ISIN for identification?
+  options:
+    a: Trader-facing codes encode expiry/strike/call-put immediately, and ISIN allocation lags new contracts
+    b: ISIN is not unique for derivatives
+    c: Regulators prohibit ISIN for derivatives
+    d: ISIN is longer than OCC symbols
+  answer: a
+  explanation: ISIN can be assigned to a specific contract series, but traders and routing systems need expiration, strike, and call/put type immediately. OCC Symbols and futures product codes encode these dimensions in a readable string. Also, each expiration creates new contracts, so ISIN allocation has a time lag.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.5'
+  question: "In a FIX order, SecurityID(48)=037833100 with SecurityIDSource(22)=1 means the identifier type is:"
+  options:
+    a: ISIN
+    b: SEDOL
+    c: CUSIP
+    d: Bloomberg Ticker
+  answer: c
+  explanation: SecurityIDSource(22)=1 means CUSIP. 4=ISIN, 2=SEDOL, 8=Bloomberg Ticker. The same SecurityID value with different Source values points to different identifier systems.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '9.6'
+  question: When AAPL announces a 4:1 stock split, what happens to a client holding AAPL 250817C00250000 (AAPL $250 Call)?
+  options:
+    a: The option is cancelled
+    b: OCC Symbol unchanged, multiplier adjusted from 100 to 400, strike adjusted to $62.50
+    c: The OCC Symbol changes to AAPL 250817C00062500
+    d: No impact — the option continues trading with original terms
+  answer: b
+  explanation: On a stock split, the OCC Symbol stays unchanged, but the multiplier adjusts from 100 to 400 (representing 400 shares) and the strike adjusts proportionally from $250 to $62.50. If the OMS doesn't update both, all limit and risk calculations are wrong.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '9.7'
+  question: "OMS receives a FIX order: Symbol(55)=MSFT, SecurityID(48)=US5949181045, SecurityIDSource(22)=4. What is the correct handling?"
+  options:
+    a: Ignore SecurityID, send only Symbol=MSFT to EMS
+    b: Use ISIN US5949181045 to look up the Security Master, verify the Symbol match, then forward
+    c: Reject because two identifiers were provided
+    d: Use only SecurityID and discard Symbol
+  answer: b
+  explanation: The FIX order provides a high-quality ISIN (US5949181045). The OMS should use the ISIN for internal lookup and verify the Symbol-to-ISIN mapping consistency. Discarding the ISIN and sending only Symbol wastes the precise identifier and may cause routing failure from Symbol mismatch.
+  difficulty: 3
+  tags:
+  - application
+- id: '9.8'
+  question: In multi-vendor OMS identifier normalization, what is the internal golden key?
+  options:
+    a: Bloomberg Ticker
+    b: Reuters RIC
+    c: ISIN
+    d: Exchange code
+  answer: c
+  explanation: ISIN is the only cross-vendor, cross-system bridge. Proprietary identifiers (Bloomberg Ticker, RIC, VALOREN) are stored as aliases — lookup indexes, not relational keys. Inbound identifiers map to ISIN; outbound orders translate from ISIN to the downstream format.
+  difficulty: 1
+  tags:
+  - concept
+- id: '9.9'
+  question: After a company rename, what happens to the option OCC Symbol vs the futures product code?
+  options:
+    a: The OCC Symbol's ticker part is updated; the futures product code is unchanged
+    b: Both are fully changed
+    c: Both are cancelled
+    d: Neither changes
+  answer: a
+  explanation: For a company rename, the OCC Symbol ticker part is updated (e.g., new ticker) while the futures product code remains unchanged (only the product name is updated). This is a metadata change, not a multiplier or strike adjustment.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '9.10'
+  question: When an inbound identifier cannot be mapped in the OMS cross-reference table, what is the correct fallback?
+  options:
+    a: Drop the order silently
+    b: Block all orders system-wide
+    c: Approximate the mapping from similar securities
+    d: Log the error, queue to manual processing, and notify the ops team
+  answer: d
+  explanation: "Mapping failure fallback: log the error, queue the order to manual processing, and notify the ops team. Silently dropping or approximating mappings creates risk; blocking everything halts business."
+  difficulty: 1
+  tags:
+  - concept

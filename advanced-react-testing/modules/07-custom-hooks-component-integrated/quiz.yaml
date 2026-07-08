@@ -1,0 +1,144 @@
+- id: '7.1'
+  question: When should you test a custom hook in isolation using renderHook?
+  options:
+    c: For pure computation hooks with no side effects (useDiscount, useDebounce)
+    a: Always — hooks should always be tested without components
+    b: Never — always test through components
+    d: Only when the hook is exported from a library
+  answer: c
+  explanation: Isolation testing makes sense for hooks that are pure functions — take
+    values, return values. Hooks with side effects (API calls, store updates, navigation)
+    are better tested through components.
+  difficulty: 1
+  tags:
+  - concept
+- id: '7.2'
+  question: A hook uses useNavigate() from React Router and interacts with a store.
+    What is the best test approach?
+  options:
+    a: Test through a component that uses the hook — realistic and simpler setup
+    b: Mock all dependencies with jest.mock and use renderHook
+    c: Skip testing — router + store combinations are too complex
+    d: Use a special renderHook that injects router context
+  answer: a
+  explanation: Testing through a component avoids wrapping renderHook in providers
+    and mocking multiple dependencies. The component test is more realistic and catches
+    integration bugs.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '7.3'
+  question: A hook requires 3 context providers for renderHook. What does this suggest?
+  options:
+    b: The hook is doing too much — consider refactoring
+    a: renderHook wrapper option handles this well
+    c: Context providers are normal — this is fine
+    d: Use component testing to reduce provider count
+  answer: b
+  explanation: Friction in testing reveals architectural issues. A hook needing 3+
+    providers likely has too many responsibilities. Extract smaller hooks, each with
+    0-1 dependencies.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.4'
+  question: A hook's setup requires 25+ lines. What should you do?
+  options:
+    b: Refactor the hook into smaller hooks with clearer boundaries
+    a: Write a helper function to reduce repetition
+    c: Remove the tests — coverage is not worth the effort
+    d: Use a test factory pattern
+  answer: b
+  explanation: Setup complexity is architecture feedback, not a test problem. A hook
+    needing 25+ lines of setup has too many responsibilities. Refactor before adding
+    more test infrastructure.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.5'
+  question: A hook manages state across 3 Zustand stores (user, cart, orders). How
+    do you test atomicity?
+  options:
+    a: Set all 3 stores, perform action, assert all 3 stores are consistent after
+    b: Test each store interaction separately
+    c: Atomicity cannot be tested
+    d: Merge the 3 stores into 1
+  answer: a
+  explanation: Atomicity means all stores update together. Set pre-condition in all
+    stores, perform the action, verify post-condition in all stores. Assert both rendered
+    output and store state.
+  difficulty: 3
+  tags:
+  - concept
+- id: '7.6'
+  question: A hook uses window.addEventListener for online/offline events. How do
+    you test it?
+  options:
+    a: Dispatch real Event objects on window, assert component response
+    b: Mock window.addEventListener
+    c: Cannot test browser events in jsdom
+    d: Use renderHook with a mock browser API
+  answer: a
+  explanation: jsdom supports dispatching real DOM events. Use `window.dispatchEvent(new
+    Event('offline'))` then assert the component shows offline state. This tests the
+    actual event handler without mocking.
+  difficulty: 2
+  tags:
+  - application
+- id: '7.7'
+  question: A hook is 60 lines long with 4 responsibilities. The test file is 100
+    lines. What is the recommended action?
+  options:
+    d: Split the hook into 4 smaller hooks, test each through its consumer component
+    a: Keep tests — coverage is good
+    b: Add more test cases to reach 100% coverage
+    c: Delete the hook and inline logic
+  answer: d
+  explanation: Hook size and test size are proportional. A 60-line hook with 4 responsibilities
+    should be split. Each sub-hook has simpler tests. The component integrating them
+    tests coordination.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '7.8'
+  question: What does test friction (complex setup, many mocks) reveal?
+  options:
+    c: The hook/component has architectural coupling problems
+    a: Testing is hard — accept it
+    b: More test utilities are needed
+    d: The test framework is insufficient
+  answer: c
+  explanation: Test friction always reveals architectural problems. Hard-to-test code
+    is tightly coupled. Listen to the friction and refactor the code, not the test.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.9'
+  question: A hook implements a debounce with setTimeout. How do you test it?
+  options:
+    d: Both B and C are valid approaches
+    a: Use real timeouts — tests will be slow but accurate
+    b: Use jest.useFakeTimers + act(() => jest.advanceTimersByTime(delay))
+    c: Decouple the timing logic into a separate function
+  answer: d
+  explanation: Fake timers (B) test debounce timing directly. Extracting timing logic
+    (C) makes the pure function testable without timers. Both are valid depending
+    on hook complexity.
+  difficulty: 2
+  tags:
+  - application
+- id: '7.10'
+  question: A hook is used by 5 different components. How should you test it?
+  options:
+    b: Test in isolation with renderHook — shared hooks need contract tests
+    a: Test through each component that uses it
+    c: Test through one representative component
+    d: Skip testing — the components cover it
+  answer: b
+  explanation: Shared hooks (library hooks, cross-cutting concerns) benefit from isolation
+    contract tests. The hook has a defined API that must remain stable across consumers.
+    Test the contract once.
+  difficulty: 3
+  tags:
+  - scenario
+

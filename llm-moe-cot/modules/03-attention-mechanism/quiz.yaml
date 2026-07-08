@@ -1,0 +1,132 @@
+- id: '3.1'
+  question: Attention 嘅核心運算係乜？
+  options:
+    b: Dot product + weighted sum
+    a: Convolution + pooling
+    c: Matrix multiplication only
+    d: Element-wise addition
+  answer: b
+  explanation: Dot product (QKᵀ) 計 relevance score → softmax normalize → weighted
+    sum of V。核心係 content-based weighted retrieval。
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.2'
+  question: Scaled dot-product attention 入面嘅 scaling factor √dₖ 係為咗乜？
+  options:
+    b: 防止 dot product variance 太大 → softmax 極端 → gradient vanish
+    a: 減少計算量
+    c: 防止 Q, K, V 維度 mismatch
+    d: 增加 model capacity
+  answer: b
+  explanation: q,k ~ N(0,1) → dot product variance = dₖ，std = √dₖ。唔 scale → softmax
+    input 太大 → near one-hot → gradient ≈ 0。√dₖ normalize std back to ~1。
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.3'
+  question: Self-attention 嘅 Q, K, V 來自邊度？
+  options:
+    a: Q, K, V 都來自同一個 sequence X
+    b: Q, K, V 各自來自不同 sequence
+    c: Q 來自 encoder，K, V 來自 decoder
+    d: Q 來自 output，K, V 來自 input
+  answer: a
+  explanation: 'Self-attention: Q = K = V = X（同一個 sequence 經過不同 projection）。Cross-attention:
+    Q ≠ K, V。Causal: self-attention + mask。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.4'
+  question: Causal (masked) attention 嘅 mask 係點樣？
+  options:
+    c: 下三角 = 0, 上三角 = -inf
+    a: 上三角 = 0, 下三角 = -inf
+    b: 對角線 = -inf
+    d: 全部 = 0
+  answer: c
+  explanation: 上三角 = -inf → softmax 後 = 0。每個 token 只可以 attend 到自己同前面 tokens（包括自己）。防止
+    label leakage。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.5'
+  question: 齊 decoder-only model 冇 causal mask 嘅情況下 train，會發生乜事？
+  options:
+    b: Training loss 異常低但 inference 完全 fail
+    a: Model 訓練唔到
+    c: 冇影響
+    d: Gradient explode
+  answer: b
+  explanation: Model 可以偷睇未來 token → P(wₙ|w₁...wₙ) prefect prediction → loss 極低。但 inference
+    時冇未來 token → 完全 fail。呢個叫 label leakage。
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.6'
+  question: Multi-head attention 嘅 output 係點樣組合？
+  options:
+    d: Concat 所有 heads，然後乘 output projection W_O
+    a: 所有 heads output 直接加埋
+    b: 所有 heads output 取平均
+    c: 逐個 head sequence 輸出
+  answer: d
+  explanation: Concat([head₁, ..., headₕ]) · W_O。W_O 可以 cross-head mixing — final
+    output 混合不同 heads 嘅 info。
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.7'
+  question: Standard self-attention 嘅 time complexity 係？
+  options:
+    d: O(n² · d)
+    a: O(n)
+    b: O(n · d)
+    c: O(n³)
+  answer: d
+  explanation: QKᵀ = (n×d)(d×n) = O(n²·d)。n = sequence length, d = hidden dim。呢個 quadratic
+    cost 係長 context 嘅主要限制。
+  difficulty: 1
+  tags:
+  - formula
+- id: '3.8'
+  question: Grouped-Query Attention (GQA) 解決乜問題？
+  options:
+    a: 更細嘅 KV cache 同時保持比 MQA 好嘅 quality
+    b: 更準確嘅 attention
+    c: 更快嘅 softmax
+    d: 更細嘅 model size
+  answer: a
+  explanation: MQA (所有 heads 共享 K,V) cache 細但 quality drop。GQA 將 K,V 分 g 組 (1<g<h)，balance
+    cache size 同 quality。Llama 2/3 用 GQA。
+  difficulty: 3
+  tags:
+  - application
+  - concept
+- id: '3.9'
+  question: Bahdanau attention (2015) 同 transformer attention 嘅主要分別係乜？
+  options:
+    a: Bahdanau 係 additive (learnable alignment)，transformer 係 dot-product (scaled)
+    b: Bahdanau 唔用 softmax
+    c: Bahdanau 唔使 Q, K, V
+    d: 冇分別
+  answer: a
+  explanation: 'Bahdanau: score = vᵀ · tanh(W₁q + W₂k) — learnable alignment function。Transformer:
+    score = q·k/√d — dot product, 更簡單更快。理論上 Bahdanau 更 expressive，但實際上 scaled dot-product
+    夠用仲快好多。'
+  difficulty: 3
+  tags:
+  - comparison
+- id: '3.10'
+  question: 如果 d_model = 1024, h = 16 heads，每個 head 嘅 dₖ 係幾多？
+  options:
+    c: '64'
+    a: '1024'
+    b: '16'
+    d: '32'
+  answer: c
+  explanation: dₖ = d_model / h = 1024 / 16 = 64。每個 head 喺 64 維 subspace 做 attention。
+  difficulty: 2
+  tags:
+  - formula
+

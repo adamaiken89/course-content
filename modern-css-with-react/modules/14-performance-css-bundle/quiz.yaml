@@ -1,0 +1,119 @@
+- id: '14.1'
+  question: Why is CSS render-blocking a performance concern?
+  options:
+    d: Browser delays first paint until CSS is downloaded and parsed
+    a: CSS files are always large
+    b: CSS blocks JavaScript execution
+    c: CSS can't be cached
+  answer: d
+  explanation: CSS is a render-blocking resource. Browser won't paint until all CSS
+    is loaded and parsed. Delaying first paint directly increases FCP.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '14.2'
+  question: What does critical CSS inlining do?
+  options:
+    a: Inlines only above-the-fold styles in <head>, defers the rest
+    b: Puts all CSS in a single file
+    c: Removes all CSS from the page
+    d: Converts CSS to inline styles
+  answer: a
+  explanation: Extracts styles needed for initial viewport content, inlines them in
+    <head> for immediate paint. Remaining CSS loads asynchronously.
+  difficulty: 1
+  tags:
+  - concept
+- id: '14.3'
+  question: Which CSS approach automatically code-splits per lazy-loaded component?
+  options:
+    b: CSS Modules
+    a: Runtime CSS-in-JS
+    c: Tailwind (single file)
+    d: Sass (single file)
+  answer: b
+  explanation: CSS Modules bundle tools generate separate CSS per component/lazy chunk.
+    Loads only when component loads. Runtime CSS-in-JS and Tailwind single file load
+    all at once.
+  difficulty: 2
+  tags:
+  - concept
+- id: '14.4'
+  question: 'What does content-visibility: auto do?'
+  options:
+    a: Skips rendering of off-screen elements
+    b: Makes content invisible
+    c: Hides content for search engines
+    d: Automatically generates CSS
+  answer: a
+  explanation: Browser only renders elements near viewport. Off-screen elements skip
+    rendering until scrolled near. contain-intrinsic-size reserves placeholder space.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '14.5'
+  question: Which CSS approaches contribute ZERO CSS to the JavaScript bundle?
+  options:
+    d: Plain CSS, CSS Modules, Tailwind, Vanilla Extract
+    a: Runtime CSS-in-JS only
+    b: All approaches include CSS in JS bundle
+    c: Only plain CSS has zero JS bundle
+  answer: d
+  explanation: Plain CSS, CSS Modules, Tailwind, and Vanilla Extract all output separate
+    .css files. Runtime CSS-in-JS keeps CSS strings in the JS bundle.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '14.6'
+  question: How do you avoid layout shift (CLS) when images load?
+  options:
+    c: Set explicit width/height attributes on <img>
+    a: 'Use CSS display: none initially'
+    b: Load images with JavaScript after paint
+    d: CLS is unavoidable
+  answer: c
+  explanation: Set width and height attributes or CSS aspect-ratio. Browser reserves
+    the space before image loads, preventing layout shift when image arrives.
+  difficulty: 1
+  tags:
+  - application
+- id: '14.7'
+  question: 'Tailwind JIT output for a 10-page app is typically:'
+  options:
+    a: 5-15 kB gzip — only used utilities
+    b: 50-100 kB — all utilities ever generated
+    c: 0 kB — Tailwind has no CSS output
+    d: Same as authored Tailwind classes size
+  answer: a
+  explanation: JIT generates only utilities found in source files. 5-15 kB gzip is
+    typical for most apps. Much smaller than hand-written CSS with similar coverage.
+  difficulty: 2
+  tags:
+  - concept
+- question: In SSR, why extract critical CSS into the initial HTML?
+  options:
+    c: Above-the-fold content renders styled without waiting for the full stylesheet
+    a: It reduces JS hydration work
+    b: It minifies selectors
+    d: It enables nesting
+  answer: c
+  explanation: Inlined critical CSS removes a render-blocking request for first paint;
+    the rest loads async.
+  difficulty: 2
+  tags:
+  - concept
+  id: '14.8'
+- question: Which technique stops one giant stylesheet from shipping on every route?
+  options:
+    b: Per-route CSS code-splitting alongside lazy-loaded route chunks
+    a: One shared !important reset
+    c: Inlining all styles per component
+    d: Removing hover states
+  answer: b
+  explanation: Splitting CSS per route means each lazy chunk carries only its own
+    styles, trimming unused bytes per navigation.
+  difficulty: 2
+  tags:
+  - concept
+  id: '14.9'
+

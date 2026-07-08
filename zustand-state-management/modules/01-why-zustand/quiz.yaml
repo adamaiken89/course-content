@@ -1,0 +1,152 @@
+- id: '1.1'
+  question: Which React state management evolution order is correct?
+  options:
+    a: setState → useState → useReducer → Context → Zustand
+    b: useState → setState → useReducer → Context → Zustand
+    c: Context → useState → setState → Zustand → useReducer
+    d: useState → Context → setState → useReducer → Zustand
+  answer: a
+  explanation: Class components used setState first. Hooks introduced useState and
+    useReducer. Context solved prop drilling but had re-render issues. Zustand represents
+    external stores.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.2'
+  question: What is the primary re-render problem with React Context?
+  options:
+    a: Context re-renders every consumer when any part of the context value changes
+    b: Context does not trigger re-renders at all
+    c: Context only re-renders the provider, not consumers
+    d: Context re-renders components in reverse order
+  answer: a
+  explanation: When the context value's reference changes, React marks all consumers
+    for update regardless of which fields actually changed. This is the cascading
+    re-render problem.
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.3'
+  question: What does Zustand's create() function return?
+  options:
+    b: A React hook connected to a vanilla store
+    a: A Redux store
+    c: A React component
+    d: A Context provider
+  answer: b
+  explanation: create() returns a React hook. Under the hood, the hook subscribes
+    to a vanilla pub/sub store (from zustand/vanilla) and triggers re-renders when
+    subscribed state changes.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.4'
+  question: How does Zustand prevent unnecessary re-renders compared to Context?
+  options:
+    c: It uses selector functions to subscribe to specific slices of state
+    a: It uses React.memo on every component
+    b: It batches all updates synchronously
+    d: It stores state in refs instead of state
+  answer: c
+  explanation: Zustand's useStore(store, selector) subscribes only to the value returned
+    by the selector. When that value's reference changes, only the subscribing component
+    re-renders — not every consumer.
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '1.5'
+  question: A team uses Zustand for a toggle button's on/off state. What is wrong
+    with this choice?
+  options:
+    d: Zustand is overkill — useState is sufficient for local component state
+    a: Zustand cannot handle boolean state
+    b: Zustand requires a provider to work
+    c: Zustand does not support toggle patterns
+  answer: d
+  explanation: Local UI state (toggle open/closed, tooltip visible) should use useState.
+    Adding Zustand for trivial state adds indirection, spreads logic globally, and
+    makes testing harder — without benefit.
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '1.6'
+  question: Which comparison between Zustand and Redux Toolkit is correct?
+  options:
+    b: Zustand has no action types or action creators; Redux Toolkit uses slices with
+      action strings
+    a: Zustand has a larger bundle than Redux Toolkit
+    c: Zustand requires Provider wrappers; Redux does not
+    d: Zustand uses Immer by default; Redux Toolkit requires manual immutability
+  answer: b
+  explanation: Zustand's set() mutates state via function updater — no action types
+    needed. Redux Toolkit creates action types from slice names. Zustand is minimal
+    API; Redux is more structured.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '1.7'
+  question: In Zustand, when would you use the vanilla store (zustand/vanilla) instead
+    of the React hook?
+  options:
+    d: When you need to share state between a Web Worker and the main thread
+    a: Never — the vanilla store has no use case
+    b: When you want automatic re-renders in React
+    c: When you need Context-based subscriptions
+  answer: d
+  explanation: zustand/vanilla creates a store without React dependency. Use it in
+    Web Workers, Node.js scripts, micro-frontends, or any non-React context where
+    you need pub/sub state.
+  difficulty: 2
+  tags:
+  - application
+  - concept
+- id: '1.8'
+  question: Which library is best suited for managing 20 individual form fields with
+    independent values?
+  options:
+    c: Jotai — each field as an independent atom
+    a: Zustand — single store with selectors for each field
+    b: Redux Toolkit — single reducer with normalized state
+    d: React Context — one context for form state
+  answer: c
+  explanation: Jotai's atomic model maps naturally to individual form fields. Each
+    field is an independent atom, avoiding single-store pattern where any field change
+    could trigger broader subscriptions.
+  difficulty: 3
+  tags:
+  - scenario
+  - comparison
+- id: '1.9'
+  question: What is Zustand's bundle size?
+  options:
+    b: 1.1 KB gzipped
+    a: 0.5 KB gzipped
+    c: 4.5 KB gzipped
+    d: 11 KB gzipped
+  answer: b
+  explanation: Zustand is 1.1KB gzipped. Compare to Redux core at 4.5KB and Redux
+    Toolkit at 11KB. Zustand's small size makes it negligible for bundle-sensitive
+    pages.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.10'
+  question: A real-time dashboard has 50 components reading different slices of state.
+    WebSocket pushes 1 update per second. Compared to Context with the same state,
+    what behavior does Zustand produce?
+  options:
+    a: Fewer re-renders because Zustand selectors limit re-renders to subscribed slices
+    b: More re-renders because Zustand adds overhead
+    c: The same re-render count — both libraries trigger all consumers
+    d: Zustand prevents all re-renders by using immutable state
+  answer: a
+  explanation: Context re-renders all 50 consumers on any state change. Zustand with
+    fine-grained selectors re-renders only 3-5 components whose subscribed slices
+    actually changed. In a 60-second window this is 3000 vs 300 re-renders.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+

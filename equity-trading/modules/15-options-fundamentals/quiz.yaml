@@ -1,0 +1,134 @@
+- id: '15.1'
+  question: 'A call option gives the holder the:'
+  options:
+    a: Obligation to buy the underlying at the strike price
+    b: Right to sell the underlying at the strike price
+    c: Right to buy the underlying at the strike price
+    d: Obligation to sell the underlying at the strike price
+  answer: c
+  explanation: Call = right to buy. Put = right to sell. Buyer has right, not obligation.
+    Seller (writer) has obligation.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '15.2'
+  question: AAPL at $180. You buy $185 call for $4 premium. What is breakeven?
+  options:
+    a: $181
+    b: $185
+    c: $189
+    d: $180
+  answer: c
+  explanation: Breakeven = strike + premium = $185 + $4 = $189. Stock must exceed
+    $189 to profit.
+  difficulty: 1
+  tags:
+  - calculation
+- id: '15.3'
+  question: AAPL at $180. Call strike $175, premium $8. What are intrinsic value and
+    time value?
+  options:
+    a: Intrinsic $0, time $8
+    b: Intrinsic $5, time $3
+    c: Intrinsic $8, time $0
+    d: Intrinsic $3, time $5
+  answer: b
+  explanation: Intrinsic = S - K = $180 - $175 = $5. Time = premium - intrinsic =
+    $8 - $5 = $3.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '15.4'
+  question: Which option has positive intrinsic value?
+  options:
+    a: $180 call with stock at $170
+    b: $180 put with stock at $190
+    c: $180 put with stock at $170
+    d: $180 call with stock at $180
+  answer: c
+  explanation: Put at $180, stock at $170 gives intrinsic = K - S = $180 - $170 =
+    $10. ITM put. Call at $180 with stock $170 is OTM (zero intrinsic).
+  difficulty: 2
+  tags:
+  - concept
+- id: '15.5'
+  question: In an options chain, what does Open Interest (OI) represent?
+  options:
+    a: Contracts traded today
+    b: Total contracts that are open and not closed
+    c: The number of market makers quoting that strike
+    d: Implied volatility percentage
+  answer: b
+  explanation: OI = total outstanding contracts. Volume = contracts traded today.
+    High OI = liquid strike with many open positions.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '15.6'
+  question: You buy 1 SPY put at $500 strike for $8. SPY drops to $480 at expiry.
+    What is profit per share?
+  options:
+    a: $20
+    b: $12
+    c: $8
+    d: $28
+  answer: b
+  explanation: Payout = $500 - $480 = $20. Profit = $20 - $8 = $12/share. Return =
+    150%.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '15.7'
+  question: AAPL at $180, $185 call for $4. What is the moneyness?
+  options:
+    a: ITM
+    b: ATM
+    c: OTM
+    d: Deep ITM
+  answer: c
+  explanation: Strike $185 > spot $180, so call is OTM (out of the money). Entire
+    premium is time value.
+  difficulty: 1
+  tags:
+  - concept
+- id: '15.8'
+  question: Which option loses value fastest from time decay?
+  options:
+    a: Deep ITM option
+    b: Deep OTM option
+    c: ATM option
+    d: All decay at same rate
+  answer: c
+  explanation: ATM options have highest time value and fastest theta decay. Deep ITM
+    has intrinsic floor; deep OTM has low absolute time value.
+  difficulty: 3
+  tags:
+  - concept
+- id: '15.9'
+  question: Call strike $175 has bid $5.50, ask $5.65. How much do you lose per contract
+    if you buy at ask and sell at bid?
+  options:
+    a: $0.15
+    b: $15.00
+    c: $1.50
+    d: $150.00
+  answer: b
+  explanation: Loss = ask - bid = $0.15/share. One contract = 100 shares, so $0.15
+    × 100 = $15.00.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '15.10'
+  question: You see call at $180 strike with volume 4,100 and OI 200. What does this
+    suggest?
+  options:
+    a: The strike is very liquid for long-term positions
+    b: Most of today's activity is day trading, not position building
+    c: The option is about to expire
+    d: Implied volatility is low
+  answer: b
+  explanation: High volume / low OI = mostly intraday trading. OI builds when positions
+    held overnight. Low OI means few existing positions.
+  difficulty: 3
+  tags:
+  - scenario

@@ -1,0 +1,133 @@
+- id: '16.1'
+  question: YTM (Yield to Maturity) 嘅意思最準確?
+  options:
+    a: 債券二手市場價
+    b: 票面利率
+    c: 債券每年派息
+    d: 買入後揸到到期, 真實年化回報率
+  answer: d
+  explanation: YTM = 內部回報率 (IRR), 反映買入後揸到到期, 真實年化回報率。考慮派息 + 價差 (折價買入升值 / 溢價買入蝕價)。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '16.2'
+  question: 5 年期債, 票面 5%, 買入價 $950, 面值 $1,000。YTM 大概係?
+  options:
+    a: 6.4% (高過票面, 因為折價買)
+    b: 3.5% (低過票面)
+    c: 5.0% (等於票面)
+    d: 5.26% (Current Yield)
+  answer: a
+  explanation: 折價買入 (950 < 1000), YTM > Coupon。YTM 反映派息 + 5 年後升值 ($50 差價), 所以高過 5%。
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '16.3'
+  question: Modified Duration = 5, 利率升 1%, 債券價格變動係?
+  options:
+    a: 0% (無變)
+    b: +1%
+    c: +5% (升)
+    d: -5% (跌)
+  answer: d
+  explanation: ΔP/P ≈ -MD × Δy = -5 × 0.01 = -5%。利率升, 債券價格跌。
+  difficulty: 1
+  tags:
+  - formula
+  - calculation
+- id: '16.4'
+  question: 以下邊隻 Duration 最高?
+  options:
+    a: 30 年期零息債
+    b: 1 年期國庫券
+    c: 5 年期政府債
+    d: 10 年期公司債 (低票面)
+  answer: a
+  explanation: 30 年期零息債 Duration = 30 年 (中間唔收息, 加權平均就係到期)。同期限下, 零息 Duration > 票面債。
+  difficulty: 1
+  tags:
+  - concept
+  - comparison
+- id: '16.5'
+  question: Convexity 修正 Duration 嘅咩問題?
+  options:
+    a: Convexity 影響信用評級
+    b: Convexity 等於 Modified Duration
+    c: Duration 假設價格-收益直線, Convexity 反映凸曲線
+    d: Convexity 改變票面利率
+  answer: c
+  explanation: Duration 估計用直線 (tangent), 現實係凸曲線, Convexity 修正呢個差距。凸曲線對投資者有利 (升賺多,
+    跌蝕少)。
+  difficulty: 2
+  tags:
+  - concept
+  - formula
+- id: '16.6'
+  question: Big 3 評級機構包括?
+  options:
+    a: Moody's, Fitch, IMF
+    b: Moody's, S&P, Fitch
+    c: Moody's, S&P, Bloomberg
+    d: S&P, Fitch, Reuters
+  answer: b
+  explanation: 'Big 3: Moody''s (Aaa 等), S&P (AAA 等), Fitch (同 S&P)。都係美國 + 歐美混合, 壟斷全球評級市場。'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '16.7'
+  question: 一隻 BB 評級嘅公司被 Moody's 降評到 B。會發生咩事?
+  options:
+    a: 冇影響, 票面係合約寫死
+    b: 二手價升, 因為票面增加
+    c: 二手價跌, 部分基金強制沽出
+    d: 公司自動加票面
+  answer: c
+  explanation: 降評 → 市場重新定價違約風險, 二手價跌。部分投資級別基金 (合約限制) 強制沽出, 加劇跌幅。
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '16.8'
+  question: 你揸 30 年美債, 美國被 S&P 降評 (罕見但 2011 試過)。最大即時風險係?
+  options:
+    a: 違約風險, 美國唔還錢
+    b: 二手價跌, 利率升或避險資金走
+    c: 票面自動減
+    d: 聯儲局增持
+  answer: b
+  explanation: 美國違約風險近乎 0, 但降評觸發 (a) 部分基金強制沽出, (b) 利率上升壓力, (c) 二手價跌。最大即時影響係二手價波動,
+    而非違約。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '16.9'
+  question: 預期未來一年利率會跌。你揀咩策略?
+  options:
+    a: 短 Duration (1-3 年)
+    b: 長 Duration (10+ 年) + 高 Convexity
+    c: 全部擺 MMF
+    d: 完全唔買債
+  answer: b
+  explanation: 預期利率跌 → 揸長 Duration 因為價格升幅大; 高 Convexity (Zero-Coupon / 低 Coupon 長債)
+    進一步放大升幅。
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '16.10'
+  question: 以下邊個唔係債券 4 大風險之一?
+  options:
+    a: 匯率風險 (本地計價債券)
+    b: 利率風險
+    c: 信用風險
+    d: 通脹風險
+  answer: a
+  explanation: '4 大風險: 利率、信用、通脹、流動。匯率風險只適用於外幣計價債券, 本地計價 (e.g. HKD 港元債) 無匯率風險。'
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+

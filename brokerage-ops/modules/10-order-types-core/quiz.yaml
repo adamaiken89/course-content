@@ -1,0 +1,120 @@
+- id: '10.1'
+  question: What is the main difference between a Market Order and a Limit Order?
+  options:
+    a: Market orders can persist across days; limit orders are day-only
+    b: Market orders guarantee execution but not price; limit orders guarantee price but not execution
+    c: Market orders only work for US equities; limit orders only work for fixed income
+    d: They are functionally identical with different names
+  answer: b
+  explanation: Market orders guarantee execution (will fill) but the fill price may deviate due to slippage. Limit orders guarantee price (will not fill worse than the limit) but may not execute at all. This is the most fundamental trade-off in order types.
+  difficulty: 1
+  tags:
+  - concept
+- id: '10.2'
+  question: In FIX Protocol, what is the TimeInForce (tag 59) value for a GTC (Good-Till-Cancelled) order?
+  options:
+    a: '0'
+    b: '1'
+    c: '3'
+    d: '4'
+  answer: b
+  explanation: "FIX tag 59 TimeInForce: 0=Day, 1=GTC, 3=IOC, 4=FOK. GTC orders remain active across trading days until filled or cancelled."
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.3'
+  question: Which FIX tags carry the total quantity and the display quantity for an Iceberg order?
+  options:
+    a: tag 44=Price for display, tag 99=StopPx for total
+    b: tag 111=DisplayQty for display, tag 38=TotalQty for total
+    c: tag 38=OrderQty (total), tag 111=MaxFloor (display)
+    d: tag 111=OrderQty (total), tag 38=MaxFloor (display)
+  answer: c
+  explanation: FIX tag 38=OrderQty is the total order quantity, tag 111=MaxFloor is the display quantity (the visible tip of the iceberg). If tag 111 is not set, the order is a regular limit order.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '10.4'
+  question: A client places an Iceberg limit order. The OMS routes it to a wholesaler that does not support Reserve orders. What happens?
+  options:
+    a: The wholesaler executes normally, just ignoring the hidden portion
+    b: The wholesaler rejects the order because it cannot handle MaxFloor
+    c: The wholesaler executes it as a market order
+    d: The wholesaler converts it to a Day Order automatically
+  answer: b
+  explanation: "When the wholesaler does not support Reserve/Iceberg orders, it rejects the order because FIX tag 111=MaxFloor is not recognized. Correct approach: the OMS should check venue order type support before routing — either convert to a regular limit order (remove tag 111) or reroute to a supported venue."
+  difficulty: 3
+  tags:
+  - scenario
+- id: '10.5'
+  question: A GTC limit order faces a 4:1 stock split. How should the OMS adjust the order?
+  options:
+    a: Quantity unchanged, price unchanged
+    b: Quantity x4, price /4
+    c: Quantity /4, price x4
+    d: Cancel all GTC orders
+  answer: b
+  explanation: A 4:1 split means 1 share becomes 4 shares — total value unchanged. Quantity becomes 4x, price becomes 1/4. A GTC limit buy of 1000 shares at $100 adjusts to 4000 shares at $25.
+  difficulty: 2
+  tags:
+  - application
+- id: '10.6'
+  question: In FIX Protocol, what is the TimeInForce (tag 59) value for a Day order?
+  options:
+    a: '1'
+    b: '3'
+    c: '2'
+    d: '0'
+  answer: d
+  explanation: "FIX tag 59 TimeInForce: 0=Day, 1=GTC. Day orders are valid for the current trading session only and are auto-cancelled (Expired) at the daily close."
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.7'
+  question: A client places a GTC limit buy at $150, then forgets it. Months later the stock rallies to $150 and the order fills at an unexpected moment. What is this risk called, and what is best practice?
+  options:
+    a: Slippage risk; convert all GTC orders to market orders
+    b: Non-execution risk; set tighter limits
+    c: Margin risk; require more collateral
+    d: Forgotten order risk; periodically notify traders of open GTC orders or enforce a max GTC duration
+  answer: d
+  explanation: "This is classic forgotten order risk. GTC orders remain active indefinitely. Best practice: the OMS should periodically notify traders of open GTC orders (e.g., monthly reports) or enforce a maximum GTC duration."
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.8'
+  question: What are the respective risks of a Market Order and a Limit Order?
+  options:
+    a: Market order risks slippage; limit order risks non-execution
+    b: Market order risks non-execution; limit order risks slippage
+    c: Both orders carry identical risk
+    d: Neither order carries risk
+  answer: a
+  explanation: The risk of a market order is slippage (fills may deviate from the expected price); the risk of a limit order is non-execution (it may never fill). In volatile markets a market order may fill far from the expected price — negative slippage.
+  difficulty: 1
+  tags:
+  - concept
+- id: '10.9'
+  question: A market buy of 10,000 AAPL shares fills 1,000 @ $150.00, 2,000 @ $150.10, 3,000 @ $150.20, and 4,000 @ $150.30. What is the VWAP?
+  options:
+    a: $150.00
+    b: $150.10
+    c: $150.20
+    d: $150.30
+  answer: c
+  explanation: VWAP = (1000x150 + 2000x150.10 + 3000x150.20 + 4000x150.30) / 10000 = 150.20. Slippage = 150.20 - 150.00 = $0.20 (13 bps).
+  difficulty: 3
+  tags:
+  - calculation
+- id: '10.10'
+  question: What OMS validation applies specifically to Market Orders?
+  options:
+    a: Check whether the product allows market orders (some FI/ETF products restrict them)
+    b: Check that the limit price is within a reasonable range
+    c: Check the stop price is above market
+    d: Check the TimeInForce is not GTC
+  answer: a
+  explanation: OMS validation for market orders checks whether the product allows market orders at all, since some fixed income and ETF products restrict them. Limit price and stop price checks apply to limit and stop orders respectively.
+  difficulty: 2
+  tags:
+  - concept

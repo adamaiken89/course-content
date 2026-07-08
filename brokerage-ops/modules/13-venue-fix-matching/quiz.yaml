@@ -1,0 +1,120 @@
+- id: '13.1'
+  question: What is the main difference between a Market Order and a Limit Order?
+  options:
+    a: Market orders can persist across days; limit orders are day-only
+    b: Market orders guarantee execution but not price; limit orders guarantee price but not execution
+    c: Market orders only work for US equities; limit orders only work for fixed income
+    d: They are functionally identical with different names
+  answer: b
+  explanation: Market orders guarantee execution (will fill) but the fill price can slip. Limit orders guarantee price (will not fill worse than the limit) but may not execute at all. This is the fundamental order-type trade-off.
+  difficulty: 1
+  tags:
+  - concept
+- id: '13.2'
+  question: A client places an Iceberg limit order. The OMS routes it to a wholesaler that does not support Reserve orders. What happens?
+  options:
+    a: The wholesaler executes normally, ignoring the hidden portion
+    b: The wholesaler executes it as a market order
+    c: The wholesaler rejects the order because it cannot handle tag 111=MaxFloor
+    d: The wholesaler converts it to a Day Order automatically
+  answer: c
+  explanation: A wholesaler that does not support Reserve/Iceberg orders rejects the order because FIX tag 111=MaxFloor is not recognized. The OMS should check venue order type support before routing — converting to a regular limit (dropping tag 111) or rerouting to a supported venue.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '13.3'
+  question: When each Iceberg order display tranche is consumed and auto-refilled, what happens to its price-time priority?
+  options:
+    a: Maintains its original queue position
+    b: Moves to the tail of the same price level
+    c: Always moves to the front of the queue
+    d: Price-time priority is not affected
+  answer: b
+  explanation: Each auto-refill places the new tranche at the tail of the queue at that price level, like a fresh order. This structural disadvantage trades queue position for hidden intent and is the telltale iceberg signature — consistent refills at the same price.
+  difficulty: 2
+  tags:
+  - concept
+- id: '13.4'
+  question: What order type does a Stop Order become after trigger?
+  options:
+    a: Market Order
+    b: Limit Order
+    c: Stop-Limit Order
+    d: Iceberg Order
+  answer: a
+  explanation: A Stop Order becomes a Market Order on trigger, guaranteeing execution but with potential slippage. A Stop-Limit Order becomes a Limit Order on trigger, capping price but risking non-execution.
+  difficulty: 1
+  tags:
+  - concept
+- id: '13.5'
+  question: In FIX Protocol, which OrdType (tag 40) value identifies a Stop-Limit order?
+  options:
+    a: '4'
+    b: '3'
+    c: '2'
+    d: '1'
+  answer: a
+  explanation: 'FIX tag 40 OrdType: 1=Market, 2=Limit, 3=Stop, 4=Stop Limit, P=Pegged. A Stop-Limit carries both tag 99=StopPx and tag 44=Price.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '13.6'
+  question: A Pegged order's price changes as the reference price moves. What happens to its queue position?
+  options:
+    a: It maintains its original queue position at the new price
+    b: It always moves to the front of the new price level
+    c: It re-queues at the tail of the new price level, losing its original position
+    d: It is cancelled and must be re-submitted by the trader
+  answer: c
+  explanation: Each peg price change re-queues the order at the tail of the new price level, losing the original price-time position. Unlike a GTC limit, whose position persists, pegged orders sacrifice queue position to track the reference price.
+  difficulty: 2
+  tags:
+  - concept
+- id: '13.7'
+  question: A trader wants to place a GTC order. Which venue type is most likely to reject it?
+  options:
+    a: Lit exchange (NYSE/NASDAQ)
+    b: Dark pool (SIGMA X2/Crossfinder)
+    c: Primary listing exchange
+    d: Wholesaler (Citadel/Virtu)
+  answer: d
+  explanation: Wholesalers typically reject GTC orders. Lit exchanges support GTC (many impose a 90-day max) and most dark pools support GTC. This is why OMS must filter venues by order type support before routing.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '13.8'
+  question: Which order type is NOT supported in dark pools?
+  options:
+    a: Limit
+    b: IOC
+    c: Stop
+    d: Pegged
+  answer: c
+  explanation: Dark pools reject market, stop, and stop-limit orders; iceberg is also rejected because a dark pool is already hidden. Limit, IOC, and midpoint-pegged orders are supported.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '13.9'
+  question: What is the primary matching principle of lit exchanges?
+  options:
+    a: Price-Time Priority — better price first, then earlier timestamp
+    b: Size Priority — largest order first
+    c: Random selection among equal orders
+    d: Trader priority — internal orders match first
+  answer: a
+  explanation: Exchanges match at the best price first; among orders at the same price, the one that arrived earlier matches first. This is why each iceberg refill and each peg price change loses queue position.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '13.10'
+  question: 'A system implements OCO at the OMS level: it sends both legs to the EMS and cancels the other leg only after receiving a fill. Both legs are Stop Buys at $148 and $152. Price drops to $148 then quickly recovers to $152. What is the risk?'
+  options:
+    a: Nothing — the cancel always arrives in time
+    b: The order book rejects both orders as conflicting
+    c: Only the first leg can ever trigger by design
+    d: A race condition — the $152 leg may trigger and fill before the cancel request for it arrives
+  answer: d
+  explanation: When the $148 leg fills, the market may keep moving and trigger the $152 leg before the OMS cancel arrives. OCO should be handled at the EMS/exchange level where it is native, or with very different trigger prices.
+  difficulty: 3
+  tags:
+  - scenario

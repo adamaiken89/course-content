@@ -1,0 +1,107 @@
+- id: '9.1'
+  question: What is a layout primitive component?
+  options:
+    d: A reusable component that encapsulates flex/grid layout patterns
+    a: A CSS framework like Tailwind
+    b: A React hook for responsive design
+    c: A build tool for CSS
+  answer: d
+  explanation: Layout primitives (Stack, Flex, Grid) encapsulate repeated CSS layout
+    patterns into explicit component APIs.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.2'
+  question: 'Which layout approach for: a nav bar with logo left, links center, profile
+    right?'
+  options:
+    d: 'Flexbox (justify-content: space-between)'
+    a: CSS Grid (3-column template)
+    b: Float layout
+    c: Table layout
+  answer: d
+  explanation: One-dimensional alignment across main axis. Flexbox with space-between
+    handles this naturally. Grid would also work but overkill.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '9.3'
+  question: 'Which layout approach for: sidebar (fixed width) + main content + header
+    spanning both?'
+  options:
+    b: CSS Grid (template areas)
+    a: Flexbox wrapping
+    c: Inline-block elements
+    d: Position absolute
+  answer: b
+  explanation: Two-dimensional layout needing both rows and columns. Grid template
+    areas map regions explicitly. Flexbox would need nested containers.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '9.4'
+  question: What does a responsive Grid columns prop look like?
+  options:
+    c: 'columns={{ base: 1, md: 2, lg: 3 }}'
+    a: columns="responsive"
+    b: columns={[1, 2, 3]}
+    d: columns="auto"
+  answer: c
+  explanation: Responsive prop maps breakpoints to column count. Base = mobile default,
+    md = tablet, lg = desktop. Generated CSS uses media queries.
+  difficulty: 1
+  tags:
+  - application
+- id: '9.5'
+  question: Stack component vs div with className='flex flex-col gap-4' — key advantage?
+  options:
+    a: Stack communicates intent (vertical layout) at component level
+    b: Stack is faster to render
+    c: Stack supports more CSS properties
+    d: Stack works without CSS
+  answer: a
+  explanation: Both produce same HTML. Stack makes layout intent explicit in component
+    name. `flex flex-col gap-4` communicates implementation, not intent.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.6'
+  question: How should layout primitives handle spacing?
+  options:
+    b: Accept only predefined spacing tokens (sm, md, lg)
+    a: Accept any CSS value string
+    c: Never accept gap — use wrapper components
+    d: Always use 16px default
+  answer: b
+  explanation: Restricted token values enforce design system consistency. 'gap-12px'
+    bypasses tokens. 'gap-lg' references design system spacing.
+  difficulty: 2
+  tags:
+  - application
+- id: '9.7'
+  question: 'Grid component with 12 items: columns={3} renders how many rows?'
+  options:
+    c: '4'
+    a: '3'
+    b: '12'
+    d: Depends on content height
+  answer: c
+  explanation: '12 items ÷ 3 columns = 4 rows (assuming grid auto-flow row). The component
+    sets grid-template-columns: repeat(3, 1fr).'
+  difficulty: 1
+  tags:
+  - calculation
+- id: '9.8'
+  question: A filter chip list wraps when screen narrows. Which component?
+  options:
+    a: Flex with wrap={true}
+    b: Grid with columns={1}
+    c: Stack
+    d: Absolute positioned divs
+  answer: a
+  explanation: 'Flex with flex-wrap: wrap lets items naturally flow to next line when
+    container narrows. Grid requires explicit breakpoint column changes.'
+  difficulty: 2
+  tags:
+  - scenario
+

@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "EXPLAIN only plans the query; append {ANALYZE} to execute it and see measured time and rows."
+  answer: ANALYZE
+  explanation: "EXPLAIN ANALYZE runs the query and prints actual numbers per node; plain EXPLAIN prints planner estimates only."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "A plan tree is read {bottom}-up: leaves (scans) feed their parents until the top node."
+  answer: bottom
+  explanation: "Deepest nodes run first and supply rows upward, so the slowest root is usually fed from a bad leaf."
+  difficulty: 1
+  tags: [process]
+
+- id: "c.3"
+  question: "In plain EXPLAIN, the rows column is the planner's {estimate}, not a measurement."
+  answer: estimate
+  explanation: "Built from pg_statistic histograms and assumptions; stale stats make estimates—and plans—wrong."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.4"
+  question: "A {Seq} Scan reads a whole table page by page, ignoring indexes."
+  answer: Seq
+  explanation: "Sequential scan. Correct for small tables or when the filter matches most rows."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "The two-node pair {Bitmap} Index Scan + Bitmap Heap Scan fetches each heap page once, in order."
+  answer: Bitmap
+  explanation: "The index produces a page bitmap; the heap scan reads those pages in order, cutting random I/O."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "A condition listed under {Filter} was applied after fetching rows; one under Index Cond was resolved by the index itself."
+  answer: Filter
+  explanation: "Filter means the index could not fully decide the predicate, so rows are re-checked from the heap."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.7"
+  question: "Add the {BUFFERS} option to EXPLAIN to see shared hit/read/dirtied counts per node."
+  answer: BUFFERS
+  explanation: "EXPLAIN (ANALYZE, BUFFERS) tells you whether the cost is cached hits or real disk reads."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "The {actual} time and rows columns appear only when the query is executed under ANALYZE."
+  answer: actual
+  explanation: "Evaluated per loop iteration; multiply by loops to get the node's real contribution."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.9"
+  question: "An {Index} Only Scan skips the heap entirely when every needed column lives in the index."
+  answer: Index
+  explanation: "Postfix that 'only' means it reads the index alone; add INCLUDE columns to widen what it can cover."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.10"
+  question: "When a Sort or Hash spills to disk, EXPLAIN shows temp read/written lines — a sign {work_mem} was too small."
+  answer: work_mem
+  explanation: "Spilling to temp files is far slower than in-memory sorting; raise work_mem per-query (set work_mem) only where plans show spills."
+  difficulty: 3
+  tags: [process]

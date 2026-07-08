@@ -1,0 +1,130 @@
+- id: '8.1'
+  question: 'In blocked practice, a student solves:'
+  options:
+    a: All problems of one type, then the next type
+    b: Mixed problem types in random order
+    c: Only problems from one chapter
+    d: Problems in order of difficulty
+  answer: a
+  explanation: Blocked = all A, then all B. Interleaved = types mixed.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.2'
+  question: Why does interleaving improve learning compared to blocking?
+  options:
+    b: It forces learners to identify problem types before solving
+    a: It reduces cognitive load
+    c: It allows more practice per type
+    d: It requires less mental effort
+  answer: b
+  explanation: Interleaving removes the cue of 'what type is this?' — learners must discriminate, which
+    builds transferable skill.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.3'
+  question: In Rohrer's math study, interleaved practice produced what result on delayed tests?
+  options:
+    c: 43% vs 20% — more than double blocked practice
+    a: Lower scores than blocked
+    b: Similar scores to blocked
+    d: 100% recall
+  answer: c
+  explanation: Interleaved group scored 43% vs 20% blocked — despite feeling they learned less during
+    practice.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.4'
+  question: Which subject benefits LEAST from interleaving?
+  options:
+    d: Learning the alphabet
+    a: Mathematics
+    b: Art history (identifying artists)
+    c: Sports (pitch types)
+  answer: d
+  explanation: Alphabet has fixed sequence and low discrimination requirements. Blocked is fine for basic
+    sequential memorization.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '8.5'
+  question: 'A student learns 3 statistical tests. They should interleave practice AFTER:'
+  options:
+    a: Initial encoding of each test's basic procedure
+    b: No encoding — just start interleaving
+    c: Mastery of all 3 tests
+    d: The exam
+  answer: a
+  explanation: 'Blocked-first hybrid: encode basics first (worked examples, simple practice), then interleave
+    for discrimination.'
+  difficulty: 2
+  tags:
+  - application
+- id: '8.6'
+  question: 'A student says ''I study 2 hours of chemistry followed by 2 hours of physics every Saturday.''
+    This is:'
+  options:
+    b: Blocked practice with subject blocks
+    a: Interleaved practice
+    c: Spaced practice
+    d: Retrieval practice
+  answer: b
+  explanation: Large subject blocks are still blocked practice. True interleaving would mix chemistry
+    and physics problems within each hour.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '8.7'
+  question: Why does blocked practice feel more effective than interleaved during learning?
+  options:
+    c: Blocked practice provides the problem type as a cue — reduces difficulty
+    a: Blocked practice takes less time
+    b: Interleaving causes confusion
+    d: Learners prefer blocked because it's boring
+  answer: c
+  explanation: In blocked practice, you know the type before you start. This reduces perceived difficulty
+    but also reduces learning.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.8'
+  question: A music student wants to learn chord progressions. Which approach builds better transferable
+    skill?
+  options:
+    d: Practice C→G, G→D, D→Am transitions mixed randomly
+    a: Practice C-major progression 20 times, then G-major 20 times
+    b: Only practice C-major
+    c: Read about chord theory without practicing
+  answer: d
+  explanation: Real music requires transitioning between chords. Interleaving transitions = real-world
+    skill.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '8.9'
+  question: Interleaving naturally combines with which other evidence-based strategy?
+  options:
+    a: Spacing (mixed types creates gaps between repetitions)
+    b: Massed practice
+    c: Re-reading
+    d: Highlighting
+  answer: a
+  explanation: When you mix types, each type reappears with gaps — automatic spacing.
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.10'
+  question: 'The primary cognitive skill developed by interleaving is:'
+  options:
+    b: Discrimination — knowing which approach to use
+    a: Speed
+    c: Memorization of facts
+    d: Note-taking
+  answer: b
+  explanation: Interleaving builds the ability to distinguish between problem types and apply the correct
+    strategy — the essence of transfer.
+  difficulty: 1
+  tags:
+  - concept

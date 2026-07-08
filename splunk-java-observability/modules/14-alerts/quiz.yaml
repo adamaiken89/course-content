@@ -1,0 +1,133 @@
+- id: '14.1'
+  question: Which four parts make up a Splunk alert?
+  options:
+    a: Saved search, schedule, trigger condition, actions
+    b: Index, sourcetype, host, source
+    c: Forwarder, indexer, search head, deployment server
+    d: Email, webhook, RSS, script
+  answer: a
+  explanation: An alert is a saved search plus a schedule, a trigger condition, and actions. Index and sourcetype are data-pipeline concepts, not alert parts.
+  difficulty: 1
+  tags:
+  - alert-anatomy
+  - core
+- id: '14.2'
+  question: A Spring Boot team needs a page within seconds of the checkout service dying. Which alert type fits best?
+  options:
+    a: Scheduled alert every 30 minutes
+    b: Real-time alert, per-result trigger
+    c: Scheduled alert every 24 hours
+    d: No alert, rely on a dashboard
+  answer: b
+  explanation: Real-time alerts evaluate events continuously, so they detect a dead service within seconds. A scheduled alert only runs on its cron cadence, adding minutes of latency.
+  difficulty: 2
+  tags:
+  - alert-types
+  - scenario
+  - real-time
+- id: '14.3'
+  question: What is the role of a secondary search in a scheduled alert?
+  options:
+    a: It ingests new events into the index
+    b: It sends the notification email
+    c: It evaluates the base search results to decide whether to fire
+    d: It throttles duplicate results
+  answer: c
+  explanation: The base search gathers events; the secondary search applies the trigger condition (for example `count > 10`) to those results. Only if it returns results does the alert fire.
+  difficulty: 1
+  tags:
+  - trigger-condition
+  - core
+- id: '14.4'
+  question: An alert fires when `count > 50`. The team wants at most one page per 15 minutes per service. What should they configure?
+  options:
+    a: Add throttling for 15 minutes, keyed by service field
+    b: Change the trigger condition to `count > 500`
+    c: Lower the schedule frequency
+    d: Remove the secondary search
+  answer: a
+  explanation: Throttling suppresses repeated alerts for a time period and can key on a field value (per service). The trigger condition alone cannot cap how often you are paged.
+  difficulty: 2
+  tags:
+  - throttling
+  - scenario
+- id: '14.5'
+  question: Why is per-result real-time alerting described as incomplete in a high-availability deployment?
+  options:
+    a: It runs too slowly to keep up with the index
+    b: It can only use email actions
+    c: It requires a cron schedule
+    d: It misses events on a search peer that is down
+  answer: d
+  explanation: Per-result real-time evaluates each event as it arrives on whichever peer sees it. If a peer is down, its events are never evaluated, so alert coverage has gaps.
+  difficulty: 3
+  tags:
+  - real-time
+  - ha
+- id: '14.6'
+  question: For an hourly alert, why schedule cron as 30 * * * * with earliest `-90m` and latest `-30m`?
+  options:
+    a: To make the search run faster
+    b: To let indexing lag settle before the search runs
+    c: To reduce storage used by the index
+    d: To throttle the alert to once an hour
+  answer: b
+  explanation: In distributed deployments events arrive late. Delaying the run and looking at an older window (no events from the last 30 minutes) lets straggling data get indexed first.
+  difficulty: 2
+  tags:
+  - scheduling
+  - scenario
+  - indexing-lag
+- id: '14.7'
+  question: Your scheduled alert searches the last 10 minutes every 20 minutes. What is the problem?
+  options:
+    a: The window is larger than the schedule, causing overlapping searches
+    b: The alert fires twice per result
+    c: The schedule leaves a 10-minute gap where events are never checked
+    d: Throttling will suppress all triggers
+  answer: c
+  explanation: A 20-minute cadence with a 10-minute window covers only half the time — the other 10 minutes are never searched. Schedule and window should align (every 20 minutes, last 20 minutes).
+  difficulty: 2
+  tags:
+  - scheduling
+  - scenario
+  - gaps
+- id: '14.8'
+  question: What happens when the trigger condition's secondary search returns no results for a scheduled alert?
+  options:
+    a: The alert fires with an empty payload
+    b: The alert deletes the saved search
+    c: The schedule is paused automatically
+    d: The alert does not fire this run
+  answer: d
+  explanation: The secondary search returning nothing means the condition is false, so the alert stays silent until the next scheduled run.
+  difficulty: 1
+  tags:
+  - trigger-condition
+  - core
+- id: '14.9'
+  question: Which practice best reduces alert fatigue on a Java service?
+  options:
+    a: Alerting on symptom-based SLO thresholds like error rate and latency, with runbook links
+    b: Alerting on any single ERROR log
+    c: Monitoring static CPU with no runbook
+    d: Sending every alert to the entire org
+  answer: a
+  explanation: Symptom and SLO-based thresholds (error rate, latency, 5xx) signal real user impact and naturally fire less often. Adding runbook links makes each alert actionable.
+  difficulty: 1
+  tags:
+  - alert-fatigue
+  - best-practice
+- id: '14.10'
+  question: A real-time rolling-window alert fires when more than 10 errors occur in 5 minutes. How does this differ from per-result real-time?
+  options:
+    a: It ignores the time window entirely
+    b: It runs only once a day
+    c: It never fires until the window contains more than 10 events
+    d: It cannot be used with a webhook action
+  answer: c
+  explanation: A rolling-window trigger evaluates a sliding window's aggregate (count over 5 minutes) rather than firing on each individual event, so it suppresses single-event noise while catching bursts.
+  difficulty: 3
+  tags:
+  - real-time
+  - rolling-window

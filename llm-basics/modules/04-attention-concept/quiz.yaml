@@ -1,0 +1,115 @@
+- id: '4.1'
+  question: Attention 機制解決咗 RNN 嘅邊個主要問題？
+  options:
+    a: 長距離資訊 fade out
+    b: Training 速度太慢
+    c: Vocab size 限制
+    d: Output 長度限制
+  answer: a
+  explanation: RNN 嘅 hidden state 隨住句子增長，開頭嘅資訊會慢慢消失（vanishing gradient）。Attention
+    讓每個字可以直接望句子入面任何字，唔需要靠 memory 傳遞。
+  difficulty: 1
+  tags:
+  - concept
+- id: '4.2'
+  question: Self-attention 嘅「self」係指乜？
+  options:
+    a: 模型自己 train 自己
+    b: Query、Key、Value 全部嚟自同一句子
+    c: 每個字 attention 自己
+    d: 單向嘅 attention
+  answer: b
+  explanation: Self-attention = 同一個句子入面嘅字互相望。Query、Key、Value 都嚟自同一個 source（即係句子本身），所以叫「self」。
+  difficulty: 2
+  tags:
+  - terminology
+- id: '4.3'
+  question: Attention 嘅計算複雜度係？
+  options:
+    a: O(n) — 同句子長度成正比
+    b: O(log n)
+    c: O(n²) — 句子越長，計算量平方增長
+    d: O(1) — 常數
+  answer: c
+  explanation: 每個字要同句子入面其他 n-1 個字計相關度，total n×n = n² 次運算。呢個係 attention 嘅主要代價，所以長句子處理好貴。
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.4'
+  question: Multi-head attention 嘅目的係？
+  options:
+    a: 加快運算速度
+    b: 減少參數量
+    c: 令 output 更長
+    d: 同時 capture 唔同類型嘅關係
+  answer: d
+  explanation: 唔同 head 可以學會關注唔同類型嘅關係 — 語法、語義、位置等。Combine 所有 heads 嘅 output 得到更豐富嘅
+    representation。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.5'
+  question: Attention 嘅三個步驟（概念上）係？
+  options:
+    a: 計相關度 → softmax → weighted sum
+    b: Input → hidden → output
+    c: Tokenize → embed → predict
+    d: Train → validate → test
+  answer: a
+  explanation: 第一步計每個字對之間嘅相關度，第二步 softmax 變成 probability distribution，第三步用 probability
+    做 weight 去 weighted sum 其他字嘅資訊。
+  difficulty: 2
+  tags:
+  - process
+- id: '4.6'
+  question: Attention 點樣處理「佢將個波傳俾佢，然後佢射門」入面三個「佢」？
+  options:
+    a: 三個「佢」都用同一個 vector
+    b: 每個「佢」根據 context 有唔同嘅 representation
+    c: 模型會 random assign
+    d: Attention 唔可以分辨
+  answer: b
+  explanation: 雖然三個字都係「佢」，但每個處喺唔同 context — 睇嘅句子字唔同，attention 產生嘅 context-aware representation
+    就唔同。呢個係 attention 嘅威力。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '4.7'
+  question: Attention 嘅一個限制係？
+  options:
+    a: 唔可以 parallel
+    b: 唔 support 中文
+    c: 唔知字嘅位置順序
+    d: Training 太慢
+  answer: c
+  explanation: Attention 本身係 position-agnostic —「我愛你」同「你愛我」嘅 attention pattern 可以一樣。所以一定要加
+    positional encoding 去俾模型知道字嘅順序。
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.8'
+  question: RNN 同 Attention 嘅關鍵分別係？
+  options:
+    a: RNN 可以 parallel，attention 唔可以
+    b: RNN 更好 handle 長距離
+    c: 冇分別
+    d: RNN 逐個字處理，attention 可以 parallel
+  answer: d
+  explanation: RNN 每個 step 依賴前一步嘅 hidden state，唔可以 parallel。Attention 所有字同時間計相關度，可以
+    parallel 運算 — GPU 嘅優勢完全發揮到。
+  difficulty: 1
+  tags:
+  - comparison
+- id: '4.9'
+  question: Attention mechanism 第一次出現喺邊個領域？
+  options:
+    a: 機器翻譯
+    b: Computer vision
+    c: Speech recognition
+    d: Game AI
+  answer: a
+  explanation: Attention 最早由 Bahdanau et al. 2014 引入機器翻譯，用喺 RNN-based encoder-decoder
+    入面。Transformer 嘅創新係 pure attention 而唔係 attention + RNN。
+  difficulty: 3
+  tags:
+  - terminology

@@ -1,0 +1,119 @@
+- id: "8.1"
+  question: "In Splunk, when does a Java log JSON key become a searchable field?"
+  options:
+    a: "Only after a regex transforms rule is written in props.conf"
+    b: "Automatically via structured JSON extraction — no regex needed"
+    c: "Only if the key is declared in fields.conf"
+    d: "Never; JSON keys are not parsed by Splunk"
+  answer: b
+  explanation: "Structured JSON extraction reads key/value pairs directly, so every JSON key emitted from Java becomes a Splunk field with zero config. That is why the schema is designed at the source."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "8.2"
+  question: "Which is the recommended cross-service naming convention for log field keys?"
+  options:
+    a: "camelCase like userId"
+    b: "kebab-case like user-id"
+    c: "lowercase snake_case like user_id"
+    d: "UPPERCASE_SNAKE like USER_ID"
+  answer: c
+  explanation: "Lowercase snake_case is Splunk-native, greppable, and stable in search syntax — preferred over camelCase and less risky in queries than kebab/hyphen names."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "8.3"
+  question: "A service emits a field literally named `_host` hoping it reflects the reporting host. What goes wrong?"
+  options:
+    a: "It is automatically correct because Splunk fills it"
+    b: "Nothing; _host is a good descriptive name"
+    c: "_host is reserved and overridden by the reporting host value from the pipeline"
+    d: "Splunk drops the whole event when it sees _host"
+  answer: c
+  explanation: "_host is a reserved Splunk field populated from pipeline metadata. You cannot safely repurpose it — your value is mangled or overridden. Use a custom key like hostname or pod."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "8.4"
+  question: "Which set of keys best lets you track one user's request across multiple services?"
+  options:
+    a: "level, logger, thread, timestamp"
+    b: "request_id, trace_id, user_id, session_id"
+    c: "status, method, response code only"
+    d: "pod, env, region, service only"
+  answer: b
+  explanation: "Request-context fields (request_id, trace_id, user_id, session_id) are what correlate a single logical request across services. Identity and classification sets alone cannot."
+  difficulty: 2
+  tags: [application]
+
+- id: "8.5"
+  question: "When feeding Enterprise Security or data models, which naming scheme should your fields follow?"
+  options:
+    a: "The Common Information Model (CIM) names like user, src, dest, app"
+    b: "Whatever the first developer chose as shorthand"
+    c: "Per-service prefixes like checkout_user"
+    d: "Splunk internal field names"
+  answer: a
+  explanation: "CIM gives consistent names (user, src, dest, app, action, signature, severity, vendor_product) that Enterprise Security and data models expect. SplunkCimLogEvent supplies constants for these."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "8.6"
+  question: "Which describes the cardinality tradeoff for a field like a full URL with query string?"
+  options:
+    a: "Index it; it is the most useful filter you have"
+    b: "It is low-cardinality so perfect for indexing"
+    c: "High cardinality — log it but do not index it; you gain no filter selectivity"
+    d: "Splunk refuses to parse URLs at all"
+  answer: c
+  explanation: "A full URL with query string is unique per event (high cardinality), so indexing it bloat the index and defeats TSIDX filtering. Log it for display, but do not index it."
+  difficulty: 3
+  tags: [tradeoff]
+
+- id: "8.7"
+  question: "Why does `duration_ms` being a string on some days and a number on others break analytics?"
+  options:
+    a: "Splunk deletes the field when types mix"
+    b: "stats/where comparisons behave differently — a string '1204' is not comparable to the number 1204"
+    c: "It only breaks dashboards, not searches"
+    d: "Strings are always cast to numbers automatically"
+  answer: b
+  explanation: "Mixed types make numeric comparisons, stats, and sort unreliable because string values do not compare numerically with numbers. Keep field types consistent across every event."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "8.8"
+  question: "What is the recommended approach for fields that are absent for most events?"
+  options:
+    a: "Emit them as empty strings to keep a consistent schema"
+    b: "Always emit null so the key is present"
+    c: "Replace them with a placeholder value like 'N/A'"
+    d: "Omit the key entirely — cleanest JSON, nothing to pollute searches"
+  answer: d
+  explanation: "Omit absent keys. Constant empty/null fields pollute searches, stats, and filters. The field dictionary documents that the key exists; it need not appear in every event."
+  difficulty: 2
+  tags: [application]
+
+- id: "8.9"
+  question: "Which field set is the best fit for `operation`, `status`, `http_status`, `error_type`?"
+  options:
+    a: "identity"
+    b: "request context"
+    c: "classification"
+    d: "business"
+  answer: d
+  explanation: "Business fields describe the action and its outcome: operation, status/result, duration_ms, http_method, http_status, client_ip, error_type. Identity is service/pod/env; request context is ids."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "8.10"
+  question: "A team decides NOT to emit `service` and `env` on a shared log stream. What becomes unreliable?"
+  options:
+    a: "Splitting one index into services or environments, and debugging that stream's own issues"
+    b: "Timestamp ordering of events"
+    c: "Which fields get indexed at index time"
+    d: "Nothing — these fields are optional extras"
+  answer: a
+  explanation: "Without identity fields (service, env, region), you cannot split a shared index into its components. Every per-service or per-environment question fails. They are core, not optional."
+  difficulty: 2
+  tags: [scenario]

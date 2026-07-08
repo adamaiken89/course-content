@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: To apply a condition to ONE aggregate without affecting the query, add a {FILTER} (WHERE ...) clause."
+  answer: "FILTER"
+  explanation: "FILTER scopes the aggregate's input rows; several FILTERs coexist in the same scan."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: {GROUPING} SETS lets you enumerate arbitrary combinations of grouping columns."
+  answer: "GROUPING"
+  explanation: "GROUPING SETS ((a,b),(a),()) runs all listed grouping in one query."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: ROLLUP (region, product) produces region-product detail, region {subtotals}, and the grand total."
+  answer: "subtotals"
+  explanation: "ROLLUP adds every prefix of the ordered list as a subtotal, ending at the grand total."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "Complete: {CUBE} (a,b) produces a, b, (a,b), and the grand total — every combination."
+  answer: "CUBE"
+  explanation: "CUBE is the full cross-tab; ROLLUP only follows hierarchy prefixes."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.5"
+  question: "Complete: GROUPING(region) returns {1} when region is a rolled-up subtotal placeholder."
+  answer: "1"
+  explanation: "GROUPING() disambiguates a real NULL from a collapsed dimension marker."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Complete: Ordering inside array_agg uses array_agg(x {ORDER} BY t)."
+  answer: "ORDER"
+  explanation: "Order the elements with an ORDER BY inside the aggregate call for deterministic arrays."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Complete: percentile_cont is an {ordered}-set aggregate that interpolates across the ordered group."
+  answer: "ordered"
+  explanation: "Ordered-set aggregates (percentile_cont, mode) require WITHIN GROUP (ORDER BY ...)."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Complete: Each FILTER aggregate computes its own subset within the same {aggregation} pass."
+  answer: "aggregation"
+  explanation: "The planner folds FILTERs into one HashAggregate/GroupAggregate — no separate scans per condition."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.9"
+  question: "Complete: An index on (group_id, x) can remove the {Sort} that percentile_cont would otherwise add."
+  answer: "Sort"
+  explanation: "Ordered-set aggregates need order by x within each group; a suitable index supplies it."
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.10"
+  question: "Complete: mode() WITHIN GROUP returns the most {common} value of the group."
+  answer: "common"
+  explanation: "mode() is an ordered-set aggregate for the most frequent value; ties resolve by first occurrence."
+  difficulty: 2
+  tags: [terminology]

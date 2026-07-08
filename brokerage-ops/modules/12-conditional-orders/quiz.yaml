@@ -1,0 +1,120 @@
+- id: '12.1'
+  question: What is the key difference between IOC (Immediate-or-Cancel) and FOK (Fill-or-Kill)?
+  options:
+    a: IOC only works for US equities; FOK only works for ETFs
+    b: IOC allows partial fills with the remainder cancelled; FOK requires the full quantity to fill or everything is cancelled
+    c: FOK allows partial fills; IOC requires full fill or full cancel
+    d: They behave identically
+  answer: b
+  explanation: IOC consumes whatever liquidity is available (partial fills allowed) and cancels the rest. FOK requires the whole quantity to fill at once, otherwise the order is rejected. IOC is more flexible for large orders that eat liquidity in stages.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '12.2'
+  question: In FIX Protocol, what is the TimeInForce (tag 59) value for a GTC (Good-Till-Cancelled) order?
+  options:
+    a: '0'
+    b: '1'
+    c: '3'
+    d: '4'
+  answer: b
+  explanation: 'FIX tag 59 TimeInForce: 0=Day, 1=GTC, 3=IOC, 4=FOK. GTC orders remain active across trading days until filled or cancelled.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.3'
+  question: Which two FIX tags carry the total quantity and the display quantity for an Iceberg order?
+  options:
+    a: tag 38=OrderQty (total), tag 111=MaxFloor (display)
+    b: tag 111=OrderQty (total), tag 38=MaxFloor (display)
+    c: tag 38=DisplayQty (display), tag 111=TotalQty (total)
+    d: tag 44=Price (display), tag 99=StopPx (total)
+  answer: a
+  explanation: FIX tag 38=OrderQty is the total order quantity; tag 111=MaxFloor is the displayed quantity (the visible tip of the iceberg). If tag 111 is not set, the order is a regular limit order.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.4'
+  question: Under what conditions does a Trailing Stop's stop price move?
+  options:
+    a: When the price moves favorably (price rises for long positions)
+    b: When the price moves unfavorably (price falls for long positions)
+    c: It follows price in both directions
+    d: It never moves once set
+  answer: a
+  explanation: A Trailing Stop only tracks in the favorable direction (up for long, down for short) and never reverses. For a long position, the stop rises as price rises, keeping a fixed trail distance. On a price fall the stop stays put until price crosses it and triggers.
+  difficulty: 2
+  tags:
+  - concept
+- id: '12.5'
+  question: 'A trader places an OCO (One-Cancels-Other) order: Stop Buy @ $152 and Stop Sell @ $148. Price moves from $150 to $147, then recovers to $151. What is the result?'
+  options:
+    a: Both orders fill
+    b: Stop Buy @ $152 triggers and fills; Stop Sell @ $148 is cancelled
+    c: Stop Sell @ $148 triggers and fills; Stop Buy @ $152 is cancelled
+    d: Neither order fills
+  answer: c
+  explanation: Price drops to $147, crossing the Stop Sell @ $148 trigger, so the Stop Sell fills. OCO logic cancels the other leg automatically when one fills, so the Stop Buy @ $152 is cancelled even though price later recovers toward it.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '12.6'
+  question: A client holds a GTC limit buy of 1000 shares @ $100. The stock undergoes a 4:1 split. What is the adjusted order?
+  options:
+    a: 1000 shares @ $25
+    b: 4000 shares @ $100
+    c: 250 shares @ $400
+    d: 4000 shares @ $25
+  answer: d
+  explanation: A 4:1 split turns 1 share into 4, so quantity becomes 4x (4000) and price becomes 1/4 ($25). Total value stays $100K. The developer who multiplies price by 4 reverses the direction.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '12.7'
+  question: An OMS sends a Cancel/Replace Request (FIX 35=G) for an Iceberg order, updating OrderQty to 60000 but omitting MaxFloor=6000. What happens at the exchange?
+  options:
+    a: The iceberg display size is unchanged at 5000
+    b: The exchange rejects the replace for missing parameters
+    c: The exchange treats the order as a regular limit order with the full quantity displayed
+    d: The exchange infers MaxFloor from OrderQty
+  answer: c
+  explanation: A Cancel/Replace must re-send all relevant parameters, including tag 111=MaxFloor. Without it the exchange treats the order as a regular limit order, displaying the full 60000 and defeating the client's intent to hide order size.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '12.8'
+  question: What is an OTO (One-Triggers-Other) order?
+  options:
+    a: Two orders placed simultaneously; when one fills, the other is cancelled
+    b: An order that trails the market price by a fixed distance
+    c: An order that displays only a small portion of its total quantity
+    d: A pair where the secondary order is automatically submitted when the primary order fills
+  answer: d
+  explanation: OTO submits the secondary order automatically once the primary fills. OCO (a) cancels the second order when the first fills. Trailing (b) and iceberg (c) are different order types.
+  difficulty: 1
+  tags:
+  - concept
+- id: '12.9'
+  question: 'A trader sets a Trailing Stop Sell with trail=$0.50. Initial price $100, initial stop $99.50. Price moves $100 to $105 to $103 to $107 to $106.50. When does the stop trigger?'
+  options:
+    a: At $103, when price falls from $105
+    b: At $106.50, when price falls from $107
+    c: At $100, when the stop is first set
+    d: Never — trailing stops only trigger limit orders
+  answer: b
+  explanation: At $105 the stop rises to $104.50. At $103 the stop does not decrease — it stays at $104.50. At $107 the stop rises to $106.50. When price falls to $106.50 it crosses the stop and triggers a market sell.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '12.10'
+  question: When must corporate action adjustments to GTC orders be completed?
+  options:
+    a: Before the ex-date open
+    b: Anytime during the trading day
+    c: Within one week of the record date
+    d: After the ex-date close
+  answer: a
+  explanation: Adjustments must be completed before the ex-date open. Any post-open adjustment lets orders fill at the wrong price, causing financial loss and regulatory exposure.
+  difficulty: 1
+  tags:
+  - concept

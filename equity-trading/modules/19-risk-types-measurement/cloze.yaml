@@ -1,0 +1,71 @@
+- id: c.1
+  question: ATR-based stop uses {Average True Range} to set stop distance proportional
+    to {volatility}. Fixed % stop ignores volatility and causes {whipsaw}.
+  answer: '[''Average True Range'', ''volatility'', ''whipsaw'']'
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 'Trailing stop at 10%: buy $100, peak $140 → stop at {$126}. Price drops
+    to $120 → exit at {$126}, profit = {26%}.'
+  answer: '[''$126'', ''$126'', ''26%'']'
+  difficulty: 2
+  tags:
+  - calculation
+- id: c.3
+  question: 95% VaR of $24K means {95%} of days loss ≤ $24K. Remaining {5%} of days
+    loss exceeds $24K. VaR ignores {tail magnitude}.
+  answer: '[''95%'', ''5%'', ''tail magnitude'']'
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: Parametric VaR assumes {normal} distribution. Markets have {fat tails}.
+    Expected Shortfall ({CVaR}) averages tail beyond VaR.
+  answer: '[''normal'', ''fat tails'', ''CVaR'']'
+  difficulty: 1
+  tags:
+  - concept
+- id: c.5
+  question: During crises, asset correlations spike toward {1}. This causes {diversification
+    failure}. LTCM lost {$4.6B} in 1998 when correlations broke.
+  answer: '[''1'', ''diversification failure'', ''$4.6B'']'
+  difficulty: 1
+  tags:
+  - concept
+- id: c.6
+  question: 'Correlation regimes: normal bull ({0.2-0.5}), crisis ({0.7-0.95}), flight
+    to safety ({-0.3 to 0.1}).'
+  answer: '[''0.2-0.5'', ''0.7-0.95'', ''-0.3 to 0.1'']'
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: 'Gap risk occurs when price jumps between {close} and next {open}. Sources:
+    {earnings}, {Fed announcements}, {geopolitical events}.'
+  answer: '[''close'', ''open'', ''earnings'', ''Fed announcements'', ''geopolitical
+      events'']'
+  difficulty: 1
+  tags:
+  - concept
+- id: c.8
+  question: 'Stops become {market orders} at open. Gap below stop means fill at {gap
+    price}, not stop price. Protection: {options} and {position sizing}.'
+  answer: '[''market orders'', ''gap price'', ''options'', ''position sizing'']'
+  difficulty: 2
+  tags:
+  - scenario
+- id: c.9
+  question: 'Stop at 2× ATR: entry $100, ATR = $3. Stop = {$94}. Higher multiplier
+    (3×) reduces {whipsaw} but increases {loss per trade}.'
+  answer: '[''$94'', ''whipsaw'', ''loss per trade'']'
+  difficulty: 2
+  tags:
+  - calculation
+- id: c.10
+  question: 'Stop at $47.50, entry $50 (5% stop). Stock opens at $38 on SEC investigation.
+    Fill = {$38}. Effective loss = {24%} instead of expected {5%}.'
+  answer: '[''$38'', ''24%'', ''5%'']'
+  difficulty: 2
+  tags:
+  - scenario

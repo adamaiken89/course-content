@@ -1,0 +1,120 @@
+- id: '11.1'
+  question: What order type does a Stop Order become after trigger?
+  options:
+    a: Limit Order
+    b: Market Order
+    c: Stop-Limit Order
+    d: Iceberg Order
+  answer: b
+  explanation: A Stop Order becomes a Market Order on trigger — ensuring immediate execution but with potential slippage. A Stop-Limit Order becomes a Limit Order on trigger — capping the price but risking non-execution.
+  difficulty: 1
+  tags:
+  - concept
+- id: '11.2'
+  question: Under what conditions does a Trailing Stop's stop price move?
+  options:
+    a: When price moves favorably (price rises for long positions)
+    b: When price moves unfavorably (price falls for long positions)
+    c: It follows price in both directions
+    d: It never moves once set
+  answer: a
+  explanation: A Trailing Stop's stop price only tracks in the favorable direction (up for long, down for short) and never reverses. For a long position, as price rises the stop price rises with it, maintaining a fixed trail distance. When price falls, the stop stays put until price crosses it and triggers.
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.3'
+  question: What does each order type become after its stop is triggered?
+  options:
+    a: Both Stop and Stop-Limit become market orders
+    b: Both Stop and Stop-Limit become limit orders
+    c: Stop becomes a market order; Stop-Limit becomes a limit order
+    d: Stop becomes an iceberg order
+  answer: c
+  explanation: A Stop Order (FIX OrdType=3, StopPx tag 99) triggers a market order. A Stop-Limit Order (FIX OrdType=4, StopPx tag 99, Price tag 44) triggers a limit order, ensuring the fill price after trigger does not exceed the limit.
+  difficulty: 1
+  tags:
+  - concept
+- id: '11.4'
+  question: Why do regulators require special disclosure for Stop-Limit orders?
+  options:
+    a: They always fill, unlike stop orders
+    b: They can never fill under any market condition
+    c: They are only available to institutional clients
+    d: The limit may be set too tight, so the triggered order never fills and the client gets a false sense of security
+  answer: d
+  explanation: The limit on a Stop-Limit may be set too tight, causing the triggered limit order to never fill. The client thinks they have protection because they set a stop, but the order may not execute at all. This risk must be disclosed.
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.5'
+  question: At what price is a Primary Peg buy order priced?
+  options:
+    a: The NBBO Bid
+    b: The NBBO Offer
+    c: The midpoint of the spread
+    d: The last traded price
+  answer: a
+  explanation: Primary Peg buy orders are priced at the NBBO Bid; Primary Peg sell orders at the NBBO Offer. Market Peg buy orders are priced at the NBBO Offer. Midpoint Peg is priced at (Bid + Offer) / 2.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.6'
+  question: At what price is a Market Peg buy order priced?
+  options:
+    a: The NBBO Bid
+    b: The NBBO Offer
+    c: The midpoint of the spread
+    d: The previous close
+  answer: b
+  explanation: Market Peg buy orders are priced at the NBBO Offer, and Market Peg sell orders at the NBBO Bid. A Market Peg buy with offset 0 tracks the offer minute by minute — the OMS needs continuous NBBO tracking.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.7'
+  question: Which pegged order type is priced at (Bid + Offer) / 2 and has the smallest market impact?
+  options:
+    a: Primary Peg
+    b: Market Peg
+    c: Midpoint Peg
+    d: Reserve Peg
+  answer: c
+  explanation: Midpoint Peg is priced at (Bid + Offer) / 2 — the midpoint. It is the most cost-effective and smallest-impact pegged order type, but it can only match with other midpoint orders or through midpoint-enabled dark pools.
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.8'
+  question: In FIX, how is a Pegged order's order type represented?
+  options:
+    a: Tag 59 TimeInForce = 1
+    b: Tag 38 OrderQty = P
+    c: Tag 54 Side = P
+    d: Tag 40 OrdType = P
+  answer: d
+  explanation: "FIX tag 40=OrdType: 'P' (Pegged). Tag 59=TimeInForce is typically 1 (GTC) since pegged orders cross days. Peg offset is carried in tag 1584 (PegOffsetValue) or vendor-specific tags."
+  difficulty: 2
+  tags:
+  - terminology
+- id: '11.9'
+  question: A trader holds a long position and wants to place a sell stop as stop-loss protection. Where should the stop price be set?
+  options:
+    a: Below the current market price
+    b: Above the current market price
+    c: At the current market price
+    d: At the day's high
+  answer: a
+  explanation: A sell stop for a long position protects against downside, so the stop price is set below the current market price. When the market falls to that level, the stop triggers a sell. A buy stop is placed above the market for breakout entries.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '11.10'
+  question: A market maker uses a Midpoint Peg order on a very low-liquidity stock with a wide spread. What is the likely outcome?
+  options:
+    a: It fills immediately at the midpoint
+    b: It may remain unfilled for extended periods because midpoint orders only match through dark pools or midpoint-enabled venues
+    c: It is executed as a market order
+    d: It always fills at the bid
+  answer: b
+  explanation: Midpoint Peg orders can only match with other midpoint orders or through midpoint-enabled dark pools (e.g., SIGMA X2). In low-liquidity stocks the midpoint may sit unchanged for long periods, leaving the order unfilled.
+  difficulty: 3
+  tags:
+  - scenario

@@ -1,0 +1,61 @@
+- id: c.1
+  question: Dense model 嘅問題：{全部參數}喺每個 forward pass 都 active，所以{更多參數} = {更高 compute
+    cost}。
+  answer: 全部參數，更多參數，更高 compute cost
+  explanation: 呢個係 scaling law 嘅 fundamental tradeoff — MoE 打破咗呢個 direct relationship。
+  difficulty: 1
+  tags:
+  - concept
+- id: c.2
+  question: MoE 的關鍵：每個 token 只 active {top-k} 個 experts，所以 total parameters 可以好大但
+    compute per token 大致{不變}。
+  answer: top-k，不變
+  explanation: 呢個係 MoE 嘅核心 efficiency gain — more capacity, same compute。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.3
+  question: MoE 嘅 main tradeoff：{total memory} vs {active compute}。
+  answer: total memory，active compute
+  explanation: 全部 experts 要 load 入 RAM（memory 需求大），但每個 token 只 active 部分（compute 經濟）。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.4
+  question: Load balancing failure = 大部分 tokens 去晒{同一個 expert}，解決方法係用{auxiliary loss}鼓勵
+    router 平衡分配。
+  answer: 同一個 expert，auxiliary loss
+  explanation: Load balancing 係 MoE training 嘅核心 challenge — 要保持 experts 多樣性。
+  difficulty: 3
+  tags:
+  - concept
+- id: c.5
+  question: Router 嘅 job：睇每個 token 嘅{representation} → 計{probability distribution
+    over experts} → 揀{top-k experts}。
+  answer: representation，probability distribution over experts，top-k experts
+  explanation: Router 本身都係一個 learned component — 同 experts 一齊 training。
+  difficulty: 3
+  tags:
+  - process
+- id: c.6
+  question: MoE 用一個{router} + 多個{expert networks}代替 FFN layer。
+  answer: router，expert networks
+  explanation: MoE = Mixture of Experts。Router 決定每個 token 去邊個 expert。
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.7
+  question: MoE 嘅概念嚟自{1991}（Jacobs et al.），但到{Mixtral 8×7B}同{DeepSeek-V2}先 become
+    mainstream。
+  answer: 1991，Mixtral 8×7B，DeepSeek-V2
+  explanation: 概念舊，但 scaling 令 MoE practical。MoE 唔係近幾年先有嘅發明。
+  difficulty: 2
+  tags:
+  - comparison
+- id: c.8
+  question: MoE 令你可以請好多{專家}（知識多），但每次只係俾{2-3 個}人工（compute 平）。
+  answer: 專家，2-3 個
+  explanation: 呢個係 MoE 嘅核心 tradeoff — total parameters 大但 active compute 細。
+  difficulty: 1
+  tags:
+  - concept

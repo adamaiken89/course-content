@@ -1,0 +1,141 @@
+- id: '13.1'
+  question: 'Bonds primarily trade on:'
+  options:
+    a: Over-the-counter (dealer network)
+    b: Centralized stock exchanges
+    c: Futures exchanges
+    d: Electronic auction every hour
+  answer: a
+  explanation: Bonds trade OTC. Dealers quote prices to customers. No centralized
+    exchange like equities.
+  difficulty: 1
+  tags:
+  - terminology
+  - market
+- id: '13.2'
+  question: 'On-the-run 10yr Treasury typical bid-ask spread:'
+  options:
+    a: 0.5-1bp
+    b: 10-20bp
+    c: 25-50bp
+    d: 100bp
+  answer: a
+  explanation: 'On-the-run Treasuries: most liquid instrument globally. 0.5-1bp typical.'
+  difficulty: 1
+  tags:
+  - terminology
+  - liquidity
+- id: '13.3'
+  question: 'TRACE provides:'
+  options:
+    c: Post-trade transparency for corporate bonds
+    a: Real-time equity prices
+    b: Credit ratings
+    d: Currency exchange rates
+  answer: c
+  explanation: 'TRACE (FINRA): all corporate bond trades reported publicly. Price,
+    volume, yield.'
+  difficulty: 1
+  tags:
+  - terminology
+  - transparency
+- id: '13.4'
+  question: 'HY corporate bond typical bid-ask spread:'
+  options:
+    d: 25-100bp
+    a: 1-5bp
+    b: 5-10bp
+    c: 200-500bp
+  answer: d
+  explanation: 'HY bonds: less liquid, higher credit risk → wider spreads. Typically
+    25-100bp depending on rating and size.'
+  difficulty: 2
+  tags:
+  - terminology
+  - liquidity
+- id: '13.5'
+  question: 'Bond market liquidity in March 2020:'
+  options:
+    b: Deteriorated sharply (spreads blew out)
+    a: Improved significantly
+    c: Remained unchanged
+    d: Moved to exchange trading
+  answer: b
+  explanation: 'COVID stress: liquidity evaporated. IG spreads jumped from 10bp to
+    100bp+. Fed intervention restored function.'
+  difficulty: 2
+  tags:
+  - scenario
+  - liquidity
+- id: '13.6'
+  question: 'Portfolio trading allows:'
+  options:
+    d: Trading entire bond portfolio in single block
+    a: Trading only one bond at a time
+    b: Buying bond ETFs only
+    c: Trading on margin
+  answer: d
+  explanation: 'Portfolio trading: list of bonds traded as single risk transfer. Growing
+    trend, especially for IG.'
+  difficulty: 2
+  tags:
+  - terminology
+  - trading
+- id: '13.7'
+  question: Private bank client wants to buy $10M of a small muni issue. Expected
+    liquidity?
+  options:
+    a: Illiquid — wide spreads, hard to find natural seller
+    b: Very liquid — tight spreads
+    c: Same as on-the-run Treasury
+    d: Guaranteed execution at mid-price
+  answer: a
+  explanation: 'Small muni issues: infrequent trading, limited dealer inventory →
+    wide spreads, difficult execution for size.'
+  difficulty: 2
+  tags:
+  - scenario
+  - private-bank
+- id: '13.8'
+  question: 'All-to-all trading means:'
+  options:
+    c: Any market participant can trade with any other
+    a: Dealers only trade with each other
+    b: Only central bank trades
+    d: Retail only
+  answer: c
+  explanation: 'All-to-all: platforms allow investors to trade directly with each
+    other, not just through dealers.'
+  difficulty: 2
+  tags:
+  - terminology
+  - electronic
+- id: '13.9'
+  question: Which factor MOST affects corporate bond bid-ask spread?
+  options:
+    b: Liquidity (trade frequency, issue size)
+    a: Coupon rate
+    c: Accrued interest
+    d: Day of week
+  answer: b
+  explanation: 'Liquidity dominates: frequent trading + large issue size → tight spreads.
+    Illiquid bonds have wide spreads.'
+  difficulty: 2
+  tags:
+  - terminology
+  - liquidity
+- id: '13.10'
+  question: 'Dealers widen spreads during stress because:'
+  options:
+    b: Inventory risk increases — harder to hedge, capital constrained
+    a: They want higher profits
+    c: Regulations require it
+    d: Clients prefer wider spreads
+  answer: b
+  explanation: 'Stress: dealer inventory risk rises, bid-ask hedging cost increases,
+    balance sheet constraints bind. Wider spreads compensate.'
+  difficulty: 3
+  tags:
+  - scenario
+  - dealer
+

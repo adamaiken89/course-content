@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: The query pipeline stages are parse, {rewrite}, plan, and execute."
+  answer: "rewrite"
+  explanation: "Rewrite inlines views and flattens safe subqueries before the planner sees the tree, so EXPLAIN shows joins you never typed."
+  difficulty: 1
+  tags: [process]
+
+- id: "c.2"
+  question: "Complete: A syntax error is reported at the {parse} stage, before any planning or table access happens."
+  answer: "parse"
+  explanation: "Parse only tokenizes and checks grammar; it never reads tables."
+  difficulty: 1
+  tags: [process]
+
+- id: "c.3"
+  question: "Complete: The planner's cost numbers are not measured; they are {estimates} built from pg_statistic."
+  answer: "estimates"
+  explanation: "Cost = prediction from histograms and distinct counts. Stale statistics make those predictions wrong."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.4"
+  question: "Complete: When a view is expanded during rewrite, it is {inlined}, not materialized into a stored result."
+  answer: "inlined"
+  explanation: "Views are templates, not caches — the rewritten query contains the view's body directly."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "Complete: Two correlated tables, one with correct estimates and one stale, can produce a wrong {join} strategy because the planner trusts its numbers."
+  answer: "join"
+  explanation: "Stale row counts per table cascade into wrong join-order and join-method decisions."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "c.6"
+  question: "Complete: A {prepared} statement caches the plan so OLTP hot paths skip replanning on every call."
+  answer: "prepared"
+  explanation: "Plan reuse is the main performance benefit of prepared statements; generic plans are often better than per-call replanning."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Complete: In logical clause order, WHERE executes before {SELECT} expressions (and window functions) are computed, so their aliases are unavailable in WHERE."
+  answer: "SELECT"
+  explanation: "WHERE filters raw rows; SELECT-level aliases simply do not exist yet at that step of the logical order."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "Complete: A {sorted} index can satisfy ORDER BY and remove the explicit Sort node from the plan."
+  answer: "sorted"
+  explanation: "Reading the index in key order delivers rows already ordered, which also lets LIMIT stop early."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.9"
+  question: "Complete: The {physical} execution order is chosen by the planner and may differ entirely from the logical clause order you wrote."
+  answer: "physical"
+  explanation: "The planner may filter early, reorder joins, and pull vs push operators; logical order is semantics only."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.10"
+  question: "Complete: Surrounding a repeated dashboard SQL with EXPLAIN {ANALYZE} shows both the chosen plan and the actual rows/time, revealing whether the plan is wrong."
+  answer: "ANALYZE"
+  explanation: "EXPLAIN alone shows the predicted plan; ANALYZE adds actual execution numbers, the key to spotting estimate-driven failures."
+  difficulty: 3
+  tags: [process]

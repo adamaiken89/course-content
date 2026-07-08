@@ -1,0 +1,110 @@
+- id: '1.1'
+  question: 語言模型嘅核心任務係乜？
+  options:
+    a: 預測下一個字
+    b: 理解文字嘅意思
+    c: 記住所有事實
+    d: 分類文章類別
+  answer: a
+  explanation: 語言模型嘅核心係計算「俾咗上文，下一個字係乜」嘅概率。佢唔係理解文字，而係做概率預測。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.2'
+  question: 手機鍵盤嘅自動完成同 ChatGPT 嘅本質關係係？
+  options:
+    a: 完全唔同技術
+    b: 本質相同，只係規模唔同
+    c: 手機用 AI，ChatGPT 用唔同方法
+    d: 冇關係
+  answer: b
+  explanation: 兩者都係語言模型 — 俾上文，估下一個字。手機模型細好多，但核心機制一樣。
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.3'
+  question: 湧現能力（Emergent ability）係指？
+  options:
+    a: 模型 train 得越快
+    b: 細模型做到大模型嘅嘢
+    c: 模型大到某個程度突然做到新嘢
+    d: 模型識得自我改進
+  answer: c
+  explanation: 當模型規模超過某個 threshold，佢會突然做到細模型完全做唔到嘅 task，例如多步驟推理。
+  difficulty: 2
+  tags:
+  - terminology
+- id: '1.4'
+  question: 點解 LLM 有時會產生 hallucination（作嘢）？
+  options:
+    a: 因為佢嘅 database 唔完整
+    b: 因為 training data 太少
+    c: 因為佢想呃人
+    d: 因為佢嘅 job 係 generate 合理 continuation，唔係 recall facts
+  answer: d
+  explanation: Hallucination 係語言模型嘅本質 feature — 佢嘅設計目標係產生合理嘅下一段文字，唔係檢索事實。
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.5'
+  question: 以下邊個唔係語言模型嘅應用？
+  options:
+    a: Excel 試算表加總
+    b: Gmail Smart Compose
+    c: iPhone 鍵盤自動完成
+    d: Google Search 自動建議
+  answer: a
+  explanation: Excel 加總係數學計算，唔涉及預測下一個字。A、B、D 都係語言模型嘅日常應用。
+  difficulty: 1
+  tags:
+  - scenario
+- id: '1.6'
+  question: Temperature 參數控制乜嘢？
+  options:
+    a: 模型嘅運作速度
+    b: 模型選擇低概率字嘅傾向
+    c: 模型幾時會 output 隨機答案
+    d: 模型可以記幾多嘢
+  answer: b
+  explanation: Temperature 控制概率分佈嘅 shape。高 temperature → 低概率字更有可能被揀中 → output 更多樣化。低
+    temperature → 集中揀高概率字 → output 更 predictable。
+  difficulty: 2
+  tags:
+  - terminology
+- id: '1.7'
+  question: 一個 LLM 識寫詩，原因係？
+  options:
+    a: 佢理解詩嘅美感
+    b: 佢有人類嘅創意
+    c: 佢學過大量詩嘅 pattern
+    d: 佢 internal 有個詩人
+  answer: c
+  explanation: LLM 識寫詩係因為 training data 包含大量詩歌，佢學咗韻律、結構、用字嘅統計規律。佢唔會感受到詩嘅情感或美感。
+  difficulty: 1
+  tags:
+  - scenario
+- id: '1.8'
+  question: 以下邊個係語言模型嘅 fundamental limitation？
+  options:
+    a: 佢唔可以 multitask
+    b: 佢 training 得太慢
+    c: 佢只識英文
+    d: 佢冇 ground truth 去 verify 答案
+  answer: d
+  explanation: 語言模型只係 probability estimator，冇 internal fact checker 或者 ground truth。佢唔知乜嘢係真、乜嘢係假
+    — 只知乜嘢係常見嘅 continuation。呢個係 fundamental limitation，唔係 engineering 問題。
+  difficulty: 3
+  tags:
+  - concept
+- id: '1.9'
+  question: 大型語言模型（LLM）同普通語言模型嘅主要分別係？
+  options:
+    a: LLM 規模更大，出現湧現能力
+    b: LLM 用唔同嘅核心算法
+    c: LLM 唔需要 training
+    d: LLM 保證答案正確
+  answer: a
+  explanation: LLM 同普通 LM 嘅核心機制一樣，但 LLM 因為規模大（更多 parameters、更多數據），出現咗細模型冇嘅湧現能力。
+  difficulty: 2
+  tags:
+  - comparison

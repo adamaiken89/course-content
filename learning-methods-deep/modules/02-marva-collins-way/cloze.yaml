@@ -1,0 +1,91 @@
+- id: c.1
+  question: 'Complete: Marva Collins believed failure is not a {category} but a {temporary
+    state} that must be overcome.'
+  answer: category, temporary state
+  explanation: 'This distinction is foundational: failure is a situation, not an identity.
+    With enough persistence and scaffolding, any student can succeed.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 'Complete: Collins'' Socratic method follows wrong answers with {Why do
+    you think that?} to force reasoning over guessing.'
+  answer: Why do you think that?
+  explanation: This probe forces the student to articulate their thought process,
+    revealing the specific point of misunderstanding rather than just the fact of
+    being wrong.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: 'Complete: After correct answers, Collins would ask {Can you prove it?}
+    to verify depth and prevent illusion of understanding.'
+  answer: Can you prove it?
+  explanation: Correct answers may be lucky guesses. Requiring proof/reasoning ensures
+    genuine understanding and reinforces that answers must be grounded in logic.
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: 'Complete: Orchestrated success cycles involve setting tasks slightly
+    above current ability, providing {scaffolding}, then attributing success to {effort}.'
+  answer: scaffolding, effort
+  explanation: Scaffolding provides support to reach the higher bar. Effort attribution
+    builds growth mindset by connecting success to persistence rather than fixed traits.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: 'Complete: Collins'' ''discipline as love'' means enforcing high standards
+    because the teacher {believes the student can meet them}.'
+  answer: believes the student can meet them
+  explanation: The discipline is paired with unwavering belief. 'If I didn't care,
+    I'd let you fail.' This framing transforms discipline from punishment to support.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.6
+  question: 'Complete: Effort attribution builds growth mindset while {talent attribution}
+    can lead to avoidance of challenging tasks.'
+  answer: talent attribution
+  explanation: Students praised for talent ('you're so smart') may avoid hard problems
+    to protect the 'smart' label. Effort-praised students simply work harder.
+  difficulty: 2
+  tags:
+  - concept
+- id: c.7
+  question: 'Complete: When a student says ''I don''t know'', Collins would ask {What
+    DO you know about it?} to activate prior knowledge.'
+  answer: What DO you know about it?
+  explanation: This reorients from learned helplessness to active recall. The student
+    always knows something — start there and build toward the gap.
+  difficulty: 2
+  tags:
+  - application
+- id: c.8
+  question: 'Complete: After 5 wrong attempts on a question, Collins'' method escalates
+    {scaffolding} rather than lowering expectations.'
+  answer: scaffolding
+  explanation: Break into sub-questions, probe reasoning, address prerequisite gaps.
+    The expectation stays the same; the support increases.
+  difficulty: 3
+  tags:
+  - application
+- id: c.9
+  question: 'Complete: Collins'' approach to ''I can''t'' statements is to {reject
+    them} and require the student to rephrase as a challenge to be overcome.'
+  answer: reject them
+  explanation: '''Can''t'' is a stopping word. Collins required students to reframe
+    as ''I haven''t learned this yet'' — keeping possibility open.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.10
+  question: 'Complete: Feedback in a Collins-style AI should attribute success to
+    {persistence strategy} rather than intelligence or luck.'
+  answer: persistence strategy
+  explanation: 'Attribute to specific strategies used: ''You tried 3 approaches and
+    the third worked because you checked your assumptions.'' This teaches metacognition.'
+  difficulty: 3
+  tags:
+  - application

@@ -1,0 +1,142 @@
+- id: '20.1'
+  question: What is the difference between staleTime and gcTime (formerly cacheTime)?
+  options:
+    b: staleTime = how long data is considered fresh (no refetch). gcTime = how long
+      unused data stays in cache before garbage collection
+    a: Same concept — synonyms
+    c: staleTime = cache duration. gcTime = retry timeout
+    d: staleTime = server cache. gcTime = client cache
+  answer: b
+  explanation: 'staleTime controls refetch behavior (fresh data does not refetch).
+    gcTime controls cache eviction (data kept in cache after last observer unmounts).
+    Default: staleTime=0, gcTime=5min.'
+  difficulty: 1
+  tags:
+  - concept
+- id: '20.2'
+  question: What does useQuery return when cache has data but a background refetch
+    is in progress?
+  options:
+    d: 'isLoading: false, isFetching: true, data: cached data'
+    a: 'isLoading: true, data: undefined'
+    b: 'isFetching: false, data: cached data'
+    c: 'isLoading: true, isFetching: true, data: undefined'
+  answer: d
+  explanation: isLoading = no cached data AND fetch in progress (first load). isFetching
+    = any fetch in progress. Background refetch shows cached data with isFetching=true.
+  difficulty: 1
+  tags:
+  - api
+- id: '20.3'
+  question: 'What TanStack Query v5 option replaces keepPreviousData: true for pagination?'
+  options:
+    a: 'placeholderData: keepPreviousData'
+    b: 'previousData: true'
+    c: 'staleData: true'
+    d: 'cachePrevious: true'
+  answer: a
+  explanation: 'v5 renamed keepPreviousData to placeholderData: keepPreviousData.
+    Shows previous page data while next page loads, avoiding loading spinner flash.'
+  difficulty: 1
+  tags:
+  - v5
+- id: '20.4'
+  question: How to prevent a query from fetching until a condition is met?
+  options:
+    a: 'Set enabled: condition in query options'
+    b: Wrap query in if statement
+    c: 'Use lazy: true'
+    d: 'Set skip: true'
+  answer: a
+  explanation: 'enabled option gates query execution. enabled: false means query never
+    runs. enabled: !!userId means query runs when userId is truthy. Used for dependent
+    queries.'
+  difficulty: 1
+  tags:
+  - api
+- id: '20.5'
+  question: 'Optimistic update rollback: where to store snapshot of previous data?'
+  options:
+    b: Return from onMutate — passed as context to onError
+    a: In a global variable
+    c: Store in queryClient.getQueryData before mutation
+    d: Snapshot not needed — TanStack Query auto-rolls back
+  answer: b
+  explanation: onMutate returns context object. If mutation fails, onError receives
+    context as third argument. Use context.previous to restore cached data via setQueryData.
+  difficulty: 2
+  tags:
+  - pattern
+- id: '20.6'
+  question: What hook provides incremental data loading with cursor-based pagination?
+  options:
+    a: useInfiniteQuery
+    b: usePaginatedQuery
+    c: useCursorQuery
+    d: useLazyQuery
+  answer: a
+  explanation: useInfiniteQuery supports cursor-based pagination. getNextPageParam
+    returns next cursor from last page response. fetchNextPage loads next page, appending
+    to data.pages array.
+  difficulty: 2
+  tags:
+  - api
+- id: '20.7'
+  question: What is the difference between queryClient.invalidateQueries and queryClient.refetchQueries?
+  options:
+    d: invalidateQueries marks queries as stale (refetch on next render). refetchQueries
+      triggers immediate refetch regardless of stale state
+    a: Same behavior — synonyms
+    b: invalidateQueries triggers immediate refetch. refetchQueries marks stale
+    c: invalidateQueries only affects active queries
+  answer: d
+  explanation: invalidateQueries sets stale time to 0 — queries refetch on next observer
+    mount or window focus. refetchQueries forces immediate refetch of matching queries
+    regardless of staleTime.
+  difficulty: 2
+  tags:
+  - api
+- id: '20.8'
+  question: 'React 19: which query hook integrates with Suspense boundaries?'
+  options:
+    b: useSuspenseQuery replaces useQuery for Suspense — throws promise to Suspense
+      boundary
+    a: useQuery
+    c: useSuspenseQuery
+    d: QueryClientProvider handles Suspense automatically
+  answer: b
+  explanation: useSuspenseQuery throws promise during fetch, caught by parent Suspense
+    boundary. Eliminates isLoading check — component renders only with data.
+  difficulty: 2
+  tags:
+  - react19
+- id: '20.9'
+  question: How to skip query execution in a Suspense-enabled component without enabling/disabling?
+  options:
+    c: Use skipToken as queryFn when condition not met
+    a: Return null from queryFn
+    b: 'Set enabled: false on useSuspenseQuery'
+    d: Wrap in conditional useQuery
+  answer: c
+  explanation: 'skipToken is special sentinel value. When queryFn equals skipToken,
+    query does not execute. Use for conditional queries with Suspense: queryFn: userId
+    ? fetchUser : skipToken.'
+  difficulty: 2
+  tags:
+  - api
+- id: '20.10'
+  question: 'useMutation.onSuccess and queryClient.invalidateQueries: what is the
+    common pattern?'
+  options:
+    c: After mutation succeeds, invalidate related queries so they refetch fresh data
+    a: Invalidate is automatic — no manual call needed
+    b: Invalidate removes queries from cache permanently
+    d: onSuccess is optional — invalidation happens in onSettled only
+  answer: c
+  explanation: 'Standard pattern: mutation succeeds → invalidate queries that include
+    mutated data → components subscribed to those queries refetch. Example: create
+    user → invalidate [''users''].'
+  difficulty: 2
+  tags:
+  - pattern
+

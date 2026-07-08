@@ -1,0 +1,119 @@
+- id: "9.1"
+  question: "In ports and adapters, what lives in the domain core?"
+  options:
+    a: "Business rules, use cases, and plain Java domain models"
+    b: "JPA entities and their database mappers"
+    c: "Spring beans and REST controllers"
+    d: "HTTP clients and event-bus producers"
+  answer: a
+  explanation: "The domain core holds business rules and models as plain Java. Infrastructure such as JPA entities, HTTP clients, and Spring beans belongs in adapters at the edge."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "9.2"
+  question: "Which statement states the dependency rule for ports and adapters?"
+  options:
+    a: "The core depends on the adapters and shares their framework types"
+    b: "Adapters depend on the core, and the core depends only on ports"
+    c: "Adapters depend on ports, and ports depend on concrete infrastructure"
+    d: "The core and the adapters both depend on Spring beans"
+  answer: b
+  explanation: "The dependency rule is that adapters depend on the core while the core depends only on its port interfaces. Nothing depends on infrastructure - the framework sits at the edge."
+  difficulty: 2
+  tags: [concept]
+
+- id: "9.3"
+  question: "What is an adapter in hexagonal architecture?"
+  options:
+    a: "A business rule that formats domain output"
+    b: "A plain Java interface the core declares"
+    c: "Infrastructure code implementing a port for one technology"
+    d: "The application's main class that starts the server"
+  answer: c
+  explanation: "An adapter is infrastructure such as a JPA repository or an HTTP client that implements the port interface the core names. Ports are the interfaces; adapters are the implementations."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "9.4"
+  question: "A domain Order model needs persistence. Where does the JPA @Entity annotated class belong?"
+  options:
+    a: "In the domain core so the ORM can track it"
+    b: "On the order port interface itself"
+    c: "Inside the domain model of the core"
+    d: "In the JPA adapter, with a mapper to the plain domain Order"
+  answer: d
+  explanation: "The @Entity class is persistence detail, so it belongs in the JPA adapter. The domain Order stays plain Java and the adapter maps between the two - keeping persistence out of the core."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "9.5"
+  question: "A pricing service declares a Clock port and the domain core calls it. How does swapping to a fixed Clock help the rule tests?"
+  options:
+    a: "It removes the need for the Clock port in production"
+    b: "It lets rule tests run at CPU speed without Spring or a database"
+    c: "It lets the tests bypass the OrderRepository entirely"
+    d: "It makes the production HTTP calls return instantly"
+  answer: b
+  explanation: "A fixed Clock and other in-memory doubles let tests construct the core with new and run at CPU speed - no Spring context, no database, no network. This is the swap-adapter testability payoff."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "9.6"
+  question: "When is adding a port mostly ceremony instead of architecture?"
+  options:
+    a: "When the port already has two real implementations"
+    b: "When domain logic is rich and deserves fast tests"
+    c: "When there is exactly one implementation with thin logic"
+    d: "When the team expects framework churn in an upgrade"
+  answer: c
+  explanation: "One implementation plus thin logic means the interface merely mirrors a single class - decoration. Ports earn their cost through test doubles, multiple implementations, or framework churn."
+  difficulty: 1
+  tags: [concept]
+
+- id: "9.7"
+  question: "A five-table admin CRUD service has one repository implementation and thin rules. What is the honest call?"
+  options:
+    a: "Skip ports and test the logic through the repository - a transactional script is the honest shape"
+    b: "Wrap every service in a port-adapter pair to future-proof it"
+    c: "Move all queries into the core as plain Java"
+    d: "Replace the repository with an event-bus adapter"
+  answer: a
+  explanation: "A CRUD-heavy service with one implementation and thin rules is the skip case - YAGNI. Wiring and mapping cost more than they return; ports enter when a real second implementation appears."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "9.8"
+  question: "In Boot 4, how does production wiring connect an adapter to the plain-Java core?"
+  options:
+    a: "The core annotates @Autowired on each port field"
+    b: "The port interface itself is annotated @Component"
+    c: "Each core service builds its adapters with new at runtime"
+    d: "Spring constructor-injects the @Service or @Component adapter beans into the core"
+  answer: d
+  explanation: "Adapters are beans annotated @Component or @Service, and Spring resolves them into the core's constructors. The core carries no Spring annotations - tests build it with new."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "9.9"
+  question: "While testing, the domain core calls orders.findById(id). What decides whether that reads Postgres, memory, or a stub?"
+  options:
+    a: "The name of the order port interface"
+    b: "Whatever adapter implements the OrderRepository port - the core never sees the difference"
+    c: "JPA annotations on the core order model"
+    d: "The number of Spring profiles in the tests"
+  answer: b
+  explanation: "The core sees only the port interface. Whatever implements it, be it Postgres, an in-memory map, or a stub, is invisible - so the same rules run against any adapter."
+  difficulty: 1
+  tags: [concept]
+
+- id: "9.10"
+  question: "How do Boot 4 modularization and ports and adapters relate?"
+  options:
+    a: "They are alternatives and a team must pick one"
+    b: "Modularization replaces ports and adapters in Boot 4"
+    c: "They are orthogonal but complementary - compile-time boundaries plus runtime dependency direction"
+    d: "Ports and adapters only work inside a single module"
+  answer: c
+  explanation: "Modularization sets compile-time structure - which classes may depend on which - while ports and adapters set runtime dependency direction. They complement each other, and a module boundary can host a port with its adapters."
+  difficulty: 2
+  tags: [comparison]

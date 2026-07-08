@@ -1,0 +1,60 @@
+- id: "c.1"
+  question: "When one feature grows so large it mixes data ownership, layout, display, and behavior, it is called a {god component}."
+  answer: "god component"
+  explanation: "The god component merges multiple owners under one render path, so every state change re-renders everything."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "A {smart container} owns state, data fetching, and event handlers, while presentational children render props."
+  answer: "smart container"
+  explanation: "Splitting by data ownership keeps logic in containers and display in children."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.3"
+  question: "The pattern of injecting sections as JSX so the shell never knows their internals is called the {slot} pattern."
+  answer: "slot"
+  explanation: "The shell seats injected regions only; a section swap happens at the single call site."
+  difficulty: 1
+  tags: [terminology, concept]
+- id: "c.4"
+  question: "A keystroke in one field re-rendering unrelated sections is the {blast radius} symptom of a God component."
+  answer: "blast radius"
+  explanation: "Shared state and one render path couple unrelated features; boundaries narrow the blast radius."
+  difficulty: 2
+  tags: [concept, process]
+- id: "c.5"
+  question: "In React 19, `ref` to a function component is passed as a {prop} rather than requiring forwardRef."
+  answer: "prop"
+  explanation: "React 19 removed the need for forwardRef on function components for ref passing."
+  difficulty: 2
+  tags: [terminology, react-19]
+- id: "c.6"
+  question: "The React Compiler automates {memoization}, shifting the reason for component boundaries from render speed to ownership."
+  answer: "memoization"
+  explanation: "With automatic memoization, boundaries exist to separate owners and keep tests simple."
+  difficulty: 2
+  tags: [concept, comparison]
+- id: "c.7"
+  question: "The rule of thumb `boundary_needed = files touched per feature + owners + blast radius` suggests splitting when any term is {large}."
+  answer: "large"
+  explanation: "High coupling, many owners, or wide re-render radius push toward a container boundary."
+  difficulty: 2
+  tags: [concept]
+- id: "c.8"
+  question: "Splitting a god component into tiny files without ownership rules turns component soup into a component {forest}."
+  answer: "forest"
+  explanation: "More, smaller components with no owners still scatter the same concerns."
+  difficulty: 1
+  tags: [concept, misconception]
+- id: "c.9"
+  question: "The container passes draft state and {validation} as props to the status panel, which renders rather than fetches."
+  answer: "validation"
+  explanation: "Presentational children receive data through props; containers own the data source."
+  difficulty: 2
+  tags: [scenario, concept]
+- id: "c.10"
+  question: "An ApplicationPage that owns draft state, program fetches, edits, and submit is a {god component} under a friendly name."
+  answer: "god component"
+  explanation: "A page that owns multiple concerns in one render path reproduces the god component with a different label."
+  difficulty: 2
+  tags: [scenario]

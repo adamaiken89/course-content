@@ -1,0 +1,155 @@
+- id: '32.1'
+  question: What are the three stages of the security master lifecycle?
+  options:
+    a: Setup, maintenance, deactivation
+    b: Setup, trading, settlement
+    c: Issuance, listing, delisting
+    d: Request, validation, activation
+  answer: a
+  explanation: The security master lifecycle is Setup → Maintenance → Deactivation.
+    Setup covers data collection and activation; Maintenance covers corporate actions
+    and data quality monitoring; Deactivation handles maturity, merger, or delisting.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '32.2'
+  question: Which of the following is a static attribute in a security master?
+  options:
+    a: Price
+    b: ISIN
+    c: Shares outstanding
+    d: Volume
+  answer: b
+  explanation: ISIN is determined at issuance and never changes for the security's
+    life. Price, volume, and shares outstanding all change with market conditions
+    or corporate actions — they are dynamic attributes.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '32.3'
+  question: What is the relationship between ISIN and the security master?
+  options:
+    a: ISIN is a subset of the master record
+    b: The security master is an alias for ISIN
+    c: ISIN is the key (identifier) for the master record; the master is the record
+      holding all attributes
+    d: They are unrelated
+  answer: c
+  explanation: Identifiers such as ISIN, CUSIP, and SEDOL serve as the master record
+    key. The master record holds all attributes — like a national ID number (identifier)
+    versus the ID card (master record).
+  difficulty: 1
+  tags:
+  - concept
+- id: '32.4'
+  question: What is the purpose of effective dating on security master attribute changes?
+  options:
+    a: Reduce storage usage
+    b: Speed up price queries
+    c: Encrypt sensitive fields
+    d: Support retrospective queries such as what a stock's ISIN was on a past date
+  answer: d
+  explanation: Recording effective dates lets the master answer retrospective queries
+    like "What was this stock's ISIN on 2024-06-15?" and replay historical state.
+    This is a key system design decision in the maintenance stage.
+  difficulty: 2
+  tags:
+  - concept
+- id: '32.5'
+  question: Why should security master deactivation never delete the record?
+  options:
+    a: Hard deletion breaks historical position snapshots, which cannot then be matched
+      to security names
+    b: The database would become too small
+    c: Regulators require duplicate records
+    d: Deleting records is cheaper than updating
+  answer: a
+  explanation: Hard deletion breaks historical position snapshots — a client holding
+    a deactivated stock in 2023 requesting a report in 2025 could not match it to
+    the correct security. Deactivated records stay with status INACTIVE plus a reason
+    and date.
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '32.6'
+  question: Is shares outstanding a static or dynamic attribute? Why?
+  options:
+    a: Static — it never changes
+    b: Dynamic — companies change share counts through buybacks, new issuance, and
+      splits, though less frequently than price
+    c: Static but changeable without controls
+    d: Not tracked in the security master
+  answer: b
+  explanation: Shares outstanding is dynamic. Companies change it through buybacks
+    or new issuance, and stock splits or reverse splits alter it too. Its change frequency
+    is much lower than price — quarterly or event-driven.
+  difficulty: 2
+  tags:
+  - concept
+- id: '32.7'
+  question: A company renames its ticker from GOOG to GOOGL. How should RefData handle
+    the security master?
+  options:
+    a: Create a new master record for the new ticker
+    b: Delete the old record and create a new one
+    c: Update the existing record — the ISIN anchors continuity across the ticker
+      change
+    d: Keep both tickers as separate duplicate records
+  answer: c
+  explanation: The ticker is just one identifier attribute; the entity has not changed.
+    Creating a new record would break the link to historical trades. The ISIN serves
+    as the cross-time anchor maintaining continuity.
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '32.8'
+  question: What must a security master audit trail record for every attribute change?
+  options:
+    a: Only who made the change
+    b: Only the timestamp
+    c: Nothing, if the data is correct
+    d: Who changed it, what changed, when, and why
+  answer: d
+  explanation: Every change must record who/what/when/why. Combined with effective
+    dating, the audit trail supports retrospective queries and regulatory review.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '32.9'
+  question: A 4-person RefData team maintains 12,000 security master records. If every
+    record required 5 minutes of full manual review, how long would one complete review
+    cycle take?
+  options:
+    a: 1,000 hours (about 125 business days)
+    b: 100 hours
+    c: 48 hours
+    d: 10,000 hours
+  answer: a
+  explanation: 12,000 records x 5 min = 60,000 min = 1,000 hours = 125 business days.
+    Full manual review is impossible at scale — most fields must update via automated
+    vendor feed ingestion with manual intervention on only ~10-15% of records.
+  difficulty: 3
+  tags:
+  - calculation
+  - scenario
+- id: '32.10'
+  question: To hit a Friday data quality target, an analyst bulk-fills Country="TW"
+    for all 47 TDRs with empty Country fields. Why is this dangerous?
+  options:
+    a: It saves time, which is always good
+    b: Bulk-filling bakes wrong static data into the master — each record must be verified
+      against its source before update
+    c: It is only a cosmetic change with no impact
+    d: The vendor will correct it later automatically
+  answer: b
+  explanation: A blanket fill assumes every TDR is Taiwan-domiciled, but issuer domicile
+    varies and some records already have ISIN checksum failures. Bulk-filling bakes
+    wrong static data into the master; each record must be verified against the source.
+  difficulty: 3
+  tags:
+  - scenario
+  - application

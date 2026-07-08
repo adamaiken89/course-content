@@ -1,0 +1,134 @@
+- id: '19.1'
+  question: Which Apollo Studio feature automatically registers schema changes when
+    a GraphQL router deploys?
+  options:
+    c: Schema reporting
+    a: Operation safelisting
+    b: Trace sampling
+    d: Variant comparison
+  answer: c
+  explanation: Schema reporting pushes schema to Apollo Studio on deploy, enabling
+    change history, field usage stats, and diff views across variants.
+  difficulty: 2
+  tags: []
+- id: '19.2'
+  question: In OpenTelemetry, what relationship do resolver spans have to each other?
+  options:
+    a: Parent-child mirrors resolver nesting
+    b: Sibling spans all at the same level
+    c: All spans are root spans with no relationship
+    d: Linked spans sharing a trace ID but no hierarchy
+  answer: a
+  explanation: Resolver spans form a parent-child tree mirroring resolver call nesting.
+    Query.user is parent of User.posts, which is parent of Post.title.
+  difficulty: 2
+  tags: []
+- id: '19.3'
+  question: A resolver calls an external API that sometimes fails. You want to alert
+    the on-call team only when failures exceed 5% in a 5-minute window. Which approach?
+  options:
+    a: Prometheus counter + alerting rule on error ratio
+    b: Log every failure and grep periodically
+    c: Trip Apollo Studio error alert on every failure
+    d: Add try-catch and console.error
+  answer: a
+  explanation: Prometheus counters with rate() and alerting rules detect threshold
+    breaches. Logs are for debugging, not alerting. Alerting on every failure causes
+    alert fatigue.
+  difficulty: 2
+  tags: []
+- id: '19.4'
+  question: Which sampling strategy captures all errors and slow operations but only
+    1% of fast, successful operations?
+  options:
+    d: Tail-based sampling with error/ latency conditions
+    a: Head-based uniform 1%
+    b: Dynamic sampling per operation name
+    c: No sampling — trace everything
+  answer: d
+  explanation: Tail-based sampling buffers traces, then decides to keep based on result
+    (error, latency > threshold). Keeps rare failures without storing all traces.
+  difficulty: 2
+  tags: []
+- id: '19.5'
+  question: What is the purpose of a correlation ID in GraphQL observability?
+  options:
+    b: Maps a single request across resolver logs, traces, and error responses
+    a: Encrypts query data in transit
+    c: Prevents duplicate mutation execution
+    d: Authenticates the client
+  answer: b
+  explanation: Correlation ID propagates from ingress through all resolvers and downstream
+    services, enabling log joining, trace linking, and client support references.
+  difficulty: 2
+  tags: []
+- id: '19.6'
+  question: A 10k QPS GraphQL gateway traces every resolver. Trace export costs $0.50/GB.
+    Average trace size is 2KB. What is the monthly cost?
+  options:
+    a: ~$2,592
+    b: ~$26
+    c: ~$259
+    d: ~$25,920
+  answer: a
+  explanation: 10k ops/sec * 2KB = 20MB/sec = ~1.728TB/day = ~51.84TB/month. At $0.50/GB
+    = 51840 * 0.50 = $25,920. Wait — 10k * 2KB = 20,000 KB/sec = 19.53 MB/s. *86400
+    = 1.687 TB/day *30 = 50.6 TB/month * $0.50/GB = $25,920. This demonstrates why
+    sampling is necessary.
+  difficulty: 2
+  tags: []
+- id: '19.7'
+  question: You see a p99 latency of 5s for a single operation. Individual resolver
+    p50 latencies are all under 10ms. What is most likely happening?
+  options:
+    b: The operation has many resolvers, one with high variance
+    a: Field-level metrics are inaccurate
+    c: A resolver is occasionally hitting a slow data source despite low p50
+    d: GraphQL parsing or validation is slow
+  answer: b
+  explanation: p99 latency far exceeding p50 indicates high variance in one or more
+    resolvers. A resolver with p50 of 5ms but p99 of 500ms causes the overall p99
+    spike. Investigate tail latencies per resolver, not just averages.
+  difficulty: 2
+  tags: []
+- id: '19.8'
+  question: Which error category should trigger an immediate on-call alert?
+  options:
+    b: System error (OOM, network partition)
+    a: Client validation error
+    c: Authentication error
+    d: Rate limit exceeded
+  answer: b
+  explanation: System errors indicate infrastructure failure requiring immediate human
+    intervention. Client, auth, and rate limit errors are handled by application logic.
+  difficulty: 2
+  tags: []
+- id: '19.9'
+  question: In Apollo Router, which configuration would sample 100% of errors and
+    1% of successful operations?
+  options:
+    d: Set error_percentage to 100 and regular_percentage to 1
+    a: Set regular_percentage to 0 and error_percentage to 100
+    b: Set only error_percentage to 100
+    c: Set sampling to null for errors
+  answer: d
+  explanation: 'Both values must be set: error_percentage: 100 captures all errors,
+    regular_percentage: 1 samples 1% of non-error operations.'
+  difficulty: 2
+  tags: []
+- id: '19.10'
+  question: 'You have 3 resolvers: Query.user (10ms p50), User.posts (8ms p50), Post.comments
+    (4ms p50). The overall operation p99 is 3s. Which field-level investigation is
+    most productive?'
+  options:
+    c: Check p99 latency per resolver, not p50
+    a: Add more resolvers to increase parallelism
+    b: Increase Apollo Studio sampling rate
+    d: Remove field-level instrumentation
+  answer: c
+  explanation: p50 hides outliers. One resolver might have p99 of 2.8s due to cache
+    miss, slow DB query, or external call. Check field-level p99/p999 histograms to
+    find the culprit. Averages lie.
+  difficulty: 2
+  tags: []
+

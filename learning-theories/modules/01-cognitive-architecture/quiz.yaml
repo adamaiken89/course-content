@@ -1,0 +1,129 @@
+- id: '1.1'
+  question: What is the approximate capacity of working memory?
+  options:
+    a: ~4 chunks
+    b: 7±2 items
+    c: ~10 items
+    d: Unlimited
+  answer: a
+  explanation: Cowan (2010) revised Miller's 7±2 to ~4 chunks. Working memory is severely limited.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.2'
+  question: What determines whether sensory information enters working memory?
+  options:
+    b: Attention
+    a: Rehearsal
+    c: Emotional salience
+    d: Repetition
+  answer: b
+  explanation: Attention is the gatekeeper. Only attended stimuli pass from sensory memory to working
+    memory.
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.3'
+  question: You learned Spanish in high school. Years later you struggle to recall words, but they come
+    back after a week of practice. Which describes this?
+  options:
+    c: Storage strength was high, retrieval strength was low
+    a: Storage strength was low, retrieval strength was high
+    b: Both strength were low
+    d: Both strength were high
+  answer: c
+  explanation: Storage strength (encoding depth) persists. Retrieval strength (accessibility) decays with
+    disuse but rebuilds quickly.
+  difficulty: 2
+  tags:
+  - application
+- id: '1.4'
+  question: Listening to a podcast with spoken words while reading a textbook primarily causes interference
+    in which subsystem?
+  options:
+    d: Phonological loop
+    a: Visuospatial sketchpad
+    b: Episodic buffer
+    c: Central executive
+  answer: d
+  explanation: Both podcast (audio words) and reading text (subvocalized) compete for the phonological
+    loop.
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.5'
+  question: A student studies 3 hours with Netflix playing. Another studies 45 minutes in silence. Who
+    learns more and why?
+  options:
+    a: 45-minute student — no task-switching, full WM capacity for encoding
+    b: 3-hour student — more total exposure
+    c: Both learn equally — attention is irrelevant
+    d: 3-hour student — background noise enhances focus
+  answer: a
+  explanation: Task-switching drains cognitive resources. Single-tasking maximizes WM available for encoding.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '1.6'
+  question: Which is an example of implicit (procedural) memory?
+  options:
+    b: Typing on a keyboard without looking at the keys
+    a: Recalling that Paris is the capital of France
+    c: Remembering your 10th birthday party
+    d: Knowing the definition of working memory
+  answer: b
+  explanation: Procedural memory is 'knowing how' — skills and habits performed automatically. Typing
+    is procedural.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.7'
+  question: Why does studying with a labeled diagram alongside text lead to better learning than text
+    alone?
+  options:
+    c: Dual coding engages verbal + visuospatial WM subsystems simultaneously
+    a: Diagrams are inherently easier
+    b: Text alone always causes boredom
+    d: Diagrams bypass working memory entirely
+  answer: c
+  explanation: Dual coding uses both the phonological loop (text) and visuospatial sketchpad (diagram),
+    increasing total WM bandwidth.
+  difficulty: 2
+  tags:
+  - application
+- id: '1.8'
+  question: What happens to information in working memory if not actively maintained?
+  options:
+    d: It decays within ~20 seconds
+    a: It transfers to long-term memory automatically
+    b: It persists until replaced
+    c: It moves to sensory memory
+  answer: d
+  explanation: WM holds information for ~20 seconds without active maintenance (rehearsal or manipulation).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.9'
+  question: A student feels 'foggy' after 20 minutes of dense reading. What is most likely happening?
+  options:
+    a: Working memory is overloaded — new info enters faster than it can be encoded
+    b: They are lazy
+    c: Long-term memory is full
+    d: Sensory memory is broken
+  answer: a
+  explanation: Dense text fills WM rapidly. Without pauses to process and encode, new input has no workspace.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '1.10'
+  question: 'The feeling of knowing something but being unable to recall it (tip-of-the-tongue) reflects:'
+  options:
+    b: High storage strength, low retrieval strength
+    a: High storage strength, high retrieval strength
+    c: Low storage strength, high retrieval strength
+    d: Low storage strength, low retrieval strength
+  answer: b
+  explanation: The fact is stored (high storage strength) but inaccessible right now (low retrieval strength).
+  difficulty: 2
+  tags:
+  - concept

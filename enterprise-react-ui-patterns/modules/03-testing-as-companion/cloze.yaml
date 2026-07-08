@@ -1,0 +1,54 @@
+- id: "c.31"
+  question: "An integration point you own where your code meets something you do not fully control, such as fetch or a clock, is a {seam}."
+  answer: "seam"
+  explanation: "Every test must name the seam it stands on; the decision rule is to test the seam you own and mock the seam you don't."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.32"
+  question: "The network is mocked at the HTTP boundary with realistic fixtures by an {MSW} contract, one handler set standing exactly where fetch stands."
+  answer: "MSW"
+  explanation: "MSW handlers serve fixtures at the HTTP boundary; when the real API shape changes, the handler breaks and the contract is enforced."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.33"
+  question: "Snapshots should only be taken for {structural} output: API fixture shapes, error-boundary output, stable keys; never large DOM trees or timestamps."
+  answer: "structural"
+  explanation: "Stable structural output only changes when a contract changes, so snapshots there carry signal; text-heavy trees churn and teach reviewers to accept diffs blindly."
+  difficulty: 2
+  tags: [concept]
+- id: "c.34"
+  question: "A full user journey that crosses screens and uses browser-only behavior moves to the {Playwright journey} layer."
+  answer: "Playwright journey"
+  explanation: "Cross-screen flows and real-browser behavior cannot be fabricated by a component test; E2E journeys are the honest price for those behaviors."
+  difficulty: 2
+  tags: [concept]
+- id: "c.35"
+  question: "Prefer {userEvent} over fireEvent in RTL because it fires real timing, real focus management, and real keyboard semantics."
+  answer: "userEvent"
+  explanation: "userEvent simulates a person acting; fireEvent dispatches a synthetic event with none of the timing or focus behavior a browser provides."
+  difficulty: 2
+  tags: [concept]
+- id: "c.36"
+  question: "The testing pyramid is a {budget}, not a ladder: spend at the cheapest layer that still tests the real behavior."
+  answer: "budget"
+  explanation: "Unit is cheapest, integration is the workhorse, E2E reconciles reality; you spend layers deliberately, not climb them by ceremony."
+  difficulty: 2
+  tags: [concept]
+- id: "c.37"
+  question: "A good structural snapshot is an {error boundary}'s fallback output, which only changes when the boundary's contract changes."
+  answer: "error boundary"
+  explanation: "Error-boundary output is stable structural UI: a fix, a label, a role. Snapshotting it is legitimate, unlike churning tables with timestamps."
+  difficulty: 2
+  tags: [scenario]
+- id: "c.38"
+  question: "Later modules cite these terms in their Verify beats: seam, MSW {contract}, snapshot-when-structural, Playwright-journey."
+  answer: "contract"
+  explanation: "The MSW contract is the shape discipline: fixtures at the HTTP boundary that match production, so a shape change fails tests instead of shipping."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.39"
+  question: "Duplicate coverage at two layers is a deliberate signal; at all three layers it violates the {triangulation} rule and is waste."
+  answer: "triangulation"
+  explanation: "Two layers each proving a fact from a different vantage is a signal; a third layer re-asserting the same string pays three times for one fact."
+  difficulty: 3
+  tags: [concept]

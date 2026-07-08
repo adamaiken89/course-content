@@ -1,0 +1,110 @@
+- id: "18.1"
+  question: "What exactly does a React error boundary catch?"
+  options:
+    a: "Render-phase exceptions in the tree below the boundary"
+    b: "Errors thrown inside event handlers"
+    c: "Rejected promises awaiting inside effects"
+    d: "Errors thrown inside the boundary itself"
+  answer: a
+  explanation: "Boundaries catch render throws (and lifecycle errors via componentDidCatch). Handler errors, async rejects you never await, and self-errors need their own handling."
+  difficulty: 1
+  tags: [terminology]
+- id: "18.2"
+  question: "Why must boundaries be scoped per region instead of wrapping the whole app?"
+  options:
+    a: "React forbids more than one boundary per tree"
+    b: "Class components cannot be nested inside each other"
+    c: "Zustand stores cannot listen to boundary errors"
+    d: "A blanket boundary turns every leaf bug into the same blank-page — and hides where it broke"
+  answer: d
+  explanation: "Scope keeps a cohort-height failure inside the cohort panel while the form survives. One boundary around everything reproduces the naive blank page and hides the buggy leaf."
+  difficulty: 2
+  tags: [concept]
+- id: "18.3"
+  question: "A lone cohort fetch rejects inside useEffect. Does the Section 1 boundary catch it?"
+  options:
+    a: "Yes, boundaries catch all async failures automatically"
+    b: "No, boundaries only see render-phase throws — the reject must be handled where the effect runs"
+    c: "Yes, if the component is wrapped in React.StrictMode"
+    d: "Only in concurrent mode with React 19"
+  answer: b
+  explanation: "The boundary displays render bugs; async failures need explicit catch → error-state handling and the failure-surface ladder."
+  difficulty: 2
+  tags: [concept, scenario]
+- id: "18.4"
+  question: "Which pair of conditions makes a retry responsible and safe?"
+  options:
+    a: "Stable network and a short timeout"
+    b: "Any 4xx status and a paused queue"
+    c: "A transient failure AND an idempotency key on the operation"
+    d: "A GET request and localStorage"
+  answer: c
+  explanation: "Transient (429/5xx/network) failures can plausibly heal; an idempotency key makes re-sending the same intent instead of duplicating it (m14 runId + m17)."
+  difficulty: 3
+  tags: [concept, comparison]
+- id: "18.5"
+  question: "A batch submit rejects with a network reset after the server accepted application 4 of 6. What is the correct retry move?"
+  options:
+    a: "Read the m14 ledger and resubmit only the failed itemIds under the same runId key"
+    b: "Re-run the whole submitAll with the same hook"
+    c: "Hide the submit button until the user reloads"
+    d: "Retry after a fixed 5-second delay"
+  answer: a
+  explanation: "Whole-batch retry double-submits the already-landed items. The ledger knows who failed; the runId key makes resubmit idempotent."
+  difficulty: 3
+  tags: [scenario, calculation]
+- id: "18.6"
+  question: "The cohort panel fails to load but a previous good cohort list is in the query cache. Which ladder rung serves the user best?"
+  options:
+    a: "Page-level fatal with a Reload button"
+    b: "Region-level error — render the stale cache with a small Retry and a 'showing saved version' note"
+    c: "Inline field error on the cohort select"
+    d: "A single toast then dismiss"
+  answer: b
+  explanation: "Stale-cache fallback (m12) keeps the user working during an outage. The wall is the last resort; the toast loses the context the region can still show."
+  difficulty: 2
+  tags: [scenario]
+- id: "18.7"
+  question: "Why does the module treat navigator.onLine as a liar?"
+  options:
+    a: "It throws unless wrapped in try/catch"
+    b: "It is undefined in strict mode"
+    c: "It reports cached pages as online"
+    d: "It reports any network interface as online, even one with no route to your API"
+  answer: d
+  explanation: "A laptop on Wi-Fi with a dead VPN can be 'online' yet unable to reach the API. The honest signal is the browser's online/offline event pair, with a failed request as tiebreaker."
+  difficulty: 2
+  tags: [concept]
+- id: "18.8"
+  question: "Where does the offline flag belong per the State Decision?"
+  options:
+    a: "In component state under the submit button"
+    b: "In the URL search params"
+    c: "A tiny shared write-mostly store every shell widget subscribes to"
+    d: "In the query cache's per-request retry counters"
+  answer: c
+  explanation: "Many widgets subscribe (stripe, submit, queue button) but only the network listener mutates it — the write-mostly pattern from m2."
+  difficulty: 1
+  tags: [concept]
+- id: "18.9"
+  question: "After an offline queue flushes on reconnect, which step does recovery NOT include?"
+  options:
+    a: "Re-running the m14 batch ledger from scratch for items that already committed"
+    b: "Restoring the draft from m5/m14 storage"
+    c: "Revalidating statuses so stale failure flags clear"
+    d: "Moving focus to the first unrecovered failure point"
+  answer: a
+  explanation: "The ledger is the source of truth for what landed; recovery reads and summarizes it, never replays completed writes. Draft restore, status revalidate, and focus move are the other three steps."
+  difficulty: 2
+  tags: [scenario, comparison]
+- id: "18.10"
+  question: "The recovery panel renders '37 of 40 saved, 3 blocked on a full cohort'. What contract does 'Retry application 4021' uphold?"
+  options:
+    a: "It increments a fresh attempt counter"
+    b: "It resubmits under the same runId idempotency key so the retry is a re-send of the same intent, not a duplicate"
+    c: "It clears the whole ledger"
+    d: "It bypasses the validation schema"
+  answer: b
+  explanation: "The m14 runId key plus m17 idempotency means the retry cannot double-commit. Summarizing a ledger, not dumping errors, is the recovery contract."
+  difficulty: 3
+  tags: [terminology, calculation]

@@ -1,0 +1,142 @@
+- id: '15.1'
+  question: Which directive enforces that only authenticated users can access a field?
+  options:
+    c: '@authenticated'
+    a: '@requiresScopes'
+    b: '@authorized'
+    d: '@private'
+  answer: c
+  explanation: '@authenticated rejects unauthenticated requests at router level. @requiresScopes
+    additionally checks specific OAuth scopes.'
+  difficulty: 2
+  tags: []
+- id: '15.2'
+  question: Router validates JWT and forwards X-Auth-User-Id header to subgraphs.
+    Should subgraphs also validate the JWT?
+  options:
+    b: Yes — defense in depth; subgraphs may be accessed directly
+    a: No — router validation is sufficient
+    c: No — JWT validation is expensive and adds latency
+    d: Only if subgraph contains sensitive PII data
+  answer: b
+  explanation: Defense in depth principle. Subgraphs might be accessed directly (debugging,
+    migration, internal tool). Router misconfiguration could skip validation. JWT
+    validation in each subgraph is cheap insurance against data exposure.
+  difficulty: 2
+  tags: []
+- id: '15.3'
+  question: A dashboard query reads user profiles (Accounts subgraph) and analytics
+    data (Analytics subgraph). Analytics is down. What error mode should the router
+    use?
+  options:
+    a: Partial — return user data, null for analytics
+    b: Strict — fail entire query
+    c: Retry — wait for Analytics and retry 3 times
+    d: Cache — return stale analytics data
+  answer: a
+  explanation: Dashboard partial data is useful. User sees profile (from Accounts)
+    and empty analytics section (null). Strict mode would show nothing — worse UX.
+    For transactional queries (payment), strict mode preferred.
+  difficulty: 2
+  tags: []
+- id: '15.4'
+  question: Which of the following is a BREAKING change in a federated schema?
+  options:
+    c: Removing an enum value
+    a: Adding a new field to an existing type
+    b: Adding an optional argument to a field
+    d: Adding a new type
+  answer: c
+  explanation: 'Removing enum value breaks client code that switches on that value.
+    Adding field/type/optional argument: backward compatible. rover subgraph check
+    catches breaking changes.'
+  difficulty: 2
+  tags: []
+- id: '15.5'
+  question: A 5-year-old monolith GraphQL API needs federation migration. Which migration
+    approach minimizes risk?
+  options:
+    a: 'Strangler fig: add router, extract subgraphs one by one, no client changes'
+    b: Rewrite entire API as federated subgraphs in a 3-month project
+    c: Run monolith and federation in parallel, A/B test clients
+    d: Migrate database first, then GraphQL layer
+  answer: a
+  explanation: 'Strangler fig: router front, monolith as subgraph initially, extract
+    capabilities gradually. No big rewrite, no client changes, rollback per extraction.
+    Dual-write for data consistency during migration.'
+  difficulty: 2
+  tags: []
+- id: '15.6'
+  question: What does `rover subgraph check` do?
+  options:
+    b: Validates subgraph schema for backward compatibility with supergraph
+    a: Deploys the subgraph to production
+    c: Checks subgraph server health
+    d: Generates TypeScript types from subgraph schema
+  answer: b
+  explanation: subgraph check validates backward compatibility — ensures schema change
+    doesn't break existing queries. Runs in CI to block breaking changes from reaching
+    production.
+  difficulty: 2
+  tags: []
+- id: '15.7'
+  question: A router handles 10,000 req/s. Query planning takes 1ms per query. What
+    optimization should be prioritized?
+  options:
+    b: Cache query plans by query shape
+    a: Reduce query planning to 0 — use persisted queries only
+    c: Increase subgraph count to reduce plan complexity
+    d: Switch from Router to Gateway for faster planning
+  answer: b
+  explanation: 10,000 req/s × 1ms planning = 10s CPU per second (1000% CPU). Caching
+    plans eliminates repeated planning overhead for identical queries. Persisted queries
+    also help but cache is simpler first step.
+  difficulty: 2
+  tags: []
+- id: '15.8'
+  question: During phase 3 of strangler fig migration, writes go to both monolith
+    and new Accounts subgraph. What is the rollback plan if Accounts subgraph fails?
+  options:
+    a: Switch Router config back — User queries route to monolith; stop dual-write
+      to Accounts
+    b: Restore monolith-only deployment from backup
+    c: Repair Accounts subgraph in place while it serves traffic
+    d: Revert all code changes from the last sprint
+  answer: a
+  explanation: Router config change redirects traffic. No data loss because monolith
+    continued receiving writes. Dual-write ensures monolith data stays current. Rollback
+    is a config flip — no redeployment needed.
+  difficulty: 2
+  tags: []
+- id: '15.9'
+  question: What is the minimum test coverage for a federated graph?
+  options:
+    d: Subgraph contract tests + one integration test per cross-subgraph query + schema
+      check in CI
+    a: Unit tests for every resolver
+    b: End-to-end tests covering every possible query
+    c: Load tests only — correctness isn't the concern
+  answer: d
+  explanation: Contract tests ensure each subgraph satisfies entity contracts. Integration
+    tests catch cross-subgraph issues. Schema check in CI prevents breaking changes.
+    Full E2E coverage is impractical; this minimum catches majority of federation-specific
+    bugs.
+  difficulty: 2
+  tags: []
+- id: '15.10'
+  question: 10 teams use shared dev supergraph. Team A's schema change breaks Team
+    B's queries. What workflow prevents this?
+  options:
+    d: CI runs rover subgraph check on Team A's schema against dev supergraph before
+      merge
+    a: Team A tests locally before pushing
+    b: Team B pins their schema version
+    c: Lock the supergraph schema — require weekly review for changes
+  answer: d
+  explanation: 'CI check catches breaking changes before merge. Team A''s PR fails
+    check if schema change breaks existing operations. Team B''s queries are protected.
+    This is supergraph-first governance: changes validated against real production
+    operations, not just schema.'
+  difficulty: 2
+  tags: []
+

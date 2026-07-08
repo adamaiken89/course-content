@@ -1,0 +1,120 @@
+- id: '14.1'
+  question: What is the main difference between Pre-Trade Compliance and At-Trade Compliance?
+  options:
+    a: Pre-trade checks execute before order dispatch; at-trade monitors market manipulation and execution quality during execution
+    b: They are exactly the same, just different timing
+    c: Pre-trade is executed by the EMS; at-trade is executed by the OMS
+    d: Pre-trade only checks equities; at-trade checks all asset classes
+  answer: a
+  explanation: Pre-trade compliance handles suitability, pre-clearance, and credit checks before the order reaches the EMS. At-trade compliance monitors market manipulation (layering/spoofing), best execution, and limit order protection during execution. Different time boundaries, different responsibilities.
+  difficulty: 1
+  tags:
+  - concept
+- id: '14.2'
+  question: Which comparison between Rule-Based and Risk-Based Suitability is correct?
+  options:
+    a: Rule-Based is used in EU markets; Risk-Based is used in US markets
+    b: Rule-Based uses client questionnaire tiers matched to product risk tiers — simple and predictable but rigid; Risk-Based uses dynamic scoring models — flexible but needs continuous calibration
+    c: Risk-Based is stricter than Rule-Based and never allows override
+    d: Rule-Based does not need client data; Risk-Based does
+  answer: b
+  explanation: Rule-Based assigns clients A/B/C/D tiers and products 1/2/3/4 tiers with a matching matrix. Risk-Based uses weighted dynamic scoring on volatility, leverage, liquidity, and concentration. Brokerages use a hybrid — rule-based as first gate, risk-based as second gate.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '14.3'
+  question: What three tiers of suitability does FINRA 2111 require?
+  options:
+    a: Basic check, advanced check, full check
+    b: Product check, market check, price check
+    c: Reasonable-basis, customer-specific, quantitative
+    d: Credit check, compliance check, risk check
+  answer: c
+  explanation: FINRA 2111 requires three tiers — (1) Reasonable-basis, the product is suitable for some investors; (2) Customer-specific, suitable for this client; (3) Quantitative, trade frequency and size are suitable. This is mandatory for US brokers.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '14.4'
+  question: Which suitability algorithm uses a matrix of client risk tier × product risk tier to determine pass/fail?
+  options:
+    a: Decision tree
+    b: Lookup table
+    c: Weighted scoring model
+    d: Monte Carlo simulation
+  answer: b
+  explanation: A lookup table maps the intersection of client risk category and product risk tier to a pass/soft block/hard block outcome. Decision trees use branching logic, weighted models use dynamic scoring, and Monte Carlo simulates portfolio scenarios.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '14.5'
+  question: 'Suitability Score = 0.35×Volatility + 0.25×Leverage + 0.25×Liquidity + 0.15×Concentration. A client order scores 55. What is the outcome?'
+  options:
+    a: PASS
+    b: HARD BLOCK
+    c: SOFT BLOCK (compliance review)
+    d: No determination — need more data
+  answer: c
+  explanation: 'Thresholds are: score < 40 PASS, 40-60 SOFT BLOCK (compliance review), > 60 HARD BLOCK. A score of 55 falls in the 40-60 band, so the order soft-blocks and goes to compliance review.'
+  difficulty: 2
+  tags:
+  - calculation
+- id: '14.6'
+  question: Why can't suitability be done at-trade or post-trade?
+  options:
+    a: Because the OMS cannot access client data after dispatch
+    b: Because at-trade checks run too slowly
+    c: Because regulators require it during execution
+    d: Because suitability decides whether the trade should happen at all — after execution it cannot be reversed
+  answer: d
+  explanation: Suitability determines whether the product is right for this client. If discovered after execution, the trade has already happened and can only be unwound through costly cancel/amend processes. Pre-trade is the only window to stop a transaction before funds or securities move.
+  difficulty: 2
+  tags:
+  - concept
+- id: '14.7'
+  question: A brokerage implements a hybrid suitability model. The rule-based gate PASSES but the risk-based gate FAILS. What happens?
+  options:
+    a: Soft block — the order may proceed with manual override
+    b: Hard block — order rejected, not overrideable
+    c: Order proceeds without any flag
+    d: Order is auto-scaled down until it passes
+  answer: a
+  explanation: 'Hybrid model rules: both fail → hard block; rule pass + risk fail → soft block (manual override possible). Risk-based soft blocks let experienced clients proceed with compliance approval, but the override must be audited.'
+  difficulty: 3
+  tags:
+  - application
+- id: '14.8'
+  question: What is Monte Carlo simulation used for in pre-trade suitability?
+  options:
+    a: Matching client tiers to product tiers in a fixed matrix
+    b: Routing orders to the best venue
+    c: Computing trailing stop distances
+    d: Simulating thousands of market scenarios to test whether the proposed order breaches portfolio risk thresholds
+  answer: d
+  explanation: For complex portfolios, the OMS generates thousands of scenarios from historical volatility and correlation, computing P&L, margin utilization, and concentration for each. A breach rate above 5% hard-blocks, 1-5% soft-blocks, below 1% passes.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '14.9'
+  question: Why must suitability algorithm versions be versioned and auditable?
+  options:
+    a: Because algorithms never change once deployed
+    b: So each order's suitability decision can be reproduced from the exact algorithm version, inputs, and override that produced it
+    c: Because regulators require source code publication
+    d: To reduce pre-trade latency
+  answer: b
+  explanation: Every algorithm change is versioned with activation/deactivation dates and change reason. Each order records the algorithm version, scoring inputs, score, result, and any override — reproducing the decision for audit or regulatory review.
+  difficulty: 2
+  tags:
+  - concept
+- id: '14.10'
+  question: A client's risk questionnaire says "Conservative", but they have a 10-year history of trading high-volatility stocks. The rule-based check rejects the order. What should the OMS do?
+  options:
+    a: Accept the rule-based rejection as final — history is irrelevant
+    b: Auto-upgrade the client's risk rating so the order passes
+    c: Allow a risk-based override path with compliance officer approval, keeping a full audit trail
+    d: Send the order anyway and flag it post-trade
+  answer: c
+  explanation: Pure rule-based causes false positives and poor client experience; pure risk-based may be too permissive. Brokerage practice is rule-based as baseline, with risk-based allowing experienced clients to bypass certain rules only with compliance approval and a complete audit trail.
+  difficulty: 3
+  tags:
+  - scenario

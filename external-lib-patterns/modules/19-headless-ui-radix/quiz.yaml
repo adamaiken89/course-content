@@ -1,0 +1,138 @@
+- id: '19.1'
+  question: What does asChild prop do in Radix primitives?
+  options:
+    b: Delegates rendering to child element — child receives Radix props and event
+      handlers
+    a: Renders the primitive as a child of parent component
+    c: Renders primitive as HTML child element
+    d: Disables primitive rendering
+  answer: b
+  explanation: asChild merges Radix' behavior (events, ARIA attributes, refs) onto
+    the child element. Child must be a valid React element that accepts forwarded
+    props.
+  difficulty: 1
+  tags:
+  - concept
+- id: '19.2'
+  question: Which Radix primitive provides focus trapping for modals?
+  options:
+    a: <FocusScope>
+    b: <FocusLock>
+    c: <Trap>
+    d: <Modal>
+  answer: a
+  explanation: FocusScope handles focus containment. Used internally by Dialog. Supports
+    loop (cycle through focusable elements) and trapped (prevent focus leaving) modes.
+  difficulty: 1
+  tags:
+  - api
+- id: '19.3'
+  question: How to close a DropdownMenu item on selection?
+  options:
+    a: onSelect callback fires — menu closes automatically by default
+    b: Call close() on DropdownMenu context
+    c: Set closeOnSelect prop on DropdownMenu.Root
+    d: Menu does not close on selection by default
+  answer: a
+  explanation: DropdownMenu.Item.onSelect fires on click/Enter. Menu closes automatically
+    after onSelect handler runs. Prevent default to keep menu open.
+  difficulty: 2
+  tags:
+  - behavior
+- id: '19.4'
+  question: What is the purpose of Radix's unstyled approach?
+  options:
+    c: Give developers full control over styling while providing production-grade
+      accessibility
+    a: Reduce bundle size by excluding CSS
+    b: Force use of Tailwind CSS
+    d: Prevent custom styling
+  answer: c
+  explanation: Unstyled means Radix provides behavior (keyboard nav, focus, ARIA)
+    without assumptions about appearance. Developers style freely while getting battle-tested
+    accessibility.
+  difficulty: 2
+  tags:
+  - philosophy
+- id: '19.5'
+  question: Tabs component uses which keyboard navigation model?
+  options:
+    b: Roving tabindex — arrow keys navigate, Tab moves to active tab panel content
+    a: Tab to switch tabs — tabindex=0 for all
+    c: Enter to switch tabs
+    d: No keyboard navigation — mouse only
+  answer: b
+  explanation: 'Tabs uses roving tabindex: only active tab is in tab order. Arrow
+    keys move focus between tabs. Tab key moves focus from active tab into tab panel
+    content.'
+  difficulty: 2
+  tags:
+  - accessibility
+- id: '19.6'
+  question: What data attribute does Radix set on open overlay elements?
+  options:
+    d: data-[state=open]
+    a: data-open
+    b: data-visibile
+    c: aria-expanded
+  answer: d
+  explanation: 'Radix uses data-[state=open] and data-[state=closed] on elements that
+    toggle visibility. CSS targets these for transitions: `.overlay[data-state=open]
+    { opacity: 1 }`'
+  difficulty: 2
+  tags:
+  - styling
+- id: '19.7'
+  question: When would you NOT use Radix and build custom component instead?
+  options:
+    c: When interaction is extremely simple with no complex keyboard or a11y requirements
+    a: When app needs accessible components
+    b: When using TypeScript
+    d: When app is large with 50+ components
+  answer: c
+  explanation: 'Simple toggle buttons or static lists do not need Radix overhead.
+    Radix valuable for complex interactive components: modals, menus, selects, comboboxes.'
+  difficulty: 2
+  tags:
+  - decision
+- id: '19.8'
+  question: Select component uses which ARIA pattern?
+  options:
+    b: listbox
+    a: combobox
+    c: menu
+    d: dialog
+  answer: b
+  explanation: 'Radix Select implements ARIA listbox pattern: role=listbox on content,
+    role=option on items, aria-selected for current value, aria-activedescendant for
+    focus.'
+  difficulty: 2
+  tags:
+  - accessibility
+- id: '19.9'
+  question: How to compose Radix Popover with Framer Motion animations?
+  options:
+    a: Wrap Popover.Content with AnimatePresence and use data-[state=open] for variants
+    b: Wrap entire Popover.Root with AnimatePresence
+    c: Radix does not support animation
+    d: Use CSS transitions only
+  answer: a
+  explanation: Popover.Content inside AnimatePresence with key based on open state.
+    Variants use data-[state=open] and data-[state=closed] for enter/exit animations.
+  difficulty: 3
+  tags:
+  - integration
+- id: '19.10'
+  question: Tooltip delayDuration controls what?
+  options:
+    d: Delay before tooltip appears on hover (default 700ms)
+    a: How long tooltip stays visible after mouse leaves
+    b: Animation duration of tooltip
+    c: Delay before tooltip disappears
+  answer: d
+  explanation: delayDuration (ms) on Tooltip.Provider sets hover-to-show delay. Default
+    700ms. Also supports skipDelayDuration for rapid re-triggering.
+  difficulty: 2
+  tags:
+  - api
+

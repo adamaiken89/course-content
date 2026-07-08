@@ -1,0 +1,103 @@
+- id: cum.17
+  type: mcq
+  source_modules:
+  - 11
+  question: Why does RoPE (Rotary Position Embedding) preserve relative position information in attention?
+  options:
+    a: It adds a learned bias to attention logits based on absolute position
+    b: It rotates Q and K vectors by angles proportional to position, making Q·Kᵀ depend on position difference
+    c: It concatenates position IDs to token embeddings
+    d: It uses a separate feed-forward network to encode position
+  answer: b
+  explanation: RoPE applies rotation matrices R(i) and R(j) to Q and K so attention depends only on the relative position j-i.
+  difficulty: 2
+  tags:
+  - cross-module
+  - architecture
+- id: cum.18
+  type: mcq
+  source_modules:
+  - 12
+  question: Which scaling law determines the optimal allocation of compute between parameters and data?
+  options:
+    a: Kaplan scaling law (larger models are more important than more data)
+    b: Chinchilla scaling law (~20 tokens per parameter for compute-optimal training)
+    c: Power law of irreducible loss
+    d: Test-time compute scaling law
+  answer: b
+  explanation: Chinchilla recomputed scaling laws with a fixed compute budget, finding an optimal ~20 tokens per parameter allocation.
+  difficulty: 2
+  tags:
+  - cross-module
+  - theory
+- id: cum.19
+  type: tf
+  source_modules:
+  - 9
+  statement: GQA (Grouped-Query Attention) reduces KV cache size by sharing key/value heads across multiple query heads, at a small quality cost compared to full multi-head attention.
+  answer: true
+  explanation: GQA groups query heads to share KV heads, shrinking cache from h key/value heads to g much smaller g, as used in Llama 2/3.
+  difficulty: 1
+  tags:
+  - cross-module
+  - architecture
+- id: cum.20
+  type: mcq
+  source_modules:
+  - 10
+  question: Which activation family is common in the feed-forward blocks of modern LLMs?
+  options:
+    a: Gated linear units such as SwiGLU or GeGLU
+    b: Hard sigmoid
+    c: Tanh only
+    d: No activation at all
+  answer: a
+  explanation: Gated activations like SwiGLU gate the hidden representation with a learned sigmoid factor and typically beat plain ReLU in transformer FFNs.
+  difficulty: 2
+  tags:
+  - concept
+  - terminology
+- id: cum.21
+  type: cloze
+  source_modules:
+  - 9
+  question: Each attention head projects the input with its own learned {weight} matrices for Q, K, and V.
+  answer: weight
+  explanation: Every head learns separate projection matrices, letting different heads attend over different subspaces.
+  difficulty: 2
+  tags:
+  - mechanism
+  - concept
+- id: cum.22
+  type: cloze
+  source_modules:
+  - 11
+  question: Absolute positional encodings add a position-dependent vector directly to the {token} embedding at the input.
+  answer: token
+  explanation: In sinusoidal or learned absolute encodings, positional information is added to (or appended to) the token embedding before attention.
+  difficulty: 1
+  tags:
+  - terminology
+  - recall
+- id: cum.23
+  type: cloze
+  source_modules:
+  - 12
+  question: Chinchilla-style scaling laws predict that loss follows a power law in model {parameters}, dataset size, and compute budget.
+  answer: parameters
+  explanation: Scaling laws describe loss as a function of N (parameters), D (data), and C (compute), driving compute-optimal training recommendations.
+  difficulty: 3
+  tags:
+  - theory
+  - concept
+- id: cum.24
+  type: tf
+  source_modules:
+  - 10
+  statement: Gated activations such as SwiGLU typically match or beat plain ReLU in transformer feed-forward networks.
+  answer: true
+  explanation: Empirically gated units improve quality per parameter in transformer FFNs; most frontier LLMs use SwiGLU or a variant.
+  difficulty: 3
+  tags:
+  - concept
+  - comparison

@@ -1,0 +1,120 @@
+- id: '18.1'
+  question: Under FINRA 3110, how often must pre-trade controls be tested?
+  options:
+    a: At least annually
+    b: Only after a regulatory audit
+    c: Every 5 years
+    d: Never — they are designed once
+  answer: a
+  explanation: FINRA 3110(b) requires pre-trade controls to be tested at least annually, exception reports to flag violations within 24 hours, and manual override activity to be reviewed by a principal.
+  difficulty: 2
+  tags:
+  - concept
+- id: '18.2'
+  question: Under FINRA 3110(b), who must review manual override activity?
+  options:
+    a: The trader who submitted the order
+    b: The OMS developer team
+    c: A principal
+    d: The external auditor only
+  answer: c
+  explanation: FINRA 3110(b) requires manual override activity to be reviewed by a principal, and each OSJ must have a designated principal for pre-trade oversight.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '18.3'
+  question: Under SEC 15c3-1, what haircut is applied to long equity positions when computing net capital?
+  options:
+    a: 2%
+    b: 15%
+    c: 30%
+    d: 50%
+  answer: b
+  explanation: 'Net Capital = Net Worth + Qualifying Subordinated Loans − Deductions. Equities carry a 15% haircut (long), with additional deductions for concentrated positions. Corporate bonds carry 2-9% depending on rating and maturity.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '18.4'
+  question: How does SEC Rule 15c3-1 (Net Capital) affect pre-trade credit?
+  options:
+    a: It has no impact on client credit checks
+    b: It requires 100% cash margin on all accounts
+    c: It only applies to foreign exchanges
+    d: Firm-wide net capital constrains aggregate client buying power, so low net capital forces a firm-level credit ceiling
+  answer: d
+  explanation: If firm net capital is low, the OMS must reduce available credit firm-wide. Large client positions increase the firm's capital requirement via haircuts, so the OMS enforces a firm-level credit ceiling on top of per-client limits.
+  difficulty: 2
+  tags:
+  - concept
+- id: '18.5'
+  question: Under MiFID II RTS 6 effective guidance, how old can a retail client's suitability questionnaire be before the OMS should block the order?
+  options:
+    a: No time limit — once completed, it is valid forever
+    b: Up to 5 years
+    c: Up to 2 years
+    d: Up to 10 years
+  answer: c
+  explanation: RTS 6 effective guidance suggests suitability questionnaires should be no older than 2 years for retail clients. A stale questionnaire should block the order with code QUESTIONNAIRE_STALE and trigger a re-questionnaire.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '18.6'
+  question: An OMS processes an order where suitability passes but the credit check fails. How should it handle this?
+  options:
+    a: Send to EMS because suitability is more important than credit
+    b: Reject the order, return a reject code like CREDIT_INSUFFICIENT
+    c: Auto-transfer funds from the client's other accounts
+    d: Reduce order quantity until it meets the credit limit
+  answer: b
+  explanation: Any pre-trade check failure should reject the order. CREDIT_INSUFFICIENT is a standard reject code. The OMS must not auto-modify quantity (may exceed client authorization) or bypass the credit check — it should log the reason and notify the trader.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '18.7'
+  question: Under MiFID II RTS 6 Article 13, how long must suitability records be kept?
+  options:
+    a: 1 year
+    b: 2 years
+    c: 3 years
+    d: 5 years
+  answer: d
+  explanation: RTS 6 Article 13 requires suitability records to be kept for 5 years and be reproducible — the OMS must store a suitability snapshot per order (questionnaire version, product class, scoring inputs, result, algorithm version).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '18.8'
+  question: 'In the Acme Fund pre-trade flow, a $30M TSLA order would leave TSLA at 54.5% of total account equity against a 20% concentration threshold. All hard checks pass. What should happen?'
+  options:
+    a: Hard block on concentration, overrideable only through the DUCO process
+    b: Soft block on suitability, order proceeds
+    c: Approve without review — all primary checks passed
+    d: Reject with CREDIT_INSUFFICIENT
+  answer: a
+  explanation: Concentration 54.5% far exceeds the 20% threshold. Concentration limit breaches are Priority 2 hard blocks, so the order is blocked unless approved via the DUCO (dual control) override process.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '18.9'
+  question: W-8 series tax forms typically expire after how long, after which the OMS should assume 30% withholding?
+  options:
+    a: 1 year
+    b: 2 years
+    c: 3 years
+    d: They never expire
+  answer: c
+  explanation: W-8 series forms have an expiration date, typically 3 years. After expiry the broker must assume 30% withholding and the OMS must track form expiration and verify it in pre-trade checks.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '18.10'
+  question: 'A compliance engine batch-updates the restricted list nightly at 2 AM. At 9 AM the brokerage signs a new M&A advisory contract and a buy order for the target stock arrives at 9:05 AM. The order passes. What is the flaw?'
+  options:
+    a: Batch update leaves a ~24-hour window where restricted securities are not blocked — the restricted list must update in real time
+    b: The order passed because M&A stocks are never restricted
+    c: The flaw is that the order should be routed to a dark pool
+    d: There is no flaw — nightly updates are standard
+  answer: a
+  explanation: After signing the M&A advisory contract the target should be restricted immediately, but the nightly batch leaves a 24-hour gap where insider trading could slip through. Correct design is an event-driven restricted list update at contract signing, or a real-time restricted list database.
+  difficulty: 3
+  tags:
+  - scenario

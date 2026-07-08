@@ -1,0 +1,133 @@
+- id: '4.1'
+  question: How is a skill different from AGENTS.md?
+  options:
+    b: Skills load on trigger, can include scripts. AGENTS.md loads every session.
+    a: Skills are shorter than AGENTS.md
+    c: AGENTS.md is for the user, skills are for the agent
+    d: There is no difference
+  answer: b
+  explanation: AGENTS.md loads automatically per session. Skills load only when triggered
+    and can contain executable scripts.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.2'
+  question: Which built-in skill saves tokens when writing commit messages?
+  options:
+    c: caveman-commit
+    a: learn-anything
+    b: cavecrew
+    d: caveman-compress
+  answer: c
+  explanation: caveman-commit produces compressed Conventional Commits messages with
+    ≤50 char subjects.
+  difficulty: 1
+  tags:
+  - application
+- id: '4.3'
+  question: When should you create a custom skill?
+  options:
+    a: After noticing the same pattern 3+ times
+    b: The first time you do any task
+    c: Only when requested by a teammate
+    d: Never - built-in skills cover everything
+  answer: a
+  explanation: 3x repetition rule prevents premature abstraction. First occurrence
+    may be one-off.
+  difficulty: 1
+  tags:
+  - procedure
+- id: '4.4'
+  question: Which skill type is best for a code review task?
+  options:
+    a: Flexible - requires judgment
+    b: Scripted - deterministic output
+    c: No skill needed
+    d: AGENTS.md only
+  answer: a
+  explanation: Code review requires judgment about correctness, architecture, and
+    design. Flexible (LLM-driven) is appropriate.
+  difficulty: 2
+  tags:
+  - application
+- id: '4.5'
+  question: What is the advantage of a hybrid skill?
+  options:
+    b: Script handles mechanical gates, LLM handles judgment
+    a: Only uses scripts
+    c: No LLM calls needed
+    d: Faster than any other approach
+  answer: b
+  explanation: 'Hybrid splits work: script runs deterministic checks (lint, typecheck),
+    LLM handles nuanced decisions.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.6'
+  question: Which hook would you use to block agent from modifying package.json?
+  options:
+    d: pre-tool (Write) with condition matching package.json
+    a: post-message
+    b: file-watcher
+    c: pre-commit
+  answer: d
+  explanation: pre-tool hook fires before tool execution. Condition on file path blocks
+    Write to protected files.
+  difficulty: 2
+  tags:
+  - application
+- id: '4.7'
+  question: What is the correct skill lifecycle order?
+  options:
+    b: Identify → Prototype → Formalize → Test → Publish → Monitor → Update → Retire
+    a: Publish → Test → Prototype → Identify
+    c: Formalize → Test → Identify → Publish
+    d: Prototype → Publish → Identify → Test
+  answer: b
+  explanation: Identify need first, then prototype, formalize, test, publish, monitor,
+    update, retire.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '4.8'
+  question: A team member proposes creating a skill for 'start the dev server.' Should
+    you?
+  options:
+    a: No - this is a one-command action. Inline or alias is fine.
+    b: Yes - every repeated action needs a skill
+    c: Yes - but make it scripted
+    d: No - skills can't run shell commands
+  answer: a
+  explanation: Starting a server is a single command. Skill overhead (creation, trigger)
+    unnecessary. Shell alias or package.json script is better.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '4.9'
+  question: Which is TRUE about scripted skills?
+  options:
+    c: They produce deterministic output but break on unexpected input
+    a: They handle edge cases better than flexible skills
+    b: They cost more tokens than flexible skills
+    d: They cannot run bash commands
+  answer: c
+  explanation: Scripted skills are deterministic (same input → same output) but break
+    on unexpected input. Flexible skills handle edge cases better.
+  difficulty: 3
+  tags:
+  - comparison
+- id: '4.10'
+  question: What should you check before publishing a skill?
+  options:
+    d: Dry-run + edge cases + readable errors + acceptable token cost + idempotent
+      + human escape hatch
+    a: Only that it works on happy path
+    b: That the skill name is memorable
+    c: That it matches AGENTS.md
+  answer: d
+  explanation: 'Quality checklist: dry-run, edge cases, error clarity, token cost,
+    idempotency, override capability. Happy path alone is insufficient.'
+  difficulty: 3
+  tags:
+  - procedure
+

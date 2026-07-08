@@ -1,0 +1,182 @@
+subject: "財務基礎 — 由零開始學理財（廣東話）"
+language: yue
+time_budget_hours: 30
+target_level: beginner
+domain: "personal-finance, money-management"
+prerequisites: []
+learning_objectives:
+  - "了解錢嘅本質、收入支出、現金流嘅基本概念"
+  - "掌握預算、銀行戶口、利息等日常理財工具"
+  - "明白通脹、風險回報、複利呢啲核心財務原理"
+  - "分辨股票、債券、基金、ETF 等投資工具嘅分別"
+  - "建立資產配置、退休規劃嘅基礎思維"
+  - "避開常見財務謬誤, 識破啲似是而非嘅投資陷阱"
+
+modules:
+  - id: 1
+    name: "乜嘢係錢?"
+    time_hours: 1.0
+    prerequisites: []
+    topics: [money-definition, three-functions, fiat-money, money-history, trust]
+
+  - id: 2
+    name: "收入 vs 支出"
+    time_hours: 1.0
+    prerequisites: [1]
+    topics: [income-types, expense-types, net-income, basic-accounting]
+
+  - id: 3
+    name: "儲蓄同現金流"
+    time_hours: 1.0
+    prerequisites: [2]
+    topics: [savings, cash-flow, emergency-fund, surplus]
+
+  - id: 4
+    name: "預算: 50/30/20 規則"
+    time_hours: 1.0
+    prerequisites: [3]
+    topics: [budgeting, 50-30-20, needs-wants-savings, tracking]
+
+  - id: 5
+    name: "銀行戶口: 往來/儲蓄/定期"
+    time_hours: 1.0
+    prerequisites: [4]
+    topics: [current-account, savings-account, fixed-deposit, account-types]
+
+  - id: 6
+    name: "利息(上): 單利同複利"
+    time_hours: 1.0
+    prerequisites: [5]
+    topics: [simple-interest, compound-interest, compound-vs-simple]
+
+  - id: 7
+    name: "利息(下): APR、APY 同實際利率"
+    time_hours: 1.0
+    prerequisites: [6]
+    topics: [apr, apy, ear, nominal-vs-effective, continuous-compounding]
+
+  - id: 8
+    name: "通脹: 錢越嚟越唔值錢"
+    time_hours: 1.0
+    prerequisites: [7]
+    topics: [inflation, cpi, real-return, purchasing-power, rule-of-72]
+
+  - id: 9
+    name: "風險(上): 定義同類型"
+    time_hours: 1.0
+    prerequisites: [8]
+    topics: [risk-definition, market-risk, credit-risk, liquidity-risk, inflation-risk]
+
+  - id: 10
+    name: "風險(下): 度量同 Sharpe"
+    time_hours: 1.0
+    prerequisites: [9]
+    topics: [variance, stddev, sharpe-ratio, risk-tolerance, diversification-effect]
+
+  - id: 11
+    name: "投資工具(上): 定存、貨幣市場、債"
+    time_hours: 1.0
+    prerequisites: [10]
+    topics: [deposit, money-market, t-bill, bond-overview]
+
+  - id: 12
+    name: "投資工具(下): 股、基金、ETF 概覽"
+    time_hours: 1.0
+    prerequisites: [11]
+    topics: [stock-overview, fund-overview, etf-overview, comparison]
+
+  - id: 13
+    name: "股票(上): 定義同市場"
+    time_hours: 1.0
+    prerequisites: [12]
+    topics: [equity-definition, common-vs-preferred, share-counts, market-cap, listing]
+
+  - id: 14
+    name: "股票(下): 估值 P/E 同股息"
+    time_hours: 1.0
+    prerequisites: [13]
+    topics: [eps, pe-ratio, forward-vs-trailing, dividend-yield, capital-gain]
+
+  - id: 15
+    name: "債券(上): 概念同結構"
+    time_hours: 1.0
+    prerequisites: [12]
+    topics: [bond-definition, face-value, coupon, maturity, issuer-types]
+
+  - id: 16
+    name: "債券(下): YTM、Duration 同信評"
+    time_hours: 1.0
+    prerequisites: [15]
+    topics: [ytm, current-yield, duration, convexity, credit-rating]
+
+  - id: 17
+    name: "基金: 概念同 NAV"
+    time_hours: 1.0
+    prerequisites: [12]
+    topics: [fund-definition, nav, fund-manager, load-fee, expense-ratio]
+
+  - id: 18
+    name: "ETF: 結構同優勢"
+    time_hours: 1.0
+    prerequisites: [17]
+    topics: [etf-structure, creation-redemption, tracking-error, etf-vs-fund]
+
+  - id: 19
+    name: "資產配置(上): 原理同 Correlation"
+    time_hours: 1.0
+    prerequisites: [18]
+    topics: [asset-allocation, correlation, expected-portfolio-return, diversification-math]
+
+  - id: 20
+    name: "資產配置(下): 策略同再平衡"
+    time_hours: 1.0
+    prerequisites: [19]
+    topics: [age-based-rule, strategic-vs-tactical, rebalancing, lifecycle]
+
+  - id: 21
+    name: "稅務(上): 薪俸稅同 MPF"
+    time_hours: 1.0
+    prerequisites: [2]
+    topics: [salary-tax, tax-bracket, standard-rate, mpf-basics, mpf-contribution]
+
+  - id: 22
+    name: "稅務(下): 利得稅同申報"
+    time_hours: 1.0
+    prerequisites: [21]
+    topics: [profits-tax, two-tier, capital-gain-tax, filing-basics]
+
+  - id: 23
+    name: "保險(上): 概念同人壽、醫療"
+    time_hours: 1.0
+    prerequisites: [1, 8]
+    topics: [insurance-principle, premium, life-insurance, medical-insurance, protection-vs-investment]
+
+  - id: 24
+    name: "保險(下): 危疾、年金同自願醫保"
+    time_hours: 1.0
+    prerequisites: [23]
+    topics: [critical-illness, annuity, vhis, when-to-buy]
+
+  - id: 25
+    name: "退休(上): 數字同 Annuity"
+    time_hours: 1.0
+    prerequisites: [20, 14, 16]
+    topics: [retirement-number, future-value-annuity, inflation-adjusted, mpf-projection]
+
+  - id: 26
+    name: "退休(下): 4% Rule、FIRE 同 MPF"
+    time_hours: 1.0
+    prerequisites: [25]
+    topics: [four-percent-rule, fire-intro, mpf-vs-personal, decumulation]
+
+  - id: 27
+    name: "常見財務謬誤(上): 認知 Bias"
+    time_hours: 1.0
+    prerequisites: [10, 26]
+    topics: [anchoring, confirmation-bias, overconfidence, availability]
+
+  - id: 28
+    name: "常見財務謬誤(下): 情緒、社會同 Scam"
+    time_hours: 1.0
+    prerequisites: [27]
+    topics: [loss-aversion, sunk-cost, herding, get-rich-quick-scam, ponzi-basics]

@@ -1,0 +1,110 @@
+- id: '11.1'
+  question: How do you trigger a CSS transition in React when state changes?
+  options:
+    b: Toggle a CSS class based on state
+    a: Call animate() function in useEffect
+    c: CSS transitions fire automatically on state change
+    d: Use setTimeout to apply styles
+  answer: b
+  explanation: State change → conditional className → element gets new class → CSS
+    transition interpolates between old/new property values.
+  difficulty: 1
+  tags:
+  - concept
+- id: '11.2'
+  question: Why can't CSS animate max-height from 0 to auto?
+  options:
+    c: auto is not a numeric value — CSS can't interpolate
+    a: Transitions don't work with max-height
+    b: CSS only animates opacity
+    d: It works — statement is false
+  answer: c
+  explanation: 'CSS transitions require numeric start/end values. auto is not numeric.
+    Use max-height: 500px (larger than actual content) or grid-template-rows transition.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.3'
+  question: What's needed for unmount animation in React?
+  options:
+    d: Exiting state to apply exit animation class, then remove after animation
+    a: Nothing — CSS handles all animations
+    b: Use setTimeout only
+    c: Use React's onUnmount prop
+  answer: d
+  explanation: 'React removes elements immediately — exit animation never plays. Pattern:
+    set ''exiting'' state → apply exit className → onAnimationEnd/delayed cleanup
+    removes element.'
+  difficulty: 2
+  tags:
+  - application
+- id: '11.4'
+  question: Which event fires when a CSS keyframe animation completes?
+  options:
+    c: onAnimationEnd
+    a: onTransitionEnd
+    b: onAnimationComplete
+    d: onFinish
+  answer: c
+  explanation: onAnimationEnd fires when a CSS animation (@keyframes) finishes. onTransitionEnd
+    fires for CSS transitions. Don't confuse them.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.5'
+  question: Which CSS properties are GPU-composited (safe to animate)?
+  options:
+    a: transform, opacity
+    b: width, height
+    c: margin, padding
+    d: font-size, line-height
+  answer: a
+  explanation: transform and opacity are composited on GPU — no layout recalc. Width/height/margin/padding
+    trigger layout reflow every frame.
+  difficulty: 1
+  tags:
+  - concept
+- id: '11.6'
+  question: When should you use Framer Motion over CSS animations?
+  options:
+    d: For gesture-driven animations (drag, spring physics)
+    a: For simple enter/exit transitions
+    b: For hover effects
+    c: Never — CSS is always better
+  answer: d
+  explanation: CSS for declarative motion (transitions, keyframes). Framer Motion
+    for gesture-driven, physics-based, or shared layout animations that need JavaScript
+    coordination.
+  difficulty: 2
+  tags:
+  - scenario
+- question: Which pairing coordinates a CSS transition with React state correctly?
+  options:
+    b: Toggling a class via state and letting CSS handle interpolation
+    a: Animating by mutating styles in a loop
+    c: Recreating the DOM node each frame
+    d: Disabling transitions in StrictMode
+  answer: b
+  explanation: React owns the state flip; CSS owns the interpolation. This split keeps
+    motion declarative and off the main thread.
+  difficulty: 1
+  tags:
+  - concept
+  id: '11.7'
+- id: '11.8'
+  question: A modal should animate in on mount without extra libraries. Which approach
+    uses the View Transitions API correctly?
+  options:
+    a: document.startViewTransition(() => setModalOpen(true)) letting the browser
+      crossfade old and new UI
+    b: Wrapping the modal in <Transition> from react-dom
+    c: Adding will-change to every element
+    d: 'Setting animation-delay: -1s'
+  answer: a
+  explanation: startViewTransition snapshots the old state, applies the update, and
+    animates to the new state — mount animations with zero per-frame JS.
+  difficulty: 3
+  tags:
+  - scenario
+  - concept
+

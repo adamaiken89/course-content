@@ -1,0 +1,110 @@
+- id: "19.1"
+  question: "Which shape best describes autosave?"
+  options:
+    a: "Save every keystroke as fast as possible"
+    b: "Throttle the wire by pausing between saves"
+    c: "A debounced write into the draft store plus persistence"
+    d: "A periodic full form snapshot"
+  answer: c
+  explanation: "Keystrokes coalesce into one settled value after the pause, the draft lands in the draft store + localStorage (m5), and status flips saving→saved."
+  difficulty: 1
+  tags: [terminology]
+- id: "19.2"
+  question: "Why must autosave never write into the query cache?"
+  options:
+    a: "Drafts are client-authored truth; the cache holds server truth and would serve an uncommitted draft as committed"
+    b: "The query cache is read-only by browser design"
+    c: "Zustand cannot share storage with the cache"
+    d: "LocalStorage is faster than the cache"
+  answer: a
+  explanation: "The m12 cache must only claim what the server can back. Drafts belong to the draft store; only the engine's success (m14) invalidates server views."
+  difficulty: 2
+  tags: [concept, comparison]
+- id: "19.3"
+  question: "The offline queue flush must send a create-application before the cohort-choice that references its id. What guarantees this?"
+  options:
+    a: "Alphabetical ordering of itemIds"
+    b: "A topological sort over the payload parent references — dependency order, not arrival order"
+    c: "The online event ordering"
+    d: "Sending everything in the same fetch"
+  answer: b
+  explanation: "Parents must land before children (m13); dependencySort runs first, then the keyed writes flush. Arrival order alone would corrupt the linkage."
+  difficulty: 2
+  tags: [concept, process]
+- id: "19.4"
+  question: "A queue flush replays after a tab crash. What prevents double enrollment?"
+  options:
+    a: "The offline stripe disables submit"
+    b: "The queue only runs on the first tab"
+    c: "A debounce on the flush"
+    d: "Dedupe by the runId:itemId idempotency key the server honours"
+  answer: d
+  explanation: "The persisted queue replays the same keyed intent; m17 idempotency requires the backend to dedupe on that key — eventually exactly once."
+  difficulty: 3
+  tags: [concept, calculation]
+- id: "19.5"
+  question: "Undo must roll back exactly the last paragraph typed, not the whole morning. Which structure enables that?"
+  options:
+    a: "A stack of whole-form snapshots"
+    b: "Re-fetching the form from the server"
+    c: "A command stack where each command's invert closes over the pre-action value"
+    d: "Clearing the form and restoring localStorage"
+  answer: c
+  explanation: "The invert captures what the action replaced, so the stack rolls back one action's worth. Snapshots can only jump to one past instant."
+  difficulty: 2
+  tags: [concept]
+- id: "19.6"
+  question: "Per the State Decision, where does the undo/redo stack live and why?"
+  options:
+    a: "Module-local command list — scoped to the current draft, frequent, and must not survive navigation"
+    b: "In zustand so other screens can jump to any undo state"
+    c: "In the query cache beside the draft"
+    d: "In a BroadcastChannel for cross-tab undo"
+  answer: a
+  explanation: "Undo context dies with the draft screen; making it global adds cross-screen coupling for no consumer. The offline queue, by contrast, must persist to survive tab close."
+  difficulty: 2
+  tags: [concept, comparison]
+- id: "19.7"
+  question: "Two tabs edit the same applicant. A tab-B message arrives with a lower serial than the local tab's last write. What must happen?"
+  options:
+    a: "Hydrate anyway and let the older draft win"
+    b: "Reject the stale hydrate — last-writer-wins by the higher serial, like m17"
+    c: "Merge both drafts field by field with no version"
+    d: "Prompt the user to pick a winner every time"
+  answer: b
+  explanation: "The per-tab serial is m17 version arithmetic applied across tabs: the newer writer wins, the stale message is dropped. The m17 dirty-merge covers unsaved local bytes."
+  difficulty: 3
+  tags: [scenario, comparison]
+- id: "19.8"
+  question: "Why is the submit latch an ephemeral lease instead of a persisted lock?"
+  options:
+    a: "Ephemeral locks are cheaper to acquire"
+    b: "The backend requires per-tab locks"
+    c: "BroadcastChannel only supports ephemeral messages"
+    d: "Persisted locks never release and would deadlock after a stale tab leaves"
+  answer: d
+  explanation: "Only one tab must submit at a time, but the ticket dies with the tab — a lease with a timeout plus unload release. The offline queue persists because it is storage; the latch must not."
+  difficulty: 2
+  tags: [concept, scenario]
+- id: "19.9"
+  question: "In the micro-assembly, the reviewer changes a draft's program after the batch submit began, mid-flight with an option refetch. What makes it safe?"
+  options:
+    a: "The batch engine ignores the change"
+    b: "The submit happens before the change is read"
+    c: "The request-id guard (m17) drops the stale option resolve and re-fetches for the new key"
+    d: "The queued write waits for the refetch"
+  answer: c
+  explanation: "m13 keeps options live; the m17 request-id guard means a superseded option list can never paint. The loop stays correct under mid-flight user edits."
+  difficulty: 3
+  tags: [scenario]
+- id: "19.10"
+  question: "One batch item fails idempotently in the micro-assembly. Which line of the loop finishes the job and what does it reuse?"
+  options:
+    a: "resubmit(it, run.key) — same idempotency key, so the replay dedupes and only the missing item lands"
+    b: "Restart the import with a new file"
+    c: "Clear the run ledger and resubmit everything"
+    d: "Refresh the page and rely on the autosave"
+  answer: a
+  explanation: "The per-item resubmit under the original run.key is the m14 + m17 contract — the course composes by each module handing to the next through agreed seams."
+  difficulty: 2
+  tags: [terminology, scenario]

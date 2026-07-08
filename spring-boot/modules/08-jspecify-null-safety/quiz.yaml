@@ -1,0 +1,119 @@
+- id: "8.1"
+  question: "Why did Boot 4 deprecate org.springframework.lang annotations in favor of JSpecify?"
+  options:
+    a: "They were removed for licensing reasons"
+    b: "JSpecify annotations are type-use and express nullness on generics and arrays"
+    c: "JSpecify annotations run faster at runtime"
+    d: "The old annotations only worked with Kotlin"
+  answer: b
+  explanation: "org.springframework.lang used JSR-305 style declaration-level markers while JSpecify attaches the annotation to the exact type position"
+  difficulty: 1
+  tags: [comparison]
+
+- id: "8.2"
+  question: "Which expression can JSpecify express that old-style declaration annotations could not?"
+  options:
+    a: "@Nullable String name"
+    b: "final String name"
+    c: "List<@Nullable String> tags"
+    d: "String name equals null"
+  answer: c
+  explanation: "The type-use annotation on the generic argument distinguishes a nullable element from a nullable container, which type-level markers cannot do"
+  difficulty: 2
+  tags: [concept]
+
+- id: "8.3"
+  question: "Of the four JSpecify annotations, which one sets the package-wide non-null default?"
+  options:
+    a: "@NullMarked"
+    b: "@Nullable"
+    c: "@NonNull"
+    d: "@NullUnmarked"
+  answer: a
+  explanation: "@NullMarked in package-info.java makes every type in the package non-null by default with @Nullable as the explicit opt-out"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "8.4"
+  question: "Where does JSpecify place the annotation on a method return type?"
+  options:
+    a: "After the return keyword inside the body"
+    b: "After the modifier and immediately before the type"
+    c: "Before the method name"
+    d: "On the import statement"
+  answer: b
+  explanation: "The migrated form is public @Nullable Account find with the annotation after public and right before the type"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "8.5"
+  question: "A package has no package-info.java at all. What nullness does its code have by default?"
+  options:
+    a: "Non-null everywhere"
+    b: "Nullable everywhere"
+    c: "Non-null only for annotated types"
+    d: "Unspecified, so tools cannot assume either side"
+  answer: d
+  explanation: "A package without @NullMarked is unspecified rather than non-null, so the checker stays conservative about its types"
+  difficulty: 2
+  tags: [concept]
+
+- id: "8.6"
+  question: "How is NullAway integrated into a Spring Boot 4 Maven build?"
+  options:
+    a: "As a JUnit test runner"
+    b: "As a runtime aspect"
+    c: "As an Error Prone plugin running at compile time"
+    d: "As a Spring Boot auto-configuration"
+  answer: c
+  explanation: "NullAway is an Error Prone check wired into the compiler plugin that fails the build on nullability violations"
+  difficulty: 2
+  tags: [concept]
+
+- id: "8.7"
+  question: "After the upgrade a Spring Framework method you call is now @Nullable and your code dereferences its return. What happens first in a NullAway build?"
+  options:
+    a: "The build fails at compile time on the dereference"
+    b: "The JVM logs a warning"
+    c: "A runtime NPE is thrown on the first call"
+    d: "Only Kotlin callers see the mismatch"
+  answer: a
+  explanation: "NullAway converts the nullability mismatch into a compile error so the NPE never ships"
+  difficulty: 2
+  tags: [scenario]
+
+- id: "8.8"
+  question: "A Kotlin caller assigns a JSpecify @Nullable Java return to a non-null Kotlin String. What happens?"
+  options:
+    a: "Kotlin compiles it as non-null and relies on runtime checks"
+    b: "Kotlin ignores annotations from Java entirely"
+    c: "Kotlin maps @Nullable to the nullable type and fails the build on the mismatch"
+    d: "Only the Java compiler can catch the issue"
+  answer: c
+  explanation: "Kotlin compilers treat JSpecify annotations as the null-safety contract and reject the mismatched assignment at compile time"
+  difficulty: 3
+  tags: [scenario]
+
+- id: "8.9"
+  question: "Under @NullMarked, when is Optional the better return than a plain @Nullable value?"
+  options:
+    a: "Always, because the spec bans null"
+    b: "When the caller should never see absence"
+    c: "When the caller composes absence with map and flatMap chains"
+    d: "Only for record components"
+  answer: c
+  explanation: "Optional suits container semantics where absence flows through map and flatMap while plain nullable fits a one-off lookup"
+  difficulty: 3
+  tags: [comparison]
+
+- id: "8.10"
+  question: "Spring re-annotated its own code across Boot 4. What is the practical consequence for your call sites?"
+  options:
+    a: "Nothing changes because annotations are invisible at runtime"
+    b: "Your code must switch back to the deprecated package"
+    c: "Only Kotlin callers need to change"
+    d: "Your signatures must agree with the re-annotated Spring ones or the build flags mismatches"
+  answer: d
+  explanation: "Methods you call may now be nullable where they were not, so agreeing signatures are required for NullAway and Kotlin builds to pass"
+  difficulty: 1
+  tags: [scenario]

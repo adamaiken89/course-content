@@ -1,0 +1,105 @@
+subject: "PostgreSQL: Advanced SQL for OLTP"
+language: en
+time_budget_hours: 25
+target_level: intermediate
+domain: "postgres-sql"
+prerequisites: ["Basic SQL (SELECT/JOIN/GROUP BY)", "Some experience with a relational DB"]
+learning_objectives:
+  - "Write modern Postgres SQL for complex OLTP queries: CTEs, recursion, window functions, advanced aggregation"
+  - "Use PG16-18 features (MERGE, UUIDv7, ON CONFLICT, incremental sorts) to write correct, performant DML"
+  - "Read EXPLAIN ANALYZE output and identify the root cause of slow queries"
+  - "Design effective indexes (B-tree variants, GIN, BRIN) from how the planner actually uses them"
+  - "Explain how MVCC and row locking shape OLTP query and index choices"
+# Depth: standard (18 modules, ~25h). Postgres 18 stable current; PG 19 preview covered in module 17.
+
+modules:
+  - id: 1
+    name: "Postgres Landscape: OLTP, MVCC, and the psql Workbench"
+    time_hours: 1.2
+    prerequisites: []
+    topics: ["Postgres version line (16/17/18/19)", "OLTP workload shape", "psql workflow and \\d commands", "MVCC in one picture"]
+  - id: 2
+    name: "Query Execution Pipeline: From Text to Result"
+    time_hours: 1.1
+    prerequisites: [1]
+    topics: ["parse / rewrite / plan / execute", "SQL logical processing order", "join, group, having, window phases", "row estimation and why it matters"]
+  - id: 3
+    name: "CTEs and Recursive Queries"
+    time_hours: 1.4
+    prerequisites: [2]
+    topics: ["WITH basics", "RECURSIVE pattern", "MATERIALIZED / NOT MATERIALIZED", "data-modifying CTEs"]
+  - id: 4
+    name: "Window Functions: Ranking, Frames, and Running Totals"
+    time_hours: 1.5
+    prerequisites: [2, 3]
+    topics: ["PARTITION BY / ORDER BY", "frame clauses ROWS / RANGE", "ROW_NUMBER / RANK / DENSE_RANK", "LEAD / LAG / FIRST_VALUE / NTH_VALUE", "WINDOW clause reuse"]
+  - id: 5
+    name: "Advanced Aggregation: FILTER, Sets, and Ordering"
+    time_hours: 1.2
+    prerequisites: [4]
+    topics: ["FILTER clause", "GROUPING SETS / ROLLUP / CUBE", "GROUPING() function", "array_agg / string_agg / percentile", "HAVING vs FILTER"]
+  - id: 6
+    name: "JSONB for OLTP: Query and Index It"
+    time_hours: 1.4
+    prerequisites: [3]
+    topics: ["JSONB operators ->> #> @> ?", "GIN index on jsonb", "jsonpath @@ and @?", "generated columns for jsonb", "when JSONB over relational"]
+  - id: 7
+    name: "Upserts: ON CONFLICT and MERGE (PG15-18)"
+    time_hours: 1.5
+    prerequisites: [2]
+    topics: ["INSERT ... ON CONFLICT DO UPDATE", "ON CONFLICT DO NOTHING", "RETURNING", "MERGE statement", "MERGE vs ON CONFLICT tradeoffs", "ON CONFLICT DO SELECT preview (PG19)"]
+  - id: 8
+    name: "LATERAL: Row-by-Row Subqueries and Correlated Setups"
+    time_hours: 1.3
+    prerequisites: [4]
+    topics: ["what LATERAL unlocks", "CROSS JOIN LATERAL", "apply vs correlating subqueries", "unnest + subquery patterns", "function calls per row"]
+  - id: 9
+    name: "Transactions, Locking, and Concurrency for OLTP"
+    time_hours: 1.5
+    prerequisites: [7]
+    topics: ["ACID and isolation levels", "MVCC visibility and bloat", "row locks FOR UPDATE", "SKIP LOCKED job queues", "advisory locks", "deadlocks and retry"]
+  - id: 10
+    name: "Reading EXPLAIN ANALYZE"
+    time_hours: 1.4
+    prerequisites: [2]
+    topics: ["EXPLAIN vs EXPLAIN ANALYZE vs VERBOSE", "scan nodes seq / index / bitmap", "join nodes", "costs rows vs actual", "BUFFERS and I/O", "PG17 memory reporting"]
+  - id: 11
+    name: "B-tree Index Internals"
+    time_hours: 1.3
+    prerequisites: [10]
+    topics: ["how B-tree stores keys", "page + pointer structure", "why lookup is O(log n)", "locality and cache", "duplicate keys and heap fetch", "index vs heap"]
+  - id: 12
+    name: "Index Design: Covering, Partial, Expression"
+    time_hours: 1.5
+    prerequisites: [11]
+    topics: ["composite index column order", "INCLUDE covering indexes (PG11)", "index-only scans", "partial indexes", "expression indexes", "unique indexes and NULLS NOT DISTINCT", "operator classes"]
+  - id: 13
+    name: "Beyond B-tree: GIN, GiST, BRIN, Hash"
+    time_hours: 1.4
+    prerequisites: [12]
+    topics: ["GIN for jsonb / arrays / FTS", "tsvector full-text search", "pg_trgm fuzzy search", "GiST for ranges / nearest-neighbor", "BRIN for huge sequential data", "hash index niche", "index type selection matrix"]
+  - id: 14
+    name: "Tuning Joins and Sorts"
+    time_hours: 1.5
+    prerequisites: [10, 12]
+    topics: ["nested loop vs hash vs merge", "join ordering and estimates", "work_mem and hash spills", "bitmap heap scans", "PG16 parallel full joins", "PG17 incremental sorts", "PG18 sort and planning improvements"]
+  - id: 15
+    name: "Statistics, Vacuum, and Planner Confidence"
+    time_hours: 1.4
+    prerequisites: [14]
+    topics: ["ANALYZE and histograms", "correlation and extended stats", "dead tuples and bloat", "autovacuum", "PG19 parallel autovacuum preview", "when plan is wrong despite good indexes"]
+  - id: 16
+    name: "Postgres 17 Features You Can Use Now"
+    time_hours: 1.2
+    prerequisites: [7, 14]
+    topics: ["incremental sorts in the wild", "EXPLAIN memory reporting", "NOT VALID check in partition pruning", "MERGE RETURNING", "vacuum improvements", "speed-ups for COPY / fsync"]
+  - id: 17
+    name: "Postgres 18 and the 19 Preview"
+    time_hours: 1.3
+    prerequisites: [16]
+    topics: ["UUIDv7 / UUIDv8 and index-friendly keys", "core MERGE implementation", "ON CONFLICT DO SELECT (PG19)", "REPACK vs VACUUM FULL (PG19)", "GROUP BY ALL (PG19)", "parallel autovacuum (PG19)", "SQL/PGQ property graphs (PG19)"]
+  - id: 18
+    name: "Capstone: A Tuned OLTP Workload End to End"
+    time_hours: 1.5
+    prerequisites: [15, 16, 17]
+    topics: ["schema for an order/ledger app", "write complex reporting SQL", "index the hot paths", "EXPLAIN-driven tuning loop", "review all learning objectives"]

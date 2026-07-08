@@ -1,0 +1,128 @@
+- id: '15.1'
+  question: 'According to Self-Determination Theory, the three basic needs for intrinsic motivation are:'
+  options:
+    a: Autonomy, competence, relatedness
+    b: Rewards, punishment, feedback
+    c: Speed, accuracy, efficiency
+    d: Memory, attention, focus
+  answer: a
+  explanation: Autonomy (choice), competence (mastery), and relatedness (connection) drive intrinsic motivation.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '15.2'
+  question: 'The overjustification effect occurs when:'
+  options:
+    b: External rewards undermine existing intrinsic motivation
+    a: Too much praise reduces motivation
+    c: All motivation is extrinsic
+    d: Intrinsic motivation is stronger than extrinsic
+  answer: b
+  explanation: Rewarding an already-intrinsic activity can shift attribution from 'I do this because I
+    enjoy it' to 'I do this for the reward.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '15.3'
+  question: 'According to the Yerkes-Dodson law, performance peaks at:'
+  options:
+    c: Moderate arousal
+    a: Very low arousal
+    b: Very high arousal
+    d: Arousal level doesn't matter
+  answer: c
+  explanation: Moderate arousal (focused, alert) produces peak performance. Too low = bored, too high
+    = anxious.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '15.4'
+  question: 'A student is highly anxious before a test and blanks on answers they studied. This is best
+    explained by:'
+  options:
+    d: Arousal exceeded optimal level, impairing retrieval
+    a: They didn't study enough
+    b: Test anxiety is unrelated to performance
+    c: They should study more
+  answer: d
+  explanation: High anxiety pushes arousal above optimal, impairing executive function and retrieval (Yerkes-Dodson).
+  difficulty: 2
+  tags:
+  - scenario
+- id: '15.5'
+  question: How does curiosity enhance learning at the neural level?
+  options:
+    a: Dopamine release during curiosity primes the hippocampus for encoding
+    b: It increases blood flow
+    c: It reduces sleep need
+    d: It only affects attention
+  answer: a
+  explanation: Curiosity triggers dopamine release, which enhances hippocampal encoding — including for
+    incidental information.
+  difficulty: 2
+  tags:
+  - concept
+- id: '15.6'
+  question: Which strategy can build motivation for a topic you find uninteresting?
+  options:
+    b: Connect the topic to a personal goal that matters to you
+    a: Wait until you feel inspired
+    c: Force yourself to study longer
+    d: Avoid the topic entirely
+  answer: b
+  explanation: Connecting to personal goals creates intrinsic relevance. Waiting for inspiration is passive
+    and unreliable.
+  difficulty: 2
+  tags:
+  - application
+- id: '15.7'
+  question: Complex tasks have a ____ optimal arousal point compared to simple tasks.
+  options:
+    c: Lower
+    a: Higher
+    b: Same
+    d: Unrelated
+  answer: c
+  explanation: Complex cognitive tasks are more easily disrupted by high arousal. The optimal point is
+    lower.
+  difficulty: 2
+  tags:
+  - concept
+- id: '15.8'
+  question: 'A student wants to build a study habit. The most evidence-based first step is:'
+  options:
+    d: Start with 5 minutes and build momentum
+    a: Wait for motivation to strike
+    b: Plan a 4-hour study session
+    c: Buy new study materials
+  answer: d
+  explanation: Action precedes motivation. Starting small creates momentum and builds the habit loop.
+  difficulty: 2
+  tags:
+  - application
+- id: '15.9'
+  question: Your study group provides accountability and shared goals. This supports which SDT need?
+  options:
+    a: Relatedness
+    b: Autonomy
+    c: Competence
+    d: None
+  answer: a
+  explanation: Relatedness — connection to others, shared learning experience, social accountability.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '15.10'
+  question: 'A student learns a dense history chapter better after watching a curiosity-provoking documentary
+    that creates knowledge gaps. This works because:'
+  options:
+    b: Knowledge gaps create curiosity, which primes the brain for encoding
+    a: Documentaries are more interesting
+    c: History is easier after visuals
+    d: Any video format improves learning
+  answer: b
+  explanation: Curiosity from knowledge gaps triggers dopamine release, enhancing encoding of subsequent
+    information.
+  difficulty: 3
+  tags:
+  - scenario

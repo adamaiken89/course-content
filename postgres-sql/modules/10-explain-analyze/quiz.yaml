@@ -1,0 +1,119 @@
+- id: "10.1"
+  question: "Which EXPLAIN form actually runs the query and reports measured time and rows?"
+  options:
+    a: "EXPLAIN ANALYZE"
+    b: "EXPLAIN"
+    c: "EXPLAIN VERBOSE"
+    d: "EXPLAIN (FORMAT JSON)"
+  answer: a
+  explanation: "EXPLAIN ANALYZE executes the query and prints actual time, actual rows, and loops per node. Plain EXPLAIN only plans and estimates."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "10.2"
+  question: "In plain EXPLAIN output, the `rows` value on a node is best described as what?"
+  options:
+    a: "The measured number of rows the node returned"
+    b: "The physical row count of the underlying table"
+    c: "The planner's estimate from table statistics"
+    d: "The number of rows the client consumed"
+  answer: c
+  explanation: "Without ANALYZE, rows is an ESTIMATE the planner derived from pg_statistic. Disagreement between estimate and actual is the usual root of bad join/scan choices."
+  difficulty: 1
+  tags: [concept]
+
+- id: "10.3"
+  question: "Which scan node reads a whole table page by page?"
+  options:
+    a: "Index Only Scan"
+    b: "Bitmap Heap Scan"
+    c: "Index Scan"
+    d: "Seq Scan"
+  answer: d
+  explanation: "Seq Scan = sequential scan of the whole relation. It can be the right choice for tiny tables or when the query matches a large fraction of rows."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "10.4"
+  question: "Which node turns an index's candidate row locations into an ordered set of heap pages, then fetches each page once?"
+  options:
+    a: "Index Scan"
+    b: "Bitmap Heap Scan"
+    c: "Nested Loop"
+    d: "Materialize"
+  answer: b
+  explanation: "The pair Bitmap Index Scan (produce page bitmap) + Bitmap Heap Scan (fetch pages once in order) avoids re-reading a heap page many times."
+  difficulty: 1
+  tags: [concept]
+
+- id: "10.5"
+  question: "Which join node builds an in-memory structure over one input and probes it with the other?"
+  options:
+    a: "Nested Loop"
+    b: "Merge Join"
+    c: "Hash Join"
+    d: "Materialize"
+  answer: c
+  explanation: "Hash Join builds a hash table over the inner (usually smaller) relation and probes each outer row. It needs no index and no pre-sorted input."
+  difficulty: 2
+  tags: [concept]
+
+- id: "10.6"
+  question: "A plan node shows `loops=10` and `actual time=0.5..0.7`. What is the right way to read its wall-clock contribution?"
+  options:
+    a: "Multiply the per-loop time by 10 for a roughly total cost"
+    b: "Divide the per-loop time by 10"
+    c: "Ignore loops; time is already total"
+    d: "Re-run with VERBOSE, which prints totals"
+  answer: a
+  explanation: "Actual times are per-loop averages. With loops=10 the node really contributed about 5..7 ms. Newcomers skip the multiplier and mis-tune the wrong node."
+  difficulty: 2
+  tags: [calculation]
+
+- id: "10.7"
+  question: "A condition listed under `Filter:` instead of `Index Cond:` means what?"
+  options:
+    a: "The index fully satisfied the condition"
+    b: "The planner ignored the table entirely"
+    c: "The condition is pushed into a foreign server"
+    d: "The condition is applied after the row is fetched; the index could not fully decide it"
+  answer: d
+  explanation: "Index Cond rows were found via the index; Filter rows are re-checked after being pulled from the heap, often because the operator or expression is not index-supported."
+  difficulty: 2
+  tags: [concept]
+
+- id: "10.8"
+  question: "Which PG17 EXPLAIN option reports how much optimizer memory each node planned to use?"
+  options:
+    a: "SERIALIZE"
+    b: "MEMORY"
+    c: "BUFFERS"
+    d: "TIMING"
+  answer: b
+  explanation: "EXPLAIN (MEMORY) adds per-node optimizer memory accounting, useful when a plan is oddly subdivided because the optimizer trimmed it to fit its budget."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "10.9"
+  question: "A slow query shows a Seq Scan with a `Filter:` on an indexed column. Put the triage steps in order."
+  options:
+    a: "Measure with ANALYZE+BUFFERS, find the hot node, decide Filter vs Index Cond, fix stats or index, re-measure"
+    b: "Add a new index, re-run, hope it helps"
+    c: "Raise work_mem globally, restart, verify"
+    d: "Rewrite the query with subselects, then measure once"
+  answer: a
+  explanation: "Always measure first, then reason from the plan. Forcing an index (b) or global knobs (c) masks causes; measurement prevents guessing."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "10.10"
+  question: "Which statement about EXPLAIN ANALYZE side effects is true?"
+  options:
+    a: "It never executes the query, only plans it"
+    b: "It executes SELECTs but never changes data"
+    c: "It executes the query, including any writes inside it (DML in CTEs, UPDATE, DELETE)"
+    d: "It rolls back any changes it made"
+  answer: c
+  explanation: "EXPLAIN ANALYZE runs the plan to completion. Writes inside it really happen — EXPLAIN ANALYZE UPDATE modifies rows. Use a rolled-back transaction or a replica for production probes."
+  difficulty: 3
+  tags: [scenario]

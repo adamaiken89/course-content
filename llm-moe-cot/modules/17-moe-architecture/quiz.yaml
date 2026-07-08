@@ -1,0 +1,101 @@
+- id: '17.1'
+  question: MoE layer 入面嘅 router network 計算啲乜？
+  options:
+    d: Expert logits——experts 上嘅概率分佈
+    a: Tokens 之間嘅 attention scores
+    b: 每一層嘅 importance weights
+    c: Loss 對 inputs 嘅 gradient
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '17.2'
+  question: 喺 token-choice routing，邊個揀 expert？
+  options:
+    b: 每個 token 揀佢嘅 top-k experts
+    a: 每個 expert 揀 top-k tokens
+    c: 中央 scheduler 分配 tokens 俾 experts
+    d: Experts 係隨機分配
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '17.3'
+  question: Expert-choice 比 token-choice routing 嘅主要優勢係乜？
+  options:
+    b: 零 load imbalance——每個 expert 得到剛好 capacity 咁多 tokens
+    a: 較低記憶體用量
+    c: 更快訓練收斂
+    d: 唔需要 router network
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '17.4'
+  question: 超過 expert capacity 嘅 tokens 會點？
+  options:
+    c: 佢哋被 drop——淨係經過 residual connection
+    a: 佢哋被路由去另一個 expert
+    b: 佢哋被儲存喺 buffer 等下一 batch
+    d: 佢哋令 expert 動態擴張
+  answer: c
+  difficulty: 2
+  tags: []
+- id: '17.5'
+  question: 點解 Shazeer 2017 喺訓練時加 noise 落 router logits？
+  options:
+    d: 鼓勵 decision boundaries 附近嘅 exploration 嚟達致 load balance
+    a: 改善 softmax 嘅數值穩定性
+    b: 實現 differential privacy
+    c: 增加 model capacity
+  answer: d
+  difficulty: 2
+  tags: []
+- id: '17.6'
+  question: Switch Transformer 用邊種 routing 配置？
+  options:
+    a: Top-1 with up to 2048 experts
+    b: Top-2 with 8 experts
+    c: Expert-choice with 128 experts
+    d: Top-8 with 256 experts
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '17.7'
+  question: 如果 capacity_factor = 1.25，100 個 tokens，E = 4，每個 expert 嘅 capacity 係幾多？
+  options:
+    b: 32 tokens
+    a: 25 tokens
+    c: 100 tokens
+    d: 125 tokens
+  answer: b
+  difficulty: 2
+  tags: []
+- id: '17.8'
+  question: Shared expert (好似 DeepSeekMoE) 嘅目的係乜？
+  options:
+    a: 捕捉所有 tokens 都需要嘅 common knowledge；routed experts 做專門化
+    b: 處理無 routed expert 想要嘅 tokens
+    c: 減少需要嘅 routed experts 數量
+    d: 透過 caching 改善推論速度
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '17.9'
+  question: 訓練時嘅 Expert dropout 幫助防止：
+  options:
+    a: Expert co-adaptation——experts 依賴彼此嘅輸出
+    b: Router 對細數據集 overfitting
+    c: 深層嘅 vanishing gradients
+    d: Fine-tuning 時嘅 catastrophic forgetting
+  answer: a
+  difficulty: 2
+  tags: []
+- id: '17.10'
+  question: 同 top-1 routing 比較，top-2 routing：
+  options:
+    c: 提高質素但每個 token 嘅 expert compute 加倍
+    a: 減少每個 token 嘅運算成本
+    b: 消除對 capacity factor 嘅需要
+    d: 需要更少總 experts
+  answer: c
+  difficulty: 2
+  tags: []
+

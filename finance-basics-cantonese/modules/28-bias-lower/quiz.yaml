@@ -1,0 +1,135 @@
+- id: '28.1'
+  question: Loss Aversion 嘅 Prospect Theory?
+  options:
+    a: 賺蝕感覺一樣
+    b: 蝕 $100 嘅痛感 2-2.5x 賺 $100 嘅快樂
+    c: 賺錢感覺更強
+    d: 完全無感覺
+  answer: b
+  explanation: 'Kahneman & Tversky 發現蝕嘅感覺強過賺, 比例約 2-2.5:1。投資表現: 贏嘅倉短, 輸嘅倉長。'
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '28.2'
+  question: Sunk Cost 謬誤投資例子?
+  options:
+    a: 壞 project 加碼因為已經投資
+    b: 買 ETF
+    c: 止蝕
+    d: 分散投資
+  answer: a
+  explanation: 'Sunk Cost = 因為已經投資所以繼續投資, 即使現時理性分析唔應該。關鍵: 過去唔影響未來, 應該由零分析。'
+  difficulty: 1
+  tags:
+  - terminology
+  - scenario
+- id: '28.3'
+  question: Herding 羊群效應表現?
+  options:
+    a: 長期持有
+    b: 獨立研究
+    c: FOMO 入市, FUD 出市, 跟 KOL 買
+    d: 分散
+  answer: c
+  explanation: Herding = 跟風別人決策。1999 科網、2008 樓市、2021 GME 全部羊群效應放大。社交媒體進一步放大。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '28.4'
+  question: Ponzi Scheme 嘅運作?
+  options:
+    a: IPO 上市集資
+    b: 政府發行債券
+    c: 真實業務盈利派息
+    d: 用後期投資者嘅錢付前期回報, 無真實業務
+  answer: d
+  explanation: 'Ponzi = 用後期投資者嘅錢付前期「回報」, 冇真實業務。例子: Madoff ($65B), OneCoin ($4B), PlusToken
+    (中國)。後加入者全蝕。'
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '28.5'
+  question: Pump and Dump 流程?
+  options:
+    a: KOL pump 細價股, 散戶接火棒, KOL 散貨
+    b: 政府監管
+    c: IPO 招股
+    d: 公司真實成長
+  answer: a
+  explanation: Pump and Dump = KOL / 群組 pump 細價股, 散戶接火棒, KOL 散貨。散戶 80%+ 蝕底。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '28.6'
+  question: 避開 Loss Aversion 嘅方法?
+  options:
+    a: 預先定止蝕位, Rebalance 規則, 問『會唔會今日再買』
+    b: 加大注碼
+    c: 唔睇組合
+    d: 等返家鄉先賣
+  answer: a
+  explanation: '避開 Loss Aversion: (1) 預先定止蝕, (2) 每年 1 次 Rebalance, (3) 跌後問「會唔會今日再買」,
+    唔會就賣。'
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '28.7'
+  question: 避開 Sunk Cost 嘅方法?
+  options:
+    a: 繼續加碼
+    b: 由零分析, 問『如果今日先有呢個倉, 會唔會再投』
+    c: 等返家鄉
+    d: 睇過去蝕幾多
+  answer: b
+  explanation: 由零分析, 過去蝕幾多唔影響未來決策。應該睇「如果今日先有呢個倉」, 唔會就賣。
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '28.8'
+  question: 以下邊個係 Scam 訊號?
+  options:
+    a: SFC 持牌
+    b: 低費 ETF
+    c: 保本 + 高回報 + 限時優惠 + Insider Info
+    d: 分散投資
+  answer: c
+  explanation: 'Scam 訊號: (1) 保本高回報 (唔可能), (2) 限時壓力銷售, (3) Insider Info 多數假, (4) 不透明策略。應該查
+    SFC 持牌名單。'
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '28.9'
+  question: 查香港投資公司/個人持牌嘅官方渠道?
+  options:
+    a: 朋友介紹
+    b: 廣告
+    c: Google 搜尋
+    d: SFC 持牌人登記冊 (https://www.sfc.hk/)
+  answer: d
+  explanation: SFC 持牌人登記冊係官方渠道, 任何投資前必查。香港法例要求金融服務提供者持牌。
+  difficulty: 1
+  tags:
+  - terminology
+  - application
+- id: '28.10'
+  question: WhatsApp 群組話『內部消息 XX 即將被收購, 升 5 倍, 限時入』。你會點做?
+  options:
+    a: 即刻 all-in
+    b: 100% 騙局訊號, 唔回覆, 退群, 報 SFC
+    c: 借錢加大注碼
+    d: 問群組邊個講
+  answer: b
+  explanation: '5 個 Scam 訊號齊: Herding (群組買) + Insider Info 假 + 「收購」借口 + 限時壓力銷售 + 群組散貨渠道。應該:
+    唔回覆, 退群, 報 SFC。'
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+

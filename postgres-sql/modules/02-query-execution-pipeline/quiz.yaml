@@ -1,0 +1,119 @@
+- id: "2.1"
+  question: Which pipeline stage turns the SQL text into a validated query tree and reports syntax errors?
+  options:
+    a: parse
+    b: rewrite
+    c: plan
+    d: execute
+  answer: a
+  explanation: Parse tokenizes and checks grammar; a syntax error fails the query here, before any planning.
+  difficulty: 1
+  tags: [terminology]
+
+- id: "2.2"
+  question: Where does Postgres inline views and flatten safe subqueries before planning?
+  options:
+    a: parse
+    b: plan
+    c: rewrite
+    d: execute
+  answer: c
+  explanation: The rewrite stage transforms the query tree, expanding views and flattening subqueries, before the planner sees it.
+  difficulty: 1
+  tags: [terminology]
+
+- id: "2.3"
+  question: A planner picks a nested-loop join believing a table has 1,000 rows, but it now has 1,000,000. Why does it misjudge?
+  options:
+    a: because nested loops are always the cheapest strategy
+    b: because row estimates come from statistics that are stale
+    c: because the index forces a nested loop
+    d: because the query was written incorrectly
+  answer: b
+  explanation: The planner works from pg_statistic estimates, not measured reality. With no fresh ANALYZE, the estimate stays at 1,000 rows and yields the wrong join.
+  difficulty: 2
+  tags: [scenario, concept]
+
+- id: "2.4"
+  question: Why can a WHERE clause NOT reference an alias created in the SELECT list?
+  options:
+    a: aliases are only for display purposes
+    b: WHERE is evaluated after SELECT in physical order
+    c: WHERE runs before SELECT-level expressions are computed
+    d: aliases are removed by the rewrite stage
+  answer: c
+  explanation: WHERE filters raw rows before SELECT expressions or window functions exist, so their aliases cannot be referenced there.
+  difficulty: 2
+  tags: [concept]
+
+- id: "2.5"
+  question: What does a server-side prepared statement cache to save work on hot OLTP paths?
+  options:
+    a: the execution plan
+    b: the query text
+    c: the fetched rows
+    d: the index definitions
+  answer: a
+  explanation: Prepared statements cache and reuse the plan, skipping replanning on each call — the main performance win on hot paths.
+  difficulty: 2
+  tags: [concept]
+
+- id: "2.6"
+  question: "Scenario: the same dashboard SQL, unchanged schema, went from 40ms to 4s. What is the first thing to check?"
+  options:
+    a: rewrite the query with a temp table
+    b: add a trigger that sorts the table on write
+    c: run EXPLAIN ANALYZE and see whether the plan changed because statistics drifted
+    d: raise work_mem to avoid sorting
+  answer: c
+  explanation: Unchanged SQL + slower runtime usually means the planner chose a different (worse) plan because row estimates changed. Confirm with EXPLAIN ANALYZE.
+  difficulty: 3
+  tags: [scenario]
+
+- id: "2.7"
+  question: For ORDER BY created_at DESC LIMIT 10 with a descending index on created_at, which execution node can disappear from the plan?
+  options:
+    a: Index Scan
+    b: Sort
+    c: Aggregate
+    d: Limit
+  answer: b
+  explanation: The sorted index already returns rows in order, so the planner drops the explicit Sort node and stops after 10 rows.
+  difficulty: 1
+  tags: [concept]
+
+- id: "2.8"
+  question: Planner cost numbers are derived from what?
+  options:
+    a: measured timings of previous executions
+    b: hardware counters from the OS
+    c: query caching statistics
+    d: estimates from pg_statistic
+  answer: d
+  explanation: Costs are predicted from pg_statistic histograms and distinct counts; they are not measured per run.
+  difficulty: 1
+  tags: [terminology]
+
+- id: "2.9"
+  question: Which of these is an example of subquery flattening at the rewrite stage?
+  options:
+    a: turning a safe IN (SELECT ...) into a join
+    b: materializing a view to a temp table
+    c: pushing a sort down into a subplan
+    d: creating an index automatically
+  answer: a
+  explanation: Flattening rewrites safe subqueries into joins. Views are inlined, never materialized, by rewrite.
+  difficulty: 3
+  tags: [concept]
+
+- id: "2.10"
+  question: Which statement about SQL logical vs physical clause order is TRUE?
+  options:
+    a: logical order always equals physical execution order
+    b: WHERE always runs before any scan begins
+    c: the planner owns physical order and may filter early or reorder joins
+    d: ORDER BY is always the last physical operation
+  answer: c
+  explanation: Logical clause order comes from SQL semantics; the planner decides physical order and may apply filters early, reorder joins, and stop early at LIMIT.
+  difficulty: 2
+  tags: [comparison]

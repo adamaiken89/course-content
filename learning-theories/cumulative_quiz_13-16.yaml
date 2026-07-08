@@ -1,0 +1,108 @@
+- id: cum.25
+  type: tf
+  statement: Listening to a podcast while reading allows two tasks to use separate attention resources, so learning is unaffected.
+  answer: false
+  explanation: Attention is a single limited pool — task-switching between reading and audio drains working memory and weakens encoding.
+  difficulty: 2
+  tags:
+  - misconception
+  - cross-module
+  source_modules:
+  - 13
+- id: cum.26
+  type: tf
+  statement: A good night's sleep after studying helps consolidate the material into long-term memory.
+  answer: true
+  explanation: Slow-wave sleep and REM phases support consolidation; sleep deprivation substantially impairs retention.
+  difficulty: 1
+  tags:
+  - recall
+  - cross-module
+  source_modules:
+  - 14
+- id: cum.27
+  type: mcq
+  question: What does selective attention do?
+  source_modules:
+  - 13
+  options:
+    a: Focuses on one input while filtering out competing inputs
+    b: Splits processing equally across every available input
+    c: Eliminates the need for conscious awareness entirely
+    d: Stores a perfect copy of everything seen for later use
+  answer: a
+  explanation: Selective attention prioritizes chosen stimuli while suppressing others — which is why divided-attention study (podcast plus reading) fails.
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: cum.28
+  type: cloze
+  question: 'The cocktail party effect shows that attention can {filter} out background noise yet still notice a high-salience cue such as your own name.'
+  answer: filter
+  explanation: Highly salient or personally relevant cues can break through the attentional filter — the cocktail party effect.
+  difficulty: 1
+  tags:
+  - concept
+  - scenario
+  source_modules:
+  - 13
+- id: cum.29
+  type: mcq
+  question: Which sleep state is most strongly linked to consolidating declarative (fact-based) memories?
+  source_modules:
+  - 14
+  options:
+    a: Rapid-eye-movement sleep only
+    b: Slow-wave sleep together with later REM
+    c: Stage 1 light drowsiness
+    d: Waking rest without any sleep
+  answer: b
+  explanation: Slow-wave sleep supports hippocampus-to-cortex transfer, and later REM continues integration; both phases matter for consolidation.
+  difficulty: 3
+  tags:
+  - concept
+  - synthesis
+- id: cum.30
+  type: cloze
+  question: 'Consolidation of new facts is strongest during {slow}-wave sleep, when memories replay from the hippocampus into cortex.'
+  answer: slow
+  explanation: Slow-wave sleep provides the reactivation and replay that stabilizes hippocampal traces into cortical networks.
+  difficulty: 2
+  tags:
+  - concept
+  - recall
+  source_modules:
+  - 14
+- id: cum.31
+  type: mcq
+  question: Which theory says intrinsic motivation depends on autonomy, competence, and relatedness?
+  source_modules:
+  - 15
+  options:
+    a: Self-determination theory
+    b: Operant conditioning
+    c: Drive-reduction theory
+    d: Expectancy-value theory
+  answer: a
+  explanation: Self-determination theory identifies autonomy, competence, and relatedness as the three needs that fuel intrinsic motivation.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: cum.32
+  type: mcq
+  question: Using a formula learned in class to solve the same kind of problem on a differently worded exam question is which type of transfer?
+  source_modules:
+  - 16
+  options:
+    a: Zero transfer
+    b: Far transfer
+    c: Near transfer
+    d: Negative transfer
+  answer: c
+  explanation: Transfer within the same domain with minor contextual change is near transfer; applying to a new domain is far transfer.
+  difficulty: 3
+  tags:
+  - terminology
+  - scenario

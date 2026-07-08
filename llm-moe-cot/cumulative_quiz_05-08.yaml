@@ -1,0 +1,103 @@
+- id: cum.9
+  type: mcq
+  source_modules:
+  - 5
+  question: What does 'decoder-only' mean for an architecture such as GPT?
+  options:
+    a: The model has no cross-attention and the same stack both reads the input and generates output
+    b: The model only outputs text and never accepts input
+    c: The model uses a separate encoder for every layer
+    d: The model drops attention and keeps only feed-forward blocks
+  answer: a
+  explanation: Decoder-only models process the whole prompt through one stack of blocks with causal self-attention, and generate tokens from that same stack.
+  difficulty: 1
+  tags:
+  - terminology
+  - recall
+- id: cum.10
+  type: cloze
+  source_modules:
+  - 6
+  question: BPE tokenization splits text into {subword} units, which balances vocabulary size against coverage of rare words.
+  answer: subword
+  explanation: Subword tokenizers like BPE keep frequent words whole and split rare words into pieces that recur across the corpus.
+  difficulty: 1
+  tags:
+  - terminology
+  - recall
+- id: cum.11
+  type: mcq
+  source_modules:
+  - 5
+  question: Why does a decoder-only model keep a KV cache during generation?
+  options:
+    a: To recompute past keys and values from scratch on every new token
+    b: To avoid recomputing past key and value vectors for each newly generated token
+    c: To double the size of the embedding table at inference
+    d: To disable attention entirely for long sequences
+  answer: b
+  explanation: Past keys and values are unchanged across steps, so caching them avoids redundant recomputation and speeds up generation.
+  difficulty: 2
+  tags:
+  - concept
+  - mechanism
+- id: cum.12
+  type: cloze
+  source_modules:
+  - 7
+  question: The standard pretraining objective for GPT-style models is {next}-token prediction over a large text corpus.
+  answer: next
+  explanation: Causal language modelling predicts the following token from only the tokens before it, over huge web-scale corpora.
+  difficulty: 1
+  tags:
+  - terminology
+  - recall
+- id: cum.13
+  type: mcq
+  source_modules:
+  - 6
+  question: Why does BPE keep rare words recoverable instead of mapping them all to a single unknown token?
+  options:
+    a: Because it stores every rare word in a side index
+    b: Because it converts rare words to synonyms before tokenizing
+    c: Because it decomposes rare words into frequent subword pieces that the decoder can reassemble
+    d: Because it ignores rare words entirely during training
+  answer: c
+  explanation: Subword decomposition preserves meaning and vocabularies stay small; the unknown token is only a fallback for out-of-vocabulary bytes.
+  difficulty: 2
+  tags:
+  - concept
+  - mechanism
+- id: cum.14
+  type: cloze
+  source_modules:
+  - 8
+  question: Layer {normalization} rescales activations to zero mean and unit variance before each transformer block.
+  answer: normalization
+  explanation: Layer norm stabilizes training by keeping activation scale consistent as depth grows.
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: cum.15
+  type: tf
+  source_modules:
+  - 8
+  statement: Modern transformer variants need both layer normalization and residual connections; removing either usually destabilises or sharply degrades training.
+  answer: true
+  explanation: Residual connections preserve gradient flow; layer norm controls activation scale. Together they make very deep stacks trainable.
+  difficulty: 3
+  tags:
+  - concept
+  - synthesis
+- id: cum.16
+  type: tf
+  source_modules:
+  - 7
+  statement: In causal language modelling, the model can look at only the tokens before a position, never the tokens after it, when predicting that position.
+  answer: true
+  explanation: A causal mask blocks future tokens, so the prediction at position t depends only on tokens 0..t-1.
+  difficulty: 2
+  tags:
+  - concept
+  - recall

@@ -1,0 +1,60 @@
+- id: "c.1"
+  question: "For querying inside documents, use the {jsonb} type; {json} stores exact input text and cannot be indexed."
+  answer: "jsonb; json"
+  explanation: "jsonb parses and sorts, supports GIN indexes; json keeps verbatim text with no index support."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "The operator that extracts a jsonb-typed value, keeping its type, is { -> }; the one that returns text is { ->> }."
+  answer: "->; ->>"
+  explanation: "Single arrow keeps jsonb type; double arrow casts the value to text for comparison with plain strings."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.3"
+  question: "A path extraction like attrs { #> } '{a, b}' traverses nested jsonb objects and arrays."
+  answer: "#>"
+  explanation: "#> takes a path array like '{a, b}' and returns the nested value as jsonb; #>> returns text."
+  difficulty: 2
+  tags: [concept]
+- id: "c.4"
+  question: "The containment operator { @> } tests whether the left jsonb value contains the right one with exact nested structure."
+  answer: "@>"
+  explanation: "@> is strict containment: keys and nesting must match exactly, so flat tests miss nested values."
+  difficulty: 2
+  tags: [concept]
+- id: "c.5"
+  question: "The default GIN operator class { jsonb_ops } supports the existence operators ?, while { jsonb_path_ops } is smaller but drops ? and only matches whole paths."
+  answer: "jsonb_ops; jsonb_path_ops"
+  explanation: "jsonb_ops indexes keys, values, and pairs. jsonb_path_ops indexes path structures only — great for @>, useless for existence checks."
+  difficulty: 2
+  tags: [comparison]
+- id: "c.6"
+  question: "The jsonpath operator { @@ } returns true when the whole document satisfies the path predicate; { @? } returns true when any array element matches."
+  answer: "@@; @?"
+  explanation: "@@ is a document-wide boolean predicate; @? asks whether at least one item matches a filter like ? (@ == \"blue\")."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "A { generated } column materializes the value of an expression like (attrs ->> 'price')::numeric so it can be indexed with a plain B-tree."
+  answer: "generated"
+  explanation: "Generated columns promote hot JSONB keys to real columns, giving range scans, histograms, and index-only scans."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.8"
+  question: "While GIN handles membership, a numeric range filter on an extracted key needs { B-tree } indexing on a promoted { column } (such as a generated one)."
+  answer: "B-tree; column"
+  explanation: "GIN cannot order values, so range scans require a regular index over an extracted real column."
+  difficulty: 2
+  tags: [comparison]
+- id: "c.9"
+  question: "In jsonpath, a filter clause looks like $.colors[*] ? (@ == \"blue\"); the part after ? is called a { filter } expression, and enables exists-style matching on array elements."
+  answer: "filter"
+  explanation: "The elements-with-filter form lets you match any element of an array inside the document."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.10"
+  question: "For stable, typed, and filtered keys, prefer { relational } columns over jsonb; reserve jsonb for { sparse } or rapidly changing attributes."
+  answer: "relational; sparse"
+  explanation: "Relational columns give type safety, constraints, and histograms; jsonb trades those for schema flexibility."
+  difficulty: 2
+  tags: [scenario]

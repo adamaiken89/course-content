@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: Postgres releases one major version per year, and each major is supported for {five} years."
+  answer: "five"
+  explanation: "Support policy: every major version gets five years of fixes from its release date — a key input when choosing a version to standardize on."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: In Postgres storage, a write does not edit a row in place; it creates a new row {version} (tuple), and old ones stay for readers of older snapshots."
+  answer: "version"
+  explanation: "This is the heart of MVCC: concurrent readers keep seeing a consistent snapshot without being blocked by writers."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.3"
+  question: "Complete: Row versions that no current snapshot can see are called {dead} tuples, and {vacuum} reclaims them."
+  answer: "dead; vacuum"
+  explanation: "Superseded writes accumulate as dead tuples; vacuum (or autovacuum) removes them to control bloat."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Complete: Two hidden columns on every row version, {xmin} and {xmax}, record the creating and superseding transactions."
+  answer: "xmin; xmax"
+  explanation: "Visibility checks compare these against the reader's snapshot — the mechanism behind MVCC isolation."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "Complete: OLTP workloads are short, {concurrent}, row-level, and write-heavy, unlike OLAP's long bulk scans."
+  answer: "concurrent"
+  explanation: "High concurrency plus frequent small writes drives Postgres' index and vacuum design decisions."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.6"
+  question: "Complete: psql's { \\d } command describes a table's columns, constraints, and indexes — the first stop for slow-query triage."
+  answer: "\\d"
+  explanation: "Fast schema inspection without GUI: \\d <table>, \\di lists indexes, \\timing on shows query wall time."
+  difficulty: 2
+  tags: [process]
+
+- id: "c.7"
+  question: "Complete: An index entry has no {xmin}/{xmax}, so the planner must visit the heap to confirm whether an indexed entry is still live — the reason index-only scans are special."
+  answer: "xmin/xmax"
+  explanation: "Liveness lives on the heap row version, not the index; fetching the heap for liveness checks is what a plain index scan pays."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "Complete: When an UPDATE leaves indexed columns unchanged, Postgres may reuse the same {page} (a HOT update), keeping writes cheap."
+  answer: "page"
+  explanation: "HOT (heap-only tuple) updates avoid new index entries when indexed columns don't change — a lever for write-heavy OLTP."
+  difficulty: 3
+  tags: [process]
+
+- id: "c.9"
+  question: "Complete: The safest 'latest' choice for production OLTP in Aug 2026 is Postgres {18}; {19} is still beta."
+  answer: "18; 19"
+  explanation: "18 is current stable; 19's GA lands ~late 2026 and should not be used in production before then."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.10"
+  question: "Complete: Reads never block writes in Postgres because each reader uses a {snapshot} taken when its transaction starts."
+  answer: "snapshot"
+  explanation: "The snapshot pins visibility over time, letting writers commit without disturbing in-flight readers."
+  difficulty: 2
+  tags: [concept]

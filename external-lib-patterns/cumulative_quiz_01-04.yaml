@@ -1,0 +1,115 @@
+- type: mcq
+  question: 'Adapter vs Facade: which statement is right?'
+  options:
+    b: Adapters translate interfaces between mismatched APIs; facades simplify a subsystem behind one
+      entry point
+    a: They are identical
+    c: Facades translate protocols
+    d: Adapters hide the whole subsystem
+  answer: b
+  explanation: Adapter = interface translation; facade = simplified front door over complexity.
+  difficulty: 2
+  tags:
+  - comparison
+  id: cum.1
+  source_modules:
+  - 1
+- type: mcq
+  question: Wrapping TanStack Table behind a typed grid component buys you what?
+  options:
+    c: Swap-out ability and enforced defaults without leaking table internals
+    a: Smaller npm install
+    b: Server-side rendering for free
+    d: No TypeScript needed
+  answer: c
+  explanation: 'The wrapper narrows the API surface: consumers depend on your contract, not the library''s.'
+  difficulty: 2
+  tags:
+  - concept
+  id: cum.2
+  source_modules:
+  - 2
+- type: cloze
+  question: Form libraries trade {re-render control} against ergonomics; uncontrolled registration minimizes
+    re-renders.
+  answer: re-render control
+  difficulty: 2
+  tags:
+  - concept
+  id: cum.3
+  source_modules:
+  - 3
+- type: tf
+  statement: DnD wrappers should expose domain intents (move card to column) instead of raw drag events.
+  answer: true
+  explanation: Intent-level APIs keep drag logic testable and swap-friendly.
+  difficulty: 2
+  tags:
+  - concept
+  id: cum.4
+  source_modules:
+  - 4
+- type: mcq
+  question: 'Review external-lib-patterns module 1: which statement reflects the module''s core guidance?'
+  options:
+    a: Apply the documented pattern with its stated tradeoffs
+    b: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: a
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.5
+  source_modules:
+  - 1
+- type: mcq
+  question: 'Review external-lib-patterns module 2: which statement reflects the module''s core guidance?'
+  options:
+    d: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    b: Patterns never have costs
+    c: Always rewrite existing code first
+  answer: d
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.6
+  source_modules:
+  - 2
+- type: mcq
+  question: 'Review external-lib-patterns module 3: which statement reflects the module''s core guidance?'
+  options:
+    b: Apply the documented pattern with its stated tradeoffs
+    a: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: b
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.7
+  source_modules:
+  - 3
+- type: mcq
+  question: 'Review external-lib-patterns module 4: which statement reflects the module''s core guidance?'
+  options:
+    a: Apply the documented pattern with its stated tradeoffs
+    b: Ignore documented tradeoffs
+    c: Patterns never have costs
+    d: Always rewrite existing code first
+  answer: a
+  explanation: Module guidance pairs each pattern with explicit tradeoffs; apply them as written before
+    deviating.
+  difficulty: 1
+  tags:
+  - recall
+  id: cum.8
+  source_modules:
+  - 4

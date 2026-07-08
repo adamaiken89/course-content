@@ -1,0 +1,131 @@
+- id: cum.21
+  type: mcq
+  source_modules:
+  - 9
+  - 10
+  question: The tracker view keeps filters and page in URL state. Which statement ties shell ownership to that decision?
+  options:
+    a: The shell owns global chrome while view identity is the URL, so page state never leaks into a component store
+    b: The tracker should own chrome since it also owns the page
+    c: URL state is only for first load and resets on interaction
+    d: The shell decides which rows render per page
+  answer: a
+  difficulty: 1
+  tags:
+  - cross-module
+  - shell
+  - url-state
+- id: cum.22
+  type: cloze
+  source_modules:
+  - 10
+  question: The selection ledger distinguishes {select-visible} rows from select-all so bulk actions target precisely what the user chose.
+  answer: select-visible
+  difficulty: 2
+  tags:
+  - cross-module
+  - selection
+- id: cum.23
+  type: tf
+  source_modules:
+  - 11
+  statement: Benchmarking virtualization should measure node count, mount time, memory, and paint separately.
+  answer: true
+  difficulty: 1
+  tags:
+  - cross-module
+  - virtualization
+  - benchmark
+- id: cum.24
+  type: mcq
+  source_modules:
+  - 11
+  - 12
+  question: Which pairing reduces work on a 10,000 row tracker best?
+  options:
+    a: Render all rows and rely on the query cache for speed
+    b: Virtualize only the header
+    c: Virtualize the grid and let the query cache dedupe refetches so the DOM and the network stay small
+    d: Disable refetching on all views
+  answer: c
+  difficulty: 2
+  tags:
+  - cross-module
+  - virtualization
+  - query-cache
+- id: cum.25
+  type: cloze
+  source_modules:
+  - 9
+  question: The AppShell composes its regions through {slots}, so each PageContainer only fills its assigned chrome.
+  answer: slots
+  difficulty: 1
+  tags:
+  - cross-module
+  - shell
+- id: cum.26
+  type: mcq
+  source_modules:
+  - 10
+  - 12
+  question: Navigating to a previously-visited tracker page should do what with stale-while-revalidate?
+  options:
+    a: Block until the fresh fetch resolves
+    b: Render the cached page immediately while a background refetch quietly replaces it
+    c: Empty the cache on navigation
+    d: Purge cache whenever URL state changes
+  answer: b
+  difficulty: 2
+  tags:
+  - cross-module
+  - url-state
+  - stale-while-revalidate
+- id: cum.27
+  type: cloze
+  source_modules:
+  - 12
+  question: Incoming SSE upserts are {throttle}d to a frame budget so rapid updates do not cause rerender storms.
+  answer: throttled
+  difficulty: 2
+  tags:
+  - cross-module
+  - sse
+- id: cum.28
+  type: tf
+  source_modules:
+  - 11
+  statement: Memory is an irrelevant benchmark once virtualization keeps the DOM small.
+  answer: false
+  difficulty: 2
+  tags:
+  - cross-module
+  - memory
+  - benchmark
+- id: cum.29
+  type: mcq
+  source_modules:
+  - 9
+  - 11
+  question: Where should an expensive report panel live so it does not hurt the shell regardless of page?
+  options:
+    a: Inline in the shell so it is always mounted
+    b: In the root layout unconditionally
+    c: Hooked into the shell effect
+    d: On the page it belongs to, composed into a slot, so lazy cost is paid only when that page mounts
+  answer: d
+  difficulty: 1
+  tags:
+  - cross-module
+  - shell
+  - performance
+- id: cum.30
+  type: tf
+  source_modules:
+  - 12
+  statement: Query invalidation is unnecessary whenever SSE delivers every change on the page.
+  answer: false
+  difficulty: 1
+  tags:
+  - cross-module
+  - invalidation
+  - sse

@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Complete: The default bean scope in Spring is {blank}, one shared instance per ApplicationContext."
+  answer: "singleton"
+  explanation: "A single shared instance suits stateless services and avoids per-injection allocation"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: A bean that should be instantiated fresh at every injection point uses the {blank} scope."
+  answer: "prototype"
+  explanation: "Prototype hands out a new instance per injection point or explicit lookup"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: Name a qualifier by {blank} rather than by implementation so a bean swap does not force renames."
+  answer: "role"
+  explanation: "Role-based qualifiers such as cardPayments stay stable when the concrete implementation changes"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "Complete: When several beans share a type, {blank} marks one as the default for injection by type."
+  answer: "@Primary"
+  explanation: "The primary bean wins the default resolution while a qualifier still selects a specific one explicitly"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Complete: Conditional bean annotations are evaluated against the context {blank} so far, so declaration order matters."
+  answer: "built"
+  explanation: "A condition cannot see beans that appear later in the configuration"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Complete: A constructor-injected circular dependency fails {blank} at startup rather than hiding behind a proxy."
+  answer: "fast"
+  explanation: "Neither bean can be constructed first, so Boot raises BeanCurrentlyInCreationException at boot time"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "Complete: Boot 4 enables virtual threads by default via the {blank} property."
+  answer: "spring.threads.virtual.enabled"
+  explanation: "The property defaults to true so Spring-managed code may run on virtual threads"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Complete: Spring re-establishes SecurityContext, request attributes, and MDC on a worker thread with {blank}."
+  answer: "ContextSnapshot"
+  explanation: "ContextSnapshot captures the thread-local context at a point in time and re-applies it inside a scope"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.9"
+  question: "Complete: A @Async method on a plain executor loses the caller's {blank} because thread-locals do not travel."
+  answer: "SecurityContext"
+  explanation: "The worker virtual thread starts empty unless a propagation-aware executor or snapshot is used"
+  difficulty: 3
+  tags: [scenario]
+
+- id: "c.10"
+  question: "Complete: PropertyMapper skips {blank} sources by default and binds them only when chained with always()."
+  answer: "null"
+  explanation: "A null source leaves the target property untouched unless always() opts into binding null"
+  difficulty: 2
+  tags: [concept]

@@ -1,0 +1,69 @@
+- id: c.1
+  question: Correlation ranges from {-1} to {+1}. Value of 0 means no {linear} relationship.
+  answer: '[''-1'', ''+1'', ''linear'']'
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.2
+  question: 'Portfolio σ formula: sqrt(w1²σ1² + w2²σ2² + 2w1w2{ρ}σ1σ2). Lower {correlation}
+    reduces portfolio {variance}.'
+  answer: '[''ρ'', ''correlation'', ''variance'']'
+  difficulty: 2
+  tags:
+  - formula
+- id: c.3
+  question: Naive diversification uses {equal} weights. Efficient diversification uses
+    {optimized} weights. Naive has no {estimation error}.
+  answer: '[''equal'', ''optimized'', ''estimation error'']'
+  difficulty: 2
+  tags:
+  - comparison
+- id: c.4
+  question: 'Beta formula: β = Cov(r_i, r_m) / {Var(r_m)}. Stock with β = 1.5 has {150%}
+    of market sensitivity. β = {0} means no market correlation.'
+  answer: '[''Var(r_m)'', ''150%'', ''0'']'
+  difficulty: 2
+  tags:
+  - formula
+- id: c.5
+  question: CAPM expected return = r_f + {β} × ({r_m} - r_f). Alpha = actual return
+    minus {CAPM expected return}.
+  answer: '[''β'', ''r_m'', ''CAPM expected return'']'
+  difficulty: 2
+  tags:
+  - formula
+- id: c.6
+  question: Total risk = {systematic} risk + {idiosyncratic} risk. Systematic risk
+    measured by {beta}. Idiosyncratic risk diversifies {away}.
+  answer: '[''systematic'', ''idiosyncratic'', ''beta'', ''away'']'
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.7
+  question: 'Stock A: β = 1.5, r_f = 3%, r_m = 10%. CAPM expected = {13.5%}. If actual
+    = 18%, alpha = {4.5%}.'
+  answer: '[''13.5%'', ''4.5%'']'
+  difficulty: 2
+  tags:
+  - calculation
+- id: c.8
+  question: Diversification eliminates {idiosyncratic} risk but not {systematic} risk.
+    Adding stocks beyond {20} gives diminishing marginal benefit.
+  answer: '[''idiosyncratic'', ''systematic'', ''20'']'
+  difficulty: 2
+  tags:
+  - concept
+- id: c.9
+  question: '{Alpha} measures excess return vs CAPM benchmark. Positive alpha suggests
+    {skill} added value. Negative alpha means value {destroyed}.'
+  answer: '[''Alpha'', ''skill'', ''destroyed'']'
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.10
+  question: 'Correlation ρ = {Cov(r_A, r_B)} / (σ_A × σ_B). Range is {-1} to {+1}.
+    ρ = 0 means no {linear} relationship.'
+  answer: '[''Cov(r_A, r_B)'', ''-1'', ''+1'', ''linear'']'
+  difficulty: 2
+  tags:
+  - formula

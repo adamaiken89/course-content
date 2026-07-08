@@ -1,0 +1,103 @@
+- id: cum.33
+  type: cloze
+  question: 'Complete: In FSRS-5, the desired {retention} is usually set to 0.85 to balance review load against forgetting.'
+  answer: retention
+  explanation: Desired retention controls how likely you are to recall a card at review time; 0.85 is the common balance between reviews and memory.
+  difficulty: 1
+  tags:
+  - recall
+  - cross-module
+  source_modules:
+  - 18
+- id: cum.34
+  type: mcq
+  question: Which layout minimizes split attention in a lesson on the human heart?
+  source_modules:
+  - 17
+  options:
+    a: A diagram with the labels placed directly on the labelled parts
+    b: A full-page diagram with explanations printed on the next page
+    c: The same diagram repeated six times with different labels
+    d: A dense wall of text with a small diagram at the very bottom
+  answer: a
+  explanation: Keeping related information together avoids back-and-forth searching — the split-attention effect. Separating labels or burying visuals adds extraneous load.
+  difficulty: 2
+  tags:
+  - application
+  - scenario
+- id: cum.35
+  type: cloze
+  question: 'A key goal of content design is to keep {extraneous} load low while leaving room for germane load that builds schemas.'
+  answer: extraneous
+  explanation: Extraneous load comes from poor presentation; germane load is the mental effort that actually constructs understanding.
+  difficulty: 3
+  tags:
+  - terminology
+  - concept
+  source_modules:
+  - 17
+- id: cum.36
+  type: mcq
+  question: In FSRS-5, what happens immediately after you rate a card 'Again' on review?
+  source_modules:
+  - 18
+  options:
+    a: Stability drops and the next interval shrinks to a short value
+    b: The interval doubles so you see it less often
+    c: The card is permanently removed from the deck
+    d: Stability is unchanged and only difficulty rises
+  answer: a
+  explanation: "'Again' signals a lapse: stability falls, difficulty rises, and the next interval is short so the card returns soon."
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: cum.37
+  type: tf
+  statement: Spaced repetition should schedule each successfully recalled card at a longer interval every time it is reviewed.
+  answer: true
+  explanation: Expanding intervals is the spacing effect applied — each success grows the gap, which keeps recall effort high and load low.
+  difficulty: 1
+  tags:
+  - concept
+  - cross-module
+  source_modules:
+  - 18
+- id: cum.38
+  type: mcq
+  question: A busy learner wants to protect long-term retention with the least time per week. Which schedule wins?
+  source_modules:
+  - 18
+  options:
+    a: Cramming every topic in one long Sunday session
+    b: Reviewing only due cards for about 10 minutes daily
+    c: Re-reading the full notes every single day
+    d: Skipping review until the week before the final exam
+  answer: b
+  explanation: Daily short reviews of due cards exploit spacing and hit the highest-retention moments — the most efficient real-world schedule.
+  difficulty: 3
+  tags:
+  - application
+  - scenario
+- id: cum.39
+  type: cloze
+  question: 'Embedding a quick retrieval question in the middle of a lesson is {testing} effect applied to content design.'
+  answer: testing
+  explanation: Retrieval practice embedded in material strengthens memory, not just as a final assessment but as part of the lesson itself.
+  difficulty: 2
+  tags:
+  - concept
+  - cross-module
+  source_modules:
+  - 17
+- id: cum.40
+  type: tf
+  statement: Adding a decorative image to every slide reliably improves learning regardless of whether the image relates to the content.
+  answer: false
+  explanation: Unrelated decorative images are seductive details — they draw attention away and can reduce learning rather than help it.
+  difficulty: 2
+  tags:
+  - misconception
+  - application
+  source_modules:
+  - 17

@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "Decoder-only block = {Causal Self-Attention} → Add&Norm → {FFN} → Add&Norm。冇{cross-attention}。"
+  answer: "Causal Self-Attention, FFN, cross-attention"
+  explanation: "冇 encoder → 冇 cross-attention。所有 attention 係 causal masked self-attention。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Decoder-only 嘅 prompt + generation 係{同一個} sequence。Causal attention cover 晒兩者。"
+  answer: "同一個"
+  explanation: "Prompt tokens 先行，generated tokens 跟尾。Causal mask 確保 generation step 可以 attend 到 prompt 同前面嘅 generated tokens。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.3"
+  question: "Decoder-only scaling efficiency: {encoder-decoder} 每層有 2 attention (self + cross)，{decoder-only} 得 1 attention。"
+  answer: "encoder-decoder, decoder-only"
+  explanation: "同樣參數，decoder-only 可以疊更多層或更大 hidden dim。呢個係 decoder-only scaling better 嘅 key reason。"
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.4"
+  question: "GPT-3 (2020) 嘅關鍵貢獻係{in-context learning} — 俾 prompt examples 就 work，唔使{update weights / fine-tune}。"
+  answer: "in-context learning, update weights (fine-tune)"
+  explanation: "In-context learning 改變咗 LLM 使用 paradigm — 從「train/fine-tune」到「prompt」。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "KV cache 避免 autoregressive decoding 入面重複計算已生成 tokens 嘅{K, V}。每 step complexity 由 O(n²) 降到{O(n)}。"
+  answer: "K, V, O(n)"
+  explanation: "First token: O(n²·d)。之後每 step: only compute new K, V → O(n·d)。"
+  difficulty: 2
+  tags: [application]
+
+- id: "c.6"
+  question: "KV cache memory ∝ {2} × n_layers × d_model × n_tokens × bytes。80 layers, 8192 dim, 4096 tokens, fp16 → ~{10}GB。"
+  answer: "2, 10"
+  explanation: "K + V = 2 組。2 × 80 × 8192 × 4096 × 2 bytes = ~10.7 GB。"
+  difficulty: 3
+  tags: [formula]
+
+- id: "c.7"
+  question: "Temperature=0 → {argmax / greedy decoding} → deterministic。Temperature>0 → {sampling} → diverse。"
+  answer: "argmax (greedy decoding), sampling"
+  explanation: "T 控制 probability distribution 嘅 sharpness。T=0: sharpest (one-hot)。T=∞: uniform。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Top-p (nucleus) sampling: sample from {subset of tokens whose cumulative prob ≥ p}，重新{normalize} subset 嘅 probability。"
+  answer: "subset of tokens whose cumulative prob ≥ p, normalize"
+  explanation: "Dynamic subset size — different context, different token count per step。Balances quality (cut tail) + diversity (not just argmax)。"
+  difficulty: 2
+  tags: [concept]

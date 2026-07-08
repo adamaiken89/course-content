@@ -1,0 +1,133 @@
+- id: '6.1'
+  question: What is the correct order of the standard dev loop?
+  options:
+    b: Plan → Explore → Implement → Verify → Review
+    a: Implement → Plan → Verify → Explore → Review
+    c: Review → Implement → Plan → Explore → Verify
+    d: Explore → Review → Plan → Implement → Verify
+  answer: b
+  explanation: 'Standard loop: Plan (approach), Explore (understand code), Implement
+    (write), Verify (check), Review (human inspect).'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.2'
+  question: When is spec-first the better approach?
+  options:
+    a: Task is well-understood, requirements clear, codebase familiar
+    b: Task is fuzzy with multiple valid approaches
+    c: You have limited time to write spec
+    d: You don't know the codebase
+  answer: a
+  explanation: Spec-first works when you know exactly what to do. Discovery-first
+    is better for fuzzy or unfamiliar tasks.
+  difficulty: 1
+  tags:
+  - application
+- id: '6.3'
+  question: When debugging with an agent, what should you provide?
+  options:
+    b: Symptom, reproduction steps, boundaries
+    a: Your diagnosis of the bug
+    c: Full source code of everything
+    d: Nothing - agent will figure it out
+  answer: b
+  explanation: State symptom (not diagnosis), exact reproduction steps, and boundaries
+    (what not to change). Let agent explore the code path.
+  difficulty: 2
+  tags:
+  - procedure
+- id: '6.4'
+  question: Agent has fixed the same bug 3 times. Each fix introduces a new bug. What
+    to do?
+  options:
+    c: Reset to last clean state. Restart session. Tighter spec.
+    a: Let it try again - 4th time might work
+    b: Fix it yourself completely
+    d: Ask agent to fix faster
+  answer: c
+  explanation: Context is likely poisoned or approach is fundamentally wrong. Reset,
+    restart, give much tighter scope.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '6.5'
+  question: What is the risk of discovery-first?
+  options:
+    a: Slower first loop, uses more tokens upfront
+    b: Agent will definitely implement wrong thing
+    c: Agent cannot explore code
+    d: Only works for simple tasks
+  answer: a
+  explanation: 'Discovery-first costs more tokens upfront (exploration). Benefit:
+    prevents wrong implementation. Tradeoff: token cost vs rework cost.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.6'
+  question: What is the most commonly skipped loop step and its consequence?
+  options:
+    d: Skip Explore → agent implements against wrong patterns
+    a: Skip Plan → no direction
+    b: Skip Verify → undetected bugs
+    c: Skip Review → no human oversight
+  answer: d
+  explanation: Explore is most skipped. Agent assumes it knows the patterns. Leads
+    to code that doesn't fit the codebase. Fixing takes longer than exploring.
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.7'
+  question: Agent response length is growing, it keeps re-reading same files, and
+    progress stalls. What's happening?
+  options:
+    b: Context is degraded. Restart session.
+    a: Agent is being thorough
+    c: This is normal behavior
+    d: Files are too complex
+  answer: b
+  explanation: Growing response length and re-reading are signs of context degradation.
+    Compress and restart fresh.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '6.8'
+  question: You're unfamiliar with the codebase. Which approach is best?
+  options:
+    c: Discovery-first - agent explores, proposes plan, you refine
+    a: Spec-first - you know the feature
+    b: Ask agent to implement without exploring
+    d: Write full implementation yourself
+  answer: c
+  explanation: Discovery-first lets agent read code and propose approaches. You refine
+    based on its findings. Cheaper than you reading everything.
+  difficulty: 1
+  tags:
+  - scenario
+- id: '6.9'
+  question: When should you switch from spec-first to discovery-first mid-task?
+  options:
+    d: When agent asks clarifying questions about unclear requirements
+    a: When agent implements correctly on first try
+    b: When spec is very detailed
+    c: Never - pick one and stick with it
+  answer: d
+  explanation: 'Agent questions about requirements signal spec gaps. Switch to discovery:
+    let agent explore and propose, then refine spec together.'
+  difficulty: 3
+  tags:
+  - scenario
+- id: '6.10'
+  question: What is the best rule of thumb for choosing approach?
+  options:
+    a: If you can write complete spec <5 min → spec-first. Else → discovery-first.
+    b: Always use spec-first - it's faster
+    c: Always use discovery-first - it's safer
+    d: Let the agent decide
+  answer: a
+  explanation: '5-minute rule: if spec fits in 5 min, write it. If not, you don''t
+    understand the task well enough → let agent explore first.'
+  difficulty: 3
+  tags:
+  - procedure
+

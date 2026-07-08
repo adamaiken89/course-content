@@ -1,0 +1,150 @@
+- id: '5.1'
+  question: Which editor engine is best suited for complex collaborative document
+    editing?
+  options:
+    d: TipTap (ProseMirror) — mature Y.js integration and complex node support
+    a: Lexical — built-in collaboration
+    b: Quill 2 — simplest API
+    c: ContentEditable directly — no library overhead
+  answer: d
+  explanation: TipTap's ProseMirror foundation has most mature Y.js collaboration,
+    custom node support (tables, embeds, code blocks), and battle-tested in production
+    editors (Notion-style apps). Lexical collab is newer.
+  difficulty: 1
+  tags:
+  - comparison
+- id: '5.2'
+  question: Why should editor content be stored as JSON, not HTML?
+  options:
+    c: HTML loses semantic structure (e.g., cannot distinguish bold-in-heading from
+      bold-in-paragraph)
+    a: JSON is smaller than HTML
+    b: JSON renders faster
+    d: HTML cannot represent mentions or custom nodes
+  answer: c
+  explanation: HTML is a rendering format — it loses structural semantics. JSON preserves
+    node types, marks, attributes. HTML storage also risks XSS. Store JSON, render
+    to HTML for display.
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.3'
+  question: In controlled editor mode, who owns the document state?
+  options:
+    b: App — editor calls onChange on every mutation, app feeds value prop back
+    a: Editor — app reads value via ref on demand
+    c: Both — state is synced via two-way binding
+    d: Neither — state lives in URL
+  answer: b
+  explanation: 'Controlled mode: app stores document state (e.g., useState). Editor
+    is passive — receives value prop, fires onChange. App filters, debounces, or saves
+    onChange as needed.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.4'
+  question: How should custom mentions (e.g., @user) be abstracted across editors?
+  options:
+    c: MentionProvider interface — wrapper wires to editor-specific mechanism
+    a: Implement per-editor — too different to abstract
+    b: Skip abstraction — mentions are UI-only
+    d: Use HTML data attributes — universal across editors
+  answer: c
+  explanation: MentionProvider defines search/format contract. TipTap adapter uses
+    Suggestion plugin. Lexical adapter uses MentionNode + custom logic. Consumer implements
+    MentionProvider once.
+  difficulty: 2
+  tags:
+  - application
+- id: '5.5'
+  question: What does TipTap's extension model add over Lexical extensions?
+  options:
+    a: TipTap extensions can modify ProseMirror schema, input rules, paste rules,
+      and keymaps — full ProseMirror power
+    b: TipTap extensions are simpler than Lexical
+    c: TipTap does not have extensions — only nodes
+    d: Lexical extensions are more powerful
+  answer: a
+  explanation: TipTap extensions are ProseMirror plugins with schema, input rules,
+    paste rules, keymaps, commands, shortcuts, and lifecycle hooks. Lexical nodes/plugins
+    are simpler but less extensible for complex document behavior.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '5.6'
+  question: A normalized EditorDocument model is lossy — some editor-specific features
+    do not map. When is this acceptable?
+  options:
+    d: When app stores documents in DB and may migrate editors later
+    a: Never — lossy conversion corrupts data
+    b: Always — lossless conversion is impossible
+    c: Only for preview rendering, not for storage
+  answer: d
+  explanation: Lossy normalization is acceptable for storage portability. Features
+    unique to current editor (custom node types, plugin data) can be stored in an
+    'extra' field on the normalized schema. Trade precision for migration flexibility.
+  difficulty: 3
+  tags:
+  - concept
+- id: '5.7'
+  question: Which editor supports collaborative editing via Y.js?
+  options:
+    a: Both TipTap and Lexical (Lexical >=0.12)
+    b: TipTap only
+    c: Lexical only
+    d: Neither — Y.js is a separate framework
+  answer: a
+  explanation: TipTap uses @tiptap/y for Y.js integration. Lexical v0.12+ has @lexical/yjs
+    for Y.js. Collaboration config (provider, room, awareness) can be abstracted across
+    both.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '5.8'
+  question: Where should custom extension logic (e.g., @mention querying users) live?
+  options:
+    a: Outside wrapper in app code — extension definition is app concern, wrapper
+      provides registration interface
+    b: Inside editor wrapper — editor concern
+    c: In the backend — frontend should only display results
+    d: Custom extensions cannot be abstracted
+  answer: a
+  explanation: Extension definition (what it does) is app logic. Wrapper provides
+    registerExtension(type, adapter) interface. Adapter (how editor registers it)
+    is wrapper concern. Clear separation.
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.9'
+  question: Should image upload logic live inside editor wrapper?
+  options:
+    b: No — UploadHandler interface injected into wrapper; upload implementation is
+      app concern
+    a: Yes — editor handles upload
+    c: Images should not be uploaded from editor
+    d: Upload URL is enough — no handler needed
+  answer: b
+  explanation: UploadHandler interface isolates upload destination, auth, and progress
+    tracking from editor logic. App implements handler (S3, Cloudinary, local server).
+    Wrapper calls handler during image insertion.
+  difficulty: 2
+  tags:
+  - application
+- id: '5.10'
+  question: When should you skip rich text and use a plain textarea or Markdown editor?
+  options:
+    b: Both B and C — rich text complexity unjustified for simple text input or mobile
+      editing
+    a: When app needs mentions or slash commands
+    c: When app users only need simple input (name, description) with no formatting
+      requirements
+    d: When supporting mobile devices
+  answer: b
+  explanation: 'Rich text editors are complex and hard to use on mobile. If app only
+    needs simple text input or targets mobile users, Markdown or plain textarea is
+    better. Rich text justified for: document creation, formatted content, collaborative
+    writing.'
+  difficulty: 2
+  tags:
+  - concept
+

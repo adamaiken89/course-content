@@ -1,0 +1,135 @@
+- id: '17.1'
+  question: 'Correlation coefficient of -0.5 between two assets means:'
+  options:
+    a: Assets move perfectly together
+    b: Assets have no relationship
+    c: Assets move moderately opposite direction
+    d: One asset is safer than the other
+  answer: c
+  explanation: Negative correlation means assets move opposite. -0.5 is moderate negative
+    — when one rises, other tends to fall. This provides diversification benefit.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '17.2'
+  question: 'Two stocks each have σ = 25%, correlation ρ = 0.4. Equal weight portfolio
+    σ is approximately:'
+  options:
+    a: 25.0%
+    b: 12.5%
+    c: 17.5%
+    d: 20.8%
+  answer: d
+  explanation: σ_p = sqrt(0.5²×0.0625 + 0.5²×0.0625 + 2×0.5×0.5×0.4×0.25×0.25) = sqrt(0.015625
+    + 0.015625 + 0.0125) = sqrt(0.04375) = 20.8%.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '17.3'
+  question: Which best describes naive diversification?
+  options:
+    a: Optimizing weights using mean-variance analysis
+    b: Concentrating in highest-return asset
+    c: Equal weights across assets — simple but suboptimal
+    d: Using leverage to amplify returns
+  answer: c
+  explanation: Naive = equal weights. Simple, no estimation needed. Reduces idiosyncratic
+    risk but ignores risk differences between assets. Suboptimal vs efficient allocation.
+  difficulty: 1
+  tags:
+  - concept
+- id: '17.4'
+  question: 'Stock has β = 1.2, market returns 8%, risk-free rate is 2%. CAPM expected
+    return is:'
+  options:
+    a: 8.0%
+    b: 9.2%
+    c: 11.6%
+    d: 7.6%
+  answer: b
+  explanation: E(r) = 2% + 1.2 × (8% - 2%) = 2% + 7.2% = 9.2%.
+  difficulty: 2
+  tags:
+  - calculation
+- id: '17.5'
+  question: What does beta measure?
+  options:
+    a: Total risk of a stock
+    b: Idiosyncratic risk only
+    c: Excess return over risk-free rate
+    d: Sensitivity of stock returns to market returns
+  answer: d
+  explanation: Beta = Cov(r_i, r_m) / Var(r_m). It measures systematic risk — stock's
+    sensitivity to market movements. Does not capture idiosyncratic risk.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '17.6'
+  question: 'Portfolio returns 20% with β = 1.5. Market returns 12%, r_f = 4%. Alpha
+    is:'
+  options:
+    a: 2.0%
+    b: 4.0%
+    c: 6.0%
+    d: 8.0%
+  answer: b
+  explanation: CAPM expected = 4% + 1.5 × (12% - 4%) = 4% + 12% = 16%. Alpha = 20%
+    - 16% = 4%. Manager added 4% excess return beyond what beta exposure explains.
+  difficulty: 3
+  tags:
+  - calculation
+- id: '17.7'
+  question: Why might naive diversification outperform efficient diversification out-of-sample?
+  options:
+    a: Naive has lower transaction costs
+    b: Efficient optimization magnifies estimation errors
+    c: Naive eliminates all risk
+    d: Efficient weights never work in practice
+  answer: b
+  explanation: 'Markowitz curse: optimization magnifies input estimation errors. Naive
+    weights don''t rely on estimates — no estimation error. In many studies, naive
+    matches or beats efficient out-of-sample.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '17.8'
+  question: 'Stock A has β = 1.8, stock B has β = 0.5. Market rises 15%. Expected
+    returns:'
+  options:
+    a: A = 27%, B = 7.5%
+    b: A = 15%, B = 15%
+    c: A = 18%, B = 5%
+    d: A = 27%, B = 15%
+  answer: a
+  explanation: A = 1.8 × 15% = 27%. B = 0.5 × 15% = 7.5%. Beta amplifies market moves.
+    High beta = more upside (and more downside).
+  difficulty: 2
+  tags:
+  - calculation
+- id: '17.9'
+  question: 'Hedge fund returns 30% with β = 2.0. Market returns 12%, r_f = 3%. Alpha
+    is:'
+  options:
+    a: 15.0%
+    b: 9.0%
+    c: 3.0%
+    d: 18.0%
+  answer: b
+  explanation: CAPM expected = 3% + 2.0 × (12% - 3%) = 3% + 18% = 21%. Alpha = 30%
+    - 21% = 9%. Manager generated 9% excess beyond what 2x beta explains.
+  difficulty: 3
+  tags:
+  - calculation
+- id: '17.10'
+  question: 'Total risk for a fully diversified portfolio consists entirely of:'
+  options:
+    a: Systematic risk
+    b: Idiosyncratic risk
+    c: Liquidity risk
+    d: Gap risk
+  answer: a
+  explanation: Diversification eliminates idiosyncratic risk. Remaining risk = systematic
+    (market) risk, captured by beta. Even 1000-stock portfolio has market risk.
+  difficulty: 1
+  tags:
+  - concept

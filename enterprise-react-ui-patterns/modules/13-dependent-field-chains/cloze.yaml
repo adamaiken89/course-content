@@ -1,0 +1,54 @@
+- id: "c.131"
+  question: "Dependencies form a {DAG}, not a waterfall — selection events travel down explicitly."
+  answer: "DAG"
+  explanation: "Centralized edges replace invisible effect couplings."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.132"
+  question: "When a parent selects change, children {reset} via the dependency map and their errors clear."
+  answer: "reset"
+  explanation: "Stale children become meaningless under new parents."
+  difficulty: 1
+  tags: [concept]
+- id: "c.133"
+  question: "Option requests carry a request-{id} guard so a stale resolution can never overwrite a newer selection."
+  answer: "id"
+  explanation: "Only the newest id may paint; older resolves drop."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.134"
+  question: "AbortController is {best}-{effort}; the request-id guard is the actual race contract."
+  answer: "best-effort"
+  explanation: "Browsers cancel but a nearly-resolved response may land — the guard drops it."
+  difficulty: 2
+  tags: [concept]
+- id: "c.135"
+  question: "Remote validation runs on {touch}/blur, debounced, and flushes pending work on blur."
+  answer: "touch"
+  explanation: "Keystroke validation storms the network; touch/blur is deterministic."
+  difficulty: 2
+  tags: [process]
+- id: "c.136"
+  question: "Changing a parent triggers {chain} revalidation so children re-run under new deps."
+  answer: "chain"
+  explanation: "Validity under old deps is meaningless under new ones."
+  difficulty: 2
+  tags: [concept]
+- id: "c.137"
+  question: "`{useTransition}` wraps the cascade swap so the select stays instant while options hydrate after."
+  answer: "useTransition"
+  explanation: "Transitions keep heavy async reconciliation non-blocking."
+  difficulty: 1
+  tags: [terminology, react-19]
+- id: "c.138"
+  question: "Version counters live in module-level {refs} — written frequently, read only by guards, never rendered."
+  answer: "refs"
+  explanation: "Rendering on every guard write would itself cause re-renders."
+  difficulty: 2
+  tags: [concept]
+- id: "c.139"
+  question: "Option lists keyed by dependency values belong in the query {cache}, not the draft store."
+  answer: "cache"
+  explanation: "Server truth in cache; client-authored values in the form store."
+  difficulty: 2
+  tags: [comparison]

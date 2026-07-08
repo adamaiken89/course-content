@@ -1,0 +1,133 @@
+- id: '5.1'
+  question: Which function returns an async iterable for subscription resolvers?
+  options:
+    b: pubsub.asyncIterator()
+    a: pubsub.publish()
+    c: pubsub.subscribe()
+    d: pubsub.createStream()
+  answer: b
+  explanation: asyncIterator(triggerNames) returns AsyncIterator that yields events
+    when publish() is called on those triggers.
+  difficulty: 2
+  tags: []
+- id: '5.2'
+  question: What is key difference between graphql-ws and legacy subscriptions-transport-ws?
+  options:
+    b: graphql-ws removes mandatory connection_init handshake
+    a: graphql-ws uses JSON only; legacy uses Protobuf
+    c: graphql-ws requires HTTP/2
+    d: graphql-ws is REST-based
+  answer: b
+  explanation: graphql-ws makes connection_init optional. First message can be subscribe
+    directly. Fewer round trips to establish subscription.
+  difficulty: 2
+  tags: []
+- id: '5.3'
+  question: Subscription resolver returns different values for clients subscribing
+    to same channel with different filters. Where does filtering run?
+  options:
+    c: In the resolve function — return null to skip event
+    a: In the subscribe function — create separate iterators per filter
+    b: Client-side — server sends all events
+    d: In the pub/sub system — filter per subscriber
+  answer: c
+  explanation: 'Filtering in resolve is efficient: one iterator per channel, resolve
+    per subscriber decides if event passes. Returning null skips that subscriber.'
+  difficulty: 2
+  tags: []
+- id: '5.4'
+  question: What triggers an async iterator yield in subscription flow?
+  options:
+    a: pubsub.publish() is called with matching trigger name
+    b: Client sends message on WebSocket
+    c: Subscription query is validated
+    d: Server restarts
+  answer: a
+  explanation: publish(triggerName, payload) pushes event to all async iterators listening
+    on that trigger name. Each iterator yields the payload.
+  difficulty: 2
+  tags: []
+- id: '5.5'
+  question: Server has 1000 subscribers on same channel. Server publishes event. How
+    many resolve calls execute?
+  options:
+    a: 1000 — one per subscriber
+    b: Zero — subscribe returns iterator, resolve not called
+    c: One — one resolve for the publisher
+    d: Depends on filter logic
+  answer: a
+  explanation: Each subscriber's resolve function executes independently. If any resolve
+    returns null, that subscriber receives no event data.
+  difficulty: 2
+  tags: []
+- id: '5.6'
+  question: Client connects via graphql-ws, subscribes to notificationReceived. Server
+    publishes 10 events per second but client processes max 5 per second. Which back-pressure
+    strategy prevents unbounded memory growth?
+  options:
+    d: Both B and C are valid strategies
+    a: Increase server event rate to overwhelm client faster
+    b: Bounded buffer with drop-oldest policy
+    c: Disconnect slow clients
+  answer: d
+  explanation: Bounded buffer controls memory (drop oldest when full). Disconnecting
+    slow clients protects server resources. Strategy depends on app requirements (at-least-once
+    vs latest-value).
+  difficulty: 2
+  tags: []
+- id: '5.7'
+  question: In graphql-ws, how does client send authentication token?
+  options:
+    b: connection_init message payload
+    a: HTTP Authorization header on connection
+    c: First subscribe message parameters
+    d: URL query parameter
+  answer: b
+  explanation: connection_init payload carries auth token. Server onConnect handler
+    validates it before allowing subscription messages.
+  difficulty: 2
+  tags: []
+- id: '5.8'
+  question: App needs real-time notifications but client never sends data over the
+    connection. Which transport is simpler?
+  options:
+    c: SSE (Server-Sent Events) — simpler for server-to-client only
+    a: WebSocket — bidirectional is future-proof
+    b: Polling every 1 second
+    d: Long polling
+  answer: c
+  explanation: SSE is optimized for unidirectional streams. Works over HTTP/2, built-in
+    reconnect, no WebSocket infrastructure needed. WebSocket adds complexity (upgrade,
+    ping/pong, reconnection logic) without benefit if client never sends data.
+  difficulty: 2
+  tags: []
+- id: '5.9'
+  question: Mutation resolver publishes event. Subscription resolver asyncIterator
+    yields. But one subscriber receives stale data logged before their subscription
+    started. What causes this?
+  options:
+    a: WebSocket reconnected and replayed old events
+    b: Pub/sub is broken — events delivered out of order
+    c: Persisted query cache mismatch
+    d: No replay protection — pub/sub delivers all events on channel
+  answer: a
+  explanation: On reconnect, server may replay buffered events. Client should track
+    last event id and skip older events, or server should only send events after subscription
+    timestamp.
+  difficulty: 2
+  tags: []
+- id: '5.10'
+  question: Which deployment consideration matters for WebSocket subscriptions but
+    NOT for SSE?
+  options:
+    d: Load balancer must support sticky sessions or shared pub/sub
+    a: TLS/SSL termination
+    b: CORS configuration
+    c: Request payload size limits
+  answer: d
+  explanation: WebSocket persistence means connection sticks to one server. Load balancer
+    must route subsequent messages to same server, or use shared pub/sub (Redis).
+    SSE also benefits from sticky sessions but HTTP/2 multiplexing reduces need.
+  difficulty: 2
+  tags: []
+

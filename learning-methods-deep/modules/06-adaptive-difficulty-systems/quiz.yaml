@@ -1,0 +1,113 @@
+- id: '6.1'
+  question: What are the two dimensions tracked by adaptive difficulty systems?
+  options:
+    a: Item difficulty (static, 1-3) and learner ability (dynamic, per session)
+    b: Question length and response time
+    c: Topic difficulty and module complexity
+    d: Learner age and education level
+  answer: a
+  explanation: Item difficulty is a static property of the question (1=recall, 2=comprehension,
+    3=application). Learner ability is dynamic, tracked per session via streak and
+    current_difficulty.
+  difficulty: 1
+  tags:
+  - concept
+- id: '6.2'
+  question: In the ease-weighted sorting algorithm, which cards appear first?
+  options:
+    a: Cards with the most repetitions (most practiced)
+    b: Cards with the lowest easeFactor and fewest repetitions
+    c: Cards with the highest difficulty level
+    d: Cards in alphabetical order
+  answer: b
+  explanation: Weak cards (low easeFactor) appear first. Within same ease level, cards
+    with fewest reps appear first. This prioritizes the learner's weakest areas.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.3'
+  question: What is the streak threshold for advancing difficulty in the learn.py
+    adaptive system?
+  options:
+    a: 1 consecutive correct
+    b: 5 consecutive correct
+    c: 3 consecutive correct
+    d: 10 consecutive correct
+  answer: c
+  explanation: After 3 consecutive correct answers, current_difficulty advances by
+    1 and streak resets to 0. This ensures stable performance before increasing challenge.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.4'
+  question: What happens to current_difficulty when the learner answers incorrectly?
+  options:
+    a: It stays the same
+    b: It resets to 1
+    c: It increases by 1 (test if learner recovers)
+    d: It decreases by 1 (minimum 1)
+  answer: d
+  explanation: 'Wrong answer → current_difficulty -= 1 (floor 1). This is reverse-on-failure:
+    immediate difficulty drop prevents frustration spiral.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.5'
+  question: What questions does the adaptive quiz show to the learner?
+  options:
+    a: Questions with difficulty <= current_difficulty + 1
+    b: All questions in random order
+    c: Questions with difficulty >= current_difficulty
+    d: Only questions at exactly current_difficulty
+  answer: a
+  explanation: The skip condition q_diff > current_difficulty + 1 means the learner
+    sees questions at or one level above current ability. This provides a challenge
+    window.
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.6'
+  question: What would happen if STREAK_THRESHOLD were set to 1 in the adaptive system?
+  options:
+    a: Difficulty would never advance
+    b: Difficulty would advance after every correct answer — too fast, lucky guesses
+      cause premature advancement
+    c: Difficulty would require 10 correct answers to advance
+    d: The streak counter would be disabled
+  answer: b
+  explanation: STREAK_THRESHOLD = 1 means advance on every correct answer. A lucky
+    guess would advance difficulty prematurely. 3 correct provides a more reliable
+    performance signal.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '6.7'
+  question: A learner gets a difficulty-3 question wrong due to carelessness. With
+    reverse-on-failure, what happens?
+  options:
+    a: The learner stays at difficulty 3 — risking frustration if the next question
+      is also hard
+    b: The learner advances to difficulty 4 — assuming the wrong answer was a fluke
+    c: The learner drops to difficulty 2 — potentially wasting time on material below
+      their true ability
+    d: The session resets to difficulty 1
+  answer: c
+  explanation: Reverse-on-failure always drops difficulty on wrong answer. For careless
+    errors, this wastes time on easier material. A 'two wrongs before drop' rule could
+    filter noise from genuine gaps.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '6.8'
+  question: What is the purpose of the SKIP_WINDOW parameter?
+  options:
+    a: It determines how many questions are skipped before repeating
+    b: It controls how many wrong answers are allowed before session ends
+    c: It sets the minimum time between questions
+    d: It sets how many levels above current_difficulty the learner can see
+  answer: d
+  explanation: SKIP_WINDOW = 1 means the learner sees questions at current_difficulty
+    or current_difficulty + 1. This provides challenge while maintaining achievability.
+  difficulty: 2
+  tags:
+  - concept

@@ -1,0 +1,129 @@
+- id: '5.1'
+  question: Decoder-only 同 encoder-decoder decoder 嘅主要分別係乜？
+  options:
+    b: Decoder-only 冇 cross-attention
+    a: Decoder-only 用 bidirectional attention
+    c: Decoder-only 冇 FFN
+    d: Decoder-only 唔用 add & norm
+  answer: b
+  explanation: Decoder-only = causal self-attention + FFN。冇 cross-attention，因為冇 encoder。所有任務由單一
+    sequence modeling 處理。
+  difficulty: 1
+  tags:
+  - comparison
+- id: '5.2'
+  question: Decoder-only 點樣 handle user input（prompt）？
+  options:
+    a: Prompt 同 generation 係同一個 sequence — causal attention cover 晒
+    b: Prompt 用 encoder handle
+    c: Prompt 同 generation 分開處理
+    d: Prompt 唔使處理
+  answer: a
+  explanation: Prompt tokens + generated tokens = 同一 sequence。Causal attention 對所有
+    tokens 做，prompt context 自然俾 generation 用。
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.3'
+  question: Decoder-only 最後取代 encoder-decoder 做主導 LLM 架構嘅關鍵原因係乜？
+  options:
+    c: Decoder-only 參數效率更好 — 同樣參數可以疊更多層
+    a: Encoder-decoder 唔 work
+    b: Encoder-decoder 唔 support in-context learning
+    d: Decoder-only 更容易 deploy
+  answer: c
+  explanation: Encoder-decoder 每層多一組 cross-attention → 同樣參數 layers 更少。Decoder-only
+    可以將參數分配俾更多 layers 或更大 hidden dim → scaling efficiency better。
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.4'
+  question: GPT-3 相比 GPT-2 最關鍵嘅新能力係乜？
+  options:
+    c: In-context learning — few-shot prompting 唔使 fine-tune
+    a: Multimodal
+    b: MoE
+    d: Longer context
+  answer: c
+  explanation: GPT-2 發現 zero-shot transfer。GPT-3 (175B) 發現 in-context learning — prompt
+    入面俾 examples 就 work，唔使 update weights。呢個 insight 改變咗點用 LLM。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '5.5'
+  question: KV cache 嘅作用係乜？
+  options:
+    b: Cache 已計算嘅 K, V matrices，避免 autoregressive decoding 入面重複計算
+    a: 減少 model size
+    c: Cache training data
+    d: Cache attention weights for explainability
+  answer: b
+  explanation: 每 decode 一步，前面 tokens 嘅 K, V 唔使重新計。只計新 token 嘅 K, V → O(n) per step
+    代替 O(n²)。
+  difficulty: 1
+  tags:
+  - application
+- id: '5.6'
+  question: KV cache 嘅 memory 大約同邊啲 factors 成正比？
+  options:
+    a: n_layers × d_model × n_tokens × bytes
+    b: n_layers²
+    c: vocab_size × n_tokens
+    d: batch_size × n_layers
+  answer: a
+  explanation: 2 (K+V) × n_layers × d_model × n_tokens × bytes_per_param。80 layers,
+    8192 dim, 4096 tokens, fp16 → ~10GB per request。
+  difficulty: 3
+  tags:
+  - formula
+- id: '5.7'
+  question: Temperature T=0 嘅 decoding 係乜嘢？
+  options:
+    a: Argmax (greedy) — always pick highest probability token
+    b: Uniform random sampling
+    c: Sample from top-k only
+    d: Always pick random token
+  answer: a
+  explanation: T=0 → softmax become argmax → deterministic。Output 一致但可能重複。T>0 引入 randomness。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.8'
+  question: GPT-1 同 GPT-3 嘅參數量相差大約幾多倍？
+  options:
+    d: ~1500× (117M → 175B)
+    a: ~10×
+    b: ~100×
+    c: ~10000×
+  answer: d
+  explanation: 'GPT-1: 117M params。GPT-3: 175B params。175000/117 ≈ 1500 倍。'
+  difficulty: 2
+  tags:
+  - comparison
+- id: '5.9'
+  question: Top-p (nucleus) sampling 嘅運作方式係？
+  options:
+    b: Sample 直到 cumulative probability 達到 p 嘅 subset
+    a: Sample 前 p 個 tokens
+    c: Sample with probability p
+    d: Pick token at position p
+  answer: b
+  explanation: Sort tokens by probability descending, add until sum ≥ p, sample from
+    this subset (重新 normalize)。Dynamic size (不同 context 有不同 tokens count)。
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.10'
+  question: Temperature=0 係咪 guarantee deterministic output？
+  options:
+    d: 理論上係，但 GPU floating point nondeterminism 可能導致輕微差異
+    a: 係，argmax 係確定性
+    b: 唔係，temperature=0 係隨機
+    c: 只係 batch size=1 時 determinis
+  answer: d
+  explanation: 理論上 argmax deterministic。但 GPU 嘅 CUDA convolution 等 operations 有 nondeterminism
+    (associative reduction error)。Deterministic flags 可用但 trade off performance。
+  difficulty: 3
+  tags:
+  - application
+
