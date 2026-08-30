@@ -36,7 +36,7 @@ Each gives you different information. Each produces different learning. The thir
 
 > **Think**: If you get a practice problem wrong but don't find out WHY until tomorrow, how much do you learn?
 >
-> *Answer: Less than if you got immediate explanation. The error trace fades. Immediate feedback links the error to its correction most strongly.*
+> *Answer: It depends. For low-complexity factual tasks, immediate explanation links the error to its correction most strongly. For complex or transfer-oriented tasks, a delay can be just as effective or even better — the wait forces you to attempt the error yourself before getting corrected, which strengthens the mental model. (Kulik & Kulik 1988 meta-analysis.)*
 
 ---
 
@@ -221,14 +221,15 @@ What's wrong?
 *Answer: Error-avoidance mindset. It leads to staying in your comfort zone, avoiding challenge, and missing learning opportunities. Productive error = prediction error signal = learning trigger.*
 
 ---
-
 ## Feynman Explain
-(Explain error-driven learning: your brain is a prediction machine. When your prediction is wrong, your brain says "surprise!" and updates. Errors are like hitting a wrong note while playing piano — painful but the only way your brain knows to adjust your finger position.)
+
+Your brain is a prediction engine. It constantly guesses what comes next. When the guess is *right*, nothing changes. When the guess is *wrong*, your brain registers a prediction error and updates its model. So errors are not failures — they are the *signal that drives learning*. The most useful feedback is one that tells you *why* you were wrong (elaborative), not just *that* you were wrong (outcome). The reason: a "why" gives your model something concrete to update against. A bare "wrong" leaves the gap unanalyzed.
 
 ---
 
 ## Reframe
-(Judge: think of a recent error you made while studying. Did you analyze it or just move on? Design an error log for your current study topic. Track 5 errors and their root causes.)
+
+Error-driven learning is the same mechanism behind gradient descent in machine learning: compute the gap between predicted and actual, take a step to reduce it, repeat. The brain does this with neurons; ML does it with weights. The corollary is identical: if the error signal is noisy, sparse, or delayed, learning is slow. This is why good teachers (and good loss functions) give clear, fast, specific feedback — they make the gradient legible. The "feedback sandwich" fails for the same reason a noisy loss function fails: the signal gets buried.
 
 ---
 

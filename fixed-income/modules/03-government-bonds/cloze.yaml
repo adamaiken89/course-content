@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "US Treasury bills (T-{Bills}) mature in one year or less and pay no coupon — they're issued at a discount to face value."
+  answer: "Bills"
+  explanation: "T-Bills are zero-coupon instruments. Quoted on a discount yield basis using a 360-day convention; bond-equivalent yield (BEY) converts to comparable annual rate."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "T-{Notes} mature in 2-10 years and pay semi-annual coupons, while T-{Bonds} mature in 20-30 years."
+  answer: "Notes; Bonds"
+  explanation: "Notes are the most liquid benchmark range; bonds carry the longest duration and greatest interest-rate sensitivity."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "T-{IPS} (TIPS) have principal indexed to {CPI}, providing inflation protection on both coupon and par."
+  answer: "IPS; CPI"
+  explanation: "TIPS coupon = fixed rate × inflation-adjusted principal. At maturity, holder receives the greater of inflation-adjusted par or original par."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.4"
+  question: "STRIPS stands for Separate Trading of Registered Interest and {Principal} of Securities."
+  answer: "Principal"
+  explanation: "Each coupon and the principal payment become individual zero-coupon securities, eliminating reinvestment risk for the holder."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "The {on-the-run} issue of a given maturity is the most recently issued Treasury and trades with the tightest bid-ask spread."
+  answer: "on-the-run"
+  explanation: "Off-the-run issues compensate holders with a small liquidity premium (a few basis points more yield) because they trade less frequently."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Government-sponsored enterprises (GSEs) like {Fannie Mae} and {Freddie Mac} have implicit but not explicit government backing."
+  answer: "Fannie Mae; Freddie Mac"
+  explanation: "Agencies were placed in conservatorship in 2008; bondholders were made whole, but the guarantee is not statutory. Agencies yield a spread over Treasuries to compensate for this tail risk."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Treasuries are considered the {risk-free} benchmark, but they still carry {interest rate}, inflation, and liquidity risk."
+  answer: "risk-free; interest rate"
+  explanation: "Zero credit/default risk, but price falls when rates rise, fixed coupons lose purchasing power to inflation, and even Treasuries saw bid-ask blow out in March 2020."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "An 8-year STRIPS yielding 4.5% to deliver $500,000 costs today approximately $351,593 using PV = FV / (1+r)^n."
+  answer: "$351,593"
+  explanation: "PV = $500,000 / (1.045)^8 = $500,000 / 1.4221 ≈ $351,593. Zeros lock in the future value with no reinvestment risk."
+  difficulty: 3
+  tags: [calculation]

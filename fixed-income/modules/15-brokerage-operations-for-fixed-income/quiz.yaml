@@ -97,13 +97,13 @@
 - id: '15.8'
   question: If bond position falls 5% and equity was $10M on $50M position, new leverage?
   options:
-    b: 5.26x
-    a: 4.75x
-    c: 5.0x
+    c: 6.33x
+    a: 5.26x
+    b: 5.0x
     d: 6.0x
-  answer: b
+  answer: c
   explanation: New position = $47.5M. Loss = $2.5M. Equity = $10M - $2.5M = $7.5M.
-    Leverage = $47.5M / $7.5M = 5.26x
+    Leverage = $47.5M / $7.5M = 6.33x
   difficulty: 2
   tags:
   - calculation

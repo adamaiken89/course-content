@@ -177,14 +177,15 @@ What's wrong?
 *Answer: Waiting for inspiration is passive. Motivation is a design problem — set autonomy (choose your approach), competence (small wins), and relatedness (study with someone). Design the conditions, and motivation follows.*
 
 ---
-
 ## Feynman Explain
-(Explain motivation: your brain has two drivers — interest (I want to) and pressure (I have to). Interest-driven learning is a rocket. Pressure-driven learning is a car with the handbrake on. Both move, but one flies.)
+
+Two kinds of motivation push you. **Intrinsic**: "I want to learn this" (curiosity, interest, mastery). **Extrinsic**: "I have to learn this" (grades, deadlines, money, fear). Intrinsic motivation is far more durable and produces deeper learning. Self-Determination Theory says intrinsic motivation is strongest when three needs are met: **autonomy** (I'm choosing), **competence** (I'm getting better), and **relatedness** (I'm connected to others). The takeaway: motivation is not willpower. It's a function of design — of the activity and the environment.
 
 ---
 
 ## Reframe
-(Judge: which subject are you least motivated to study right now? Apply SDT — how can you add autonomy, competence, or relatedness to make it more intrinsically motivating?)
+
+The autonomy/competence/relatedness framework is the same logic as good game design (player choice, skill progression, social connection) and good management (delegation, mastery, team). The failure modes are also identical: take away autonomy and you get compliance without engagement. Take away competence signals and you get learned helplessness. Take away relatedness and you get burnout. The same lever that makes a game addictive makes a class energizing and a job sustainable. Strip those three, and no amount of "try harder" recovers it.
 
 ---
 

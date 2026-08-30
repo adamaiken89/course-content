@@ -71,14 +71,14 @@
   question: Client in 35% federal bracket, state tax 5%. In-state muni yields 3.5%.
     TEY?
   options:
-    a: 5.83%
     b: 5.38%
+    a: 5.83%
     c: 3.50%
     d: 4.50%
-  answer: a
-  explanation: 'Muni exempt from federal + state (in-state). Combined rate = 1 - (1-0.35)(1-0.05)
-    = 1 - 0.6175 = 38.25%. TEY = 3.5% / 0.6175 = 5.67%. Closest: 5.83% if state fully
-    deductible on federal.'
+  answer: b
+  explanation: 'In-state muni exempt from federal AND state tax. TEY = 3.5% / (1-0.35)
+    = 5.38% (federal only — state exemption is bonus). Note: SALT cap ($10k) since
+    2018 means state tax savings usually small unless fully deductible.'
   difficulty: 3
   tags:
   - calculation

@@ -1,0 +1,157 @@
+- id: '20.1'
+  question: The micro-assembly loop begins with `stage(await importCsv(file))`. Which
+    module's contract does `stage` belong to?
+  options:
+    a: m14 batch update engine
+    b: m15 CSV import and bulk entry
+    c: m17 async races and reconciliation
+    d: m13 dependent field chains
+  answer: b
+  explanation: m15 turns hostile CSV rows into validated typed drafts. Staging is
+    a separate step from submitting so the reviewer can fix invalid rows before they
+    hit the wire.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '20.2'
+  question: 'Why does the loop use `idempotencyKey: run.key` instead of `idempotencyKey:
+    crypto.randomUUID()` per call?'
+  options:
+    a: run.key is shorter
+    b: The server rejects randomUUID
+    c: randomUUID is slower
+    d: A stable key lets the server dedupe a retried submit; a fresh key makes every
+      retry a duplicate write
+  answer: d
+  explanation: Idempotency requires the key to be stable across retries. A fresh UUID
+    per call defeats the contract — the server cannot dedupe a write it sees as new.
+  difficulty: 2
+  tags:
+  - concept
+- id: '20.3'
+  question: The loop's resubmit step is `for (const it of failed) await batchStore.resubmit(it,
+    run.key)`. What would go wrong if you replaced it with a whole-run resubmit?
+  options:
+    a: The server would reject it
+    b: Already-landed items would re-send to the wire, wasting 197 deduped requests
+    c: The run would reset to pending
+    d: The key would change
+  answer: b
+  explanation: Server-side dedupe prevents double-enroll but does not prevent wasted
+    network and ledger work. Per-item filter is a system-cost contract, not a correctness
+    one.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '20.4'
+  question: Which module's contract catches a 90-second network drop mid-submit?
+  options:
+    a: m14 per-item ledger
+    b: m13 dependent options
+    c: m15 staging
+    d: m19 offline queue and persistence
+  answer: d
+  explanation: m19 persists pending mutations in a queue and flushes on the `online`
+    event in dependency order. The other modules are correct but do not handle the
+    network drop.
+  difficulty: 1
+  tags:
+  - concept
+- id: '20.5'
+  question: Two staff tabs edit the same applicant. Tab A submits first. What prevents
+    Tab B from also submitting?
+  options:
+    a: m14 ledger
+    b: m13 refetch
+    c: m19 BroadcastChannel submit latch
+    d: m17 idempotency key
+  answer: c
+  explanation: m19's submit latch is an ephemeral BroadcastChannel ticket that ensures
+    only one tab holds the submit permission. Idempotency dedupes but does not gate
+    the action.
+  difficulty: 2
+  tags:
+  - concept
+- id: '20.6'
+  question: The reviewer reassigns a program mid-batch. What happens to the in-flight
+    option fetch?
+  options:
+    a: m17 aborts it via the requestId guard
+    b: m15 stages a new draft
+    c: m14 marks the run as failed
+    d: It completes and overwrites the new selection
+  answer: a
+  explanation: m13's `options.abortOn(() => userReassignsProgram(...))` plus m17's
+    requestId guard cancels the stale fetch. The result would have been against an
+    old key.
+  difficulty: 2
+  tags:
+  - concept
+- id: '20.7'
+  question: What is the architectural claim of the micro-assembly?
+  options:
+    a: Composition across modules is the architecture; each module's exit is the next
+      module's entrance
+    b: Frameworks are better than seams
+    c: The capstone replaces prior modules
+    d: Every enterprise React app should have a useReviewerImport hook
+  answer: a
+  explanation: The loop is the proof that the seams compose. The seams are the architecture;
+    the loop is what you get when they are well-named.
+  difficulty: 3
+  tags:
+  - concept
+- id: '20.8'
+  question: If you extracted the loop into a custom hook, what would you lose?
+  options:
+    a: The m17 key
+    b: Type safety
+    c: The explicitness of the seam composition, which is the audit trail
+    d: React 19 support
+  answer: c
+  explanation: 'A hook hides the words. The loop''s ten lines are the contract: stage,
+    begin, fetch, abort, submit, filter, resubmit. Hidden contracts cannot be audited.'
+  difficulty: 3
+  tags:
+  - concept
+- id: '20.9'
+  question: A CSV import has 50 valid rows and 5 invalid ones. The reviewer clicks
+    'Submit valid only'. What happens to the run.key?
+  options:
+    a: It is reused from the previous staging
+    b: A new key is minted for the 48-row run
+    c: It becomes null until the reviewer confirms
+    d: It concatenates the invalid row ids
+  answer: b
+  explanation: The key is per-run, not per-file. Each `batchStore.begin(drafts)` mints
+    a fresh key for that specific staged set. Stable within the run, fresh across
+    runs.
+  difficulty: 3
+  tags:
+  - concept
+- id: '20.10'
+  question: Which of these is NOT something the micro-assembly loop is responsible
+    for?
+  options:
+    a: Server-side authorization
+    b: Mid-flight option refetch
+    c: Idempotent resubmit
+    d: Per-item settlement of failures
+  answer: a
+  explanation: Server-side authorization is upstream of the loop. The loop handles
+    client-side composition only. Audit logging and notifications are downstream.
+  difficulty: 2
+  tags:
+  - scenario
+
+- id: "20.11"
+  question: The micro-assembly's resubmit step filters to failed items only. A junior refactors it to resubmit the whole run with the same idempotency key, claiming 'the server dedupes.' What is the missing contract?
+  options:
+    a: "The key would change"
+    b: "The server would reject duplicate keys"
+    c: "Per-item filter is a system-cost contract: resubmitting the whole run wastes the wire and the ledger on already-landed items, even though no double-enroll occurs"
+    d: "The run would reset to pending"
+  answer: c
+  explanation: Server-side dedupe is a correctness contract, not a cost contract. Re-sending 197 settled items to the wire is wasteful even if the server filters them. The loop's filter step says 'only retry the work that didn't land.' Hiding it costs the system its efficiency budget.
+  difficulty: 3
+  tags: [concept, process]

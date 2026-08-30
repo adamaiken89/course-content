@@ -67,12 +67,16 @@
     $8 each. SPY drops 10% to $450. What is net portfolio loss after hedge?
   options:
     a: $100,000
-    b: $34,000
+    b: $66,000
     c: $50,000
     d: $16,000
   answer: b
-  explanation: Portfolio loss = $100,000. Put payout = ($475 - $450) × 20 × 100 =
-    $50,000. Hedge cost = $16,000. Net = $100,000 - $50,000 + $16,000 = $34,000 loss.
+  explanation: Portfolio loss = $1M × 10% = $100,000. Put payout = ($475 − $450)
+    × 20 contracts × 100 shares = $50,000. Premium cost = $8 × 20 × 100 = $16,000.
+    Net loss = $100,000 (portfolio loss) − $50,000 (put payout) + $16,000 (premium
+    cost) = $66,000. The put recovers $50K but you paid $16K upfront for the insurance,
+    so the put's net contribution is +$34K and net portfolio loss = $100K − $34K =
+    $66K.
   difficulty: 3
   tags:
   - calculation

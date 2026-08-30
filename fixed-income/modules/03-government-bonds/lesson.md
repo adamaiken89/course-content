@@ -114,7 +114,7 @@ Client wants guaranteed $500,000 in 8 years for child's education. You buy 8yr S
 
 If 8yr zero-coupon yield = 4.5%, cost today:
 ```text
-PV = $500,000 / (1.045)^8 = $500,000 / 1.4221 = $351,582
+PV = $500,000 / (1.045)^8 = $500,000 / 1.4221 = $351,593
 ```
 
 Known outcome: $500,000 at maturity. No coupon reinvestment risk.
@@ -131,20 +131,18 @@ If Treasury yield rises to 4.50%, corporate bond likely yields 5.85% (spread sta
 
 ## Common Misconception
 
-"Treasuries have zero risk." No. Interest rate risk, inflation risk, reinvestment risk, and (for foreign holders) currency risk remain. Only credit/default risk is zero.
+**"Treasuries = zero risk."** No. Only credit/default risk is zero. Risks that remain:
 
-> **Predict**: Commit to an answer: does government bonds get simpler or harder once treasury securities enters the picture?
->
-> *Answer: Harder locally, simpler globally: individual pieces carry more rules, but the overall system needs fewer special cases.*
-> **Think**: What would break first if you ignored **US Treasury securities** in a production government bonds setup?
->
-> *Answer: Correctness holds at small scale, then behavior diverges as load or complexity grows — exactly what **US Treasury securities** guards against.*
-> **Cloze**: {blank} governs how government bonds behaves when multiple bill pricing concerns collide.
-> **Cloze**: The rule that keeps treasury securities correct under load is called {blank}.
-> **Cloze**: In government bonds, strips determines {blank}.
-> **Spot the Mistake**: Code review note: someone applies bill pricing everywhere "to be safe" in a government bonds codebase. Spot the mistake.
->
-> *Answer: Blanket application hides which spots actually need bill pricing. Apply it where the semantics demand it, and document why.*
+- **Interest rate risk**: price falls if rates rise (Module 1 inverse relationship)
+- **Inflation risk**: fixed coupon loses purchasing power (TIPS solve this)
+- **Reinvestment risk**: coupons reinvest at uncertain future rates
+- **Liquidity risk**: in 2008-2009 and March 2020 even Treasuries saw bid-ask blow out and circuit breakers triggered
+- **Currency risk**: foreign holders exposed to USD moves
+- **Opportunity cost**: yield may underperform risk assets in expansions
+
+**"Agency bonds = government bonds."** No. Agencies (Fannie/Freddie) have implicit not explicit backing. Post-2008 placed in conservatorship. Bondholders protected so far but no statutory guarantee like Treasuries.
+
+---
 
 
 ## Key Takeaways
@@ -166,6 +164,38 @@ Explain on-the-run vs off-the-run Treasury liquidity to a private banking client
 
 ## Reframe
 Critique the idea that Treasuries are "risk-free." What risks remain? (Inflation, liquidity during crisis, currency for foreign holders, opportunity cost.) Write your answer.
+
+---
+
+## Think
+
+> **Think**: Two 10-year Treasuries. Bond A is the most-recently issued "on-the-run" 10-year yielding 4.20%. Bond B is the previous issue "off-the-run" 10-year yielding 4.27%. Same issuer, same maturity, same coupon date structure. Why does B yield 7bp more, and which would a discretionary buy-and-hold pension fund prefer?
+>
+> *Answer: B yields more because off-the-run issues trade less frequently → wider bid-ask → lower liquidity. The 7bp premium is the "liquidity premium" the market pays to hold the less-tradeable security. A pension fund with long horizon and low trading frequency would prefer B (or even just track both via index), capturing ~7bp/year of extra yield with no expected mark-to-market impact. A market-maker or relative-value hedge fund prefers A for tighter spreads. Liquidity premium is real compensation, not a free lunch.*
+
+---
+
+## Predict
+
+> **Predict**: A client wants exactly $1,000,000 in 10 years for a known future liability (college tuition block, property down-payment). They hold a balanced portfolio but want this single obligation locked in. Compare two approaches: (a) buy a 10-year on-the-run Treasury note at par yielding 4.5%, reinvest coupons; (b) buy a 10-year STRIPS at the 10Y zero-coupon yield of 4.0%. Which costs less today, and which has more reinvestment risk?
+>
+> *Answer: STRIPS costs less. The 4.0% zero rate vs 4.5% coupon rate reflects the missing reinvestment income on intermediate coupons. Approximate: STRIPS price = $1,000,000 / 1.04^10 = $675,564. The Treasury note at par costs $1,000,000 but with coupons reinvested, you reach the goal only if reinvestment rates match the 4.5% YTM. Realized return will deviate if rates fall — biggest risk for high-coupon long bonds. STRIPS have ZERO reinvestment risk: the $1M outcome is contractually locked. For a hard liability, STRIPS wins on certainty; the cost premium is the insurance against reinvestment-rate uncertainty.*
+
+---
+
+## Spot the Mistake
+
+> **Spot the Mistake**: A junior says "Agency bonds are government bonds — Fannie and Freddie have implicit government backing, so they're risk-free like Treasuries. I'll use them in the LCR buffer."
+>
+> Spot the two errors and explain why each is wrong.
+>
+> *Answer: Error 1: "Implicit" is not the same as "explicit." Treasuries have statutory full faith and credit of the US government. Agencies have implicit backing (presumed in normal times) but no statutory guarantee. In 2008, both were placed in conservatorship — bondholders made whole, but the mechanism was discretionary, not contractually guaranteed. The market prices this difference: agencies trade at a spread to Treasuries. Error 2: "Risk-free" is the wrong frame even for Treasuries — interest rate, inflation, and liquidity risk remain. For LCR, only the safest assets count; agencies qualify as Level 2A (lower haircut than corporates) but not Level 1 (which is Treasuries and central bank debt only). The junior has confused two distinct concepts: (a) credit backing and (b) regulatory risk-weighting.*
+
+---
+
+## Cloze
+
+US Treasury {T-Bills} mature in one year or less and are issued at a {discount} to face with no periodic coupon. T-{Notes} (2-10yr) and T-{Bonds} (20-30yr) pay semi-annual coupons and serve as the {risk-free benchmark} for global fixed income. {STRIPS} separate each coupon and principal payment into individual zero-coupon securities, eliminating {reinvestment risk}. The {on-the-run} issue of a given maturity is the most recently issued and trades with the tightest bid-ask; off-the-run issues compensate holders with a small {liquidity premium}.
 
 ---
 

@@ -1,6 +1,6 @@
 subject: "Enterprise React UI Patterns"
 language: en
-time_budget_hours: 22
+time_budget_hours: 25
 target_level: advanced
 domain: "enterprise-react-ui-patterns"
 prerequisites: [react, typescript, testing]
@@ -14,7 +14,8 @@ learning_objectives:
   - "Build performant tracker grids and large-data UI with virtualization and deferral"
   - "Engineer dependent fields, batch submission, and CSV import with validation and rollback"
   - "Reconcile async races and design error UX with boundaries, retries, and offline messaging"
-  - "Assemble extended patterns: autosave, offline queue, undo, and micro-stitched composition"
+  - "Assemble extended patterns: autosave, offline queue, undo, and multi-tab consistency as named seams"
+  - "Compose m13/m14/m15/m17/m19 into a single running loop without new abstractions; identify which seam is misbehaving under failure"
 
 modules:
   - id: 1
@@ -109,6 +110,11 @@ modules:
     topics: [error-boundary, retry, offline, recovery]
   - id: 19
     name: "Extended Patterns Buffet"
-    time_hours: 1.2
+    time_hours: 1.5
     prerequisites: [17, 18]
-    topics: [autosave, offline-queue, undo, micro-assembly]
+    topics: [autosave, offline-queue, undo, multi-tab]
+  - id: 20
+    name: "Micro-Assembly Capstone"
+    time_hours: 1.5
+    prerequisites: [19]
+    topics: [seam-composition, m15-m19-integration, capstone]

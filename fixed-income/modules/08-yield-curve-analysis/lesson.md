@@ -139,20 +139,15 @@ Analysis: flat curve → little term premium. Extra yield for going 10yr vs 2yr 
 
 ## Common Misconception
 
-"Inversion means recession tomorrow." Typical lead time 6-24 months. Curve can invert then re-steepen without recession (1966 false positive). Inversion signals higher recession probability, not certainty.
+**"Inverted curve = recession tomorrow."** No. Lead time is 6-24 months (average ~12). Curve can invert and re-steepen without recession (1966, 1998 false positives). Inversion raises recession probability, not certainty.
 
-> **Predict**: Commit to an answer: does yield curve analysis get simpler or harder once curve shapes enters the picture?
->
-> *Answer: Harder locally, simpler globally: individual pieces carry more rules, but the overall system needs fewer special cases.*
-> **Think**: What would break first if you ignored **What is yield curve?** in a production yield curve analysis setup?
->
-> *Answer: Correctness holds at small scale, then behavior diverges as load or complexity grows — exactly what **What is yield curve?** guards against.*
-> **Cloze**: {blank} governs how yield curve analysis behaves when multiple three theories concerns collide.
-> **Cloze**: The rule that keeps curve shapes correct under load is called {blank}.
-> **Cloze**: In yield curve analysis, forward rates determines {blank}.
-> **Spot the Mistake**: Code review note: someone applies three theories everywhere "to be safe" in a yield curve analysis codebase. Spot the mistake.
->
-> *Answer: Blanket application hides which spots actually need three theories. Apply it where the semantics demand it, and document why.*
+**"Expectations theory explains the curve."** No. Pure expectations theory predicts flat curve on average. Reality: persistent upward slope → term premium exists. Expectations component matters but liquidity premium dominates.
+
+**"Steepener trade always works after inversion."** Curve dynamics depend on cause. If Fed tightening → steepener works as policy stalls. If recession already underway → curve bull-steepens (long yields fall less) but different trade.
+
+**"Swap curve = Treasury curve + spread."** Not exactly. Swap curve embeds bank credit risk (AA) plus liquidity/balance sheet factors. Swap spread can go negative in stress (2011 USD swap spread briefly negative).
+
+---
 
 
 ## Key Takeaways
@@ -176,6 +171,38 @@ Explain yield curve inversion to a client: "Why do long-term rates sometimes fal
 
 ## Reframe
 Critique yield curve as recession predictor: "Has inversion become less reliable?" Consider QE, global demand for Treasuries, structural low rates. Write your answer.
+
+---
+
+## Think
+
+> **Think**: A client in 2006 hears the yield curve inverted in mid-2006. She asks: "Does this mean I should move to cash now?" The curve un-inverts in late 2007. The recession begins December 2007. Walk through what advice you would have given and what hindsight teaches about leading indicators.
+>
+> *Answer: An honest advisor would have said in mid-2006: "Inversion raises the probability of recession within 6-24 months, but it's not a sell signal by itself. The historical record is 8/8 US recessions preceded by inversion, but false positives exist (1966, 1998). Action items: tighten stop losses, review portfolio liquidity, consider raising cash allocation modestly, but DO NOT liquidate equity on the basis of one indicator." By late 2007 when the curve un-inverted, the recession was already imminent. The lesson: curve signals PROBABILITY, not TIMING. The 2007 inversion lasted 12+ months before recession started. Use inversion as one input to a multi-factor risk review, not a standalone trade trigger.*
+
+---
+
+## Predict
+
+> **Predict**: Today the 2-year Treasury yields 4.50% and the 10-year Treasury yields 4.20% (inverted by 30bp). The Fed has signaled 100bp of cuts over the next 12 months. Predict direction of (a) the 2-year yield, (b) the 10-year yield, and (c) the curve shape over 12 months. Assume no recession surprise.
+>
+> *Answer: (a) 2-year yield FALLS substantially — it tracks the front-end policy expectations. 100bp of Fed cuts means new 2-year notes issued at lower rates; existing 2-year rallies toward new rate. (b) 10-year yield FALLS, but less than 2-year — the long end reflects growth/inflation expectations, not just policy. Typical: 10-year falls 30-50bp in easing cycles. (c) Curve UN-INVERTS and likely STEEPENS. The 2-year falls faster than the 10-year, so the spread normalizes. This is a "bull steepener" — both ends rally, but the front rallies more. The classic pattern following a Fed cutting cycle initiation.*
+
+---
+
+## Spot the Mistake
+
+> **Spot the Mistake**: A junior says: "The 2-year yields 4% and the 10-year yields 4.5%. Under expectations theory, the market expects 2-year rates 2 years from now to be about 5%."
+>
+> Spot the calculation error and write the correct expected 2-year-2-years-forward rate.
+>
+> *Answer: The junior did linear arithmetic (4.5% - 4% = 0.5% added to 4% = 4.5%, then 4% + 0.5% × 4 ≈ 5%, but the actual math is geometric, not linear). Correct calculation: (1.045)^10 = (1.04)^2 × (1 + f)^8 → (1.045)^10 / (1.04)^2 = (1 + f)^8 → f = [(1.045)^10 / (1.04)^2]^(1/8) - 1 = [1.5529 / 1.0816]^(1/8) - 1 = [1.4357]^(0.125) - 1 ≈ 1.0464 - 1 = 4.64%. The market-implied 2-year rate starting in 2 years is ~4.64%, not 5%. Expectations theory uses compound interest, not simple interest. And: the 4.64% is just a break-even; liquidity preference theory says the actual expected rate is lower, with the 30bp gap being term premium.*
+
+---
+
+## Cloze
+
+The Treasury {yield curve} plots yields against maturity. A {normal} curve slopes upward (term premium + growth expectations); an {inverted} curve slopes downward and has preceded every US recession since 1960. {Expectations theory} says long yields equal the average of expected future short rates; {liquidity preference theory} adds a term premium for holding longer maturities. {Forward rates} are derived from spot rates via compound interest, e.g. f = (1+y_n)^n / (1+y_m)^m - 1 for n>m. {Steepening} (long yields rise relative to short) and {flattening} (short yields rise relative to long) describe relative curve moves. The {swap curve} embeds AA bank credit and liquidity, not pure government risk.
 
 ---
 

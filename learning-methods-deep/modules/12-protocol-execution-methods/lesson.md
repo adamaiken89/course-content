@@ -181,11 +181,11 @@ Benefits over blocked practice:
 | Aspect | Blocked (one module at a time) | Interleaved |
 |--------|-------------------------------|-------------|
 | Short-term quiz | Higher (appears to work) | Lower (feels harder) |
-| Long-term retention | Lower (~30% at 1 month) | Higher (~60% at 1 month) |
+| Long-term retention | Lower (often ~30-50% at 1 month) | Higher (often ~60-80% at 1 month; studies commonly report 1.5-3x retention gains, with magnitude depending on domain and material similarity) |
 | Discrimination learning | Poor — same context each card | Good — must identify which concept applies |
 | Learner preference | Preferred (feels easier) | Disliked (feels harder) |
 
-**Critical insight**: Interleaving feels worse but works better — the protocol must override learner preference for blocked practice.
+**Critical insight**: Interleaving feels worse but works better — the protocol must override learner preference for blocked practice. Effect size varies: classification/diagnostic tasks (where learners must pick the right concept) benefit most; pure recall of single concepts benefits less. The "triples" claim is the upper end of published estimates (Rohrer & Pashler, Brunmair & Richter, others) — a working figure, not a universal constant.
 
 > **Think**: Why does interleaving feel harder than blocked practice?
 >
@@ -288,7 +288,7 @@ Execution methods make the protocol tangible. BLURT produces a concrete gap list
 - BLURT: brain dump (5min) → compare to source (5min) → fill top 3 gaps (5min)
 - Blurt at 1 day, 1 week, 1 month — each tests a different retention horizon
 - Feynman: simple explanation → AI gap probe → analogy challenge → return to source
-- Interleaving feels harder but triples long-term retention vs blocked practice
+- Interleaving feels harder but often 1.5-3x improves long-term retention vs blocked practice (magnitude depends on domain)
 - Cumulative quizzes every 3-5 modules build cross-module connections
 - Meta-learning weekly: track outcomes, identify weak areas, adjust protocol
 - The protocol must override learner preference for blocked/easy practice

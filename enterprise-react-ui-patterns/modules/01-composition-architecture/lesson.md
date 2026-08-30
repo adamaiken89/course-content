@@ -39,6 +39,20 @@ mindmap
 
 ---
 
+## Meet Aissa
+
+Aissa is the senior frontend engineer anchoring this course's running case study. She has 7 years of React experience, owns the university application portal at a mid-size ed-tech company, and reports to a tech lead who reviews her PRs. Her team has grown from 2 to 9 in the last year, and the patterns in this course come from what she wishes she had known on day one.
+
+Aissa is not a beginner. She has shipped production React since 2018, debugged enough class-component legacy to have opinions about `componentDidUpdate`, and is comfortable with hooks, context, and the modern build pipeline. What she struggles with is **scale**: patterns that work for a 2-person team break under a 9-person team, and the official React docs don't cover the multi-team, multi-app, multi-year decisions she faces.
+
+When you see Aissa in a lesson, you'll see her applying the pattern — sometimes correctly, sometimes making the trade-off the lesson is about to warn against. Her role is to make the pattern concrete, not to be a model to copy uncritically. If you find yourself disagreeing with Aissa's choice, that's the lesson working.
+
+Aissa's product: a university application portal. Students fill out one application and apply to multiple programs. Aissa's concerns: form complexity, network reliability, accessibility, i18n, performance, design system constraints, and the simple fact that she can't rewrite the whole app every quarter.
+
+Every example, every "in the wild" note, every code block that mentions a feature — assume it's part of Aissa's portal unless the lesson says otherwise.
+
+---
+
 ## Real-World Example
 
 Aissa starts a university application portal. Two weeks in, the `ApplicationForm` component is 800 lines: it renders inputs, fetches programs, holds draft state, calculates remaining spots, and renders the summary panel. Every feature request lands in this one file. A change to the "save draft" button forces a full re-render of the entire form. The team calls the file "the god component" and is afraid to touch it.

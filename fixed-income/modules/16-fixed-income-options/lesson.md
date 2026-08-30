@@ -100,20 +100,15 @@ Private banks structure bespoke OTC options for clients, including:
 
 ## Common Misconception
 
-"Callable bond = higher yield = always better." Higher yield compensates for capped upside. In rate rally, callable bond underperforms. Investor must decide: get paid for call risk or avoid it with non-callable at lower yield.
+**"Callable bond = higher yield = always better."** Higher coupon compensates for capped upside. In rate rallies, callable underperforms non-callable. Decision: accept call risk for higher income vs avoid call risk at lower yield.
 
-> **Predict**: Before reading deeper: what do you expect happens when bond options interacts with equity options in fixed income options?
->
-> *Answer: The system relies on bond options to keep equity options predictable — when both apply, the stricter rule wins.*
-> **Think**: How does **Bond Options vs Equity Options** relate to **Types of Embedded FI Options** within fixed income options?
->
-> *Answer: They address adjacent failure modes: bond options vs equity options governs the primary behavior, while types of embedded fi options constrains how far you can push it.*
-> **Cloze**: {blank} governs how fixed income options behaves when multiple equity options concerns collide.
-> **Cloze**: The rule that keeps bond options correct under load is called {blank}.
-> **Cloze**: In fixed income options, types of embedded determines {blank}.
-> **Spot the Mistake**: A developer treats bond options as optional because "it works without it." Where is the mistake?
->
-> *Answer: It works only until the assumptions behind bond options are violated. The fix: treat it as part of the contract of fixed income options, not an optimization.*
+**"Putable bond is always safe."** No. The put is valuable to investor but issuer charges for it via lower coupon. Also, issuer credit risk matters — if issuer distressed, put may not be honored (though indenture usually protects).
+
+**"Cap and floor are independent."** Often combined as collar. Cap costs premium, floor generates premium. Net collar cost depends on strikes chosen. Not free protection.
+
+**"Black model = accurate pricing."** No. Black assumes constant volatility, lognormal distribution. Real yield distributions have fatter tails and volatility smiles. Use SABR or other models for swaptions/caps in practice.
+
+---
 
 
 ## Key Takeaways
@@ -132,6 +127,38 @@ Explain how callable bonds differ from straight bonds in terms of price behavior
 ## Reframe
 
 Some investors avoid callable bonds because of reinvestment risk during falling rate environments. Yet callable bonds typically offer higher coupons than comparable non-callable bonds. Under what market conditions does the additional coupon adequately compensate for the call risk? When does it not?
+
+## Think
+
+> **Think**: A 10-year, 5% coupon callable bond (callable in 2 years at par) trades at 102. A non-callable 10-year, 4% coupon bond trades at 99. The yield difference is 100bp. A client asks "why would anyone buy the non-callable? The callable has higher yield." Walk through the trade-off.
+>
+> *Answer: The callable bond is the non-callable bond PLUS a short call option the issuer holds. The 100bp extra yield is compensation for giving up the price appreciation if rates fall below 2.5% (the breakeven for the issuer to call). If rates rally to 3%, the callable bond prices near 100 (capped at par because the issuer will call). The non-callable bond might rally to 105. The 100bp extra coupon over 10 years = roughly $50 in extra income per $100 of face, but the bondholder LOSES the $5 price appreciation on a rally. In a flat or rising rate environment, the callable wins. In a falling rate environment, the non-callable wins. The callable is a bet that rates stay flat or rise; the non-callable is a bet that rates rally. The 100bp is the option premium the issuer pays for the right to call.*
+
+---
+
+## Predict
+
+> **Predict**: A corporate treasurer has $100M of floating-rate debt indexed to 3-month LIBOR (now SOFR). The treasurer is worried rates will rise. Compare two hedges: (a) buy a 2-year interest rate cap at 4.5% strike for 80bp premium, (b) buy a 2-year interest rate collar (buy 4.5% cap, sell 3.0% floor) for net 30bp cost. Predict the cost and protection profile of each.
+>
+> *Answer: (a) Cap cost: $100M × 0.80% × 2 years = $1.6M paid up front (or amortized). Full protection above 4.5% — if SOFR hits 5.5%, the treasurer receives 1% on $100M = $1M/year of compensation. No protection if rates fall (still benefits from low rates). (b) Collar cost: $100M × 0.30% × 2 = $0.6M. Net protection: above 4.5% AND below 3.0%. The treasurer SOLD the 3.0% floor, so if SOFR drops to 2%, they PAY 1% on the notional — give up some downside. The collar is cheaper but limits both upside (no benefit below 3%) and locks in cost (~3.0% to 4.5% is the "no man's land" of zero net cash flow). For a treasurer hedging against rate spikes while willing to give up some rate-decline benefit, the collar is cost-effective. For pure protection, the standalone cap.*
+
+---
+
+## Spot the Mistake
+
+> **Spot the Mistake**: A junior says: "Black's model prices options correctly because it assumes lognormal returns, which is what the market assumes."
+>
+> Two errors. Identify each.
+>
+> *Answer: Error 1: The market does NOT assume lognormal returns. Implied volatility smiles (different strikes → different implied vols) prove that the market prices fatter tails than lognormal would predict. Out-of-the-money options trade at higher implied vol, indicating tail risk. Black is a CONVENIENT model, not a true one. Error 2: Black assumes constant volatility over the option's life. In reality, volatility is stochastic and mean-reverts. SABR (Stochastic Alpha Beta Rho) and other models capture these dynamics. The Black model is fine for quick pricing or simple book valuation; for swaptions, structured products, and risk management, professionals use SABR, Heston, or local-volatility models. The "Black price" is a starting point, not the answer.*
+
+---
+
+## Cloze
+
+Embedded options in bonds change the {price-yield} relationship. A {callable} bond is a straight bond plus a short call option held by the issuer, creating {negative convexity} as rates fall. A {putable} bond gives the holder the right to sell back at par, providing a price floor. Interest rate {caps} and {floors} are OTC options on floating rates — caps protect borrowers from rate rises, floors protect lenders from rate falls. {Black's model} prices European-style options on forwards assuming lognormal returns and constant volatility; market practice uses SABR for more accuracy. Private banks use FI options for {hedging}, yield enhancement, and structured products.
+
+---
 
 ## Drill
 

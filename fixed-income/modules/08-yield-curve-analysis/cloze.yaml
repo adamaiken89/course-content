@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "The {yield curve} plots bond yields against maturity, usually for on-the-run Treasuries."
+  answer: "yield curve"
+  explanation: "Curve shapes: normal (upward), flat, inverted (downward), humped. Shape reflects expectations, term premium, and supply/demand at each maturity."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "An {inverted} yield curve (short yields > long yields) has preceded every US recession since 1960, with a 6-24 month lead time."
+  answer: "inverted"
+  explanation: "Inversion signals that the market expects future rate cuts (Fed easing) due to slowing growth. False positives exist (1966, 1998) but the hit rate is high."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "{Expectations theory} says long-term yield equals the geometric average of expected future short-term rates."
+  answer: "Expectations theory"
+  explanation: "Limitations: predicts flat curve on average, which is wrong. Reality shows persistent upward slope from term premium. Pure expectations theory is a useful starting point but incomplete."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.4"
+  question: "{Liquidity preference theory} says investors require a term premium for holding longer-maturity bonds, which explains the persistent upward slope."
+  answer: "Liquidity preference theory"
+  explanation: "Forward rate = expected future rate + term premium. Term premium increases with maturity and is highly variable — sometimes negative during flight-to-quality periods."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "If 1-year spot is 3.5% and 2-year spot is 4.0%, the implied 1-year forward rate 1 year from now is approximately {4.50%}."
+  answer: "4.50"
+  explanation: "f = (1.04)^2 / 1.035 - 1 = 1.0816 / 1.035 - 1 = 1.0450 - 1 = 4.50%. Geometric compounding, not linear."
+  difficulty: 3
+  tags: [calculation]
+
+- id: "c.6"
+  question: "{Market segmentation theory} argues that supply and demand in different maturity segments determine rates independently, with each investor type preferring specific maturities."
+  answer: "Market segmentation"
+  explanation: "Money market funds → short end. Pension/insurance → long end. Preferred habitat: investors will switch if premium is enough to compensate."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "A {steepener} trade profits when the curve steepens — long the long end, short the short end."
+  answer: "steepener"
+  explanation: "Bull steepener: both ends rally but long rallies more. Bear steepener: both ends sell off but short sells off more. Curve dynamics depend on cause (Fed policy, growth surprise, inflation)."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "The {swap spread} is the difference between the swap rate and the Treasury rate of the same maturity, typically positive except during stress."
+  answer: "swap spread"
+  explanation: "Swap spread reflects bank credit risk (AA), balance sheet costs, and supply/demand. Went briefly negative in 2011 USD swap spread dislocation."
+  difficulty: 2
+  tags: [terminology]

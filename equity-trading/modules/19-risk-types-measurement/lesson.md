@@ -113,15 +113,18 @@ VaR answers: "What is max loss over N days with X% confidence?"
 
 **Definition:** Loss threshold such that probability of exceeding it is (1 - confidence).
 
-**Formula (parametric):** VaR = portfolio_value × (z-score × sigma - expected_return)
+**Formula (parametric, zero-drift):** VaR = portfolio_value × z-score × sigma
 
 **Example:**
 ```text
 Portfolio: $1M
 Daily sigma: 1.5% ($15,000)
-Expected daily return: 0.05% ($500)
-95% VaR (z = 1.645): $1M × (1.645 × 0.015 - 0.0005) = $1M × 0.024175 = $24,175
-Interpretation: 95% chance daily loss ≤ $24,175. 5% chance loss exceeds $24,175.
+95% VaR (z = 1.645): $1M × 1.645 × 0.015 = $24,675
+Interpretation: 95% chance daily loss ≤ $24,675. 5% chance loss exceeds $24,675.
+
+Note: A variant adjusts for expected return (subtracts E[R]), which lowers reported VaR
+since the drift is assumed positive. Standard parametric VaR assumes zero drift and
+focuses purely on the loss threshold.
 ```
 
 > **Think**: If 95% VaR = $24K, what does the 5% tail look like?

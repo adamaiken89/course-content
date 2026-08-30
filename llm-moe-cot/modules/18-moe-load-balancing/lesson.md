@@ -80,10 +80,10 @@ Auxiliary loss 加落 main LM loss 度。鼓勵平衡 routing。
 懲罰唔平均嘅 router probability 分佈。
 
 ```text
-L_importance = α · N · Σ_i [CV(batch_i)]²
+L_importance = α · N · Σ_i f_i · P_i
 ```
 
-batch_i = 對 expert i 嘅 router probabilities 總和 across batch，CV = coefficient of variation (σ/μ)。
+f_i = 路由去 expert i 嘅 token 比例（fraction of tokens routed to expert i），P_i = 對 expert i 嘅平均 router probability。CV 係其中一種實作近似，但原 Shazeer 2017 公式係 dot product。
 
 ### Load Loss（Shazeer 2017）
 
@@ -118,10 +118,10 @@ f_i = 路由去 expert i 嘅 token 比例，P_i = 對 expert i 嘅平均 router 
 DeepSeekMoE 提出 **z-loss** — 穩定 router logits，防止佢哋無限增長：
 
 ```text
-L_z = α_z · Σ_i (logits_i)² · mean_i
+L_z = α_z · (log Z)²   where Z = Σ_i exp(logit_i)
 ```
 
-令 router logits 保持細數值。防止 experts 之間出現過大 magnitude 差距。提升訓練穩定性。
+`log Z` = log-sum-exp of router logits = log-partition function。懲罰 logits 絕對值過大（無論正負），令 router 對 expert 嘅偏好保持克制。DeepSeek-V2 採用。
 
 > **Predict**: 如果 router logits 無限增長會點？*答案：Softmax 變得極度 peaky — router 每個 token 差唔多 assign probability ~1 俾一個 expert。Collapse。z-loss 做 logit regulariser。*
 

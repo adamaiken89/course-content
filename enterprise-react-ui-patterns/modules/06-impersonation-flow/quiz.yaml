@@ -117,3 +117,25 @@
   explanation: "MSW defines the contract (per m3), so the test that GET /me returns the dual identity is the contract test. The banner snapshot is structural-only, and the full journey belongs to Playwright, not to direct student logins."
   difficulty: 1
   tags: [scenario]
+- id: "6.11"
+  question: An admin impersonates a student to debug a support ticket. The admin's audit trail must capture every action taken during impersonation. Where should the audit log be written?
+  options:
+    a: "Only client-side to a sessionStorage entry"
+    b: "Server-side at the API layer, with both actor and target ids, and never trust the client to assert the actor"
+    c: "In the URL as a query param"
+    d: "In the impersonation banner component state"
+  answer: b
+  explanation: Audit logs are a server concern. The client asserts the actor, but the server validates the session and records the actual id. A client-only log is useless for compliance and can be tampered with by a malicious tab.
+  difficulty: 2
+  tags: [scenario, concept]
+- id: "6.12"
+  question: An admin impersonates a student to debug a support ticket. The admin's audit trail must capture every action taken during impersonation. Where should the audit log be written?
+  options:
+    a: "Only client-side to a sessionStorage entry"
+    b: "Server-side at the API layer, with both actor and target ids, and never trust the client to assert the actor"
+    c: "In the URL as a query param"
+    d: "In the impersonation banner component state"
+  answer: b
+  explanation: Audit logs are a server concern. The client asserts the actor, but the server validates the session and records the actual id. A client-only log is useless for compliance and can be tampered with by a malicious tab.
+  difficulty: 2
+  tags: [scenario, concept]

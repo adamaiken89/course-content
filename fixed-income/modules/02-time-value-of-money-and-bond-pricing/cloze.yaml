@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "The {present value} of $1,000 received in 3 years, discounted at 5%, is $863.84."
+  answer: "present value"
+  explanation: "PV = FV / (1+r)^n. $1,000 / 1.05^3 = $863.84. Future dollars are worth less today because they cannot be invested until received."
+  difficulty: 1
+  tags: [formula]
+
+- id: "c.2"
+  question: "Bond price = PV of all future {cash flows} (coupons + principal repayment)."
+  answer: "cash flows"
+  explanation: "Each future cash flow is discounted back to today at the YTM; sum is the no-arbitrage price."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.3"
+  question: "Under semi-annual convention, a 5% YTM with semiannual periods means a periodic yield of {2.5%} per period."
+  answer: "2.5%"
+  explanation: "Periodic rate = annual YTM / 2. Compound effect: effective annual yield = (1.025)^2 - 1 = 5.0625%."
+  difficulty: 2
+  tags: [calculation]
+
+- id: "c.4"
+  question: "The {YTM} is the discount rate that makes PV of bond cash flows equal to the observed market price."
+  answer: "YTM"
+  explanation: "YTM is the IRR of the bond's cash flows. Solved iteratively — financial calculators and Excel's =YIELD() function handle it."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "A {spot rate} is the yield on a zero-coupon bond for a specific maturity, while YTM is a single rate applied to all cash flows."
+  answer: "spot rate"
+  explanation: "Spot rates differ across maturities; YTM is a flat average. Bootstrapping extracts spot rates from coupon-bond prices."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.6"
+  question: "Reinvestment {risk} is the gap between YTM and realized return caused by coupons being reinvested at rates different from YTM."
+  answer: "risk"
+  explanation: "Zero-coupon bonds have zero reinvestment risk; long high-coupon bonds have the most. Falling rates hurt most."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "The clean price is 98.50, face $1,000, accrued interest $8.24 → the {dirty} price the buyer pays is $993.24."
+  answer: "dirty"
+  explanation: "Convert clean to dollars first: 98.50% × $1,000 = $985.00. Then add accrued: $985.00 + $8.24 = $993.24."
+  difficulty: 3
+  tags: [calculation]
+
+- id: "c.8"
+  question: "PV of an annuity of $30 per period for 10 periods at 2.5% per period is $30 × 8.7106 = {$261.32}, using the annuity formula."
+  answer: "$261.32"
+  explanation: "PV_annuity = C × [1 - (1+r)^-n] / r. The factor 8.7106 is the annuity PV factor; multiply by payment to get total."
+  difficulty: 3
+  tags: [formula]

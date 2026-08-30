@@ -143,18 +143,17 @@ Gap to $400K target: remaining income from equity dividends, real estate cash fl
 7. **Monitor drawdown, not just yield**: Capital preservation is paramount for private clients
 8. **Bonds are not risk-free**: Understand all risks (rate, credit, liquidity, inflation, reinvestment, prepayment)
 
-> **Predict**: Commit to an answer: does capstone — bond portfolio construction get simpler or harder once capstone scenario enters the picture?
->
-> *Answer: Harder locally, simpler globally: individual pieces carry more rules, but the overall system needs fewer special cases.*
-> **Think**: What would break first if you ignored **Capstone Scenario** in a production capstone — bond portfolio construction setup?
->
-> *Answer: Correctness holds at small scale, then behavior diverges as load or complexity grows — exactly what **Capstone Scenario** guards against.*
-> **Cloze**: {blank} governs how capstone — bond portfolio construction behaves when multiple step concerns collide.
-> **Cloze**: The rule that keeps capstone scenario correct under load is called {blank}.
-> **Cloze**: In capstone — bond portfolio construction, determine bond determines {blank}.
-> **Spot the Mistake**: Code review note: someone applies step everywhere "to be safe" in a capstone — bond portfolio construction codebase. Spot the mistake.
->
-> *Answer: Blanket application hides which spots actually need step. Apply it where the semantics demand it, and document why.*
+## Common Misconception
+
+**"Capstone is just applying prior modules."** True, but integration exposes conflicts: tax efficiency vs yield, duration vs income, liquidity vs return. Real portfolios require trade-offs, not textbook solutions.
+
+**"IPS is just a formality."** Most common mistake. Without clear IPS, ad-hoc decisions dominate (market timing, chasing yield). IPS guides rebalancing discipline and prevents emotional responses.
+
+**"Diversification = low return."** Diversification reduces UNCOMPENSATED risk (idiosyncratic). Keeps expected return similar with lower volatility. Mod 17 lesson: tax-efficient diversification can match concentrated portfolios after-tax.
+
+**"Bond portfolios are static."** No. Active management required: rebalancing, tax-loss harvesting, credit monitoring, ladder rolling. Stale portfolios accumulate risks and miss opportunities.
+
+---
 
 
 ## Key Takeaways
@@ -173,6 +172,38 @@ Walk through the entire bond portfolio construction process for a HNW client fro
 ## Reframe
 
 The case against bonds in private client portfolios: "With yields barely above inflation after tax, why bother? Clients would be better served by a diversified equity portfolio and cash buffer." Construct the counter-argument using wealth management principles: sequence-of-returns risk, spending needs, and capital preservation. Where is the critic right, and where are they wrong?
+
+## Think
+
+> **Think**: The capstone portfolio for a 55-year-old HNW client projects $255k of after-tax income from $5M in bonds, against a $400k annual need. The remaining $145k is supposed to come from equity dividends and real estate cash flow. But the client just told you: "I'm considering moving up retirement to age 58, not 62." How does this change the bond portfolio construction, and what's the most important adjustment?
+>
+> *Answer: Retirement at 58 means the bond portfolio must support an extra 4 years of liability before Social Security / pension kicks in. Most critical adjustment: INCREASE the muni ladder allocation (most reliable, tax-efficient cash flows) and SHIFT duration shorter on the taxable side (less rate risk on the bond portion that must be there in 3 years). The $1M liquidity buffer for the real estate investment becomes lower priority than income stability. Sell some long-dated corporate IG and buy shorter-dated munis. Add TIPS only for the portion covering post-55 inflation. Net: trading yield for certainty of cash flow when liabilities are about to accelerate. The "rate view" matters less than the "liability view" once retirement is near.*
+
+---
+
+## Predict
+
+> **Predict**: A year into the bond portfolio, rates fall 100bp (bullish surprise). Predict (a) the mark-to-market impact on the portfolio, (b) the impact on forward income, and (c) the optimal rebalancing action. Use effective duration 4.5 and portfolio value $5M.
+>
+> *Answer: (a) MTM gain ≈ duration × yield drop × portfolio = 4.5 × 0.01 × $5M = +$225,000. (b) Forward income FALLS — coupons don't change, but as bonds mature, they reinvest at lower rates; the muni ladder loses 2-3% of forward income, corporates lose 1-2%. (c) Optimal: TRIM duration. The 100bp rally was a windfall; take some chips off the table by selling some long-duration bonds at the high price and locking in yields on shorter-dated issues. Buy more HY and TIPS (yields relatively attractive after the rally). Don't rebalance into more duration — the rally is unlikely to extend, and the income shortfall is the bigger long-term risk. The "right" rebalance is the opposite of the natural instinct (which is to chase the rally).*
+
+---
+
+## Spot the Mistake
+
+> **Spot the Mistake**: After a strong bond rally, an advisor tells the client: "Your portfolio is up $225k this year. Let's take some profits and rotate into higher-yielding bonds to lock in income."
+>
+> What's the conceptual error?
+>
+> *Answer: The advisor is doing two things at once, and the second contradicts the first. "Take profits" by SELLING bonds means REDUCING income (unless you rotate into higher-yielding bonds, which adds risk). "Rotate into higher-yielding" usually means longer duration or lower credit quality — both of which INCREASE the portfolio's risk profile at exactly the wrong time (yields fell, valuations stretched, default cycle may be late). The right move: take SOME profits to rebalance duration back to target (selling the bonds that rallied most), but do NOT reach for yield. Stay in high-quality issues. If the client needs more income, the answer is "save more" or "rebalance the equity allocation," not "reach for credit risk in the bond book." The advisor has conflated "harvesting gains" with "yield maximization" — they are different goals.*
+
+---
+
+## Cloze
+
+The capstone bond portfolio construction process flows: {Investment Policy Statement} (IPS) → asset allocation → sub-allocations → duration positioning → income projection → risk management → implementation → ongoing monitoring. {Asset allocation} sets the bond share (e.g., 33% of $15M = $5M); {sub-allocations} split across Treasuries, munis, corporates, MBS, TIPS, HY, cash. {Duration} is the dominant performance driver — small duration tilts create large P&L swings (4.5 × 75bp = 3.4% MTM on $5M). {Tax efficiency} via muni allocation and asset location can add 50-100bp of after-tax return. Active {monitoring} and rebalancing are required — bond portfolios are not static.
+
+---
 
 ## Drill
 

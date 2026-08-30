@@ -204,7 +204,7 @@ flowchart LR
 
 - **Opening Cross**: Exchange collects buy/sell orders, finds single clearing price. First trade happens here — often above IPO price.
 - **Price Stabilization**: Underwriter can bid for shares in open market for ~30 days to support price. Greenshoe option enables this.
-- **Quiet Period**: SEC-mandated 25 days where company cannot make forward-looking statements. Prevents selective disclosure.
+- **Quiet Period**: SEC's "quiet period" actually spans two distinct restrictions: (1) the pre-filing through 25 days post-IPO, during which the issuer and underwriters are limited in promotional communications (Section 5 of Securities Act), and (2) the **post-IPO 25-day research blackout** under **Rule 139**, which restricts research analysts at participating banks from publishing on the company. The "no forward-looking statements" rule applies to issuer/underwriter communications during (1).
 
 > **Think**: Stock opens at $50 (IPO price $40). You bought allocation at $40. Should you sell immediately?
 >

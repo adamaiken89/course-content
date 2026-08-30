@@ -143,7 +143,7 @@ Volume confirms price moves. Price + volume = conviction. Price alone = noise.
 
 **Volume divergence:** Price makes higher high but volume makes lower high → trend weakening. Bearish warning.
 
-**Climax volume:** Spike in volume after prolonged trend → trend exhaustion → reversal likely.
+**Climax volume:** Spike in volume after prolonged trend → often signals trend exhaustion, but **not a reliable reversal signal on its own**. Climaxes frequently mark strong continuation in trending markets rather than reversal — context (price location, prior trend age, news catalyst) matters more than volume alone.
 
 > **Think**: Stock rallies 30% over 3 weeks. On the last up-day, volume is 3x average. Bullish or bearish?
 >

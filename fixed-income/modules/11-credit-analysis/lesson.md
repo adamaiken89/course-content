@@ -130,20 +130,19 @@ Action: monitor covenant headroom. Consider hedging with CDS or reducing positio
 
 ## Common Misconception
 
-"Strong ratios = safe bond." Enron had healthy ratios pre-collapse. Ratios measure capacity, not character or accounting quality. Qualitative factors (management, competitive moat, accounting policies) matter as much.
+**"Strong ratios = safe bond."** No. Enron, WorldCom, Lehman all had healthy ratios pre-collapse. Ratios measure capacity but ignore:
+- Accounting quality (revenue recognition, off-balance-sheet)
+- Character/management (fraud risk)
+- Liquidity (ratios backward-looking)
+- Industry structure (cyclicality)
 
-> **Predict**: Before reading deeper: what do you expect happens when credit analysis interacts with cash flow in credit analysis?
->
-> *Answer: The system relies on credit analysis to keep cash flow predictable — when both apply, the stricter rule wins.*
-> **Think**: How does **Credit analysis framework** relate to **Key financial ratios** within credit analysis?
->
-> *Answer: They address adjacent failure modes: credit analysis framework governs the primary behavior, while key financial ratios constrains how far you can push it.*
-> **Cloze**: {blank} governs how credit analysis behaves when multiple cash flow concerns collide.
-> **Cloze**: The rule that keeps credit analysis correct under load is called {blank}.
-> **Cloze**: In credit analysis, credit events determines {blank}.
-> **Spot the Mistake**: A developer treats credit analysis as optional because "it works without it." Where is the mistake?
->
-> *Answer: It works only until the assumptions behind credit analysis are violated. The fix: treat it as part of the contract of credit analysis, not an optimization.*
+**"Lower Debt/EBITDA always better."** No — sector matters. Utilities run 5-6x normally; tech 1-2x. Compare within sector, not across.
+
+**"Rating downgrade = default imminent."** No. Downgrade signals deterioration, not immediate default. Time from downgrade to default varies: investment grade can take years (often avoids default entirely); distressed credits already in default proceedings.
+
+**"Cross-default applies automatically."** No. Usually requires bondholder vote to accelerate. Provides negotiating leverage, not automatic trigger.
+
+---
 
 
 ## Key Takeaways
@@ -166,6 +165,38 @@ Explain credit analysis to a client: "How do you decide if a company can pay bac
 
 ## Reframe
 Critique reliance on credit ratios: "Do financial ratios predict default?" Consider: Enron had healthy ratios pre-collapse, accounting manipulation, and the role of qualitative factors. Write your answer.
+
+---
+
+## Think
+
+> **Think**: A BBB-rated industrial company reports Debt/EBITDA of 3.0x, EBITDA/Interest of 6.0x. Ratios look fine for IG. The CFO recently changed accounting firms, the audit report is delayed, and there's a footnote about a "non-recurring" $400M gain that boosted EBITDA. What should the credit analyst investigate first, and what is the likely conclusion?
+>
+> *Answer: Investigate the $400M "non-recurring" gain. Is it truly one-time, or is it an aggressive revenue recognition play (channel-stuffing, bill-and-hold, securitization)? Adjust EBITDA DOWN by $400M → Debt/EBITDA jumps to 3.5-4.0x (borderline BB). Adjust interest UP if there's hidden debt. The audit delay plus accounting firm change is a classic red flag pattern — Enron changed auditors and "non-recurring" gains before collapse. Likely conclusion: this credit is borderline IG / rising star in reverse, and the rating is more aspirational than real. The analyst should model adjusted-credit metrics and prepare for potential downgrade.*
+
+---
+
+## Predict
+
+> **Predict**: A BBB-rated utility is downgraded to BB+ (fallen angel). Pre-downgrade price: $98.50 (yield 5.20%). Predict (a) post-downgrade price, (b) why the price moves, and (c) the most likely buyer after the dust settles.
+>
+> *Answer: (a) Price likely drops to $90-94 (yield 5.80-6.30%), a 5-8% decline. (b) Forced selling: many IG-only mandates (insurance, pension, certain mutual funds) MUST sell HY-rated bonds. Index inclusion (e.g., IG bond index) drops the bond, triggering mechanical selling by index funds. This technical pressure is independent of fundamentals. (c) HY funds, distressed-debt funds, and crossover funds (those that can buy both IG and HY) accumulate at the discounted price. The classic "fallen angel play" is buying post-downgrade and waiting for either fundamentals to recover (rising star back to IG) or for the technical oversupply to clear.*
+
+---
+
+## Spot the Mistake
+
+> **Spot the Mistake**: A junior says: "Company A has Debt/EBITDA of 2.5x and is rated A. Company B has Debt/EBITDA of 4.0x and is rated BB. The 1.5x leverage difference looks small — A should only yield slightly more than B."
+>
+> What's the error?
+>
+> *Answer: The junior is comparing leverage mechanically without understanding that Debt/EBITDA thresholds vary by sector and the jump from IG to HY is a regime change, not a linear one. A 4.0x leverage ratio in a regulated utility is normal; the same ratio in a cyclical industrial signals real stress. More importantly: the rating category itself triggers mandate-driven buying/selling, not just the underlying numbers. A-rated bonds trade in a completely different buyer base than BB-rated bonds, and the spread between A and BB is 100-200bp+ — not the small "1.5x leverage" difference the junior implies. Ratings are coarse buckets, but the market prices them as different asset classes.*
+
+---
+
+## Cloze
+
+The Four {Cs} of credit are Capacity (cash flow to repay), Collateral (asset backing), Covenants (legal protections), and Character (management). Key financial ratios: {Debt/EBITDA} measures leverage; {EBITDA/Interest} measures coverage; {FFO/Debt} and {FCF/Debt} measure cash flow adequacy. {Credit events} include missed payment, cross-default, covenant breach, and bankruptcy. A {fallen angel} is a bond downgraded from IG to HY, triggering forced selling by IG-only mandates. {Recovery analysis} determines expected loss given default based on seniority, collateral, and reorganization value. Compare ratios within sector, not across — utilities run 5-6x normal leverage, tech 1-2x.
 
 ---
 

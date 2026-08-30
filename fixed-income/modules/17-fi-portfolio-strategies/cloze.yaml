@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "{Passive} bond strategies include buy-and-hold and index replication, aiming to match benchmark returns with minimal tracking error and cost."
+  answer: "Passive"
+  explanation: "Buy-and-hold is best for known-liability investors (insurance, pensions). Indexing faces challenges: thousands of securities, illiquidity, monthly rebalance turnover, and unavoidable tracking error."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "{Active} bond strategies seek to beat the benchmark via duration tilting, yield curve positioning, sector rotation, credit allocation, and security selection."
+  answer: "Active"
+  explanation: "In IG space, most active managers trail passive after fees. In HY and EM, active managers more often outperform due to illiquidity premium and research edge."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "A {bullet} portfolio concentrates maturities in a single range; a {barbell} holds short and long ends but skips intermediates; a {ladder} spreads holdings evenly across maturities."
+  answer: "bullet; barbell; ladder"
+  explanation: "Bullet works in stable/steepening environments; barbell in flattening/volatile (higher convexity); ladder for predictable cash flows and constant reinvestment."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.4"
+  question: "A {barbell} has higher convexity than a bullet at the same duration, providing an edge in large rate moves."
+  answer: "barbell"
+  explanation: "Positive convexity means the barbell benefits asymmetrically: gains more on rallies, loses less on selloffs. The cost is lower yield than a bullet in stable environments."
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.5"
+  question: "{LDI} (Liability-Driven Investing) aligns asset cash flows and duration with pension or insurance liabilities, not with a market index."
+  answer: "LDI"
+  explanation: "Key metrics: funding ratio (assets / PV liabilities), surplus, and duration gap (asset duration - liability duration). Goal: hedge the funding ratio against interest rate moves."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.6"
+  question: "{Immunization} sets asset duration equal to liability duration so that a parallel rate shift leaves the funding ratio unchanged."
+  answer: "Immunization"
+  explanation: "Requires continuous rebalancing as duration drifts. Works only for parallel shifts — non-parallel moves (steepeners/flatteners) break immunization."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "An interest rate {swap} can be used to synthetically adjust portfolio duration without buying or selling bonds — pay fixed, receive floating to extend duration; pay floating, receive fixed to shorten."
+  answer: "swap"
+  explanation: "Swaps are leveraged and efficient — small notional creates large duration impact. Common in LDI: pension funds use receiver-swaps (receive fixed) to extend asset duration quickly."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "{Carry trade} in bonds means borrowing short-term at low rates and lending long-term at higher rates, profiting from the positive slope of the yield curve."
+  answer: "Carry"
+  explanation: "Profitable when the curve is upward-sloping and rates don't move adversely. Risk: if curve flattens or inverts, carry compresses; if rates spike, mark-to-market losses can exceed carry."
+  difficulty: 3
+  tags: [concept]

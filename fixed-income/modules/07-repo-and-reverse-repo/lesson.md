@@ -159,20 +159,17 @@ But leverage magnifies losses too.
 
 ## Common Misconception
 
-"Repo is collateralized so no risk." Counterparty risk exists if collateral drops suddenly (2008 MBS). Also operational risk (2019 settlement fails). Haircut protects but isn't perfect.
+**"Repo is collateralized = no risk."** No. Risks remain:
+- **Counterparty risk**: if collateral value crashes faster than haircut (2008 MBS)
+- **Operational risk**: settlement fails (2019 repo spike from technical issues)
+- **Liquidity/maturity mismatch**: borrowing short, lending long creates rollover risk
+- **Rehypothecation**: collateral reused multiple times obscures true exposure
 
-> **Predict**: Before reading deeper: what do you expect happens when repo vs reverse interacts with mechanics in repo & reverse repo?
->
-> *Answer: The system relies on repo vs reverse to keep mechanics predictable — when both apply, the stricter rule wins.*
-> **Think**: How does **What is repo?** relate to **Repo vs Reverse repo** within repo & reverse repo?
->
-> *Answer: They address adjacent failure modes: what is repo? governs the primary behavior, while repo vs reverse repo constrains how far you can push it.*
-> **Cloze**: {blank} governs how repo & reverse repo behaves when multiple mechanics concerns collide.
-> **Cloze**: The rule that keeps repo vs reverse correct under load is called {blank}.
-> **Cloze**: In repo & reverse repo, haircut determines {blank}.
-> **Spot the Mistake**: A developer treats repo vs reverse as optional because "it works without it." Where is the mistake?
->
-> *Answer: It works only until the assumptions behind repo vs reverse are violated. The fix: treat it as part of the contract of repo & reverse repo, not an optimization.*
+**"Reverse repo and repo are different."** Same trade, opposite sides. From borrower → repo. From lender → reverse repo. Never both at once on the same transaction.
+
+**"Higher haircut = safer."** Higher haircut reduces lender loss but also means borrower must post more cash — limits leverage and may force selling in stress (pro-cyclical). Reasonable haircuts balance safety and market function.
+
+---
 
 
 ## Key Takeaways
@@ -196,6 +193,38 @@ Explain repo to a colleague: "How does a hedge fund buy $100M of bonds with only
 
 ## Reframe
 Critique repo market: "Is repo market stable or fragile?" Consider 2008 freeze and 2019 spike. What reforms helped? (CCP clearing, higher haircuts, Fed RRP facility.) Write your answer.
+
+---
+
+## Think
+
+> **Think**: A hedge fund repo-finances $500M of investment-grade corporate bonds. Haircut is 5%. It posts $25M cash as margin. A credit event hits, the bonds gap down 8% overnight. What happens to the hedge fund by next morning, and what does the repo lender do?
+>
+> *Answer: The bonds are now worth $500M × (1 - 0.08) = $460M. The repo balance is still $475M ($500M × 95% lent). The hedge fund's equity in the position is $460M - $475M = -$15M — undercollateralized by $15M. The repo lender issues a margin call for the $15M shortfall. If the fund can't post $15M cash or additional collateral by the deadline, the lender liquidates the position. This is exactly the 2008 dynamic: price drops → margin calls → forced selling → more price drops → more margin calls. The hedge fund either has dry powder, hedges (credit default swaps), or faces termination. Repo amplifies both the upside (leverage) and the downside (margin spiral).*
+
+---
+
+## Predict
+
+> **Predict**: A specific on-the-run 10-year Treasury is in high demand because a large bank needs it to deliver against a short position. Predict (a) the special repo rate vs the GC repo rate, (b) the direction it can move under extreme short squeezes, and (c) who benefits.
+>
+> *Answer: (a) Special repo rate is BELOW the GC rate, because the cash borrower is willing to pay extra (via lower rate) to obtain that specific bond. Normal: special rate 10-30bp below GC. (b) In extreme squeezes, special rate can go NEGATIVE — the bond lender pays the cash borrower for the privilege of getting the bond. (c) The short-squeezed party (the bank) bears the cost; intermediaries that can source the bond profit. Short squeezes in on-the-run Treasuries are rare but real — the Treasury market March 2020 dislocation briefly saw specials collapse.*
+
+---
+
+## Spot the Mistake
+
+> **Spot the Mistake**: A junior says: "Reverse repo and repo are different products — I'll do a reverse repo to earn the repo rate on my cash, and my colleague will do a repo to borrow cash. We're using different markets."
+>
+> What's the conceptual error?
+>
+> *Answer: Repo and reverse repo are the SAME trade viewed from opposite sides. If the junior does a reverse repo (lending cash, receiving collateral), her colleague doing a "repo" (borrowing cash, posting collateral) is the EXACT same transaction from the other side. They are not two separate markets; they are two perspectives on one trade. Both legs settle on the same day at the same rate. Confusing the two is common; the fix is to anchor on cash flow direction. Cash out today = borrower = repo. Cash in today = lender = reverse repo. Pick a side and stick with the perspective.*
+
+---
+
+## Cloze
+
+A {repurchase agreement} (repo) is economically a collateralized short-term loan: the borrower sells a security today and agrees to buy it back later at a higher price, with the price difference representing the {repo rate}. A {reverse repo} is the same trade viewed from the lender's side. The {haircut} (initial margin) protects the lender against collateral price decline and varies by asset volatility — Treasuries 0.5-2%, IG corporates 5-10%, equities 10-50%. {SOFR} (Secured Overnight Financing Rate) replaced LIBOR as the US repo benchmark. Repo enables leverage and short selling, but is a source of systemic risk through {margin spirals} in stress.
 
 ---
 

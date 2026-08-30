@@ -125,7 +125,7 @@ CoT 好脆弱。少少 prompt 改動就令準確率大上大落。
 
 **緩解方法**：
 - **多組 exemplars**：試 3-5 組唔同組合，揀最好嗰組
-- **隨機次序**：唔同 query  shuffle exemplars
+- **隨機次序**：唔同 query shuffle exemplars
 - **穩健 prompt**：用 delimiter 保持統一格式
 - **Ensemble**：行多個 prompts，投票決定答案（睇 self-consistency）
 

@@ -122,20 +122,15 @@ Portfolio construction considerations for HNW clients:
 
 ## Common Misconception
 
-"Immunization eliminates interest rate risk." Only true for parallel shifts. Non-parallel shifts (steepening/flattening) break immunization. Requires convexity matching or key-rate hedging for true rate risk elimination.
+**"Immunization eliminates interest rate risk."** Only for parallel shifts. Non-parallel shifts (steepening/flattening) break immunization. Need convexity matching or key-rate duration hedging for true rate risk elimination.
 
-> **Predict**: Before reading deeper: what do you expect happens when active vs passive interacts with strategies in fixed income portfolio strategies?
->
-> *Answer: The system relies on active vs passive to keep strategies predictable — when both apply, the stricter rule wins.*
-> **Think**: Why does **Active vs Passive Strategies** matter when working with fixed income portfolio strategies?
->
-> *Answer: Because it changes how you structure and reason about fixed income portfolio strategies — skipping it leads to fragile designs that break under real workloads.*
-> **Cloze**: {blank} governs how fixed income portfolio strategies behaves when multiple strategies concerns collide.
-> **Cloze**: The rule that keeps active vs passive correct under load is called {blank}.
-> **Cloze**: In fixed income portfolio strategies, passive strategies determines {blank}.
-> **Spot the Mistake**: A developer treats active vs passive as optional because "it works without it." Where is the mistake?
->
-> *Answer: It works only until the assumptions behind active vs passive are violated. The fix: treat it as part of the contract of fixed income portfolio strategies, not an optimization.*
+**"Active bond management always beats passive."** No. After fees, most active managers trail passive over long periods in IG space. HY and EM active managers can outperform due to illiquidity + research edge.
+
+**"Bullet beats barbell always."** Bullet has lower convexity (worse in large moves). Barbell has higher convexity (better in volatile markets). Choice depends on view.
+
+**"Laddered portfolio = no reinvestment risk."** Reinvestment still happens on each rung's maturity. Ladder spreads risk but doesn't eliminate it.
+
+---
 
 
 ## Key Takeaways
@@ -153,6 +148,38 @@ Explain the difference between a bullet, barbell, and ladder bond portfolio stra
 ## Reframe
 
 Critics argue that active bond management rarely beats passive indexing after fees, given bond markets are more efficient than equity markets. Yet sophisticated investors still allocate to active bond managers. What specific market inefficiencies in fixed income (vs equities) could skilled managers exploit? Consider liquidity, institutional constraints, and segmentation.
+
+## Think
+
+> **Think**: A pension fund has a 15-year liability stream (paying retirees $50M/yr starting in year 6). The assets are currently in a bond index with effective duration of 7 years. Rates just dropped 50bp. Asset value jumped but liability PV jumped MORE (liabilities are longer-dated). What single rebalancing trade would restore immunization?
+>
+> *Answer: Buy duration. The asset duration (7) is now below the liability duration (more than 7 because liabilities are longer-dated and rates fell, lengthening liability duration). To re-immunize, the fund needs to extend asset duration toward 15. Practical: sell short-dated bonds, buy 15-20yr zeros or use interest rate swap paying fixed/receiving floating to synthetically add duration. After the rebalance, asset duration ≈ liability duration, so a parallel shift leaves the funding ratio unchanged. This is "duration matching" — the cornerstone of LDI.*
+
+---
+
+## Predict
+
+> **Predict**: Two pension funds both have $1B in assets and $1.2B in liabilities (underfunded by $200M). Fund A holds a barbell portfolio (short + long maturities); Fund B holds a bullet portfolio (concentrated at 10yr). Rates just rose 100bp. Predict the impact on each fund's funding ratio.
+>
+> *Answer: Fund A (barbell) suffers LESS. Barbell has higher convexity than bullet at the same duration — in a 100bp selloff, the barbell's long end loses less (asymptote toward duration-only behavior) and short end is barely affected. The bullet's concentrated 10yr holdings get hit harder. For a given duration, barbell has positive convexity advantage. Both funds are underfunded and the funding ratio falls for both, but Fund A's funding ratio falls by less. This is why pension funds often run barbells in rising-rate environments: the convexity acts as a partial hedge.*
+
+---
+
+## Spot the Mistake
+
+> **Spot the Mistake**: A junior says: "We immunized the portfolio — duration matches liabilities, so we're safe from interest rate moves. No need to rebalance for years."
+>
+> What's missing from the immunization setup?
+>
+> *Answer: Immunization requires CONTINUOUS rebalancing. As time passes, asset duration falls (each year, the duration of a bond declines by ~1 year; shorter-dated bonds mature and roll down the curve). Liability duration also shifts but typically less predictably. Without rebalancing, asset duration drifts below liability duration, and the portfolio becomes under-hedged. Standard practice: rebalance quarterly or when duration gap exceeds 0.25 years. The rebalancing frequency matters for total return — too frequent = high transaction costs, too infrequent = larger tracking error to liabilities. A second omission: immunization only works for parallel shifts. Steepeners, flatteners, and curve shocks break it. The full answer is "duration match + rebalance + convexity hedge for non-parallel risk."*
+
+---
+
+## Cloze
+
+{Passive} strategies minimize cost and tracking error via buy-and-hold or index replication; {active} strategies seek alpha through duration tilting, yield curve positioning, sector rotation, and security selection. A {bullet} portfolio concentrates maturities in one range; a {barbell} holds short and long ends and skips intermediates; a {ladder} spreads holdings evenly across maturities. Barbell has higher {convexity} than bullet at the same duration, giving it an edge in volatile markets. {LDI} (Liability-Driven Investing) matches asset cash flows and duration to pension/insurance obligations; {immunization} sets asset duration equal to liability duration and requires continuous {rebalancing} as durations drift.
+
+---
 
 ## Drill
 

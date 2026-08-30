@@ -50,6 +50,8 @@ With a study protocol:
 
 Result: retention at 4 months is >90% instead of <30%.
 
+> **Note on the "~30%" figure**: This is a teaching shorthand, not a measured constant. Ebbinghaus's original forgetting curve (1885) reported ~40% retention at 24h for nonsense syllables. Modern replications put 1-week retention of unrehearsed material in the 20-40% range, varying by content type (meaningful text > nonsense syllables) and learner. Treat "<30% without review" as a working rule of thumb that motivates the protocol — not a precise prediction. The protocol's value is the *direction* (review preserves), not the specific percentage.
+
 > **Think**: Why does studying a module once and never reviewing it produce such poor long-term retention?
 >
 > *Answer: The forgetting curve drops to ~30% within days without review. Each review session resets the curve at a higher stability (FSRS-5). Without review, the initial effort is largely wasted. The protocol ensures review reinforces earlier investment.*

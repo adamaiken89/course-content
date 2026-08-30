@@ -220,14 +220,15 @@ What's wrong?
 *Answer: Dense, disorganized writing is an undesirable obstacle (extraneous load). It doesn't force productive processing — it forces inefficient decoding. Find a clearer source.*
 
 ---
-
 ## Feynman Explain
-(Explain desirable difficulties: exercise that hurts during but makes you stronger vs exercise that hurts because you're doing it wrong. Learning difficulty is the same — some challenges build you up, others just break you down. Learn to tell them apart.)
+
+Some difficulty **helps** learning (spacing, retrieval, interleaving) — these are *desirable*. Other difficulty **hurts** learning (bad instructions, distracting environment, unclear notation) — these are *undesirable*. The trick: both feel bad in the moment. You can't tell them apart by feel alone. The difference shows up later — desirable difficulties make the test easier, undesirable difficulties just made the study harder. Bjork's rule: if the difficulty is coming from *the learner doing more cognitive work*, it's probably desirable. If it's coming from *the material blocking comprehension*, it's probably not.
 
 ---
 
 ## Reframe
-(Judge: think of a recent study session where you struggled. Was the difficulty desirable (productive effort) or undesirable (confusion)? How could you tell? What would you change for next time?)
+
+"Desirable difficulties" is the same idea as the distinction between *stress* and *distress* in psychology, or *eustress* vs *distress*. The body can't tell them apart by heart rate alone; the difference is whether the load produces growth or damage. In learning, the test for desirability is post-hoc: did retention improve, or just the in-the-moment experience? Many "study techniques" are in fact undesirable difficulties in disguise — they feel productive (color-coded notes, hours of highlighting) but produce no measurable retention gain. The audit is whether you could pass a test tomorrow.
 
 ---
 

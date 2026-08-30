@@ -1,8 +1,8 @@
 # Module 19: Extended Patterns Buffet
 
-Est. study time: 1.8h
+Est. study time: 1.5h
 Language: en
-Description: Final module. Four working mini-patterns — autosave, offline queue, undo/redo, multi-tab consistency — plus a scored micro-assembly that stitches m13/m14/m15/m17 into one running loop. Every pattern is a queue, a ledger, or a latch under a familiar name.
+Description: Four working mini-patterns that enterprise React apps keep reinventing — autosave, offline queue, undo/redo, multi-tab consistency. Each pattern is a queue, a ledger, or a latch under a familiar name. The micro-assembly capstone that stitches these together with m13/m14/m15/m17 lives in Module 20.
 
 ## Knowledge Map
 
@@ -271,32 +271,9 @@ flowchart LR
 
 ---
 
-### Section 4.6: MICRO-ASSEMBLY — The Course Stitched Into One Loop
-
-The last lesson ends where the real portal starts: one reviewer, one file, one flaky afternoon. Assemble the seams from four modules into a running loop:
-
-```ts
-// REVIEWER IMPORT LOOP — m13/m14/m15/m17, one seated run
-const drafts  = stage(await importCsv(file));                    // m15: parse + validate + stage
-const run     = batchStore.begin(drafts);                        // m14: runId minted here
-const options = fetchOptions(drafts[0].programKey, requestId(run));    // m13: dependent option list
-options.abortOn(() => userReassignsProgram(drafts[0], run));     // m17: request-id guard on change
-await batchStore.submit(run, { idempotencyKey: run.key });       // m14: per-item ledger owns outcome
-const failed  = run.perItem.filter(i => i.state === 'failed');   // m14: who did not land
-for (const it of failed) await batchStore.resubmit(it, run.key); // m17: same key, replay dedupes
-```
-
-Ten lines. Every line is a seam already built in a prior module: m15 turns hostile CSV rows into validated typed drafts; m14 mints the run key and owns per-item truth; m13 keeps the option list live while a submit is in flight; m17 makes the whole loop safe to re-run exactly once. The micro-assembly test below proves it end to end — which is why the course composes here: **no module re-implements another; each hands its result to the next through the seams they agree on.**
-
-> **Think**: Why does the micro-assembly work without a single new abstraction beyond the imported seams?
->
-> *Answer: Because each module designed its exit as the next module's entrance — CSV (m15) emits typed drafts, the engine (m14) accepts any draft list and emits a ledger, the option refetch (m13) and request-id (m17) make mid-flight changes safe, and resubmit reuses the same key. Composition is the payoff of naming seams from the start.*
-
----
-
 ## Verify — Testing the Buffet
 
-Tests prove four contracts plus the assembly: debounced autosave, ordered queue flush, invertible undo, cross-tab sync, and the loop that ends correct.
+Tests prove four contracts: debounced autosave, ordered queue flush, invertible undo, and cross-tab sync.
 
 ```tsx
 test('autosave debounces 800ms and never touches the query cache', () => {
@@ -339,31 +316,17 @@ test('BroadcastChannel syncs two stores; the higher serial wins', () => {
   window.dispatchEvent(new MessageEvent('message', { data: stale }));
   expect(getDraft().cohort).toBe('Spring');                       // stale hydrate rejected, m17
 });
-
-test('micro-assembly: import → batch with mid-flight option refresh ends correct', async () => {
-  // MSW (m3): file parses to 2 drafts; batch partial-fails 1; option refetch demands requestId
-  const { run } = await importAndSubmit(fileFixture);
-  expect(run.perItem.size).toBe(2);
-  expect([...run.perItem.values()].filter(i => i.state === 'failed')).toHaveLength(1);
-  userReassignsProgram(run);                                      // triggers guard + refetch
-  await resubmitFailed(run);                                      // same run.key
-  expect(run.perItem.every(i => i.state === 'succeeded')).toBe(true);
-  expect(api.batchCalls.map(c => c.body.idempotencyKey).at(-1))
-    .toBe(api.batchCalls.map(c => c.body.idempotencyKey).at(-2)); // key never changed
-});
 ```
 
 Constants: MSW fixtures serve parse → validate → batch-partial → healed endpoints (m3); the order assertion is the m13 parent/child dependency; the key stability assertion is the m17 idempotency contract. **Playwright multi-tab smoke:** two pages on the same applicant → edit in A → B shows the hydrated value → B's serial loses to a newer A edit → B submits → A's submit button is disabled by the latch → after submit, the dust settles on one truth.
 
-**Variant — beyond the buffet.** Three upgrades keep the shapes on rails as the app grows: **state machines** (m8's patterns) for the submit latch's transitions — `idle → requesting → latched → done` — instead of hand-rolled acks; **feature flags** so the offline queue can be switched per cohort without a re-deploy; and **telemetry** (m18 Sentry breadcrumbs) on queue flushes and latch acquisitions because those are the moments support tickets are born from.
+**Variant — beyond the buffet.** Three upgrades keep the shapes on rails as the app grows: **state machines** (m8's patterns) for the submit latch's transitions — `idle → requesting → latched → done` — instead of hand-rolled acks; **feature flags** so the offline queue can be switched per cohort without a re-deploy; and **telemetry** (m18 Sentry breadcrumbs) on queue flushes and latch acquisitions because those are the moments support tickets are born from. The micro-assembly that ties these patterns to m13/m14/m15/m17 is its own module — see Module 20.
 
 ---
 
 ### Why This Matters
 
-The last modules gave you single-screen excellence. The buffet is what a *platform* feels like across a day of real human use — typists closing tabs, registrars on trains, two staff staring at one applicant. Each pattern is cheap alone and devastating when skipped: an unpersisted autosave loses a paragraph a week per user; a non-ordered queue corrupts a parent/child linkage (m13) exactly on deadline day; a snapshot undo erases an hour; a missed latch double-enrolls a student. And the assembly is the real point of the course: after nineteen modules, the micro-loop shows that a production click-path is never one pattern — it is seams, handing typed results to the next module in the chain. Teams that can name a queue, a ledger, and a latch when they see them can build features like this in an afternoon.
-
----
+Single-screen excellence is what most apps aim for. The buffet is what a *platform* feels like across a day of real human use — typists closing tabs, registrars on trains, two staff staring at one applicant. Each pattern is cheap alone and devastating when skipped: an unpersisted autosave loses a paragraph a week per user; a non-ordered queue corrupts a parent/child linkage (m13) exactly on deadline day; a snapshot undo erases an hour; a missed latch double-enrolls a student. Teams that can name a queue, a ledger, and a latch when they see them can build features like this in an afternoon. The next module stitches these together with the rest of the course into one running loop.
 
 ## Key Takeaways
 - Autosave = debounced write into the draft store + persistence, with a throttled saving→saved status — never the query cache

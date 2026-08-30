@@ -62,10 +62,11 @@ Two dominant US exchange models:
 - Used for larger, blue-chip companies
 - DMM can delay open if order imbalance detected
 
-**Nasdaq (Dealer / Electronic Model):**
-- Multiple competing market makers per stock
-- All electronic — no trading floor
-- Quote-driven: dealers post bid/ask, trades route to best price
+**Nasdaq (Electronic CLOB with Market Makers):**
+- Multiple competing market makers per stock posting quotes into a central limit order book (CLOB)
+- All electronic — no trading floor; trades execute against the order book like NYSE Arca
+- Quote-driven: market makers post bid/ask; any participant can also post limit orders
+- Modern Nasdaq is functionally a CLOB (auction-style matching); "dealer market" terminology is historical
 - Faster execution, narrower spreads for liquid names
 - Used for tech/growth companies historically
 
@@ -129,7 +130,7 @@ Trades don't have to go to NYSE/Nasdaq. Three alternatives:
 - Private exchanges where orders don't show in public order book
 - Institutional investors use to avoid moving price (information leakage)
 - No pre-trade transparency — trade reported after execution
-- ~40% of US equity volume now in dark pools
+- ~15-20% of US equity volume trades in pure dark pools; ~40-50% trades off-exchange (dark pools + wholesalers/internalizers who internalize retail flow)
 
 **ATS (Alternative Trading System):**
 - Registered broker-dealer that matches orders

@@ -125,3 +125,14 @@
   difficulty: 1
   tags:
   - misconception
+- id: "12.11"
+  question: "TanStack Query caches an applicant list. The user edits one row. The cache should update:"
+  options:
+    a: "Manually after every mutation, with cache.setQueryData"
+    b: "By invalidating the list query, which triggers a refetch"
+    c: "Automatically via the mutation's onSuccess with setQueryData or invalidateQueries, chosen by staleness-vs-precision trade-off"
+    d: "Never; the user must refresh manually"
+  answer: c
+  explanation: setQueryData is precise (no extra fetch) but error-prone; invalidateQueries is safe (refetch guaranteed) but uses bandwidth. The choice depends on whether the server is the source of truth for the new value (invalidate) or the client knows it perfectly (set).
+  difficulty: 3
+  tags: [process, comparison]

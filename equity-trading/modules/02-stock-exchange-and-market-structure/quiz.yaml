@@ -27,15 +27,18 @@
   tags:
   - concept
 - id: '2.3'
-  question: What percentage of US equity volume trades in dark pools?
+  question: What percentage of US equity volume trades in pure dark pools (vs all
+    off-exchange trading)?
   options:
     a: ~5%
-    b: ~20%
-    c: ~40%
+    b: ~40%
+    c: ~15-20%
     d: ~70%
   answer: c
-  explanation: ~40% of US equity volume is off-exchange (dark pools, ATS, internalization).
-    This has grown significantly from ~10% in 2005.
+  explanation: Pure dark pools account for ~15-20% of US equity volume. Total off-exchange
+    trading (dark pools + wholesalers + ATS) is ~40-50%. The two numbers are often
+    conflated. Dark pools are private exchanges without pre-trade transparency; ATS
+    and wholesaler internalization are separate off-exchange channels.
   difficulty: 2
   tags:
   - terminology
@@ -44,10 +47,10 @@
     shares?
   options:
     a: Dark pools have lower SEC fees
-    b: To hide order intent and avoid moving the price
+    b: NYSE cannot handle orders over 100,000 shares
     c: Dark pools guarantee better pricing
-    d: NYSE cannot handle orders over 100,000 shares
-  answer: b
+    d: To hide order intent and avoid moving the price
+  answer: d
   explanation: Large sell order on NYSE shows in order book → other traders see selling
     pressure → bid drops. Dark pool hides intent, reducing market impact.
   difficulty: 2

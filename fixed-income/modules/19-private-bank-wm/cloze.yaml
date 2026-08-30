@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "{Mass affluent} clients ($250k-$1M) typically access fixed income via bond funds and ETFs rather than direct bond holdings."
+  answer: "Mass affluent"
+  explanation: "Funds offer diversification, professional management, and liquidity at low cost. Direct bonds require larger minimums and credit research time; not cost-effective below ~$1M in fixed income."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "{Ultra high net worth} clients ($30M+) often access direct bond portfolios, private placements (Rule 144A), and bespoke structured products."
+  answer: "Ultra high net worth"
+  explanation: "UHNW clients value customization (maturity, coupon, cash flow), tax lot control, and direct credit access. They can also participate in bond syndications and use bond portfolios as collateral for lending."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "{Tax-equivalent yield} (TEY) = municipal yield / (1 - tax rate), used to compare tax-exempt munis to taxable bonds on an after-tax basis."
+  answer: "Tax-equivalent yield"
+  explanation: "A 4.5% muni in a 40% combined federal+state bracket has TEY = 7.5%. TEY depends on the investor's marginal tax rate — same muni has different value to different investors."
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.4"
+  question: "{Asset location} is the practice of placing tax-inefficient assets (corporates, HY) in tax-deferred accounts (IRA, 401k) and tax-efficient assets (muni bonds) in taxable accounts."
+  answer: "Asset location"
+  explanation: "Inside an IRA, the muni's tax exemption is wasted. Optimal: maximize the after-tax value of each dollar by putting each asset in the account type where its tax treatment adds the most value."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "{Tax-loss harvesting} in bonds means selling bonds at a loss to offset realized gains, then replacing with a similar (not substantially identical) bond to avoid the wash sale rule."
+  answer: "Tax-loss harvesting"
+  explanation: "Wash sale rule disallows the loss if you buy the same or substantially identical security within 30 days. Common workaround: sell a muni from one state and buy a similar muni from a different state, or sell a corporate and buy a different corporate in the same sector."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "A {principal-protected note} (PPN) combines a zero-coupon bond (which provides the principal protection at maturity) with an embedded option on an underlying asset (equity, index, fund)."
+  answer: "principal-protected note"
+  explanation: "The zero-coupon bond's accretion to par provides the floor; the option premium provides upside. Common in HNW portfolios but carries issuer credit risk on the bond component."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "{Securities-based lending} lets private banking clients borrow against their bond portfolio at preferential rates (typically SOFR + spread) with LTVs of 50-95% depending on collateral quality."
+  answer: "Securities-based lending"
+  explanation: "Treasuries support 90-95% LTV, munis 75-85%, IG corporates 60-80%, HY 50-60%. Used for liquidity without triggering taxable bond sales."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "An {autocallable} note calls automatically if the underlying asset is above a trigger level on observation dates, providing a path-dependent structured coupon."
+  answer: "autocallable"
+  explanation: "Common structured product: high coupon if not called, principal at risk if underlying falls below barrier at maturity. Payoff path-dependent, not just terminal-value-dependent."
+  difficulty: 3
+  tags: [terminology]

@@ -104,7 +104,7 @@ Company issues additional shares instead of cash. Example: 5% stock dividend = 5
 
 - Conserves cash (no cash outflow)
 - Dilutes EPS proportionally
-- Taxed differently (often no tax until sale, unlike cash dividends)
+- Taxed differently — generally not taxable until sale (treated as a return of capital), BUT this assumes the company has sufficient earnings & profits (E&P). Stock dividends from companies without adequate E&P can be taxable as ordinary income
 
 ```mermaid
 flowchart TD
@@ -175,7 +175,7 @@ Occasional large one-time dividends (e.g., Microsoft $3 special in 2004, $32B to
 **Tax considerations:**
 - Qualified dividends: taxed at capital gains rate (0%/15%/20%)
 - Ordinary dividends: taxed as regular income
-- Holding period requirement: must hold stock >60 days during 121-day period around ex-date for qualified status
+- Holding period requirement: must hold stock for **more than 60 days during the 121-day period that begins 60 days before the ex-dividend date** (per IRS) for qualified status
 
 > **Predict**: Stock at $200 announces $5 special dividend. Ex-date is 2 weeks away. Institutional holders own 70% of shares. What happens to price and volume before and after ex-date?
 >

@@ -74,7 +74,7 @@
   question: What is the minimum holding period for a dividend to qualify for lower capital gains tax rates?
   options:
     a: 30 days during 90-day period around ex-date
-    b: 60 days during 121-day period around ex-date
+    b: More than 60 days during the 121-day period beginning 60 days before ex-date
     c: 90 days during 180-day period around ex-date
     d: 365 days from purchase date
   answer: b

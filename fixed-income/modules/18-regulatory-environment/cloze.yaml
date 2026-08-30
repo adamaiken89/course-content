@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "{Dodd-Frank} (2010) mandated central clearing of standardized OTC derivatives, electronic trading on Swap Execution Facilities, and swap data repository reporting in the US."
+  answer: "Dodd-Frank"
+  explanation: "Title VII is the most relevant section for fixed income: it pushed CDS and interest rate swaps from voice/OTC to cleared/electronic, increasing transparency and collateral demand."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "{MiFID II / MiFIR} (EU, 2018) imposed pre- and post-trade transparency on bond markets, defined Systematic Internalisers, and codified best execution obligations."
+  answer: "MiFID II / MiFIR"
+  explanation: "Pre-trade transparency (firm quotes for liquid bonds) plus post-trade reporting (within 15 minutes for most). Significant impact on European bond market structure and dealer behavior."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "{EMIR} (2012) required EU derivatives clearing through CCPs, trade reporting to repositories, and bilateral margin for non-cleared trades."
+  answer: "EMIR"
+  explanation: "EU equivalent of Dodd-Frank Title VII for derivatives. Also requires LEIs (Legal Entity Identifiers) for all counterparties in reported transactions."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Basel III's {LCR} (Liquidity Coverage Ratio) requires banks to hold HQLA sufficient to cover 30-day net cash outflows under stress."
+  answer: "LCR"
+  explanation: "LCR = HQLA / 30-day stressed net cash outflows, must be ≥ 100%. Created structural demand for Treasuries (Level 1 HQLA) and government MMF shares (Level 1 HQLA)."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Basel III's {NSFR} (Net Stable Funding Ratio) requires available stable funding ≥ required stable funding over a one-year horizon, penalizing long-dated bond financing with short-term funding."
+  answer: "NSFR"
+  explanation: "NSFR = ASF / RSF, must be ≥ 100%. Disincentivizes the bank business model of financing long-dated bond inventory with overnight repo. Reduces dealer carry capacity."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "A {Systematic Internaliser} (SI) is an investment firm that deals on its own account by executing client orders against proprietary inventory in an organized, frequent, and systematic manner."
+  answer: "Systematic Internaliser"
+  explanation: "SIs must provide firm quotes on liquid bonds in sizes up to standard market size. Subject to MiFID II pre-trade transparency obligations."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "{SEC Rule 2a-7} governs US money market funds, including 2014/2023 reforms that mandated floating NAV for prime institutional MMFs and swing pricing."
+  answer: "Rule 2a-7"
+  explanation: "The reforms shifted assets from prime institutional MMFs (corporate CP, CDs) to government MMFs (Treasuries, repos). Affected repo rates and short-term credit spreads."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "{FATCA} requires reporting of US securities held by foreign account holders to the IRS, and {CRS} is the global standard for automatic exchange of financial account information."
+  answer: "FATCA; CRS"
+  explanation: "Private banks must collect W-8 forms for foreign clients holding US bonds (FATCA) and report account info to local tax authorities (CRS) for cross-border tax compliance."
+  difficulty: 3
+  tags: [terminology]

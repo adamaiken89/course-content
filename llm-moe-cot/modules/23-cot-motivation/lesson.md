@@ -113,7 +113,7 @@ CoT 唔止用嚟計數。任何要 intermediate reasoning 嘅任務都得：
 證據好壞參半：
 - **Anti-faithfulness**（Turpin 2023）：喺 prompt 插入無關資訊 → reasoning steps 變咗但答案照樣啱 → 模型答完先 rationalise
 - **Pro-faithfulness**（Wang 2023）：改動 intermediate steps → 答案變咗 → 模型真係用啲 steps
-- ** reality**：兩樣都有。模型有時跟 steps，有時走捷徑然後後補解釋。
+- **Reality**：兩樣都有。模型有時跟 steps，有時走捷徑然後後補解釋。
 
 > **Cloze**：「Faithfulness 問嘅係：模型嘅 \{reasoning steps\} 係咪真正導致 \{final answer\}，定係 \{post-hoc rationalisation\}。」
 

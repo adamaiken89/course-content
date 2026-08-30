@@ -108,3 +108,25 @@
   explanation: "Multi-shell means shell variants (reviewer vs student chrome scope) while the presentational units and data containers stay identical and reusable — the same 'grades card' works in both portals. Data containers must never care which shell hosts them."
   difficulty: 3
   tags: [scenario]
+- id: "9.11"
+  question: The application shell has a top nav, a left rail, a main area, and a toast region. Which container should own the toast region?
+  options:
+    a: "The main area, because that is where the user is"
+    b: "The shell, because toasts are app-level and outlive any single route"
+    c: "Each feature module that needs toasts owns its own"
+    d: "A global zustand store with a render-prop consumer"
+  answer: b
+  explanation: Toasts are a shell-level concern. They must survive route changes, and any feature can dispatch one. A render-prop consumer over a store is the implementation; ownership belongs to the shell.
+  difficulty: 2
+  tags: [concept]
+- id: "9.12"
+  question: The application shell has a top nav, a left rail, a main area, and a toast region. Which container should own the toast region?
+  options:
+    a: "The main area, because that is where the user is"
+    b: "The shell, because toasts are app-level and outlive any single route"
+    c: "Each feature module that needs toasts owns its own"
+    d: "A global zustand store with a render-prop consumer"
+  answer: b
+  explanation: Toasts are a shell-level concern. They must survive route changes, and any feature can dispatch one. A render-prop consumer over a store is the implementation; ownership belongs to the shell.
+  difficulty: 2
+  tags: [concept]

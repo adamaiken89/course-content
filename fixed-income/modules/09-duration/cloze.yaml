@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "{Macaulay duration} is the weighted-average time to receive a bond's cash flows, with each cash flow weighted by its present-value contribution."
+  answer: "Macaulay duration"
+  explanation: "Macaulay D = Σ [t × PV(CF_t)] / Σ PV(CF_t). Higher coupon → lower duration. Longer maturity → higher duration. Zero-coupon Macaulay D = maturity."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "{Modified duration} = Macaulay D / (1 + YTM/k) and approximates the percentage price change for a 1% yield change."
+  answer: "Modified duration"
+  explanation: "Price change ≈ -Modified D × Δyield. Accurate for small (<50bp) parallel shifts. For larger moves, convexity adjustment is needed."
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.3"
+  question: "{Dollar duration} = Modified D × Price, measuring dollar price change per 100bp yield change. {PVBP} (DV01) is the dollar change per 1bp."
+  answer: "Dollar duration; PVBP"
+  explanation: "PVBP = Modified D × Price × 0.0001. For a $1M face position with PVBP $472, a 25bp yield rise costs ~$11,800."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Duration INCREASES with longer {maturity}, lower {coupon}, lower {yield}, and less frequent payments."
+  answer: "maturity; coupon; yield"
+  explanation: "Long-maturity zero-coupon bonds have the highest duration. Short-maturity, high-coupon bonds have low duration. Zero-coupon duration = maturity exactly."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "{Key-rate duration} decomposes total duration into sensitivity to specific maturity points (e.g., 2yr, 5yr, 10yr, 30yr)."
+  answer: "Key-rate duration"
+  explanation: "Useful when the curve may not shift in parallel. Sum of key-rate durations equals modified duration. Barbell vs bullet analysis uses key rates."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "Portfolio duration = {weighted average} of individual bond durations: D_portfolio = Σ w_i × D_i."
+  answer: "weighted average"
+  explanation: "Only valid for parallel yield curve shifts. For non-parallel shifts, use key-rate duration or effective duration on the portfolio."
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.7"
+  question: "Duration is a {linear approximation} — it underestimates price gains in rallies and overestimates losses in selloffs."
+  answer: "linear approximation"
+  explanation: "For yield changes above ~50bp, the convexity adjustment is required to estimate the true price. Convexity is always positive for option-free bonds."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "A 2-year, 5% coupon bond with YTM 4% has Macaulay duration of approximately {1.95} years and modified duration of {1.88}."
+  answer: "1.95; 1.88"
+  explanation: "Macaulay D from cash flow table. Modified = 1.95 / 1.04 = 1.875. A 1% yield rise implies ~1.88% price drop."
+  difficulty: 3
+  tags: [calculation]

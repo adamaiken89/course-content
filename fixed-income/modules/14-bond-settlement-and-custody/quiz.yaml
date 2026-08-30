@@ -1,13 +1,13 @@
 - id: '14.1'
-  question: 'Treasury settlement standard since 2017:'
+  question: 'US bond market settlement standard since May 2024:'
   options:
     c: T+1
     a: T+0
     b: T+2
     d: T+3
   answer: c
-  explanation: Treasuries moved to T+1 in 2017. Corporates and munis followed to T+1
-    in 2024.
+  explanation: Treasuries, corporates, and munis all moved to T+1 in May 2024 (SEC
+    rule). Was T+2 previously.
   difficulty: 1
   tags:
   - terminology

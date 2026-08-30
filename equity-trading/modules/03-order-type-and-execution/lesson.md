@@ -94,8 +94,8 @@ The order "walks the book" — consuming multiple price levels. Total slippage =
 
 - Buy limit: max price you're willing to pay
 - Sell limit: min price you're willing to accept
-- Adds liquidity to the book → earns **maker rebate** (exchanges pay ~$0.003/share)
-- Market order removes liquidity → pays **taker fee** (~$0.003/share)
+- Adds liquidity to the book → earns **maker rebate** (varies by venue, roughly $0.001-0.003/share — Nasdaq ~$0.0014-0.0030, NYSE ~$0.0017)
+- Market order removes liquidity → pays **taker fee** (varies by venue, roughly $0.002-0.003/share)
 
 > **Think**: Why would a high-frequency trading firm use limit orders despite uncertain fill?
 >

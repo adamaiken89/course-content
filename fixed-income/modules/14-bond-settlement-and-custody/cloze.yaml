@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "Bond settlement is the process of exchanging {cash} for {bonds} between counterparties after a trade is executed."
+  answer: "cash; bonds"
+  explanation: "Standard US bond settlement is T+1 (effective May 2024, down from T+2). The two legs must be coordinated precisely to avoid fails and counterparty risk."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "{DVP} (delivery versus payment) eliminates principal risk by ensuring cash and bond legs settle simultaneously."
+  answer: "DVP"
+  explanation: "DVP means the bond deliverer gets paid only if the bonds deliver, and vice versa. Model 1 (DTC) is the dominant US settlement system for corporate bonds and Treasuries."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "US bond settlement moved from T+2 to T+1 in {May 2024}, reducing counterparty and systemic risk but increasing operational pressure."
+  answer: "May 2024"
+  explanation: "SEC adopted T+1 for most US securities in February 2023, effective May 2024. Bond markets followed. The shift reduced margin and clearing capital requirements by ~40%."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "{FICC} (Fixed Income Clearing Corporation) clears Treasury and agency MBS trades; {DTC} (Depository Trust Company) handles book-entry settlement for corporates and munis."
+  answer: "FICC; DTC"
+  explanation: "FICC acts as central counterparty (CCP), netting trades and reducing systemic risk. DTC is the book-entry depository where bonds are held electronically."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "A {fail} (failure to deliver) occurs when a counterparty does not deliver the bond or cash by the settlement date, triggering penalties."
+  answer: "fail"
+  explanation: "Normal fail rate: 2-4% of trades. March 2020 spike: ~$1T of fails briefly. Penalties exist but often less than the cost of buying in, so fails persist as a 'cheaper' option in some cases."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "A {custodian} provides safekeeping, settlement, income collection, and reporting for client bond portfolios."
+  answer: "custodian"
+  explanation: "Major custodians: BNY Mellon, State Street, JPMorgan, Citi. They hold assets in segregated accounts but do NOT insure against issuer default or market loss."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "The {dirty price} is the actual cash the buyer pays — clean price plus accrued interest — and is the amount that moves at settlement."
+  answer: "dirty price"
+  explanation: "Settlement cash = (clean price × par/100) + accrued interest. The seller's accrued interest is passed to the buyer as part of the next coupon payment."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "{Euroclear} is the dominant European central securities depository; it settles most eurobonds and European government bonds."
+  answer: "Euroclear"
+  explanation: "Based in Brussels. Euroclear and Clearstream (Luxembourg) handle most European bond settlement. US-based institutions access them via sub-custodian arrangements."
+  difficulty: 2
+  tags: [terminology]

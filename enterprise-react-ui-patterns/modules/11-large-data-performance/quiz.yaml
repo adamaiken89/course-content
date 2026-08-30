@@ -126,3 +126,14 @@
   tags:
   - scenario
   - application
+- id: "11.11"
+  question: A 100,000-row list is slow to render. Virtualization is added. What is the next bottleneck virtualization does NOT fix?
+  options:
+    a: "Memory cost of every row in the DOM"
+    b: "Cost of computing derived values per row"
+    c: "Cost of fetching the 100,000 rows from the server"
+    d: "Cost of garbage collection pauses from many short-lived objects"
+  answer: c
+  explanation: Virtualization reduces DOM nodes, which addresses (a). It does nothing for server fetch cost (c). For 100,000 rows, the right answer is server-side pagination or windowing, with virtualization as the second layer for smooth scrolling within the visible window.
+  difficulty: 3
+  tags: [scenario, process]

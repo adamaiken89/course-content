@@ -164,20 +164,15 @@ Advise: reduce duration (sell 10yr, buy 2yr) or hedge with futures/swap.
 
 ## Common Misconception
 
-"Duration 5 = I get my money back in 5 years." No. Duration is weighted avg time of cash flows, not payback period. For coupon bond, duration < maturity because early coupons pull avg forward.
+**"Duration 5 = I get money back in 5 years."** No. Duration = weighted average time of cash flows, NOT payback period. For coupon bonds, duration < maturity (early coupons pull avg forward). Zero-coupon bond duration = maturity only because all cash flow at one date.
 
-> **Predict**: Before reading deeper: what do you expect happens when macaulay duration interacts with modified duration in duration?
->
-> *Answer: The system relies on macaulay duration to keep modified duration predictable — when both apply, the stricter rule wins.*
-> **Think**: How does **Macaulay Duration** relate to **Modified Duration** within duration?
->
-> *Answer: They address adjacent failure modes: macaulay duration governs the primary behavior, while modified duration constrains how far you can push it.*
-> **Cloze**: {blank} governs how duration behaves when multiple modified duration concerns collide.
-> **Cloze**: The rule that keeps macaulay duration correct under load is called {blank}.
-> **Cloze**: In duration, dollar duration determines {blank}.
-> **Spot the Mistake**: A developer treats macaulay duration as optional because "it works without it." Where is the mistake?
->
-> *Answer: It works only until the assumptions behind macaulay duration are violated. The fix: treat it as part of the contract of duration, not an optimization.*
+**"Modified duration works for any rate move."** No. Linear approximation accurate only for small changes (< 50bp). For larger moves, convexity adjustment needed (Module 10). Underestimates price gains in rallies, overestimates losses in selloffs.
+
+**"Portfolio duration = simple weighted avg."** Only for parallel yield curve shifts. If 2yr moves but 10yr doesn't, simple duration misleading. Key-rate duration or effective duration required.
+
+**"Duration applies to bonds only."** Modified/convexity concepts apply to any fixed cash flow stream: loans, mortgages, swaps. Swap has duration too (zero coupon swap = par-par swap with duration zero, but fixed leg has duration).
+
+---
 
 
 ## Key Takeaways
@@ -200,6 +195,38 @@ Explain duration to a colleague: "What does 'duration 7 years' really mean for a
 
 ## Reframe
 Critique duration as risk measure: "When does duration mislead?" Consider: bonds with embedded options (callable, MBS), very large rate moves, non-parallel curve shifts. Write your answer.
+
+---
+
+## Think
+
+> **Think**: A pension fund has a 7-year liability (payments due in 7 years for retirees). The CIO wants to "match" the duration. The portfolio holds a mix of 5-year (duration 4.5) and 15-year (duration 11) Treasuries. A junior suggests a 50/50 mix has duration (4.5 + 11)/2 = 7.75 — close enough. What's the error, and what should the CIO actually do?
+>
+> *Answer: The junior calculated the simple average, not the portfolio duration weighted by market value. The correct calc: if equal DOLLAR weight (50/50), portfolio duration = 0.5 × 4.5 + 0.5 × 11 = 7.75. That actually matches. But: (1) Macaulay duration measures cash flow timing, not interest rate sensitivity in isolation. For a 7-year bullet liability, a 7-year zero-coupon bond is the perfect match. (2) The simple average only works for parallel shifts. The 5-yr and 15-yr respond differently to curve reshaping (e.g., bear steepener). (3) The CIO should use key-rate duration or cash flow matching, not a duration number, to immunize a specific liability. The fix: a 7-year zero or a barbell whose combined PV-weighted key rates match the liability's cash flow profile.*
+
+---
+
+## Predict
+
+> **Predict**: A bond fund holds a 10-year Treasury with modified duration 8.5, currently yielding 4.5%. The Fed signals 100bp of cuts over 12 months. Assuming the 10-year yield falls by 80bp (less than Fed funds because of term premium dynamics), predict the bond's price return over the period.
+>
+> *Answer: Price change ≈ -Modified D × Δyield = -8.5 × (-0.0080) = +6.8%. A 10-year Treasury with $1,000 face currently at par → new price ≈ $1,068. Return = 6.8% price gain + ~4.5% coupon income (less reinvestment drag) ≈ 11% total return. This is exactly the scenario where long-duration assets outperform — a classic "duration tailwind" in Fed cutting cycles. The flip side: if Fed INSTEAD hikes 100bp, the same fund loses ~8.5% before coupon. Duration is a double-edged sword.*
+
+---
+
+## Spot the Mistake
+
+> **Spot the Mistake**: A junior says: "The bond has duration 7, so I'll get my money back in 7 years. That means in 7 years the bond returns face value, regardless of what happens to interest rates in the meantime."
+>
+> Two errors. Identify each.
+>
+> *Answer: Error 1: Duration is NOT payback period. It's the weighted average TIME of cash flows. For a 5-year bond with 8% coupon, duration is ~4 years — you get some money back before year 5. The 7-year number doesn't mean "principal arrives in 7 years"; it means the average cash flow timing is at year 7. Error 2: Duration has nothing to do with the bond returning face value at maturity. The bond returns face value at maturity BY CONTRACT (assuming no default), regardless of rate moves. What duration tells you is how MUCH the bond's PRICE changes if rates move before maturity. The junior has confused a price-sensitivity measure with a payback-period claim.*
+
+---
+
+## Cloze
+
+{Macaulay duration} is the weighted-average time to receive a bond's cash flows, weighted by their present value. {Modified duration} = Macaulay D / (1 + YTM/k) and approximates the percentage price change for a 1% yield change. {Dollar duration} = Modified D × Price, and {PVBP} (or DV01) = Dollar duration × 0.0001, the dollar change per 1bp yield move. Duration increases with longer {maturity}, lower {coupon}, and lower yield. {Key-rate duration} decomposes total duration into sensitivity to specific maturity points, useful for non-parallel curve shifts. Duration is a {linear approximation} — accurate for small moves only; large moves need {convexity} adjustment.
 
 ---
 

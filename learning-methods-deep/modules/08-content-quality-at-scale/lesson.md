@@ -192,11 +192,11 @@ def generate_diverse_batch(topics, questions_per_topic, target_distribution):
 
 AI content generation costs matter at scale:
 
-| Scale | Questions | Tokens | Cost (DeepSeek V4 Flash) |
+| Scale | Questions | Tokens | Cost (DeepSeek-V3 input pricing, ~$0.27/M tokens) |
 |-------|-----------|--------|--------------------------|
 | Single module | ~10 | ~5K | ~$0.001 |
 | Full course | ~160 | ~80K | ~$0.02 |
-| Enterprise catalog | ~10K | ~5M | ~$1.00 |
+| Enterprise catalog | ~10K | ~5M | ~$1.35 |
 
 Cost optimization strategies:
 

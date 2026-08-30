@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "A {credit default swap} (CDS) is a derivative where the protection buyer pays a spread to the seller in exchange for a payout if a credit event occurs on the reference entity."
+  answer: "credit default swap"
+  explanation: "CDS is essentially insurance against default. The spread (quoted in basis points annually) prices expected loss. Post-2009, standardized CDS clear through central counterparties (CCPs)."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "The standard coupon for {investment grade} CDS is 100bp, and for {high yield} CDS is 500bp, with an upfront payment for any spread above the standard."
+  answer: "investment grade; high yield"
+  explanation: "Standard coupons are convention to standardize trading. The upfront payment = (spread - standard coupon) × risky duration. IG at 100bp is rarely above; HY at 500bp is often exceeded."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Three defined {credit events} under ISDA standards are bankruptcy, failure to pay, and restructuring."
+  answer: "credit events"
+  explanation: "Each credit event triggers CDS settlement. The Credit Derivatives Determinations Committee rules on whether an event qualifies, which can be contentious (Greek restructuring, Abengoa)."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "CDS spread ≈ (1 - recovery) × probability of default — the expected loss pricing."
+  answer: "recovery"
+  explanation: "A 5% PD with 40% recovery → expected loss 3%. If observed spread is 200bp, the spread is 'rich' (pricing more than expected loss); risk premium and liquidity explain the gap."
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.5"
+  question: "The {basis} = CDS spread - cash bond spread, and a negative basis means the bond is rich relative to CDS."
+  answer: "basis"
+  explanation: "Cash-CDS basis trades exploit temporary dislocations between synthetic and cash credit markets. Convergence to zero is the trade thesis; basis can persist in stress."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "{CDX} is the US CDS index family, and {iTraxx} is the European equivalent."
+  answer: "CDX; iTraxx"
+  explanation: "Index series roll every 6 months (March/September). On-the-run series is most liquid. CDX IG, CDX HY, iTraxx Main, iTraxx Crossover are the main sub-indices."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "CDS {auction} settlement uses a standardized ISDA process where the recovery price is determined by market participants after a credit event."
+  answer: "auction"
+  explanation: "Standardized since 2005. Replaces ad-hoc bilateral settlement. The auction price reflects the market-clearing level of the defaulted bond, less haircut for physical settlement costs."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "A {naked} CDS is protection bought without owning the underlying bond — used for hedging other exposure or taking a directional view on credit."
+  answer: "naked"
+  explanation: "Critics argue naked CDS increases default incentive (empty voter problem). Defenders point to liquidity and price discovery benefits. Some jurisdictions restrict naked sovereign CDS."
+  difficulty: 3
+  tags: [terminology]

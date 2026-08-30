@@ -45,8 +45,8 @@ graph LR
     subgraph "Forgetting Curve"
         direction TB
         T0[Day 0: 100%]
-        T1[Day 1: ~60%]
-        T2[Day 2: ~47%]
+        T1[Day 1: ~44%]
+        T2[Day 2: ~36%]
         T7[Day 7: ~25%]
         T30[Day 30: ~21%]
     end
@@ -195,14 +195,15 @@ What's wrong?
 *Answer: 1-minute intervals bypass the spacing effect — retrieval is too easy, no desirable difficulty. You're doing massed practice with extra steps. Set meaningful gaps (1 day+) and trust the algorithm.*
 
 ---
-
 ## Feynman Explain
-(Explain the forgetting curve: memory drops fast then slows. If you review at the right moments, you flatten the curve. Like watering a plant — not every day, but when it needs it.)
+
+When you learn something, your memory starts to leak. The leak is fastest right after learning, then slows down. So if you review at the right moments — soon after learning, then at growing gaps — you patch the leak before it gets bad. The shape is logarithmic: a lot of forgetting happens in the first day, much less per day after that. Treat reviews like watering a plant — not every day, but timed to when the soil is drying out, not after the plant is already dead.
 
 ---
 
 ## Reframe
-(Judge: think of something you learned years ago that you still remember vs something you crammed and forgot. What made the difference in schedule? How would you redesign your current study routine?)
+
+The forgetting curve is essentially the same curve as radioactive decay, capacitor discharge, and software bug discovery — systems lose freshness quickly, then settle into a long tail. The engineering insight: the *interval* between interventions matters more than the *intensity* of each one. The cost of a missed review early is much higher than the cost of one later, because you're losing far more memory per hour. This is why "I'll review it the night before the exam" is structurally a bad strategy.
 
 ---
 

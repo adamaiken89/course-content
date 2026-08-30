@@ -108,3 +108,25 @@
   explanation: "The container owns form state including validation; presentational panels render props rather than fetch."
   difficulty: 3
   tags: [scenario, application]
+- id: "1.11"
+  question: When refactoring the 800-line ApplicationForm into containers, what is the single question that decides the container boundary?
+  options:
+    a: "How many lines does the resulting component have"
+    b: "Who owns the data and the lifecycle — does the boundary match an ownership line in the team?"
+    c: "Which UI library provides the cleanest slot API"
+    d: "How many files should the refactor produce"
+  answer: b
+  explanation: Container boundaries follow data ownership, not file size. The question is who needs the state to be alive and rendered together — that owner becomes the container. File count and library choice follow from ownership, not the reverse.
+  difficulty: 2
+  tags: [concept, comparison]
+- id: "1.12"
+  question: When refactoring the 800-line ApplicationForm into containers, what is the single question that decides the container boundary?
+  options:
+    a: "How many lines does the resulting component have"
+    b: "Who owns the data and the lifecycle — does the boundary match an ownership line in the team?"
+    c: "Which UI library provides the cleanest slot API"
+    d: "How many files should the refactor produce"
+  answer: b
+  explanation: Container boundaries follow data ownership, not file size. The question is who needs the state to be alive and rendered together — that owner becomes the container. File count and library choice follow from ownership, not the reverse.
+  difficulty: 2
+  tags: [concept, comparison]

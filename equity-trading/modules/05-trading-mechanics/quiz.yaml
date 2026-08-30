@@ -48,9 +48,9 @@
     c: Locate and borrow available shares
     d: Get SEC approval
   answer: c
-  explanation: Broker must locate shares available for borrow under SEC Rule 204.
-    Without borrowable shares, the short cannot execute. Shares come from margin accounts,
-    brokerage inventory, or lending desks.
+  explanation: Broker must locate shares available for borrow under SEC Reg SHO
+    Rule 203(b)(1). Without borrowable shares, the short cannot execute. Shares come
+    from margin accounts, brokerage inventory, or lending desks.
   difficulty: 1
   tags:
   - concept

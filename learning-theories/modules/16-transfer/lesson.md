@@ -181,14 +181,15 @@ What's wrong?
 *Answer: You don't know it cold. You know it in one context. Transfer is a skill separate from understanding. Practice with diverse problems to build transfer.*
 
 ---
-
 ## Feynman Explain
-(Explain transfer: knowing something is like having a tool in a toolbox. Most people have tools but don't know when to use them. Transfer is learning to see "this is a hammer situation" in any room you walk into — not just the workshop where you learned about hammers.)
+
+**Transfer** = using what you learned in one place in a different place. **Near transfer** is easy — a math formula in problem type A works in problem type B. **Far transfer** is hard — the principles of physics helping you reason about negotiation, say, or pattern recognition from chess helping you make business decisions. The trick to better transfer: don't learn by example alone. Learn the *underlying principle*, then practice applying it across many *different* surface forms. The surface form changes; the deep structure doesn't.
 
 ---
 
 ## Reframe
-(Judge: think of a skill you learned in one context but failed to transfer. What was missing — varied practice, surface vs structure recognition, or context dependence? Design one transfer exercise for a concept you're learning now.)
+
+Transfer is the same problem as **abstraction** in software engineering: code that solves one specific case is brittle; code that captures the underlying pattern is reusable. The reason most learning fails to transfer: people memorize the surface (the specific example) instead of the structure (the pattern the example is an instance of). This is why learning-by-doing only works if the "doing" spans varied contexts — same as why a function only tested on one input is unreliable. Far transfer is a property of having extracted the right abstraction.
 
 ---
 

@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "The {Investment Policy Statement} (IPS) is the foundational document for a private bank bond portfolio, defining allocation, duration range, credit quality limits, and rebalancing triggers."
+  answer: "Investment Policy Statement"
+  explanation: "Without an IPS, decisions become ad-hoc and emotion-driven. The IPS guides rebalancing discipline and prevents reactive market timing."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "{Duration} positioning is the dominant driver of bond portfolio returns — accounting for ~90% of return variation in a diversified bond portfolio."
+  answer: "Duration"
+  explanation: "Small duration tilts have large P&L impacts. A 4.5-year duration portfolio + 75bp rate move = 3.4% MTM, or $170K on $5M."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "An HNW client in the 48.4% combined federal+state marginal bracket benefits most from {municipal} bonds held in a {taxable} account, not a tax-deferred IRA."
+  answer: "municipal; taxable"
+  explanation: "Inside an IRA, the muni tax exemption is wasted. Asset location: place munis in taxable accounts to capture the tax-free income; place corporates in tax-deferred accounts."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "A {laddered} bond portfolio staggers maturities across years, providing rolling reinvestment and predictable cash flows for liability matching."
+  answer: "laddered"
+  explanation: "Each rung matures in sequence, providing liquidity at known dates. Reduces reinvestment risk relative to a single-maturity bullet; trades yield for predictability."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "For a $5M bond portfolio, a 100bp rate decline with 4.5-year duration produces an MTM gain of approximately {$225,000}."
+  answer: "$225,000"
+  explanation: "MTM = duration × yield change × portfolio value = 4.5 × 0.01 × $5M = $225K. But forward income falls as maturities roll into lower yields."
+  difficulty: 3
+  tags: [calculation]
+
+- id: "c.6"
+  question: "{TIPS} (Treasury Inflation-Protected Securities) provide inflation protection by adjusting both principal and coupon payments to the CPI."
+  answer: "TIPS"
+  explanation: "TIPS coupon is fixed (% of inflation-adjusted principal); at maturity, holder receives the greater of adjusted or original par. Useful for liabilities with uncertain future real value."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "{Tax-equivalent yield} for a 4.5% in-state muni in a 48.4% combined bracket is 8.71% — the muni wins by a wide margin over a 5.0% taxable corporate."
+  answer: "Tax-equivalent yield"
+  explanation: "TEY = 4.5% / (1 - 0.484) = 4.5% / 0.516 = 8.72%. Tax-exempt income dramatically outweighs lower nominal yield for high-bracket clients."
+  difficulty: 3
+  tags: [calculation]
+
+- id: "c.8"
+  question: "Active bond portfolio {monitoring} — credit review, duration rebalancing, tax-loss harvesting, ladder rolling — is required to prevent risk accumulation and capture opportunities."
+  answer: "monitoring"
+  explanation: "Bond portfolios are not static. Monthly performance review, quarterly credit review, semi-annual rebalancing, and event-driven responses keep the portfolio aligned with the IPS."
+  difficulty: 2
+  tags: [concept]

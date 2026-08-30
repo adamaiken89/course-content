@@ -108,3 +108,25 @@
   explanation: "The per-item resubmit under the original run.key is the m14 + m17 contract — the course composes by each module handing to the next through agreed seams."
   difficulty: 2
   tags: [terminology, scenario]
+- id: "19.11"
+  question: An autosave uses a debounced write into the draft store. Why must it never write into the TanStack Query cache?
+  options:
+    a: "Query cache is faster than the draft store"
+    b: "Drafts are client-authored truth; the cache holds server truth — writing drafts into the cache would serve uncommitted values as if they were committed"
+    c: "Query cache is read-only"
+    d: "Autosave is too fast for the cache"
+  answer: b
+  explanation: "Mixing draft truth with server truth is the kind of bug that survives code review and ships: a different component reads from the cache, gets the uncommitted draft, renders it as the official value. Drafts and server data must live in separate stores with separate write paths."
+  difficulty: 3
+  tags: [concept, process]
+- id: "19.12"
+  question: An autosave uses a debounced write into the draft store. Why must it never write into the TanStack Query cache?
+  options:
+    a: "Query cache is faster than the draft store"
+    b: "Drafts are client-authored truth; the cache holds server truth — writing drafts into the cache would serve uncommitted values as if they were committed"
+    c: "Query cache is read-only"
+    d: "Autosave is too fast for the cache"
+  answer: b
+  explanation: "Mixing draft truth with server truth is the kind of bug that survives code review and ships: a different component reads from the cache, gets the uncommitted draft, renders it as the official value. Drafts and server data must live in separate stores with separate write paths."
+  difficulty: 3
+  tags: [concept, process]

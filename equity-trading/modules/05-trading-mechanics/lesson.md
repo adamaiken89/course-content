@@ -101,7 +101,7 @@ flowchart LR
 |------|-----------|
 | Initial margin | Min equity required to open position (50% for stocks under Reg T) |
 | Maintenance margin | Min equity to keep position (25% typical, broker may set higher) |
-| Leverage | Total position ÷ equity. 2:1 max for stocks |
+| Leverage | Total position ÷ equity. 2:1 max for stocks (4:1 intraday for pattern day traders under day-trading buying power) |
 | Margin call | Broker demands deposit when equity < maintenance |
 
 **Example:**
@@ -109,7 +109,7 @@ flowchart LR
 - Buy $20K of stock at $100/share = 200 shares.
 - Stock drops to $75 → position worth $15K. Loan = $10K. Equity = $5K.
 - Equity % = $5K / $15K = 33%. Still above 25% maintenance.
-- Stock drops to $65 → position worth $13K. Equity = $3K. Equity % = $13K/$3K = 23% → **MARGIN CALL.**
+- Stock drops to $65 → position worth $13K. Equity = $3K. Equity % = $3K/$13K ≈ 23% → **MARGIN CALL.**
 
 > **Think**: At what stock price does a margin call occur on $20K position with $10K loan, 25% maintenance?
 >
@@ -141,7 +141,7 @@ flowchart LR
 ```
 
 **Mechanics:**
-1. **Locate:** Broker must locate shares available to borrow (SEC rule 204)
+1. **Locate:** Broker must locate shares available to borrow before executing the short (SEC Reg SHO Rule 203(b)(1))
 2. **Borrow:** Shares from brokerage inventory, other clients' margin accounts, or lending desks
 3. **Sell:** Sale proceeds credited to account (but cannot withdraw — held as collateral)
 4. **Cover:** Buy back shares, return to lender

@@ -1,6 +1,6 @@
 # Module 04: Generation Effect
 
-Est. study time: 2h
+Est. study time: 1.5h
 Language: en
 Description: Why producing information beats consuming it — Slamecka & Graf effect, cloze/predict/error design patterns, and AI generation calibration.
 

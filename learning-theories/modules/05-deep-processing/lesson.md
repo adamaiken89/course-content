@@ -201,14 +201,15 @@ What's wrong?
 *Answer: Highlighting and color-coding are shallow (visual processing). The brain processes the act of highlighting as "this is important" — but doesn't encode the content. Spend that time asking "why" instead.*
 
 ---
-
 ## Feynman Explain
-(Explain deep processing: your brain has a shallow end (just looking at words) and a deep end (connecting ideas to what you already know). The deep end is where memories become permanent. To get there, ask "why?" like a curious child.)
+
+Your brain can look at a word without really *processing* it (shallow), or it can connect that word to things you already know and ask "why is this true?" (deep). Shallow processing is fast and feels like learning. Deep processing is slow and feels like work. But deep processing is what sticks. Three ways to go deep: ask "why?" about every claim (elaborative interrogation), explain it to yourself in your own words (self-explanation), or connect it to a personal example you care about.
 
 ---
 
 ## Reframe
-(Judge: think of the last thing you studied. Were you processing deeply or just reading? Pick one concept and apply elaborative interrogation right now. Did it change your understanding?)
+
+Deep processing is the same principle behind good debugging: surface-level pattern-matching finds typos; tracing the actual flow finds logic bugs. It's also how good readers read — they interrogate, not just consume. The trap: deep processing feels worse than shallow processing, so people avoid it and conclude they "learned better" the shallow way. The felt experience is the wrong signal. The right signal is whether you could reconstruct the idea three days later without looking.
 
 ---
 

@@ -108,3 +108,25 @@
   explanation: "mapRow splits the cell, then the shared schema validates each element. Failures become row-level issues with exact paths, like form fields."
   difficulty: 3
   tags: [scenario, application]
+- id: "4.11"
+  question: A zod schema is the source of truth for an API request body. The form, the mock server, and the test fixtures all import the same schema. What invariant does this preserve?
+  options:
+    a: "Schema is a single source of truth, so a change to the contract ripples to mock, form, and test in one compile pass"
+    b: "TypeScript types are no longer needed"
+    c: "Zod is faster than TypeScript"
+    d: "It eliminates the need for runtime validation"
+  answer: a
+  explanation: Schema-first means a single declaration drives the wire format, the form shape, and the test fixture. Drift between form and server becomes a compile error rather than a runtime 400.
+  difficulty: 1
+  tags: [concept]
+- id: "4.12"
+  question: A zod schema is the source of truth for an API request body. The form, the mock server, and the test fixtures all import the same schema. What invariant does this preserve?
+  options:
+    a: "Schema is a single source of truth, so a change to the contract ripples to mock, form, and test in one compile pass"
+    b: "TypeScript types are no longer needed"
+    c: "Zod is faster than TypeScript"
+    d: "It eliminates the need for runtime validation"
+  answer: a
+  explanation: Schema-first means a single declaration drives the wire format, the form shape, and the test fixture. Drift between form and server becomes a compile error rather than a runtime 400.
+  difficulty: 1
+  tags: [concept]

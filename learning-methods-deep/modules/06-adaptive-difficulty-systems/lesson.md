@@ -1,6 +1,6 @@
 # Module 06: Adaptive Difficulty Systems
 
-Est. study time: 2h
+Est. study time: 1.5h
 Language: en
 Description: Design patterns for difficulty calibration in learning tools — ease weighting, difficulty ramps, streak detection, and the adaptive quiz engine.
 
@@ -75,7 +75,8 @@ Item difficulty classifies questions:
 Learner ability is tracked per session via:
 - `streak`: count of consecutive correct answers
 - `current_difficulty`: the highest difficulty level the learner is currently being shown
-- `easeFactor` (from FSRS-5): historical performance on specific cards
+- `stability` (FSRS-5): days until retrievability ≈ 0.9
+- `difficulty` (FSRS-5, [1, 10]): inherent item difficulty
 
 > **Think**: Why separate item difficulty from learner ability instead of having one combined score?
 >
@@ -95,26 +96,27 @@ Before the difficulty ramp applies, questions should be prioritized by the learn
 def priority(q):
     card = find_card(cards, q.id)
     if card:
-        ef = card.get('easeFactor', 2.5)
-        reps = card.get('repetitions', 0)
-        return (ef, reps, q.difficulty)
-    return (2.5, 0, q.difficulty)
+        stability = card.get('stability', 1.0)   # FSRS-5: days until R ≈ 0.9
+        difficulty = card.get('difficulty', 5.0)  # FSRS-5: [1, 10]
+        # Lower stability + higher difficulty → weakest, surface first
+        return (stability, -difficulty, q.difficulty)
+    return (1.0, -5.0, q.difficulty)
 
 questions = sorted(questions, key=priority)
 ```
 
-Sort order: lowest ease factor → fewest repetitions → lowest difficulty.
+Sort order: lowest stability (weakest memory) → highest difficulty (hardest item) → lowest question difficulty.
 
 This means:
-- Cards the learner struggled with (low ease factor) appear first
-- Cards never reviewed appear next
-- Within same weakness, easier questions come first
+- Cards with the lowest stability (forgotten or barely-known) appear first
+- Within similar stability, the highest-difficulty items come first
+- Within same stability+difficulty, easier questions come first
 
-> **Predict**: A learner has 3 cards: Q1 (ease=1.5, reps=5, diff=2), Q2 (ease=2.5, reps=0, diff=1), Q3 (ease=2.5, reps=3, diff=3). Which order does adaptive sorting produce?
+> **Predict**: A learner has 3 cards: Q1 (stability=2, difficulty=8, diff=2), Q2 (stability=5, difficulty=5, diff=1), Q3 (stability=5, difficulty=5, diff=3). Which order does adaptive sorting produce?
 >
-> *Answer: Q1 first (ease=1.5 — weakest), then Q2 (ease=2.5, reps=0 — unreviewed), then Q3 (ease=2.5, reps=3 — more practiced). Within same ease factor, fewer reps wins.*
+> *Answer: Q1 first (stability=2 — weakest memory), then Q2 (stability=5, diff=1 — easier of the two), then Q3 (stability=5, diff=3 — harder). Lowest stability wins; among ties, highest difficulty wins; among ties, lowest question difficulty wins.*
 
-> **Cloze**: "Ease-weighted sorting prioritizes {weak cards} — those with lowest easeFactor and fewest repetitions."
+> **Cloze**: "Ease-weighted sorting prioritizes {weak cards} — those with lowest FSRS-5 stability and highest item difficulty."
 >
 > *Answer: weak cards*
 

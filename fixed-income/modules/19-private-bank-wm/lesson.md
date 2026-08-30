@@ -133,20 +133,15 @@ TEY = Municipal Yield / (1 - Federal Tax Rate - State Tax Rate)
 
 ## Common Misconception
 
-"Bonds = safe, stocks = risky for all clients." For long horizon clients, stocks may be safer (inflation protection, growth). Bonds can be riskier in real terms when yields below inflation. Risk is situational — depends on goals, not asset class label.
+**"Bonds = safe, stocks = risky for all clients."** For long-horizon clients, stocks may be safer (inflation protection, growth). Bonds can be riskier in real terms when yields below inflation. Risk situational — depends on goals, not asset class label.
 
-> **Predict**: Commit to an answer: does private bank wealth management & fixed income get simpler or harder once fixed income enters the picture?
->
-> *Answer: Harder locally, simpler globally: individual pieces carry more rules, but the overall system needs fewer special cases.*
-> **Think**: What would break first if you ignored **Fixed Income Role in Wealth Management** in a production private bank wealth management & fixed income setup?
->
-> *Answer: Correctness holds at small scale, then behavior diverges as load or complexity grows — exactly what **Fixed Income Role in Wealth Management** guards against.*
-> **Cloze**: {blank} governs how private bank wealth management & fixed income behaves when multiple role in wealth concerns collide.
-> **Cloze**: The rule that keeps fixed income correct under load is called {blank}.
-> **Cloze**: In private bank wealth management & fixed income, management determines {blank}.
-> **Spot the Mistake**: Code review note: someone applies role in wealth everywhere "to be safe" in a private bank wealth management & fixed income codebase. Spot the mistake.
->
-> *Answer: Blanket application hides which spots actually need role in wealth. Apply it where the semantics demand it, and document why.*
+**"More yield = better investment for HNW clients."** No. After-tax, risk-adjusted returns matter. A 7% HY bond in taxable account for 37% bracket client may yield less than 4% muni. Always calculate TEY + risk-adjusted total return.
+
+**"Direct bonds always better than bond funds."** Depends. Funds offer diversification, liquidity, professional management, low minimums. Direct bonds offer customization, tax-lot control, no fees. Cost-benefit depends on portfolio size and complexity.
+
+**"Structured products = exotic bets."** Range accrual notes, autocallables, reverse convertibles are common HNW tools. Not exotic per se but complex. Mis-sold when client doesn't understand embedded derivatives.
+
+---
 
 
 ## Key Takeaways
@@ -165,6 +160,38 @@ Explain why a high-net-worth client in a high-tax state (e.g., California, New Y
 ## Reframe
 
 Some advisors argue that ultra-high-net-worth clients should avoid bonds entirely for growth-oriented assets, claiming bond returns are too low to meaningfully impact portfolio outcomes for large wealth bases. Under what conditions does this argument break down? Consider spending needs, volatility management, and the client's definition of wealth preservation.
+
+## Think
+
+> **Think**: A client in the 37% federal bracket + 13% California state bracket has $5M to invest. Option A: buy a 4.5% in-state municipal bond (fully state and federal tax-exempt). Option B: buy a 5.0% corporate bond. Which wins, and what other factors might flip the decision?
+>
+> *Answer: TEY for the muni = 4.5% / (1 - 0.37 - 0.13) = 4.5% / 0.50 = 9.0%. The corporate bond's taxable 5.0% is worth only 5.0% × (1 - 0.50) = 2.5% after-tax. The muni wins by a wide margin (9% vs 2.5% after-tax). But factors that could flip the decision: (1) credit risk — if the muni is BBB- and the corporate is AAA, the risk-adjusted comparison favors the corporate; (2) call risk — munis are more likely to be called when rates fall; (3) liquidity — corporate bonds are more liquid; (4) diversification — adding too many munis concentrates geographic risk; (5) account location — if this $5M is in an IRA, the muni tax benefit is wasted (already tax-deferred), and the corporate is the better choice. Tax efficiency requires evaluating the full picture, not just the headline yield.*
+
+---
+
+## Predict
+
+> **Predict**: A mass-affluent client with $300k asks: "Should I buy a single 5-year corporate bond for $50k, or put it in a bond fund?" Predict the answer with three supporting reasons.
+>
+> *Answer: Bond fund. Three reasons: (1) DIVERSIFICATION — one bond has idiosyncratic risk (a single credit event wipes out 100% of the position); a fund holds hundreds. (2) LIQUIDITY — funds can be sold any business day at NAV; the individual $50k corporate bond may have no bid for days in stress. (3) PROFESSIONAL MANAGEMENT — fund manager handles credit selection, duration management, and rebalancing; the client likely lacks the time or expertise. The exception: at much higher wealth ($1M+ in fixed income), direct bonds become efficient because fees on $1M+ at 0.3% management fee ($3,000/year) exceed the value of professional management, and the client can afford 20+ individual bonds for diversification. Below $1M, funds dominate on a fee-adjusted basis.*
+
+---
+
+## Spot the Mistake
+
+> **Spot the Mistake**: An advisor tells a client: "Let's put $1M of munis into your IRA — the income will be completely tax-free."
+>
+> What's the conceptual error?
+>
+> *Answer: The advisor misunderstands the value of muni tax-exemption in a tax-deferred account. Inside an IRA, all income is already tax-deferred until withdrawal. The muni's tax-exempt status is wasted — it doesn't add a second layer of exemption. Worse, the client gives up higher-yielding taxable options (corporate bonds, Treasuries) for a lower-yielding muni. The optimal placement is INVERSE: taxable bonds in the IRA, munis in the taxable account where the exemption is valuable. The advisor's mistake: tax treatment should drive ASSET LOCATION across account types, not asset selection within an account. This is "asset location" not "asset allocation" — and confusing the two costs the client real money over decades.*
+
+---
+
+## Cloze
+
+Private banking bond strategies differ by client segment: {mass affluent} use bond funds and ETFs for diversification and simplicity; {high net worth} clients mix direct bonds with funds, often building customized muni ladders; {ultra high net worth} clients access direct bonds, private placements, and bespoke structured products. {Tax-equivalent yield} (TEY) compares muni yields to taxable alternatives by grossing up for the tax bracket: TEY = muni_yield / (1 - tax_rate). {Asset location} — placing tax-inefficient assets in tax-deferred accounts and tax-efficient assets in taxable accounts — is critical for HNW after-tax returns. {Securities-based lending} against bond portfolios provides cheap liquidity at SOFR + spread with LTVs of 50-95% depending on collateral quality.
+
+---
 
 ## Drill
 

@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "{Investment grade} bonds are rated BBB-/Baa3 or higher and represent low default risk suitable for institutional buyers."
+  answer: "Investment grade"
+  explanation: "IG includes ratings AAA through BBB- (S&P/Fitch) or Aaa through Baa3 (Moody's). Default rates for IG are low but not zero."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "High yield (junk) bonds are rated {BB+}/Ba1 or below and compensate investors for higher default risk."
+  answer: "BB+"
+  explanation: "HY default rates cycle between 2-4% annually; CCC-rated names default ~12% per year. Higher coupons reflect this risk, not generosity."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Three major credit rating agencies are S&P Global, Moody's, and {Fitch}."
+  answer: "Fitch"
+  explanation: "All three use similar letter-grade scales with Moody's using a slightly different modifier scheme (Aaa, Aa1, Aa2 instead of AAA, AA+, AA)."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Affirmative {covenants} require the issuer to do specific things (pay interest, maintain insurance); negative covenants restrict actions (incur more debt, pay dividends)."
+  answer: "covenants"
+  explanation: "Covenants protect bondholders. Stronger in high yield deals where default risk is higher and the bondholder needs more contractual protection."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "In default, {senior secured} bondholders recover 50-70% of face, while subordinated holders recover far less."
+  answer: "senior secured"
+  explanation: "Capital structure priority: senior secured → senior unsecured → subordinated → equity. Each layer takes losses before the layer above it."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Credit {spread} = corporate bond yield minus Treasury yield of the same maturity, measured in basis points."
+  answer: "spread"
+  explanation: "Spread widens in recessions (risk aversion rises) and narrows in expansions. It reflects default risk, liquidity, and market risk appetite — not just default probability."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "A {make-whole call} provision makes early redemption expensive for the issuer by requiring PV of remaining coupons plus principal."
+  answer: "make-whole call"
+  explanation: "Effectively non-callable in practice. Common in investment-grade corporates; protects bondholders from opportunistic refinancing."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "A BBB- bond upgraded to BBB+ typically sees its {yield fall}, its price {rise}, and gain {IG index eligibility}."
+  answer: "yield fall; rise; IG index eligibility"
+  explanation: "Better credit → lower spread → higher price (duration × yield drop). Re-eligibility for IG-only mandates adds forced buying demand."
+  difficulty: 3
+  tags: [concept]

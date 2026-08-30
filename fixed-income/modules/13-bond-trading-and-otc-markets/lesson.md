@@ -147,20 +147,15 @@ Client trying to sell: could not get price without large concession.
 
 ## Common Misconception
 
-"Bonds trade like stocks — visible price, easy execution." No. OTC market means negotiated prices, wide spreads for small issues, and liquidity that disappears in stress. TRACE helps but covers only executed trades, not quotes.
+**"Bonds trade like stocks — visible price, easy execution."** No. OTC market = negotiated prices, wide spreads for less liquid issues, liquidity that disappears in stress. TRACE shows executed trades but NOT live quotes. No centralized order book like equities.
 
-> **Predict**: Commit to an answer: does bond trading & otc markets get simpler or harder once otc market enters the picture?
->
-> *Answer: Harder locally, simpler globally: individual pieces carry more rules, but the overall system needs fewer special cases.*
-> **Think**: Could you implement bond trading & otc markets without **OTC market**? What would the cost be?
->
-> *Answer: Yes, but you'd hand-roll what **OTC market** already handles — more code, more edge cases, fewer guarantees.*
-> **Cloze**: {blank} governs how bond trading & otc markets behaves when multiple bid concerns collide.
-> **Cloze**: The rule that keeps otc market correct under load is called {blank}.
-> **Cloze**: In bond trading & otc markets, trace reporting determines {blank}.
-> **Spot the Mistake**: Code review note: someone applies bid everywhere "to be safe" in a bond trading & otc markets codebase. Spot the mistake.
->
-> *Answer: Blanket application hides which spots actually need bid. Apply it where the semantics demand it, and document why.*
+**"Tighter bid-ask always better."** Tighter spreads reflect liquidity, not value. A 2bp spread on a distressed bond means nothing if the quote is "stale" or one-sided. Look at quote depth + recent trade frequency.
+
+**"Electronic trading = better prices."** Generally yes for liquid IG, but not universally. Complex or illiquid bonds still benefit from voice trading where dealer can find natural counterparty. Platform growth ≠ liquidity for every bond.
+
+**"TRACE shows everything."** No. TRACE covers executed trades. Pre-trade quotes (dealer indications) NOT shown. Large block trades reported with delay. Customer identity protected.
+
+---
 
 
 ## Key Takeaways
@@ -184,6 +179,38 @@ Explain OTC bond trading to a client: "Why can't I see the bond price on a scree
 
 ## Reframe
 Critique bond market structure: "Is OTC market structure better than exchange trading?" Consider: liquidity during stress, dealer balance sheet capacity, transparency, and client protection. Write your answer.
+
+---
+
+## Think
+
+> **Think**: A client wants to sell $20M of off-the-run 7-year corporate bonds (CUSIP not held by typical institutional accounts). The dealer shows a bid 50bp below where the client thinks the bond is worth. The client pushes back: "TRACE shows comparable bonds trading at par." How do you explain the gap, and what should the client consider?
+>
+> *Answer: Three legitimate reasons for the wide quote. (1) Inventory: the dealer doesn't have a natural buyer lined up; to take $20M into inventory, they need to hedge and carry the position, which costs money and balance sheet. (2) Liquidity premium: an off-the-run issue has fewer natural buyers, so the dealer prices for the risk of being stuck. (3) Block size: $20M of a $500M issue is 4% of the entire deal — a real position that distorts the local supply-demand. The client should: (a) accept that TRACE prices are AVERAGES across many small trades, not a quote for a $20M block; (b) consider breaking the trade into smaller pieces (but more market impact); (c) consider RFQ to multiple dealers to compete; (d) evaluate the cost of waiting vs the cost of immediate execution. Liquidity has a price, and for off-the-run blocks, that price is real.*
+
+---
+
+## Predict
+
+> **Predict**: A large asset manager announces a $500M IG corporate bond sale for portfolio rebalancing. Three dealers are competing via RFQ. Predict (a) the impact on the bond's secondary market price, (b) the typical haircut the client accepts vs the pre-trade mid, and (c) what happens to TRACE volume for the bond in the days following.
+>
+> *Answer: (a) Secondary market price DROPS on announcement as dealers pre-hedge and other holders try to exit ahead of the supply wave. Typical move: 10-30bp wider on the affected name and sector. (b) Trade haircut vs pre-trade mid: 30-100bp depending on issue liquidity and demand. For an off-the-run issue: 100-200bp. (c) TRACE volume SPIKES for the bond in the days following as the deal is digested. Volume then normalizes within 1-2 weeks. The cost of liquidity is paid in two places: the trade haircut and the post-announcement price drift. Skilled execution minimizes the second; the first is structural.*
+
+---
+
+## Spot the Mistake
+
+> **Spot the Mistake**: A junior says: "TRACE shows all bond trades, so the bond market is just as transparent as the stock market."
+>
+> Two errors. Identify each.
+>
+> *Answer: Error 1: TRACE shows EXECUTED trades, not live quotes. The stock market shows live bid/ask; the bond market shows historical prints. A bond can trade at 99.5 on TRACE but the current offer might be 100.5 (or no offer at all). Transparency of executed trades ≠ transparency of executable prices. Error 2: Stock exchanges have a centralized order book visible to all; bond markets are decentralized with bilateral negotiation. The same bond can trade at different prices simultaneously with different dealers, depending on inventory and relationship. TRACE improves transparency AFTER the fact, but live OTC negotiation is opaque by design.*
+
+---
+
+## Cloze
+
+Bonds trade {over-the-counter} (OTC) through dealer intermediation rather than on a centralized exchange. {Bid-ask} spreads compensate dealers for inventory risk and vary by issue liquidity and market conditions. {TRACE} (Trade Reporting and Compliance Engine) reports executed bond trades to improve post-trade transparency. Electronic trading platforms (MarketAxess, Tradeweb, Bloomberg) have grown share in {investment grade} markets; voice trading remains dominant for less liquid issues. {Liquidity} is episodic — adequate in normal times, scarce during stress when dealers pull back. Portfolio trading and all-to-all platforms attempt to address the {liquidity} gap.
 
 ---
 

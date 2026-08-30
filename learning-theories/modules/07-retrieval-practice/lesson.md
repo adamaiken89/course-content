@@ -70,7 +70,7 @@ graph LR
 | Re-study           | 84%                | 42%                 |
 | Retrieval practice | 68%                | 61%                 |
 
-Retrieval practice felt worse initially (68% vs 84%) but produced 50% better long-term retention.
+Retrieval practice felt worse initially (68% vs 84%) but produced ~45% better long-term retention (61% vs 42%).
 
 > **Cloze**: "The {testing effect} is the finding that retrieving information from memory produces better {long-term retention} than re-studying, even though it {feels harder}."
 >
@@ -191,14 +191,15 @@ What's wrong?
 *Answer: Reading aloud is recognition, not recall. The information is right there in front of you. True retrieval practice: one person recites from memory, the other checks accuracy.*
 
 ---
-
 ## Feynman Explain
-(Explain retrieval practice: your memory is like a path in the woods. Re-reading is looking at a map. Retrieval is actually walking the path. Each walk makes the path clearer. Even getting lost helps — you learn the landscape better than by staring at the map.)
+
+Reading about something feels like you know it. Testing yourself on it tells you whether you actually do. And the test itself is the strongest learning event. This is the **testing effect** (or *retrieval practice*): pulling something out of memory strengthens the memory far more than pushing it in. So the recipe is: read once, then close the book and try to recall. Repeat. The recall is the workout; the reading was just the setup.
 
 ---
 
 ## Reframe
-(Judge: what proportion of your current study time is retrieval vs re-reading? If it's less than 50%, redesign your next session to be retrieval-heavy. How does it feel?)
+
+Retrieval practice is the cognitive equivalent of writing a test in school: you forget what you crammed, you remember what you practiced retrieving. The same logic shows up in spaced-repetition software (Anki), in spaced interview practice, in code katas. The key insight: the *effort of recall* — not the act of being told — is what builds the trace. Any learning system that lets you skip the effort (highlighting, re-reading, watching solutions) is selling you the feeling of competence in exchange for actual forgetting.
 
 ---
 

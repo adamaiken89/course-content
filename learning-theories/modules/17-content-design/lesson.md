@@ -185,14 +185,15 @@ What's wrong?
 *Answer: 20 slides of passive viewing → minimal encoding. Quiz at end is too late — no feedback during learning. Redesign: 3-4 slides → engagement prompt → immediate feedback → repeat.*
 
 ---
-
 ## Feynman Explain
-(Explain content design: don't give someone a fish (tell them the answer). Don't just teach them to fish (give them information). Build a fishing simulator (interactive content where they try, fail, learn, and try again with feedback).)
+
+Good learning content is not "information given" — it's *practice arranged*. The reader/learner should be doing things and getting feedback, not just reading. The design principles: each piece is a single concept (one chunk), there are worked examples before practice (scaffolding), there's a chance to retrieve without looking (active recall), there are errors deliberately planted so the learner can practice detecting them (desirable difficulties), and the difficulty ramps gradually. A tutorial that follows these feels hard. A tutorial that ignores them feels easy and teaches nothing.
 
 ---
 
 ## Reframe
-(Judge: pick one piece of content you've created or use regularly. Run it through the evaluation checklist. What would you change to make it more learnable?)
+
+Content design for learning is the same discipline as **product design**: every element either helps the user do the job or gets in the way. Most "tutorials" are documentation-shaped — a wall of text, the reader passive. The literature on tutoring (Bloom's 2-sigma, worked-example effect, fading) consistently shows that *interactive, feedback-rich* content is multiple standard deviations more effective than passive reading. The translation: every paragraph of text in a tutorial is a place where a learner could have been doing instead of reading. The best content is a sequence of small challenges, not a sequence of small explanations.
 
 ---
 

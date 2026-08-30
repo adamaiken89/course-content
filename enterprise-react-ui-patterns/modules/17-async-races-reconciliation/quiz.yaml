@@ -108,3 +108,25 @@
   explanation: "Races are imperative; arbitration in refs never re-renders. Routing versions through stores turns every abort into a write storm and couples arbitration to rendering."
   difficulty: 1
   tags: [concept, comparison]
+- id: "17.11"
+  question: "Two in-flight fetches target the same record. The slow one returns AFTER the fast one with stale data. The right guard is:"
+  options:
+    a: "Last-write-wins, accept the stale value"
+    b: "Abort the slow request when the fast one completes, or compare a requestId / version stamp and discard the stale response"
+    c: "Show both and let the user pick"
+    d: "Block the second request entirely"
+  answer: b
+  explanation: AbortController or requestId comparison is the standard pattern. Last-write-wins is wrong because the slower response is older by definition. Showing both is not a real fix; blocking the second request is over-correction.
+  difficulty: 3
+  tags: [process, concept]
+- id: "17.12"
+  question: "Two in-flight fetches target the same record. The slow one returns AFTER the fast one with stale data. The right guard is:"
+  options:
+    a: "Last-write-wins, accept the stale value"
+    b: "Abort the slow request when the fast one completes, or compare a requestId / version stamp and discard the stale response"
+    c: "Show both and let the user pick"
+    d: "Block the second request entirely"
+  answer: b
+  explanation: AbortController or requestId comparison is the standard pattern. Last-write-wins is wrong because the slower response is older by definition. Showing both is not a real fix; blocking the second request is over-correction.
+  difficulty: 3
+  tags: [process, concept]

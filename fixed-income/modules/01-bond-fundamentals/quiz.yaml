@@ -137,4 +137,60 @@
   tags:
   - scenario
   - private-bank
+- id: '1.11'
+  question: What is the clean price plus accrued interest called?
+  options:
+    d: Dirty price
+    a: Par value
+    b: Coupon rate
+    c: Yield to maturity
+  answer: d
+  explanation: Dirty price = clean price + accrued interest. The actual amount buyer
+    pays. Quoted price in market is clean.
+  difficulty: 2
+  tags:
+  - pricing
+  - settlement
+- id: '1.12'
+  question: Which day count convention is used for US Treasury bonds?
+  options:
+    b: ACT/ACT
+    a: 30/360
+    c: ACT/360
+    d: ACT/365
+  answer: b
+  explanation: US Treasuries use ACT/ACT (actual days ÷ actual days in period). US
+    corporates/munis use 30/360. Money market uses ACT/360.
+  difficulty: 3
+  tags:
+  - day-count
+  - terminology
+- id: '1.13'
+  question: US bond market settles how many business days after the trade date?
+  options:
+    a: T+1
+    b: T+0 (same day)
+    c: T+2
+    d: T+3
+  answer: a
+  explanation: US bond market moved to T+1 in May 2024 (was T+2). One business day
+    after trade for buyer payment and seller delivery.
+  difficulty: 2
+  tags:
+  - settlement
+- id: '1.14'
+  question: Bond with 5% semiannual coupon, 90 days into 180-day period. What is accrued
+    interest per $1,000 face?
+  options:
+    c: $12.50
+    a: $25.00
+    b: $22.50
+    d: $5.00
+  answer: c
+  explanation: Semiannual coupon = $25. Daily = $25/180 = $0.1389. 90 days × $0.1389
+    = $12.50 accrued.
+  difficulty: 3
+  tags:
+  - calculation
+  - accrued-interest
 

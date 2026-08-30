@@ -101,10 +101,13 @@ FSRS-5 (Free Spaced Repetition Scheduler) is the latest algorithm. Key parameter
 
 | Parameter | Default | What it controls |
 |-----------|---------|------------------|
-| Desired retention | 0.80-0.90 | How much you want to recall at review time |
-| Max interval | 365 days | Maximum days between reviews |
-| Easy bonus | 1.3 | How much easier cards get after "Easy" |
-| Hard penalty | 1.2 | How much harder cards get after "Hard" |
+| `desired_retention` | 0.85 | Target probability of recall when a card is due (drives the whole schedule) |
+| `request_retention` | varies | Computed from review history; FSRS-5 adjusts to keep you near the target |
+| `maximum_interval` | 365 days | Upper cap on days between reviews |
+| `enable_fuzz` | true | Adds randomness to intervals to prevent cards clustering on the same day |
+| `enable_short_term` | true | Reviews within a single day (lapses / re-learning) tracked separately |
+
+> **SM-2 legacy note**: Older Anki versions used SM-2 with hard/easy multipliers (e.g., hard penalty 1.2, easy bonus 1.3). These are not FSRS-5 parameters. They still appear in the Anki review screen because user-facing buttons (Again/Hard/Good/Easy) are graded on a SM-2-style scale, but FSRS-5 uses its own internal difficulty model derived from review history.
 
 **Setup**:
 1. Use Anki with FSRS-5 enabled
@@ -215,14 +218,15 @@ What's wrong?
 *Answer: Research is not learning. The best system is the one you start today. Pick a simple setup, start, and iterate.*
 
 ---
-
 ## Feynman Explain
-(Explain the learning system: it's like fitness. You don't need the perfect gym, perfect routine, and perfect diet to start. You need to put on your shoes and walk for 5 minutes. The system grows from momentum.)
+
+A "personal learning system" is just a set of habits + tools that runs without heroic willpower. The minimum viable version: pick a time, pick a place, do 5 minutes. The advanced version layers in spaced repetition (FSRS-5), retrieval practice, weekly review, and self-experiments. But all of that is decoration on top of the habit. The habit is the load-bearing wall. Without it, the smartest system is a graveyard of unused features. With it, even a simple system compounds over months.
 
 ---
 
 ## Reframe
-(Judge: what's your minimum viable learning habit starting today? Write it down. One trigger, one tiny routine, one simple reward. Start tomorrow.)
+
+A personal learning system is a **flywheel**: the harder it is to start, the slower it spins, the less momentum, the harder it is to start. The fix is to reduce the activation energy (5 minutes, not 60), not to add willpower. The same pattern shows up in writing (1 sentence a day vs NaNoWriMo), in fitness (10 pushups vs a gym routine), and in software (one git commit vs a refactor). The right unit of progress is the one you can do on your worst day. Everything else is bonus. FSRS-5 and weekly reviews are *optimizations* on a flywheel that has to already be turning.
 
 ---
 

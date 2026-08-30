@@ -108,3 +108,25 @@
   explanation: "Nesting means a second open with a new intent and a parent reference, layered above the current dialog — same shell, same config map, one extra stack in the store. (a) explodes the config space; (c) duplicates DialogShell; (d) avoids the actual need."
   difficulty: 3
   tags: [scenario]
+- id: "8.11"
+  question: "A modal must be unsaveable if the form is dirty. The state machine transitions: idle -> editing -> submitting -> done. When is the right moment to evaluate 'is dirty'?"
+  options:
+    a: "On every keystroke, synchronously"
+    b: "On every transition INTO the editing state and on every input event after that, with the result memoized"
+    c: "Only when the user clicks close"
+    d: "Only when the API call starts"
+  answer: b
+  explanation: Dirty is a derived fact; computing it on every render is wasteful, but only computing it on close misses the case where the user navigates away via a different mechanism. The state machine's transition into 'editing' is the natural trigger; from there, input events keep the flag fresh.
+  difficulty: 3
+  tags: [process, concept]
+- id: "8.12"
+  question: "A modal must be unsaveable if the form is dirty. The state machine transitions: idle -> editing -> submitting -> done. When is the right moment to evaluate 'is dirty'?"
+  options:
+    a: "On every keystroke, synchronously"
+    b: "On every transition INTO the editing state and on every input event after that, with the result memoized"
+    c: "Only when the user clicks close"
+    d: "Only when the API call starts"
+  answer: b
+  explanation: Dirty is a derived fact; computing it on every render is wasteful, but only computing it on close misses the case where the user navigates away via a different mechanism. The state machine's transition into 'editing' is the natural trigger; from there, input events keep the flag fresh.
+  difficulty: 3
+  tags: [process, concept]

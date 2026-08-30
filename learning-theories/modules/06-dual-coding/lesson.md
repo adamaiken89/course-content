@@ -231,14 +231,15 @@ What's wrong?
 *Answer: Three violations. (1) The photo is decorative — adds extraneous load. (2) Dense text paragraph should be broken into bullet points or a diagram. (3) Text + unrelated image creates split attention and confusion.*
 
 ---
-
 ## Feynman Explain
-(Explain dual coding: your brain has two filing systems — one for words, one for pictures. Filing the same info in both means you have two ways to find it later. It's like writing down a phone number AND saving it in your contacts.)
+
+Your brain has two separate channels for information: one for words/language and one for images. When you learn something *both* ways, you store it twice, in two different places. Later, you have two ways to find it — either by remembering the words or by remembering the picture. That's why a labelled diagram beats a paragraph. And it's why drawing a concept (even badly) often cements it more than re-reading about it. You're literally writing it into a different memory system.
 
 ---
 
 ## Reframe
-(Judge: think of the last presentation or video you watched. Did it follow dual coding principles? What would you change? Is there a concept you're studying now that would benefit from a diagram you create?)
+
+Dual coding is the principle behind why most great explainers (3Blue1Brown, Bret Victor, Hans Rosling) succeed: they don't just talk, they *show*. The same logic is why good UI designers mock up screens before coding and why chess players visualize positions rather than reading notation. The narrow version — "study with images" — is a useful study hack. The wide version: anything you want to be retrievable should be encoded in at least two modalities, not one.
 
 ---
 

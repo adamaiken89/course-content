@@ -220,14 +220,15 @@ What's wrong?
 *Answer: Fixed mindset attribution. The failure is attributed to an unchangeable trait. Instead: "What strategy didn't work? What could I try differently?" That's adaptive.*
 
 ---
-
 ## Feynman Explain
-(Explain self-regulated learning: it's like being the pilot of your own learning plane. Forethought = filing a flight plan. Performance = flying and checking instruments. Self-reflection = reviewing the flight log. Bad learners are passengers — they just sit there. Good learners are pilots.)
+
+**Self-regulated learning** = the whole loop, not just one piece. Three phases: **Forethought** (set a goal, pick a strategy, motivate yourself), **Performance** (actually do the work, monitor your attention and comprehension), **Self-Reflection** (after: what worked, what didn't, what to try next). Most learners are heavy on Performance and light on the other two. They study hard but never plan or review. The result is effortful busywork, not improvement. The fix: spend small amounts of time on the cheap-but-pivotal phases.
 
 ---
 
 ## Reframe
-(Judge: rate your own self-regulation on a 1-10 scale. Which phase is strongest (planning, executing, reviewing)? Which is weakest? Design one small change for the weakest phase.)
+
+Self-regulated learning is the same structure as the **PDCA cycle** (Plan-Do-Check-Act) in manufacturing or the **retrospectives** in agile teams. The science just calls it by a different name. The recurring finding across domains: most people skip the Check/Reflect phase because it feels unproductive ("I just finished, why think about it more?"). But the reflection is where the next cycle gets cheaper — same lesson, just retrieved as institutional memory. Skipping reflection is the organizational equivalent of re-solving yesterday's problem every morning.
 
 ---
 

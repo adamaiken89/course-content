@@ -108,3 +108,25 @@
   explanation: "The negative test reuses the same seam: override the MSW handler for GET /api/programs with a failure, render ProgramSelect, and assert the error UI. One handler, one line of override."
   difficulty: 3
   tags: [scenario]
+- id: "3.11"
+  question: A component reads from a TanStack Query cache and renders a list. What is the right boundary for a unit test versus an integration test?
+  options:
+    a: "Unit test the cache reads, integration test the render"
+    b: "Unit test the render with an MSW handler that returns a fixture; integration test the full click-path including cache invalidation"
+    c: "Only E2E test it; unit tests are useless"
+    d: "Snapshot test the rendered tree and trust it"
+  answer: b
+  explanation: The cache is a contract, not an implementation detail. Unit-test the render against MSW so the test exercises the data shape the cache would deliver. Integration-test the full invalidation cycle to catch regressions in stale-data logic.
+  difficulty: 2
+  tags: [scenario, comparison]
+- id: "3.12"
+  question: A component reads from a TanStack Query cache and renders a list. What is the right boundary for a unit test versus an integration test?
+  options:
+    a: "Unit test the cache reads, integration test the render"
+    b: "Unit test the render with an MSW handler that returns a fixture; integration test the full click-path including cache invalidation"
+    c: "Only E2E test it; unit tests are useless"
+    d: "Snapshot test the rendered tree and trust it"
+  answer: b
+  explanation: The cache is a contract, not an implementation detail. Unit-test the render against MSW so the test exercises the data shape the cache would deliver. Integration-test the full invalidation cycle to catch regressions in stale-data logic.
+  difficulty: 2
+  tags: [scenario, comparison]

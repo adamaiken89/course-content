@@ -140,20 +140,13 @@ Client holds $2M of BBB-rated telecom bonds. Upgrade to A- happens.
 
 ## Common Misconception
 
-"IG bonds won't default." BBB-rated bonds default ~0.2%/yr — rare but real. "Fallen angels" (IG→HY) happen during stress (2008 saw 10% of IG universe downgraded to HY).
+**"IG bonds = no default risk."** BBB-rated bonds default ~0.2%/year — rare but real. "Fallen angels" (IG → HY) spike during stress: 2008 saw ~10% of IG universe downgraded. A bond rated BBB today is not the same as one rated A.
 
-> **Predict**: Before reading deeper: what do you expect happens when investment grade interacts with credit ratings in corporate bonds?
->
-> *Answer: The system relies on investment grade to keep credit ratings predictable — when both apply, the stricter rule wins.*
-> **Think**: How does **Investment grade vs high yield** relate to **Credit ratings** within corporate bonds?
->
-> *Answer: They address adjacent failure modes: investment grade vs high yield governs the primary behavior, while credit ratings constrains how far you can push it.*
-> **Cloze**: {blank} governs how corporate bonds behaves when multiple credit ratings concerns collide.
-> **Cloze**: The rule that keeps investment grade correct under load is called {blank}.
-> **Cloze**: In corporate bonds, bond covenants determines {blank}.
-> **Spot the Mistake**: A developer treats investment grade as optional because "it works without it." Where is the mistake?
->
-> *Answer: It works only until the assumptions behind investment grade are violated. The fix: treat it as part of the contract of corporate bonds, not an optimization.*
+**"Higher coupon = better corporate bond."** No. High coupon often signals compensation for credit risk, not generosity. A 8% CCC bond yielding more than a 4% AAA is NOT "better income" — it prices in default probability and recovery uncertainty. Total return risk-adjusted is what matters.
+
+**"Ratings = truth."** Ratings lag reality. Agencies often downgrade AFTER markets have already priced in distress. Issuer-pays model creates conflict. Watch 2008 (MBs rated AAA) and 2001 (Enron held IG until days before bankruptcy).
+
+---
 
 
 ## Key Takeaways
@@ -176,6 +169,38 @@ Explain credit ratings to a private banking client. "Why does an A-rated bond yi
 
 ## Reframe
 Critique credit ratings: "Are ratings useful or harmful?" Consider: rating agencies' conflicts of interest (issuer-pays model), rating lag (downgrade after crisis), and herding behavior. Write your answer.
+
+---
+
+## Think
+
+> **Think**: Two corporate bonds, both 5-year, both senior unsecured, same industry. Bond A is rated A- yielding 5.20%. Bond B is rated BB+ yielding 6.00%. A client asks "Bond B pays 80bp more — that covers more than default risk, right? Why not just buy B for the extra income?" Walk through the answer that a fixed-income PM would give.
+>
+> *Answer: 80bp does NOT cover default risk alone. BB+ has an annual default rate ~0.8% (vs A- ~0.05%) — 16× more frequent defaults. Average loss given default for senior unsecured is ~40% of face. So expected annual credit loss for Bond B ≈ 0.8% × 40% = 32bp; for Bond A ≈ 0.05% × 40% = 2bp. The 80bp extra spread overstates B's edge by 30bp before considering higher volatility, wider bid-ask, and forced selling during stress. Bond B is "better" only if the buyer is explicitly compensated for bearing cycle risk and liquidity risk, and has the mandate and stomach to hold through drawdowns. Many institutional mandates forbid HY for this reason.*
+
+---
+
+## Predict
+
+> **Predict**: A BBB- bond is upgraded to BBB+ (one notch). Everything else unchanged (maturity, coupon, sector). What happens to (a) yield, (b) price, and (c) eligibility for IG-only mandates? Direction only.
+>
+> *Answer: (a) Yield FALLS. Better credit rating means less compensation needed; spread tightens ~10-20bp typically. (b) Price RISES. Lower yield, same cash flows → higher PV. Price gain = duration × yield drop × 100. (c) Eligibility EXPANDS. The bond may newly qualify for IG-only index inclusion or insurance company capital relief mandates, creating forced buying demand. The price impact from mandate re-eligibility can exceed the spread-tightening impact.*
+
+---
+
+## Spot the Mistake
+
+> **Spot the Mistake**: A junior says: "Investment grade bonds don't default — that's why they're investment grade. A bond rated BBB- is essentially as safe as a Treasury."
+>
+> Two errors. Identify each.
+>
+> *Answer: Error 1: "IG bonds don't default" is false. BBB- has a ~0.2% annual default rate; over 5 years that's ~1% cumulative default probability, and in stress (2008) it spiked above 5%. The label "investment grade" is a regulatory/bucket designation, not a default-free guarantee. Error 2: "As safe as a Treasury" ignores that the Treasury has zero credit risk and zero credit spread, while BBB- trades at +100-150bp to Treasuries for a reason. The spread IS the market's continuous pricing of the credit risk that the rating system cannot make disappear.*
+
+---
+
+## Cloze
+
+{Investment grade} bonds (rated BBB-/Baa3 or higher) carry low default risk and are eligible for institutional mandates, while {high yield} bonds (BB+/Ba1 or below) compensate investors for materially higher default probability. Credit {ratings} from S&P, Moody's, and Fitch assess business and financial risk but lag market reality. Bond {covenants} — affirmative (must do) and negative (must not do) — protect bondholders. {Seniority} within the capital structure determines recovery in default: senior secured recovers 50-70%, subordinated far less. The {credit spread} is the yield premium over Treasuries of the same maturity, reflecting default risk, liquidity, and risk appetite.
 
 ---
 

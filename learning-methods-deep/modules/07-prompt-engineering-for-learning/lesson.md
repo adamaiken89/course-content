@@ -180,6 +180,8 @@ def validate_mcq(q):
     for field in required:
         if field not in q:
             raise ValueError(f"Missing field: {field}")
+    # Normalize: models often emit lowercase answer letters
+    q['answer'] = str(q['answer']).strip().upper()
     if q['answer'] not in ['A', 'B', 'C', 'D']:
         raise ValueError(f"Invalid answer: {q['answer']}")
     if q['difficulty'] not in [1, 2, 3]:

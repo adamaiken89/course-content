@@ -194,7 +194,7 @@ it('rejects string grades at the fetch boundary', () => {
 
 Plain types suffice for **internal-only shapes** that never cross a boundary — a component's local config, a memo key. Drift risk is zero when one team owns both sides and nothing serializes. Rule: *validate where data enters your trust boundary; skip runtime validation for shapes that never leave the process.*
 
-zod extras: custom error messages (`errorMap`, per-locale), `z.lazy` for recursive shapes, `.transform` for normalization. For advanced zod — preprocessing, discriminated unions on `programType`, `superRefine` for cross-field checks — see `external-lib-patterns`.
+zod extras: custom error messages (v3: `errorMap`; v4: `error` callback, per-locale), `z.lazy` for recursive shapes, `.transform` for normalization. For advanced zod — preprocessing, discriminated unions on `programType`, `superRefine` for cross-field checks — see `external-lib-patterns`.
 
 > **Spot the Mistake**: A team replaces the interface with zod *only* for form validation, but still types API responses with a hand-written interface and casts with `as unknown as ApplicationDraft`.
 >

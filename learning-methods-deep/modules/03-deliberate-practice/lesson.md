@@ -1,6 +1,6 @@
 # Module 03: Deliberate Practice
 
-Est. study time: 2h
+Est. study time: 1.5h
 Language: en
 Description: Ericsson's framework for skill improvement — specific goals, immediate feedback, optimal difficulty, mental representations — and its implementation in adaptive learning tools.
 

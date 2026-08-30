@@ -108,3 +108,25 @@
   explanation: "The DAG edges become server config; the client applies them, no drift of rules."
   difficulty: 3
   tags: [comparison, application]
+- id: "13.11"
+  question: Field B's options depend on Field A. User changes A. What is the right moment to refetch B?
+  options:
+    a: "Immediately on A's onChange, debounced"
+    b: "When A's value is committed (on blur or on submit), and only if A actually changed"
+    c: "Never; B is always editable"
+    d: "On every keystroke in A"
+  answer: b
+  explanation: Fetching on every keystroke wastes requests for partial input. Fetching on A's commit, gated by an actual-change check, gives the user a stable B that reflects the final A. Debouncing on every keystroke is a compromise that loses the stability property.
+  difficulty: 2
+  tags: [process, scenario]
+- id: "13.12"
+  question: Field B's options depend on Field A. User changes A. What is the right moment to refetch B?
+  options:
+    a: "Immediately on A's onChange, debounced"
+    b: "When A's value is committed (on blur or on submit), and only if A actually changed"
+    c: "Never; B is always editable"
+    d: "On every keystroke in A"
+  answer: b
+  explanation: Fetching on every keystroke wastes requests for partial input. Fetching on A's commit, gated by an actual-change check, gives the user a stable B that reflects the final A. Debouncing on every keystroke is a compromise that loses the stability property.
+  difficulty: 2
+  tags: [process, scenario]

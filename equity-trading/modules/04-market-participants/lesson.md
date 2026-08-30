@@ -44,11 +44,11 @@ mindmap
 
 ## Real-World Example
 
-Your 500-share market order fills instantly at advertised price. An institution's 500,000-share order takes hours — executed algorithmically across 15 venues. Same stock, same day, completely different experience. Why?
+Your 500-share market order fills instantly at advertised price. An institution's 5,000,000-share order for a large-cap stock (~$500M notional) takes hours — executed algorithmically across 15 venues. Same stock, same day, completely different experience. Why?
 
-> **Think**: Who provides the liquidity for your 500 shares? Who provides liquidity for the institution's 500K? Is it the same entity?
+> **Think**: Who provides the liquidity for your 500 shares? Who provides liquidity for the institution's 5M? Is it the same entity?
 >
-> *Answer: Your 500 shares came from a market maker or HFT providing fast execution to the NBBO. The 500K needs natural counterparties — pension fund selling, mutual fund buying. No single market maker can absorb 500K without massive risk. Large orders need natural flow via algos, dark pools, and block desks.*
+> *Answer: Your 500 shares came from a market maker or HFT providing fast execution at the NBBO. The 5M-share order needs natural counterparties — pension funds selling, mutual funds buying. No single market maker can absorb 5M shares without massive inventory risk. Large orders source liquidity via VWAP/TWAP algos, dark pools, and block desks — they slice the order into many small pieces and execute over hours to minimize market impact.*
 
 ---
 

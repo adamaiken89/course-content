@@ -135,20 +135,15 @@ Regulatory compliance affects private banking bond operations:
 
 ## Common Misconception
 
-"More regulation = safer markets." Regulation reduces systemic risk but creates unintended consequences. Basel III → less dealer inventory → wider bid-ask spreads → lower liquidity for clients in stress. Trade-off between stability and market function.
+**"More regulation = safer markets."** Regulation reduces systemic risk but creates unintended consequences. Basel III → less dealer inventory → wider bid-ask spreads → lower liquidity for clients in stress. Trade-off between stability and market function.
 
-> **Predict**: Before reading deeper: what do you expect happens when major regulatory interacts with frameworks in regulatory environment?
->
-> *Answer: The system relies on major regulatory to keep frameworks predictable — when both apply, the stricter rule wins.*
-> **Think**: How does **Major Regulatory Frameworks** relate to **Dodd-Frank Wall Street Reform and Consumer Protection Act** within regulatory environment?
->
-> *Answer: They address adjacent failure modes: major regulatory frameworks governs the primary behavior, while dodd-frank wall street reform and consumer protection act constrains how far you can push it.*
-> **Cloze**: {blank} governs how regulatory environment behaves when multiple frameworks concerns collide.
-> **Cloze**: The rule that keeps major regulatory correct under load is called {blank}.
-> **Cloze**: In regulatory environment, dodd determines {blank}.
-> **Spot the Mistake**: A developer treats major regulatory as optional because "it works without it." Where is the mistake?
->
-> *Answer: It works only until the assumptions behind major regulatory are violated. The fix: treat it as part of the contract of regulatory environment, not an optimization.*
+**"Regulations are global and consistent."** No. US (Dodd-Frank), EU (MiFID II/EMIR), UK (post-Brexit onshoring), Asia (different frameworks). Cross-border bond trading requires navigating multiple regimes.
+
+**"Capital requirements only affect banks."** Cascade to clients: less dealer capacity → wider spreads → higher client trading costs → smaller trade sizes feasible. End investors pay.
+
+**"Reporting obligations are just compliance cost."** Post-2008 transparency (TRACE, SDR, MiFIR) actually improved market quality — tighter spreads, better price discovery. Some regulation generates positive externalities.
+
+---
 
 
 ## Key Takeaways
@@ -167,6 +162,38 @@ Explain how Basel III's Liquidity Coverage Ratio (LCR) created a structural incr
 ## Reframe
 
 Regulatory costs reduce market liquidity, yet regulations exist because of market failures exposed by the 2008 crisis. Is the optimal regulatory regime the one that maximizes market liquidity, or the one that ensures financial stability even at a cost to liquidity? Consider the trade-off between dealer capacity and systemic risk reduction.
+
+## Think
+
+> **Think**: A global bank holds $50B of high-quality liquid assets (HQLA) — mostly Treasuries and agency MBS. Its LCR is 110%, comfortably above the 100% minimum. Then the Fed raises rates 200bp. Treasuries fall 10% in price. The HQLA value falls to ~$45B. What happens to the LCR, and what should the bank do?
+>
+> *Answer: LCR = HQLA / 30-day net cash outflows. If HQLA falls 10% and outflows unchanged, LCR drops from 110% to ~99% — below the 100% regulatory minimum. The bank is now non-compliant. Options: (1) sell less liquid assets and buy more HQLA, (2) reduce short-term funding (cut off wholesale funding sources), (3) use repo to monetize HQLA, (4) negotiate with regulator. None are free — selling illiquid assets at fire-sale prices is exactly what LCR was supposed to prevent. This dynamic shows why LCR creates procyclicality: in stress, banks hoard HQLA rather than lend, tightening credit conditions further. The regulation reduces individual bank risk but can amplify system stress.*
+
+---
+
+## Predict
+
+> **Predict**: MiFID II enforces pre-trade transparency for corporate bonds via Systematic Internalisers (SIs). What is the predicted effect on (a) corporate bond bid-ask spreads, (b) dealer inventory, and (c) trade size distribution? Direction only.
+>
+> *Answer: (a) Spreads TIGHTEN for liquid large issues because SI quotes are firm and visible — competition forces tighter quotes. Less-liquid issues see WIDENING spreads because SIs avoid posting firm quotes in illiquid names (regulatory capital cost too high). (b) Dealer inventory FALLS in less-liquid bonds because SIs avoid the risk. Inventory concentrates in benchmark liquid names. (c) Trade size distribution shifts: more small trades in liquid names (SIs quote up to standard market size), fewer large block trades (no one wants to commit capital to large illiquid positions under transparency). Observed: 2018-2020 post-MiFID II saw exactly this pattern — small trade share rose, large block share fell, and some less-liquid bond classes became genuinely hard to trade.*
+
+---
+
+## Spot the Mistake
+
+> **Spot the Mistake**: A junior compliance officer says: "Post-trade transparency under MiFIR means all bond trades are reported in real time to the public, so we have full price discovery for every bond."
+>
+> What's missing?
+>
+> *Answer: Three omissions. (1) DEFERRED publication: MiFIR allows post-trade reporting deferrals for large trades and illiquid bonds — from 15 minutes to several days — to protect liquidity providers. Not "real time" for most large trades. (2) SIZE OMISSION: many deferral regimes allow publication without trade size, to discourage reverse-engineering of large positions. (3) SYSTEMATIC INTERNALISER waivers and reference price waivers mean many SI trades never hit the public tape. The practical effect: post-trade transparency improved the data but is far from a complete feed. A junior assuming full visibility into all bond trading would be surprised by how much still happens off-screen.*
+
+---
+
+## Cloze
+
+{Dodd-Frank} (2010) mandated central clearing of standardized OTC derivatives, electronic trading on Swap Execution Facilities (SEFs), and swap data repository reporting. {MiFID II / MiFIR} (EU, 2018) imposed pre- and post-trade transparency, defined {Systematic Internaliser} obligations, and codified best execution. {EMIR} (2012) required EU derivatives clearing, reporting to trade repositories, and bilateral margin for non-cleared trades. {Basel III} raised bank capital and liquidity requirements, including the {LCR} (Liquidity Coverage Ratio) and {NSFR} (Net Stable Funding Ratio), reducing dealer bond inventory capacity. {SEC Rule 2a-7} reformed money market funds with floating NAV, liquidity fees, and swing pricing. Cross-border rules like {FATCA} and {CRS} require reporting of client securities holdings.
+
+---
 
 ## Drill
 

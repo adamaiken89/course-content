@@ -129,13 +129,13 @@
 - id: '3.10'
   question: Bond equivalent yield of 180-day T-Bill priced at $980,000 per $1M face?
   options:
-    c: 4.08%
+    c: 4.14%
     a: 3.50%
     b: 2.00%
     d: 4.00%
   answer: c
-  explanation: BEY = (1,000,000-980,000)/980,000 × 365/180 = 20,000/980,000 × 2.028
-    = 2.04% × 2.028 = 4.08%
+  explanation: BEY = (1,000,000-980,000)/980,000 × 365/180 = 20,000/980,000 × 2.0278
+    = 4.14%
   difficulty: 3
   tags:
   - calculation

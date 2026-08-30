@@ -213,14 +213,15 @@ What's wrong?
 *Answer: This hits two violations. (1) Redundancy: slides and narration say the same thing. (2) Split attention: face in corner adds visual noise. Better: use slides with diagrams (not text) while narration explains. Or use text slides with no narration (read silently).*
 
 ---
-
 ## Feynman Explain
-(Explain three types of cognitive load to a child: the content difficulty (intrinsic), the messy worksheet (extraneous), and the brain power you put into understanding (germane).)
+
+Three things fill your brain's "thinking space." **Intrinsic load** is the topic itself — algebra is harder than addition, no matter how you teach it. **Extraneous load** is the mess around the topic — bad fonts, split diagrams, distracting colors, rambling videos. **Germane load** is the *good* effort you put into actually building understanding. Bad teaching maximizes the first two and starves the third. Good teaching minimizes extraneous, accepts intrinsic, and frees germane.
 
 ---
 
 ## Reframe
-(Judge: when did a poorly designed tutorial kill your motivation? Could you diagnose which load type was the culprit? How would you redesign it?)
+
+Cognitive Load Theory is essentially a UX principle for the mind: the user's working memory is the screen real estate, and any visual or procedural noise is dead pixels. The same logic drives progressive disclosure in software (don't show every option at once), level design in games (don't throw every enemy at you in minute one), and onboarding in any complex tool. If you've rage-quit a tutorial, you were almost certainly overloaded extraneously, not intrinsically.
 
 ---
 

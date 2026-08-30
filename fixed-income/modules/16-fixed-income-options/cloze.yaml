@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "A {callable} bond is a straight bond plus a short call option held by the issuer, creating negative convexity as rates fall."
+  answer: "callable"
+  explanation: "When rates fall enough, the issuer calls the bond and reissues at lower rates. The bondholder loses price appreciation above the call price."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "A {putable} bond gives the holder the right to sell the bond back to the issuer at par on specified dates."
+  answer: "putable"
+  explanation: "Putable bonds price with positive convexity — they rally more than comparable non-putable bonds in rallies. Issuer compensates via a lower coupon."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "An interest rate {cap} protects a floating-rate borrower from rate rises; a {floor} protects a lender from rate falls."
+  answer: "cap; floor"
+  explanation: "Caps and floors are OTC options on a reference rate (SOFR, EURIBOR). Premium is paid up front; payoff occurs if the reference rate breaches the strike."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.4"
+  question: "A {collar} combines a long cap and a short floor, hedging rate rises while giving up some rate-decline benefit at lower net cost."
+  answer: "collar"
+  explanation: "The short floor premium offsets part of the cap cost. Treasury departments use collars for cheap hedging. Trade-off: rate range of no net cash flow (between strikes)."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "{Black's model} prices European-style options on forwards assuming lognormal returns and constant volatility."
+  answer: "Black's model"
+  explanation: "Used for caps, floors, swaptions, and European bond options. Limitation: assumes lognormal distribution and constant vol. Market practice uses SABR for better accuracy."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "A {swaption} is an option to enter into an interest rate swap at a future date at a pre-agreed fixed rate."
+  answer: "swaption"
+  explanation: "Payer swaption: right to pay fixed. Receiver swaption: right to receive fixed. Used to hedge or take views on forward swap rates."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Negative {convexity} in callable bonds means price gains are capped as rates fall because the call option becomes increasingly valuable to the issuer."
+  answer: "convexity"
+  explanation: "As rates fall, the call option deepens in-the-money, capping price appreciation. The bond's effective duration shrinks in rallies — the opposite of normal bonds."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "The {make-whole call} provision makes early redemption expensive for the issuer by requiring PV of remaining coupons plus principal, effectively making the bond non-callable in practice."
+  answer: "make-whole call"
+  explanation: "Common in investment-grade corporates. The bondholder is made whole for the economic loss from early redemption. Protects bondholders from opportunistic refinancing."
+  difficulty: 3
+  tags: [terminology]

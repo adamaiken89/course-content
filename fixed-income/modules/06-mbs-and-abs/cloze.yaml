@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "In {securitization}, an originator pools loans, sells to a bankruptcy-remote SPV, and the SPV issues tranched securities backed by the pool's cash flows."
+  answer: "securitization"
+  explanation: "Key players: originator, SPV, servicer, trustee, rating agency. The SPV structure isolates the assets from the originator's credit risk."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Agency MBS (Fannie, Freddie, Ginnie) issue {pass-through} securities where monthly cash flow = scheduled principal + interest + prepayments."
+  answer: "pass-through"
+  explanation: "Pass-throughs distribute pool cash pro-rata to all holders. CMOs then redistribute this cash flow across tranches with different prepayment and credit profiles."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "The annualized prepayment rate is the {CPR} (Conditional Prepayment Rate); SMM (Single Monthly Mortality) is the monthly equivalent."
+  answer: "CPR"
+  explanation: "CPR = 1 - (1 - SMM)^12. SMM = 1 - (1 - CPR)^(1/12). PSA is the benchmark curve: 100% PSA = 0.2% CPR month 1, ramping to 6% CPR by month 30, then flat."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.4"
+  question: "MBS exhibit {negative convexity}: prices rise less than Treasuries in rallies and fall more in selloffs."
+  answer: "negative convexity"
+  explanation: "When rates fall, prepayments cap price gains (extension risk reverses). When rates rise, prepayments slow and duration extends, amplifying price losses."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "An {Interest-Only} (IO) strip receives only interest payments; prepayments hurt it because less principal remains outstanding."
+  answer: "Interest-Only"
+  explanation: "IO price moves WITH rates (rises when rates rise / prepays slow). Useful for hedging pipeline risk or betting on rate increases."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "A {Principal-Only} (PO) strip receives only principal payments; faster prepayments accelerate cash recovery and lift PO price."
+  answer: "Principal-Only"
+  explanation: "POs trade at a discount and benefit from faster prepayments. Long PO when expecting rate cuts; short PO when expecting rate hikes."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Sequential {CMO} tranches pay principal in order: A first, then B, then C. Earlier-paid tranches have shorter average life and more prepayment risk."
+  answer: "CMO"
+  explanation: "Z-tranches (accrual) take the longest; they receive no principal until all earlier sequential tranches are paid off, exposing them to extreme extension risk."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "An SMM of 0.5% monthly corresponds to a CPR of approximately {5.84}% annualized."
+  answer: "5.84"
+  explanation: "CPR = 1 - (1 - 0.005)^12 = 1 - 0.9416 = 0.0584 = 5.84%. Standard conversion between monthly and annualized prepayment speeds."
+  difficulty: 3
+  tags: [calculation]

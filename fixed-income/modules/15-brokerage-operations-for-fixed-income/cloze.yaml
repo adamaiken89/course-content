@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "The {trade life cycle} runs from execution to confirmation to settlement, ideally via straight-through processing (STP)."
+  answer: "trade life cycle"
+  explanation: "Steps: pre-trade (analysis, RFQ), execution (trade with dealer), confirmation (affirm details), clearing (CCP netting), settlement (DVP cash/bond exchange), reconciliation (book to record)."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "{Prime brokerage} provides hedge funds with bundled services: financing, leverage, securities lending, custody, and operational support."
+  answer: "Prime brokerage"
+  explanation: "Major PB providers: Goldman Sachs, Morgan Stanley, JPMorgan, BofA. Bundled relationship creates efficiency but also concentration risk (Archegos 2021)."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Bond margin requirements are typically {lower} than equity margin because of lower price volatility and higher collateral value."
+  answer: "lower"
+  explanation: "Treasuries 2-10%, IG corporates 5-15%, HY corporates 10-30%, equities 25-50%. Haircut and margin are inverse: more volatile asset = more haircut = less leverage."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "{TRACE} reports corporate bond trades; {MSRB} reports municipal bond trades — both are mandatory for broker-dealers."
+  answer: "TRACE; MSRB"
+  explanation: "TRACE increased price transparency dramatically. MSRB's RTRS system does the same for munis. Both improve market quality and tighten spreads over time."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "{Operational risk} is a distinct risk category encompassing trade errors, settlement fails, fraud, cyber, technology, and regulatory breaches."
+  answer: "Operational risk"
+  explanation: "Basel framework requires capital against operational risk. Categories: internal fraud, external fraud, employment practices, clients/products, business disruption, damage to physical assets, execution/delivery/process management."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "A {margin call} triggers when the loan-to-value ratio exceeds the agreed maintenance threshold, requiring the borrower to post additional collateral."
+  answer: "margin call"
+  explanation: "Failure to meet a margin call can result in forced liquidation by the lender. Margin calls were widespread in March 2020 and triggered significant systemic stress."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Securities {lending} allows holders to lend bonds to short-sellers in exchange for a fee plus collateral, generating extra income for long-term holders."
+  answer: "lending"
+  explanation: "Beneficial for pension funds and insurance companies holding large bond portfolios. Special bonds (in short demand) earn higher lending fees. Agent lenders (e.g., BNY, State Street) operate the programs."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "{Regulatory reporting} for fixed income includes TRACE, MSRB, Form PF, and AIFMD — each with different cadences and detail levels."
+  answer: "Regulatory reporting"
+  explanation: "Trade reporting (TRACE/MSRB) is real-time. Position reporting (Form PF for large hedge funds) is quarterly. Cross-jurisdictional reporting (AIFMD) is required for non-US funds marketing in EU."
+  difficulty: 3
+  tags: [terminology]

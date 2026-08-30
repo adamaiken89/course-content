@@ -108,3 +108,25 @@
   explanation: "Import is intake; submission is the engine's job. One ledger, no reimplementation."
   difficulty: 2
   tags: [comparison, scenario]
+- id: "15.11"
+  question: "A CSV import rejects a row with a validation error. The right place to surface the error is:"
+  options:
+    a: "A modal that blocks the entire import"
+    b: "A row-level error in the staged preview, with the row still editable inline"
+    c: "An alert at the top of the page listing all errors"
+    d: "Silently skip the row"
+  answer: b
+  explanation: Inline row-level errors keep the import moving. The user can fix the row in place and re-submit without leaving the staging view. Blocking modals break flow; silent skips are dishonest; alert lists do not let the user act on the specific row.
+  difficulty: 2
+  tags: [scenario, process]
+- id: "15.12"
+  question: "A CSV import rejects a row with a validation error. The right place to surface the error is:"
+  options:
+    a: "A modal that blocks the entire import"
+    b: "A row-level error in the staged preview, with the row still editable inline"
+    c: "An alert at the top of the page listing all errors"
+    d: "Silently skip the row"
+  answer: b
+  explanation: Inline row-level errors keep the import moving. The user can fix the row in place and re-submit without leaving the staging view. Blocking modals break flow; silent skips are dishonest; alert lists do not let the user act on the specific row.
+  difficulty: 2
+  tags: [scenario, process]

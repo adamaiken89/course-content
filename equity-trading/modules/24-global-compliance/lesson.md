@@ -5,31 +5,32 @@
 ```mermaid
 mindmap
   root((Global Compliance))
-    MiFID II
-      Pre/post-trade transparency
-      Research unbundling
-      Dark pool caps
-        <4% per venue
-        <8% total EU
-      Systematic Internaliser regime
-    Best Execution
-      Price priority
-      SOR (Smart Order Routing)
-      Factors
-        Speed
-        Likelihood
-        Settlement cost
-      Execution quality reports
-        SEC Rule 605 monthly
-        SEC Rule 606 quarterly
-    Short Sale Rules
-      Historical uptick rule 1938-2007
-      Rule 201 Alternative Uptick
-        Triggers at 10% drop
-        Short above NBB
-      Locate requirement
-        Rule 204 Reg SHO
-        T+2 close-out
+    MiFIDII["MiFID II"]
+      Transparency["Pre/post-trade transparency"]
+      Unbundling["Research unbundling"]
+      DPCaps["Dark pool caps"]
+        Cap1["4% per venue"]
+        Cap2["8% total EU"]
+      SI["Systematic Internaliser regime"]
+    BestEx["Best Execution"]
+      PriceP["Price priority"]
+      SOR["SOR (Smart Order Routing)"]
+      Factors["Factors"]
+        Speed["Speed"]
+        Likelihood["Likelihood"]
+        SettlementCost["Settlement cost"]
+      Reports["Execution quality reports"]
+        Rule605["SEC Rule 605 monthly"]
+        Rule606["SEC Rule 606 quarterly"]
+    ShortRules["Short Sale Rules"]
+      Uptick["Historical uptick rule 1938-2007"]
+      Rule201["Rule 201 Alternative Uptick"]
+        Trigger["Triggers at 10% drop"]
+        AboveNBB["Short above NBB"]
+      Locate["Locate requirement"]
+        LocateRule["Rule 203(b)(1) Reg SHO - locate"]
+        CloseOut["Rule 204 Reg SHO - close-out"]
+        Timeline["T+1 (T+2 for MMs)"]
 ```
 
 ## Learning Objectives
@@ -65,7 +66,7 @@ Effective January 3, 2018 (EU/EEA). Major overhaul of European securities regula
 **Transparency:**
 - Pre-trade transparency: Trading venues must publish current bid/ask quotes
 - Post-trade transparency: Trades must be reported within 1 minute (equities), 15 minutes (bonds)
-- Double volume caps: Trading under waiver limited to 4% per venue, 8% total across EU (for dark pools)
+- Double volume caps: Trading under waiver limited to 4% per venue, 8% total across EU (for dark pools) — **note: ESMA suspended enforcement of DVCs in 2021 and the caps remain under review**
 
 **Research unbundling:**
 - Asset managers must pay for research separately from execution commissions
@@ -105,8 +106,8 @@ flowchart LR
 **Definition:** Broker-dealers must seek the most favorable terms for client orders — not just price, but speed, likelihood of execution, settlement costs.
 
 **Regulatory basis:**
-- SEC Rule 10b-10, FINRA Rule 5310, MSRB Rule G-18
-- MiFID II Article 27 (best execution reporting)
+- SEC Rule 10b-10 (trade confirmation disclosures), FINRA Rule 5310 (best execution standard), MSRB Rule G-18 (municipal securities best execution)
+- MiFID II Article 27 (best execution obligation and reporting)
 
 **Factors:**
 - Price (primary but not sole factor)
@@ -144,10 +145,10 @@ flowchart LR
 - Applies to: All NMS stocks
 
 **Locate requirement:**
-- SEC Rule 204 (Regulation SHO): Before short selling, broker must:
+- SEC Reg SHO Rule 203(b)(1) (locate) and Rule 204 (close-out): Before short selling, broker must:
   - Have reasonable grounds to believe shares can be borrowed
   - Locate shares available for borrow
-  - Close out failures to deliver within T+2 (T+5 for bona fide market making)
+  - Close out failures to deliver within T+1 (T+2 for bona fide market making) — note US equities settled to T+1 in May 2024
 
 ```mermaid
 flowchart TD
@@ -185,7 +186,7 @@ International regulations increasingly shape global trading. A US broker trading
 - Best execution: price + speed + likelihood + cost. Rules 605/606 reports are public.
 - Rule 201: triggered at 10% drop → short sales must be above NBB. Locate required always.
 - Original uptick rule (1938-2007) was always on; Rule 201 is trigger-based.
-- Regulation SHO Rule 204: locate shares before short selling, close fails in T+2.
+- Regulation SHO: Rule 203(b)(1) requires locate before short; Rule 204 requires close-out of fails by T+1 (T+2 for bona fide market makers).
 - PFOF creates inherent conflict with best execution obligations.
 
 ---

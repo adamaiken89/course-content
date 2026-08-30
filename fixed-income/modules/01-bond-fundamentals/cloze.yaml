@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "The {face value} of a corporate bond is typically the principal repaid at maturity, conventionally $1,000 per bond."
+  answer: "face value"
+  explanation: "Face value (par) anchors all bond math: coupon payments are a % of face, and price is quoted as a % of face."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "When yield rises, bond {price} falls because the fixed coupon becomes less attractive versus newly issued bonds at higher rates."
+  answer: "price"
+  explanation: "The inverse price-yield relationship is mechanical: existing bonds must reprice so their YTM matches the new market yield."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.3"
+  question: "A bond trading above par is called a {premium} bond, and its yield is {lower} than its coupon rate."
+  answer: "premium; lower"
+  explanation: "Premium bonds pay above-market coupons, so investors accept a capital loss at maturity — yield < coupon, price > par."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "The {clean price} excludes accrued interest, while the {dirty price} is what the buyer actually pays."
+  answer: "clean price; dirty price"
+  explanation: "Quoted prices are clean; the full invoice price (dirty) = clean + accrued interest owed to the seller for the partial coupon period."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "The {YTM} (yield to maturity) is the IRR of a bond's cash flows and the standard apples-to-apples return measure across bonds."
+  answer: "YTM"
+  explanation: "YTM bundles coupon income, any capital gain/loss to par, and the reinvestment assumption into one annualized rate."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.6"
+  question: "US corporate bonds use the {30/360} day count convention, while US Treasuries use {ACT/ACT}."
+  answer: "30/360; ACT/ACT"
+  explanation: "Day count affects accrued interest math; the same trade can produce slightly different accruals under different conventions."
+  difficulty: 3
+  tags: [terminology]
+
+- id: "c.7"
+  question: "A {discount} bond trades below par and its price rises toward par as maturity nears, even if rates don't change."
+  answer: "discount"
+  explanation: "Pull-to-par is mechanical: PV of face converges to $1,000 as time-to-maturity shrinks, regardless of rate path."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "A zero-coupon bond has reinvestment {risk} equal to zero because there are no interim coupons to reinvest."
+  answer: "risk"
+  explanation: "Zeros eliminate reinvestment risk but introduce taxable accretion in many jurisdictions and higher price sensitivity (duration) for any rate move."
+  difficulty: 3
+  tags: [comparison]

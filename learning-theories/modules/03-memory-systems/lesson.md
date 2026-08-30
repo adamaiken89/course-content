@@ -215,14 +215,15 @@ What's wrong?
 *Answer: Encoding specificity means you become dependent on that room's cues. Take the test in a different room and retrieval suffers. Vary study locations to build context-independent memories.*
 
 ---
-
 ## Feynman Explain
-(Explain encoding, storage, and retrieval — three phases of memory. Use a library analogy: shelving a book (encoding), keeping it on the shelf (storage), finding it later (retrieval).)
+
+Memory has three jobs. **Encoding** = writing it down (or letting the brain write it). **Storage** = keeping it. **Retrieval** = finding it later. Most people only think about encoding. But storage fails because you never consolidated, and retrieval fails because the cue doesn't match — like looking for a book in the wrong library. Three problems, three fixes: better encoding (deep processing), sleep + spacing (consolidation), and matching study context to test context (retrieval cues).
 
 ---
 
 ## Reframe
-(Judge: when did you fail to retrieve something you definitely knew? Was it encoding quality, insufficient consolidation, or retrieval context mismatch? What would you change?)
+
+The three-phase model is the same shape as any information pipeline: input, persistence, output. It's how compilers work (parse → store bytecode → load on call), how databases work (write → index → query), and how a kitchen works (prep → fridge → plate). The non-obvious lesson: you can fail at any of the three stages and never know which one. That's why "I studied it" is a meaningless claim — it doesn't specify which phase broke.
 
 ---
 

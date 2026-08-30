@@ -218,14 +218,15 @@ What's wrong?
 *Answer: The feeling of "great" after studying is a red flag. It likely comes from fluency (re-reading, highlighting). If the study session felt easy, you probably weren't retrieving. Test yourself to confirm.*
 
 ---
-
 ## Feynman Explain
-(Explain metacognition: it's like having a GPS for your brain. Most people drive without GPS — they think they know the way (overconfidence) or think they don't (underconfidence). Metacognition is the GPS that shows your actual position so you can correct the route.)
+
+**Metacognition** = thinking about your own thinking. It's not knowing things — it's knowing *how well you know things*, and knowing what to do about it. Most people are bad at this: they're confidently wrong, or unsure of things they actually know. A metacognitive learner predicts ("I think I'll get 7/10"), then tests, then compares. Over time, their predictions get accurate, and that accuracy is what lets them spend study time where it actually matters.
 
 ---
 
 ## Reframe
-(Judge: when have you been overconfident in your learning? What was the cost? Design a one-week plan to track your calibration — predict, test, compare, adjust.)
+
+Metacognition is the same idea as **feedback control** in engineering: a system without a sensor can't correct. Thermostats, autopilots, and good learners all have the same structure — sense, compare, adjust. The failure mode is identical too: a control loop with a broken sensor runs at full throttle in the wrong direction. "I feel like I know it" is a broken sensor. Calibration is the act of fixing the sensor. In teams, this is also why code review exists: the writer can't see their own bugs, but the reviewer can — external feedback replaces the missing internal one.
 
 ---
 

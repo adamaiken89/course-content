@@ -1,6 +1,6 @@
 # Module 02: Marva Collins' Way
 
-Est. study time: 2h
+Est. study time: 1.5h
 Language: en
 Description: The Socratic no-fail pedagogy that combines rigorous expectations with relentless support — and how to embed it in AI learning systems.
 

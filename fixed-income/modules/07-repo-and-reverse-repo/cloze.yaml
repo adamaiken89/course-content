@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "A {repurchase agreement} (repo) is economically a collateralized short-term loan, structured as a sale today with a contractual repurchase at a higher price later."
+  answer: "repurchase agreement"
+  explanation: "The price difference between sale and repurchase equals the repo interest. Legally two trades (sale + forward purchase), economically one loan."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Reverse repo and repo are the same trade viewed from {opposite} sides — borrower's repo = lender's reverse repo."
+  answer: "opposite"
+  explanation: "Always pick a side based on cash flow: cash out today = borrower (repo), cash in today = lender (reverse repo). Same trade, different perspective."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.3"
+  question: "The {haircut} = (collateral value - cash lent) / collateral value, and protects the lender against collateral price decline."
+  answer: "haircut"
+  explanation: "Higher volatility collateral requires higher haircut. Treasuries 0.5-2%, IG corporates 5-10%, HY 10-20%, equities 10-50%."
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.4"
+  question: "{GC} (General Collateral) repo uses any Treasury as collateral and trades at the lowest rate; {Special} repo refers to a specific in-demand security and trades below GC."
+  answer: "GC; Special"
+  explanation: "Special rates can go negative during short squeezes when lenders pay to obtain a specific bond. Fails (failed delivery) trade at the highest penalty rate."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "A hedge fund posts $10M cash, borrows $90M in repo, and buys $100M of bonds. This is 10:{1} leverage on the equity stake."
+  answer: "1"
+  explanation: "Total exposure $100M / equity $10M = 10x. The repo magnifies both returns and losses. A 5% bond decline wipes out 50% of equity."
+  difficulty: 2
+  tags: [calculation]
+
+- id: "c.6"
+  question: "{SOFR} (Secured Overnight Financing Rate) replaced LIBOR as the US dollar overnight repo benchmark."
+  answer: "SOFR"
+  explanation: "SOFR is based on actual repo transactions in Treasury collateral. It's nearly risk-free (overnight, secured by Treasuries) and reflects real funding costs."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Tri-party repo uses an intermediary like BNY Mellon or JPMorgan to handle collateral valuation, margin calls, and settlement."
+  answer: "tri-party"
+  explanation: "Reduces operational burden. Dominant form of US repo. The clearing bank (not the lender) holds the collateral, reducing rehypothecation and operational risk."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Rehypothecation is when collateral posted in one repo is reused by the lender as collateral in a {different} repo or transaction."
+  answer: "different"
+  explanation: "Obscures true exposure and chains collateral through the system. In 2008, rehypothecated MBS collateral disappeared from view, complicating risk assessment."
+  difficulty: 3
+  tags: [terminology]

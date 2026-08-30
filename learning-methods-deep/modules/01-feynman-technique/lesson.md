@@ -1,6 +1,6 @@
 # Module 01: Feynman Technique
 
-Est. study time: 2h
+Est. study time: 1.5h
 Language: en
 Description: The 4-step explanation loop that reveals gaps in understanding — and how to implement it in AI learning tools.
 

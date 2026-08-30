@@ -108,3 +108,25 @@
   explanation: "React.memo bails out only when props are reference-equal; a new provider value from a keystroke still propagates through context to every consumer. Memoization changes render cost, not store topology."
   difficulty: 3
   tags: [scenario]
+- id: "2.11"
+  question: A value is read in 2 sibling components, written once per user click, and never persisted. Where should it live?
+  options:
+    a: "Redux store"
+    b: "Lifted state in the closest common parent"
+    c: "Zustand global store"
+    d: "URL query string"
+  answer: b
+  explanation: Lifted state is the cheapest correct answer when the write is rare, the read is local, and there is no cross-screen consumer. Reach for zustand only when the siblings become cousins across routes, or the URL when the state is shareable as a link.
+  difficulty: 2
+  tags: [concept, scenario]
+- id: "2.12"
+  question: A value is read in 2 sibling components, written once per user click, and never persisted. Where should it live?
+  options:
+    a: "Redux store"
+    b: "Lifted state in the closest common parent"
+    c: "Zustand global store"
+    d: "URL query string"
+  answer: b
+  explanation: Lifted state is the cheapest correct answer when the write is rare, the read is local, and there is no cross-screen consumer. Reach for zustand only when the siblings become cousins across routes, or the URL when the state is shareable as a link.
+  difficulty: 2
+  tags: [concept, scenario]

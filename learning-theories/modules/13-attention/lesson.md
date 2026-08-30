@@ -78,7 +78,7 @@ graph TD
 2. Load the new task context into WM
 3. Inhibit the previous task's activation
 
-This costs 15-30 minutes of productivity per switch (depending on task complexity). Answering one text message doesn't take 30 seconds — it takes 15 minutes because of the switch cost.
+This costs 15-30 minutes of productivity per switch (depending on task complexity) — and this is the cost to the **interrupted** task, not the interrupting one. Answering the text itself takes seconds. Resuming your study session afterwards is what takes 15+ minutes. (Mark et al. 2008: average resumption time ~23 minutes.)
 
 > **Think**: You study for 1 hour but check your phone 4 times. How much of that hour was actually productive study time?
 >
@@ -229,14 +229,15 @@ What's wrong?
 *Answer: Phone presence alone divides attention — even without notifications. The anticipation of notifications creates a low-level attentional cost. Remove phone from the room entirely.*
 
 ---
-
 ## Feynman Explain
-(Explain attention: your brain has one spotlight. You can point it at one thing. Multitasking is frantically swinging the spotlight between things — each swing takes energy and lights up nothing well. Protect your spotlight.)
+
+Your brain has one spotlight. It can shine brightly on one thing, or dimly on many things — but it cannot shine brightly on two things at once. What people call "multitasking" is actually **task-switching**: you move the spotlight, lose the previous scene, load the new scene, lose the next interruption's worth, etc. Each switch costs 15-30 minutes of recovery time. The lesson: protect the spotlight. Single-task. Make the environment quiet. Block the interruptions before they arrive.
 
 ---
 
 ## Reframe
-(Judge: what's the biggest attention leak in your study environment right now? One change you can make today to protect it. Try it for one week and observe the difference.)
+
+The attention spotlight is the same idea as **CPU single-threading with context switches** in old-school operating systems: one core, many processes, expensive context switches. Modern OSes fixed this with multiple cores; your brain didn't get the upgrade. The cost shows up identically: thrashing. When context switches consume more time than actual work, throughput collapses. Most "I worked for 3 hours and got nothing done" episodes are thrashing. The fix is the same in both cases: batch, serialize, and remove interrupts at the source.
 
 ---
 

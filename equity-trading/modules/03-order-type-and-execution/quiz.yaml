@@ -13,16 +13,20 @@
   - concept
 - id: '3.2'
   question: Best bid is $25.00 × 300, best ask is $25.05 × 100. You place a market
-    buy for 500 shares. What happens?
+    buy for 500 shares. Assume sufficient depth to fill the entire order. What is
+    the average fill price?
   options:
-    a: All 500 fill at $25.00
-    b: All 500 fill at $25.05
-    c: 100 fill at $25.05, 300 at $25.10, 100 at $25.15
-    d: Order is rejected — insufficient liquidity
-  answer: c
-  explanation: 'Market buy walks the book. 100 fill at $25.05 (top ask). Then consumes
-    next ask levels. If next asks are $25.10(300), $25.15(200), the walk continues.
-    Note: answer presumes hypothetical depth after top level.'
+    a: $25.00
+    b: $25.05
+    c: $25.20
+    d: $25.05 plus routing fees
+  answer: b
+  explanation: "A market buy walks the book. The first 100 shares fill at $25.05
+    (top ask). The remaining 400 shares fill at the next best ask levels (which
+    we assume exist at higher prices). Average fill price is between $25.05 and
+    the highest ask level reached — for a 500-share order this typically averages
+    $25.05-$25.20 depending on book depth. The key concept - a market order walks
+    up the book consuming all available size at progressively worse prices."
   difficulty: 2
   tags:
   - scenario

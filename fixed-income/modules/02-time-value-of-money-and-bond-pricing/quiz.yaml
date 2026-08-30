@@ -44,14 +44,14 @@
   question: Bond pays $25 coupon semi-annually, face $1,000, 3yr maturity, YTM 4%.
     What is price?
   options:
-    d: $1,027.57
+    d: $1,028.01
     a: $972.50
     b: $1,000.00
     c: $1,083.33
   answer: d
   explanation: Periodic coupon = $25, periods = 6, periodic yield = 2%. PV coupons
-    = 25 × [1-1.02^-6]/0.02 = 25 × 5.601 = $140.03. PV principal = 1000/1.02^6 = $887.54.
-    Total = $1,027.57
+    = 25 × [1-1.02^-6]/0.02 = 25 × 5.6014 = $140.04. PV principal = 1000/1.02^6 = $887.97.
+    Total = $1,028.01
   difficulty: 2
   tags:
   - calculation
@@ -117,13 +117,13 @@
 - id: '2.9'
   question: 'Bond: $1,000 face, 6% coupon annual, 4yr, price $980. Approximate YTM?'
   options:
-    c: 6.47%
+    c: 6.58%
     a: 5.76%
     b: 6.00%
     d: 7.12%
   answer: c
-  explanation: 'Approx YTM = [60 + (1000-980)/4] / [(1000+980)/2] = [60+5]/990 = 65/990
-    = 6.57%. Closest: 6.47% using more precise calc.'
+  explanation: 'Approx YTM = [60 + (1000-980)/4] / [(1000+980)/2] = 65/990 = 6.57%.
+    Actual YTM (iterative solve) = 6.58%. Close agreement.'
   difficulty: 3
   tags:
   - calculation

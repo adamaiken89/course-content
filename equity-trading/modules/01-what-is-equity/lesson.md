@@ -92,7 +92,7 @@ Not all equity is the same. Two main classes:
 | Voting | Yes (usually 1 vote/share) | No (usually) |
 | Bankruptcy priority | Last | Before common, after debt |
 | Price volatility | Higher | Lower (behaves like bond) |
-| Dividend accumulation | Not cumulative | Cumulative (missed dividends accrue) |
+| Dividend accumulation | Not cumulative (unless stated otherwise) | Cumulative by default for most US preferreds — missed dividends accrue |
 
 > **Think**: Why would an investor buy preferred stock if it has lower upside than common?
 >

@@ -126,3 +126,14 @@
   difficulty: 1
   tags:
   - concept
+- id: "10.11"
+  question: A tracker grid shows 5,000 rows. The user filters and sorts. URL state vs. component state — which fields belong in the URL?
+  options:
+    a: "Only the page size"
+    b: "Filters, sort, and pagination — anything that should be shareable as a link or survive reload"
+    c: "Everything including scroll position and hover state"
+    d: "Nothing; URL state is for marketing pages only"
+  answer: b
+  explanation: URL state is for shareable, reload-safe view configuration. Filters, sort, and pagination are the classic examples. Scroll position and hover are UI ephemera and belong in component state.
+  difficulty: 2
+  tags: [concept, comparison]

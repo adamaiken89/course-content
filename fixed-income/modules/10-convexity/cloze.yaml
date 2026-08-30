@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "{Convexity} is the second-derivative measure of the price-yield curve and corrects duration's linear approximation."
+  answer: "Convexity"
+  explanation: "Duration is a first-order Taylor approximation; convexity is the second-order correction. Together they approximate the actual price change more accurately."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "For option-free bonds, convexity is {positive} — price rises more than duration predicts in a rally, falls less in a selloff."
+  answer: "positive"
+  explanation: "Convexity is the bondholder's friend for straight bonds. The price-yield curve bends upward; both directions of rate move favor the holder."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.3"
+  question: "The full price change estimate is ΔP/P ≈ -{Modified D × Δy} + {0.5 × Convexity × (Δy)^2}."
+  answer: "Modified D × Δy; 0.5 × Convexity × (Δy)^2"
+  explanation: "First term is the duration effect (linear). Second term is the convexity correction (quadratic). The second term always helps for option-free bonds."
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.4"
+  question: "{Negative convexity} arises in callable bonds and MBS — the embedded option caps upside as rates fall."
+  answer: "Negative convexity"
+  explanation: "As rates fall toward the call price, the bond's price curve bends downward (concave). The issuer's call option gains value at the bondholder's expense."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "A {barbell} portfolio (short + long maturities) has higher convexity than a {bullet} (single intermediate maturity) at the same duration."
+  answer: "barbell; bullet"
+  explanation: "Barbell yields ~5-15bp less than a bullet at the same duration. The yield sacrifice is the price paid for convexity protection."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "Convexity adjustment becomes material for yield moves above approximately {50}bp."
+  answer: "50"
+  explanation: "For C=50-100 (typical IG), 100bp move adds 0.25-0.5% to price estimate. Below 25bp, adjustment is negligible. Rule of thumb: convexity matters when |Δy| > 50bp."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "MBS exhibit {negative convexity} because faster prepayments when rates fall shorten the average life and reduce duration."
+  answer: "negative convexity"
+  explanation: "MBS rally: prepayment speeds cap price gains. MBS selloff: prepayments slow, duration extends, price falls more. Both hurt relative to a Treasury."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "A bond with D=5.0, C=60 has a 50bp yield fall → price change of approximately {+2.575}% (duration +2.5%, convexity +0.075%)."
+  answer: "+2.575"
+  explanation: "Duration: -5.0 × (-0.005) = +2.5%. Convexity: 0.5 × 60 × (0.005)^2 = +0.075%. Total: +2.575%. The convexity boost is small but real."
+  difficulty: 3
+  tags: [calculation]

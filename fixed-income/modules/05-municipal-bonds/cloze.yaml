@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "{General obligation} (GO) municipal bonds are backed by the issuer's full faith and credit, including taxing power, and have the lowest default risk in the muni market."
+  answer: "General obligation"
+  explanation: "GO bonds can draw on any revenue source, most importantly property/sales/income taxes. Defaults on large GO issuers are extremely rare."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "{Revenue} municipal bonds are secured by a specific project's income stream (tolls, water fees, airport landing fees)."
+  answer: "Revenue"
+  explanation: "Revenue bonds depend entirely on the project's ability to generate enough cash to service debt. Riskier than GO; healthcare and housing revenue bonds have defaulted at rates comparable to high-yield corporates."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Municipal bond interest is exempt from federal income tax; the {tax-equivalent yield} (TEY) is the formula for comparing munis to taxable bonds."
+  answer: "tax-equivalent yield"
+  explanation: "TEY = muni_yield / (1 - marginal_tax_rate). A 4% muni in the 37% bracket has TEY = 4% / 0.63 = 6.35% — comparable to a 6.35% taxable corporate."
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.4"
+  question: "{Private activity} bonds are tax-exempt for regular federal tax but taxable under the Alternative Minimum Tax (AMT)."
+  answer: "Private activity"
+  explanation: "Private activity bonds finance projects with significant private involvement (stadiums, airports, housing for private developers). Important for high-bracket clients subject to AMT."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Out-of-state munis are federally exempt but may be {state taxable} unless the investor lives in the issuing state."
+  answer: "state taxable"
+  explanation: "Most states do not exempt interest from other states' munis. In-state munis avoid both federal and state tax for residents."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Bond {insurance} from a monoline insurer can lift a muni's rating to AAA, but insurer credit risk remains after 2008."
+  answer: "insurance"
+  explanation: "After 2008, monoline insurers (MBIA, Ambac) were downgraded, eroding the value of wrapped munis. Insured munis now trade at smaller premium to uninsured."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Build America Bonds (BABs) were taxable munis issued 2009-2010 with a federal {subsidy} to issuers."
+  answer: "subsidy"
+  explanation: "Created under ARRA 2009; issuers received a federal subsidy lowering their borrowing cost while paying taxable interest to investors. Program expired 2010."
+  difficulty: 3
+  tags: [terminology]
+
+- id: "c.8"
+  question: "The TEY of a 4.2% muni for a client in the 32% federal bracket is approximately {6.18%}."
+  answer: "6.18%"
+  explanation: "TEY = 4.2% / (1 - 0.32) = 4.2% / 0.68 = 6.18%. A comparable taxable corporate must yield more than this to be better after-tax."
+  difficulty: 3
+  tags: [calculation]

@@ -125,15 +125,19 @@
   tags:
   - comparison
 - id: '6.10'
-  question: 'Forward P/E of 15x means an investor expects to recoup investment in:'
+  question: 'Forward P/E of 15x means an investor expects to recoup the price (in
+    earnings) in approximately:'
   options:
     a: 5 years if earnings grow at 15% annually
-    b: 15 years if forward earnings materialize as projected
+    b: 15 years if earnings stay constant at the forward level
     c: 10 years if earnings remain constant
     d: 7.5 years if earnings double
   answer: b
-  explanation: P/E of 15x implies 15 years of earnings to equal the purchase price,
-    assuming forward earnings estimate is met. Years-to-payback = P/E ratio.
+  explanation: "P/E of 15x means price equals 15 years of current earnings — but
+    ONLY if earnings stay flat. With any growth, payback is faster; with negative
+    growth, longer. The P/E = years-to-payback equivalence assumes zero growth,
+    which is the conservative interpretation. Option (a) is wrong because 15%
+    growth does not divide directly into 15."
   difficulty: 3
   tags:
   - concept

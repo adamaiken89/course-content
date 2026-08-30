@@ -108,3 +108,25 @@
   explanation: "Focus is a DOM action performed with refs and an imperativeFocus helper; store writes and re-renders race against the commit and add churn."
   difficulty: 1
   tags: [concept, comparison]
+- id: "16.11"
+  question: "A data grid announces row count changes. The announcement should be made via:"
+  options:
+    a: "An aria-live region with politeness 'polite'"
+    b: "An aria-live region with politeness 'assertive'"
+    c: "A console.log"
+    d: "A toast that auto-dismisses"
+  answer: a
+  explanation: Row count changes are status updates, not emergencies. 'Polite' lets the screen reader finish the current utterance before announcing, which is the user-friendly default. 'Assertive' is reserved for errors that need immediate attention.
+  difficulty: 2
+  tags: [concept, process]
+- id: "16.12"
+  question: "A data grid announces row count changes. The announcement should be made via:"
+  options:
+    a: "An aria-live region with politeness 'polite'"
+    b: "An aria-live region with politeness 'assertive'"
+    c: "A console.log"
+    d: "A toast that auto-dismisses"
+  answer: a
+  explanation: Row count changes are status updates, not emergencies. 'Polite' lets the screen reader finish the current utterance before announcing, which is the user-friendly default. 'Assertive' is reserved for errors that need immediate attention.
+  difficulty: 2
+  tags: [concept, process]

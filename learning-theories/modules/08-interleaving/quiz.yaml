@@ -26,12 +26,12 @@
 - id: '8.3'
   question: In Rohrer's math study, interleaved practice produced what result on delayed tests?
   options:
-    c: 43% vs 20% — more than double blocked practice
+    c: 63% vs 38% — substantially better than blocked practice
     a: Lower scores than blocked
     b: Similar scores to blocked
     d: 100% recall
   answer: c
-  explanation: Interleaved group scored 43% vs 20% blocked — despite feeling they learned less during
+  explanation: Interleaved group scored 63% vs 38% blocked — despite feeling they learned less during
     practice.
   difficulty: 2
   tags:

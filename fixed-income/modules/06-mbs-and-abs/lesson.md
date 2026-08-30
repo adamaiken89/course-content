@@ -150,20 +150,15 @@ Answer: "Prepayments increased as homeowners refinance at lower rates. You recei
 
 ## Common Misconception
 
-"Agency MBS = risk-free." Credit risk near-zero (government backing), but prepayment risk is real. Negative convexity means MBS underperforms Treasuries in both rallies and selloffs.
+**"Agency MBS = risk-free."** Credit risk near-zero (government backing), but prepayment risk is real and damaging. Negative convexity means MBS underperforms Treasuries in BOTH rallies (prepayment caps price gains) and selloffs (extension risk).
 
-> **Predict**: Before reading deeper: what do you expect happens when securitization process interacts with mortgage pass in mbs & abs?
->
-> *Answer: The system relies on securitization process to keep mortgage pass predictable — when both apply, the stricter rule wins.*
-> **Think**: Why does **Securitization process** matter when working with mbs & abs?
->
-> *Answer: Because it changes how you structure and reason about mbs & abs — skipping it leads to fragile designs that break under real workloads.*
-> **Cloze**: {blank} governs how mbs & abs behaves when multiple mortgage pass concerns collide.
-> **Cloze**: The rule that keeps securitization process correct under load is called {blank}.
-> **Cloze**: In mbs & abs, prepayment risk determines {blank}.
-> **Spot the Mistake**: A developer treats securitization process as optional because "it works without it." Where is the mistake?
->
-> *Answer: It works only until the assumptions behind securitization process are violated. The fix: treat it as part of the contract of mbs & abs, not an optimization.*
+**"Higher coupon MBS = better."** No. Premium-coupon MBS have higher prepayment risk because borrowers refinance aggressively. Lower-coupon MBS offer more stable cash flows even if headline yield lower.
+
+**"CMO tranches eliminate risk."** Tranches redistribute, not eliminate, prepayment risk. Z-tranche takes extreme extension risk; sequential A takes extreme contraction risk. Senior tranche has lower risk but capped upside.
+
+**"ABS = corporate bonds."** No. ABS cash flows depend on collateral performance (defaults, prepayments, recoveries). Corporate has recourse to issuer; ABS limited to specific asset pool.
+
+---
 
 
 ## Key Takeaways
@@ -186,6 +181,38 @@ Explain prepayment risk to a client: "Why does a mortgage bond lose value when r
 
 ## Reframe
 Critique securitization: "Is securitization good or bad for financial stability?" Consider 2008 crisis versus benefits of credit access. Write your answer.
+
+---
+
+## Think
+
+> **Think**: An MBS portfolio manager holds a seasoned 4.5% coupon MBS pass-through. Rates have just dropped 75bp. The manager complains "the MBS rally is half what I expected." What's happening and what tranche would have captured more of the move?
+>
+> *Answer: Negative convexity. As rates fall, prepayments accelerate, the average life shortens, and duration compresses — so price gains are CAPPED. The pass-through behaves more like a short-bond than its nominal duration suggests. To capture more upside in a rally, the manager should hold an Interest-Only (IO) strip, which benefits from slower prepayments (rates rising relative to scenario) and would have rallied more on the rate drop. Alternatively, hold a lower-coupon MBS where the prepayment cap is less binding. Higher-coupon MBS suffers the most negative convexity — exactly the manager's pain.*
+
+---
+
+## Predict
+
+> **Predict**: An investor holds a Principal-Only (PO) strip of an agency MBS pool. The Fed signals two more rate cuts over the next 6 months. The pool is at 150% PSA today (well seasoned). Predict direction of (a) prepayment speed, (b) PO price, (c) PO yield.
+>
+> *Answer: (a) Prepays ACCELERATE toward 200-300% PSA as borrowers refinance into lower rates. (b) PO price RISES — faster prepayments return principal faster, and POs benefit from accelerated principal recovery (POs trade at discount and appreciate as the principal comes back sooner). (c) PO yield RISES because the same principal is recovered over a shorter window (higher annualized rate). POs are a "rate-cut bet" — long PO when you expect aggressive Fed easing.*
+
+---
+
+## Spot the Mistake
+
+> **Spot the Mistake**: A junior says: "An AAA-rated senior tranche of a private-label MBS is the same risk as a Treasury — both are AAA, both have zero expected loss, both will pay back in full."
+>
+> Two errors. Identify each.
+>
+> *Answer: Error 1: AAA is a credit rating for expected loss, not a guarantee against extension / prepayment / liquidity risk. The senior tranche has near-zero expected credit loss in normal scenarios, but its WAL is uncertain, and during 2008 many AAA tranches traded at 20-30 cents on the dollar as the market priced model risk, not credit risk. The Treasury has none of these risks. Error 2: Liquidity is dramatically different. Treasuries settle T+1 in a deep, central-cleared market. Even AAA MBS tranches can become illiquid for weeks in stress, and bid-ask spreads can blow out 10x normal. The AAA label does not equal "Treasury-like" — the structural, prepayment, and liquidity risks are real and material.*
+
+---
+
+## Cloze
+
+{Securitization} pools loans and issues tranched securities backed by those cash flows. Agency {MBS} (Fannie/Freddie/Ginnie) carry government or quasi-government credit guarantees. {Prepayment} risk is the uncertainty about when borrowers pay back principal early; it's measured by {CPR} (annualized) or {PSA} (Public Securities Association benchmark curve). {CMO} structures redistribute prepayment risk across sequential, Z, IO, and PO tranches. {IO} strips benefit when rates rise; {PO} strips benefit when rates fall. {ABS} extend the same model to non-mortgage collateral — credit cards, autos, student loans, CLOs.
 
 ---
 

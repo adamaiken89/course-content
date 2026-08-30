@@ -117,3 +117,25 @@
   explanation: "Task size decides: long, reload-sensitive work belongs on a page or the workflow modal (m8). Dialogs suit confirmations, single-field edits, and short guards — not 40-field forms."
   difficulty: 2
   tags: [scenario]
+- id: "7.11"
+  question: A modal contains a 5-step wizard with its own form state. Where should the wizard state live?
+  options:
+    a: "In the modal's parent so the parent can react to completion"
+    b: "Inside the modal component, lifted only as needed for sibling display"
+    c: "In a global zustand store so any future feature can read it"
+    d: "In URL hash so the user can share the wizard link"
+  answer: b
+  explanation: Wizard state is short-lived and scoped to the modal's lifetime. Lifting it into the parent would force the parent to know wizard internals; promoting it to a global store would couple unrelated features. URL hash only makes sense if the wizard is deep-linkable.
+  difficulty: 2
+  tags: [concept, scenario]
+- id: "7.12"
+  question: A modal contains a 5-step wizard with its own form state. Where should the wizard state live?
+  options:
+    a: "In the modal's parent so the parent can react to completion"
+    b: "Inside the modal component, lifted only as needed for sibling display"
+    c: "In a global zustand store so any future feature can read it"
+    d: "In URL hash so the user can share the wizard link"
+  answer: b
+  explanation: Wizard state is short-lived and scoped to the modal's lifetime. Lifting it into the parent would force the parent to know wizard internals; promoting it to a global store would couple unrelated features. URL hash only makes sense if the wizard is deep-linkable.
+  difficulty: 2
+  tags: [concept, scenario]

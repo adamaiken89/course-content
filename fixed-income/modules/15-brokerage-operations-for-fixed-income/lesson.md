@@ -155,20 +155,19 @@ Client receives monthly statement:
 
 ## Common Misconception
 
-"Straight-through processing eliminates operational risk." STP reduces manual errors but introduces technology risk (system outage, incorrect auto-matching rules). Hybrid approach (auto-STP with exception queue for human review) is safer.
+**"STP eliminates operational risk."** STP reduces manual errors but introduces new risks:
+- System outage stops all processing
+- Bad auto-matching rules propagate errors at scale
+- Cyber risk: single point of failure
+- Hybrid model (auto-STP + human exception queue) safer
 
-> **Predict**: Before reading deeper: what do you expect happens when trade life interacts with prime brokerage in brokerage operations for fixed income?
->
-> *Answer: The system relies on trade life to keep prime brokerage predictable — when both apply, the stricter rule wins.*
-> **Think**: Why does **Trade life cycle** matter when working with brokerage operations for fixed income?
->
-> *Answer: Because it changes how you structure and reason about brokerage operations for fixed income — skipping it leads to fragile designs that break under real workloads.*
-> **Cloze**: {blank} governs how brokerage operations for fixed income behaves when multiple prime brokerage concerns collide.
-> **Cloze**: The rule that keeps trade life correct under load is called {blank}.
-> **Cloze**: In brokerage operations for fixed income, margin requirements determines {blank}.
-> **Spot the Mistake**: A developer treats trade life as optional because "it works without it." Where is the mistake?
->
-> *Answer: It works only until the assumptions behind trade life are violated. The fix: treat it as part of the contract of brokerage operations for fixed income, not an optimization.*
+**"Prime brokerage leverage is just financing."** Includes financing PLUS operational dependencies (single counterparty for custody, financing, securities lending). Archegos 2021 showed concentrated PB exposure creates systemic risk.
+
+**"Margin calls are rare."** Common during volatility spikes. March 2020 saw widespread margin calls across prime brokerage. Counterparties failed to meet, forcing forced sales.
+
+**"Operational risk = trade errors."** Wider: includes fraud (rogue trader), cyber (ransomware), technology (platform outage), regulatory (reporting breach), and process (settlement fail). FATF/regulators treat this as distinct risk category with capital requirements under Basel framework.
+
+---
 
 
 ## Key Takeaways
@@ -192,6 +191,38 @@ Explain prime brokerage to a client: "How does a hedge fund get leverage to buy 
 
 ## Reframe
 Critique prime brokerage leverage: "Do prime brokers contribute to systemic risk?" Consider: LTCM 1998, Archegos 2021, collateral fire sales. What regulations address this? Write your answer.
+
+---
+
+## Think
+
+> **Think**: A hedge fund prime-brokered at a major dealer has $5B in long equity exposure financed $3B via repo. The fund's largest single position drops 25% in two days. Walk through what happens to (a) the fund's equity, (b) the prime broker's exposure, and (c) the broader system. Use the Archegos 2021 template.
+>
+> *Answer: (a) Fund equity: $5B - $3B = $2B starting equity. After 25% drop: $3.75B position - $3B loan = $0.75B equity. 62% drawdown in two days. (b) Prime broker exposure: $3B loan is now undercollateralized by $0.25B (position $3.75B vs loan $3B → still $0.75B of equity). The PB issues a margin call for the full equity shortfall. (c) If multiple PBs face similar calls, forced selling by all of them at once cascades: prices fall further, more margin calls, more forced selling. Archegos collapsed in days because it had concentrated exposure in a few names financed across multiple PBs that did not know about each other's positions — total exposure ~$36B across 5 PBs, with $20B+ in losses. The lesson: cross-PB exposure aggregation is a real systemic risk, and regulators now require PBs to share large exposure data.*
+
+---
+
+## Predict
+
+> **Predict**: A fund's prime broker sets a maintenance margin requirement of 25% on $100M of HY corporate bonds financed via repo. The fund borrows $70M (70% loan-to-value). The HY market drops 5% in a week. Predict (a) the new loan-to-value ratio, (b) whether a margin call occurs, and (c) what the fund must do.
+>
+> *Answer: (a) New LTV = $70M / ($100M × 0.95) = $70M / $95M = 73.7% (vs 70% starting). (b) Equity = $95M - $70M = $25M. Margin ratio = $25M / $95M = 26.3% — still above 25% requirement, so NO margin call YET. (c) The fund is on a hair trigger — a further 1.5% drop to $93.5M market value gives $23.5M equity / $93.5M = 25.1%, still barely above. A 2% drop gives 24.7% → margin call. The fund should (1) pre-position cash to meet a likely call, (2) deleverage voluntarily to a safer LTV (say 60%), or (3) buy protection via CDS to hedge the credit exposure. Ignoring the warning and hoping for a bounce is the classic path to forced liquidation.*
+
+---
+
+## Spot the Mistake
+
+> **Spot the Mistake**: A junior says: "Straight-through processing eliminates operational risk, so we don't need manual exception handling for bond trades."
+>
+> Two errors. Identify each.
+>
+> *Answer: Error 1: STP REDUCES manual handling but does not eliminate it. Exception queues are normal — CUSIP mismatches, settlement instructions with missing fields, counterparty data quality issues. STP handles ~85-90% of trades; the remaining 10-15% require human judgment. Removing exception handling means errors propagate unchecked through the auto-matching system. Error 2: STP introduces NEW operational risks that don't exist in manual processing. A system outage stops ALL processing, not just one trade. A bad auto-matching rule propagates errors at scale. Cyber risk creates a single point of failure. STP plus human exception handling is safer than STP alone. The Archegos 2021 collapse showed that even automated systems fail when aggregated exposure is hidden across multiple prime brokers.*
+
+---
+
+## Cloze
+
+The bond {trade life cycle} runs from execution to confirmation to settlement, ideally via {straight-through processing} (STP) with no manual intervention. {Prime brokerage} provides hedge funds with financing, leverage, securities lending, and operational services in bundled relationships. Bond margin requirements vary by asset: {Treasuries} 2-10%, IG corporates 5-15%, {HY} corporates 10-30%. {TRACE} and MSRB mandate trade reporting for transparency. {Operational risk} includes trade errors, settlement fails, fraud, cyber, technology outages, and regulatory breaches — a distinct risk category with its own capital treatment under Basel. Margin calls trigger when loan-to-value exceeds thresholds; forced selling in stress can cascade systemically.
 
 ---
 

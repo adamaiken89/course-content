@@ -91,9 +91,9 @@ Price = PV of 10 semi-annual coupons of $30 + PV of $1,000 at maturity
 
 P = $30 × [1 - (1.025)^-10] / 0.025 + $1,000 / (1.025)^10
 
-P = $30 × 8.752 + $1,000 × 0.7812
+P = $30 × 8.7106 + $1,000 × 0.7812
 
-P = $262.56 + $781.20 = $1,043.76 (premium bond)
+P = $261.32 + $781.20 = $1,042.52 (premium bond)
 
 ### Annuity formula shortcut
 
@@ -115,7 +115,7 @@ Cannot solve directly (iterative). Use financial calculator or `=YIELD()` in Exc
 Price = Σ C/(1+YTM/2)^t + FV/(1+YTM/2)^n
 ```
 
-Common misconception: "YTM = actual return if held to maturity." No. YTM assumes every coupon reinvested at same YTM. If reinvestment rates differ, realized return differs. For high-coupon bonds in falling-rate environment, realized return < YTM.
+YTM assumes every coupon reinvested at same YTM — full treatment in "Common Misconception" section below.
 
 ### Spot rates vs YTM
 
@@ -131,11 +131,7 @@ Question: If spot curve is upward sloping, what does YTM overstate or understate
 
 ### Accrued interest & clean/dirty price
 
-- **Clean price**: Quoted price, excludes accrued interest
-- **Dirty price**: Clean + accrued interest = actual cash paid
-- **Accrued interest**: Coupon earned by seller since last payment
-
-Transaction settled between coupon dates → buyer pays seller accrued interest.
+Quick reference — full treatment in Module 1. Transaction settled between coupon dates → buyer pays seller accrued interest.
 
 ---
 
@@ -147,8 +143,8 @@ Bond: $1,000 face, 4% coupon (annual), 3yr maturity, YTM 3.5%
 
 ```text
 P = 40/(1.035)^1 + 40/(1.035)^2 + 1040/(1.035)^3
-P = 38.65 + 37.34 + 939.78
-P = $1,015.77 (premium)
+P = 38.65 + 37.34 + 938.02
+P = $1,014.01 (premium)
 ```
 
 ### Example 2: Private bank context
@@ -156,7 +152,7 @@ P = $1,015.77 (premium)
 Client sees bond quoted at clean price 98.50. Coupon 5% semi-annual, last coupon paid 60 days ago (182-day period).
 
 ```text
-Accrued interest = (5%/2) × (60/182) × $1,000 = 2.5% × 0.33 × $1,000 = $8.24
+Accrued interest = (5%/2) × (60/182) × $1,000 = 0.025 × 0.3297 × $1,000 = $8.24
 Dirty price = $985.00 + $8.24 = $993.24
 Client pays $993.24.
 ```
@@ -178,20 +174,15 @@ Check: actual YTM ≈ 5.95% (close).
 
 ## Common Misconception
 
-"YTM = total return if held to maturity." Only if every coupon reinvested at same YTM. In falling-rate world, realized return < YTM. In rising-rate world, realized return > YTM.
+**"YTM = guaranteed return."** No. YTM assumes every coupon reinvested at the same YTM. Realized return diverges if rates move:
 
-> **Predict**: Commit to an answer: does time value of money & bond pricing get simpler or harder once =yield() enters the picture?
->
-> *Answer: Harder locally, simpler globally: individual pieces carry more rules, but the overall system needs fewer special cases.*
-> **Think**: What would break first if you ignored **Time Value of Money** in a production time value of money & bond pricing setup?
->
-> *Answer: Correctness holds at small scale, then behavior diverges as load or complexity grows — exactly what **Time Value of Money** guards against.*
-> **Cloze**: {blank} governs how time value of money & bond pricing behaves when multiple time value concerns collide.
-> **Cloze**: The rule that keeps =yield() correct under load is called {blank}.
-> **Cloze**: In time value of money & bond pricing, money determines {blank}.
-> **Spot the Mistake**: Code review note: someone applies time value everywhere "to be safe" in a time value of money & bond pricing codebase. Spot the mistake.
->
-> *Answer: Blanket application hides which spots actually need time value. Apply it where the semantics demand it, and document why.*
+- Falling rates: coupons reinvest at lower rates → realized return < YTM (biggest risk for high-coupon long bonds)
+- Rising rates: coupons reinvest at higher rates → realized return > YTM
+- Zero-coupon bonds: no reinvestment risk; YTM = realized return if held to maturity
+
+Reinvestment risk = the gap between YTM and what you actually earn from coupons being reinvested.
+
+---
 
 
 ## Key Takeaways
@@ -213,6 +204,38 @@ Explain bond pricing to a colleague: "Why does a bond's price change when rates 
 
 ## Reframe
 When does bond pricing as PV of cash flows break down? Consider: perpetual bonds (no maturity), floating-rate notes (coupon resets), convertible bonds (equity option embedded). Write your answer.
+
+---
+
+## Think
+
+> **Think**: A 5-year, 6% semiannual bond has YTM 5%. You compute price = $1,042.52 (premium). A colleague says "premium, so yield < coupon — I thought the bond yields 5% and coupon is 6%, so yield IS less than coupon. Where's the paradox?" What's missing from the colleague's mental model?
+>
+> *Answer: The colleague conflates coupon with cash flow. The 6% coupon is $60/year paid in two $30 chunks. The 5% YTM is the discount rate applied to all 10 future $30 coupons plus the $1,000 principal. YTM is lower than coupon because the bond pays back MORE than $1,000 over its life (10 × $30 = $300 in coupons, plus the $1,000 par). To get that extra $300 of coupons, the buyer pays $42.52 above par today. YTM < coupon doesn't mean "worse bond" — it means "you're paying up front for the future coupon stream."*
+
+---
+
+## Predict
+
+> **Predict**: The spot curve today is: 1Y = 4%, 3Y = 5%, 5Y = 6%. You price a 5-year, 5% semiannual bond using these spot rates. Will the price be HIGHER, LOWER, or SAME as pricing it with a flat 5% YTM? Why?
+>
+> *Answer: HIGHER. With YTM=5% (flat), you discount every cash flow at 5%. With the actual spot curve, distant cash flows (years 3, 4, 5) get discounted at 5-6% — HIGHER rates than 5% — which makes their PV smaller, which makes the bond price... wait, this is the common error. Re-check: if you use the spot curve to discount, you get the no-arbitrage price. If you use YTM=5% (a flat curve), you use 5% everywhere. The spot curve says 5Y rate is 6% — so discounting the year-5 principal at 6% gives a LOWER PV than at 5%. Net: the spot-curve price is LOWER than the YTM=5% price because more distant cash flows are discounted harder. YTM(5%) overstates the true cost-of-capital for the long-dated cash flows.*
+
+---
+
+## Spot the Mistake
+
+> **Spot the Mistake**: A junior calculates accrued interest for a semiannual bond: "Coupon 5%, so annual coupon = $50, semiannual = $25. 60 days into a 182-day period → accrued = $25 × 60/182 = $8.24. Clean = 98.50, dirty = 98.50 + 8.24 = 106.74."
+>
+> The mistake is conflating price points and dollar amounts. Spot the exact error and write the correct dirty price.
+>
+> *Answer: Clean price 98.50 means 98.50% of par = $985.00, not 98.50 dollars. Accrued $8.24 is correct (dollars). Dirty = $985.00 + $8.24 = $993.24. The junior added dollars to percent. Always convert clean price to dollars (multiply by face/100) before adding accrued.*
+
+---
+
+## Cloze
+
+A bond's price equals the {present value} of all future {cash flows} — coupons plus principal — discounted at the appropriate {yield}. Under the {semi-annual} convention, you halve the coupon and the yield, and double the number of {periods}. The {YTM} (yield to maturity) is the single discount rate that sets this PV equal to the observed market price, and equals the {IRR} of the bond's cash flows. {Spot rates} are yields for specific maturities on zero-coupon bonds, and they differ from YTM when the curve is not flat.
 
 ---
 

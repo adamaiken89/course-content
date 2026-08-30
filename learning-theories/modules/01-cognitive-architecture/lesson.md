@@ -197,13 +197,14 @@ What's wrong?
 ---
 
 ## Feynman Explain
-(Teach the three-box model to a child. Use simplest words — a bucket that fills up fast, a storage room that's huge, and a doorman who decides what goes in.)
 
+Imagine your brain has three parts. There's a small **bucket** on your desk that can only hold about four things at once — that's *working memory*, where you think. There's a giant **storage room** in the back that can hold everything you've ever learned — that's *long-term memory*. And there's a **doorman** at the door between them who decides what gets copied into storage — that's *attention*. Most learning problems come from the bucket overflowing or the doorman being distracted.
 
 ---
 
 ## Reframe
-(Pause. Judge cognitive architecture theory: does this match your experience? Can you think of a time you "knew" something but couldn't recall it? When does the bottleneck feel most limiting in your daily study? Write your evaluation.)
+
+Cognitive architecture is, at heart, a constraint statement: the bottleneck is real and physical, not a matter of willpower. The same model shows up in computer science as RAM vs disk, and in manufacturing as WIP (work-in-progress) limits on a production line. The fix in every domain is the same: don't push more into the bottleneck at once; instead, increase chunk size (what you can hold per unit) and reduce interruptions (what the doorman has to process). If you've ever felt "smart on paper but slow at the desk," that's the architecture, not you.
 
 ---
 

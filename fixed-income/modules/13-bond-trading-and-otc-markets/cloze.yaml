@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "Bonds trade {over-the-counter} (OTC) through dealer intermediation rather than on a centralized exchange with a visible order book."
+  answer: "over-the-counter"
+  explanation: "OTC markets are dealer-intermediated. The client requests quotes from dealers; dealers compete for the trade. No live order book like equities."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "The {bid-ask} spread is the difference between the price at which a dealer will buy a bond (bid) and the price at which it will sell (offer)."
+  answer: "bid-ask"
+  explanation: "Spreads compensate dealers for inventory risk. Typical IG spreads: 2-10bp for liquid issues, 50bp+ for off-the-run or small issues, much wider in stress."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "{TRACE} (Trade Reporting and Compliance Engine) reports executed US corporate bond trades to FINRA, dramatically improving post-trade transparency since 2002."
+  answer: "TRACE"
+  explanation: "Pre-TRACE, the bond market was opaque. Post-TRACE, anyone can see executed prices, which tightens spreads and improves market quality — especially for retail investors."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Electronic trading platforms like {MarketAxess}, {Tradeweb}, and Bloomberg have captured significant share in investment-grade credit."
+  answer: "MarketAxess; Tradeweb"
+  explanation: "Platforms enable multi-dealer RFQ (request for quote) and all-to-all trading. Voice trading remains dominant for less liquid issues (HY, off-the-run, small issues)."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "An {RFQ} (request for quote) is a protocol where a client requests bids/offers from multiple dealers simultaneously and chooses the best."
+  answer: "RFQ"
+  explanation: "Competitive pricing via RFQ reduces information leakage and tightens effective execution costs. Typical: 3-5 dealers for a competitive bid."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "{Portfolio trading} is a protocol where a basket of bonds is priced and traded as a single transaction, reducing execution costs for large rebalancings."
+  answer: "Portfolio trading"
+  explanation: "Dealers price the whole basket based on net risk exposure, then trade individual bonds. Reduces market impact for large index rebalances and rebalancings."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Liquidity in the bond market is {episodic} — adequate in normal times, scarce in stress when dealers withdraw balance sheet capacity."
+  answer: "episodic"
+  explanation: "March 2020 IG corporate bid-ask spreads widened from 10bp to 100bp+. The Fed's SMCCF intervention was needed to restore market function. Liquidity is not free."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "Dealers earn their living from the {spread}, but also from {inventory gains}, financing advantage, and balance sheet efficiency."
+  answer: "spread"
+  explanation: "In normal markets, dealer P&L is mostly spread capture. In volatile markets, inventory gains (from short-term price moves on warehoused positions) can dominate."
+  difficulty: 3
+  tags: [concept]

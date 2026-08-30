@@ -94,7 +94,7 @@ Terminal value = value of all cash flows after the explicit forecast period (usu
 ```text
 Terminal Value = FCF_(n+1) / (WACC - g)
 ```
-Where g = perpetual growth rate (typically 2-3%, tied to GDP growth)
+Where g = perpetual growth rate (typically 2-3% real growth, capped at long-run nominal GDP growth ~4-5% for mature developed markets; should NEVER exceed the discount rate WACC)
 
 **2. Exit Multiple Method:**
 ```text

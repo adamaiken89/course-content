@@ -53,7 +53,7 @@ Odean (1998) analyzed 10,000 retail brokerage accounts and found investors reali
 
 The error is systematic. It's not a few bad traders — it's nearly everyone.
 
-> **Think:** Disposition effect says cut losers short, let winners run. Why is this hard emotionally?
+> **Think:** Disposition effect says sell winners too early, hold losers too long. Why is this hard emotionally?
 
 ---
 
@@ -92,8 +92,6 @@ flowchart TD
     style F fill:#5c7a99,stroke:#333,color:#fff
     style G fill:#b86a4a,stroke:#333,color:#fff
 ```
-
-> **Think:** Which bias best explains why traders pile into a rising stock near its peak? Which explains why they refuse to sell a losing position?
 
 > **Think**: Which bias best explains why traders pile into rising stock near its peak? Which explains why they refuse to sell losing position?
 >
@@ -136,7 +134,7 @@ flowchart LR
     style J fill:#b86a4a,stroke:#333,color:#fff
 ```
 
-> **Think:** Disposition effect says cut losers short, let winners run. Why is this hard emotionally?
+> **Think:** Disposition effect says sell winners too early, hold losers too long. Why is this hard emotionally?
 
 > **Cloze**: The {disposition} effect describes selling {winners} too early and holding {losers} too long. Research shows this costs investors {3-4}% annually.
 >

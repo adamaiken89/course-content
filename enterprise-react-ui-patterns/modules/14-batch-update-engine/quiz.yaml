@@ -108,3 +108,25 @@
   explanation: "Atomic-by-law writes belong on the server's transaction; independent-by-nature items stay client-ledger."
   difficulty: 3
   tags: [comparison, scenario]
+- id: "14.11"
+  question: "A batch of 50 items is submitted optimistically. Mid-flight, the server rejects 3 items as duplicates. The right UX is:"
+  options:
+    a: "Roll back the entire batch"
+    b: "Mark the 3 as failed in a per-item ledger, keep the 47 as succeeded, show a summary"
+    c: "Silently ignore the 3 and report full success"
+    d: "Block the user from submitting again"
+  answer: b
+  explanation: Per-item settlement is the whole point of a batch engine. The ledger reconciles what landed and what did not; the UI shows the user which rows need attention. Whole-batch rollback is too coarse; silent success is dishonest.
+  difficulty: 2
+  tags: [process, scenario]
+- id: "14.12"
+  question: "A batch of 50 items is submitted optimistically. Mid-flight, the server rejects 3 items as duplicates. The right UX is:"
+  options:
+    a: "Roll back the entire batch"
+    b: "Mark the 3 as failed in a per-item ledger, keep the 47 as succeeded, show a summary"
+    c: "Silently ignore the 3 and report full success"
+    d: "Block the user from submitting again"
+  answer: b
+  explanation: Per-item settlement is the whole point of a batch engine. The ledger reconciles what landed and what did not; the UI shows the user which rows need attention. Whole-batch rollback is too coarse; silent success is dishonest.
+  difficulty: 2
+  tags: [process, scenario]

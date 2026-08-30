@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "The Four {Cs} of credit are Capacity, Collateral, Covenants, and Character."
+  answer: "Cs"
+  explanation: "Capacity = cash flow to repay debt. Collateral = asset backing. Covenants = legal protections (affirmative/negative). Character = management quality and track record."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "{Debt/EBITDA} measures leverage: total debt divided by earnings before interest, tax, depreciation, amortization."
+  answer: "Debt/EBITDA"
+  explanation: "IG norm: < 2.5x. HY norm: 3-6x. Sector matters: utilities run higher; tech runs lower. Compare within sector."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "{EBITDA/Interest} measures coverage: ability to service interest from operating earnings."
+  answer: "EBITDA/Interest"
+  explanation: "IG norm: > 8x (strong coverage). HY norm: 2-4x (thin coverage). Below 2x is a stress signal; below 1x is a default risk."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "A {fallen angel} is a bond downgraded from investment grade to high yield, triggering forced selling by IG-only mandates."
+  answer: "fallen angel"
+  explanation: "Forced selling creates a technical price decline independent of fundamentals. Often a buying opportunity for HY and crossover funds who can buy both."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "A {rising star} is the opposite — a bond upgraded from HY to IG, attracting new buyers and tightening spreads."
+  answer: "rising star"
+  explanation: "Index inclusion and IG mandate re-eligibility create forced buying demand. The price gain often exceeds the spread tightening impact."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "{Cross-default} on one bond triggers default on all the issuer's other bonds, but usually requires bondholder vote to accelerate."
+  answer: "Cross-default"
+  explanation: "Not automatic. Gives creditors negotiating leverage — a strategic tool, not an immediate acceleration. The threshold (any default or only >$X) is in the indenture."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Different sectors have different leverage norms: utilities 5-6x Debt/EBITDA is normal, while tech runs 1-2x."
+  answer: "sector"
+  explanation: "Sector matters as much as rating. Energy is highly cyclical. Retail is structurally challenged. Financials use different metrics (capital ratios, NPLs) entirely."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "A company with Debt $5B, EBITDA $1.8B, Interest $250M has Debt/EBITDA of {2.78x} and EBITDA/Interest of {7.2x}."
+  answer: "2.78x; 7.2x"
+  explanation: "2.78x leverage is OK for IG. 7.2x coverage is borderline weak for IG (target >8x). Downgrade risk if EBITDA falls 20%."
+  difficulty: 3
+  tags: [calculation]

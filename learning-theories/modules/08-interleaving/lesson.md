@@ -63,7 +63,7 @@ graph TD
     style TS fill:#5c8a6a
 ```
 
-**Key finding (Rohrer 2012)**: Students who interleaved math problems scored 43% on a delayed test vs 20% for blocked — despite feeling they learned less.
+**Key finding (Rohrer & Taylor 2007)**: Students who interleaved math problems scored 63% on a delayed test vs 38% for blocked — despite feeling they learned less.
 
 > **Cloze**: "In blocked practice, all problems of one {type} are completed before moving to the next. In interleaved practice, different {types} are {mixed} together."
 >
@@ -199,14 +199,15 @@ What's wrong?
 *Answer: Blocked practice of scales doesn't train the real skill — transitioning between scales during a piece. Interleave: practice C→D, D→E, E→C transitions.*
 
 ---
-
 ## Feynman Explain
-(Explain interleaving: imagine learning to identify birds. If you study 10 sparrows, then 10 robins, then 10 blue jays, you don't learn what makes each unique. Mix them — you learn to see the differences. The mixing IS the learning.)
+
+**Blocking** = do all of type A, then all of type B, then all of type C. Feels smooth. **Interleaving** = mix A, B, C in random order. Feels chaotic. But on a *test* (which is always interleaved), the interleaved group wins, because they had to keep figuring out *which type* each problem is. Blocking tells you the answer (you know what's coming). Interleaving forces you to discriminate — and discrimination is the actual skill. The confusion during practice IS the learning.
 
 ---
 
 ## Reframe
-(Judge: which of your current subjects would benefit most from interleaving? Design one interleaved practice session. How does it feel compared to blocked?)
+
+Interleaving is the same logic as randomizing conditions in a science experiment, varying opponents in chess training, or rotating crops in agriculture: a single-condition environment looks productive but produces fragile, context-bound performance. The deep reason: every discrimination task in the real world is interleaved — you never get to do "all trigonometry, then all calculus." Real expertise is choosing the right tool from a mixed drawer, not using one tool all day. The mind-losing-battle you feel during interleaved practice is the feeling of *building the selection skill*.
 
 ---
 

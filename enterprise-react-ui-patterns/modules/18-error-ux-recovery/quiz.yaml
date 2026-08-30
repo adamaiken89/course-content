@@ -108,3 +108,25 @@
   explanation: "The m14 runId key plus m17 idempotency means the retry cannot double-commit. Summarizing a ledger, not dumping errors, is the recovery contract."
   difficulty: 3
   tags: [terminology, calculation]
+- id: "18.11"
+  question: "A network call fails with a transient error. The user is mid-form with unsaved work. The right error UX is:"
+  options:
+    a: "Full-page error boundary that resets the form"
+    b: "Inline error on the affected field with an explicit retry, preserving the form state"
+    c: "Silent retry with no user feedback"
+    d: "Redirect to a 500 page"
+  answer: b
+  explanation: Inline errors keep the form alive. A full-page boundary would destroy unsaved work for a transient failure. Silent retry hides the problem from the user. Redirecting to a 500 page is appropriate only for catastrophic, unrecoverable failures.
+  difficulty: 2
+  tags: [scenario, process]
+- id: "18.12"
+  question: "A network call fails with a transient error. The user is mid-form with unsaved work. The right error UX is:"
+  options:
+    a: "Full-page error boundary that resets the form"
+    b: "Inline error on the affected field with an explicit retry, preserving the form state"
+    c: "Silent retry with no user feedback"
+    d: "Redirect to a 500 page"
+  answer: b
+  explanation: Inline errors keep the form alive. A full-page boundary would destroy unsaved work for a transient failure. Silent retry hides the problem from the user. Redirecting to a 500 page is appropriate only for catastrophic, unrecoverable failures.
+  difficulty: 2
+  tags: [scenario, process]

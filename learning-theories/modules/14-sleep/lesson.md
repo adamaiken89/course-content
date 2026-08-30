@@ -46,15 +46,17 @@ graph LR
     NREM --> Declarative[Strengthens: facts, events, concepts]
     REM --> Procedural[Strengthens: skills, patterns, insights]
     NREM --> Spindles[Sleep spindles: transfer hippocampus → cortex]
+    REM --> Emotional[Also supports: emotional/contextual memory]
+    NREM --> Motor[Stage 2 spindles: motor sequence learning]
     style NREM fill:#5c7a99
     style REM fill:#5c8a6a
 ```
 
-**NREM (deep sleep)**: Dominates early night. Strengthens declarative memory (facts, vocabulary, concepts). Hippocampus replays recent experiences → transfers to neocortex for long-term storage.
+**NREM (deep sleep)**: Dominates early night. Primarily strengthens declarative memory (facts, vocabulary, concepts) — hippocampus replays recent experiences and transfers them to neocortex for long-term storage. NREM Stage 2 sleep spindles also support motor sequence and procedural learning.
 
-**REM (dream sleep)**: Dominates late night. Strengthens procedural memory (skills, patterns). Integrates new information with existing knowledge — facilitates insight and creative problem-solving.
+**REM (dream sleep)**: Dominates late night. Primarily strengthens procedural memory (skills, patterns) and supports integration of new material with existing knowledge — insight and creative problem-solving. REM also contributes to emotional and contextual aspects of declarative memory, not only procedural.
 
-> **Cloze**: "NREM sleep primarily strengthens {declarative} memory (facts, events), while REM sleep strengthens {procedural} memory (skills, patterns)."
+> **Cloze**: "NREM sleep predominantly strengthens {declarative} memory (facts, events), while REM sleep predominantly strengthens {procedural} memory (skills, patterns) — though the boundary is not absolute."
 >
 > *Answer: declarative, procedural*
 
@@ -168,14 +170,15 @@ What's wrong?
 *Answer: Multiple violations. (1) No consolidation window after late study. (2) Sleep deprivation impairs next-day encoding. (3) The 6 AM review happens in a sleep-deprived brain with reduced executive function.*
 
 ---
-
 ## Feynman Explain
-(Explain sleep and memory: your brain is like a library. During the day, books pile up on the desk (hippocampus). At night, the librarian (sleep) puts them on the correct shelves (cortex). Without the librarian, the desk overflows and books get lost.)
+
+When you learn during the day, memories are stored temporarily in the **hippocampus** — fast to write, slow to access, fragile. At night, during sleep, your brain *replays* the day's memories and gradually transfers them to the **cortex** for long-term storage. Different sleep stages do different jobs: deep NREM sleep is especially important for facts and concepts; REM sleep is especially important for skills, patterns, and integrating new info with old. No sleep, no transfer. No transfer, no long-term learning — no matter how many hours you "studied."
 
 ---
 
 ## Reframe
-(Judge: how much sleep do you get during intensive learning? What's one change you can make to protect sleep the night after studying important material?)
+
+Sleep is the **offline batch job** of the brain: the same pattern shows up in computing (write to memory, flush to disk, run nightly compaction), in biology (cellular repair, immune system maintenance), and in journalism (the morning-after rewrite, where understanding forms). The shared logic: consolidation requires *separation in time* from acquisition. Trying to learn while simultaneously consolidating is like trying to write to a file while the disk is being defragged. Sleep enforces the separation. Skipping it is the equivalent of running the system 24/7 with no maintenance window — it works for a while, then performance degrades silently until it doesn't.
 
 ---
 

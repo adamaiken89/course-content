@@ -108,3 +108,25 @@
   explanation: "useTransition marks the login update non-blocking: the button stays interactive and isPending drives the authenticating state. Depth on transitions and useOptimistic comes in m14."
   difficulty: 3
   tags: [terminology, application]
+- id: "5.11"
+  question: A user opens a long-lived tab. Their session token expires 30 minutes later. The next API call returns 401. What is the right pattern?
+  options:
+    a: "Force a hard reload and redirect to login"
+    b: "Silently retry the call"
+    c: "Refresh the token transparently via a single-flight interceptor; if refresh fails, prompt re-auth"
+    d: "Log the user out immediately"
+  answer: c
+  explanation: Single-flight refresh avoids the thundering herd of N concurrent 401s each triggering a refresh. If the refresh token is also expired, prompt re-auth — silent logout is the worst option because the user loses unsaved work without explanation.
+  difficulty: 3
+  tags: [scenario, process]
+- id: "5.12"
+  question: A user opens a long-lived tab. Their session token expires 30 minutes later. The next API call returns 401. What is the right pattern?
+  options:
+    a: "Force a hard reload and redirect to login"
+    b: "Silently retry the call"
+    c: "Refresh the token transparently via a single-flight interceptor; if refresh fails, prompt re-auth"
+    d: "Log the user out immediately"
+  answer: c
+  explanation: Single-flight refresh avoids the thundering herd of N concurrent 401s each triggering a refresh. If the refresh token is also expired, prompt re-auth — silent logout is the worst option because the user loses unsaved work without explanation.
+  difficulty: 3
+  tags: [scenario, process]

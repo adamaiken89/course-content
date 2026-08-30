@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "The micro-assembly loop composes seams from m15, m14, m13, m17, and {m19} (persistence, autosave, offline queue, multi-tab)."
+  answer: "m19"
+  explanation: "m19 owns survival across tab close, network drop, and refresh. The other modules handle specific contracts; m19 handles 'the user is still trying to use the app.'"
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "`stage(await importCsv(file))` belongs to m{15} — parse + validate + stage before the wire."
+  answer: "15"
+  explanation: "m15 separates staging from submitting. Invalid rows are surfaced in the staging room; only valid drafts reach the batch engine."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.3"
+  question: "The {runId} is minted by `batchStore.begin(drafts)` and is the unit of per-item {settlement}."
+  answer: "runId; settlement"
+  explanation: "The runId identifies one batch operation. Per-item settlement means one item can fail without failing the whole run."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.4"
+  question: "The {idempotency} key must be stable across retries so the server can dedupe a re-sent write."
+  answer: "idempotency"
+  explanation: "A fresh UUID per call makes every retry a 'new' write. Stability is the contract; freshness is the failure mode."
+  difficulty: 2
+  tags: [concept]
+- id: "c.5"
+  question: "m13's `options.abortOn(...)` plus m17's {requestId} guard cancels a stale option fetch when the user reassigns a program."
+  answer: "requestId"
+  explanation: "Without the guard, the in-flight fetch completes and overwrites the new selection. The requestId ties a fetch to the draft state that triggered it."
+  difficulty: 2
+  tags: [concept]
+- id: "c.6"
+  question: "A 90-second network drop mid-submit is caught by m19's persisted {offline queue}."
+  answer: "offline queue"
+  explanation: "Pending mutations are persisted in a zustand store, flushed in dependency order on the `online` event, with per-item settle and idempotency-key dedupe."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.7"
+  question: "Two tabs on the same applicant are gated by m19's {BroadcastChannel} submit latch."
+  answer: "BroadcastChannel"
+  explanation: "The latch is an ephemeral ticket that lives for the submit's duration, then releases. Persistence would deadlock the workflow."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.8"
+  question: "The loop is {ten} lines and should not be extracted into a custom hook because the explicitness is the audit trail."
+  answer: "ten"
+  explanation: "A hook hides the words: stage, begin, fetch, abort, submit, filter, resubmit. Those words are the contract; hiding them is hiding the architecture."
+  difficulty: 2
+  tags: [concept]

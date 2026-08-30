@@ -1,6 +1,6 @@
 # Module 05: FSRS-5 Algorithm Internals
 
-Est. study time: 2.5h
+Est. study time: 1.5h
 Language: en
 Description: The FSRS-5 spaced repetition algorithm: state model, stability/difficulty/retrievability equations, w-parameters, and implementation details from the py-fsrs reference.
 
@@ -136,8 +136,8 @@ FSRS-5 uses 21 parameters that control all equation behavior. Defaults come from
 
 | Index | Default | Role |
 |-------|---------|------|
-| w[0]-w[3] | 0.212, 1.293, 2.307, 8.296 | Initial stability per rating (Again-Hard-Good-Easy) |
-| w[4] | 8.296 | Initial difficulty |
+| w[0]-w[3] | 0.212, 1.293, 2.307, 10.93 | Initial stability per rating (Again-Hard-Good-Easy) |
+| w[4] | 4.93 | Initial difficulty (D₀ mean reversion target) |
 | w[5] | 0.833 | Difficulty rating exponent |
 | w[6] | 3.019 | Difficulty change rate |
 | w[7] | 0.001 | Mean reversion strength |
@@ -155,7 +155,16 @@ FSRS-5 uses 21 parameters that control all equation behavior. Defaults come from
 | w[19] | 0.066 | Short-term exponent |
 | w[20] | 0.154 | DECAY (forgetting curve) |
 
+> **Note on parameter values**: Defaults are derived from py-fsrs optimization (Jarrett Ye / open-spaced-rep project) and shift across algorithm versions. The values above approximate a recent FSRS-5 default snapshot for illustration — always cross-check against the current `py-fsrs` reference (`fsrs_rs`/`py-fsrs` repos) before tuning in production. The role each parameter plays is stable; the exact numeric defaults drift.
+
 Optimized via MLE on review logs. User-agnostic defaults — fit per user for best results.
+
+> **Terminology note — two rating scales in this course**:
+>
+> - **FSRS-5 review rating** (1-4): Again, Hard, Good, Easy. Drives the `py-fsrs` core math. Used throughout this module.
+> - **Anki quality scale** (1-5): Same underlying signal, but the legacy 1-5 quality (1=Again, 2=Hard/almost, 3=correct-with-effort, 4=correct-easy, 5=perfect) is what Anki-style review UIs surface to the user.
+>
+> Module 09's feedback table reuses the 1-5 quality scale to align with the learner-facing UX. When you see "quality 4" there, it is the Anki 1-5 scale, not a fourth FSRS review rating. The mapping is lossless (rating 3=Good ≈ quality 3-4; rating 1=Again ≈ quality 1-2).
 
 > **Think**: Which parameter most affects how fast a card's stability grows with successful reviews?
 >

@@ -121,7 +121,7 @@ Weight combos:
 
 Kelly criterion: optimal fraction of capital to bet given edge and odds. Maximizes long-term growth rate.
 
-Formula (simplified for trading): `f* = (p × b - q) / b` where f* = fraction of capital, p = win probability, q = 1-p, b = win/loss ratio (net odds).
+Formula (simplified for trading): `f_star = (p × b − q) / b` where f_star = fraction of capital, p = win probability, q = 1−p, b = win/loss ratio (net odds).
 
 Fixed percentage: bet constant fraction of capital regardless of edge. Common: 1-2% per trade. Conservative approach.
 
@@ -149,7 +149,7 @@ Half-Kelly (20%): much smoother equity curve, still captures most growth.
 
 > **Think**: Trader has 55% win rate, 1:1 risk/reward. Kelly says what fraction? If trader uses full Kelly and hits 5 losses in a row, what happens?
 >
-> ×Answer: f× = (0.55 × 1 - 0.45) / 1 = 0.10 = 10%. After 5 losses with 10% each trade: remaining = 0.9^5 = 59% of capital. Survives but painful. Full Kelly risks ~1/3 drawdown in worst case. Reason many use half-Kelly.×
+> *Answer: f_star = (0.55 × 1 − 0.45) / 1 = 0.10 = 10%. After 5 losses with 10% each trade: remaining = 0.9^5 = 59% of capital. Survives but painful. Full Kelly risks ~1/3 drawdown in worst case. Reason many use half-Kelly.*
 
 > **Cloze**: "Kelly criterion maximizes long-term {growth rate}. Full Kelly can cause large {drawdowns}. Many traders use {half-Kelly} or {quarter-Kelly} for safety."
 >
