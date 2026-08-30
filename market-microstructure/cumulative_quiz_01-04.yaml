@@ -1,0 +1,109 @@
+- id: 'cum.1'
+  type: mcq
+  question: 'Why does Harris say trading is "zero-sum" while both sides of a voluntary trade still gain?'
+  source_modules: [1]
+  options:
+    a: 'Both sides gain in usefulness of what they acquired, but measured against the market average every winner''s gain is someone else''s loss'
+    b: 'Zero-sum only applies to derivatives, not stocks'
+    c: 'Both sides gain equal cash payouts from the exchange'
+    d: 'Zero-sum means the exchange keeps half of all gains'
+  answer: a
+  explanation: 'Private benefit (each trader values what they receive more than what they gave up) is a different accounting than trading P&L vs the market average, where winners'' gains exactly equal losers'' losses.'
+  difficulty: 1
+  tags: [cross-module, recall, concept]
+
+- id: 'cum.2'
+  type: mcq
+  question: 'What does a market order guarantee?'
+  source_modules: [2]
+  options:
+    a: 'Execution at exactly the quoted price'
+    b: 'Execution at a price no worse than a limit you set'
+    c: 'Immediate execution at the best price available now, with no price guarantee'
+    d: 'Execution only when the stock reaches a target price'
+  answer: c
+  explanation: 'A market order trades at the best available price now — speed guaranteed, price not. A limit order guarantees price but not execution.'
+  difficulty: 1
+  tags: [cross-module, recall, terminology]
+
+- id: 'cum.3'
+  type: mcq
+  question: 'A trader legally buys shares after analyzing public satellite images of parking lots ahead of an earnings report. How does the book classify this?'
+  source_modules: [3]
+  options:
+    a: 'Illegal insider trading — the information came from private observation'
+    b: 'Legal informed trading — using superior analysis of public information to predict prices'
+    c: 'Bluffing — no actual trade intent'
+    d: 'Futile trading — public information can never be profitable'
+  answer: b
+  explanation: 'Informed trading means forming reliable opinions about fundamental value — it need not be illegal. Insider trading requires a duty or misappropriation of genuinely private information; public-data analysis is legal informed trading.'
+  difficulty: 2
+  tags: [cross-module, synthesis, misconception]
+
+- id: 'cum.4'
+  type: mcq
+  question: 'Why do dealers widen spreads in stocks where informed traders are active?'
+  source_modules: [4]
+  options:
+    a: 'Regulation requires wider spreads for volatile stocks'
+    b: 'Dealers face adverse selection — informed counterparties move prices against them, so the spread must recover those expected losses, and uninformed traders end up paying for them'
+    c: 'Wider spreads attract more limit orders'
+    d: 'Dealers prefer fewer trades at higher prices'
+  answer: b
+  explanation: 'Adverse selection: dealers lose to well-informed traders before they can trade out, so they widen quotes to compensate — uninformed traders pay for informed traders'' profits through the intermediation of dealers.'
+  difficulty: 3
+  tags: [cross-module, synthesis, concept]
+
+- id: 'cum.5'
+  type: cloze
+  question: '"________ traders trade because they expect to obtain some benefit from trading besides trading profits; economists also call them liquidity traders."'
+  source_modules: [1]
+  answer: 'Utilitarian'
+  explanation: 'Utilitarian traders — investors, hedgers, asset exchangers, gamblers — need liquidity to accomplish their goals. Profit-motivated traders cannot profit trading only among themselves, so markets depend on them.'
+  difficulty: 1
+  tags: [cross-module, recall, terminology]
+
+- id: 'cum.6'
+  type: cloze
+  question: 'When two orders compete for the same price level, the order submitted first gets filled first — this rule is called {time priority}.'
+  source_modules: [2]
+  answer: 'time priority'
+  explanation: 'Order precedence runs price priority first, then time priority at the same price. Displayed size and book rules refine it, but earlier submission wins ties.'
+  difficulty: 1
+  tags: [cross-module, recall, terminology]
+
+- id: 'cum.7'
+  type: cloze
+  question: 'The bid/ask spread is the price dealers charge impatient traders for {liquidity}.'
+  source_modules: [4]
+  answer: 'liquidity'
+  explanation: 'Dealers sell immediacy: they buy at the bid and sell at the ask, earning the spread as payment for taking the trading problem off impatient traders'' hands.'
+  difficulty: 2
+  tags: [cross-module, concept, terminology]
+
+- id: 'cum.8'
+  type: tf
+  statement: 'Dealers prefer to trade in liquid markets just like every other trader does.'
+  source_modules: [1, 4]
+  answer: false
+  explanation: 'Inverted intuition: dealers sell liquidity, so their services are more valuable in illiquid markets — all traders except dealers prefer liquid markets.'
+  difficulty: 2
+  tags: [cross-module, misconception]
+
+- id: 'cum.9'
+  type: tf
+  statement: 'All profitable trading based on non-public information is illegal insider trading.'
+  source_modules: [3]
+  answer: false
+  explanation: 'The book separates informed trading (legal — better analysis of public info, or legal information channels) from illegal insider trading (breach of duty or misappropriation). Front running and information use also vary in legality.'
+  difficulty: 3
+  tags: [cross-module, misconception]
+
+- id: 'cum.10'
+  type: tf
+  statement: 'Commission is the only transaction cost a trader pays.'
+  source_modules: [1, 2]
+  answer: false
+  explanation: 'Transaction costs = explicit (commissions, fees) + implicit (spread crossing, price impact) + missed trade opportunity costs. Ignoring implicit costs hides most of the toll.'
+  difficulty: 2
+  tags: [cross-module, misconception]

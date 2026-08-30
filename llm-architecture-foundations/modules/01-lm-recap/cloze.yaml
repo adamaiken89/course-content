@@ -1,0 +1,35 @@
+- id: c.1
+  question: n-gram 嘅兩大限制係{固定窗口}同{OOV}（未見過詞冇概率）。
+  answer: 固定窗口，OOV
+  explanation: 固定窗口令 n-gram 記唔到遠距離 context，OOV 令模型對 corpus 以外嘅詞完全冇辦法。呢兩個問題加埋推動咗神經 LM 出現。
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 神經 LM 將每個 token 用{連續向量}表示，呢個轉變令相似詞可以喺{向量空間}接近。
+  answer: 連續向量，向量空間
+  explanation: 連續表示係神經 LM 嘅根本突破。n-gram 用離散 ID 表示詞，神經 LM 用浮點數向量，呢個改變令模型可以學到「貓」同「狗」嘅語義關係。
+  difficulty: 1
+  tags:
+  - concept
+- id: c.3
+  question: RNN / LSTM 嘅主要限制係{順序依賴}，訓練時難以{平行化}，呢個限制喺 Transformer 出現後先解決。
+  answer: 順序依賴，平行化
+  explanation: RNN 要逐個 token 順序 forward，所以訓練時 GPU 難以完全 parallel。Transformer 用 attention 完全平行化，呢個係規模可堆嘅工程基礎。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.4
+  question: 本課程定位係{intermediate bridge}，喺 llm-basics 同{llm-moe-cot}之間。
+  answer: intermediate bridge，llm-moe-cot
+  explanation: llm-basics 教概念，llm-moe-cot 教研究級深度，本課程填補中間嗰層 — 將概念接到架構細節。
+  difficulty: 1
+  tags:
+  - structure
+- id: c.5
+  question: 「規模可堆（scalable）」意思係工程上可以一路加大{data}、{參數}同{compute}並且訓練穩定。
+  answer: data，參數
+  explanation: 嚴格講 scalable 涉及三個維度：data 量、模型參數量、訓練 compute。三者都可以加大而訓練仍然收斂，呢個係 LLM 規模化嘅基礎。
+  difficulty: 2
+  tags:
+  - terminology

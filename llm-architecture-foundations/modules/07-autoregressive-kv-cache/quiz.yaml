@@ -1,0 +1,108 @@
+- id: '7.1'
+  question: LLM 嘅 next-token prediction loop 嘅基本步驟？
+  options:
+    a: 一次 forward 完成所有 token
+    b: Forward → logits → sampling → append token → 重複到 EOS
+    c: 隨機生成
+    d: 查表生成
+  answer: b
+  explanation: 自回歸生成係反覆做：forward 計 logits、sampling 揀 token、append 落 sequence、重複到生成 EOS 或達到 max length。每次都要處理整個 sequence。
+  difficulty: 1
+  tags:
+  - algorithm
+- id: '7.2'
+  question: Greedy decoding 嘅特點？
+  options:
+    a: 隨機揀 token
+    b: 永遠揀概率最高 token，穩定但易重複
+    c: 從 50 個 token 中揀
+    d: 根據溫度分佈揀
+  answer: b
+  explanation: Greedy 永遠揀 argmax token，輸出穩定可重複，但容易陷入重複 loop，缺乏多樣性。適合需要精確嘅任務（code、QA）。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '7.3'
+  question: Top-p（nucleus）sampling 同 top-k 嘅主要分別？
+  options:
+    a: 完全等價
+    b: Top-k 固定 k 個 token，top-p 動態選累計概率達 p 嘅 token 集合
+    c: Top-p 更快
+    d: Top-k 更精確
+  answer: b
+  explanation: Top-k 固定從概率最高 k 個 token 中揀，動態分佈唔同場景難適應。Top-p 動態選累計概率達 p 嘅最小集合，高概率分佈保留多 token，低概率分佈保留少。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '7.4'
+  question: Temperature T → 0 嘅效果最接近？
+  options:
+    a: 完全隨機
+    b: 概率分佈極尖，近似 greedy
+    c: 均勻分佈
+    d: 冇效果
+  answer: b
+  explanation: Temperature logits' = logits / T。T → 0 令 logits 放大，softmax 變 one-hot，近似 greedy。T → ∞ 令 logits 接近 0，softmax 變均勻分佈。
+  difficulty: 1
+  tags:
+  - algorithm
+- id: '7.5'
+  question: KV cache 對 LLM inference 嘅主要作用？
+  options:
+    a: 減少訓練時間
+    b: 重用之前 token 嘅 K 同 V，避免重複 forward 整個 sequence
+    c: 增加準確度
+    d: 減少模型大小
+  answer: b
+  explanation: 冇 KV cache，每生成新 token 都要重新 forward 整個 sequence。KV cache 將之前所有 token 嘅 K/V 存住，新 token 只需要計 Q，attention 從 O(n²) 變 O(n)。
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.6'
+  question: KV cache 嘅主要記憶體成本？
+  options:
+    a: 與 sequence length、batch size、model 維度成正比
+    b: 固定不變
+    c: 與 sequence length 平方成正比
+    d: 與 model 大小無關
+  answer: a
+  explanation: 每個 layer、每個 head、每個 token 都要存 K 同 V 兩個向量。序列長、batch 大、model 維度高，cache 容量都會爆。呢個係限制 max batch size 嘅關鍵因素。
+  difficulty: 2
+  tags:
+  - tradeoff
+- id: '7.7'
+  question: Code generation 通常用乜 sampling 設定？
+  options:
+    a: 高 temperature + 隨機
+    b: 低 temperature（0.2-0.4）配合 greedy 或 top-p 0.95 — 精確優先
+    c: 完全隨機
+    d: 永遠 top-k=1
+  answer: b
+  explanation: Code 需要精確、語法正確、可執行，所以低 T 減少隨機性，避免 hallucination。Creative writing 就用高 T 增加多樣性。應用導向 sampling 係實際部署關鍵。
+  difficulty: 2
+  tags:
+  - scenario
+- id: '7.8'
+  question: LLM inference 兩階段（prefill vs decode）嘅分別？
+  options:
+    a: 完全相同
+    b: Prefill 處理整個 prompt（大 forward），decode 逐個 token 生成（小 forward，KV cache 加速）
+    c: Prefill 比 decode 慢
+    d: Decode 唔用 GPU
+  answer: b
+  explanation: Prefill 一次性處理 prompt，計算密集但可高度平行。Decode 逐 token 生成，每次小 forward，KV cache 令運算量大幅下降。Modern serving（vLLM）將兩者分開優化。
+  difficulty: 2
+  tags:
+  - structure
+- id: '7.9'
+  question: 邊個唔係影響 LLM inference 成本嘅主要因素？
+  options:
+    a: Sequence length
+    b: Batch size
+    c: Model size
+    d: 開發者編輯器選擇
+  answer: d
+  explanation: Inference 成本主要受 sequence length（KV cache、attention）、batch size（GPU 利用率）、model size（FLOPs）三維度影響。開發者編輯器（VSCode、Vim）同 inference 完全無關。
+  difficulty: 1
+  tags:
+  - tradeoff

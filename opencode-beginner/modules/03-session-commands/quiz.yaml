@@ -1,0 +1,135 @@
+- id: '3.1'
+  question: What does the /init command do in opencode?
+  options:
+    a: Creates project conventions file by analyzing codebase
+    b: Installs project dependencies
+    c: Configures API keys
+    d: Initializes a new git repository
+  answer: a
+  explanation: /init creates .opencode/CONVENTIONS.md by analyzing your codebase to
+    extract coding standards.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.2'
+  question: What is the difference between /clear and /compact?
+  options:
+    a: They are identical commands
+    b: /clear deletes files, /compact compresses them
+    c: /clear starts fresh conversation, /compact summarizes history
+    d: /clear is for beginners, /compact is for experts
+  answer: d
+  explanation: /clear removes all conversation history. /compact summarizes older
+    messages to free context space while preserving key information.
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '3.3'
+  question: Why does opencode ask for confirmation before writing files but not before
+    reading them?
+  options:
+    a: Writing is a security risk
+    b: Reading is faster than writing
+    c: Writing modifies your project permanently
+    d: Reading requires API calls
+  answer: a
+  explanation: File writes make permanent changes to your project. Confirmation prevents
+    accidental modifications.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.4'
+  question: What happens when you run /share in opencode?
+  options:
+    a: Pushes code to GitHub
+    b: Opens a collaboration channel
+    c: Shares your API keys with others
+    d: Generates a web view URL of your session
+  answer: c
+  explanation: /share creates a web-accessible view of your session for code review
+    or getting help.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.5'
+  question: When does opencode automatically compact conversation history?
+  options:
+    a: Only when you run /compact
+    b: After every message
+    c: When the context window fills up
+    d: Every 10 minutes
+  answer: d
+  explanation: opencode automatically compacts when the context window reaches capacity
+    to free space.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.6'
+  question: What permission does opencode ask about when a shell command requires
+    approval?
+  options:
+    a: It never asks — all commands run automatically
+    b: y (allow once), n (deny), always (allow pattern)
+    c: yes or no only
+    d: allow, deny, or skip
+  answer: b
+  explanation: 'opencode offers three options: allow once (y), deny (n), or allow
+    this pattern permanently (always).'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.7'
+  question: Which command resumes a previous session?
+  options:
+    a: Both a and b
+    b: opencode --resume
+    c: opencode --session <id>
+    d: opencode --continue
+  answer: a
+  explanation: Both --resume (last session) and --session <id> (specific session)
+    restore previous sessions.
+  difficulty: 2
+  tags:
+  - terminology
+  - comparison
+- id: '3.8'
+  question: 'What risk does setting ''bash'': ''allow'' in permissions introduce?'
+  options:
+    a: Requires root access
+    b: No risk — it's the recommended setting
+    c: Agent can run any command including destructive ones without approval
+    d: Slower command execution
+  answer: c
+  explanation: Blanket bash allow means the agent can run destructive commands like
+    'rm -rf /' without permission.
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '3.9'
+  question: What does opencode automatically detect when you start a session?
+  options:
+    a: Your operating system only
+    b: Git repository, project configuration, and system context
+    c: Your API keys and nothing else
+    d: Only the current directory
+  answer: b
+  explanation: opencode detects git repo, loads project config, and assembles system
+    context (instructions, skills, MCP tools).
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.10'
+  question: Where is session history stored in opencode?
+  options:
+    a: In a SQLite database
+    b: In opencode.json
+    c: On the provider's servers
+    d: In memory only — lost when you close
+  answer: b
+  explanation: Sessions are persisted in SQLite, allowing resumption and history review.
+  difficulty: 1
+  tags:
+  - terminology
+

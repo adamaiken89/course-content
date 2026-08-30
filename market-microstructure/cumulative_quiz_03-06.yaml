@@ -1,0 +1,109 @@
+- id: 'cum.1'
+  type: mcq
+  question: 'What distinguishes a bluffer from an informed trader?'
+  source_modules: [3]
+  options:
+    a: 'Bluffers trade larger orders than informed traders'
+    b: 'Bluffers create false information to make others trade unwisely; informed traders trade on genuine assessments of value'
+    c: 'Bluffers always trade legally; informed traders do not'
+    d: 'Bluffers are dealers; informed traders are brokers'
+  answer: b
+  explanation: 'Bluffing = pretending to have information you do not have (rumors, manipulated quotes, pretend interest) to induce unwisely timed trades. Informed traders act on real opinions about fundamental value.'
+  difficulty: 1
+  tags: [cross-module, recall, terminology]
+
+- id: 'cum.2'
+  type: mcq
+  question: 'A dealer just bought 10,000 shares for own account and the stock''s adverse-information risk rises. What should the dealer do?'
+  source_modules: [4]
+  options:
+    a: 'Narrow the spread to unload inventory faster'
+    b: 'Lower the bid (and typically the offer) — quote concessions are how inventory and adverse-selection risk are priced'
+    c: 'Keep quotes unchanged until settlement'
+    d: 'Stop quoting entirely and become a broker'
+  answer: b
+  explanation: 'Inventory imbalance plus higher adverse-selection exposure → dealer quotes a less attractive price to attract the other side. Quote movement is the mechanism behind realized-spread losses when prices run against dealers.'
+  difficulty: 2
+  tags: [cross-module, scenario, concept]
+
+- id: 'cum.3'
+  type: mcq
+  question: 'Which cost type does NOT depend on your order filling?'
+  source_modules: [5]
+  options:
+    a: 'Explicit costs — commissions and fees'
+    b: 'Implicit costs — spread crossing and price impact'
+    c: 'Missed trade opportunity costs — profit forgone when orders fail to fill or fill late'
+    d: 'All three require a completed fill to be measured'
+  answer: c
+  explanation: 'Missed-opportunity costs arise precisely when trades do NOT happen (cotton limit at 64.95 never fills, price runs to 68). Explicit and implicit costs only accrue on executed trades.'
+  difficulty: 2
+  tags: [cross-module, comparison, concept]
+
+- id: 'cum.4'
+  type: mcq
+  question: 'What is the main market-wide effect of internalization (brokers filling customer orders in-house)?'
+  source_modules: [6]
+  options:
+    a: 'Displayed liquidity improves for everyone'
+    b: 'Less displayed order flow → remaining public traders face wider spreads, an order flow externality'
+    c: 'Spreads narrow because competition always wins'
+    d: 'Specialists gain more affirmative obligations'
+  answer: b
+  explanation: 'Internalized trades never reach the book, so the public quote carries less information and less depth — the order flow externality. Some traders (small market orders) may get price improvement while the displayed market deteriorates.'
+  difficulty: 3
+  tags: [cross-module, synthesis, concept]
+
+- id: 'cum.5'
+  type: cloze
+  question: 'The only transaction-cost estimator the book calls resistant to benchmark gaming is {implementation shortfall}, measured against the price at the moment the decision to trade was made.'
+  source_modules: [5]
+  answer: 'implementation shortfall'
+  explanation: 'Implementation shortfall compares actual cost to the arrival price (decision price), capturing commissions, impact, and missed opportunities in one number — VWAP and closing-price benchmarks can be gamed by timing fills.'
+  difficulty: 1
+  tags: [cross-module, recall, terminology]
+
+- id: 'cum.6'
+  type: cloze
+  question: 'A regulation that halts trading when prices fall past a threshold is called a {circuit breaker}; its effect on price discovery is theoretically ambiguous.'
+  source_modules: [6]
+  answer: 'circuit breaker'
+  explanation: 'Circuit breakers pause trading to let information and orders catch up, but the halt can also defer price discovery and restart with a gap — the book treats "always stabilizes" as false.'
+  difficulty: 1
+  tags: [cross-module, recall, terminology]
+
+- id: 'cum.7'
+  type: cloze
+  question: 'The risk that the counterparty to your trade knows more than you do — and prices will move against you after you deal — is called {adverse selection}.'
+  source_modules: [4]
+  answer: 'adverse selection'
+  explanation: 'Adverse selection is the informed-trader component of spread and inventory risk: dealers quote wider to cover expected losses to traders who knew more before the trade.'
+  difficulty: 2
+  tags: [cross-module, concept, terminology]
+
+- id: 'cum.8'
+  type: tf
+  statement: 'A trade measured against a closing-price benchmark can show a negative effective spread even when the trader lost money overall.'
+  source_modules: [4, 5]
+  answer: true
+  explanation: 'Effective spread vs a closing (or VWAP) benchmark can report −$200 on a round trip that truly cost $400 — benchmark choice hides or invents cost. That is why the book prefers implementation shortfall.'
+  difficulty: 3
+  tags: [cross-module, synthesis, concept]
+
+- id: 'cum.9'
+  type: tf
+  statement: 'Insider trading is always illegal under securities law.'
+  source_modules: [6]
+  answer: false
+  explanation: 'The book distinguishes informed trading, legal tipping variants, and true insider trading (breach of duty or misappropriation). Some trades on private information are legal; some famous cases (Winans) turned on misappropriation theory, not employment alone.'
+  difficulty: 2
+  tags: [cross-module, misconception]
+
+- id: 'cum.10'
+  type: tf
+  statement: 'Dealers always profit from the bid/ask spread on every round trip.'
+  source_modules: [3, 4]
+  answer: false
+  explanation: 'Dealers can realize a negative spread when prices move against them between buy and sell (e.g., Dell example: realized spread −0.1¢). The quoted spread is expected revenue; adverse selection eats it.'
+  difficulty: 2
+  tags: [cross-module, misconception]

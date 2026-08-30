@@ -1,0 +1,394 @@
+- id: cum.1
+  type: mcq
+  source_modules:
+  - 1
+  question: N-gram model 嘅主要問題？
+  options:
+    a: 計算太慢
+    b: sparsity — n 越大，大部分 n-gram 喺 training data 冇出現過
+    c: 唔能處理英文
+    d: 需要 GPU
+  answer: b
+  explanation: N-gram model 嘅最大問題係 sparsity — n 越大，大部分組合喺 training data 冇出現過，probability 估唔到。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.2
+  type: cloze
+  source_modules:
+  - 2
+  question: BPE 一開始將文字拆成最細單位（字符），然後反覆合併最高頻嘅 pair，直到達到設定嘅 {vocab size}。
+  answer: vocab size
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.3
+  type: mcq
+  source_modules:
+  - 3
+  question: Cosine similarity 嘅值範圍？
+  options:
+    a: 0 到 1
+    b: -1 到 1
+    c: 0 到 ∞
+    d: -∞ 到 ∞
+  answer: b
+  explanation: Cosine similarity = cos(θ)，範圍 -1（完全相反）到 1（完全相同）。
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.4
+  type: tf
+  source_modules:
+  - 4
+  statement: Scaled dot-product attention 入面嘅 scaling factor √d_k 係為咗避免 softmax saturation。
+  answer: true
+  explanation: Q·K^T 嘅值隨 d_k 增大，未經 scaling 直接入 softmax 會導致梯度消失（saturation）。√d_k 將值壓返合理範圍。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.5
+  type: mcq
+  source_modules:
+  - 5
+  question: Residual connection 嘅核心作用？
+  options:
+    a: 減少參數
+    b: 減少計算量
+    c: 讓梯度可以直接 pass through，解決深層 network 嘅梯度消失問題
+    d: 增加 non-linearity
+  answer: c
+  explanation: Residual connection 確保梯度可以從 output 直接 pass 到 input，唔會喺深層 network 入面消失。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.6
+  type: cloze
+  source_modules:
+  - 6
+  question: Sinusoidal positional encoding 用不同頻率嘅 {sin} 同 {cos} 函數為每個位置生成唯一嘅向量。
+  answer: sin, cos
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.7
+  type: mcq
+  source_modules:
+  - 7
+  question: KV cache 嘅核心價值？
+  options:
+    a: 減少模型大小
+    b: 避免重複計算已生成 token 嘅 K/V，推理速度提升
+    c: 減少 training 時間
+    d: 增加 accuracy
+  answer: b
+  explanation: KV cache 將之前 token 嘅 K/V 存起，每次只需計算新 token，避免重複計算。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.8
+  type: mcq
+  source_modules:
+  - 1
+  question: Transformer 點解取代咗 RNN？
+  options:
+    a: Transformer 更細
+    b: Transformer 可以 parallel 處理所有 token，RNN 必須 sequential
+    c: Transformer 唔需要 GPU
+    d: RNN 更準確
+  answer: b
+  explanation: Transformer 嘅 self-attention 可以同時處理整個序列，RNN 必須逐個 token 處理，parallel 效率差好遠。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.9
+  type: tf
+  source_modules:
+  - 2
+  statement: BPE 係 deterministic 嘅 tokenization 方法 — 同一個 input 永遠 produce 相同 output。
+  answer: true
+  explanation: BPE 有固定嘅 merge rules，同一個 input 永遠 tokenize 成相同 output。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.10
+  type: mcq
+  source_modules:
+  - 3
+  question: Static embedding（如 Word2Vec）嘅主要限制？
+  options:
+    a: 計算太慢
+    b: 同一個字永遠有相同向量，忽略 context
+    c: 唔能處理多語言
+    d: 只能處理英文
+  answer: b
+  explanation: Static embedding 每個 token 有固定向量，唔理喺咩 context 下，向量都一樣。Contextual embedding（如 BERT）解決呢個問題。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.11
+  type: cloze
+  source_modules:
+  - 4
+  question: Multi-head attention 允許模型同時喺多個 {attention head} 入面學習唔同類型嘅 relationship。
+  answer: attention head
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.12
+  type: mcq
+  source_modules:
+  - 5
+  question: Pre-norm vs post-norm 嘅主要分別？
+  options:
+    a: Pre-norm 更快
+    b: Pre-norm 先做 LayerNorm 再做 Attention/FFN，訓練更穩定
+    c: Post-norm 更準確
+    d: 冇分別
+  answer: b
+  explanation: Pre-norm 先做 LayerNorm，梯度可以直接 pass through residual connection，訓練更穩定。Post-norm 先做 Attention/FFN，梯度要穿過 LayerNorm。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.13
+  type: mcq
+  source_modules:
+  - 6
+  question: RoPE（Rotary Position Embedding）嘅核心特點？
+  options:
+    a: 用 learnable 嘅 position embedding
+    b: 用旋轉矩陣將位置資訊編碼到 Q/K 入面
+    c: 用 binary code 表示位置
+    d: 用 hash function 表示位置
+  answer: b
+  explanation: RoPE 用旋轉矩陣將位置資訊直接編碼到 Q/K 向量入面，天然支持 relative position。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.14
+  type: mcq
+  source_modules:
+  - 7
+  question: Greedy decoding 嘅問題？
+  options:
+    a: 太慢
+    b: 每步揀最高 probability 嘅 token，唔考慮全局最優
+    c: 只能處理英文
+    d: 需要 external memory
+  answer: b
+  explanation: Greedy decoding 每步揀最高 probability 嘅 token，但全局最優 sequence 可能需要某一步揀低 probability 嘅 token。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.15
+  type: tf
+  source_modules:
+  - 8
+  statement: Scaling law 指模型越大，test loss 線性下降。
+  answer: false
+  explanation: Scaling law 係 power law 關係（diminishing returns），唔係線性。每倍 compute 帶嚟固定比例嘅 loss 下降。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.16
+  type: cloze
+  source_modules:
+  - 8
+  question: LLM 本質上係 {probability estimator}，知常見唔知真確。呢個係 hallucination 嘅結構性原因。
+  answer: probability estimator
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.17
+  type: mcq
+  source_modules:
+  - 1
+  question: 以下邊個係 decoder-only model？
+  options:
+    a: BERT
+    b: GPT 系列
+    c: T5
+    d: BART
+  answer: b
+  explanation: GPT 系列係 decoder-only，BERT 係 encoder-only，T5/BART 係 encoder-decoder。
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.18
+  type: mcq
+  source_modules:
+  - 5
+  question: FFN 喺 Transformer block 入面嘅作用？
+  options:
+    a: 計算 attention
+    b: 做 non-linear transformation，提供模型嘅「記憶力」
+    c: 計算 positional encoding
+    d: 做 residual connection
+  answer: b
+  explanation: FFN 用 non-linear activation 將 hidden state 投影到更高維空間再投返嚟，提供模型嘅「記憶力」（存知識）。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.19
+  type: cloze
+  source_modules:
+  - 7
+  question: Temperature 嘅作用：T < 1 令分佈更 {sharp}，T > 1 令分佈更 {uniform}。
+  answer: sharp, uniform
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.20
+  type: mcq
+  source_modules:
+  - 4
+  question: Causal mask 嘅作用？
+  options:
+    a: 防止 attention 計算太慢
+    b: 防止 token 睇到未來嘅 token
+    c: 增加 model 嘅 accuracy
+    d: 減少 model 嘅參數
+  answer: b
+  explanation: Causal mask 令每個 token 只可以 attend 到自己同之前嘅 token，確保生成過程唔會「偷睇」未來。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.21
+  type: mcq
+  source_modules:
+  - 6
+  question: ALiBi 嘅核心做法？
+  options:
+    a: 加 learnable 嘅 position embedding
+    b: 直接喺 attention score 加距離-dependent bias
+    c: 用 sinusoidal function 編碼位置
+    d: 用旋轉矩陣編碼位置
+  answer: b
+  explanation: ALiBi 直接喺 attention score 加線性 bias，距離越遠 bias 越負，冇額外 position embedding 參數。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.22
+  type: tf
+  source_modules:
+  - 8
+  statement: Hallucination 係 engineering bug，可以透過改進 training fix。
+  answer: false
+  explanation: Hallucination 係 architectural limitation — LLM 本質上係 probability estimator，預測常見嘅下一個字，唔係預測事實。呢個限制唔係 engineering 問題。
+  difficulty: 3
+  tags:
+  - recall
+- id: cum.23
+  type: mcq
+  source_modules:
+  - 2
+  question: Vocabulary size 太大嘅問題？
+  options:
+    a: Tokenization 更快
+    b: Embedding layer 參數暴增，模型更大
+    c: 唔能處理生字
+    d: 只能處理英文
+  answer: b
+  explanation: Vocab size 太大 → Embedding matrix（V × d）暴增 → 模型更大，同時 softmax output layer 參數都增加。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.24
+  type: mcq
+  source_modules:
+  - 3
+  question: Dot product 模擬乜嘢？
+  options:
+    a: 向量長度
+    b: 兩個向量嘅相關度（一個向量對另一個嘅「投影」）
+    c: 向量嘅維度
+    d: 向量嘅方向
+  answer: b
+  explanation: Dot product 模擬相關度：A·B 大 = 方向相似（相關），A·B 細 = 方向唔相關。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.25
+  type: mcq
+  source_modules:
+  - 5
+  question: LayerNorm 嘅作用？
+  options:
+    a: 減少參數
+    b: 正規化 hidden state，令訓練更穩定
+    c: 增加 non-linearity
+    d: 減少計算量
+  answer: b
+  explanation: LayerNorm 將 hidden state 歸一化到穩定嘅分佈，令訓練更穩定，防止梯度爆炸或消失。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.26
+  type: cloze
+  source_modules:
+  - 4
+  question: Self-attention 嘅公式：Attention(Q,K,V) = softmax({Q·K^T / √d_k}) · V
+  answer: Q·K^T / √d_k
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.27
+  type: mcq
+  source_modules:
+  - 8
+  question: In-context learning 點解可以冇 fine-tune？
+  options:
+    a: 因為模型已經學過所有 pattern
+    b: 因為 attention 天然可以做 pattern matching
+    c: 因為有 external memory
+    d: 因為 example 有 gradient
+  answer: b
+  explanation: Attention mechanism 天然可以做 pattern matching，幾 个 example 就足夠「激活」訓練時學到嘅相關 pattern。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.28
+  type: mcq
+  source_modules:
+  - 7
+  question: Top-p (nucleus) sampling 嘅做法？
+  options:
+    a: 揀 top N 個 token
+    b: 揀 probability 最高嘅 token，直到 cumulative probability 達到 p
+    c: 揀所有 token
+    d: 揀隨機 token
+  answer: b
+  explanation: Top-p 排序 probability，由高到低累加，到達 p 閾值就停，從呢個 subset 入面抽樣。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.29
+  type: mcq
+  source_modules:
+  - 1
+  question: Transfer learning 嘅核心概念？
+  options:
+    a: 用更大嘅 model
+    b: 喺 source task 學到嘅 knowledge 應用到 target task
+    c: 減少 training 時間
+    d: 增加 model 嘅參數
+  answer: b
+  explanation: Transfer learning 嘅核心係利用喺 source task 學到嘅通用 knowledge，transfer 到相關嘅 target task。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.30
+  type: mcq
+  source_modules:
+  - 6
+  question: 為乜嘢需要 positional encoding？
+  options:
+    a: Attention 機制本身冇順序概念
+    b: 增加模型嘅 accuracy
+    c: 減少模型嘅參數
+    d: 增加模型嘅深度
+  answer: a
+  explanation: Attention 嘅 dot product 同 sum 係 commutative，唔理 token 排列順序都計到相同結果。Position injection 解決呢個問題。
+  difficulty: 2
+  tags:
+  - recall

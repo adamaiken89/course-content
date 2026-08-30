@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "Complete: The CSS positioning property that makes an element the coordinate origin for absolutely-positioned children is {position: relative}."
+  answer: "position: relative"
+  explanation: "position: relative on a parent makes it the containing block for absolute children."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: The CSS property that letterboxes an image to preserve its aspect ratio inside a container is {object-fit: contain}."
+  answer: "object-fit: contain"
+  explanation: "object-fit: contain letterboxes; object-fit: cover crops. The default value is 'fill' which distorts."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: The CSS property that fills a container and crops an image that does not match the aspect ratio is {object-fit: cover}."
+  answer: "object-fit: cover"
+  explanation: "object-fit: cover is the right choice for full-bleed backgrounds where cropping is acceptable."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Complete: The CSS property that includes padding in the element's total width and height calculation is {box-sizing: border-box}."
+  answer: "box-sizing: border-box"
+  explanation: "box-sizing: border-box makes width and height include padding and border. The default is content-box."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Complete: The proprietary CSS property prefix used by Apple Books for fixed-layout extensions is {-apple-}."
+  answer: "-apple-"
+  explanation: "Apple Books uses -apple-justify-content, -apple-fixed-line-height, etc. Kobo and Kindle ignore them."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.6"
+  question: "Complete: The CSS property that prevents an element from rendering outside its container is {overflow: hidden}."
+  answer: "overflow: hidden"
+  explanation: "overflow: hidden on the .page container clips children that exceed its bounds."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Complete: The CSS layout feature with the poorest support on Kindle's KFX renderer is {CSS Grid}."
+  answer: "CSS Grid"
+  explanation: "CSS Grid is dropped or misinterpreted on KFX. Use absolute positioning for KFX-safe layouts."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Complete: The CSS property that prevents users from selecting an image as text is {user-select: none}."
+  answer: "user-select: none"
+  explanation: "user-select: none on an img prevents the reader's text-selection tool from highlighting it."
+  difficulty: 2
+  tags: [terminology]

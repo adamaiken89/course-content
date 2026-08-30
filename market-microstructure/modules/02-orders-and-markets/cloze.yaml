@@ -1,0 +1,62 @@
+- id: 'c.1'
+  question: '"An instruction to trade at the best price currently available in the market" defines a {market} order.'
+  answer: market
+  explanation: 'Market orders demand immediacy and accept whatever price is available — their users pay the bid/ask spread but face execution price uncertainty.'
+  difficulty: 1
+  tags: [terminology]
+
+- id: 'c.2'
+  question: 'Standing limit orders are free {options} granted to the market: a sell limit acts as a call, a buy limit as a put, with the limit price as strike — but with no premium and free cancellation.'
+  answer: options
+  explanation: 'Harris calls them "options, but not option contracts." Because the market can take them at the limit price, liquidity suppliers must be compensated — which is why spreads widen when volatility makes those options more valuable.'
+  difficulty: 2
+  tags: [concept]
+
+- id: 'c.3'
+  question: 'In {quote-driven} markets, dealers participate in every trade and supply all liquidity; the public cannot trade directly with each other.'
+  answer: quote-driven
+  explanation: 'Also called dealer markets — Nasdaq, most bond and currency markets. Order-driven markets match public orders directly; brokered markets rely on brokers searching for counterparties.'
+  difficulty: 1
+  tags: [terminology]
+
+- id: 'c.4'
+  question: 'The {price priority} rule gives precedence to the traders who bid and offer the best prices, and it is the primary rule in every rule-based matching market.'
+  answer: price priority
+  explanation: 'Price priority is self-enforcing — everyone naturally seeks the best prices. Secondary rules (time, display, size, public order) break ties at the same price and must be policed.'
+  difficulty: 1
+  tags: [terminology]
+
+- id: 'c.5'
+  question: 'Standing limit orders unfilled are stored in the {limit order book}, alongside untriggered stops and market-if-touched orders.'
+  answer: limit order book
+  explanation: 'Order books "reveal the conditions under which traders will trade" — extremely valuable information. Open-book markets display it; closed-book markets hide most of it.'
+  difficulty: 1
+  tags: [terminology]
+
+- id: 'c.6'
+  question: 'A {stop-loss} order attaches a stop price to a market order to cut losses when prices move against a position — but it guarantees no exit price.'
+  answer: stop-loss
+  explanation: 'The stop price only activates the order; execution is then at market, so gaps fill far beyond the trigger (70¢ stop filled at 66.90). A guaranteed price requires buying an option contract.'
+  difficulty: 2
+  tags: [concept]
+
+- id: 'c.7'
+  question: 'Single-price auctions apply the {uniform} pricing rule, filling every trade at the market-clearing price and maximizing total trader surplus.'
+  answer: uniform
+  explanation: 'Harris''s worked example: surplus 1.6 under uniform pricing vs 1.0 for the same orders traded continuously under the discriminatory rule, which fills each trade at the standing order''s price.'
+  difficulty: 2
+  tags: [formula]
+
+- id: 'c.8'
+  question: 'Brokers interpose credit between strangers: 1 million traders without brokers imply ~1 trillion potential relationships, but 100 brokers with 10,000 clients each cut that to 2,009,900 — a 500,000-times reduction that makes {order-driven} markets possible.'
+  answer: order-driven
+  explanation: 'Trades among strangers need settlement credit checks; brokers know clients, vouch for settlement, and hold liquidatable assets. Without that interposition, rule-based matching among anonymous traders could not work.'
+  difficulty: 3
+  tags: [process]
+
+- id: 'c.9'
+  question: 'When a dealer pays a broker for the right to execute its clients'' orders, the practice is called {payment for order flow} — a structural conflict with best execution.'
+  answer: payment for order flow
+  explanation: 'Typically about 1 cent per share on market orders (E*TRADE: 24% of transaction revenue in 1997, 15% by Q2 2001). It looks like a kickback, yet U.S. equities contracts still require filling market orders at NBBO or better.'
+  difficulty: 3
+  tags: [concept]

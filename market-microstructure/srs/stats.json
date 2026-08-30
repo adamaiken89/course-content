@@ -1,0 +1,12 @@
+{
+  "sessions": [
+    {
+      "date": "2026-09-28",
+      "type": "quiz",
+      "topic": "market-microstructure",
+      "module": "01-why-trades-happen",
+      "score": 2,
+      "total": 10
+    }
+  ]
+}

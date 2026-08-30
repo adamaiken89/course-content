@@ -1,0 +1,119 @@
+- id: "6.1"
+  question: "以下邊個係關於 EPUB 嘅錯誤講法？"
+  options:
+    a: "EPUB = 將 HTML 打包成一本書"
+    b: "EPUB 自動 reflow 適應屏幕"
+    c: "EPUB 就係 PDF 嘅替代品，所有 PDF 內容 EPUB 都可以做"
+    d: "EPUB 開放格式，可加可不加 DRM"
+  answer: c
+  explanation: "EPUB 唔等於 PDF 替代。EPUB 做 reflowable 文字內容；PDF 做固定版面（雜誌、設計稿）。兩者解決唔同問題。"
+  difficulty: 1
+  tags: [misconception]
+
+- id: "6.2"
+  question: "以下邊個係關於 EPUB 同 HTML 嘅正確講法？"
+  options:
+    a: "EPUB 同 HTML 係同一樣嘢"
+    b: "EPUB 入面用 HTML，但有 manifest / spine / metadata 等結構，XHTML 仲有 strict well-formedness 要求"
+    c: "EPUB 完全唔包 HTML"
+    d: "HTML 比 EPUB 更適合做電子書"
+  answer: b
+  explanation: "EPUB 入面用 HTML（XHTML），但 EPUB 係包裝格式：mimetype、container.xml、manifest、spine、metadata。XHTML 唔容許 HTML5 容錯 parsing。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "6.3"
+  question: "Amazon Kindle 用咩格式？"
+  options:
+    a: "純 EPUB"
+    b: "PDF"
+    c: "自家 AZW / KFX（源自 MOBI），2023 年先支持 EPUB upload"
+    d: "iBooks format"
+  answer: c
+  explanation: "Kindle 用自家 AZW（源自 MOBI）同 KFX 格式。2023 年起接受 EPUB upload，但內部會轉做 AZW / KFX 先顯示。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "6.4"
+  question: "以下邊個情況下 EPUB 唔可以被 screen reader 讀到？"
+  options:
+    a: "有 lang 屬性"
+    b: "有 alt-text、heading structure"
+    c: "有 DRM、冇 alt-text、冇 reading order"
+    d: "用 XHTML 寫內容"
+  answer: c
+  explanation: "有 DRM 嘅 EPUB 雖然有時 screen reader 讀到，但冇 alt-text、冇 reading order、冇 heading structure 嘅 EPUB 一定讀唔好。"
+  difficulty: 2
+  tags: [scenario]
+
+- id: "6.5"
+  question: "EPUBCheck 嘅 ERROR 同 WARNING 點處理？"
+  options:
+    a: "都係可忽視"
+    b: "ERROR 必須修正（例如 mimetype 唔啱），WARNING 建議修正（例如冇 alt-text）"
+    c: "WARNING 必須修正，ERROR 可忽視"
+    d: "全部要修正做最嚴格"
+  answer: b
+  explanation: "EPUBCheck 三級：ERROR（spec 違規必須修）、WARNING（建議修，常見係 a11y 缺失）、INFO（純資訊）。"
+  difficulty: 1
+  tags: [process]
+
+- id: "6.6"
+  question: "想出 EPUB 嘅新手，第一步應該點做？"
+  options:
+    a: "直接由零寫 XHTML"
+    b: "讀完整本 W3C EPUB 3.3 spec"
+    c: "用 Sigil 改一個現有 EPUB，學習 manifest、spine、metadata，再讀 spec"
+    d: "寫一個 Python script generate EPUB"
+  answer: c
+  explanation: "新手最有效學習路徑：用 Sigil 改現成 EPUB（觀察結構）→ 讀 W3C spec → 自己出書。比由零寫 XHTML 起步快好多。"
+  difficulty: 2
+  tags: [process]
+
+- id: "6.7"
+  question: "Readium 喺 EPUB 生態扮演咩角色？"
+  options:
+    a: "EPUB 編輯器"
+    b: "開源 EPUB 閱讀引擎，Kobo、Google Play Books 等都用佢"
+    c: "DRM 系統"
+    d: "EPUB spec 編寫組織"
+  answer: b
+  explanation: "Readium 係開源 EPUB 閱讀引擎（SDK + Reference app）。好多商業閱讀器用 Readium 做底層，係 EPUB 普及嘅關鍵基建。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "6.8"
+  question: "EPUB 4.0 預計幾時出？"
+  options:
+    a: "2026 年"
+    b: "2028 年"
+    c: "2030 年代（因為 W3C 治理慢，3.0 到 3.3 用咗 15 年）"
+    d: "已經出咗"
+  answer: c
+  explanation: "W3C EPUB 4.0 暫無 roadmap。EPUB 3.0 (2011) 到 3.3 (2023) 用咗 12 年，預計 4.0 仲要等多年。"
+  difficulty: 1
+  tags: [scenario]
+
+- id: "6.9"
+  question: "DRM-free EPUB 同有 DRM EPUB 比，最大嘅好處係乜？"
+  options:
+    a: "檔案更細"
+    b: "跨平台通用、讀者體驗好、可以備份"
+    c: "自動變 a11y"
+    d: "一定有內嵌字型"
+  answer: b
+  explanation: "DRM-free 最大好處：跨平台通用（任何閱讀器都開到）、唔會過期消失、可以合法備份。代價係容易被未授權複製。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "6.10"
+  question: "以下邊個係錯誤嘅 EPUB 學習建議？"
+  options:
+    a: "由 Content Documents 開始讀 spec"
+    b: "用 EPUBCheck 驗證"
+    c: "用 Calibre 轉格式比較"
+    d: "直接由零寫 XHTML 唔參考任何範本"
+  answer: d
+  explanation: "由零寫 XHTML 唔參考範本係最差學習方法。應該先觀察現有 EPUB 結構（用 Sigil / EPUBCheck），再自己由 template 出發做。"
+  difficulty: 2
+  tags: [process]

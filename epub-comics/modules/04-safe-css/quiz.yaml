@@ -1,0 +1,151 @@
+- id: '4.1'
+  question: Which CSS positioning property makes an element the coordinate origin
+    for its absolutely-positioned children?
+  options:
+    a: 'position: relative'
+    b: 'position: absolute'
+    c: 'position: fixed'
+    d: 'position: static'
+  answer: a
+  explanation: 'position: relative on a parent element makes it the positioning ancestor.
+    Children with position: absolute use the parent''s top-left as their origin (with
+    appropriate offsets).'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.2'
+  question: 'An image is set to width: 100% and height: 100% inside a .page container
+    that fills the ICB. The image is 4:3 and the ICB is 16:9. With object-fit: contain,
+    what does the user see?'
+  options:
+    a: Letterboxed with black bars on the sides; the 4:3 aspect ratio is preserved
+    b: The image distorts to fit
+    c: The image renders at its natural pixel size and overflows
+    d: The image fills the canvas and is cropped
+  answer: a
+  explanation: 'object-fit: contain preserves the image''s aspect ratio and letterboxes
+    if the container''s ratio does not match. object-fit: cover would fill and crop.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.3'
+  question: Which CSS feature is most likely to be dropped or misinterpreted when
+    an EPUB is converted to Kindle KFX?
+  options:
+    a: color
+    b: background-color
+    c: CSS Grid
+    d: margin
+  answer: c
+  explanation: CSS Grid has poor support on Kindle's KFX renderer. The conversion
+    drops the grid and the children reflow unpredictably. Color, background-color,
+    and margin are all well supported.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '4.4'
+  question: 'A speech bubble uses position: absolute with top: 10% and left: 15% inside
+    a .page container that fills the ICB. The reader scales the ICB to fit the physical
+    screen. What happens to the bubble?'
+  options:
+    a: It overflows the page
+    b: It stays at 10% from the top and 15% from the left of the ICB, scaling with
+      the page
+    c: It uses absolute pixel values that do not scale
+    d: It anchors to the device screen edges, not the page
+  answer: b
+  explanation: Percentages are relative to the containing block. As the reader scales
+    the ICB to fit the screen, the percentage offsets scale with the page. The bubble's
+    relationship to the page is preserved.
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.5'
+  question: Which property combination is the KFX-safe pattern for laying out multiple
+    speech bubbles on a fixed-layout page?
+  options:
+    a: 'Float: left with margins'
+    b: CSS Grid with explicit row/column tracks
+    c: 'Flexbox with justify-content: space-between'
+    d: 'Each bubble as position: absolute with explicit top/left/width/height'
+  answer: d
+  explanation: Absolute positioning with explicit coordinates is the KFX-safe pattern.
+    Grid, complex flexbox, and float are unreliable on Kindle.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '4.6'
+  question: Apple Books supports which proprietary CSS property prefix?
+  options:
+    a: -amazon-
+    b: -apple-
+    c: -ibooks-
+    d: -kobo-
+  answer: b
+  explanation: Apple Books supports -apple-* extensions like -apple-justify-content
+    and -apple-fixed-line-height. Kobo and Kindle ignore them. -ibooks- was used in
+    the legacy iBooks era but is deprecated.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.7'
+  question: 'A developer sets object-fit: cover on a full-bleed image inside a .page
+    that fills the ICB. The image aspect ratio does not match the ICB. What is the
+    result?'
+  options:
+    a: The image distorts to fit
+    b: The image renders at its natural size and overflows
+    c: The image letterboxes to fit
+    d: The image fills the canvas and the parts that overflow are cropped
+  answer: d
+  explanation: 'object-fit: cover fills the canvas and crops. The image is not distorted.
+    This is the right choice for a full-bleed background where cropping is acceptable.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.8'
+  question: Which of the following is the recommended pattern for the .page container
+    in a fixed-layout comic?
+  options:
+    a: 'position: absolute; width: 100vw; height: 100vh'
+    b: 'position: relative; width: 100%; height: 100%; overflow: hidden'
+    c: 'display: flex; justify-content: center; align-items: center'
+    d: 'display: grid; grid-template-rows: 1fr'
+  answer: b
+  explanation: 'position: relative makes the page the coordinate origin. 100%/100%
+    fills the ICB. overflow: hidden prevents spillover. The flex and grid patterns
+    are unsafe on Kindle.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.9'
+  question: A page XHTML includes a <script> tag that adds a click handler to a speech
+    bubble. The book opens on Kobo and Apple Books. On Kindle, the script is gone.
+    Why?
+  options:
+    a: Kindle's KFX renderer strips JavaScript from fixed-layout content
+    b: JavaScript is not allowed in any EPUB
+    c: Kobo and Apple also strip the script but show no error
+    d: EPUB 3 forbids scripts in any context
+  answer: a
+  explanation: Kindle's KFX renderer strips JavaScript. Kobo and Apple allow it as
+    optional in FXL. For cross-reader consistency, avoid JavaScript in FXL content.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '4.10'
+  question: 'The page geometry pattern includes html, body { width: 100%; height:
+    100%; }. Why fill the entire viewport?'
+  options:
+    a: It is required by the EPUB spec for accessibility
+    b: To make the page scrollable vertically
+    c: So child elements with percentage dimensions resolve against the ICB
+    d: To enable CSS Grid on the page
+  answer: c
+  explanation: 'html and body must fill the ICB so that child elements with percentage
+    dimensions (width: 100%, height: 100%) resolve against the full page. Without
+    this, the .page container would size to 0 and the image would not appear.'
+  difficulty: 2
+  tags:
+  - concept
+

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "c.1",
+    "question": "The agentic loop consists of: prompt admission, LLM inference, {blank}, result feedback, and continuation check.",
+    "answer": "tool execution",
+    "explanation": "Tool execution is where the model's decisions become actual file changes or command runs.",
+    "difficulty": 1,
+    "tags": ["terminology", "process"]
+  },
+  {
+    "id": "c.2",
+    "question": "opencode reads files instead of guessing to prevent {blank}.",
+    "answer": "hallucination",
+    "explanation": "Reading actual file contents ensures the model works with real code, not imagined code.",
+    "difficulty": 2,
+    "tags": ["concept"]
+  },
+  {
+    "id": "c.3",
+    "question": "Self-correction enables the model to {blank} from errors without human intervention.",
+    "answer": "recover",
+    "explanation": "The loop allows the model to detect errors, analyze causes, and try alternatives.",
+    "difficulty": 2,
+    "tags": ["concept"]
+  },
+  {
+    "id": "c.4",
+    "question": "When the agentic loop reaches {blank} turns, it is forced to stop.",
+    "answer": "max",
+    "explanation": "Max turns is a safety limit to prevent infinite loops.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "c.5",
+    "question": "Independent tool calls can run {blank} because they don't depend on each other.",
+    "answer": "in parallel",
+    "explanation": "Parallel execution speeds up tasks that touch multiple files.",
+    "difficulty": 2,
+    "tags": ["concept"]
+  },
+  {
+    "id": "c.6",
+    "question": "Prompt admission validates input, persists to {blank}, and promotes to visible message.",
+    "answer": "SQLite",
+    "explanation": "Durable persistence ensures prompts aren't lost even if the loop fails.",
+    "difficulty": 2,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "c.7",
+    "question": "During LLM inference, the model receives system prompt, conversation history, {blank}, and current prompt.",
+    "answer": "tool definitions",
+    "explanation": "The model needs to know what tools are available and their schemas.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "c.8",
+    "question": "The loop terminates when no tool calls are made, {blank} turns reached, user interrupt, or error.",
+    "answer": "max",
+    "explanation": "Multiple conditions can stop the loop.",
+    "difficulty": 2,
+    "tags": ["concept"]
+  },
+  {
+    "id": "c.9",
+    "question": "Context grows during the loop because each iteration adds tool calls and {blank} to history.",
+    "answer": "results",
+    "explanation": "Tool outputs become part of the conversation history.",
+    "difficulty": 2,
+    "tags": ["concept"]
+  },
+  {
+    "id": "c.10",
+    "question": "When a tool fails, the model should {blank} rather than retrying the same action.",
+    "answer": "try an alternative approach",
+    "explanation": "Retrying the same failed action wastes context. Better to diagnose and try something different.",
+    "difficulty": 3,
+    "tags": ["concept"]
+  }
+]

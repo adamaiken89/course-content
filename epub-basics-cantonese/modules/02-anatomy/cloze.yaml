@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "EPUB 嘅 mimetype 檔案必須用 {blank} 壓縮方法（即係唔壓縮），先可以畀閱讀器 byte-sniff。"
+  answer: "STORED"
+  explanation: "ZIP 有兩種儲存方法：STORED（唔壓縮）同 DEFLATE（壓縮）。mimetype 必須 STORED，否則 byte-sniff 讀唔到 application/epub+zip 呢個 string。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "META-INF/container.xml 指向嘅 package document 通常喺 {blank} 目錄入面。"
+  answer: "OEBPS"
+  explanation: "container.xml 嘅 rootfile 元素通常寫住 OEBPS/content.opf，即係 package document 喺 OEBPS 目錄入面。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "content.opf 包含三個核心部分：metadata、manifest 同 {blank}。"
+  answer: "spine"
+  explanation: "content.opf 係 EPUB 嘅心臟，三部分：metadata（書嘅資料）、manifest（檔案清單）、spine（閱讀順序）。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "manifest 列出 EPUB 入面 {blank} 嘅所有檔案（XHTML、CSS、圖片、字型等）。"
+  answer: "有效"
+  explanation: "manifest 嘅作用係話畀閱讀器知邊啲檔案屬於呢本書。系統垃圾（Thumbs.db、.DS_Store）唔應該入 manifest。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "spine 嘅作用係規定 {blank}，即係邊個 XHTML 頁面先、邊個後。"
+  answer: "閱讀順序"
+  explanation: "spine 用 <itemref> 引用 manifest 入面嘅 XHTML，閱讀器按 spine 嘅順序顯示內容。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.6"
+  question: "EPUB 3.0 嘅目錄用 XHTML 嘅 {blank} 元素（epub:type=\"toc\"）。"
+  answer: "<nav>"
+  explanation: "EPUB 3.0 放棄 EPUB 2.0 嘅 NCX 格式，改用 XHTML 嘅 <nav epub:type=\"toc\">，同 web 標準一致，可以用 CSS 樣式。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "container.xml 入面 <rootfile> 嘅 full-path 屬性指向嘅係 {blank} 嘅位置。"
+  answer: "package document"
+  explanation: "container.xml 嘅 rootfile full-path 指向 package document（content.opf），係 EPUB 嘅指路牌。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "mimetype 嘅內容必須係 {blank}，8 個 byte，無 newline，無 BOM。"
+  answer: "application/epub+zip"
+  explanation: "mimetype 寫住 application/epub+zip，係 EPUB 嘅身份證，閱讀器靠 byte-sniff 呢個 string 認 EPUB。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.9"
+  question: "EPUB 嘅 OCF 係指 {blank}，定義 ZIP 容器結構。"
+  answer: "Open Container Format"
+  explanation: "OCF = Open Container Format，係 W3C EPUB 3 spec 一部分，定義 mimetype 第一個、STORED、META-INF 等 ZIP 結構規則。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.10"
+  question: "metadata 入面 dc:title、dc:creator、dc:language 用嘅係 {blank} Core namespace。"
+  answer: "Dublin"
+  explanation: "EPUB metadata 用 Dublin Core（dc:）namespace，標準化書名、作者、語言等欄位，跨閱讀器兼容。"
+  difficulty: 2
+  tags: [terminology]

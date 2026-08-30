@@ -1,0 +1,37 @@
+module: 08-scale-emergence
+title: 規模、湧現同幻覺直覺
+questions:
+  - id: c1
+    difficulty: 1
+    tag: terminology
+    question: Scaling law 描述 test loss 同 compute 嘅 power law 關係，formula 是 L(C) ∝ C^(-α)。α 嘅值大約係 {0.05}。
+    answer: 0.05
+    explanation: 呢個值大約0.05，代表每倍 compute 帶嚟固定比例嘅 loss 下降（diminishing returns）。
+
+  - id: c2
+    difficulty: 2
+    tag: concept
+    question: In-context learning 透過 prompt 入面嘅幾 个 example，模型自動學到 pattern，冇 fine-tune、冇 {gradient update}。
+    answer: gradient update
+    explanation: ICL 嘅核心係冇參數更新，透過 attention 天然 pattern matching 完成。
+
+  - id: c3
+    difficulty: 2
+    tag: terminology
+    question: 模型喺某個規以下完全做唔到，但超過某個 threshold 突然做得到嘅能力叫做 {emergence}（湧現能力）。
+    answer: emergence
+    explanation: Emergence 係指能力喺 threshold 前完全冇，後突然有嘅非線性跳躍。
+
+  - id: c4
+    difficulty: 3
+    tag: concept
+    question: Hallucination 嘅結構性原因係：LLM 本質上係 {probability estimator}，知常見唔知真確。
+    answer: probability estimator
+    explanation: LLM 嘅 job 係預測合理嘅下一個字，唔係預測事實。呢個係 architectural limitation，唔係 engineering 問題。
+
+  - id: c5
+    difficulty: 1
+    tag: terminology
+    question: Prompt 敏感度指同一個問題，唔同 {wording} 可以導致完全唔同嘅 output。
+    answer: wording
+    explanation: Wording 改變 probability distribution shift，模型喺新分佈下可能「揀」到完全唔同嘅 continuation。

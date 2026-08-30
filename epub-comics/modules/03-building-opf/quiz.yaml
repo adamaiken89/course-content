@@ -1,0 +1,141 @@
+- id: '3.1'
+  question: Which file is the first entry in a valid EPUB ZIP?
+  options:
+    a: mimetype
+    b: OEBPS/nav.xhtml
+    c: META-INF/container.xml
+    d: OEBPS/content.opf
+  answer: a
+  explanation: The mimetype file is the first entry, uncompressed, with the exact
+    content 'application/epub+zip'. This enables byte-sniff detection by readers.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.2'
+  question: What is the purpose of the META-INF/container.xml file?
+  options:
+    a: It contains Dublin Core metadata
+    b: It points the reader to the root package document via <rootfile>
+    c: It declares the rendition:layout property
+    d: It defines the reading order
+  answer: b
+  explanation: container.xml has a <rootfile> element whose full-path attribute points
+    to the OPF. Readers open this first to find the package.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.3'
+  question: Which manifest property marks an image as the book cover for library display?
+  options:
+    a: properties='cover-image' on the manifest <item>
+    b: epub:type='cover' on the <img>
+    c: linear='no' on a spine itemref
+    d: role='cover' on the page XHTML
+  answer: a
+  explanation: The cover image manifest <item> carries properties='cover-image'. This
+    is how readers know which image to show in the library.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '3.4'
+  question: A page XHTML at OEBPS/pages/page001.xhtml links to a stylesheet. Which
+    href is correct?
+  options:
+    a: OEBPS/styles/main.css
+    b: ../styles/main.css
+    c: /styles/main.css
+    d: styles/main.css
+  answer: b
+  explanation: Paths are relative to the page XHTML. From pages/ the CSS lives at
+    ../styles/main.css. The package root is not a valid root for relative paths in
+    EPUB.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '3.5'
+  question: A builder writes a spine entry as <itemref href='cover.xhtml'/>. What
+    happens?
+  options:
+    a: Apple Books auto-fixes it
+    b: The reader resolves the href to the manifest id
+    c: The entry is invalid; the reader ignores it because spine uses idref, not href
+    d: The reader treats href as an absolute path and errors
+  answer: c
+  explanation: The spine uses idref, not href. <itemref idref='cover'/> references
+    the manifest item with id='cover'. Without idref, the entry is malformed and the
+    reader skips it.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.6'
+  question: Which OPF metadata declaration activates fixed layout for the whole book?
+  options:
+    a: <meta name='fixed'>true</meta>
+    b: <meta property='rendition:layout'>pre-paginated</meta>
+    c: <meta property='dc:layout'>fixed</meta>
+    d: <spine type='fixed'>
+  answer: b
+  explanation: rendition:layout with value 'pre-paginated' (or 'reflowable') is the
+    OPF property that declares the default layout. Per-itemref overrides are possible
+    (module 07).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.7'
+  question: What does the zip command flag -X0 do for the mimetype entry?
+  options:
+    a: Encrypt the entry
+    b: Add an X.509 signature
+    c: Compress with maximum deflate
+    d: Store uncompressed and strip the extra field
+  answer: d
+  explanation: The -X flag strips the extra field from the ZIP entry header; -0 means
+    store (no compression). Together they make the mimetype entry byte-sniffable.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.8'
+  question: A builder runs the build script but zips the rest of the files first,
+    then the mimetype last. The reader rejects the EPUB. Why?
+  options:
+    a: ZIP does not allow mimetype to be last
+    b: The mimetype content is wrong
+    c: The mimetype must be the first entry; readers byte-sniff from entry zero
+    d: The container.xml is missing
+  answer: c
+  explanation: Mimetype first is a hard requirement. Many readers reject the file
+    if the first entry is anything other than the uncompressed mimetype.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '3.9'
+  question: The manifest <item> for nav.xhtml should carry which property?
+  options:
+    a: properties='nav'
+    b: properties='navigation'
+    c: role='directory'
+    d: properties='toc'
+  answer: a
+  explanation: The manifest item for nav.xhtml carries properties='nav'. The <nav>
+    element inside nav.xhtml carries epub:type='toc'. Both are required for the reader
+    to identify the navigation document.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '3.10'
+  question: A page XHTML omits the viewport meta. The OPF declares pre-paginated.
+    What is the practical result?
+  options:
+    a: The reader uses the device screen as the ICB
+    b: The reader uses the OPF rendition:viewport as a fallback
+    c: The reader refuses to render the page
+    d: The reader renders the page but the ICB is undefined; scaling and positioning
+      are unpredictable
+  answer: d
+  explanation: rendition:viewport is deprecated. Without a per-page viewport meta,
+    the ICB is undefined. The page may render but with unpredictable dimensions. Always
+    declare the viewport in each fixed-layout page XHTML.
+  difficulty: 3
+  tags:
+  - concept
+

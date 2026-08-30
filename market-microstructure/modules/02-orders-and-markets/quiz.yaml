@@ -1,0 +1,119 @@
+- id: '2.1'
+  question: '"An instruction to trade at the best price currently available in the market." Which order type is this, and what does it cost?'
+  options:
+    a: 'An iceberg order; it pays a display fee'
+    b: 'A market order; it pays the bid/ask spread'
+    c: 'A limit order; it pays a commission only'
+    d: 'A stop order; it pays nothing until triggered'
+  answer: b
+  explanation: 'Harris defines market orders exactly this way — they demand immediacy and pay the spread (half-spread per round trip for small orders). A limit order caps price instead but does not guarantee execution; stops lie dormant until triggered; iceberg orders only hide displayed size.'
+  difficulty: 1
+  tags: [terminology]
+
+- id: '2.2'
+  question: 'What is the key difference between a stop price and a limit price?'
+  options:
+    a: 'The stop price activates the order; the limit price restricts the execution price'
+    b: 'The limit price activates the order; the stop price restricts the execution price'
+    c: 'Both prices restrict execution price, but stops work only in futures'
+    d: 'Stop prices apply to buys, limit prices apply to sells'
+  answer: a
+  explanation: 'A stop instruction "stops an order from executing until price reaches a stop price" — it is a trigger. A limit price is a cap: buys fill at or below it, sells at or above. Beginners confuse them only because both mention a price.'
+  difficulty: 1
+  tags: [concept]
+
+- id: '2.3'
+  question: 'An order marked "valid until the trader expressly cancels it" is called what?'
+  options:
+    a: 'A market-on-open order'
+    b: 'A day order'
+    c: 'An immediate-or-cancel (IOC) order'
+    d: 'A good-till-cancel (GTC) order'
+  answer: d
+  explanation: 'GTC orders live until expressly cancelled. Day orders expire at the trading day end (the broker default), IOC orders cancel any unfilled portion immediately, and market-on-open orders fill only at the session open.'
+  difficulty: 1
+  tags: [terminology]
+
+- id: '2.4'
+  question: 'How do brokers and dealers differ?'
+  options:
+    a: 'Both are agents, but brokers serve retail and dealers serve institutions'
+    b: 'Brokers take positions; dealers never take positions'
+    c: 'Brokers are agents who arrange trades for commission; dealers are principals who trade with clients from inventory'
+    d: 'Brokers trade with clients for the spread; dealers arrange trades for commission'
+  answer: c
+  explanation: 'Harris: brokers "arrange trades for their clients" and earn commissions; dealers "accommodate trades... by trading with them" and profit buy low / sell high. Dealers hold inventory and price risk, brokers hold neither.'
+  difficulty: 1
+  tags: [comparison]
+
+- id: '2.5'
+  question: 'Why does Harris call price priority "self-enforcing" while time precedence is not?'
+  options:
+    a: 'Time precedence is self-enforcing; price priority requires public order rules'
+    b: 'Traders naturally seek best prices on their own; time precedence needs rules because traders must defend their place in line'
+    c: 'Exchanges police price priority with fines; time precedence is policed by clearinghouses'
+    d: 'Both are self-enforcing because both reward first movers'
+  answer: b
+  explanation: 'Nobody needs to force traders to bid high or offer low — best prices trade first anyway ("everyone wants the best prices"). Time precedence gives no natural incentive: without the rule, traders yell "That''s my bid!" and jump the queue.'
+  difficulty: 2
+  tags: [concept]
+
+- id: '2.6'
+  question: 'In a pure quote-driven market, who supplies liquidity?'
+  options:
+    a: 'Dealers — they participate in every trade, so the public cannot trade with each other'
+    b: 'The public — standing limit orders are matched directly by precedence rules'
+    c: 'Brokers — they actively search for counterparty traders'
+    d: 'The exchange specialist alone, with no dealer quotes'
+  answer: a
+  explanation: '"In pure quote-driven markets, dealers participate in every trade" and supply all liquidity (Nasdaq, bond and currency markets). Order-driven markets match public orders directly; brokered markets rely on broker search; hybrids mix both.'
+  difficulty: 2
+  tags: [comparison]
+
+- id: '2.7'
+  question: 'Why do bid/ask spreads widen when volatility rises, in Harris''s framework?'
+  options:
+    a: 'Exchanges widen the minimum tick size during volatile periods'
+    b: 'Market orders become more expensive because stops are triggered more often'
+    c: 'Standing limit orders are free options to the market; their value rises with volatility, so traders place limits farther away'
+    d: 'Brokers raise commissions automatically when volatility increases'
+  answer: c
+  explanation: 'A standing limit order grants a free, cancelable option (sell limit = call, buy limit = put). Option value grows with volatility and expected standing time, so liquidity suppliers demand more cushion and pull quotes wider. Commissions and ticks are set separately, not by volatility.'
+  difficulty: 2
+  tags: [concept]
+
+- id: '2.8'
+  question: 'Stan holds 10 cotton at 80¢ with a stop-loss sell @ 70¢. Overnight news gaps the market to 66¢. Where does he most likely fill, and why?'
+  options:
+    a: 'Exactly at 70¢ — stop-loss orders guarantee the stop price'
+    b: 'At 70¢ only if he uses a stop-limit instead'
+    c: 'Nowhere — stops cancel when the market gaps past them'
+    d: 'Near 66.90 — the stop only triggers execution, then the order sells at market through the gap'
+  answer: d
+  explanation: 'Stop price = activation trigger, not execution price. Once activated it is a normal market order and fills where liquidity exists — far below 70¢ in a fast decline. A stop-limit would restrict the fill but might not fill at all; stops remain valid after the gap, so "nowhere" is wrong.'
+  difficulty: 2
+  tags: [scenario]
+
+- id: '2.9'
+  question: 'With 1 million traders and no brokers, potential credit relationships number ~1 trillion. With 100 brokers each holding 10,000 clients, only 2,009,900 remain. What does this arithmetic demonstrate?'
+  options:
+    a: 'Brokers interpose credit so strangers can trade — the reason order-driven markets exist'
+    b: 'Brokers reduce trading volume by a factor of 500,000'
+    c: 'Dealers guarantee every trade, so brokers are unnecessary for settlement'
+    d: 'Clearinghouses charge fees proportional to relationship counts'
+  answer: a
+  explanation: 'Brokers know clients, vouch for settlement, and hold liquidatable assets — collapsing relationships 500,000×. Trades among strangers become viable under rules. Volume, dealer guarantees, and clearinghouse fees are not what this credit arithmetic shows.'
+  difficulty: 3
+  tags: [calculation]
+
+- id: '2.10'
+  question: 'Same 9-order flow trades once in a single-price call auction and once continuously. Harris reports total trader surplus of 1.6 vs 1.0. What explains the difference?'
+  options:
+    a: 'The call auction includes fees that the continuous market rebates'
+    b: 'The call auction uses uniform pricing at the clearing price; the continuous auction uses discriminatory pricing, letting high-valuation sellers trade early to impatient buyers'
+    c: 'The call auction trades more volume, and volume always raises surplus'
+    d: 'Continuous markets use derivative pricing, which is always less efficient'
+  answer: b
+  explanation: 'Uniform pricing at one clearing price maximizes total surplus (1.6); continuous trading fills each deal at the standing order price (1.0) because Sam and Stu sold early to impatient Bif. Volume and surplus even move opposite — maximizing volume minimizes surplus; crossing networks and fees are unrelated.'
+  difficulty: 3
+  tags: [scenario]

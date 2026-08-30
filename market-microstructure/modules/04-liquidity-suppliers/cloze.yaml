@@ -1,0 +1,94 @@
+- id: c.1
+  question: 'Dealers post two prices: the {bid} at which they buy, and the ask at
+    which they sell — the ask is always higher.'
+  answer: 'bid'
+  explanation: 'Bid = price dealer buys at; ask (offering price) = price dealer sells
+    at. Sellers hit the bid, buyers take the offer, and ask minus bid is the dealer''s
+    gross margin per round trip.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: 'The difference between a dealer''s actual inventory position and the
+    position the dealer wants to hold is the {inventory imbalance}.'
+  answer: 'inventory imbalance'
+  explanation: 'Actual minus target. Dealers move quotes to close the imbalance: too
+    much stock means lower both the bid and the ask so clients rebalance him — this
+    search for a two-sided order flow is price discovery at work.'
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: c.3
+  question: 'The difference between the ask and the bid is the {bid/ask spread} —
+    "the price impatient traders pay for immediacy."'
+  answer: 'bid/ask spread'
+  explanation: 'Ask minus bid. It is gross revenue, not profit: it must cover financing,
+    wages, systems, clearing, and expected losses to informed traders before anything
+    is left over.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.4
+  question: 'The permanent part of the spread, which lets dealers earn from uninformed
+    traders what they lose to well-informed traders, is the {adverse selection} component.'
+  answer: 'adverse selection'
+  explanation: 'The adverse selection (permanent) component recovers informed-trader
+    losses and produces random-walk price changes; the other component, transaction
+    cost (transitory), pays business costs and causes the bid/ask bounce. In most markets
+    adverse selection is the larger of the two.'
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: 'In the Glosten–Milgrom model the adverse selection spread component equals
+    {2·P·E} — the same under the information view and the accounting view.'
+  answer: '2·P·E'
+  explanation: 'P = probability the next trader is informed, E = size of the informed
+    signal. Conditional values V + P·E (buyer) and V − P·E (seller) differ by 2·P·E,
+    and the average-loss accounting derivation gives the identical number.'
+  difficulty: 2
+  tags:
+  - formula
+- id: c.6
+  question: 'The search for prices that produce a two-sided order flow — a mix of
+    buyers and sellers in equal quantities — is the {price discovery process}.'
+  answer: 'price discovery process'
+  explanation: 'Dealers set quotes to attract balanced flow; the price that achieves
+    it is the market value. Informed traders, by contrast, know fundamental value.'
+  difficulty: 2
+  tags:
+  - process
+  - concept
+- id: c.7
+  question: 'A {block} trade results from an order too large to fill using normal
+    trading procedures — NYSE''s statistical cutoff is 10,000 shares.'
+  answer: 'block'
+  explanation: 'Practitioners call an order a block when it exceeds about a quarter
+    of a day''s average volume in an active stock. Blocks cannot be filled on-screen,
+    which is why they need block dealers and block brokers.'
+  difficulty: 2
+  tags:
+  - terminology
+- id: c.8
+  question: 'Blocks are negotiated off-exchange in the {upstairs market}, mostly by
+    telephone, where reputation substitutes for anonymity.'
+  answer: 'upstairs market'
+  explanation: 'Block trading faces four problems — latent demand, order exposure,
+    price discrimination, and asymmetric information — that price-and-size matching
+    on-screen cannot solve; credible self-disclosure among known counterparties can.'
+  difficulty: 3
+  tags:
+  - concept
+  - comparison
+- id: c.9
+  question: 'Liquidity''s three dimensions are {immediacy} (how fast), width (how
+    cheap), and depth (how large); a looser fourth is resiliency.'
+  answer: 'immediacy'
+  explanation: '"Liquidity is the ability to trade large size quickly, at low cost,
+    when you want to trade." Dealers supply immediacy, value traders supply depth and
+    resiliency — a tight quote alone is only width for small size.'
+  difficulty: 3
+  tags:
+  - terminology
+  - concept

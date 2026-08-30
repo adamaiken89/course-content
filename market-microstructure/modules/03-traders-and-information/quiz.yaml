@@ -1,0 +1,173 @@
+- id: '3.1'
+  question: According to Harris, an informed trader does what?
+  options:
+    a: Buys when the price is below their estimate of fundamental value and sells
+      when it is above
+    b: Trades only on information leaked from company managers
+    c: Supplies liquidity to impatient traders by quoting bid and ask prices
+    d: Predicts the trades that uninformed traders will make later and trades first
+  answer: a
+  explanation: Informed traders "acquire and act on information about fundamental
+    values" — buying cheap versus their estimate, selling dear. (b) describes illegal
+    insiders, not informed traders in general; (c) is a dealer or value trader's liquidity
+    role; (d) defines a sentiment-oriented technical trader.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '3.2'
+  question: Which form of market efficiency means prices reflect all publicly available
+    information?
+  options:
+    a: Weak-form efficiency
+    b: Semistrong-form efficiency
+    c: Strong-form efficiency
+    d: Microstructure efficiency
+  answer: b
+  explanation: 'Semistrong = all public info; weak = only past-price info; strong
+    = public plus private info (realistic only where value is common knowledge, like
+    a five-dollar bill market). Harris''s microstructure definition is broader still:
+    all info traders can acquire and profitably trade upon.'
+  difficulty: 1
+  tags:
+  - terminology
+  - comparison
+- id: '3.3'
+  question: 'Armand Hammer dies after a long illness; Occidental Petroleum jumps 10%
+    next day, then gives back the entire gain the following day. The traders who bought
+    the pop were:'
+  options:
+    a: Pseudo-informed traders acting on information already in the price
+    b: Quote matchers extracting the option value of standing orders
+    c: Value traders acting on fresh fundamental information
+    d: Arbitrageurs exploiting a relative mispricing
+  answer: a
+  explanation: The death was long expected and carried no new material information
+    — the pop was stale news already digested by the market. Pseudo-informed traders
+    "think that they are well informed, but in fact they are not"; value traders sold
+    to them as price reverted.
+  difficulty: 1
+  tags:
+  - scenario
+  - concept
+- id: '3.4'
+  question: 'The winner''s curse implies that when facing many bidders and an uncertain
+    value, you should:'
+  options:
+    a: Bid exactly at your estimate
+    b: Never bid, because all auctions are rigged
+    c: Bid more aggressively to make sure you win
+    d: Bid less aggressively — shave your estimate further
+  answer: d
+  explanation: 'In common-value auctions the highest bidders are systematically the
+    overestimators — you learn your estimate was high by winning. Harris: "better
+    to lose than to win and pay too much." Oil and gas lessees overpaid for the tracts
+    they won until they learned to bid below estimate.'
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.5'
+  question: Why do dealers widen their spreads when informed traders become active
+    in a stock?
+  options:
+    a: Because of adverse selection — they fear supplying liquidity to traders who
+      know more
+    b: Because exchanges raise fees on informed order flow
+    c: Because informed traders pay dealers higher commissions
+    d: Because wider spreads are required by regulation in volatile stocks
+  answer: a
+  explanation: 'Informed counterparties make dealer losses likely, so dealers recoup
+    through wider spreads — the adverse-selection response. The knock-on chain: uninformed
+    traders find trading expensive, avoid the market, and liquidity retreats. (b),
+    (c), and (d) are not mechanisms in the book.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.6'
+  question: 'A trader spots a huge standing buy limit order at 20.00, buys at 20.01
+    hoping to sell into that order as it lifts, and keeps upside unbounded with downside
+    of one cent. This tactic is called:'
+  options:
+    a: Wash trading
+    b: Gunning the market
+    c: Quote matching (penny jumping)
+    d: Cornering the market
+  answer: c
+  explanation: 'Quote matching trades in front of large standing limit orders to extract
+    the free option those orders give — the return profile is option-like: unbounded
+    gain, capped (one-cent) loss. Gunning targets stop orders, corners monopolize
+    supply, wash trades are artificial trades with confederates.'
+  difficulty: 2
+  tags:
+  - scenario
+  - terminology
+- id: '3.7'
+  question: 'A PairGain employee posts a fake Bloomberg takeover story; the stock
+    runs from $8½ to $11⅛ on 10x normal volume before falling back. He is arrested
+    — and never traded the stock. His technique is that of a:'
+  options:
+    a: Squeezer who cornered the deliverable supply
+    b: Front runner who jumped a large market order
+    c: Price manipulator running wash trades with a confederate
+    d: Rumormonger spreading false information
+  answer: d
+  explanation: 'He spread false information rather than arranging trades — pure rumormonging.
+    Manipulation does not require the bluffer to trade: victims'' orders move the
+    price. There were no artificial trades (wash trades), no monopoly on supply (corner),
+    and no known order to trade ahead of.'
+  difficulty: 2
+  tags:
+  - scenario
+  - terminology
+- id: '3.8'
+  question: Which pairing of trader type and behavior is correct?
+  options:
+    a: Value trader — predicts how value changes the instant new information arrives
+    b: Value trader — uses all available info and supplies liquidity when uninformed
+      flow pushes price off value
+    c: Arbitrageur — profits when the prices of related instruments diverge further
+    d: News trader — estimates the whole fundamental value from all available information
+  answer: b
+  explanation: Value traders estimate whole fundamental value and act as liquidity
+    suppliers of last resort — so (b) is correct. (a) gives the news trader's job
+    to the value trader, (d) swaps the two back, and (c) has arbitrageurs profiting
+    when related prices diverge — they profit when prices converge.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '3.9'
+  question: 'LTCM in 1998 held $125 billion of assets on $4.1 billion of equity; after
+    the Russia default forced liquidation, its positions were judged "still attractive"
+    — yet the firm died. The core lesson is:'
+  options:
+    a: Model risk — their fair-value calculations were simply wrong
+    b: Lack of staying power — extreme leverage left no financing to hold through
+      adverse moves
+    c: Insider trading — regulators shut them down
+    d: Pure arbitrage never converges, so the trades were doomed
+  answer: b
+  explanation: 'Spreads widened, margin calls arrived, and forced selling happened
+    exactly when the arbitrage was most attractive — the firm could not finance the
+    wait. Not bad analysis (the positions were still good) and not pure-arb failure:
+    the flaw was leverage, i.e., no staying power.'
+  difficulty: 3
+  tags:
+  - scenario
+  - concept
+- id: '3.10'
+  question: A bluffer buys 4,000 contracts at an average of 12.5 and sells 4,000 at
+    an average of 12.875; each contract represents $1,000 of units. What is the profit?
+  options:
+    a: $15,000
+    b: $375,000
+    c: $1,500,000
+    d: $3,000,000
+  answer: c
+  explanation: Edge per contract = 12.875 − 12.5 = $0.375; profit = 4,000 × $0.375
+    × $1,000 units = $1.5 million, option (c). (d) is the loss from the book's symmetric-impact
+    counter-example; (a) and (b) each drop part of the multiplication.
+  difficulty: 3
+  tags:
+  - calculation
+  - scenario
+

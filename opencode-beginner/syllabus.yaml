@@ -1,0 +1,81 @@
+subject: "opencode Beginner — AI-Assisted Development Fundamentals"
+language: en
+time_budget_hours: 12
+target_level: beginner
+domain: "Software Engineering / AI-assisted Development"
+prerequisites:
+  - "Basic CLI knowledge"
+  - "Familiarity with git"
+  - "Some experience with LLM-based chat tools"
+learning_objectives:
+  - "Understand what agentic development is and when it adds value"
+  - "Install and configure opencode for daily use"
+  - "Navigate sessions, commands, and basic workflows"
+  - "Explain the agentic loop and how opencode processes requests"
+  - "Use the memory system (AGENTS.md) to persist project knowledge"
+  - "Describe opencode's architecture at a high level"
+  - "Understand MCP as a standard protocol for external tools"
+  - "Know what Skills, Hooks, and Plugins are and when to use them"
+  - "Configure agents and permissions for safe operation"
+  - "Apply safety guardrails and rollback strategies"
+
+modules:
+  - id: 1
+    name: "What is Agentic Development?"
+    time_hours: 1.0
+    prerequisites: []
+    topics: [agentic-concept, manual-vs-agentic, when-to-use, mental-model]
+
+  - id: 2
+    name: "Installation & Setup"
+    time_hours: 1.0
+    prerequisites: [1]
+    topics: [installation, configuration, first-session, provider-setup]
+
+  - id: 3
+    name: "Sessions & Built-in Commands"
+    time_hours: 1.0
+    prerequisites: [2]
+    topics: [session-management, slash-commands, keyboard-shortcuts, tips]
+
+  - id: 4
+    name: "The Agentic Loop"
+    time_hours: 1.5
+    prerequisites: [3]
+    topics: [loop-mechanics, tool-calling, provider-turns, context-epoch]
+
+  - id: 5
+    name: "Memory System"
+    time_hours: 1.0
+    prerequisites: [3]
+    topics: [AGENTS.md, CLAUDE.md, instruction-hierarchy, project-memory]
+
+  - id: 6
+    name: "Architecture Overview"
+    time_hours: 1.5
+    prerequisites: [4]
+    topics: [four-layer-model, packages, key-interfaces, request-flow]
+
+  - id: 7
+    name: "MCP — Model Context Protocol"
+    time_hours: 1.0
+    prerequisites: [6]
+    topics: [mcp-concept, stdio-transport, config, tool-discovery]
+
+  - id: 8
+    name: "Skills, Hooks & Plugins"
+    time_hours: 1.0
+    prerequisites: [6]
+    topics: [skill-format, hook-events, plugin-api, when-to-use-what]
+
+  - id: 9
+    name: "Agents & Permissions"
+    time_hours: 1.5
+    prerequisites: [7, 8]
+    topics: [agent-modes, permission-rules, subagents, safe-defaults]
+
+  - id: 10
+    name: "Safety & Guardrails"
+    time_hours: 1.0
+    prerequisites: [9]
+    topics: [destructive-ops, rollback, permission-boundaries, best-practices]

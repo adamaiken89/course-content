@@ -1,0 +1,82 @@
+[
+  {
+    "id": "c.1",
+    "question": "The /init command creates a {blank} file by analyzing your codebase.",
+    "answer": "CONVENTIONS.md",
+    "explanation": "/init generates .opencode/CONVENTIONS.md with your project's coding standards.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "c.2",
+    "question": "Use {blank} to summarize conversation history without losing key information.",
+    "answer": "/compact",
+    "explanation": "/compact summarizes older messages to free context space while preserving important details.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "c.3",
+    "question": "File writes require {blank} before execution, but reads do not.",
+    "answer": "confirmation",
+    "explanation": "opencode asks for confirmation before writing files because writes make permanent changes.",
+    "difficulty": 2,
+    "tags": ["concept"]
+  },
+  {
+    "id": "c.4",
+    "question": "The /share command generates a {blank} URL of your session.",
+    "answer": "web view",
+    "explanation": "/share creates a web-accessible view for code review or getting help.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "c.5",
+    "question": "When the context window fills, opencode {blank} automatically to free space.",
+    "answer": "compacts",
+    "explanation": "opencode compacts conversation history when the context window reaches capacity.",
+    "difficulty": 2,
+    "tags": ["concept"]
+  },
+  {
+    "id": "c.6",
+    "question": "Permission options for shell commands are: y (allow once), n (deny), or {blank} (allow pattern).",
+    "answer": "always",
+    "explanation": "The 'always' option permanently allows this command pattern in future sessions.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "c.7",
+    "question": "Resume a previous session with opencode --{blank} or opencode --session <id>.",
+    "answer": "resume",
+    "explanation": "--resume restores the last session, while --session <id> restores a specific session.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "c.8",
+    "question": "Session history is stored in a {blank} database for persistence.",
+    "answer": "SQLite",
+    "explanation": "Sessions are persisted in SQLite, allowing resumption and history review.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "c.9",
+    "question": "opencode detects your {blank} repository and loads project configuration on startup.",
+    "answer": "git",
+    "explanation": "opencode automatically detects git repositories and assembles project context.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "c.10",
+    "question": "Use /{blank} to start a fresh conversation while keeping the session open.",
+    "answer": "clear",
+    "explanation": "/clear removes conversation history without closing the session.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  }
+]

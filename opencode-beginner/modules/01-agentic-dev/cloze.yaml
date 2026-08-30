@@ -1,0 +1,82 @@
+[
+  {
+    "id": "c.1",
+    "question": "In agentic development, the human developer acts as the {blank} while the AI agent acts as the builder.",
+    "answer": "architect",
+    "explanation": "The human provides direction and judgment (architect), while the agent handles the labor of writing code (builder). This is the core mental model of agentic development.",
+    "difficulty": 1,
+    "tags": ["concept", "terminology"]
+  },
+  {
+    "id": "c.2",
+    "question": "A {blank} is the system that controls how an agent operates — including tools, permissions, workflows, and memory.",
+    "answer": "harness",
+    "explanation": "The harness is the infrastructure around the model. The same model in different harnesses performs differently. opencode is an example of a harness.",
+    "difficulty": 2,
+    "tags": ["terminology", "concept"]
+  },
+  {
+    "id": "c.3",
+    "question": "Agents excel at {blank} tasks that are repetitive and well-defined, but struggle with novel algorithms and security-critical code.",
+    "answer": "repetitive",
+    "explanation": "Repetitive tasks with clear patterns (like CRUD endpoints, test cases, boilerplate) are ideal for agents because the pattern is predictable and verifiable.",
+    "difficulty": 1,
+    "tags": ["concept", "scenario"]
+  },
+  {
+    "id": "c.4",
+    "question": "The golden rule of agentic development: never approve what you don't {blank}.",
+    "answer": "understand",
+    "explanation": "If you can't explain the code, you can't maintain it. Rubber-stamping agent output creates a maintenance nightmare and a 3 AM debugging crisis.",
+    "difficulty": 1,
+    "tags": ["concept", "best-practice"]
+  },
+  {
+    "id": "c.5",
+    "question": "opencode gives agents four key capabilities: memory, tools, {blank}, and skills.",
+    "answer": "permissions",
+    "explanation": "opencode provides memory (project context), tools (read/write/edit/search), permissions (safety guardrails), and skills (reusable workflows) to agents.",
+    "difficulty": 2,
+    "tags": ["terminology", "concept"]
+  },
+  {
+    "id": "c.6",
+    "question": "In the mental model, the agent is like a {blank} developer with superpowers — fast and knowledgeable, but lacks business context.",
+    "answer": "junior",
+    "explanation": "The agent is like a junior developer: fast, knowledgeable, tireless, but doesn't understand your business context and can hallucinate. The human is the senior developer providing guidance.",
+    "difficulty": 2,
+    "tags": ["concept", "analogy"]
+  },
+  {
+    "id": "c.7",
+    "question": "When an agent produces code that compiles but is wrong, insecure, or inefficient, this is called {blank}.",
+    "answer": "hallucination",
+    "explanation": "Agents hallucinate — they confidently produce code that looks correct but isn't. This is why review is essential, even when the code compiles and runs.",
+    "difficulty": 2,
+    "tags": ["terminology", "concept"]
+  },
+  {
+    "id": "c.8",
+    "question": "The model is the brain that generates code; the {blank} is the infrastructure that controls how the agent operates.",
+    "answer": "harness",
+    "explanation": "The model (GPT-4, Claude) generates code. The harness (opencode) provides tools, permissions, memory, and workflows. Same brain in different harnesses performs differently.",
+    "difficulty": 2,
+    "tags": ["terminology", "concept"]
+  },
+  {
+    "id": "c.9",
+    "question": "Agentic development is not 'AI does everything' — it's 'AI does the {blank}, you provide the judgment.'",
+    "answer": "labor",
+    "explanation": "Agentic development is collaboration, not replacement. The agent handles the repetitive labor; the human provides direction, judgment, and review.",
+    "difficulty": 1,
+    "tags": ["concept", "misconception"]
+  },
+  {
+    "id": "c.10",
+    "question": "Stick to manual coding for {blank} algorithms, security-critical code, and performance-tuned paths.",
+    "answer": "novel",
+    "explanation": "Novel algorithms (no one has solved this before), security-critical code, and performance-tuned paths require human expertise and full understanding. Don't delegate what you can't verify.",
+    "difficulty": 1,
+    "tags": ["concept", "scenario"]
+  }
+]

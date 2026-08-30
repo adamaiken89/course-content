@@ -1,0 +1,121 @@
+- id: '8.1'
+  question: Skills 係點載入嘅？
+  options:
+    a: 每 5 分鐘自動刷新
+    b: 按需（agent call skill tool）
+    c: 啟動時自動載入所有
+    d: 用戶手動 import
+  answer: b
+  explanation: Skills 係按需加載，agent 睇到可用列表，需要先 call skill tool。
+  difficulty: 1
+  tags:
+  - concept
+- id: '8.2'
+  question: SKILL.md 嘅檔名有咩要求？
+  options:
+    a: 大小寫都得
+    b: 必須叫 README.md
+    c: 必須全大寫 SKILL.md
+    d: 必須小寫 skill.md
+  answer: c
+  explanation: SKILL.md 必須全大寫，否则 opencode 搵唔到。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.3'
+  question: Plugins 喺幾時載入？
+  options:
+    a: opencode 啟動時自動
+    b: agent call 時先載入
+    c: 用戶手動啟動
+    d: 每次 prompt 後重新載入
+  answer: a
+  explanation: Plugins 喺 opencode 啟動時自動加載，唔需要手動觸發。
+  difficulty: 1
+  tags:
+  - concept
+- id: '8.4'
+  question: 想攔截 shell 執行前嘅環境變數，用邊個 event？
+  options:
+    a: tool.execute.before
+    b: session.created
+    c: permission.asked
+    d: shell.env
+  answer: d
+  explanation: shell.env event 喺 shell 執行前觸發，可以用嚟注入環境變數。
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.5'
+  question: Plugin 放喺邊個目錄會自動載入？
+  options:
+    a: .opencode/plugins/
+    b: .opencode/skills/
+    c: .opencode/hooks/
+    d: .opencode/tools/
+  answer: a
+  explanation: Plugins 放 .opencode/plugins/ 或 ~/.config/opencode/plugins/ 會自動載入。
+  difficulty: 2
+  tags:
+  - terminology
+- id: '8.6'
+  question: 如果 Plugin 同 built-in tool 同名，邊個優先？
+  options:
+    a: 報錯
+    b: Plugin tool
+    c: Built-in tool
+    d: 兩個都載入
+  answer: b
+  explanation: Plugin tool 同名時會覆蓋 built-in tool。
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.7'
+  question: 以下邊個唔係 Plugin 可以做嘅嘢？
+  options:
+    a: 按需加載指令集
+    b: 攔截 tool execution
+    c: 注入環境變數
+    d: 加自訂 tools
+  answer: a
+  explanation: 按需加載指令集係 Skill 嘅功能，Plugin 係自動加載嘅 event-driven 模組。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '8.8'
+  question: npm plugins 嘅 dependencies 喺邊度安裝？
+  options:
+    a: 全局 npm install
+    b: ~/.cache/opencode/node_modules/
+    c: 項目嘅 node_modules/
+    d: ~/.config/opencode/node_modules/
+  answer: b
+  explanation: npm plugins 用 Bun 自動安裝，cache 喺 ~/.cache/opencode/node_modules/。
+  difficulty: 3
+  tags:
+  - concept
+- id: '8.9'
+  question: 想畀特定 agent 用某個 Skill，點做？
+  options:
+    a: 喺 agent prompt 寫 use skill
+    b: 冇辦法，Skill 全局可用
+    c: 改 Skill 嘅 frontmatter
+    d: 用 per-agent permission 配置
+  answer: d
+  explanation: 用 permission 配置可以控制邊個 agent 可以用邊個 Skill。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '8.10'
+  question: Plugins 嘅載入順序係？
+  options:
+    a: 全部同時載入
+    b: 隨機順序
+    c: 全局 config → 項目 config → 全局 plugins → 項目 plugins
+    d: 項目 plugins → 全局 plugins → 項目 config → 全局 config
+  answer: c
+  explanation: 載入順序：全局 config → 項目 config → 全局 plugins → 項目 plugins。
+  difficulty: 3
+  tags:
+  - concept
+

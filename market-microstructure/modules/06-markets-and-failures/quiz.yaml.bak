@@ -1,0 +1,135 @@
+- id: '6.1'
+  question: 'What does Harris'' definition require of a specialist?'
+  options:
+    a: Guarantee firm quotes for unlimited size and support prices when values fall
+    b: Report every client order to the exchange within one hour
+    c: Trade only when no other trader is willing to deal
+    d: Continuously quote two-sided markets so markets always exist in their specialties,
+      keeping markets orderly
+  answer: d
+  explanation: 'Specialists must quote two-sided markets, keep them orderly, and stop prices from jumping too quickly — but they are not required to quote big blocks or prop up falling values, and they trade actively rather than only in emergencies.'
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '6.2'
+  question: 'What does the public liquidity preservation principle require of specialists?'
+  options:
+    a: They must accept every market order of any size
+    b: They may not fill standing public limit orders for their own account
+    c: They must display their entire limit order book to all traders
+    d: They must match the best quotes posted on rival exchanges
+  answer: b
+  explanation: 'The principle protects limit traders'' ability to cancel when news moves the market: specialists trade only with incoming marketable orders unless they improve the price. Rival-quote matching and unlimited size are not part of the rule — affirmative obligations only require a reasonable market.'
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '6.3'
+  question: 'A dealer fills a client''s order from its own book instead of sending it to an exchange. What is this called?'
+  options:
+    a: Preferencing
+    b: Internalization
+    c: Cream skimming
+    d: Crossing
+  answer: b
+  explanation: 'Internalization is dealers filling their own clients'' orders away from the organized market. Preferencing means routing orders to a chosen dealer for payments for order flow, crossing means matching two of your own clients, and cream skimming is a specialist selectively filling only desired orders.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.4'
+  question: 'What is the order flow externality?'
+  options:
+    a: Each trader who joins adds liquidity, attracting more traders, so markets consolidate
+      naturally toward winner-take-all
+    b: Every market order shifts the price by an amount set by the exchange
+    c: Regulators must route orders between competing market centers
+    d: Dealers pay a tax on the order flow they internalize
+  answer: a
+  explanation: 'It is a network externality — "the value of a system to a user increases as more people use the system" — so liquidity attracts liquidity and one system can grow large enough that no rival can catch up, as with Optimark''s $406 million deficit.'
+  difficulty: 1
+  tags:
+  - concept
+  - terminology
+- id: '6.5'
+  question: 'In a price-weighted index such as the DJIA, which stocks dominate the index move?'
+  options:
+    a: The highest-priced shares
+    b: Shares held mostly by institutional investors
+    c: Every stock counts equally by number of shares
+    d: The largest companies by total market value
+  answer: a
+  explanation: 'A price-weighted index is "proportional to the sum of the prices of the index components," so a high-priced stock moves it more — that describes the DJIA and Nikkei 225. The S&P 500 is value-weighted, where the biggest firms dominate; most indexes are value-weighted.'
+  difficulty: 2
+  tags:
+  - comparison
+  - terminology
+- id: '6.6'
+  question: 'Portfolio insurance covered about $100 billion with a typical delta of 0.4 and an average share price of $40. How many shares must be sold when the market drops 1%?'
+  options:
+    a: 4 million
+    b: 10 million
+    c: 25 million
+    d: 160 million
+  answer: b
+  explanation: '0.4 × 1% × $100 billion = $400 million ÷ $40 = 10 million shares, versus a daily volume of 160 million shares. The 25 million figure would ignore the delta (1% of $100 billion ÷ $40), and 160 million is the whole day''s volume, not the forced sales.'
+  difficulty: 2
+  tags:
+  - calculation
+  - formula
+- id: '6.7'
+  question: 'Internalization and preferencing mainly harm which traders?'
+  options:
+    a: Brokers who route client orders
+    b: Small uninformed market-order traders
+    c: Public limit order traders and aggressive quoters
+    d: Dealers who pay for order flow
+  answer: c
+  explanation: 'Diverting easy orders away from displayed books leaves limit orders filling less often with worse adverse selection, and aggressive quoters lose the flow their quotes were meant to attract — so displayed quotes widen. Small uninformed traders actually gain, via low commissions and price improvement.'
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+- id: '6.8'
+  question: 'What is the trading floor''s unique advantage over automated screens, per Chapter 27?'
+  options:
+    a: Lower operating costs per transaction
+    b: Flawless audit trails of every order
+    c: Informational liquidity — screening counterparties, credible size signals,
+      knowledge of latent traders
+    d: Faster completion of a trade once it is matched
+  answer: c
+  explanation: 'The floor is where traders exchange information about each other — avoiding well-informed counterparties and signaling size credibly through reputation — which screens cannot replicate. Screens win on audit trails, completion speed, and cost, and the floor''s survival does not prove superiority because of the order flow externality.'
+  difficulty: 2
+  tags:
+  - comparison
+  - concept
+- id: '6.9'
+  question: 'A 10% DJIA decline would trigger a one-hour trading halt. What does the gravitational effect predict?'
+  options:
+    a: Traders rush orders forward to execute before the halt, raising volatility
+      as the trigger nears
+    b: Order flow calms down as everyone waits patiently for the restart
+    c: Prices become more informative while trading is stopped
+    d: Index arbitrage becomes cheaper because futures stop moving
+  answer: a
+  explanation: 'Fear of being trapped by a halt pulls orders earlier, piling volatility into the approach to the trigger. Meanwhile prices are less informative while halted, since halts slow fundamental price adjustment, and their effect on transitory volatility is theoretically indeterminate.'
+  difficulty: 3
+  tags:
+  - scenario
+  - concept
+- id: '6.10'
+  question: 'Winans earned $600,000 trading on his newspaper column''s unpublished content while being paid $31,000 to write it. Under which doctrine was he convicted, and which trade below is legal?'
+  options:
+    a: Tipping; an analyst's private conclusion drawn only from public filings
+    b: 'The Chiarella doctrine; any executive trade disclosed to the SEC within 10
+      days'
+    c: Misappropriation; all insider trading, because it is illegal in every country
+    d: Misappropriation; an insider trading under a prearranged trading program after
+      public disclosure
+  answer: d
+  explanation: 'Winans was convicted on 59 counts under the misappropriation doctrine — trading on information belonging to his employer. Legal insider trading exists: trades after public disclosure, corporate trading windows, and prearranged trading programs; analysts working from public data are informed, not insider, and only the US, Canada, and GB seriously enforce the laws.'
+  difficulty: 3
+  tags:
+  - scenario
+  - concept

@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: "Complete: The first entry in an EPUB ZIP is the {mimetype} file with exact content 'application/epub+zip'."
+  answer: "mimetype"
+  explanation: "Uncompressed, no extra field, first entry. This is the byte-sniff contract."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: The XML file that points to the root package document is {container.xml} in the META-INF folder."
+  answer: "container.xml"
+  explanation: "container.xml holds a <rootfile full-path='...'/> element pointing to the OPF."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: The OPF property that activates fixed layout for the whole book is {rendition:layout} with value 'pre-paginated'."
+  answer: "rendition:layout"
+  explanation: "The property is rendition:layout; the value is 'pre-paginated' or 'reflowable'."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Complete: The manifest property that marks an image as the book cover is {cover-image}."
+  answer: "cover-image"
+  explanation: "properties='cover-image' on the manifest <item> tells the reader to use this image in the library view."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Complete: The manifest property that marks the navigation document is {nav}."
+  answer: "nav"
+  explanation: "properties='nav' on the manifest <item> for nav.xhtml."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "Complete: A spine entry uses {idref} to reference a manifest item by its id."
+  answer: "idref"
+  explanation: "<itemref idref='cover'/> references the manifest item with id='cover'."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Complete: A page XHTML declares its ICB using the {<meta name='viewport'>} element in the head."
+  answer: "<meta name='viewport'>"
+  explanation: "The first viewport meta in the head wins. content='width=W, height=H' sets the ICB."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Complete: The zip command flag combination {-X0} stores the mimetype uncompressed and strips the extra field."
+  answer: "-X0"
+  explanation: "-X strips extra field; -0 means store (no compression)."
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.9"
+  question: "Complete: The <nav> element in nav.xhtml carries the attribute {epub:type='toc'} to mark the table of contents."
+  answer: "epub:type='toc'"
+  explanation: "epub:type='toc' is the EPUB 3 vocabulary marker for the table of contents."
+  difficulty: 2
+  tags: [terminology]

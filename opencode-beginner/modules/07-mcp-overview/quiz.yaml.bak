@@ -1,0 +1,120 @@
+- id: "7.1"
+  question: "MCP 嘅全稱係咩？"
+  options:
+    a: "Model Context Protocol"
+    b: "Multi-Channel Process"
+    c: "Managed Code Pipeline"
+    d: "Model Connection Platform"
+  answer: a
+  explanation: "MCP = Model Context Protocol，一個開放標準協議。"
+  difficulty: 1
+  tags:
+    - terminology
+- id: "7.2"
+  question: "MCP 嘅三大組件係邊三個？"
+  options:
+    a: "Host, Client, Server"
+    b: "Agent, Tool, Provider"
+    c: "Input, Process, Output"
+    d: "Request, Response, Handler"
+  answer: a
+  explanation: "MCP Host（發起連接嘅 AI 應用）、MCP Client（協議處理器）、MCP Server（提供工具嘅外部服務）。"
+  difficulty: 1
+  tags:
+    - terminology
+- id: "7.3"
+  question: "Local MCP Server 用咩方式通訊？"
+  options:
+    a: "stdio"
+    b: "HTTP"
+    c: "WebSocket"
+    d: "gRPC"
+  answer: a
+  explanation: "Local MCP Server 透過 stdio 通訊，需要本地 runtime。"
+  difficulty: 2
+  tags:
+    - concept
+- id: "7.4"
+  question: "Remote MCP Server 通常需要咩認證方式？"
+  options:
+    a: "OAuth"
+    b: "SSH Key"
+    c: "Certificate"
+    d: "Basic Auth only"
+  answer: a
+  explanation: "Remote MCP Server 通常用 OAuth 認證，opencode 支援自動 OAuth 流程。"
+  difficulty: 2
+  tags:
+    - concept
+- id: "7.5"
+  question: "MCP tools 嘅命名規則係？"
+  options:
+    a: "{serverName}_{toolName}"
+    b: "{toolName}.{serverName}"
+    c: "{serverName}-{toolName}"
+    d: "{type}_{serverName}_{toolName}"
+  answer: a
+  explanation: "MCP tools 自動加前綴：{serverName}_{toolName}。"
+  difficulty: 2
+  tags:
+    - concept
+- id: "7.6"
+  question: "你加咗 MCP Server，但成日話 context 不夠。最可能原因？"
+  options:
+    a: "太多 MCP tools 佔 context"
+    b: "MCP Server 速度太慢"
+    c: "opencode 版本太舊"
+    d: "API key 過期"
+  answer: a
+  explanation: "每個 MCP tool 嘅 description 會佔 context window，太多 tools 會溢出。"
+  difficulty: 2
+  tags:
+    - scenario
+- id: "7.7"
+  question: "想淨係畀 debug-agent 用 Sentry MCP，點做？"
+  options:
+    a: "全局 disable Sentry，per-agent enable 喺 debug-agent"
+    b: "喺 Sentry config 加 agent: debug-agent"
+    c: "喺 debug-agent prompt 寫 use sentry"
+    d: "冇辦法，MCP 只能全局 enable"
+  answer: a
+  explanation: "用 tools 欄位全局 disable（sentry_*: false），再喺 agent config enable（tools: { sentry_*: true }）。"
+  difficulty: 3
+  tags:
+    - scenario
+- id: "7.8"
+  question: "以下邊個係 Remote MCP Server 嘅例子？"
+  options:
+    a: "Sentry MCP"
+    b: "本地 git 操作工具"
+    c: "文件系統管理器"
+    d: "本地數據庫 client"
+  answer: a
+  explanation: "Sentry MCP 係遠端雲端服務，透過 HTTP 通訊。其他選項都係本地工具，適合 Local MCP。"
+  difficulty: 1
+  tags:
+    - concept
+- id: "7.9"
+  question: "opencode 用咩命令查看 MCP Server 嘅連接狀態？"
+  options:
+    a: "opencode mcp list"
+    b: "opencode mcp status"
+    c: "opencode mcp show"
+    d: "opencode mcp info"
+  answer: a
+  explanation: "opencode mcp list 列出所有 MCP Server 同佢哋嘅 auth status。"
+  difficulty: 1
+  tags:
+    - terminology
+- id: "7.10"
+  question: "如果你想 MCP Server 嘅 tools 只喺特定 prompt 先出現，應該用咩方法？"
+  options:
+    a: "Per-agent 配置 enable/disable"
+    b: "設定 timeout"
+    c: "改 MCP Server 嘅 URL"
+    d: "用唔同嘅 API key"
+  answer: a
+  explanation: "Per-agent 配置可以控制邊個 agent 用邊個 MCP tools，實現按需啟用。"
+  difficulty: 3
+  tags:
+    - scenario

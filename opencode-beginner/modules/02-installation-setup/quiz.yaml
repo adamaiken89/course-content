@@ -1,0 +1,142 @@
+[
+  {
+    "id": "2.1",
+    "question": "What is the recommended installation method for opencode?",
+    "options": {
+      "a": "pip install opencode",
+      "b": "npm install -g opencode",
+      "c": "brew install opencode",
+      "d": "cargo install opencode"
+    },
+    "answer": "b",
+    "explanation": "npm install -g opencode is recommended because it provides automatic updates and is the simplest path for most developers.",
+    "difficulty": 1,
+    "tags": ["terminology", "concept"]
+  },
+  {
+    "id": "2.2",
+    "question": "Which configuration file has the HIGHEST priority in opencode?",
+    "options": {
+      "a": "opencode.json in project root",
+      "b": ".opencode/opencode.json",
+      "c": "~/.config/opencode/opencode.json",
+      "d": "Built-in defaults"
+    },
+    "answer": "c",
+    "explanation": "Global config (~/.config/opencode/opencode.json) has highest priority, overriding project-level config.",
+    "difficulty": 2,
+    "tags": ["concept", "comparison"]
+  },
+  {
+    "id": "2.3",
+    "question": "What is the correct format for specifying a model in opencode.json?",
+    "options": {
+      "a": "claude-sonnet-4-20250514",
+      "b": "anthropic/claude-sonnet-4-20250514",
+      "c": "anthropic:claude-sonnet-4-20250514",
+      "d": "sonnet-4"
+    },
+    "answer": "b",
+    "explanation": "Models must be specified as 'provider/model' — the provider prefix tells opencode which API endpoint to use.",
+    "difficulty": 1,
+    "tags": ["terminology", "concept"]
+  },
+  {
+    "id": "2.4",
+    "question": "When do environment variables take precedence over opencode.json settings?",
+    "options": {
+      "a": "Never — config files always win",
+      "b": "Only when OPENCODE_DISABLE_PROJECT_CONFIG is set",
+      "c": "Always — env vars override config files",
+      "d": "Only for API keys, not for model selection"
+    },
+    "answer": "c",
+    "explanation": "Environment variables always override file-based configuration. This is the standard precedence rule.",
+    "difficulty": 2,
+    "tags": ["concept", "comparison"]
+  },
+  {
+    "id": "2.5",
+    "question": "Why might you use different models for different agents?",
+    "options": {
+      "a": "To make the configuration more complex",
+      "b": "To optimize cost and capability per task",
+      "c": "Because opencode requires it",
+      "d": "To prevent agents from accessing the same files"
+    },
+    "answer": "b",
+    "explanation": "Different agents have different needs — planning might benefit from a larger model, while exploration can use a faster, cheaper one.",
+    "difficulty": 2,
+    "tags": ["concept", "scenario"]
+  },
+  {
+    "id": "2.6",
+    "question": "What does opencode create in your project directory on first run?",
+    "options": {
+      "a": "A .gitignore file",
+      "b": "A node_modules directory",
+      "c": "A .opencode/ directory",
+      "d": "A package.json file"
+    },
+    "answer": "c",
+    "explanation": "opencode creates .opencode/ to store project-specific configuration and session data.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "2.7",
+    "question": "Which authentication method does opencode prefer for provider setup?",
+    "options": {
+      "a": "Manual API key entry in config file",
+      "b": "OAuth via browser authentication",
+      "c": "Environment variables only",
+      "d": "SSH keys"
+    },
+    "answer": "b",
+    "explanation": "opencode prefers OAuth because it's more secure — tokens are stored in the system keychain, not in plain text files.",
+    "difficulty": 2,
+    "tags": ["concept", "comparison"]
+  },
+  {
+    "id": "2.8",
+    "question": "What is the minimum Node.js version required for opencode?",
+    "options": {
+      "a": "16.x",
+      "b": "18.x",
+      "c": "20.x",
+      "d": "22.x"
+    },
+    "answer": "c",
+    "explanation": "opencode requires Node.js 20.x or later. Earlier versions are not supported.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "2.9",
+    "question": "How do you disable project-level configuration in opencode?",
+    "options": {
+      "a": "Set OPENCODE_DISABLE_PROJECT_CONFIG=true",
+      "b": "Delete the opencode.json file",
+      "c": "Add 'disable_project_config: true' to global config",
+      "d": "Use the --no-project-config flag"
+    },
+    "answer": "a",
+    "explanation": "The environment variable OPENCODE_DISABLE_PROJECT_CONFIG=true prevents opencode from loading project-level configuration.",
+    "difficulty": 2,
+    "tags": ["terminology", "concept"]
+  },
+  {
+    "id": "2.10",
+    "question": "What happens if you run opencode without any API keys configured?",
+    "options": {
+      "a": "It crashes immediately",
+      "b": "It runs with a local model",
+      "c": "It prompts you to select and authenticate a provider",
+      "d": "It runs in read-only mode"
+    },
+    "answer": "c",
+    "explanation": "opencode detects missing authentication and guides you through provider selection and OAuth setup.",
+    "difficulty": 1,
+    "tags": ["concept", "scenario"]
+  }
+]

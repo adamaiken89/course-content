@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "opencode follows the {four-layer} architecture model: Memory → Extension → Integration → Programming."
+  answer: "four-layer"
+  explanation: "The four-layer model is the foundation of opencode's architecture."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "The {Memory} Layer handles AGENTS.md, CLAUDE.md, and config instructions."
+  answer: "Memory"
+  explanation: "The Memory Layer is responsible for instruction files and project knowledge."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "When you type a message, it goes through a process called prompt {admission} before being added to session history."
+  answer: "admission"
+  explanation: "Prompt admission is the first step in the request flow."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.4"
+  question: "The {schema} package defines public API types for Agent, Session, Model, and Provider."
+  answer: "schema"
+  explanation: "The schema package contains the public API type definitions."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "During the Agentic Loop, if the LLM requests a tool call, opencode executes the tool and feeds the {result} back to the LLM."
+  answer: "result"
+  explanation: "Tool results are added to context for the next provider turn."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Session history is persisted in a {SQLite} database via Drizzle ORM."
+  answer: "SQLite"
+  explanation: "opencode uses SQLite for persistent session storage."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "The built-in {explore} agent is read-only and designed for codebase exploration."
+  answer: "explore"
+  explanation: "The explore agent has deny-all permissions except read-only tools."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.8"
+  question: "The system prompt includes an {env} block with working directory, git status, platform, and date."
+  answer: "env"
+  explanation: "The env block provides environmental context to the LLM."
+  difficulty: 1
+  tags: [terminology]
