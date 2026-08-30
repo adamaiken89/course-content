@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "Redux Toolkit is the {canonical} Redux pattern; createSlice wraps action creators, reducers, and action {types} in one call."
+  answer: "canonical; types"
+  explanation: "createSlice({ name, initialState, reducers }) returns the slice's reducer, action creators, and action types. The boilerplate is gone; the mental model is the same as classic Redux."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "The Redux {store} is the single source of truth; {useSelector} reads a value, {useDispatch} writes an action."
+  answer: "store; useSelector; useDispatch"
+  explanation: "The store is the source of truth. Components subscribe to the store via useSelector; they dispatch actions via useDispatch. The pattern is the same as classic Redux but with hooks."
+  difficulty: 1
+  tags: [concept]
+- id: "c.3"
+  question: "A {selector} is a function (state) => value; it must be {referentially stable} on equal values or the consumer re-renders."
+  answer: "selector; referentially stable"
+  explanation: "Redux's default equality is ===. A selector that returns a new object every call re-renders every consumer. The fix is reselect's createSelector for memoized compound selectors."
+  difficulty: 1
+  tags: [process]
+- id: "c.4"
+  question: "{createSlice} takes a {name}, an {initialState}, and a {reducers} object; it returns the {reducer}, the action creators, and the action {types}."
+  answer: "createSlice; name; initialState; reducers; reducer; types"
+  explanation: "The shape is the API. Once you know the four inputs, the slice is mechanical to write. The pattern is the same for every slice."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.5"
+  question: "{createAsyncThunk} or {RTK Query} handles {server state}; the choice depends on whether you already have a Redux store."
+  answer: "createAsyncThunk; RTK Query; server state"
+  explanation: "createAsyncThunk is the right answer when you want to keep the existing Redux store. RTK Query is the right answer when you are building a new app or want a dedicated cache. Both are first-class in the toolkit."
+  difficulty: 2
+  tags: [concept]
+- id: "c.6"
+  question: "Redux's {devtools} are the canonical debugging seam; the time-travel debugger and action log are available out of the box."
+  answer: "devtools"
+  explanation: "Devtools is the value-add of Redux for many teams. The action log, the time-travel debugger, and the state inspector are all part of the package."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "A {slice} should be a {logical} grouping of state, not a {technical} one; the slicing decision is the seam between unrelated concerns."
+  answer: "slice; logical; technical"
+  explanation: "Slice by user, by feature, by domain — not by reducer, by action, or by selector. The slicing decision is the architecture. The rest is implementation."
+  difficulty: 3
+  tags: [process]
+- id: "c.8"
+  question: "Redux is the right answer for {large} apps with a {devtools} requirement and a team familiar with the {patterns}; for a small app, zustand is {simpler}."
+  answer: "large; devtools; patterns; simpler"
+  explanation: "Redux shines for large apps with many actions, time-travel debugging, and a team that has bought into the patterns. For a small app, the boilerplate is overhead."
+  difficulty: 2
+  tags: [comparison]

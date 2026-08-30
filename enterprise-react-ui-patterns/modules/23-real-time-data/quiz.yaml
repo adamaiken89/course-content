@@ -1,0 +1,244 @@
+- id: '23.1'
+  question: Which approach covers 80% of enterprise real-time needs at the lowest
+    cost?
+  options:
+    a: GraphQL subscriptions
+    b: WebSockets
+    c: SSE
+    d: Polling with refetch-on-focus
+  answer: d
+  explanation: Polling with refetch-on-focus is the cheapest correct answer for internal
+    tools with tens-of-seconds staleness budget. It costs one request per active tab
+    per interval and uses no persistent connections.
+  difficulty: 1
+  tags:
+  - concept
+- id: '23.2'
+  question: What is the main advantage of SSE over WebSockets for one-way server push?
+  options:
+    a: Bidirectional messaging
+    b: Binary frames
+    c: Lower latency
+    d: Built-in reconnect with exponential backoff
+  answer: d
+  explanation: EventSource handles reconnect automatically. WebSockets need application-level
+    reconnect logic. For one-way server push, SSE is the simpler choice.
+  difficulty: 1
+  tags:
+  - concept
+- id: '23.3'
+  question: When an SSE stream sends 50 applicant-changed events in 100ms and the
+    handler invalidates the query each time, what is the consequence?
+  options:
+    a: "Nothing \u2014 TanStack Query deduplicates"
+    b: 50 cache invalidations and 50 full refetches; the wire is hammered and the
+      UI flickers
+    c: The events are dropped
+    d: The browser crashes
+  answer: b
+  explanation: Each invalidate triggers a refetch. The right fix is either setQueryData
+    for partial updates, or debouncing the invalidation to coalesce events within
+    a window.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '23.4'
+  question: What is the standard reconnect pattern after a stream failure?
+  options:
+    a: No reconnect
+    b: Immediate reconnect
+    c: Exponential backoff with jitter, capped at 30 seconds, attempts reset on success
+    d: Fixed 5 second delay
+  answer: c
+  explanation: Doubling backoff with jitter avoids thundering herd. The cap prevents
+    an idle tab from waiting hours. Resetting on success means a stable stream gets
+    immediate reconnects after any blip.
+  difficulty: 2
+  tags:
+  - concept
+- id: '23.5'
+  question: Why does polling have a hidden cost beyond the request itself?
+  options:
+    a: Polling is slow
+    b: Polling requires WebSockets
+    c: Polling uses a persistent connection
+    d: Polling wastes requests when the data has not changed
+  answer: d
+  explanation: Polling refetches on a timer even when nothing has changed. SSE or
+    WebSockets only push on change, but at the cost of a persistent connection. The
+    trade-off is request cost vs connection cost.
+  difficulty: 1
+  tags:
+  - concept
+- id: '23.6'
+  question: When a user closes a tab and reopens it 20 minutes later, what is the
+    right way to surface changes that happened while away?
+  options:
+    a: Polling on focus, or a 'X changes while you were away' notification
+    b: A server-side push notification
+    c: WebSocket reconnects automatically
+    d: The user sees the latest SSE event
+  answer: a
+  explanation: Real-time streams do not buffer messages for closed tabs. The user
+    must refetch on focus, or the app must show a notification that lets the user
+    opt in to refresh. The choice depends on the staleness budget.
+  difficulty: 2
+  tags:
+  - concept
+- id: '23.7'
+  question: What is the difference between setQueryData and invalidateQueries for
+    a real-time update?
+  options:
+    a: setQueryData is for reads
+    b: invalidateQueries is faster
+    c: They are the same
+    d: setQueryData is a partial update; invalidateQueries is a full refetch
+  answer: d
+  explanation: setQueryData merges a known payload into the cache without a network
+    round trip. invalidateQueries marks the query stale and refetches. The choice
+    depends on whether the client can correctly apply the partial update.
+  difficulty: 2
+  tags:
+  - concept
+- id: '23.8'
+  question: A team replaces SSE with WebSockets for a one-way server push to simplify
+    reconnect. Was the choice right?
+  options:
+    a: Only in production
+    b: 'True'
+    c: "No \u2014 SSE has built-in reconnect; WebSockets need application-level reconnect"
+    d: It does not matter
+  answer: c
+  explanation: WebSockets are more complex for one-way push. SSE's EventSource auto-reconnects
+    with exponential backoff. WebSockets require the application to implement reconnect,
+    message framing, and cleanup.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '23.9'
+  question: What is the staleness budget for an internal admin tool with polling every
+    30 seconds?
+  options:
+    a: Up to 30 seconds
+    b: Up to 1 hour
+    c: Real-time
+    d: Zero
+  answer: a
+  explanation: Polling every 30s means the data is up to 30s stale. For an internal
+    admin tool, that is usually fine. The staleness budget is the upper bound on tolerable
+    data lag.
+  difficulty: 1
+  tags:
+  - concept
+- id: '23.10'
+  question: When is WebSocket the right answer over SSE?
+  options:
+    a: Always
+    b: When the client must send events back over the same connection, or sub-second
+      latency is required
+    c: Never
+    d: Only on mobile
+  answer: b
+  explanation: WebSockets are bidirectional and lower latency. The cost is server
+    complexity, application-level reconnect, and message framing. For presence, collaborative
+    editing, or live trading, WebSockets are necessary; for one-way push, SSE is simpler.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '23.11'
+  question: What is the cost stack of WebSockets at scale?
+  options:
+    a: No cost
+    b: One request per second
+    c: One persistent TCP connection per active client, with reconnect logic on the
+      server and client
+    d: One HTTP request per minute
+  answer: c
+  explanation: Every connected client holds a TCP connection. Scaling to thousands
+    of connections is non-trivial. Reconnect logic on both ends, message framing,
+    and presence add complexity.
+  difficulty: 1
+  tags:
+  - concept
+- id: '23.12'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+    b: The schema module (m4)
+    c: The cache module (m12)
+    d: The test module (m3)
+  answer: a
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '23.13'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: Check the dashboard
+    b: The user's network
+    c: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    d: Restart the server
+  answer: c
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '23.14'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Add a unit test for every function
+    b: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    c: Move all logic to a single hook
+    d: Use a different test framework
+  answer: b
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '23.15'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    b: It replaces the loop
+    c: It runs before the loop
+    d: It does not
+  answer: a
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '23.16'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Slow performance
+    b: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    c: Many comments
+    d: Many tests
+  answer: b
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

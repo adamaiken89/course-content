@@ -1,132 +1,258 @@
-- id: "13.1"
-  question: "What structure models dependent fields better than per-select useEffect?"
+- id: '13.1'
+  question: What structure models dependent fields better than per-select useEffect?
   options:
-    a: "A schema-driven dependency DAG with derived resolution"
-    b: "A single effect watching all values"
-    c: "Nested ternaries in render"
-    d: "A global promise array"
+    a: A schema-driven dependency DAG with derived resolution
+    b: A single effect watching all values
+    c: Nested ternaries in render
+    d: A global promise array
   answer: a
-  explanation: "The DAG centralizes deps/reset/refetch edges; effects couple fields invisibly."
+  explanation: The DAG centralizes deps/reset/refetch edges; effects couple fields
+    invisibly.
   difficulty: 2
-  tags: [concept, comparison]
-- id: "13.2"
-  question: "In a cascade, what must happen to child values when a parent changes?"
+  tags:
+  - concept
+  - comparison
+- id: '13.2'
+  question: In a cascade, what must happen to child values when a parent changes?
   options:
-    a: "They persist to speed re-entry"
-    b: "They re-render only"
-    c: "They reset via the dependency map"
-    d: "They stay valid"
+    a: They persist to speed re-entry
+    b: They re-render only
+    c: They reset via the dependency map
+    d: They stay valid
   answer: c
-  explanation: "Reset clears stale children; their hidden errors clear with them."
+  explanation: Reset clears stale children; their hidden errors clear with them.
   difficulty: 2
-  tags: [concept, scenario]
-- id: "13.3"
-  question: "Why is AbortController alone insufficient to fix the stale option race?"
+  tags:
+  - concept
+  - scenario
+- id: '13.3'
+  question: Why is AbortController alone insufficient to fix the stale option race?
   options:
-    a: "It doesn't free memory"
-    b: "Abort is best-effort; a near-resolved response may still land"
-    c: "It re-renders on each signal"
-    d: "It blocks the request-id counter"
-  answer: b
-  explanation: "The request-id guard on resolution is the contract; Abort is optimization."
-  difficulty: 2
-  tags: [concept, misconception]
-- id: "13.4"
-  question: "An option request guard compares `my === writer.id` on resolution. What does that protect against?"
-  options:
-    a: "A retried authentication request"
-    b: "A duplicate zod parse"
-    c: "A slow cache hit"
-    d: "A stale response overwriting a newer selection"
-  answer: d
-  explanation: "Only the newest selection id may paint the list; older resolves are dropped."
-  difficulty: 3
-  tags: [scenario, concept]
-- id: "13.5"
-  question: "When should remote field validation run?"
-  options:
-    a: "On touch/blur, debounced, flushed on blur"
-    b: "On every keystroke"
-    c: "Only on submit"
-    d: "Once per mount"
+    a: Abort is best-effort; a near-resolved response may still land
+    b: It re-renders on each signal
+    c: It blocks the request-id counter
+    d: It doesn't free memory
   answer: a
-  explanation: "Type-ahead validation storms the network; touch/blur with flush is deterministic."
+  explanation: The request-id guard on resolution is the contract; Abort is optimization.
   difficulty: 2
-  tags: [concept, scenario]
-- id: "13.6"
-  question: "Cohort was 'valid' under the old program. The program changes. What must happen?"
+  tags:
+  - concept
+  - misconception
+- id: '13.4'
+  question: An option request guard compares `my === writer.id` on resolution. What
+    does that protect against?
   options:
-    a: "Nothing — validity persists per field"
-    b: "The cohort stays valid by default"
-    c: "Chain revalidation re-runs children under new deps"
-    d: "Only submit re-checks"
+    a: A slow cache hit
+    b: A stale response overwriting a newer selection
+    c: A retried authentication request
+    d: A duplicate zod parse
+  answer: b
+  explanation: Only the newest selection id may paint the list; older resolves are
+    dropped.
+  difficulty: 3
+  tags:
+  - scenario
+  - concept
+- id: '13.5'
+  question: When should remote field validation run?
+  options:
+    a: On every keystroke
+    b: Only on submit
+    c: Once per mount
+    d: On touch/blur, debounced, flushed on blur
+  answer: d
+  explanation: Type-ahead validation storms the network; touch/blur with flush is
+    deterministic.
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '13.6'
+  question: Cohort was 'valid' under the old program. The program changes. What must
+    happen?
+  options:
+    a: Only submit re-checks
+    b: "Nothing \u2014 validity persists per field"
+    c: The cohort stays valid by default
+    d: Chain revalidation re-runs children under new deps
+  answer: d
+  explanation: A valid cohort under old deps is meaningless under new ones; revalidateChain
+    re-runs them.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '13.7'
+  question: Which React 19 tool keeps the program-swap cascade from blocking the select?
+  options:
+    a: useDeferredValue
+    b: useTransition
+    c: useSyncExternalStore
+    d: useImperativeHandle
+  answer: b
+  explanation: "The cascade swap is a transition \u2014 the select responds immediately,\
+    \ options hydrate after."
+  difficulty: 2
+  tags:
+  - react-19
+  - formula
+- id: '13.8'
+  question: 'The option-load version counters should live in:'
+  options:
+    a: React state, to re-render on write
+    b: LocalStorage
+    c: "Module-level refs \u2014 written frequently, read by guards only"
+    d: zustand state, to persist across screens
   answer: c
-  explanation: "A valid cohort under old deps is meaningless under new ones; revalidateChain re-runs them."
-  difficulty: 3
-  tags: [scenario, application]
-- id: "13.7"
-  question: "Which React 19 tool keeps the program-swap cascade from blocking the select?"
-  options:
-    a: "useDeferredValue"
-    b: "useTransition"
-    c: "useSyncExternalStore"
-    d: "useImperativeHandle"
-  answer: b
-  explanation: "The cascade swap is a transition — the select responds immediately, options hydrate after."
+  explanation: A version is a sync guard, not UI truth; refs avoid needless renders.
   difficulty: 2
-  tags: [react-19, formula]
-- id: "13.8"
-  question: "The option-load version counters should live in:"
+  tags:
+  - concept
+  - comparison
+- id: '13.9'
+  question: Where do the option lists (cohorts for program X) belong?
   options:
-    a: "Module-level refs — written frequently, read by guards only"
-    b: "zustand state, to persist across screens"
-    c: "React state, to re-render on write"
-    d: "LocalStorage"
+    a: In the query cache keyed by dependency values
+    b: In the draft store alongside field values
+    c: In component useMemo
+    d: In the URL
   answer: a
-  explanation: "A version is a sync guard, not UI truth; refs avoid needless renders."
+  explanation: "Server truth, keyed by deps \u2192 cache; refetches on dependency\
+    \ change come free."
   difficulty: 2
-  tags: [concept, comparison]
-- id: "13.9"
-  question: "Where do the option lists (cohorts for program X) belong?"
+  tags:
+  - concept
+  - comparison
+- id: '13.10'
+  question: A server-driven fields schema would replace what part of the client DAG
+    map?
   options:
-    a: "In the draft store alongside field values"
-    b: "In component useMemo"
-    c: "In the URL"
-    d: "In the query cache keyed by dependency values"
+    a: The zod validation entirely
+    b: The MSW wire fixtures
+    c: The drag-and-drop layout
+    d: The dependsOn/reset/requiredWhen edges served as config
   answer: d
-  explanation: "Server truth, keyed by deps → cache; refetches on dependency change come free."
-  difficulty: 2
-  tags: [concept, comparison]
-- id: "13.10"
-  question: "A server-driven fields schema would replace what part of the client DAG map?"
-  options:
-    a: "The drag-and-drop layout"
-    b: "The dependsOn/reset/requiredWhen edges served as config"
-    c: "The zod validation entirely"
-    d: "The MSW wire fixtures"
-  answer: b
-  explanation: "The DAG edges become server config; the client applies them, no drift of rules."
+  explanation: The DAG edges become server config; the client applies them, no drift
+    of rules.
   difficulty: 3
-  tags: [comparison, application]
-- id: "13.11"
-  question: Field B's options depend on Field A. User changes A. What is the right moment to refetch B?
+  tags:
+  - comparison
+  - application
+- id: '13.11'
+  question: Field B's options depend on Field A. User changes A. What is the right
+    moment to refetch B?
   options:
-    a: "Immediately on A's onChange, debounced"
-    b: "When A's value is committed (on blur or on submit), and only if A actually changed"
-    c: "Never; B is always editable"
-    d: "On every keystroke in A"
-  answer: b
-  explanation: Fetching on every keystroke wastes requests for partial input. Fetching on A's commit, gated by an actual-change check, gives the user a stable B that reflects the final A. Debouncing on every keystroke is a compromise that loses the stability property.
+    a: On every keystroke in A
+    b: Immediately on A's onChange, debounced
+    c: When A's value is committed (on blur or on submit), and only if A actually
+      changed
+    d: Never; B is always editable
+  answer: c
+  explanation: Fetching on every keystroke wastes requests for partial input. Fetching
+    on A's commit, gated by an actual-change check, gives the user a stable B that
+    reflects the final A. Debouncing on every keystroke is a compromise that loses
+    the stability property.
   difficulty: 2
-  tags: [process, scenario]
-- id: "13.12"
-  question: Field B's options depend on Field A. User changes A. What is the right moment to refetch B?
+  tags:
+  - process
+  - scenario
+- id: '13.12'
+  question: Field B's options depend on Field A. User changes A. What is the right
+    moment to refetch B?
   options:
-    a: "Immediately on A's onChange, debounced"
-    b: "When A's value is committed (on blur or on submit), and only if A actually changed"
-    c: "Never; B is always editable"
-    d: "On every keystroke in A"
-  answer: b
-  explanation: Fetching on every keystroke wastes requests for partial input. Fetching on A's commit, gated by an actual-change check, gives the user a stable B that reflects the final A. Debouncing on every keystroke is a compromise that loses the stability property.
+    a: On every keystroke in A
+    b: Immediately on A's onChange, debounced
+    c: When A's value is committed (on blur or on submit), and only if A actually
+      changed
+    d: Never; B is always editable
+  answer: c
+  explanation: Fetching on every keystroke wastes requests for partial input. Fetching
+    on A's commit, gated by an actual-change check, gives the user a stable B that
+    reflects the final A. Debouncing on every keystroke is a compromise that loses
+    the stability property.
   difficulty: 2
-  tags: [process, scenario]
+  tags:
+  - process
+  - scenario
+- id: '13.13'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The test module (m3)
+    b: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+    c: The schema module (m4)
+    d: The cache module (m12)
+  answer: b
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '13.14'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    b: Restart the server
+    c: Check the dashboard
+    d: The user's network
+  answer: a
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '13.15'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Add a unit test for every function
+    b: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    c: Move all logic to a single hook
+    d: Use a different test framework
+  answer: b
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '13.16'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    b: It replaces the loop
+    c: It runs before the loop
+    d: It does not
+  answer: a
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '13.17'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Many comments
+    b: Many tests
+    c: Slow performance
+    d: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+  answer: d
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

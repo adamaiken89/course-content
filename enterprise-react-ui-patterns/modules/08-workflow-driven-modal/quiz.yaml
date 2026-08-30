@@ -1,132 +1,283 @@
-- id: "8.1"
-  question: "What is the core idea of open-config-as-state for a dialog that serves multiple intents?"
+- id: '8.1'
+  question: What is the core idea of open-config-as-state for a dialog that serves
+    multiple intents?
   options:
-    a: "Dialog state is one object { intent, entityId, payload }"
-    b: "One prop per intent, rendered with if branches"
-    c: "Reuse the same component but hide unrelated fields"
-    d: "Store every intent configuration in a global constant"
-  answer: a
-  explanation: "The dialog state is the open config — which intent, which entity, which payload. The intent keys a config map that supplies all behavior. Booleans (b) are the naive anti-pattern, (c) hides fields instead of modeling intent, (d) is about where the config lives, not what state means."
-  difficulty: 1
-  tags: [terminology, concept]
-- id: "8.2"
-  question: "Why does workflow-modal state move to a zustand store instead of staying in module 7 style local useState?"
-  options:
-    a: "Zustand is required for all modal dialogs"
-    b: "Multiple triggers across screens (batch bar, table row, batch summary) all open the same dialog"
-    c: "Local state cannot render a dialog at all"
-    d: "The config map only works inside a store"
+    a: Store every intent configuration in a global constant
+    b: Dialog state is one object { intent, entityId, payload }
+    c: One prop per intent, rendered with if branches
+    d: Reuse the same component but hide unrelated fields
   answer: b
-  explanation: "Module 7's local state works when one component owns the trigger. Here triggers are spread across screens and must all open the same dialog instance — the cross-screen access is what earns a zustand store. (a) overgeneralizes; (c) is false; (d) confuses config map with state."
+  explanation: "The dialog state is the open config \u2014 which intent, which entity,\
+    \ which payload. The intent keys a config map that supplies all behavior. Booleans\
+    \ (b) are the naive anti-pattern, (c) hides fields instead of modeling intent,\
+    \ (d) is about where the config lives, not what state means."
   difficulty: 1
-  tags: [concept, comparison]
-- id: "8.3"
-  question: "In the workflowConfig map, what does each intent entry supply?"
+  tags:
+  - terminology
+  - concept
+- id: '8.2'
+  question: Why does workflow-modal state move to a zustand store instead of staying
+    in module 7 style local useState?
   options:
-    a: "Only the dialog title"
-    b: "A list of boolean flags for the dialog body"
-    c: "Title, fields, validation, confirm label, and submit action"
-    d: "The ARIA roles and focus-trap settings"
-  answer: c
-  explanation: "The config map packs the full behavior: title, fields, validation, confirmLabel, submitAction. ARIA and focus (d) belong to DialogShell from module 7. Booleans (b) are the anti-pattern this map replaces."
-  difficulty: 1
-  tags: [terminology]
-- id: "8.4"
-  question: "A codebase has <Modal isAdd={true} isEdit={true}> and it renders the add form. Which statement best describes what is wrong?"
-  options:
-    a: "Nothing — the booleans happened to work"
-    b: "React will throw a rendering error"
-    c: "The component is too slow to render two forms"
-    d: "The boolean combination is a dead state that the render logic resolves arbitrarily"
+    a: Local state cannot render a dialog at all
+    b: The config map only works inside a store
+    c: Zustand is required for all modal dialogs
+    d: Multiple triggers across screens (batch bar, table row, batch summary) all
+      open the same dialog
   answer: d
-  explanation: "Intents are configurations, not presence flags. Invalid combinations like isAdd AND isEdit are dead states with no defined meaning; the render logic just picks one branch arbitrarily. The design offered no way to even express the error."
-  difficulty: 2
-  tags: [scenario]
-- id: "8.5"
-  question: "The batch summary ('submit 5 applications') opens a different flow than add/edit. What does this tell you?"
-  options:
-    a: "It is a different intent with distinct confirm text and more steps — the workflowConfig map handles it"
-    b: "It needs its own separate modal component from scratch"
-    c: "It should reuse the add intent with a count prop"
-    d: "It proves the state machine is unnecessary"
-  answer: a
-  explanation: "Distinct title, confirm label, and step count make it a distinct intent entry in the config map, with the state machine providing multi-step behavior. (b) abandons reuse; (c) corrupts the add intent; (d) is backwards — the multi-step flow is why the state machine exists."
-  difficulty: 2
-  tags: [scenario]
-- id: "8.6"
-  question: "In the state machine editing → confirming → submitting → done, what directly triggers the transition editing → confirming?"
-  options:
-    a: "A valid form submit"
-    b: "A close attempt while the payload is dirty"
-    c: "The server responding with an error"
-    d: "The user pressing the submit button on the confirming step"
-  answer: b
-  explanation: "A dirty close attempts to leave the dialog with unsaved changes; the guard routes to the confirming (discard?) step instead of closing. Valid submit goes editing → submitting; server error goes submitting → editing, never editing → confirming."
+  explanation: "Module 7's local state works when one component owns the trigger.\
+    \ Here triggers are spread across screens and must all open the same dialog instance\
+    \ \u2014 the cross-screen access is what earns a zustand store. (a) overgeneralizes;\
+    \ (c) is false; (d) confuses config map with state."
   difficulty: 1
-  tags: [terminology]
-- id: "8.7"
-  question: "A dialog opens on 'Edit grades' with saved values prefilled. The user changes nothing and clicks close. The dirty guard should..."
+  tags:
+  - concept
+  - comparison
+- id: '8.3'
+  question: In the workflowConfig map, what does each intent entry supply?
   options:
-    a: "Show the discard-confirm step because the dialog once had payload"
-    b: "Submit the unchanged form first"
-    c: "Close immediately because nothing changed since open"
-    d: "Always block closing until the user confirms"
-  answer: c
-  explanation: "Dirty means changed relative to the snapshot taken at open. A prefill that was never edited is not dirty, so the guard must compare current draft to open-time payload (or use a touched flag), never against null. (a) is exactly the bug in the Spot-the-Mistake example."
-  difficulty: 2
-  tags: [scenario]
-- id: "8.8"
-  question: "In the RTL test for opening the dialog from a table row, which assertion best proves the right intent config rendered?"
-  options:
-    a: "expect(screen.getByText('Edit grades')).toBeInTheDocument()"
-    b: "Assert that focus is inside the dialog"
-    c: "Snapshot the whole dialog including the state machine step"
-    d: "Assert the heading AND the intent-specific confirm label and fields"
+    a: The ARIA roles and focus-trap settings
+    b: Only the dialog title
+    c: A list of boolean flags for the dialog body
+    d: Title, fields, validation, confirm label, and submit action
   answer: d
-  explanation: "A bare getByText can match a page header that exists before the dialog opens — a false positive. Asserting the heading plus the intent-specific confirm label and fields distinguishes add from edit. Focus (b) tests DialogShell, and structural snapshots (c) pin structure, not behavior."
-  difficulty: 2
-  tags: [scenario]
-- id: "8.9"
-  question: "The submit test routes through server.use(contract.updateGrades) from MSW. What is being pinned?"
+  explanation: 'The config map packs the full behavior: title, fields, validation,
+    confirmLabel, submitAction. ARIA and focus (d) belong to DialogShell from module
+    7. Booleans (b) are the anti-pattern this map replaces.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.4'
+  question: A codebase has <Modal isAdd={true} isEdit={true}> and it renders the add
+    form. Which statement best describes what is wrong?
   options:
-    a: "The exact POST contract the app sends to the server"
-    b: "The visual styling of the success state"
-    c: "The focus-trapping behavior of DialogShell"
-    d: "The number of times the dialog re-renders"
+    a: The boolean combination is a dead state that the render logic resolves arbitrarily
+    b: "Nothing \u2014 the booleans happened to work"
+    c: React will throw a rendering error
+    d: The component is too slow to render two forms
   answer: a
-  explanation: "An MSW handler stands in for the real endpoint and pins the request contract — method, URL, body shape. That is the module 3 'MSW contract' idea. Styling and focus belong to other tests; re-render counts are a performance concern."
-  difficulty: 3
-  tags: [scenario]
-- id: "8.10"
-  question: "The nested-workflow variant needs 'Add application' to chain a prerequisite dialog. The cleanest approach is..."
+  explanation: Intents are configurations, not presence flags. Invalid combinations
+    like isAdd AND isEdit are dead states with no defined meaning; the render logic
+    just picks one branch arbitrarily. The design offered no way to even express the
+    error.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '8.5'
+  question: The batch summary ('submit 5 applications') opens a different flow than
+    add/edit. What does this tell you?
   options:
-    a: "Increase the config map to break the add intent into ten smaller intents"
-    b: "Store a stack of open intents with a parent reference and render a second layer above the current dialog"
-    c: "Render a raw second modal inside the first with duplicated shell code"
-    d: "Block the second dialog entirely and show a toast"
+    a: It proves the state machine is unnecessary
+    b: "It is a different intent with distinct confirm text and more steps \u2014\
+      \ the workflowConfig map handles it"
+    c: It needs its own separate modal component from scratch
+    d: It should reuse the add intent with a count prop
   answer: b
-  explanation: "Nesting means a second open with a new intent and a parent reference, layered above the current dialog — same shell, same config map, one extra stack in the store. (a) explodes the config space; (c) duplicates DialogShell; (d) avoids the actual need."
-  difficulty: 3
-  tags: [scenario]
-- id: "8.11"
-  question: "A modal must be unsaveable if the form is dirty. The state machine transitions: idle -> editing -> submitting -> done. When is the right moment to evaluate 'is dirty'?"
+  explanation: "Distinct title, confirm label, and step count make it a distinct intent\
+    \ entry in the config map, with the state machine providing multi-step behavior.\
+    \ (b) abandons reuse; (c) corrupts the add intent; (d) is backwards \u2014 the\
+    \ multi-step flow is why the state machine exists."
+  difficulty: 2
+  tags:
+  - scenario
+- id: '8.6'
+  question: "In the state machine editing \u2192 confirming \u2192 submitting \u2192\
+    \ done, what directly triggers the transition editing \u2192 confirming?"
   options:
-    a: "On every keystroke, synchronously"
-    b: "On every transition INTO the editing state and on every input event after that, with the result memoized"
-    c: "Only when the user clicks close"
-    d: "Only when the API call starts"
-  answer: b
-  explanation: Dirty is a derived fact; computing it on every render is wasteful, but only computing it on close misses the case where the user navigates away via a different mechanism. The state machine's transition into 'editing' is the natural trigger; from there, input events keep the flag fresh.
-  difficulty: 3
-  tags: [process, concept]
-- id: "8.12"
-  question: "A modal must be unsaveable if the form is dirty. The state machine transitions: idle -> editing -> submitting -> done. When is the right moment to evaluate 'is dirty'?"
+    a: The user pressing the submit button on the confirming step
+    b: A valid form submit
+    c: A close attempt while the payload is dirty
+    d: The server responding with an error
+  answer: c
+  explanation: "A dirty close attempts to leave the dialog with unsaved changes; the\
+    \ guard routes to the confirming (discard?) step instead of closing. Valid submit\
+    \ goes editing \u2192 submitting; server error goes submitting \u2192 editing,\
+    \ never editing \u2192 confirming."
+  difficulty: 1
+  tags:
+  - terminology
+- id: '8.7'
+  question: A dialog opens on 'Edit grades' with saved values prefilled. The user
+    changes nothing and clicks close. The dirty guard should...
   options:
-    a: "On every keystroke, synchronously"
-    b: "On every transition INTO the editing state and on every input event after that, with the result memoized"
-    c: "Only when the user clicks close"
-    d: "Only when the API call starts"
-  answer: b
-  explanation: Dirty is a derived fact; computing it on every render is wasteful, but only computing it on close misses the case where the user navigates away via a different mechanism. The state machine's transition into 'editing' is the natural trigger; from there, input events keep the flag fresh.
+    a: Close immediately because nothing changed since open
+    b: Always block closing until the user confirms
+    c: Show the discard-confirm step because the dialog once had payload
+    d: Submit the unchanged form first
+  answer: a
+  explanation: Dirty means changed relative to the snapshot taken at open. A prefill
+    that was never edited is not dirty, so the guard must compare current draft to
+    open-time payload (or use a touched flag), never against null. (a) is exactly
+    the bug in the Spot-the-Mistake example.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '8.8'
+  question: In the RTL test for opening the dialog from a table row, which assertion
+    best proves the right intent config rendered?
+  options:
+    a: Assert the heading AND the intent-specific confirm label and fields
+    b: expect(screen.getByText('Edit grades')).toBeInTheDocument()
+    c: Assert that focus is inside the dialog
+    d: Snapshot the whole dialog including the state machine step
+  answer: a
+  explanation: "A bare getByText can match a page header that exists before the dialog\
+    \ opens \u2014 a false positive. Asserting the heading plus the intent-specific\
+    \ confirm label and fields distinguishes add from edit. Focus (b) tests DialogShell,\
+    \ and structural snapshots (c) pin structure, not behavior."
+  difficulty: 2
+  tags:
+  - scenario
+- id: '8.9'
+  question: The submit test routes through server.use(contract.updateGrades) from
+    MSW. What is being pinned?
+  options:
+    a: The focus-trapping behavior of DialogShell
+    b: The number of times the dialog re-renders
+    c: The exact POST contract the app sends to the server
+    d: The visual styling of the success state
+  answer: c
+  explanation: "An MSW handler stands in for the real endpoint and pins the request\
+    \ contract \u2014 method, URL, body shape. That is the module 3 'MSW contract'\
+    \ idea. Styling and focus belong to other tests; re-render counts are a performance\
+    \ concern."
   difficulty: 3
-  tags: [process, concept]
+  tags:
+  - scenario
+- id: '8.10'
+  question: The nested-workflow variant needs 'Add application' to chain a prerequisite
+    dialog. The cleanest approach is...
+  options:
+    a: Increase the config map to break the add intent into ten smaller intents
+    b: Store a stack of open intents with a parent reference and render a second layer
+      above the current dialog
+    c: Render a raw second modal inside the first with duplicated shell code
+    d: Block the second dialog entirely and show a toast
+  answer: b
+  explanation: "Nesting means a second open with a new intent and a parent reference,\
+    \ layered above the current dialog \u2014 same shell, same config map, one extra\
+    \ stack in the store. (a) explodes the config space; (c) duplicates DialogShell;\
+    \ (d) avoids the actual need."
+  difficulty: 3
+  tags:
+  - scenario
+- id: '8.11'
+  question: 'A modal must be unsaveable if the form is dirty. The state machine transitions:
+    idle -> editing -> submitting -> done. When is the right moment to evaluate ''is
+    dirty''?'
+  options:
+    a: Only when the API call starts
+    b: On every keystroke, synchronously
+    c: On every transition INTO the editing state and on every input event after that,
+      with the result memoized
+    d: Only when the user clicks close
+  answer: c
+  explanation: Dirty is a derived fact; computing it on every render is wasteful,
+    but only computing it on close misses the case where the user navigates away via
+    a different mechanism. The state machine's transition into 'editing' is the natural
+    trigger; from there, input events keep the flag fresh.
+  difficulty: 3
+  tags:
+  - process
+  - concept
+- id: '8.12'
+  question: 'A modal must be unsaveable if the form is dirty. The state machine transitions:
+    idle -> editing -> submitting -> done. When is the right moment to evaluate ''is
+    dirty''?'
+  options:
+    a: Only when the user clicks close
+    b: Only when the API call starts
+    c: On every keystroke, synchronously
+    d: On every transition INTO the editing state and on every input event after that,
+      with the result memoized
+  answer: d
+  explanation: Dirty is a derived fact; computing it on every render is wasteful,
+    but only computing it on close misses the case where the user navigates away via
+    a different mechanism. The state machine's transition into 'editing' is the natural
+    trigger; from there, input events keep the flag fresh.
+  difficulty: 3
+  tags:
+  - process
+  - concept
+- id: '8.13'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The cache module (m12)
+    b: The test module (m3)
+    c: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+    d: The schema module (m4)
+  answer: c
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '8.14'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    b: Restart the server
+    c: Check the dashboard
+    d: The user's network
+  answer: a
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '8.15'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    b: Move all logic to a single hook
+    c: Use a different test framework
+    d: Add a unit test for every function
+  answer: a
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '8.16'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: It replaces the loop
+    b: It runs before the loop
+    c: It does not
+    d: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+  answer: d
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '8.17'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Slow performance
+    b: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    c: Many comments
+    d: Many tests
+  answer: b
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

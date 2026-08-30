@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "URL state is the {search} and {hash} parts of the URL; the {URL} is the source of truth."
+  answer: "search; hash; URL"
+  explanation: "The URL is shareable, survives reload, and works with the back button. The browser owns the URL; the app reads it."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "useSearchParams is the React 18+ hook for reading and writing {query strings}; the API is like useState but the value is the URL."
+  answer: "query strings"
+  explanation: "The hook returns [searchParams, setSearchParams]. The setter updates the URL; the hook re-renders the consumer. The pattern is the same as useState."
+  difficulty: 1
+  tags: [concept]
+- id: "c.3"
+  question: "URL state is the right answer for {shareable} view configuration: filters, sort, {pagination}, and search."
+  answer: "shareable; pagination"
+  explanation: "Anything that should be a link is URL state. The user can copy the URL and send it to a colleague; the colleague lands on the same view."
+  difficulty: 1
+  tags: [concept]
+- id: "c.4"
+  question: "{History} and the {back button} are the seams that URL state honors for free; {component} state does not."
+  answer: "History; back button; component"
+  explanation: "A back-button click should restore the previous view. URL state does that; component state does not. The browser is the seam."
+  difficulty: 2
+  tags: [concept]
+- id: "c.5"
+  question: "URL state should be {serializable} and {human-readable}; complex objects do not belong in the URL."
+  answer: "serializable; human-readable"
+  explanation: "The URL is a contract with the user. It should be readable (filter=active&sort=name) and shareable (no JSON-encoded objects)."
+  difficulty: 1
+  tags: [process]
+- id: "c.6"
+  question: "Server-side rendering makes URL state the {default}; the server renders the same view for the same URL."
+  answer: "default"
+  explanation: "The server can read the URL and render the right view. Component state is not available on the server; URL state is. For SSR-friendly apps, URL state is the natural fit."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "The URL is {not} a database; do not put {secrets} or {large} objects in the query string."
+  answer: "not; secrets; large"
+  explanation: "URLs are logged, shared, and indexed. A secret in the URL is a leak. A 10KB query string is a mess. The URL is for view configuration, not for data."
+  difficulty: 1
+  tags: [process]
+- id: "c.8"
+  question: "URL state composes with the {router}; the router owns the URL and the route {params}; the app owns the {query}."
+  answer: "router; params; query"
+  explanation: "React Router (or your framework's equivalent) owns the route params. useSearchParams owns the query. The split is the seam: route is structural, query is view configuration."
+  difficulty: 2
+  tags: [process]

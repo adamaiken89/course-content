@@ -1,132 +1,270 @@
-- id: "18.1"
-  question: "What exactly does a React error boundary catch?"
+- id: '18.1'
+  question: What exactly does a React error boundary catch?
   options:
-    a: "Render-phase exceptions in the tree below the boundary"
-    b: "Errors thrown inside event handlers"
-    c: "Rejected promises awaiting inside effects"
-    d: "Errors thrown inside the boundary itself"
-  answer: a
-  explanation: "Boundaries catch render throws (and lifecycle errors via componentDidCatch). Handler errors, async rejects you never await, and self-errors need their own handling."
-  difficulty: 1
-  tags: [terminology]
-- id: "18.2"
-  question: "Why must boundaries be scoped per region instead of wrapping the whole app?"
-  options:
-    a: "React forbids more than one boundary per tree"
-    b: "Class components cannot be nested inside each other"
-    c: "Zustand stores cannot listen to boundary errors"
-    d: "A blanket boundary turns every leaf bug into the same blank-page — and hides where it broke"
-  answer: d
-  explanation: "Scope keeps a cohort-height failure inside the cohort panel while the form survives. One boundary around everything reproduces the naive blank page and hides the buggy leaf."
-  difficulty: 2
-  tags: [concept]
-- id: "18.3"
-  question: "A lone cohort fetch rejects inside useEffect. Does the Section 1 boundary catch it?"
-  options:
-    a: "Yes, boundaries catch all async failures automatically"
-    b: "No, boundaries only see render-phase throws — the reject must be handled where the effect runs"
-    c: "Yes, if the component is wrapped in React.StrictMode"
-    d: "Only in concurrent mode with React 19"
-  answer: b
-  explanation: "The boundary displays render bugs; async failures need explicit catch → error-state handling and the failure-surface ladder."
-  difficulty: 2
-  tags: [concept, scenario]
-- id: "18.4"
-  question: "Which pair of conditions makes a retry responsible and safe?"
-  options:
-    a: "Stable network and a short timeout"
-    b: "Any 4xx status and a paused queue"
-    c: "A transient failure AND an idempotency key on the operation"
-    d: "A GET request and localStorage"
+    a: Rejected promises awaiting inside effects
+    b: Errors thrown inside the boundary itself
+    c: Render-phase exceptions in the tree below the boundary
+    d: Errors thrown inside event handlers
   answer: c
-  explanation: "Transient (429/5xx/network) failures can plausibly heal; an idempotency key makes re-sending the same intent instead of duplicating it (m14 runId + m17)."
-  difficulty: 3
-  tags: [concept, comparison]
-- id: "18.5"
-  question: "A batch submit rejects with a network reset after the server accepted application 4 of 6. What is the correct retry move?"
-  options:
-    a: "Read the m14 ledger and resubmit only the failed itemIds under the same runId key"
-    b: "Re-run the whole submitAll with the same hook"
-    c: "Hide the submit button until the user reloads"
-    d: "Retry after a fixed 5-second delay"
-  answer: a
-  explanation: "Whole-batch retry double-submits the already-landed items. The ledger knows who failed; the runId key makes resubmit idempotent."
-  difficulty: 3
-  tags: [scenario, calculation]
-- id: "18.6"
-  question: "The cohort panel fails to load but a previous good cohort list is in the query cache. Which ladder rung serves the user best?"
-  options:
-    a: "Page-level fatal with a Reload button"
-    b: "Region-level error — render the stale cache with a small Retry and a 'showing saved version' note"
-    c: "Inline field error on the cohort select"
-    d: "A single toast then dismiss"
-  answer: b
-  explanation: "Stale-cache fallback (m12) keeps the user working during an outage. The wall is the last resort; the toast loses the context the region can still show."
-  difficulty: 2
-  tags: [scenario]
-- id: "18.7"
-  question: "Why does the module treat navigator.onLine as a liar?"
-  options:
-    a: "It throws unless wrapped in try/catch"
-    b: "It is undefined in strict mode"
-    c: "It reports cached pages as online"
-    d: "It reports any network interface as online, even one with no route to your API"
-  answer: d
-  explanation: "A laptop on Wi-Fi with a dead VPN can be 'online' yet unable to reach the API. The honest signal is the browser's online/offline event pair, with a failed request as tiebreaker."
-  difficulty: 2
-  tags: [concept]
-- id: "18.8"
-  question: "Where does the offline flag belong per the State Decision?"
-  options:
-    a: "In component state under the submit button"
-    b: "In the URL search params"
-    c: "A tiny shared write-mostly store every shell widget subscribes to"
-    d: "In the query cache's per-request retry counters"
-  answer: c
-  explanation: "Many widgets subscribe (stripe, submit, queue button) but only the network listener mutates it — the write-mostly pattern from m2."
+  explanation: Boundaries catch render throws (and lifecycle errors via componentDidCatch).
+    Handler errors, async rejects you never await, and self-errors need their own
+    handling.
   difficulty: 1
-  tags: [concept]
-- id: "18.9"
-  question: "After an offline queue flushes on reconnect, which step does recovery NOT include?"
+  tags:
+  - terminology
+- id: '18.2'
+  question: Why must boundaries be scoped per region instead of wrapping the whole
+    app?
   options:
-    a: "Re-running the m14 batch ledger from scratch for items that already committed"
-    b: "Restoring the draft from m5/m14 storage"
-    c: "Revalidating statuses so stale failure flags clear"
-    d: "Moving focus to the first unrecovered failure point"
+    a: "A blanket boundary turns every leaf bug into the same blank-page \u2014 and\
+      \ hides where it broke"
+    b: React forbids more than one boundary per tree
+    c: Class components cannot be nested inside each other
+    d: Zustand stores cannot listen to boundary errors
   answer: a
-  explanation: "The ledger is the source of truth for what landed; recovery reads and summarizes it, never replays completed writes. Draft restore, status revalidate, and focus move are the other three steps."
+  explanation: Scope keeps a cohort-height failure inside the cohort panel while the
+    form survives. One boundary around everything reproduces the naive blank page
+    and hides the buggy leaf.
   difficulty: 2
-  tags: [scenario, comparison]
-- id: "18.10"
-  question: "The recovery panel renders '37 of 40 saved, 3 blocked on a full cohort'. What contract does 'Retry application 4021' uphold?"
+  tags:
+  - concept
+- id: '18.3'
+  question: A lone cohort fetch rejects inside useEffect. Does the Section 1 boundary
+    catch it?
   options:
-    a: "It increments a fresh attempt counter"
-    b: "It resubmits under the same runId idempotency key so the retry is a re-send of the same intent, not a duplicate"
-    c: "It clears the whole ledger"
-    d: "It bypasses the validation schema"
+    a: Yes, boundaries catch all async failures automatically
+    b: "No, boundaries only see render-phase throws \u2014 the reject must be handled\
+      \ where the effect runs"
+    c: Yes, if the component is wrapped in React.StrictMode
+    d: Only in concurrent mode with React 19
   answer: b
-  explanation: "The m14 runId key plus m17 idempotency means the retry cannot double-commit. Summarizing a ledger, not dumping errors, is the recovery contract."
+  explanation: "The boundary displays render bugs; async failures need explicit catch\
+    \ \u2192 error-state handling and the failure-surface ladder."
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '18.4'
+  question: Which pair of conditions makes a retry responsible and safe?
+  options:
+    a: A transient failure AND an idempotency key on the operation
+    b: A GET request and localStorage
+    c: Stable network and a short timeout
+    d: Any 4xx status and a paused queue
+  answer: a
+  explanation: Transient (429/5xx/network) failures can plausibly heal; an idempotency
+    key makes re-sending the same intent instead of duplicating it (m14 runId + m17).
   difficulty: 3
-  tags: [terminology, calculation]
-- id: "18.11"
-  question: "A network call fails with a transient error. The user is mid-form with unsaved work. The right error UX is:"
+  tags:
+  - concept
+  - comparison
+- id: '18.5'
+  question: A batch submit rejects with a network reset after the server accepted
+    application 4 of 6. What is the correct retry move?
   options:
-    a: "Full-page error boundary that resets the form"
-    b: "Inline error on the affected field with an explicit retry, preserving the form state"
-    c: "Silent retry with no user feedback"
-    d: "Redirect to a 500 page"
-  answer: b
-  explanation: Inline errors keep the form alive. A full-page boundary would destroy unsaved work for a transient failure. Silent retry hides the problem from the user. Redirecting to a 500 page is appropriate only for catastrophic, unrecoverable failures.
-  difficulty: 2
-  tags: [scenario, process]
-- id: "18.12"
-  question: "A network call fails with a transient error. The user is mid-form with unsaved work. The right error UX is:"
+    a: Re-run the whole submitAll with the same hook
+    b: Hide the submit button until the user reloads
+    c: Retry after a fixed 5-second delay
+    d: Read the m14 ledger and resubmit only the failed itemIds under the same runId
+      key
+  answer: d
+  explanation: Whole-batch retry double-submits the already-landed items. The ledger
+    knows who failed; the runId key makes resubmit idempotent.
+  difficulty: 3
+  tags:
+  - scenario
+  - calculation
+- id: '18.6'
+  question: The cohort panel fails to load but a previous good cohort list is in the
+    query cache. Which ladder rung serves the user best?
   options:
-    a: "Full-page error boundary that resets the form"
-    b: "Inline error on the affected field with an explicit retry, preserving the form state"
-    c: "Silent retry with no user feedback"
-    d: "Redirect to a 500 page"
-  answer: b
-  explanation: Inline errors keep the form alive. A full-page boundary would destroy unsaved work for a transient failure. Silent retry hides the problem from the user. Redirecting to a 500 page is appropriate only for catastrophic, unrecoverable failures.
+    a: A single toast then dismiss
+    b: Page-level fatal with a Reload button
+    c: "Region-level error \u2014 render the stale cache with a small Retry and a\
+      \ 'showing saved version' note"
+    d: Inline field error on the cohort select
+  answer: c
+  explanation: Stale-cache fallback (m12) keeps the user working during an outage.
+    The wall is the last resort; the toast loses the context the region can still
+    show.
   difficulty: 2
-  tags: [scenario, process]
+  tags:
+  - scenario
+- id: '18.7'
+  question: Why does the module treat navigator.onLine as a liar?
+  options:
+    a: It reports cached pages as online
+    b: It reports any network interface as online, even one with no route to your
+      API
+    c: It throws unless wrapped in try/catch
+    d: It is undefined in strict mode
+  answer: b
+  explanation: A laptop on Wi-Fi with a dead VPN can be 'online' yet unable to reach
+    the API. The honest signal is the browser's online/offline event pair, with a
+    failed request as tiebreaker.
+  difficulty: 2
+  tags:
+  - concept
+- id: '18.8'
+  question: Where does the offline flag belong per the State Decision?
+  options:
+    a: A tiny shared write-mostly store every shell widget subscribes to
+    b: In the query cache's per-request retry counters
+    c: In component state under the submit button
+    d: In the URL search params
+  answer: a
+  explanation: "Many widgets subscribe (stripe, submit, queue button) but only the\
+    \ network listener mutates it \u2014 the write-mostly pattern from m2."
+  difficulty: 1
+  tags:
+  - concept
+- id: '18.9'
+  question: After an offline queue flushes on reconnect, which step does recovery
+    NOT include?
+  options:
+    a: Restoring the draft from m5/m14 storage
+    b: Revalidating statuses so stale failure flags clear
+    c: Moving focus to the first unrecovered failure point
+    d: Re-running the m14 batch ledger from scratch for items that already committed
+  answer: d
+  explanation: The ledger is the source of truth for what landed; recovery reads and
+    summarizes it, never replays completed writes. Draft restore, status revalidate,
+    and focus move are the other three steps.
+  difficulty: 2
+  tags:
+  - scenario
+  - comparison
+- id: '18.10'
+  question: The recovery panel renders '37 of 40 saved, 3 blocked on a full cohort'.
+    What contract does 'Retry application 4021' uphold?
+  options:
+    a: It increments a fresh attempt counter
+    b: It resubmits under the same runId idempotency key so the retry is a re-send
+      of the same intent, not a duplicate
+    c: It clears the whole ledger
+    d: It bypasses the validation schema
+  answer: b
+  explanation: The m14 runId key plus m17 idempotency means the retry cannot double-commit.
+    Summarizing a ledger, not dumping errors, is the recovery contract.
+  difficulty: 3
+  tags:
+  - terminology
+  - calculation
+- id: '18.11'
+  question: 'A network call fails with a transient error. The user is mid-form with
+    unsaved work. The right error UX is:'
+  options:
+    a: Redirect to a 500 page
+    b: Full-page error boundary that resets the form
+    c: Inline error on the affected field with an explicit retry, preserving the form
+      state
+    d: Silent retry with no user feedback
+  answer: c
+  explanation: Inline errors keep the form alive. A full-page boundary would destroy
+    unsaved work for a transient failure. Silent retry hides the problem from the
+    user. Redirecting to a 500 page is appropriate only for catastrophic, unrecoverable
+    failures.
+  difficulty: 2
+  tags:
+  - scenario
+  - process
+- id: '18.12'
+  question: 'A network call fails with a transient error. The user is mid-form with
+    unsaved work. The right error UX is:'
+  options:
+    a: Inline error on the affected field with an explicit retry, preserving the form
+      state
+    b: Silent retry with no user feedback
+    c: Redirect to a 500 page
+    d: Full-page error boundary that resets the form
+  answer: a
+  explanation: Inline errors keep the form alive. A full-page boundary would destroy
+    unsaved work for a transient failure. Silent retry hides the problem from the
+    user. Redirecting to a 500 page is appropriate only for catastrophic, unrecoverable
+    failures.
+  difficulty: 2
+  tags:
+  - scenario
+  - process
+- id: '18.13'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The schema module (m4)
+    b: The cache module (m12)
+    c: The test module (m3)
+    d: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+  answer: d
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '18.14'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: Restart the server
+    b: Check the dashboard
+    c: The user's network
+    d: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+  answer: d
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '18.15'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    b: Move all logic to a single hook
+    c: Use a different test framework
+    d: Add a unit test for every function
+  answer: a
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '18.16'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: It does not
+    b: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    c: It replaces the loop
+    d: It runs before the loop
+  answer: b
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '18.17'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Many tests
+    b: Slow performance
+    c: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    d: Many comments
+  answer: c
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

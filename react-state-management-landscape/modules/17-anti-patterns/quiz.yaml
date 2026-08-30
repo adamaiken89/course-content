@@ -1,0 +1,137 @@
+- id: '17.1'
+  question: Prop drilling via {Context} is an anti-pattern; Context is a broadcast,
+    not a drill.
+  options:
+    a: state
+    b: props
+    c: Context
+    d: refs
+  answer: c
+  explanation: Explanation for Prop drilling via {Context} is an anti-pattern; Co...
+  difficulty: 1
+  tags:
+  - misconception
+- id: '17.2'
+  question: Mutating a store outside a {reducer} breaks the reactivity contract.
+  options:
+    a: action
+    b: reducer
+    c: component
+    d: context
+  answer: b
+  explanation: Explanation for Mutating a store outside a {reducer} breaks the re...
+  difficulty: 1
+  tags:
+  - misconception
+- id: '17.3'
+  question: useEffect for {derived state} is an anti-pattern.
+  options:
+    a: fetching
+    b: derived state
+    c: subscriptions
+    d: timers
+  answer: b
+  explanation: Explanation for useEffect for {derived state} is an anti-pattern....
+  difficulty: 1
+  tags:
+  - misconception
+- id: '17.4'
+  question: An {unstable} selector returns a new object every call.
+  options:
+    a: shallow
+    b: stable
+    c: unstable
+    d: memoized
+  answer: c
+  explanation: Explanation for An {unstable} selector returns a new object every ...
+  difficulty: 1
+  tags:
+  - misconception
+- id: '17.5'
+  question: Persisting {server-derived} state is an anti-pattern.
+  options:
+    a: form
+    b: UI
+    c: client
+    d: server-derived
+  answer: d
+  explanation: Explanation for Persisting {server-derived} state is an anti-patte...
+  difficulty: 1
+  tags:
+  - misconception
+- id: '17.6'
+  question: Over-engineering is the {default} state of state management; the right
+    answer is the simplest primitive.
+  options:
+    a: default
+    b: edge case
+    c: rare
+    d: advanced
+  answer: a
+  explanation: Explanation for Over-engineering is the {default} state of state m...
+  difficulty: 1
+  tags:
+  - misconception
+- id: '17.7'
+  question: The fix for prop drilling via Context is explicit {props} or an {external
+    store}.
+  options:
+    a: context; props
+    b: refs; refs
+    c: props; external store
+    d: state; state
+  answer: c
+  explanation: Explanation for The fix for prop drilling via Context is explicit ...
+  difficulty: 2
+  tags:
+  - misconception
+- id: '17.8'
+  question: Most state anti-patterns are {over-engineering}.
+  options:
+    a: under-engineering
+    b: over-engineering
+    c: correct
+    d: advanced
+  answer: b
+  explanation: Explanation for Most state anti-patterns are {over-engineering}....
+  difficulty: 1
+  tags:
+  - misconception
+- id: '17.9'
+  question: The decision tree picks the {simplest} primitive that solves the question.
+  options:
+    a: popular
+    b: familiar
+    c: most complex
+    d: simplest
+  answer: d
+  explanation: Explanation for The decision tree picks the {simplest} primitive t...
+  difficulty: 1
+  tags:
+  - process
+- id: '17.10'
+  question: Reaching for a {library} before the question is a recipe for over-engineering.
+  options:
+    a: library
+    b: refactor
+    c: test
+    d: pattern
+  answer: a
+  explanation: Explanation for Reaching for a {library} before the question is a ...
+  difficulty: 1
+  tags:
+  - misconception
+- id: '17.11'
+  question: A god component is a {state} anti-pattern; the component owns state that
+    should be lifted, derived, or externalized.
+  options:
+    a: state
+    b: style
+    c: test
+    d: render
+  answer: a
+  explanation: Explanation for A god component is a {state} anti-pattern; the com...
+  difficulty: 2
+  tags:
+  - misconception
+

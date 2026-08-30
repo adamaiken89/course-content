@@ -1,0 +1,152 @@
+- id: cum.51
+  type: mcq
+  source_modules:
+  - 24
+  - 24
+  question: A form has a hard-coded count === 1 ternary. The team ships Spanish. What
+    is the consequence?
+  options:
+    a: Nothing
+    b: The form crashes
+    c: Spanish has its own plural rules; the hard-coded English rule produces wrong
+      strings in Spanish (and Russian, Arabic, etc.)
+    d: Spanish is not supported
+  answer: c
+  explanation: 'Spanish has two plural forms, Russian has three. The English rule
+    (1 = singular, else plural) is just one of many. The fix: ICU MessageFormat encodes
+    per-locale plural rules; the English string is one of many translations.'
+  difficulty: 2
+  tags:
+  - cross-module
+  - i18n
+  - misconception
+- id: cum.52
+  type: cloze
+  source_modules:
+  - 24
+  - 24
+  question: A type-safe {translation} contract with build-time key coverage checks
+    prevents {gaps} when shipping a new language; the schema (m4) is the source of
+    truth for {form} fields, the i18n keys, and the {types}.
+  answer: translation; gaps; form; types
+  explanation: m4's zod schema is the source of truth for form fields. The i18n keys
+    are derived from the schema (or aligned with it). Build-time key coverage checks
+    fail CI when a language is missing keys.
+  difficulty: 3
+  tags:
+  - cross-module
+  - synthesis
+- id: cum.53
+  type: tf
+  source_modules:
+  - 24
+  - 24
+  statement: Logical CSS properties like margin-inline-start automatically flip in
+    RTL; the same CSS handles both directions.
+  answer: true
+  explanation: Logical properties are direction-agnostic. The browser flips them based
+    on the writing direction. The CSS writes once; the layout mirrors itself in RTL.
+    Pair with [dir=rtl] attribute selectors for directional icons.
+  difficulty: 1
+  tags:
+  - cross-module
+  - css
+  - rtl
+- id: cum.54
+  type: mcq
+  source_modules:
+  - 25
+  - 24
+  question: An error boundary in m18 captures a render-phase exception. m25 wires
+    it to Sentry. What is the value-add over console.error?
+  options:
+    a: Component stack, breadcrumbs, the user's session, the route, and aggregation
+      across users
+    b: Sentry is faster
+    c: Sentry has a nicer UI
+    d: Nothing
+  answer: a
+  explanation: Sentry aggregates across users, surfaces regressions, and reports the
+    context (component stack, breadcrumbs, session) that console.error does not capture.
+    The boundary is the hook; the tracker is the value.
+  difficulty: 1
+  tags:
+  - cross-module
+  - error-tracking
+  - synthesis
+- id: cum.55
+  type: cloze
+  source_modules:
+  - 25
+  - 24
+  question: The error boundary (m18) catches render-phase exceptions; Sentry (m25)
+    reports them with a {component} stack, {breadcrumbs}, and the user's {session}.
+  answer: component; breadcrumbs; session
+  explanation: The boundary is the mechanism. The tracker is the value. Breadcrumbs
+    accumulate user actions before the error; the component stack shows where it threw;
+    the session identifies the user. Together, one report tells the full story.
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.56
+  type: mcq
+  source_modules:
+  - 25
+  - 24
+  question: A team tracks every form keystroke with the full form state to a third-party
+    analytics tool. A PII audit flags the team. What went wrong?
+  options:
+    a: Keystroke tracking is fine
+    b: The form state contains PII; the team should redact at the transport layer
+      and track at meaningful events, not every keystroke
+    c: The tool is at fault
+    d: PII is not a real concern
+  answer: b
+  explanation: Form state contains names, emails, addresses. Sending it to a third-party
+    tool is a PII leak. Redact at the transport layer; track at meaningful events
+    (form-open, form-submit); minimize what is sent.
+  difficulty: 2
+  tags:
+  - cross-module
+  - pii
+  - telemetry
+- id: cum.57
+  type: cloze
+  source_modules:
+  - 25
+  - 24
+  question: PII redaction happens at the {transport} layer; the {translation} keys
+    never contain PII but the form {state} may; the {analytics} call is gated on user
+    consent.
+  answer: transport; translation; state; analytics
+  explanation: Redaction at the transport layer means every event goes through the
+    same redaction function. Translation keys are not PII. Form state may contain
+    PII. The analytics call is gated on consent.
+  difficulty: 3
+  tags:
+  - cross-module
+  - synthesis
+  - pii
+- id: cum.58
+  type: mcq
+  source_modules:
+  - 25
+  - 24
+  question: A form uses useActionState. The action fails. The team wants to know the
+    failure rate. What is missing from the implementation?
+  options:
+    a: useActionState tracks failures automatically
+    b: A retry button
+    c: A different form library
+    d: A success-path and failure-path event in the analytics; useActionState does
+      not emit telemetry
+  answer: d
+  explanation: 'useActionState does not emit telemetry. The team must add tracking
+    at meaningful events: form-submit-attempt, form-submit-success, form-submit-failure.
+    Gated on consent. Without it, the dashboard cannot see the failure rate.'
+  difficulty: 3
+  tags:
+  - cross-module
+  - synthesis
+  - telemetry

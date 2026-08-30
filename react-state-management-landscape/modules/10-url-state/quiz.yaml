@@ -1,0 +1,138 @@
+- id: '10.1'
+  question: What is useSearchParams?
+  options:
+    a: A router
+    b: A cookie helper
+    c: A hook for URL state; reads and writes the query string
+    d: A URL builder
+  answer: c
+  explanation: Explanation for What is useSearchParams?...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.2'
+  question: URL state is the right answer for {shareable} view configuration.
+  options:
+    a: server
+    b: temporary
+    c: private
+    d: shareable
+  answer: d
+  explanation: Explanation for URL state is the right answer for {shareable} view...
+  difficulty: 1
+  tags:
+  - concept
+- id: '10.3'
+  question: What belongs in URL state?
+  options:
+    a: Filters, sort, pagination, and search
+    b: User passwords
+    c: Large JSON blobs
+    d: Tokens
+  answer: a
+  explanation: Explanation for What belongs in URL state?...
+  difficulty: 1
+  tags:
+  - concept
+- id: '10.4'
+  question: The router owns {route} params; useSearchParams owns the {search} query.
+  options:
+    a: route; search
+    b: URL; path
+    c: path; query
+    d: search; route
+  answer: a
+  explanation: Explanation for The router owns {route} params; useSearchParams ow...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.5'
+  question: URL state makes the {back button} work; component state does not.
+  options:
+    a: forward button
+    b: back button
+    c: refresh
+    d: submit
+  answer: b
+  explanation: Explanation for URL state makes the {back button} work; component ...
+  difficulty: 1
+  tags:
+  - concept
+- id: '10.6'
+  question: 'URL state is SSR-{friendly}: the server can read the URL and render the
+    right view.'
+  options:
+    a: specific
+    b: hostile
+    c: friendly
+    d: neutral
+  answer: c
+  explanation: 'Explanation for URL state is SSR-{friendly}: the server can read t...'
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.7'
+  question: A URL is {serializable} and {human-readable}; complex objects do not belong
+    in it.
+  options:
+    a: binary; obfuscated
+    b: serializable; human-readable
+    c: compressed; encrypted
+    d: random; short
+  answer: b
+  explanation: Explanation for A URL is {serializable} and {human-readable}; comp...
+  difficulty: 2
+  tags:
+  - process
+- id: '10.8'
+  question: URL state is NOT a {database}; do not put secrets or large objects in
+    the query string.
+  options:
+    a: database
+    b: cache
+    c: store
+    d: log
+  answer: a
+  explanation: Explanation for URL state is NOT a {database}; do not put secrets ...
+  difficulty: 1
+  tags:
+  - process
+- id: '10.9'
+  question: 'Pagination is URL-{shaped}: it is shareable, survives reload, and works
+    with the back button.'
+  options:
+    a: always
+    b: shaped
+    c: less
+    d: more
+  answer: b
+  explanation: 'Explanation for Pagination is URL-{shaped}: it is shareable, survi...'
+  difficulty: 1
+  tags:
+  - concept
+- id: '10.10'
+  question: useSearchParams returns [searchParams, {setSearchParams}].
+  options:
+    a: useEffect
+    b: useContext
+    c: useState
+    d: setSearchParams
+  answer: d
+  explanation: Explanation for useSearchParams returns [searchParams, {setSearchP...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.11'
+  question: History and the back button are the {seams} that URL state honors for
+    free.
+  options:
+    a: patterns
+    b: errors
+    c: seams
+    d: bugs
+  answer: c
+  explanation: Explanation for History and the back button are the {seams} that U...
+  difficulty: 2
+  tags:
+  - concept
+

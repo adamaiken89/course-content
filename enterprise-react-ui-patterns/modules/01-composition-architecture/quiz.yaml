@@ -1,132 +1,261 @@
-- id: "1.1"
-  question: "What is the first question to ask before structuring an enterprise screen?"
+- id: '1.1'
+  question: What is the first question to ask before structuring an enterprise screen?
   options:
-    a: "Which folder should hold the component"
-    b: "Who owns what — data, layout, display, behavior"
-    c: "How many lines the file should stay under"
-    d: "Which CSS framework to use"
-  answer: b
-  explanation: "Ownership is the organizing principle. Files, line counts, and styling are downstream concerns."
-  difficulty: 1
-  tags: [concept, scenario]
-- id: "1.2"
-  question: "Which symptom indicates a god component?"
-  options:
-    a: "One keystroke re-renders unrelated sections of the form"
-    b: "The component imports a global store for a single field"
-    c: "The file is written in TypeScript"
-    d: "The component uses the router"
+    a: "Who owns what \u2014 data, layout, display, behavior"
+    b: How many lines the file should stay under
+    c: Which CSS framework to use
+    d: Which folder should hold the component
   answer: a
-  explanation: "Cross-feature re-render blast radius is the classic god component symptom: unrelated state changes share one render path."
-  difficulty: 2
-  tags: [scenario, concept]
-- id: "1.3"
-  question: "Which owns state, data fetching, and event handlers?"
+  explanation: Ownership is the organizing principle. Files, line counts, and styling
+    are downstream concerns.
+  difficulty: 1
+  tags:
+  - concept
+  - scenario
+- id: '1.2'
+  question: Which symptom indicates a god component?
   options:
-    a: "Presentational children"
-    b: "The page shell"
-    c: "Smart containers"
-    d: "The layout style object"
+    a: The component uses the router
+    b: One keystroke re-renders unrelated sections of the form
+    c: The component imports a global store for a single field
+    d: The file is written in TypeScript
+  answer: b
+  explanation: 'Cross-feature re-render blast radius is the classic god component
+    symptom: unrelated state changes share one render path.'
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+- id: '1.3'
+  question: Which owns state, data fetching, and event handlers?
+  options:
+    a: The page shell
+    b: Smart containers
+    c: The layout style object
+    d: Presentational children
+  answer: b
+  explanation: Smart containers own logic and data; presentational children only render
+    props.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '1.4'
+  question: A team splits a god component into 25 tiny files without ownership rules.
+    What happens?
+  options:
+    a: Architecture becomes perfect because components are small
+    b: Tests no longer need to mount anything
+    c: The component soup moves into a component forest
+    d: Re-renders are eliminated automatically
   answer: c
-  explanation: "Smart containers own logic and data; presentational children only render props."
-  difficulty: 1
-  tags: [terminology, concept]
-- id: "1.4"
-  question: "A team splits a god component into 25 tiny files without ownership rules. What happens?"
-  options:
-    a: "The component soup moves into a component forest"
-    b: "Re-renders are eliminated automatically"
-    c: "Architecture becomes perfect because components are small"
-    d: "Tests no longer need to mount anything"
-  answer: a
-  explanation: "Small files without ownership rules just scatter the same five concerns — the soup changes shape, not substance."
+  explanation: "Small files without ownership rules just scatter the same five concerns\
+    \ \u2014 the soup changes shape, not substance."
   difficulty: 2
-  tags: [misconception, concept]
-- id: "1.5"
-  question: "What does the slot pattern let the page shell avoid knowing?"
+  tags:
+  - misconception
+  - concept
+- id: '1.5'
+  question: What does the slot pattern let the page shell avoid knowing?
   options:
-    a: "The number of CSS media queries"
-    b: "The internals of the sections it seats"
-    c: "The version of React installed"
-    d: "The routing table"
-  answer: b
-  explanation: "Slots inject sections as JSX; the shell only places them, so it never learns their internals or data sources."
-  difficulty: 1
-  tags: [terminology, concept]
-- id: "1.6"
-  question: "When is the slot pattern overkill?"
-  options:
-    a: "When sections are stable and never change independently"
-    b: "When the page has more than three sections"
-    c: "When the app uses a global state store"
-    d: "When the team prefers context"
+    a: The internals of the sections it seats
+    b: The version of React installed
+    c: The routing table
+    d: The number of CSS media queries
   answer: a
-  explanation: "Slots pay off when regions differ and swap independently. A stable, fixed form rarely needs injection points."
-  difficulty: 2
-  tags: [comparison, scenario]
-- id: "1.7"
-  question: "What changed about refs in React 19 for function components?"
+  explanation: Slots inject sections as JSX; the shell only places them, so it never
+    learns their internals or data sources.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '1.6'
+  question: When is the slot pattern overkill?
   options:
-    a: "refs now require forwardRef always"
-    b: "refs were removed entirely"
-    c: "ref is passed as a normal prop to function components"
-    d: "refs only work in class components"
+    a: When sections are stable and never change independently
+    b: When the page has more than three sections
+    c: When the app uses a global state store
+    d: When the team prefers context
+  answer: a
+  explanation: Slots pay off when regions differ and swap independently. A stable,
+    fixed form rarely needs injection points.
+  difficulty: 2
+  tags:
+  - comparison
+  - scenario
+- id: '1.7'
+  question: What changed about refs in React 19 for function components?
+  options:
+    a: refs now require forwardRef always
+    b: refs were removed entirely
+    c: ref is passed as a normal prop to function components
+    d: refs only work in class components
   answer: c
-  explanation: "React 19 lets function components receive ref directly in props; forwardRef is no longer required."
+  explanation: React 19 lets function components receive ref directly in props; forwardRef
+    is no longer required.
   difficulty: 2
-  tags: [terminology, react-19]
-- id: "1.8"
-  question: "A company adds the React Compiler. Why do component boundaries still matter?"
+  tags:
+  - terminology
+  - react-19
+- id: '1.8'
+  question: A company adds the React Compiler. Why do component boundaries still matter?
   options:
-    a: "The compiler removes the need for any component structure"
-    b: "Boundaries now express ownership and testability, not just rendering"
-    c: "The compiler only works on presentational components"
-    d: "Boundaries mattered only before the compiler existed"
-  answer: b
-  explanation: "The compiler automates memoization, so the value of boundaries shifts from render speed to ownership separation."
-  difficulty: 2
-  tags: [comparison, concept]
-- id: "1.9"
-  question: "The aside panel is replaced with a new urgency block. What is the expected blast radius under slot composition?"
-  options:
-    a: "The page shell call site, one line, and possibly its test"
-    b: "The coupling inside the removed panel's implementation"
-    c: "Every shared layout component in the app"
-    d: "The data store schema"
+    a: Boundaries now express ownership and testability, not just rendering
+    b: The compiler only works on presentational components
+    c: Boundaries mattered only before the compiler existed
+    d: The compiler removes the need for any component structure
   answer: a
-  explanation: "Slot composition means only the call site swaps one JSX element; the old section's implementation is simply unmounted."
+  explanation: The compiler automates memoization, so the value of boundaries shifts
+    from render speed to ownership separation.
+  difficulty: 2
+  tags:
+  - comparison
+  - concept
+- id: '1.9'
+  question: The aside panel is replaced with a new urgency block. What is the expected
+    blast radius under slot composition?
+  options:
+    a: The data store schema
+    b: The page shell call site, one line, and possibly its test
+    c: The coupling inside the removed panel's implementation
+    d: Every shared layout component in the app
+  answer: b
+  explanation: Slot composition means only the call site swaps one JSX element; the
+    old section's implementation is simply unmounted.
   difficulty: 3
-  tags: [scenario, application]
-- id: "1.10"
-  question: "A validation panel needs the draft's field errors. Which placement matches ownership rules?"
+  tags:
+  - scenario
+  - application
+- id: '1.10'
+  question: A validation panel needs the draft's field errors. Which placement matches
+    ownership rules?
   options:
-    a: "The panel fetches errors from its own local store"
-    b: "Each input fetches its own errors on blur"
-    c: "The page shell holds errors to pass them everywhere"
-    d: "The form container owns draft state and passes errors as props"
+    a: The page shell holds errors to pass them everywhere
+    b: The form container owns draft state and passes errors as props
+    c: The panel fetches errors from its own local store
+    d: Each input fetches its own errors on blur
+  answer: b
+  explanation: The container owns form state including validation; presentational
+    panels render props rather than fetch.
+  difficulty: 3
+  tags:
+  - scenario
+  - application
+- id: '1.11'
+  question: When refactoring the 800-line ApplicationForm into containers, what is
+    the single question that decides the container boundary?
+  options:
+    a: Which UI library provides the cleanest slot API
+    b: How many files should the refactor produce
+    c: How many lines does the resulting component have
+    d: "Who owns the data and the lifecycle \u2014 does the boundary match an ownership\
+      \ line in the team?"
   answer: d
-  explanation: "The container owns form state including validation; presentational panels render props rather than fetch."
+  explanation: "Container boundaries follow data ownership, not file size. The question\
+    \ is who needs the state to be alive and rendered together \u2014 that owner becomes\
+    \ the container. File count and library choice follow from ownership, not the\
+    \ reverse."
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '1.12'
+  question: When refactoring the 800-line ApplicationForm into containers, what is
+    the single question that decides the container boundary?
+  options:
+    a: Which UI library provides the cleanest slot API
+    b: How many files should the refactor produce
+    c: How many lines does the resulting component have
+    d: "Who owns the data and the lifecycle \u2014 does the boundary match an ownership\
+      \ line in the team?"
+  answer: d
+  explanation: "Container boundaries follow data ownership, not file size. The question\
+    \ is who needs the state to be alive and rendered together \u2014 that owner becomes\
+    \ the container. File count and library choice follow from ownership, not the\
+    \ reverse."
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '1.13'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The cache module (m12)
+    b: The test module (m3)
+    c: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+    d: The schema module (m4)
+  answer: c
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '1.14'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: Check the dashboard
+    b: The user's network
+    c: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    d: Restart the server
+  answer: c
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
   difficulty: 3
-  tags: [scenario, application]
-- id: "1.11"
-  question: When refactoring the 800-line ApplicationForm into containers, what is the single question that decides the container boundary?
+  tags:
+  - synthesis
+  - process
+- id: '1.15'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
   options:
-    a: "How many lines does the resulting component have"
-    b: "Who owns the data and the lifecycle — does the boundary match an ownership line in the team?"
-    c: "Which UI library provides the cleanest slot API"
-    d: "How many files should the refactor produce"
-  answer: b
-  explanation: Container boundaries follow data ownership, not file size. The question is who needs the state to be alive and rendered together — that owner becomes the container. File count and library choice follow from ownership, not the reverse.
-  difficulty: 2
-  tags: [concept, comparison]
-- id: "1.12"
-  question: When refactoring the 800-line ApplicationForm into containers, what is the single question that decides the container boundary?
+    a: Move all logic to a single hook
+    b: Use a different test framework
+    c: Add a unit test for every function
+    d: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+  answer: d
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '1.16'
+  question: How does this module compose with the micro-assembly capstone (m20)?
   options:
-    a: "How many lines does the resulting component have"
-    b: "Who owns the data and the lifecycle — does the boundary match an ownership line in the team?"
-    c: "Which UI library provides the cleanest slot API"
-    d: "How many files should the refactor produce"
-  answer: b
-  explanation: Container boundaries follow data ownership, not file size. The question is who needs the state to be alive and rendered together — that owner becomes the container. File count and library choice follow from ownership, not the reverse.
+    a: It replaces the loop
+    b: It runs before the loop
+    c: It does not
+    d: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+  answer: d
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
   difficulty: 2
-  tags: [concept, comparison]
+  tags:
+  - synthesis
+  - cross-module
+- id: '1.17'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    b: Many comments
+    c: Many tests
+    d: Slow performance
+  answer: a
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

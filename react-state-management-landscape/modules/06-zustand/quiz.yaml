@@ -1,0 +1,135 @@
+- id: '06.1'
+  question: What does zustand's create() return?
+  options:
+    a: A reducer
+    b: A store object
+    c: A hook that components use to read and update the store
+    d: A context
+  answer: c
+  explanation: Explanation for What does zustand's create() return?...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '06.2'
+  question: Inside an action, {get} reads the current state; {set} updates it.
+  options:
+    a: get; set
+    b: read; write
+    c: fetch; dispatch
+    d: useState; useEffect
+  answer: a
+  explanation: Explanation for Inside an action, {get} reads the current state; {...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '06.3'
+  question: What is a slice in zustand?
+  options:
+    a: A subset of the DOM
+    b: A logical grouping of state and actions; multiple stores or slice convention
+      within one
+    c: A type
+    d: A middleware
+  answer: b
+  explanation: Explanation for What is a slice in zustand?...
+  difficulty: 2
+  tags:
+  - concept
+- id: '06.4'
+  question: The {persist} middleware writes the store to localStorage on every change.
+  options:
+    a: immer
+    b: subscribeWithSelector
+    c: devtools
+    d: persist
+  answer: d
+  explanation: Explanation for The {persist} middleware writes the store to local...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '06.5'
+  question: What is partialize?
+  options:
+    a: A middleware
+    b: A pattern that splits the store into slices
+    c: An option of persist that controls which fields are persisted
+    d: A type of selector
+  answer: c
+  explanation: Explanation for What is partialize?...
+  difficulty: 2
+  tags:
+  - terminology
+- id: '06.6'
+  question: Persisting {tokens} in localStorage is risky because of XSS.
+  options:
+    a: theme
+    b: tokens
+    c: language
+    d: sidebar state
+  answer: b
+  explanation: Explanation for Persisting {tokens} in localStorage is risky becau...
+  difficulty: 2
+  tags:
+  - concept
+- id: '06.7'
+  question: Immer middleware lets you update state with {mutable} syntax.
+  options:
+    a: async
+    b: synchronous
+    c: immutable
+    d: mutable
+  answer: d
+  explanation: Explanation for Immer middleware lets you update state with {mutab...
+  difficulty: 2
+  tags:
+  - terminology
+- id: '06.8'
+  question: Devtools middleware integrates with {Redux DevTools}.
+  options:
+    a: Vue DevTools
+    b: Chrome DevTools
+    c: Redux DevTools
+    d: React DevTools
+  answer: c
+  explanation: Explanation for Devtools middleware integrates with {Redux DevTool...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '06.9'
+  question: Zustand for a single component is {over-engineering}.
+  options:
+    a: best practice
+    b: over-engineering
+    c: required
+    d: the only option
+  answer: b
+  explanation: Explanation for Zustand for a single component is {over-engineerin...
+  difficulty: 1
+  tags:
+  - misconception
+- id: '06.10'
+  question: An unstable zustand selector can be fixed with the {shallow} compare.
+  options:
+    a: shallow
+    b: useEffect
+    c: useContext
+    d: useState
+  answer: a
+  explanation: Explanation for An unstable zustand selector can be fixed with the...
+  difficulty: 2
+  tags:
+  - process
+- id: '06.11'
+  question: 'The order of middleware in create() matters: the outermost {wraps} the
+    innermost.'
+  options:
+    a: wraps
+    b: deletes
+    c: copies
+    d: replaces
+  answer: a
+  explanation: 'Explanation for The order of middleware in create() matters: the o...'
+  difficulty: 2
+  tags:
+  - concept
+

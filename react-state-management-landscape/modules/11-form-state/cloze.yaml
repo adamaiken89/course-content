@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "Form state is {local} to the form; it does not need to be a {global} store."
+  answer: "local; global"
+  explanation: "A form's state is owned by the form. Lifting it to a global store is over-engineering. The form is the component; useState (or a form library) is the primitive."
+  difficulty: 1
+  tags: [concept]
+- id: "c.2"
+  question: "{React Hook Form} uses {uncontrolled} inputs with refs; the form state is {internal} but the API is hooks-based."
+  answer: "React Hook Form; uncontrolled; internal"
+  explanation: "The library uses refs to read input values, avoiding the controlled-input re-render on every keystroke. The form state is internal; the consumer subscribes to fields."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.3"
+  question: "{TanStack Form} is the {type-safe} alternative; the same {headless} API as React Hook Form with first-class TypeScript inference."
+  answer: "TanStack Form; type-safe; headless"
+  explanation: "TanStack Form ships with type-safe field paths, validation adapters, and a headless API. The choice between RHF and TanStack Form is the choice between ecosystem and type safety."
+  difficulty: 1
+  tags: [comparison]
+- id: "c.4"
+  question: "{Schema-driven} validation uses zod or valibot to derive the form's {validation rules} from a single source of truth."
+  answer: "Schema-driven; validation rules"
+  explanation: "The schema is the source of truth for the form's shape and the validation rules. The form library consumes the schema; the consumer writes the schema. Drift is impossible."
+  difficulty: 2
+  tags: [process]
+- id: "c.5"
+  question: "{Server-side} validation re-runs the schema on the server; the client form is {optimistic} but the server is the source of truth."
+  answer: "Server-side; optimistic"
+  explanation: "The client validates for UX (immediate feedback). The server validates for correctness (the source of truth). Both must run; the server's word wins."
+  difficulty: 1
+  tags: [process]
+- id: "c.6"
+  question: "{Field arrays} are a pattern for dynamic {lists} in a form; React Hook Form's useFieldArray and TanStack Form's field-level subscripts are the primitives."
+  answer: "Field arrays; lists"
+  explanation: "The pattern is the same: an array of fields with add, remove, and reorder. The primitives differ in API but the shape is the same."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "{Cross-field} validation depends on {multiple} fields; it lives in the form's {submit handler} or the schema's superRefine."
+  answer: "Cross-field; multiple; submit handler"
+  explanation: "Per-field validation is one field at a time. Cross-field validation is two or more fields together. The form library's submit hook or the schema's superRefine is the place to express it."
+  difficulty: 2
+  tags: [process]
+- id: "c.8"
+  question: "A form library is the right answer when the form has {multiple} fields, {cross-field} validation, or {dynamic} fields; for a single input, useState is {simpler}."
+  answer: "multiple; cross-field; dynamic; simpler"
+  explanation: "One input is useState. Two inputs is a form. Twenty inputs with cross-field validation is a form library. The decision tree picks the primitive."
+  difficulty: 1
+  tags: [comparison]

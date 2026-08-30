@@ -1,0 +1,156 @@
+- id: cum.901
+  type: mcq
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  question: TanStack Query's queryKey is
+  options:
+    a: a random ID
+    b: the cache identity; same key returns same data
+    c: the URL
+    d: the type
+  answer: b
+  explanation: Answer explanation for TanStack Query's queryKey is...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.902
+  type: cloze
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  question: '{staleTime} controls how long a query is considered {fresh}.'
+  answer: staleTime; fresh
+  explanation: Cloze explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.903
+  type: tf
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  statement: setQueryData is a safe refetch; invalidateQueries is a precise update.
+  answer: false
+  explanation: TF explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.904
+  type: mcq
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  question: URL state is the right answer for
+  options:
+    a: tokens
+    b: filters, sort, pagination, and search
+    c: user passwords
+    d: large JSON blobs
+  answer: b
+  explanation: Answer explanation for URL state is the right answer for...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.905
+  type: mcq
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  question: React Hook Form uses
+  options:
+    a: uncontrolled inputs with refs
+    b: controlled inputs with refs
+    c: manual DOM
+    d: URL state
+  answer: a
+  explanation: Answer explanation for React Hook Form uses...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.906
+  type: cloze
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  question: Schema-driven validation derives the form's {validation} rules from a
+    {single} source of truth.
+  answer: validation; single
+  explanation: Cloze explanation.
+  difficulty: 2
+  tags:
+  - cross-module
+- id: cum.907
+  type: tf
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  statement: Persisting tokens in localStorage is safe because localStorage is sandboxed.
+  answer: false
+  explanation: TF explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.908
+  type: mcq
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  question: IndexedDB is the right storage for
+  options:
+    a: small UI settings
+    b: large client-side data and offline support
+    c: URL parameters
+    d: session tokens
+  answer: b
+  explanation: Answer explanation for IndexedDB is the right storage for...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.909
+  type: cloze
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  question: A {migration} transforms persisted data when the {schema} changes.
+  answer: migration; schema
+  explanation: Cloze explanation.
+  difficulty: 2
+  tags:
+  - cross-module
+- id: cum.910
+  type: mcq
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  question: Cross-field validation lives in
+  options:
+    a: a single field's onChange
+    b: the schema's refine or the submit handler
+    c: the URL params
+    d: the page's CSS
+  answer: b
+  explanation: Answer explanation for Cross-field validation lives in...
+  difficulty: 2
+  tags:
+  - cross-module

@@ -1,6 +1,6 @@
 subject: "Enterprise React UI Patterns"
 language: en
-time_budget_hours: 25
+time_budget_hours: 32
 target_level: advanced
 domain: "enterprise-react-ui-patterns"
 prerequisites: [react, typescript, testing]
@@ -16,6 +16,11 @@ learning_objectives:
   - "Reconcile async races and design error UX with boundaries, retries, and offline messaging"
   - "Assemble extended patterns: autosave, offline queue, undo, and multi-tab consistency as named seams"
   - "Compose m13/m14/m15/m17/m19 into a single running loop without new abstractions; identify which seam is misbehaving under failure"
+  - "Decide when useActionState, useFormStatus, and useOptimistic fit next to TanStack Query in a client-only enterprise portal"
+  - "Place Suspense boundaries so a client-only portal benefits from suspense-shaped trees without streaming"
+  - "Choose polling vs SSE vs WebSocket for an enterprise use case from measurable staleness and connection cost"
+  - "Format numbers, dates, and currencies per locale using Intl APIs; build type-safe translation contracts; handle RTL with logical CSS properties"
+  - "Wire error tracking, breadcrumbs, Web Vitals, and PII-redacted telemetry into a React app's rendering and event paths"
 
 modules:
   - id: 1
@@ -118,3 +123,28 @@ modules:
     time_hours: 1.5
     prerequisites: [19]
     topics: [seam-composition, m15-m19-integration, capstone]
+  - id: 21
+    name: "React 19 Actions in Enterprise UI"
+    time_hours: 1.5
+    prerequisites: [12]
+    topics: [useActionState, useFormStatus, useOptimistic, server-actions]
+  - id: 22
+    name: "Suspense & Streaming Patterns"
+    time_hours: 1.5
+    prerequisites: [12]
+    topics: [suspense, use-hook, streaming-ssr, boundary-placement]
+  - id: 23
+    name: "Real-Time Data Patterns"
+    time_hours: 1.5
+    prerequisites: [12]
+    topics: [sse, websocket, polling, refetch-on-focus, reconnect]
+  - id: 24
+    name: "Internationalization"
+    time_hours: 1.5
+    prerequisites: [4]
+    topics: [intl, icu-messageformat, translation-contract, rtl]
+  - id: 25
+    name: "Observability & Telemetry"
+    time_hours: 1.5
+    prerequisites: [18]
+    topics: [error-tracking, breadcrumbs, web-vitals, pii-redaction]

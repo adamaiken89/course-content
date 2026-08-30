@@ -1,0 +1,134 @@
+- id: '07.1'
+  question: What is an atom in Jotai?
+  options:
+    a: A CSS unit
+    b: The unit of state; atom(initialValue) returns an atom
+    c: A type of effect
+    d: A React component
+  answer: b
+  explanation: Explanation for What is an atom in Jotai?...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '07.2'
+  question: What does a derived atom do?
+  options:
+    a: Mutates the store
+    b: Reads other atoms and computes a value; the dependency graph is automatic
+    c: Replaces the store
+    d: Fetches from the server
+  answer: b
+  explanation: Explanation for What does a derived atom do?...
+  difficulty: 1
+  tags:
+  - concept
+- id: '07.3'
+  question: What is atomFamily?
+  options:
+    a: A factory that creates an atom per parameter; the pattern for per-id state
+    b: A type of selector
+    c: A middleware
+    d: A group of related atoms
+  answer: a
+  explanation: Explanation for What is atomFamily?...
+  difficulty: 2
+  tags:
+  - terminology
+- id: '07.4'
+  question: useAtom returns [value, {setter}] like useState.
+  options:
+    a: ref
+    b: effect
+    c: reducer
+    d: setter
+  answer: d
+  explanation: Explanation for useAtom returns [value, {setter}] like useState....
+  difficulty: 1
+  tags:
+  - terminology
+- id: '07.5'
+  question: Jotai's store is per-{Provider} by default.
+  options:
+    a: Hook
+    b: Component
+    c: Provider
+    d: Atom
+  answer: c
+  explanation: Explanation for Jotai's store is per-{Provider} by default....
+  difficulty: 1
+  tags:
+  - terminology
+- id: '07.6'
+  question: Jotai re-renders only the {components} that use the changed atom.
+  options:
+    a: components
+    b: routes
+    c: apps
+    d: pages
+  answer: a
+  explanation: Explanation for Jotai re-renders only the {components} that use th...
+  difficulty: 2
+  tags:
+  - concept
+- id: '07.7'
+  question: The re-render boundary in Jotai is the {atom}.
+  options:
+    a: store
+    b: page
+    c: component
+    d: atom
+  answer: d
+  explanation: Explanation for The re-render boundary in Jotai is the {atom}....
+  difficulty: 2
+  tags:
+  - concept
+- id: '07.8'
+  question: Jotai shines for {derived} state and per-{id} state.
+  options:
+    a: server; route
+    b: local; component
+    c: derived; id
+    d: URL; page
+  answer: c
+  explanation: Explanation for Jotai shines for {derived} state and per-{id} stat...
+  difficulty: 2
+  tags:
+  - comparison
+- id: '07.9'
+  question: For a single global value, {zustand} is simpler than Jotai.
+  options:
+    a: zustand
+    b: Redux
+    c: Context
+    d: Jotai
+  answer: a
+  explanation: Explanation for For a single global value, {zustand} is simpler th...
+  difficulty: 1
+  tags:
+  - comparison
+- id: '07.10'
+  question: Derived atoms are memoized by Jotai; the result is {cached} until a dependency
+    changes.
+  options:
+    a: deleted
+    b: cached
+    c: frozen
+    d: shared
+  answer: b
+  explanation: Explanation for Derived atoms are memoized by Jotai; the result is...
+  difficulty: 2
+  tags:
+  - concept
+- id: '07.11'
+  question: A Jotai atom's value is {referentially} stable on equal values.
+  options:
+    a: frozen
+    b: always changing
+    c: referentially
+    d: never
+  answer: c
+  explanation: Explanation for A Jotai atom's value is {referentially} stable on ...
+  difficulty: 2
+  tags:
+  - concept
+

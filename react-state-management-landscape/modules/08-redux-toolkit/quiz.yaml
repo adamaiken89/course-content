@@ -1,0 +1,136 @@
+- id: '08.1'
+  question: What does createSlice wrap?
+  options:
+    a: Just the reducer
+    b: Action creators, reducers, and action types in one call
+    c: Just the actions
+    d: Just the state
+  answer: b
+  explanation: Explanation for What does createSlice wrap?...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '08.2'
+  question: Immer is built into Redux Toolkit; you can {mutate} state inside reducers.
+  options:
+    a: mutate
+    b: delete
+    c: freeze
+    d: not mutate
+  answer: a
+  explanation: Explanation for Immer is built into Redux Toolkit; you can {mutate...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '08.3'
+  question: useSelector reads; useDispatch {writes}.
+  options:
+    a: freezes
+    b: reads
+    c: writes
+    d: deletes
+  answer: c
+  explanation: Explanation for useSelector reads; useDispatch {writes}....
+  difficulty: 1
+  tags:
+  - terminology
+- id: '08.4'
+  question: The Redux {dispatch} is stable across renders.
+  options:
+    a: state
+    b: dispatch
+    c: reducer
+    d: store
+  answer: b
+  explanation: Explanation for The Redux {dispatch} is stable across renders....
+  difficulty: 1
+  tags:
+  - concept
+- id: '08.5'
+  question: createSelector from reselect {memoizes} a compound selector.
+  options:
+    a: renders
+    b: deletes
+    c: calls
+    d: memoizes
+  answer: d
+  explanation: Explanation for createSelector from reselect {memoizes} a compound...
+  difficulty: 2
+  tags:
+  - terminology
+- id: '08.6'
+  question: createAsyncThunk is the right answer for adding {async} work to an existing
+    store.
+  options:
+    a: client
+    b: sync
+    c: async
+    d: server
+  answer: c
+  explanation: Explanation for createAsyncThunk is the right answer for adding {a...
+  difficulty: 2
+  tags:
+  - terminology
+- id: '08.7'
+  question: RTK Query is a dedicated {cache} for server state.
+  options:
+    a: store
+    b: cache
+    c: context
+    d: ref
+  answer: b
+  explanation: Explanation for RTK Query is a dedicated {cache} for server state....
+  difficulty: 1
+  tags:
+  - terminology
+- id: '08.8'
+  question: The slice boundary should be a {logical} grouping, not a technical one.
+  options:
+    a: visual
+    b: technical
+    c: logical
+    d: random
+  answer: c
+  explanation: Explanation for The slice boundary should be a {logical} grouping,...
+  difficulty: 2
+  tags:
+  - concept
+- id: '08.9'
+  question: Redux is the right answer for {large} apps with a devtools requirement
+    and a team familiar with the patterns.
+  options:
+    a: single-page
+    b: internal
+    c: small
+    d: large
+  answer: d
+  explanation: Explanation for Redux is the right answer for {large} apps with a ...
+  difficulty: 2
+  tags:
+  - comparison
+- id: '08.10'
+  question: A Redux selector's default comparison is {===}.
+  options:
+    a: ===
+    b: isEqual
+    c: shallow
+    d: deepEqual
+  answer: a
+  explanation: Explanation for A Redux selector's default comparison is {===}....
+  difficulty: 1
+  tags:
+  - terminology
+- id: '08.11'
+  question: '{configureStore} sets up the store with default middleware (thunk, devtools,
+    serializability).'
+  options:
+    a: configureStore
+    b: createSlice
+    c: createAction
+    d: createStore
+  answer: a
+  explanation: Explanation for {configureStore} sets up the store with default mi...
+  difficulty: 2
+  tags:
+  - terminology
+

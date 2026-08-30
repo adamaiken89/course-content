@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "A {migration} is a {codemod} or a {parallel-state} strategy that moves a codebase from one state primitive to {another}."
+  answer: "migration; codemod; parallel-state; another"
+  explanation: "The migration is the act of moving from one primitive to another. A codemod is the mechanical change. Parallel state is the bridge: both stores exist, the app reads from the new one and writes to both."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "A {parallel-state} migration runs both stores simultaneously; the new store is the {read} source; the old store is the {write} sink until the migration is complete."
+  answer: "parallel-state; read; write"
+  explanation: "The new store is the source of truth for reads. The old store is updated for compatibility. Once the migration is verified, the old store is removed. The pattern is the same as a database migration."
+  difficulty: 2
+  tags: [process]
+- id: "c.3"
+  question: "A {codemod} automates the {mechanical} changes; it does not handle {semantic} changes (renaming, restructuring)."
+  answer: "codemod; mechanical; semantic"
+  explanation: "A codemod can rename a hook call or change the import. It cannot decide that a Context value should be a zustand atom. The semantic decision is human."
+  difficulty: 1
+  tags: [concept]
+- id: "c.4"
+  question: "{Deprecation} flags mark code that is {scheduled} for removal; the flag is a {runtime} warning that the consumer sees."
+  answer: "Deprecation; scheduled; runtime"
+  explanation: "console.warn('This store is deprecated; migrate to the new one') is the standard deprecation. The flag stays in until the consumer is verified to have migrated."
+  difficulty: 2
+  tags: [process]
+- id: "c.5"
+  question: "A migration is a {project}, not a {refactor}; the {scope}, the {rollback}, and the {test} plan are documented before any code changes."
+  answer: "project; refactor; scope; rollback; test"
+  explanation: "A migration has a start, an end, and a rollback. A refactor is an ongoing change. The two are different. A migration is scheduled; a refactor is opportunistic."
+  difficulty: 2
+  tags: [process]
+- id: "c.6"
+  question: "The {strangler} pattern wraps the old code with the new code; the new code {handles} more cases until the old code is {removed}."
+  answer: "strangler; handles; removed"
+  explanation: "The pattern is from microservices: the new service handles more traffic until the old service is removed. The same pattern applies to state: the new store handles more reads until the old store is removed."
+  difficulty: 3
+  tags: [concept]
+- id: "c.7"
+  question: "Migrations are {reversible}; a failed migration should {rollback} cleanly without leaving the app in an {inconsistent} state."
+  answer: "reversible; rollback; inconsistent"
+  explanation: "The migration is not the moment to break the app. A failed migration rolls back. The old store is still there; the new store is dropped. The pattern is the same as a database transaction."
+  difficulty: 2
+  tags: [process]
+- id: "c.8"
+  question: "The first migration in a codebase sets the {precedent}; the {tooling}, the {communication}, and the {rollback} story are all part of the {team}'s pattern library."
+  answer: "precedent; tooling; communication; rollback; team's"
+  explanation: "The first migration is the one that everyone learns from. Get it right; document the pattern; the second migration is faster."
+  difficulty: 3
+  tags: [process]

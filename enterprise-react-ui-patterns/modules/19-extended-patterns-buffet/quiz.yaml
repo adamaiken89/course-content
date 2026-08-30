@@ -1,132 +1,271 @@
-- id: "19.1"
-  question: "Which shape best describes autosave?"
+- id: '19.1'
+  question: Which shape best describes autosave?
   options:
-    a: "Save every keystroke as fast as possible"
-    b: "Throttle the wire by pausing between saves"
-    c: "A debounced write into the draft store plus persistence"
-    d: "A periodic full form snapshot"
-  answer: c
-  explanation: "Keystrokes coalesce into one settled value after the pause, the draft lands in the draft store + localStorage (m5), and status flips saving→saved."
+    a: A debounced write into the draft store plus persistence
+    b: A periodic full form snapshot
+    c: Save every keystroke as fast as possible
+    d: Throttle the wire by pausing between saves
+  answer: a
+  explanation: "Keystrokes coalesce into one settled value after the pause, the draft\
+    \ lands in the draft store + localStorage (m5), and status flips saving\u2192\
+    saved."
   difficulty: 1
-  tags: [terminology]
-- id: "19.2"
-  question: "Why must autosave never write into the query cache?"
+  tags:
+  - terminology
+- id: '19.2'
+  question: Why must autosave never write into the query cache?
   options:
-    a: "Drafts are client-authored truth; the cache holds server truth and would serve an uncommitted draft as committed"
-    b: "The query cache is read-only by browser design"
-    c: "Zustand cannot share storage with the cache"
-    d: "LocalStorage is faster than the cache"
-  answer: a
-  explanation: "The m12 cache must only claim what the server can back. Drafts belong to the draft store; only the engine's success (m14) invalidates server views."
-  difficulty: 2
-  tags: [concept, comparison]
-- id: "19.3"
-  question: "The offline queue flush must send a create-application before the cohort-choice that references its id. What guarantees this?"
-  options:
-    a: "Alphabetical ordering of itemIds"
-    b: "A topological sort over the payload parent references — dependency order, not arrival order"
-    c: "The online event ordering"
-    d: "Sending everything in the same fetch"
+    a: LocalStorage is faster than the cache
+    b: Drafts are client-authored truth; the cache holds server truth and would serve
+      an uncommitted draft as committed
+    c: The query cache is read-only by browser design
+    d: Zustand cannot share storage with the cache
   answer: b
-  explanation: "Parents must land before children (m13); dependencySort runs first, then the keyed writes flush. Arrival order alone would corrupt the linkage."
+  explanation: The m12 cache must only claim what the server can back. Drafts belong
+    to the draft store; only the engine's success (m14) invalidates server views.
   difficulty: 2
-  tags: [concept, process]
-- id: "19.4"
-  question: "A queue flush replays after a tab crash. What prevents double enrollment?"
+  tags:
+  - concept
+  - comparison
+- id: '19.3'
+  question: The offline queue flush must send a create-application before the cohort-choice
+    that references its id. What guarantees this?
   options:
-    a: "The offline stripe disables submit"
-    b: "The queue only runs on the first tab"
-    c: "A debounce on the flush"
-    d: "Dedupe by the runId:itemId idempotency key the server honours"
-  answer: d
-  explanation: "The persisted queue replays the same keyed intent; m17 idempotency requires the backend to dedupe on that key — eventually exactly once."
+    a: "A topological sort over the payload parent references \u2014 dependency order,\
+      \ not arrival order"
+    b: The online event ordering
+    c: Sending everything in the same fetch
+    d: Alphabetical ordering of itemIds
+  answer: a
+  explanation: Parents must land before children (m13); dependencySort runs first,
+    then the keyed writes flush. Arrival order alone would corrupt the linkage.
+  difficulty: 2
+  tags:
+  - concept
+  - process
+- id: '19.4'
+  question: A queue flush replays after a tab crash. What prevents double enrollment?
+  options:
+    a: Dedupe by the runId:itemId idempotency key the server honours
+    b: The offline stripe disables submit
+    c: The queue only runs on the first tab
+    d: A debounce on the flush
+  answer: a
+  explanation: "The persisted queue replays the same keyed intent; m17 idempotency\
+    \ requires the backend to dedupe on that key \u2014 eventually exactly once."
   difficulty: 3
-  tags: [concept, calculation]
-- id: "19.5"
-  question: "Undo must roll back exactly the last paragraph typed, not the whole morning. Which structure enables that?"
+  tags:
+  - concept
+  - calculation
+- id: '19.5'
+  question: Undo must roll back exactly the last paragraph typed, not the whole morning.
+    Which structure enables that?
   options:
-    a: "A stack of whole-form snapshots"
-    b: "Re-fetching the form from the server"
-    c: "A command stack where each command's invert closes over the pre-action value"
-    d: "Clearing the form and restoring localStorage"
+    a: A stack of whole-form snapshots
+    b: Re-fetching the form from the server
+    c: A command stack where each command's invert closes over the pre-action value
+    d: Clearing the form and restoring localStorage
   answer: c
-  explanation: "The invert captures what the action replaced, so the stack rolls back one action's worth. Snapshots can only jump to one past instant."
+  explanation: The invert captures what the action replaced, so the stack rolls back
+    one action's worth. Snapshots can only jump to one past instant.
   difficulty: 2
-  tags: [concept]
-- id: "19.6"
-  question: "Per the State Decision, where does the undo/redo stack live and why?"
+  tags:
+  - concept
+- id: '19.6'
+  question: Per the State Decision, where does the undo/redo stack live and why?
   options:
-    a: "Module-local command list — scoped to the current draft, frequent, and must not survive navigation"
-    b: "In zustand so other screens can jump to any undo state"
-    c: "In the query cache beside the draft"
-    d: "In a BroadcastChannel for cross-tab undo"
+    a: "Module-local command list \u2014 scoped to the current draft, frequent, and\
+      \ must not survive navigation"
+    b: In zustand so other screens can jump to any undo state
+    c: In the query cache beside the draft
+    d: In a BroadcastChannel for cross-tab undo
   answer: a
-  explanation: "Undo context dies with the draft screen; making it global adds cross-screen coupling for no consumer. The offline queue, by contrast, must persist to survive tab close."
+  explanation: Undo context dies with the draft screen; making it global adds cross-screen
+    coupling for no consumer. The offline queue, by contrast, must persist to survive
+    tab close.
   difficulty: 2
-  tags: [concept, comparison]
-- id: "19.7"
-  question: "Two tabs edit the same applicant. A tab-B message arrives with a lower serial than the local tab's last write. What must happen?"
+  tags:
+  - concept
+  - comparison
+- id: '19.7'
+  question: Two tabs edit the same applicant. A tab-B message arrives with a lower
+    serial than the local tab's last write. What must happen?
   options:
-    a: "Hydrate anyway and let the older draft win"
-    b: "Reject the stale hydrate — last-writer-wins by the higher serial, like m17"
-    c: "Merge both drafts field by field with no version"
-    d: "Prompt the user to pick a winner every time"
-  answer: b
-  explanation: "The per-tab serial is m17 version arithmetic applied across tabs: the newer writer wins, the stale message is dropped. The m17 dirty-merge covers unsaved local bytes."
-  difficulty: 3
-  tags: [scenario, comparison]
-- id: "19.8"
-  question: "Why is the submit latch an ephemeral lease instead of a persisted lock?"
-  options:
-    a: "Ephemeral locks are cheaper to acquire"
-    b: "The backend requires per-tab locks"
-    c: "BroadcastChannel only supports ephemeral messages"
-    d: "Persisted locks never release and would deadlock after a stale tab leaves"
-  answer: d
-  explanation: "Only one tab must submit at a time, but the ticket dies with the tab — a lease with a timeout plus unload release. The offline queue persists because it is storage; the latch must not."
-  difficulty: 2
-  tags: [concept, scenario]
-- id: "19.9"
-  question: "In the micro-assembly, the reviewer changes a draft's program after the batch submit began, mid-flight with an option refetch. What makes it safe?"
-  options:
-    a: "The batch engine ignores the change"
-    b: "The submit happens before the change is read"
-    c: "The request-id guard (m17) drops the stale option resolve and re-fetches for the new key"
-    d: "The queued write waits for the refetch"
+    a: Prompt the user to pick a winner every time
+    b: Hydrate anyway and let the older draft win
+    c: "Reject the stale hydrate \u2014 last-writer-wins by the higher serial, like\
+      \ m17"
+    d: Merge both drafts field by field with no version
   answer: c
-  explanation: "m13 keeps options live; the m17 request-id guard means a superseded option list can never paint. The loop stays correct under mid-flight user edits."
+  explanation: 'The per-tab serial is m17 version arithmetic applied across tabs:
+    the newer writer wins, the stale message is dropped. The m17 dirty-merge covers
+    unsaved local bytes.'
   difficulty: 3
-  tags: [scenario]
-- id: "19.10"
-  question: "One batch item fails idempotently in the micro-assembly. Which line of the loop finishes the job and what does it reuse?"
+  tags:
+  - scenario
+  - comparison
+- id: '19.8'
+  question: Why is the submit latch an ephemeral lease instead of a persisted lock?
   options:
-    a: "resubmit(it, run.key) — same idempotency key, so the replay dedupes and only the missing item lands"
-    b: "Restart the import with a new file"
-    c: "Clear the run ledger and resubmit everything"
-    d: "Refresh the page and rely on the autosave"
-  answer: a
-  explanation: "The per-item resubmit under the original run.key is the m14 + m17 contract — the course composes by each module handing to the next through agreed seams."
+    a: Ephemeral locks are cheaper to acquire
+    b: The backend requires per-tab locks
+    c: BroadcastChannel only supports ephemeral messages
+    d: Persisted locks never release and would deadlock after a stale tab leaves
+  answer: d
+  explanation: "Only one tab must submit at a time, but the ticket dies with the tab\
+    \ \u2014 a lease with a timeout plus unload release. The offline queue persists\
+    \ because it is storage; the latch must not."
   difficulty: 2
-  tags: [terminology, scenario]
-- id: "19.11"
-  question: An autosave uses a debounced write into the draft store. Why must it never write into the TanStack Query cache?
+  tags:
+  - concept
+  - scenario
+- id: '19.9'
+  question: In the micro-assembly, the reviewer changes a draft's program after the
+    batch submit began, mid-flight with an option refetch. What makes it safe?
   options:
-    a: "Query cache is faster than the draft store"
-    b: "Drafts are client-authored truth; the cache holds server truth — writing drafts into the cache would serve uncommitted values as if they were committed"
-    c: "Query cache is read-only"
-    d: "Autosave is too fast for the cache"
+    a: The submit happens before the change is read
+    b: The request-id guard (m17) drops the stale option resolve and re-fetches for
+      the new key
+    c: The queued write waits for the refetch
+    d: The batch engine ignores the change
   answer: b
-  explanation: "Mixing draft truth with server truth is the kind of bug that survives code review and ships: a different component reads from the cache, gets the uncommitted draft, renders it as the official value. Drafts and server data must live in separate stores with separate write paths."
+  explanation: m13 keeps options live; the m17 request-id guard means a superseded
+    option list can never paint. The loop stays correct under mid-flight user edits.
   difficulty: 3
-  tags: [concept, process]
-- id: "19.12"
-  question: An autosave uses a debounced write into the draft store. Why must it never write into the TanStack Query cache?
+  tags:
+  - scenario
+- id: '19.10'
+  question: One batch item fails idempotently in the micro-assembly. Which line of
+    the loop finishes the job and what does it reuse?
   options:
-    a: "Query cache is faster than the draft store"
-    b: "Drafts are client-authored truth; the cache holds server truth — writing drafts into the cache would serve uncommitted values as if they were committed"
-    c: "Query cache is read-only"
-    d: "Autosave is too fast for the cache"
+    a: Restart the import with a new file
+    b: Clear the run ledger and resubmit everything
+    c: Refresh the page and rely on the autosave
+    d: "resubmit(it, run.key) \u2014 same idempotency key, so the replay dedupes and\
+      \ only the missing item lands"
+  answer: d
+  explanation: "The per-item resubmit under the original run.key is the m14 + m17\
+    \ contract \u2014 the course composes by each module handing to the next through\
+    \ agreed seams."
+  difficulty: 2
+  tags:
+  - terminology
+  - scenario
+- id: '19.11'
+  question: An autosave uses a debounced write into the draft store. Why must it never
+    write into the TanStack Query cache?
+  options:
+    a: Query cache is faster than the draft store
+    b: "Drafts are client-authored truth; the cache holds server truth \u2014 writing\
+      \ drafts into the cache would serve uncommitted values as if they were committed"
+    c: Query cache is read-only
+    d: Autosave is too fast for the cache
   answer: b
-  explanation: "Mixing draft truth with server truth is the kind of bug that survives code review and ships: a different component reads from the cache, gets the uncommitted draft, renders it as the official value. Drafts and server data must live in separate stores with separate write paths."
+  explanation: 'Mixing draft truth with server truth is the kind of bug that survives
+    code review and ships: a different component reads from the cache, gets the uncommitted
+    draft, renders it as the official value. Drafts and server data must live in separate
+    stores with separate write paths.'
   difficulty: 3
-  tags: [concept, process]
+  tags:
+  - concept
+  - process
+- id: '19.12'
+  question: An autosave uses a debounced write into the draft store. Why must it never
+    write into the TanStack Query cache?
+  options:
+    a: Query cache is faster than the draft store
+    b: "Drafts are client-authored truth; the cache holds server truth \u2014 writing\
+      \ drafts into the cache would serve uncommitted values as if they were committed"
+    c: Query cache is read-only
+    d: Autosave is too fast for the cache
+  answer: b
+  explanation: 'Mixing draft truth with server truth is the kind of bug that survives
+    code review and ships: a different component reads from the cache, gets the uncommitted
+    draft, renders it as the official value. Drafts and server data must live in separate
+    stores with separate write paths.'
+  difficulty: 2
+  tags:
+  - concept
+  - process
+- id: '19.13'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The schema module (m4)
+    b: The cache module (m12)
+    c: The test module (m3)
+    d: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+  answer: d
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '19.14'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: Check the dashboard
+    b: The user's network
+    c: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    d: Restart the server
+  answer: c
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '19.15'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    b: Move all logic to a single hook
+    c: Use a different test framework
+    d: Add a unit test for every function
+  answer: a
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '19.16'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: It replaces the loop
+    b: It runs before the loop
+    c: It does not
+    d: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+  answer: d
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '19.17'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Many tests
+    b: Slow performance
+    c: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    d: Many comments
+  answer: c
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

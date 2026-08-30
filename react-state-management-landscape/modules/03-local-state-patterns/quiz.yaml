@@ -1,0 +1,134 @@
+- id: '03.1'
+  question: What is lifted state?
+  options:
+    a: State in the cache
+    b: State in a global store
+    c: State in the closest common parent of two siblings that need to share it
+    d: State in the URL
+  answer: c
+  explanation: Explanation for What is lifted state?...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '03.2'
+  question: Where should derived state live?
+  options:
+    a: Computed during render, not stored separately
+    b: In a context
+    c: In a global store
+    d: In useState + useEffect
+  answer: a
+  explanation: Explanation for Where should derived state live?...
+  difficulty: 1
+  tags:
+  - concept
+- id: '03.3'
+  question: useEffect for derived state is a(n) {anti-pattern}.
+  options:
+    a: required
+    b: pattern
+    c: anti-pattern
+    d: best practice
+  answer: c
+  explanation: Explanation for useEffect for derived state is a(n) {anti-pattern}...
+  difficulty: 1
+  tags:
+  - misconception
+- id: '03.4'
+  question: When is a form library the right answer over useState?
+  options:
+    a: Never
+    b: When the form has many fields, cross-field validation, or dynamic fields
+    c: Only for marketing pages
+    d: Always
+  answer: b
+  explanation: Explanation for When is a form library the right answer over useSt...
+  difficulty: 2
+  tags:
+  - scenario
+- id: '03.5'
+  question: A controlled input's value is bound to {state}.
+  options:
+    a: a ref
+    b: the URL
+    c: the DOM
+    d: state
+  answer: d
+  explanation: Explanation for A controlled input's value is bound to {state}....
+  difficulty: 1
+  tags:
+  - terminology
+- id: '03.6'
+  question: An uncontrolled input stores its value in the {DOM}.
+  options:
+    a: the URL
+    b: a cookie
+    c: state
+    d: DOM
+  answer: d
+  explanation: Explanation for An uncontrolled input stores its value in the {DOM...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '03.7'
+  question: What is the minimum lift?
+  options:
+    a: Lift to the closest common parent that needs the value
+    b: Never lift
+    c: Always lift to the root
+    d: Lift as high as possible
+  answer: a
+  explanation: Explanation for What is the minimum lift?...
+  difficulty: 2
+  tags:
+  - process
+- id: '03.8'
+  question: Sibling state is the parent state passed to two children as {props}.
+  options:
+    a: props
+    b: context
+    c: queries
+    d: refs
+  answer: a
+  explanation: Explanation for Sibling state is the parent state passed to two ch...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '03.9'
+  question: The form container owns the {form}'s state; fields receive value and onChange.
+  options:
+    a: URL
+    b: page
+    c: form
+    d: browser
+  answer: c
+  explanation: Explanation for The form container owns the {form}'s state; fields...
+  difficulty: 1
+  tags:
+  - process
+- id: '03.10'
+  question: Cross-field validation lives in the {container} or the schema's superRefine.
+  options:
+    a: field
+    b: container
+    c: URL
+    d: browser
+  answer: b
+  explanation: Explanation for Cross-field validation lives in the {container} or...
+  difficulty: 2
+  tags:
+  - process
+- id: '03.11'
+  question: A controlled input re-renders on every {keystroke}; an uncontrolled input
+    does not.
+  options:
+    a: submit
+    b: keystroke
+    c: blur
+    d: focus
+  answer: b
+  explanation: Explanation for A controlled input re-renders on every {keystroke}...
+  difficulty: 2
+  tags:
+  - comparison
+

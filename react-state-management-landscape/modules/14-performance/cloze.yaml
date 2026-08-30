@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "Re-render {storms} happen when a single state change triggers a cascade of re-renders across {unrelated} components."
+  answer: "storms; unrelated"
+  explanation: "A state change at a high level re-renders the subtree. If the subtree is wide and unrelated, the storm is the bug. The fix: smaller state boundaries, more components, or external stores with selectors."
+  difficulty: 1
+  tags: [concept]
+- id: "c.2"
+  question: "{Referential stability} is the property that two equal values have the same {reference}; React's default comparison is {===}."
+  answer: "Referential stability; reference; ==="
+  explanation: "A new object on every render is referentially unstable. React's default comparison fails. The component re-renders. The fix is to memoize or use a stable object."
+  difficulty: 1
+  tags: [concept]
+- id: "c.3"
+  question: "React.memo is the {wrapper} that prevents a re-render when {props} are referentially equal; it is the {boundary} of the memoization."
+  answer: "wrapper; props; boundary"
+  explanation: "React.memo(Component) is a higher-order component. The default comparison is shallow. The pattern is to memoize at the component boundary, not at the function level."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.4"
+  question: "useMemo is the {hook} that memoizes a {value} across renders; useCallback is the {same} but for functions."
+  answer: "hook; value; same"
+  explanation: "useMemo(fn, deps) returns the result of fn; useCallback(fn, deps) returns fn. The two are the same idea applied to different shapes. The deps array drives when the memo is invalidated."
+  difficulty: 2
+  tags: [concept]
+- id: "c.5"
+  question: "{useTransition} defers a state update so the {UI} stays responsive; the deferred update is rendered at a {lower} priority."
+  answer: "useTransition; UI; lower"
+  explanation: "A heavy update (filter a 100,000-row list) blocks the main thread without useTransition. With useTransition, the update is deferred; the UI stays responsive. The hook is the boundary between urgent and non-urgent updates."
+  difficulty: 2
+  tags: [concept]
+- id: "c.6"
+  question: "useDeferredValue is the {mirror} of useTransition; it defers a {value} that is expensive to compute."
+  answer: "mirror; value"
+  explanation: "useDeferredValue(value) returns the original value synchronously, then the deferred value when React has time. The pattern is the same as useTransition but applied to a value rather than a state update."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "The {React DevTools Profiler} is the canonical tool for measuring re-render {frequency} and {cost}; the flame graph shows the components that re-render and the time spent."
+  answer: "React DevTools Profiler; frequency; cost"
+  explanation: "Profile before optimizing. The DevTools Profiler shows which components re-render on each state change, how long the render takes, and which props cause the re-render. The flame graph is the diagnosis."
+  difficulty: 2
+  tags: [process]
+- id: "c.8"
+  question: "Performance is a {measurement} problem, not an {intuition} problem; profile before {optimizing} and after."
+  answer: "measurement; intuition; optimizing"
+  explanation: "Premature optimization is the root of complexity. Profile first; identify the slow path; optimize that path. The rest is noise."
+  difficulty: 1
+  tags: [process]

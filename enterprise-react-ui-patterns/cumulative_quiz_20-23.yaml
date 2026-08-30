@@ -1,0 +1,149 @@
+- id: cum.43
+  type: mcq
+  source_modules:
+  - 20
+  - 21
+  question: The micro-assembly submits a batch. The form uses useActionState. After
+    success, the applicant list does not refresh. Why?
+  options:
+    a: useActionState invalidates queries by default
+    b: useActionState has no concept of query invalidation; the original mutation's
+      onSuccess owned that coordination
+    c: The list refreshes automatically
+    d: The form must use server actions
+  answer: b
+  explanation: 'useActionState is local to the form''s lifecycle. Cache coordination
+    is TanStack Query''s job. The fix: keep the action in a TanStack Query mutation,
+    or call queryClient.invalidateQueries from inside the useActionState action after
+    success.'
+  difficulty: 3
+  tags:
+  - cross-module
+  - query-cache
+  - actions
+- id: cum.44
+  type: cloze
+  source_modules:
+  - 20
+  - 22
+  question: The micro-assembly {stages} drafts via m15, the suspense boundary shows
+    a {skeleton} until the data resolves, and the loop's resubmit uses a stable {idempotency}
+    key.
+  answer: stages; skeleton; idempotency
+  explanation: m15 stages typed drafts; Suspense shows a fallback (skeleton) until
+    async data resolves; m17's idempotency key lets a retried submit dedupe. Three
+    seams, three contracts.
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.45
+  type: tf
+  source_modules:
+  - 20
+  - 20
+  statement: The micro-assembly's ten lines should be extracted into a custom hook
+    to make them reusable across features.
+  answer: false
+  explanation: The ten lines are the seam composition. Hiding them in a hook hides
+    the words that are the audit trail. The composition was paid for across the prior
+    modules; this module spends the credit.
+  difficulty: 2
+  tags:
+  - cross-module
+  - misconception
+- id: cum.46
+  type: mcq
+  source_modules:
+  - 21
+  - 20
+  question: A team replaces a TanStack Query mutation with useActionState because
+    the form is simple. What is the most likely regression?
+  options:
+    a: The form becomes harder to use
+    b: The query cache stops being invalidated; other components that read the same
+      data become stale
+    c: The form becomes inaccessible
+    d: useActionState is slower
+  answer: b
+  explanation: 'useActionState has no concept of query invalidation. The ''simpler''
+    replacement lost the cache coordination seam. The fix: call queryClient.invalidateQueries
+    from inside the action, or keep the action in a mutation.'
+  difficulty: 2
+  tags:
+  - cross-module
+  - query-cache
+  - actions
+- id: cum.47
+  type: cloze
+  source_modules:
+  - 21
+  - 22
+  question: useActionState handles the form's {submit} lifecycle; useSuspenseQuery
+    throws to a {Suspense} boundary; the seam between them is that the form owns {field}
+    state and the boundary owns {fallback} state.
+  answer: submit; Suspense; field; fallback
+  explanation: useActionState is a reducer for the submit action. useSuspenseQuery
+    throws a Promise to a Suspense boundary. Form fields use local useState; the boundary
+    shows the fallback. Different seams, different responsibilities.
+  difficulty: 3
+  tags:
+  - cross-module
+  - synthesis
+- id: cum.48
+  type: mcq
+  source_modules:
+  - 22
+  - 23
+  question: An applicant list page is wrapped in a Suspense boundary. Real-time updates
+    arrive via SSE. The boundary does not re-suspend. Why?
+  options:
+    a: Real-time updates do not re-trigger Suspense; they update the cache directly
+    b: The boundary is broken
+    c: SSE always re-suspends
+    d: The cache rejects the update
+  answer: a
+  explanation: Suspense catches initial-load throws. Real-time updates use setQueryData
+    to merge into the cache without throwing. The boundary stays committed; only the
+    rendered children update.
+  difficulty: 3
+  tags:
+  - cross-module
+  - synthesis
+  - cache
+- id: cum.49
+  type: cloze
+  source_modules:
+  - 22
+  - 23
+  question: Suspense catches the {initial} load; SSE updates the {cache} on each event;
+    the boundary stays {committed}.
+  answer: initial; cache; committed
+  explanation: Suspense is for initial load (a throw, then a fallback, then a re-render
+    with the resolved children). Real-time updates bypass Suspense by writing directly
+    to the cache. The boundary does not re-engage on each event.
+  difficulty: 2
+  tags:
+  - cross-module
+  - recall
+- id: cum.50
+  type: mcq
+  source_modules:
+  - 23
+  - 20
+  question: The micro-assembly's loop is running. The user closes the tab. SSE was
+    the live update channel. What happens to in-flight mutations?
+  options:
+    a: They are lost
+    b: They are persisted by m19's offline queue and resumed on reconnect
+    c: The server detects the close and retries
+    d: They are sent to the next user
+  answer: b
+  explanation: m19's offline queue persists pending mutations. SSE is for server-to-client
+    push only and does not buffer for closed tabs. The mutation path is independent
+    of the SSE path; the queue is the source of truth for survival.
+  difficulty: 2
+  tags:
+  - cross-module
+  - persistence
+  - synthesis

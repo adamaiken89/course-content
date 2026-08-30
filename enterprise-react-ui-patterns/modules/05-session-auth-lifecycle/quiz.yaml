@@ -1,132 +1,276 @@
-- id: "5.1"
-  question: "Why does a boolean session flag (hasToken or not) fail to model a real session?"
+- id: '5.1'
+  question: Why does a boolean session flag (hasToken or not) fail to model a real
+    session?
   options:
-    a: "Booleans are forbidden in TypeScript strict mode"
-    b: "It collapses recoverable states like 'expired but refreshable' into logged-in or logged-out"
-    c: "It reloads the page on every state change"
-    d: "It makes the login button unreadable"
+    a: Booleans are forbidden in TypeScript strict mode
+    b: It collapses recoverable states like 'expired but refreshable' into logged-in
+      or logged-out
+    c: It reloads the page on every state change
+    d: It makes the login button unreadable
   answer: b
-  explanation: "A boolean hides the lifecycle. 'Token exists but expired' and 'refreshing, hold on' are observable states a boolean cannot represent, so the app cannot recover from them."
+  explanation: A boolean hides the lifecycle. 'Token exists but expired' and 'refreshing,
+    hold on' are observable states a boolean cannot represent, so the app cannot recover
+    from them.
   difficulty: 1
-  tags: [terminology, concept]
-- id: "5.2"
-  question: "A queued request gets a 401, the refresh endpoint succeeds. Which state transition occurs?"
+  tags:
+  - terminology
+  - concept
+- id: '5.2'
+  question: A queued request gets a 401, the refresh endpoint succeeds. Which state
+    transition occurs?
   options:
-    a: "authenticated to anonymous"
-    b: "authenticated to expired"
-    c: "refreshing to authenticated"
-    d: "anonymous to authenticating"
-  answer: c
-  explanation: "A 401 on the expired token triggers refreshing; a successful refresh returns to authenticated and the queued requests replay with the fresh token."
-  difficulty: 1
-  tags: [terminology, formula]
-- id: "5.3"
-  question: "In this client-only course, where does the session token live?"
-  options:
-    a: "In-memory, inside the zustand session store"
-    b: "In localStorage so reloads stay logged in"
-    c: "In an httpOnly cookie set by the real server"
-    d: "In the URL query string"
-  answer: a
-  explanation: "Client-only means there is no server to set an httpOnly cookie, so we use an in-memory token in the store: XSS cannot scrape it, and reload returns to anonymous, which is the real lifecycle anyway."
-  difficulty: 1
-  tags: [comparison, scenario]
-- id: "5.4"
-  question: "Why avoid storing the session token in localStorage in production?"
-  options:
-    a: "localStorage is cleared on every navigation"
-    b: "localStorage writes are slow and block the main thread"
-    c: "Reload-persistence is not worth the risk"
-    d: "Any injected script can read it and exfiltrate a live session"
+    a: anonymous to authenticating
+    b: authenticated to anonymous
+    c: authenticated to expired
+    d: refreshing to authenticated
   answer: d
-  explanation: "localStorage is readable by any script running on the page. A single XSS hole turns into permanent session compromise. Enterprise prefers an httpOnly cookie, which JS never sees."
-  difficulty: 2
-  tags: [security, scenario]
-- id: "5.5"
-  question: "Three parallel requests hit an expired token and all 401. How many refresh requests should the queue fire?"
+  explanation: A 401 on the expired token triggers refreshing; a successful refresh
+    returns to authenticated and the queued requests replay with the fresh token.
+  difficulty: 1
+  tags:
+  - terminology
+  - formula
+- id: '5.3'
+  question: In this client-only course, where does the session token live?
   options:
-    a: "Three, one per failed request"
-    b: "One for each, retried until success"
-    c: "Exactly one, shared via a single-flight promise; the rest await it"
-    d: "Zero - redirect straight to login"
-  answer: c
-  explanation: "Single-flight refresh: the first requester starts the refresh and stores the promise; the rest await the same promise and replay with the fresh token. No thundering herd, no lost requests."
-  difficulty: 2
-  tags: [concept, application]
-- id: "5.6"
-  question: "A RouteGuard renders protected screens. When the session is anonymous, what does it do?"
-  options:
-    a: "Render the screen anyway and let each API call fail"
-    b: "Redirect to /login while remembering the intended destination via returnTo"
-    c: "Clear the draft store"
-    d: "Show a reconnect banner forever"
-  answer: b
-  explanation: "The guard is a single choke-point seam: anonymous redirects to login and records returnTo so the student returns to where they were, draft intact. The screens never know about the lifecycle."
-  difficulty: 2
-  tags: [scenario, application]
-- id: "5.7"
-  question: "Liam's 30-minute draft must survive logout and re-login. How does the draft store make that true?"
-  options:
-    a: "The token and the draft share one localStorage key"
-    b: "The draft is copied into the mock server on every keystroke"
-    c: "The draft outlives the session via zustand persist syncing to localStorage"
-    d: "Saving is blocked until login completes"
-  answer: c
-  explanation: "The draft is persisted state that belongs to the student, not the token. Logout destroys the session, never the draft; re-login restores it from the persisted store."
-  difficulty: 2
-  tags: [scenario, application]
-- id: "5.8"
-  question: "How does a test prove that concurrent 401s trigger exactly one refresh?"
-  options:
-    a: "Assert the MSW request log contains exactly one POST to /api/auth/refresh"
-    b: "Set localStorage to empty and check the guard"
-    c: "Count the number of login renders in RTL"
-    d: "Assert the state machine never enters refreshing"
+    a: In-memory, inside the zustand session store
+    b: In localStorage so reloads stay logged in
+    c: In an httpOnly cookie set by the real server
+    d: In the URL query string
   answer: a
-  explanation: "MSW (m3) can log every request. Firing two parallel fetchDraft calls against an expired token should produce one refresh hit and two successful replays - the deterministic proof of single-flight."
-  difficulty: 3
-  tags: [process, application]
-- id: "5.9"
-  question: "The refresh endpoint fails while a queued batch call waits. What should the app do?"
+  explanation: 'Client-only means there is no server to set an httpOnly cookie, so
+    we use an in-memory token in the store: XSS cannot scrape it, and reload returns
+    to anonymous, which is the real lifecycle anyway.'
+  difficulty: 1
+  tags:
+  - comparison
+  - scenario
+- id: '5.4'
+  question: Why avoid storing the session token in localStorage in production?
   options:
-    a: "Retry the batch call silently forever"
-    b: "Ignore the failure and pretend the token is valid"
-    c: "Return to anonymous with a reason, so 'session expired' UI shows and the student re-logs in with the draft intact"
-    d: "Store the failed refresh in the URL"
+    a: localStorage writes are slow and block the main thread
+    b: Reload-persistence is not worth the risk
+    c: Any injected script can read it and exfiltrate a live session
+    d: localStorage is cleared on every navigation
   answer: c
-  explanation: "Refresh failure ends the session. Transition refreshing -> anonymous with an explicit reason; the UI explains, the draft store protects the work, and re-login replays from a known state."
+  explanation: localStorage is readable by any script running on the page. A single
+    XSS hole turns into permanent session compromise. Enterprise prefers an httpOnly
+    cookie, which JS never sees.
   difficulty: 2
-  tags: [scenario, concept]
-- id: "5.10"
-  question: "Why wrap the login submit in React 19's useTransition?"
+  tags:
+  - security
+  - scenario
+- id: '5.5'
+  question: Three parallel requests hit an expired token and all 401. How many refresh
+    requests should the queue fire?
   options:
-    a: "To authenticate without the server"
-    b: "To keep the form responsive while the auth request runs, driving isPending into the authenticating UI"
-    c: "To cache login responses in the Query cache"
-    d: "To automatically rotate the refresh token"
+    a: Three, one per failed request
+    b: One for each, retried until success
+    c: Exactly one, shared via a single-flight promise; the rest await it
+    d: Zero - redirect straight to login
+  answer: c
+  explanation: 'Single-flight refresh: the first requester starts the refresh and
+    stores the promise; the rest await the same promise and replay with the fresh
+    token. No thundering herd, no lost requests.'
+  difficulty: 2
+  tags:
+  - concept
+  - application
+- id: '5.6'
+  question: A RouteGuard renders protected screens. When the session is anonymous,
+    what does it do?
+  options:
+    a: Redirect to /login while remembering the intended destination via returnTo
+    b: Clear the draft store
+    c: Show a reconnect banner forever
+    d: Render the screen anyway and let each API call fail
+  answer: a
+  explanation: 'The guard is a single choke-point seam: anonymous redirects to login
+    and records returnTo so the student returns to where they were, draft intact.
+    The screens never know about the lifecycle.'
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '5.7'
+  question: Liam's 30-minute draft must survive logout and re-login. How does the
+    draft store make that true?
+  options:
+    a: The draft is copied into the mock server on every keystroke
+    b: The draft outlives the session via zustand persist syncing to localStorage
+    c: Saving is blocked until login completes
+    d: The token and the draft share one localStorage key
   answer: b
-  explanation: "useTransition marks the login update non-blocking: the button stays interactive and isPending drives the authenticating state. Depth on transitions and useOptimistic comes in m14."
-  difficulty: 3
-  tags: [terminology, application]
-- id: "5.11"
-  question: A user opens a long-lived tab. Their session token expires 30 minutes later. The next API call returns 401. What is the right pattern?
+  explanation: The draft is persisted state that belongs to the student, not the token.
+    Logout destroys the session, never the draft; re-login restores it from the persisted
+    store.
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '5.8'
+  question: How does a test prove that concurrent 401s trigger exactly one refresh?
   options:
-    a: "Force a hard reload and redirect to login"
-    b: "Silently retry the call"
-    c: "Refresh the token transparently via a single-flight interceptor; if refresh fails, prompt re-auth"
-    d: "Log the user out immediately"
+    a: Count the number of login renders in RTL
+    b: Assert the state machine never enters refreshing
+    c: Assert the MSW request log contains exactly one POST to /api/auth/refresh
+    d: Set localStorage to empty and check the guard
   answer: c
-  explanation: Single-flight refresh avoids the thundering herd of N concurrent 401s each triggering a refresh. If the refresh token is also expired, prompt re-auth — silent logout is the worst option because the user loses unsaved work without explanation.
+  explanation: MSW (m3) can log every request. Firing two parallel fetchDraft calls
+    against an expired token should produce one refresh hit and two successful replays
+    - the deterministic proof of single-flight.
   difficulty: 3
-  tags: [scenario, process]
-- id: "5.12"
-  question: A user opens a long-lived tab. Their session token expires 30 minutes later. The next API call returns 401. What is the right pattern?
+  tags:
+  - process
+  - application
+- id: '5.9'
+  question: The refresh endpoint fails while a queued batch call waits. What should
+    the app do?
   options:
-    a: "Force a hard reload and redirect to login"
-    b: "Silently retry the call"
-    c: "Refresh the token transparently via a single-flight interceptor; if refresh fails, prompt re-auth"
-    d: "Log the user out immediately"
-  answer: c
-  explanation: Single-flight refresh avoids the thundering herd of N concurrent 401s each triggering a refresh. If the refresh token is also expired, prompt re-auth — silent logout is the worst option because the user loses unsaved work without explanation.
+    a: Ignore the failure and pretend the token is valid
+    b: Return to anonymous with a reason, so 'session expired' UI shows and the student
+      re-logs in with the draft intact
+    c: Store the failed refresh in the URL
+    d: Retry the batch call silently forever
+  answer: b
+  explanation: Refresh failure ends the session. Transition refreshing -> anonymous
+    with an explicit reason; the UI explains, the draft store protects the work, and
+    re-login replays from a known state.
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+- id: '5.10'
+  question: Why wrap the login submit in React 19's useTransition?
+  options:
+    a: To keep the form responsive while the auth request runs, driving isPending
+      into the authenticating UI
+    b: To cache login responses in the Query cache
+    c: To automatically rotate the refresh token
+    d: To authenticate without the server
+  answer: a
+  explanation: 'useTransition marks the login update non-blocking: the button stays
+    interactive and isPending drives the authenticating state. Depth on transitions
+    and useOptimistic comes in m14.'
   difficulty: 3
-  tags: [scenario, process]
+  tags:
+  - terminology
+  - application
+- id: '5.11'
+  question: A user opens a long-lived tab. Their session token expires 30 minutes
+    later. The next API call returns 401. What is the right pattern?
+  options:
+    a: Force a hard reload and redirect to login
+    b: Silently retry the call
+    c: Refresh the token transparently via a single-flight interceptor; if refresh
+      fails, prompt re-auth
+    d: Log the user out immediately
+  answer: c
+  explanation: "Single-flight refresh avoids the thundering herd of N concurrent 401s\
+    \ each triggering a refresh. If the refresh token is also expired, prompt re-auth\
+    \ \u2014 silent logout is the worst option because the user loses unsaved work\
+    \ without explanation."
+  difficulty: 3
+  tags:
+  - scenario
+  - process
+- id: '5.12'
+  question: A user opens a long-lived tab. Their session token expires 30 minutes
+    later. The next API call returns 401. What is the right pattern?
+  options:
+    a: Log the user out immediately
+    b: Force a hard reload and redirect to login
+    c: Silently retry the call
+    d: Refresh the token transparently via a single-flight interceptor; if refresh
+      fails, prompt re-auth
+  answer: d
+  explanation: "Single-flight refresh avoids the thundering herd of N concurrent 401s\
+    \ each triggering a refresh. If the refresh token is also expired, prompt re-auth\
+    \ \u2014 silent logout is the worst option because the user loses unsaved work\
+    \ without explanation."
+  difficulty: 3
+  tags:
+  - scenario
+  - process
+- id: '5.13'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+    b: The schema module (m4)
+    c: The cache module (m12)
+    d: The test module (m3)
+  answer: a
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '5.14'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: Restart the server
+    b: Check the dashboard
+    c: The user's network
+    d: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+  answer: d
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '5.15'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    b: Move all logic to a single hook
+    c: Use a different test framework
+    d: Add a unit test for every function
+  answer: a
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '5.16'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: It replaces the loop
+    b: It runs before the loop
+    c: It does not
+    d: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+  answer: d
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '5.17'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Slow performance
+    b: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    c: Many comments
+    d: Many tests
+  answer: b
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

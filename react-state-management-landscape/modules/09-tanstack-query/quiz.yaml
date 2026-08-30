@@ -1,0 +1,137 @@
+- id: '09.1'
+  question: What is the role of the queryKey?
+  options:
+    a: It is a random ID
+    b: It is a unique ID for the cached query; same key returns same data
+    c: It is the URL
+    d: It is the type
+  answer: b
+  explanation: Explanation for What is the role of the queryKey?...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '09.2'
+  question: useQuery returns the cached value and refetches when the data is {stale}.
+  options:
+    a: erroring
+    b: fresh
+    c: stale
+    d: loading
+  answer: c
+  explanation: Explanation for useQuery returns the cached value and refetches wh...
+  difficulty: 1
+  tags:
+  - concept
+- id: '09.3'
+  question: staleTime controls how long a query is considered {fresh}.
+  options:
+    a: fresh
+    b: loading
+    c: cached
+    d: stale
+  answer: a
+  explanation: Explanation for staleTime controls how long a query is considered ...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '09.4'
+  question: useMutation is the {write} primitive.
+  options:
+    a: write
+    b: delete
+    c: cache
+    d: read
+  answer: a
+  explanation: Explanation for useMutation is the {write} primitive....
+  difficulty: 1
+  tags:
+  - terminology
+- id: '09.5'
+  question: setQueryData updates the cache {without} a network round trip.
+  options:
+    a: before
+    b: after
+    c: with
+    d: without
+  answer: d
+  explanation: Explanation for setQueryData updates the cache {without} a network...
+  difficulty: 2
+  tags:
+  - concept
+- id: '09.6'
+  question: invalidateQueries refetches the matching {queries} on the next render.
+  options:
+    a: refs
+    b: stores
+    c: queries
+    d: contexts
+  answer: c
+  explanation: Explanation for invalidateQueries refetches the matching {queries}...
+  difficulty: 2
+  tags:
+  - concept
+- id: '09.7'
+  question: Optimistic updates show the result before the server confirms; {rollback}
+    is the caller's job on error.
+  options:
+    a: log
+    b: retry
+    c: rollback
+    d: cache
+  answer: c
+  explanation: Explanation for Optimistic updates show the result before the serv...
+  difficulty: 2
+  tags:
+  - concept
+- id: '09.8'
+  question: TanStack Query is the right answer for {cacheable} server state read in
+    multiple places.
+  options:
+    a: cacheable
+    b: static
+    c: form
+    d: one-shot
+  answer: a
+  explanation: Explanation for TanStack Query is the right answer for {cacheable}...
+  difficulty: 1
+  tags:
+  - comparison
+- id: '09.9'
+  question: On mutation success, the standard pattern is to {invalidate} the relevant
+    queries.
+  options:
+    a: freeze
+    b: ignore
+    c: delete
+    d: invalidate
+  answer: d
+  explanation: Explanation for On mutation success, the standard pattern is to {i...
+  difficulty: 2
+  tags:
+  - process
+- id: '09.10'
+  question: The cache is a {window} onto the server, not the source of truth.
+  options:
+    a: store
+    b: window
+    c: database
+    d: cache
+  answer: b
+  explanation: Explanation for The cache is a {window} onto the server, not the s...
+  difficulty: 1
+  tags:
+  - concept
+- id: '09.11'
+  question: useQuery's refetchOnWindowFocus refetches when the user {returns} to the
+    tab.
+  options:
+    a: leaves
+    b: returns
+    c: scrolls
+    d: types
+  answer: b
+  explanation: Explanation for useQuery's refetchOnWindowFocus refetches when the...
+  difficulty: 1
+  tags:
+  - terminology
+

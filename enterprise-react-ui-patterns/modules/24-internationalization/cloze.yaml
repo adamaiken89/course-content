@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "{Intl.NumberFormat} formats a number per locale with style 'currency' and currency 'USD'."
+  answer: "Intl.NumberFormat"
+  explanation: "The same value renders as $1,234.50 in en-US and 1.234,50 US$ in de-DE. Pass the locale explicitly and cache the formatter — new Intl.NumberFormat is not free."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "{ICU MessageFormat} handles plurals, gender, and nested substitutions; every language has its own plural {categories}."
+  answer: "ICU MessageFormat; categories"
+  explanation: "Spanish has two plural forms. Russian has three (one, few, many). The English rule (1 = singular, else plural) is just one of many. ICU encodes per-locale rules."
+  difficulty: 2
+  tags: [concept]
+- id: "c.3"
+  question: "Logical CSS properties like margin-{inline}-start automatically {flip} in RTL."
+  answer: "inline; flip"
+  explanation: "The CSS writes once. The browser handles the direction. Much simpler than maintaining two stylesheets. Pair with [dir=rtl] attribute selectors for directional icons."
+  difficulty: 2
+  tags: [concept]
+- id: "c.4"
+  question: "The application locale is set by the user's {profile} or URL, not by navigator.language."
+  answer: "profile"
+  explanation: "navigator.language is the user's browser locale, which can be anything. The application locale is a server-persisted value (or URL) and should be the source of truth for formatting."
+  difficulty: 2
+  tags: [concept]
+- id: "c.5"
+  question: "A build-time key coverage {check} fails CI when a language is missing {keys}."
+  answer: "check; keys"
+  explanation: "A type-safe Messages type plus a check that walks every base key and asserts presence in each target language. CI fails on the first missing key. Runtime fallback (English) handles the case where a translation has not landed yet."
+  difficulty: 2
+  tags: [process]
+- id: "c.6"
+  question: "Lazy-load {locales} to keep the initial bundle small; the initial bundle ships the primary locale plus a tiny {Intl} runtime."
+  answer: "locales; Intl"
+  explanation: "For 12 locales, shipping all 12 is wasteful. Lazy-load on first navigation; show English strings for a few hundred milliseconds while the chunk loads."
+  difficulty: 1
+  tags: [concept]
+- id: "c.7"
+  question: "Wrap every user-facing {string} in a translation function from day one, even if only one {locale} is supported."
+  answer: "string; locale"
+  explanation: "The cost is minimal; the future savings are large. A linter that flags hard-coded strings catches the most common i18n bug. Hard-coded strings are future translation debt."
+  difficulty: 1
+  tags: [process]
+- id: "c.8"
+  question: "An English term inside an Arabic sentence must be wrapped in {bdi} or have unicode-bidi {isolate} applied to prevent bidi garbling."
+  answer: "bdi; isolate"
+  explanation: "The bidi algorithm runs across the whole paragraph. Without isolation, the English term's direction can flip the surrounding text. bdi or unicode-bidi: isolate is the standard fix."
+  difficulty: 3
+  tags: [process]

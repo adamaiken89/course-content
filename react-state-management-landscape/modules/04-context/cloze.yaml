@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "Context is a {re-render broadcast}; every {consumer} re-renders on every value change."
+  answer: "re-render broadcast; consumer"
+  explanation: "The broadcast is the contract. For low-frequency values in a small subtree, it is fine. For high-frequency values, it is wrong."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "A {Provider} component sets the context value; useContext reads it from any descendant."
+  answer: "Provider; useContext"
+  explanation: "The provider is the value; the hook is the reader. The pattern is the same as any prop, but the wiring is implicit (any descendant) rather than explicit (props)."
+  difficulty: 1
+  tags: [concept]
+- id: "c.3"
+  question: "A common anti-pattern: prop-{drilling} via {Context}. The right answer is to either pass props or use an {external store}."
+  answer: "drilling; Context; external store"
+  explanation: "Context is for cross-cutting values (theme, locale, session). For high-frequency or large-subtree values, an external store with selectors is the right answer."
+  difficulty: 2
+  tags: [misconception]
+- id: "c.4"
+  question: "Splitting a {Context} into a state Context and a dispatch Context lets consumers of the {dispatch} avoid re-rendering on state change."
+  answer: "Context; dispatch"
+  explanation: "The dispatch is referentially stable across renders. Consumers of the dispatch re-render only when the dispatch reference changes — which is never, for stable callbacks. The state Context re-renders on every state change."
+  difficulty: 3
+  tags: [concept]
+- id: "c.5"
+  question: "The Context {value} must be a {stable} reference; passing a fresh object every render causes every consumer to re-render."
+  answer: "value; stable"
+  explanation: "Memoize the value with useMemo or a stable object. Otherwise every render of the provider creates a new object, and React's referential-equality check fails; every consumer re-renders."
+  difficulty: 2
+  tags: [process]
+- id: "c.6"
+  question: "Context is the right answer for {low-frequency} values in a {small} subtree, like theme, locale, or session."
+  answer: "low-frequency; small"
+  explanation: "Theme rarely changes. Locale is set once. Session has discrete transitions. The cost of the broadcast is acceptable for these. The cost is not acceptable for a typing-cursor position."
+  difficulty: 1
+  tags: [concept]
+- id: "c.7"
+  question: "An {external store} with {selectors} is the right answer for high-frequency values; Context is not."
+  answer: "external store; selectors"
+  explanation: "The selector is the boundary. A component that uses the cursor re-renders; a component that uses the user does not. The store + selector pattern is the way to scope re-renders to the consumer that needs the value."
+  difficulty: 2
+  tags: [comparison]
+- id: "c.8"
+  question: "React 19 ships the {use} hook, which can read Context conditionally; the {useContext} hook cannot."
+  answer: "use; useContext"
+  explanation: "use is the modern API; it can be called inside conditionals and loops. useContext must be called at the top of the component. The migration is mechanical: replace useContext with use where appropriate."
+  difficulty: 3
+  tags: [concept]

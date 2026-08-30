@@ -1,37 +1,41 @@
 - id: '10.1'
   question: Where should filters, sort, and page for a tracker grid live?
   options:
-    a: In a component's useState
-    b: In the URL search params
-    c: In a hidden global variable
-    d: In a config file
-  answer: b
-  explanation: View state is positional and shareable — the URL survives refresh and gives back-button semantics.
+    a: In a hidden global variable
+    b: In a config file
+    c: In a component's useState
+    d: In the URL search params
+  answer: d
+  explanation: "View state is positional and shareable \u2014 the URL survives refresh\
+    \ and gives back-button semantics."
   difficulty: 1
   tags:
   - concept
   - scenario
 - id: '10.2'
-  question: A reviewer types a filter, reloads the page, and the view resets to default. What's missing?
+  question: A reviewer types a filter, reloads the page, and the view resets to default.
+    What's missing?
   options:
-    d: A better caching layer for rows
     a: Filters serialized into the URL
     b: A faster sort algorithm
     c: LocalStorage for the filter input
+    d: A better caching layer for rows
   answer: a
-  explanation: Component memory dies on reload; URL params rehydrate the view from the address itself.
+  explanation: Component memory dies on reload; URL params rehydrate the view from
+    the address itself.
   difficulty: 1
   tags:
   - scenario
 - id: '10.3'
   question: What should happen to the page param when a filter changes?
   options:
-    c: It resets to page 1
-    d: It stays wherever it was
-    a: It doubles
-    b: It is removed permanently
-  answer: c
-  explanation: Keeping page 8 while filtering a different universe produces wrong or empty results.
+    a: It is removed permanently
+    b: It resets to page 1
+    c: It stays wherever it was
+    d: It doubles
+  answer: b
+  explanation: Keeping page 8 while filtering a different universe produces wrong
+    or empty results.
   difficulty: 2
   tags:
   - concept
@@ -39,12 +43,13 @@
 - id: '10.4'
   question: Which is the correct query-key design for the grid?
   options:
-    c: Key by the returned rows JSON
-    d: 'Key by view identity: page, filters, sort'
-    a: Key by component mount count
-    b: One constant key for all views
-  answer: d
-  explanation: Keying by identity lets the cache reuse views (back-button = cache hit); keying by result defeats caching.
+    a: 'Key by view identity: page, filters, sort'
+    b: Key by component mount count
+    c: One constant key for all views
+    d: Key by the returned rows JSON
+  answer: a
+  explanation: Keying by identity lets the cache reuse views (back-button = cache
+    hit); keying by result defeats caching.
   difficulty: 2
   tags:
   - concept
@@ -52,64 +57,73 @@
 - id: '10.5'
   question: Why does selection need a cross-screen store instead of grid-local useState?
   options:
-    d: It avoids TypeScript generics
-    a: The batch bar and batch review consume the selected ids elsewhere
-    b: It makes the grid render faster
-    c: Local state cannot hold Sets
-  answer: a
-  explanation: Selection is cross-screen intent consumed by the batch bar (m14); the ledger survives navigation.
+    a: It makes the grid render faster
+    b: Local state cannot hold Sets
+    c: It avoids TypeScript generics
+    d: The batch bar and batch review consume the selected ids elsewhere
+  answer: d
+  explanation: Selection is cross-screen intent consumed by the batch bar (m14); the
+    ledger survives navigation.
   difficulty: 2
   tags:
   - scenario
   - comparison
 - id: '10.6'
-  question: Select all labeled 'all 3,000 matching' selects only 50 visible ids. What is the core mistake?
+  question: Select all labeled 'all 3,000 matching' selects only 50 visible ids. What
+    is the core mistake?
   options:
-    a: The Set is incorrectly sorted
-    b: It implemented select-visible, not select-all-matching
-    c: The ids are strings not numbers
-    d: Nothing — 50 is the correct count
-  answer: b
-  explanation: Select-all-matching needs the server's total-match count; selecting mounted rows is a different operation.
+    a: The ids are strings not numbers
+    b: "Nothing \u2014 50 is the correct count"
+    c: The Set is incorrectly sorted
+    d: It implemented select-visible, not select-all-matching
+  answer: d
+  explanation: Select-all-matching needs the server's total-match count; selecting
+    mounted rows is a different operation.
   difficulty: 3
   tags:
   - scenario
   - application
 - id: '10.7'
-  question: Which tool keeps the search input responsive while the grid renders a lagged filter?
+  question: Which tool keeps the search input responsive while the grid renders a
+    lagged filter?
   options:
     a: useMemo
     b: useCallback
     c: useDeferredValue
     d: useLayoutEffect
   answer: c
-  explanation: useDeferredValue renders the expensive list with a lagged value, so typing never competes with the grid.
+  explanation: useDeferredValue renders the expensive list with a lagged value, so
+    typing never competes with the grid.
   difficulty: 2
   tags:
   - formula
   - react-19
 - id: '10.8'
-  question: A heavy filter tab swap must not block interaction. Which React 19 API applies?
+  question: A heavy filter tab swap must not block interaction. Which React 19 API
+    applies?
   options:
-    a: useTransition
-    b: useSyncExternalStore
-    c: useImperativeHandle
-    d: createPortal
-  answer: a
-  explanation: useTransition wraps the swap in a transition so the update renders non-blockingly with an isPending flag.
+    a: useSyncExternalStore
+    b: useImperativeHandle
+    c: createPortal
+    d: useTransition
+  answer: d
+  explanation: useTransition wraps the swap in a transition so the update renders
+    non-blockingly with an isPending flag.
   difficulty: 2
   tags:
   - formula
   - react-19
 - id: '10.9'
-  question: Pushing every keystroke of 'program=Co...' into history breaks the back button. What pattern pairs with typing?
+  question: Pushing every keystroke of 'program=Co...' into history breaks the back
+    button. What pattern pairs with typing?
   options:
-    d: Replace instead of push on intermediate states
-    a: Flush all states into one giant param
-    b: Disable history entirely
-    c: Queue pushes in a ref
-  answer: d
-  explanation: Initial interaction pushes; intermediate rapid states replace so history records user intent, not keystroke noise.
+    a: Replace instead of push on intermediate states
+    b: Flush all states into one giant param
+    c: Disable history entirely
+    d: Queue pushes in a ref
+  answer: a
+  explanation: Initial interaction pushes; intermediate rapid states replace so history
+    records user intent, not keystroke noise.
   difficulty: 3
   tags:
   - scenario
@@ -117,23 +131,112 @@
 - id: '10.10'
   question: Where does the row data for the tracker belong?
   options:
-    d: In the selection zustand store
     a: In the URL
     b: In the query cache, keyed by view
     c: In a module-level mutable array
+    d: In the selection zustand store
   answer: b
-  explanation: Row data is server-derived; the query cache (m12) owns it. zustand is for client-authored cross-screen intent.
+  explanation: Row data is server-derived; the query cache (m12) owns it. zustand
+    is for client-authored cross-screen intent.
   difficulty: 1
   tags:
   - concept
-- id: "10.11"
-  question: A tracker grid shows 5,000 rows. The user filters and sorts. URL state vs. component state — which fields belong in the URL?
+- id: '10.11'
+  question: "A tracker grid shows 5,000 rows. The user filters and sorts. URL state\
+    \ vs. component state \u2014 which fields belong in the URL?"
   options:
-    a: "Only the page size"
-    b: "Filters, sort, and pagination — anything that should be shareable as a link or survive reload"
-    c: "Everything including scroll position and hover state"
-    d: "Nothing; URL state is for marketing pages only"
-  answer: b
-  explanation: URL state is for shareable, reload-safe view configuration. Filters, sort, and pagination are the classic examples. Scroll position and hover are UI ephemera and belong in component state.
+    a: Nothing; URL state is for marketing pages only
+    b: Only the page size
+    c: "Filters, sort, and pagination \u2014 anything that should be shareable as\
+      \ a link or survive reload"
+    d: Everything including scroll position and hover state
+  answer: c
+  explanation: URL state is for shareable, reload-safe view configuration. Filters,
+    sort, and pagination are the classic examples. Scroll position and hover are UI
+    ephemera and belong in component state.
   difficulty: 2
-  tags: [concept, comparison]
+  tags:
+  - concept
+  - comparison
+- id: '10.12'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The test module (m3)
+    b: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+    c: The schema module (m4)
+    d: The cache module (m12)
+  answer: b
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '10.13'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: Check the dashboard
+    b: The user's network
+    c: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    d: Restart the server
+  answer: c
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '10.14'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Add a unit test for every function
+    b: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    c: Move all logic to a single hook
+    d: Use a different test framework
+  answer: b
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '10.15'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    b: It replaces the loop
+    c: It runs before the loop
+    d: It does not
+  answer: a
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '10.16'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Many tests
+    b: Slow performance
+    c: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    d: Many comments
+  answer: c
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

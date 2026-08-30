@@ -1,0 +1,157 @@
+- id: cum.501
+  type: mcq
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  question: A selector is a function from
+  options:
+    a: component to state
+    b: store state to a derived value
+    c: action to reducer
+    d: render to DOM
+  answer: b
+  explanation: Answer explanation for A selector is a function from...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.502
+  type: cloze
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  question: useSyncExternalStore prevents {tearing} during concurrent rendering.
+  answer: tearing
+  explanation: Cloze explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.503
+  type: tf
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  statement: An unstable selector returns a primitive on every call.
+  answer: false
+  explanation: TF explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.504
+  type: mcq
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  question: Zustand's persist middleware writes to
+  options:
+    a: a server
+    b: localStorage
+    c: IndexedDB
+    d: the URL
+  answer: b
+  explanation: Answer explanation for Zustand's persist middleware writes to...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.505
+  type: mcq
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  question: Jotai's atom is the
+  options:
+    a: unit of state
+    b: CSS unit
+    c: type of effect
+    d: React component
+  answer: a
+  explanation: Answer explanation for Jotai's atom is the...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.506
+  type: cloze
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  question: createSlice wraps action {creators}, {reducers}, and action {types} in
+    one call.
+  answer: creators; reducers; types
+  explanation: Cloze explanation.
+  difficulty: 2
+  tags:
+  - cross-module
+- id: cum.507
+  type: tf
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  statement: TanStack Query is for client-local state.
+  answer: false
+  explanation: TF explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.508
+  type: mcq
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  question: Reselect's createSelector is for
+  options:
+    a: memoizing compound selectors
+    b: fetching data
+    c: persisting state
+    d: rendering components
+  answer: a
+  explanation: Answer explanation for Reselect's createSelector is for...
+  difficulty: 2
+  tags:
+  - cross-module
+- id: cum.509
+  type: cloze
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  question: The right answer for a high-frequency value shared by a large subtree
+    is an external {store} with {selectors}.
+  answer: store; selectors
+  explanation: Cloze explanation.
+  difficulty: 2
+  tags:
+  - cross-module
+- id: cum.510
+  type: mcq
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  question: Persisting server-derived state is a
+  options:
+    a: best practice
+    b: common anti-pattern
+    c: required pattern
+    d: performance optimization
+  answer: b
+  explanation: Answer explanation for Persisting server-derived state is a...
+  difficulty: 2
+  tags:
+  - cross-module

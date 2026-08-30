@@ -1,141 +1,267 @@
-- id: "7.1"
-  question: "Which single decision fixes most of the six modal failure modes at once?"
+- id: '7.1'
+  question: Which single decision fixes most of the six modal failure modes at once?
   options:
-    a: "A higher z-index on the dialog"
-    b: "Adding the component library's FocusScope"
-    c: "Declaring one owner that decides open, close, and busy via a controlled state contract"
-    d: "Rendering the dialog inside the form component"
+    a: Declaring one owner that decides open, close, and busy via a controlled state
+      contract
+    b: Rendering the dialog inside the form component
+    c: A higher z-index on the dialog
+    d: Adding the component library's FocusScope
+  answer: a
+  explanation: Focus, Escape, nesting, aria, and busy-save are all ownership failures.
+    One component or store owning the controlled contract removes each; z-index, scope,
+    or placement only patch symptoms.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.2'
+  question: Why does @radix-ui/react-dialog alone not fix modal ownership?
+  options:
+    a: Because the library solves rendering and focus primitives, not who may open
+      or when closing is allowed
+    b: "Because the library does not support \u2019Escape\u2019"
+    c: Because the library re-renders the whole page
+    d: Because most teams only want the visual layer
+  answer: a
+  explanation: Radix is a rendering seam (portals, overlay, focus scope). The open/close
+    decision, the busy guard, the nesting stack, and aria wiring are app state the
+    library cannot decide for you.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.3'
+  question: In the modal state contract, which field names which dialog variant is
+    showing?
+  options:
+    a: busy
+    b: open
+    c: intent
+    d: payload
   answer: c
-  explanation: "Focus, Escape, nesting, aria, and busy-save are all ownership failures. One component or store owning the controlled contract removes each; z-index, scope, or placement only patch symptoms."
-  difficulty: 2
-  tags: [concept]
-
-- id: "7.2"
-  question: "Why does @radix-ui/react-dialog alone not fix modal ownership?"
-  options:
-    a: "Because most teams only want the visual layer"
-    b: "Because the library solves rendering and focus primitives, not who may open or when closing is allowed"
-    c: "Because the library does not support \u2019Escape\u2019"
-    d: "Because the library re-renders the whole page"
-  answer: b
-  explanation: "Radix is a rendering seam (portals, overlay, focus scope). The open/close decision, the busy guard, the nesting stack, and aria wiring are app state the library cannot decide for you."
-  difficulty: 2
-  tags: [concept]
-
-- id: "7.3"
-  question: "In the modal state contract, which field names which dialog variant is showing?"
-  options:
-    a: "payload"
-    b: "busy"
-    c: "open"
-    d: "intent"
-  answer: d
-  explanation: "intent identifies the dialog variant (edit-grade, confirm-discard, note); payload carries its data; busy flags a blocking op; open/onOpenChange is the visible flag and controlled seam."
+  explanation: intent identifies the dialog variant (edit-grade, confirm-discard,
+    note); payload carries its data; busy flags a blocking op; open/onOpenChange is
+    the visible flag and controlled seam.
   difficulty: 1
-  tags: [terminology]
-
-- id: "7.4"
-  question: "Priya presses Escape while the grade save is still in flight. Which behavior honors the close-guard?"
+  tags:
+  - terminology
+- id: '7.4'
+  question: Priya presses Escape while the grade save is still in flight. Which behavior
+    honors the close-guard?
   options:
-    a: "The dialog hides and the save continues in the background"
-    b: "Escape is intercepted, the close blocked, and the dialog stays visible with Save disabled"
-    c: "The save is cancelled and the dialog closes"
-    d: "Escape closes the dialog and focus returns to the row"
-  answer: b
-  explanation: "busy means blocking the close event (preventDefault) and keeping the dialog visible. Hiding mid-save lies about the open state; cancelling mid-flight corrupts data. The guard is the honest contract."
+    a: Escape closes the dialog and focus returns to the row
+    b: The dialog hides and the save continues in the background
+    c: Escape is intercepted, the close blocked, and the dialog stays visible with
+      Save disabled
+    d: The save is cancelled and the dialog closes
+  answer: c
+  explanation: busy means blocking the close event (preventDefault) and keeping the
+    dialog visible. Hiding mid-save lies about the open state; cancelling mid-flight
+    corrupts data. The guard is the honest contract.
   difficulty: 3
-  tags: [scenario]
-
-- id: "7.5"
-  question: "Why does focus state live in a ref instead of the modal store?"
+  tags:
+  - scenario
+- id: '7.5'
+  question: Why does focus state live in a ref instead of the modal store?
   options:
-    a: "Because zustand cannot store DOM nodes"
-    b: "Because focus is a DOM side effect, not data; a store would re-render subscribers just to move focus"
-    c: "Because React forbids storing DOM nodes in state"
-    d: "Because the trigger element changes every render"
+    a: Because zustand cannot store DOM nodes
+    b: Because focus is a DOM side effect, not data; a store would re-render subscribers
+      just to move focus
+    c: Because React forbids storing DOM nodes in state
+    d: Because the trigger element changes every render
   answer: b
-  explanation: "Focus is a side effect. Putting it in the store triggers selectors and re-renders for unrelated subscribers; a ref mutates the DOM directly and dies with its component, which is exactly the needed lifetime."
+  explanation: Focus is a side effect. Putting it in the store triggers selectors
+    and re-renders for unrelated subscribers; a ref mutates the DOM directly and dies
+    with its component, which is exactly the needed lifetime.
   difficulty: 2
-  tags: [comparison]
-
-- id: "7.6"
-  question: "What is the correct Escape behavior when a single, non-busy dialog is open?"
+  tags:
+  - comparison
+- id: '7.6'
+  question: What is the correct Escape behavior when a single, non-busy dialog is
+    open?
   options:
-    a: "Close the dialog and return focus to the trigger"
-    b: "Close the dialog and move focus to the page body"
-    c: "Do nothing, only the close button is allowed"
-    d: "Close every dialog in the stack"
+    a: Close the dialog and return focus to the trigger
+    b: Close the dialog and move focus to the page body
+    c: Do nothing, only the close button is allowed
+    d: Close every dialog in the stack
   answer: a
-  explanation: "Escape is the standard dismissal path: one level closes and focus returns to the element that opened it. Popping the whole stack or dropping focus to the body breaks the keyboard contract."
+  explanation: 'Escape is the standard dismissal path: one level closes and focus
+    returns to the element that opened it. Popping the whole stack or dropping focus
+    to the body breaks the keyboard contract.'
   difficulty: 1
-  tags: [terminology]
-
-- id: "7.7"
-  question: "A nested-dialog implementation stores one boolean, so opening confirm-discard overwrites edit-grade. What happens on the second Escape?"
+  tags:
+  - terminology
+- id: '7.7'
+  question: A nested-dialog implementation stores one boolean, so opening confirm-discard
+    overwrites edit-grade. What happens on the second Escape?
   options:
-    a: "Edit-grade reopens automatically"
-    b: "Nothing, Escape is disabled"
-    c: "Focus returns to edit-grade's trigger"
-    d: "Escape has nothing to pop: the stack was destroyed, so everything closes at once"
+    a: Edit-grade reopens automatically
+    b: Nothing, Escape is disabled
+    c: Focus returns to edit-grade's trigger
+    d: 'Escape has nothing to pop: the stack was destroyed, so everything closes at
+      once'
   answer: d
-  explanation: "One boolean models one dialog, never a pile. The stack must keep earlier levels until each is popped; overwriting them destroys the return path, so one Escape closes everything."
+  explanation: One boolean models one dialog, never a pile. The stack must keep earlier
+    levels until each is popped; overwriting them destroys the return path, so one
+    Escape closes everything.
   difficulty: 3
-  tags: [scenario]
-
-- id: "7.8"
-  question: "How should z-index be decided for stacked dialogs instead of magic numbers?"
+  tags:
+  - scenario
+- id: '7.8'
+  question: How should z-index be decided for stacked dialogs instead of magic numbers?
   options:
-    a: "By increasing each dialog by exactly one"
-    b: "From the nesting stack and its stacking contexts, so the last-opened level paints on top"
-    c: "By reading the url route depth"
-    d: "From the total dialog count in the store"
+    a: By increasing each dialog by exactly one
+    b: From the nesting stack and its stacking contexts, so the last-opened level
+      paints on top
+    c: By reading the url route depth
+    d: From the total dialog count in the store
   answer: b
-  explanation: "A stacking context per level makes order fall out of structure — the deepest open dialog is last and paints top. Manual z-index races start again at every panel, tooltip, or dropdown."
+  explanation: "A stacking context per level makes order fall out of structure \u2014\
+    \ the deepest open dialog is last and paints top. Manual z-index races start again\
+    \ at every panel, tooltip, or dropdown."
   difficulty: 2
-  tags: [concept]
-
-- id: "7.9"
-  question: "Which attributes make a dialog announce itself correctly to a screen reader?"
+  tags:
+  - concept
+- id: '7.9'
+  question: Which attributes make a dialog announce itself correctly to a screen reader?
   options:
-    a: "role=dialog and a tabIndex"
-    b: "role=dialog, aria-modal=true, and aria-labelledby pointing at the title"
-    c: "aria-describedby and a high z-index"
-    d: "aria-hidden and role=presentation"
-  answer: b
-  explanation: "The dialog role plus aria-modal=true and an accessible name via labelledby is the contract. Without a name the reader announces an unnamed dialog; z-index and tabIndex have nothing to do with announcement."
+    a: aria-describedby and a high z-index
+    b: aria-hidden and role=presentation
+    c: role=dialog and a tabIndex
+    d: role=dialog, aria-modal=true, and aria-labelledby pointing at the title
+  answer: d
+  explanation: The dialog role plus aria-modal=true and an accessible name via labelledby
+    is the contract. Without a name the reader announces an unnamed dialog; z-index
+    and tabIndex have nothing to do with announcement.
   difficulty: 1
-  tags: [terminology]
-
-- id: "7.10"
-  question: "A 40-field application revision needs to be filled with care. Which is the right surface?"
+  tags:
+  - terminology
+- id: '7.10'
+  question: A 40-field application revision needs to be filled with care. Which is
+    the right surface?
   options:
-    a: "A page or split panel, because a modal traps a long task in a scrolling bottleneck"
-    b: "A modal, because it keeps the user focused"
-    c: "A command palette, because it is non-modal"
-    d: "A sheet, because it docks to the side"
+    a: A page or split panel, because a modal traps a long task in a scrolling bottleneck
+    b: A modal, because it keeps the user focused
+    c: A command palette, because it is non-modal
+    d: A sheet, because it docks to the side
   answer: a
-  explanation: "Task size decides: long, reload-sensitive work belongs on a page or the workflow modal (m8). Dialogs suit confirmations, single-field edits, and short guards — not 40-field forms."
+  explanation: "Task size decides: long, reload-sensitive work belongs on a page or\
+    \ the workflow modal (m8). Dialogs suit confirmations, single-field edits, and\
+    \ short guards \u2014 not 40-field forms."
   difficulty: 2
-  tags: [scenario]
-- id: "7.11"
-  question: A modal contains a 5-step wizard with its own form state. Where should the wizard state live?
+  tags:
+  - scenario
+- id: '7.11'
+  question: A modal contains a 5-step wizard with its own form state. Where should
+    the wizard state live?
   options:
-    a: "In the modal's parent so the parent can react to completion"
-    b: "Inside the modal component, lifted only as needed for sibling display"
-    c: "In a global zustand store so any future feature can read it"
-    d: "In URL hash so the user can share the wizard link"
-  answer: b
-  explanation: Wizard state is short-lived and scoped to the modal's lifetime. Lifting it into the parent would force the parent to know wizard internals; promoting it to a global store would couple unrelated features. URL hash only makes sense if the wizard is deep-linkable.
+    a: In a global zustand store so any future feature can read it
+    b: In URL hash so the user can share the wizard link
+    c: In the modal's parent so the parent can react to completion
+    d: Inside the modal component, lifted only as needed for sibling display
+  answer: d
+  explanation: Wizard state is short-lived and scoped to the modal's lifetime. Lifting
+    it into the parent would force the parent to know wizard internals; promoting
+    it to a global store would couple unrelated features. URL hash only makes sense
+    if the wizard is deep-linkable.
   difficulty: 2
-  tags: [concept, scenario]
-- id: "7.12"
-  question: A modal contains a 5-step wizard with its own form state. Where should the wizard state live?
+  tags:
+  - concept
+  - scenario
+- id: '7.12'
+  question: A modal contains a 5-step wizard with its own form state. Where should
+    the wizard state live?
   options:
-    a: "In the modal's parent so the parent can react to completion"
-    b: "Inside the modal component, lifted only as needed for sibling display"
-    c: "In a global zustand store so any future feature can read it"
-    d: "In URL hash so the user can share the wizard link"
-  answer: b
-  explanation: Wizard state is short-lived and scoped to the modal's lifetime. Lifting it into the parent would force the parent to know wizard internals; promoting it to a global store would couple unrelated features. URL hash only makes sense if the wizard is deep-linkable.
+    a: Inside the modal component, lifted only as needed for sibling display
+    b: In a global zustand store so any future feature can read it
+    c: In URL hash so the user can share the wizard link
+    d: In the modal's parent so the parent can react to completion
+  answer: a
+  explanation: Wizard state is short-lived and scoped to the modal's lifetime. Lifting
+    it into the parent would force the parent to know wizard internals; promoting
+    it to a global store would couple unrelated features. URL hash only makes sense
+    if the wizard is deep-linkable.
   difficulty: 2
-  tags: [concept, scenario]
+  tags:
+  - concept
+  - scenario
+- id: '7.13'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The schema module (m4)
+    b: The cache module (m12)
+    c: The test module (m3)
+    d: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+  answer: d
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '7.14'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: The user's network
+    b: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    c: Restart the server
+    d: Check the dashboard
+  answer: b
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '7.15'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Add a unit test for every function
+    b: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    c: Move all logic to a single hook
+    d: Use a different test framework
+  answer: b
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '7.16'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: It runs before the loop
+    b: It does not
+    c: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    d: It replaces the loop
+  answer: c
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '7.17'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Many tests
+    b: Slow performance
+    c: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    d: Many comments
+  answer: c
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

@@ -1,0 +1,243 @@
+- id: '25.1'
+  question: What does an error boundary + tracker integration give you that a try/catch
+    does not?
+  options:
+    a: Render-phase exception capture with a component stack, breadcrumbs, and the
+      user's session
+    b: Faster performance
+    c: Smaller bundle
+    d: Nothing
+  answer: a
+  explanation: The error boundary catches exceptions thrown during render and the
+    tracker reports them with a component stack, the user's session, breadcrumbs,
+    and the React tree. A try/catch in an event handler does not see render-phase
+    exceptions.
+  difficulty: 1
+  tags:
+  - concept
+- id: '25.2'
+  question: What is the purpose of breadcrumbs in error tracking?
+  options:
+    a: Faster tests
+    b: Better performance
+    c: The trail of events that led to the error
+    d: Smaller bundles
+  answer: c
+  explanation: Breadcrumbs accumulate in a ring buffer (typically the last 50-100
+    events). They turn a single 'the page broke' report into 'the user clicked X,
+    then Y, then the API returned Z, then the page broke.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '25.3'
+  question: What are the three Core Web Vitals?
+  options:
+    a: Speed Index, Time to Interactive, FID
+    b: FPS, Memory, CPU
+    c: LCP, INP, CLS
+    d: FCP, TTI, TBT
+  answer: c
+  explanation: Largest Contentful Paint (LCP), Interaction to Next Paint (INP), Cumulative
+    Layout Shift (CLS) are the three Core Web Vitals. They are the user-experience
+    floor Google defines for a good page.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '25.4'
+  question: Where should PII redaction happen?
+  options:
+    a: In the dashboard
+    b: In the database
+    c: At every call site
+    d: At the transport layer, before telemetry leaves the client
+  answer: d
+  explanation: "Redaction at the transport layer means every breadcrumb and every\
+    \ event goes through the same redaction function. Call-site redaction is fragile\
+    \ \u2014 easy to miss a new event, easy to leak PII when a new field is added."
+  difficulty: 2
+  tags:
+  - process
+- id: '25.5'
+  question: Why is product telemetry a separate tool from error tracking?
+  options:
+    a: Marketing requires it
+    b: Browsers require it
+    c: They are the same
+    d: Different aggregation patterns, retention policies, and access controls
+  answer: d
+  explanation: Errors are rare and high-signal. Product events are high-volume and
+    need funnel analysis. The two have different dashboards, different retention,
+    and different consumers (engineering vs product).
+  difficulty: 2
+  tags:
+  - concept
+- id: '25.6'
+  question: When should Web Vitals be re-captured in an SPA?
+  options:
+    a: On every route change
+    b: Only on first page load
+    c: Never
+    d: Once per session
+  answer: a
+  explanation: The metric is per-page-load. An SPA's route changes do not reset the
+    metric automatically. The team re-captures on every route change so the dashboard
+    reflects the current page's performance.
+  difficulty: 2
+  tags:
+  - process
+- id: '25.7'
+  question: What is the cost stack of telemetry at scale?
+  options:
+    a: Every event is a network call; storage and retention cost money; PII leaks
+      are a liability
+    b: No cost
+    c: One request per month
+    d: One request per day
+  answer: a
+  explanation: Naive telemetry at 10,000 active users is 10,000 requests per second.
+    Storage at 100 events per user per day for 30 days is 30M events. PII leaks are
+    GDPR violations. Telemetry is not free.
+  difficulty: 1
+  tags:
+  - concept
+- id: '25.8'
+  question: What is the fix for a CLS spike after a feature ships?
+  options:
+    a: Reduce image sizes
+    b: Reserve space for asynchronously-rendered components with a skeleton of the
+      same height
+    c: Use a different browser
+    d: Disable CSS
+  answer: b
+  explanation: "CLS measures layout instability. Asynchronous rendering (fetch then\
+    \ set state then render) causes the page to paint twice. The fix is reserved space\
+    \ \u2014 a min-height on the container that matches the eventual content's height."
+  difficulty: 2
+  tags:
+  - process
+- id: '25.9'
+  question: Why hash user ids on the client before sending?
+  options:
+    a: Required by Sentry
+    b: Faster transmission
+    c: Protects the user from a tracker-side data breach; the server joins the hash
+      back when needed
+    d: Required by browsers
+  answer: c
+  explanation: A tracker-side breach that exposes hashed user ids is far less damaging
+    than one that exposes real user ids. The hash is one-way; the server joins it
+    back only when needed for support. This is a layered defense against PII exposure.
+  difficulty: 2
+  tags:
+  - concept
+- id: '25.10'
+  question: Which is NOT a good telemetry practice?
+  options:
+    a: Respect user consent
+    b: Hash user ids before sending
+    c: Redact PII at the transport layer
+    d: Track every keystroke in a form with the full form state
+  answer: d
+  explanation: Tracking every keystroke with full state leaks PII and floods the dashboard.
+    Track at meaningful events (form-open, form-submit) with redacted context. Less
+    data, better signal, faster dashboard.
+  difficulty: 1
+  tags:
+  - misconception
+- id: '25.11'
+  question: When is error tracking on a try/catch handler useful?
+  options:
+    a: Never
+    b: When the handler is in an event handler or async work, where the error boundary
+      does not see it
+    c: Always
+    d: Only in tests
+  answer: b
+  explanation: Error boundaries catch render-phase exceptions. Event handlers and
+    async work need try/catch + captureException. The two patterns are complementary,
+    not substitutes.
+  difficulty: 2
+  tags:
+  - concept
+- id: '25.12'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The cache module (m12)
+    b: The test module (m3)
+    c: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+    d: The schema module (m4)
+  answer: c
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '25.13'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: The user's network
+    b: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    c: Restart the server
+    d: Check the dashboard
+  answer: b
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '25.14'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    b: Move all logic to a single hook
+    c: Use a different test framework
+    d: Add a unit test for every function
+  answer: a
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '25.15'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: It does not
+    b: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    c: It replaces the loop
+    d: It runs before the loop
+  answer: b
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '25.16'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Many comments
+    b: Many tests
+    c: Slow performance
+    d: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+  answer: d
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

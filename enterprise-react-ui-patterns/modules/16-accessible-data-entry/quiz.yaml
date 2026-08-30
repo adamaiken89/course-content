@@ -1,132 +1,259 @@
-- id: "16.1"
-  question: "Which mechanism makes a validation message audible to a screen-reader user when it appears in the DOM?"
+- id: '16.1'
+  question: Which mechanism makes a validation message audible to a screen-reader
+    user when it appears in the DOM?
   options:
-    a: "A red border on the input"
-    b: "A tooltip on hover"
-    c: "An aria-live (role=status) region"
-    d: "A console.log statement"
+    a: A red border on the input
+    b: A tooltip on hover
+    c: An aria-live (role=status) region
+    d: A console.log statement
   answer: c
-  explanation: "aria-live regions are pages the browser announces on change; re-rendered DOM alone is silent to screen readers."
+  explanation: aria-live regions are pages the browser announces on change; re-rendered
+    DOM alone is silent to screen readers.
   difficulty: 1
-  tags: [terminology]
-- id: "16.2"
-  question: "When should a field-status live region use aria-live=assertive?"
+  tags:
+  - terminology
+- id: '16.2'
+  question: When should a field-status live region use aria-live=assertive?
   options:
-    a: "For every keystroke verdict, so the user updates instantly"
-    b: "Only for submit-blocking verdicts such as batch rejection"
-    c: "Never — assertive is deprecated in WCAG 2.1"
-    d: "Always — assertive beats polite on every screen reader"
-  answer: b
-  explanation: "Assertive speech interrupts the reader mid-sentence and is hostile when overused; routine field beats should queue politely."
+    a: Only for submit-blocking verdicts such as batch rejection
+    b: "Never \u2014 assertive is deprecated in WCAG 2.1"
+    c: "Always \u2014 assertive beats polite on every screen reader"
+    d: For every keystroke verdict, so the user updates instantly
+  answer: a
+  explanation: Assertive speech interrupts the reader mid-sentence and is hostile
+    when overused; routine field beats should queue politely.
   difficulty: 2
-  tags: [concept]
-- id: "16.3"
-  question: "A re-render with the same field status arrives. The LiveRegion observes identical text. What should the announcer do?"
+  tags:
+  - concept
+- id: '16.3'
+  question: A re-render with the same field status arrives. The LiveRegion observes
+    identical text. What should the announcer do?
   options:
-    a: "Announce again to be safe"
-    b: "Queue a duplicate beat for slow readers"
-    c: "Switch to assertive to force attention"
-    d: "Dedupe — drop the identical message so nothing re-announces"
+    a: Queue a duplicate beat for slow readers
+    b: Switch to assertive to force attention
+    c: "Dedupe \u2014 drop the identical message so nothing re-announces"
+    d: Announce again to be safe
+  answer: c
+  explanation: Identical verdicts re-announced sound like stuttering; a useFieldAnnouncer
+    with a last-message ref dedupes.
+  difficulty: 1
+  tags:
+  - concept
+- id: '16.4'
+  question: Program changes and the cascade resets the Cohort select (m13). Which
+    focus behavior is correct?
+  options:
+    a: Immediately jump into the reset Cohort select
+    b: Blur all controls until the user clicks
+    c: Drop focus to body so the user starts fresh
+    d: Stay on the Program select; announce 'cohort options updated'
   answer: d
-  explanation: "Identical verdicts re-announced sound like stuttering; a useFieldAnnouncer with a last-message ref dedupes."
-  difficulty: 1
-  tags: [concept]
-- id: "16.4"
-  question: "Program changes and the cascade resets the Cohort select (m13). Which focus behavior is correct?"
-  options:
-    a: "Drop focus to body so the user starts fresh"
-    b: "Stay on the Program select; announce 'cohort options updated'"
-    c: "Immediately jump into the reset Cohort select"
-    d: "Blur all controls until the user clicks"
-  answer: b
-  explanation: "Predictable stays-on-origin with a beat avoids hijacking the next keystroke; body-drop strands SR users." 
+  explanation: Predictable stays-on-origin with a beat avoids hijacking the next keystroke;
+    body-drop strands SR users.
   difficulty: 3
-  tags: [scenario]
-- id: "16.5"
-  question: "After a failed batch submit, focus should move to the first invalid field. When should the imperative focus fire?"
+  tags:
+  - scenario
+- id: '16.5'
+  question: After a failed batch submit, focus should move to the first invalid field.
+    When should the imperative focus fire?
   options:
-    a: "Synchronously in the submit onClick handler"
-    b: "In a useEffect keyed on the errors state, after the DOM commits invalid markers"
-    c: "On the next mouse move"
-    d: "Only when the user presses Tab"
-  answer: b
-  explanation: "Focus must run after the DOM carries the invalid markers (aria-invalid/describedby), so the committed render exists first."
+    a: On the next mouse move
+    b: Only when the user presses Tab
+    c: Synchronously in the submit onClick handler
+    d: In a useEffect keyed on the errors state, after the DOM commits invalid markers
+  answer: d
+  explanation: Focus must run after the DOM carries the invalid markers (aria-invalid/describedby),
+    so the committed render exists first.
   difficulty: 2
-  tags: [concept, application]
-- id: "16.6"
-  question: "Which element groups a per-application set of sibling controls so a screen reader hears the group name for free?"
+  tags:
+  - concept
+  - application
+- id: '16.6'
+  question: Which element groups a per-application set of sibling controls so a screen
+    reader hears the group name for free?
   options:
-    a: "<fieldset> with a <legend>"
-    b: "<section> with a class"
-    c: "<div> with role=group only"
-    d: "<ul> with semantic styling"
+    a: <fieldset> with a <legend>
+    b: <section> with a class
+    c: <div> with role=group only
+    d: <ul> with semantic styling
   answer: a
-  explanation: "fieldset+legend announces the group label then prefixes every child with it, ideal for six applications of grades."
+  explanation: fieldset+legend announces the group label then prefixes every child
+    with it, ideal for six applications of grades.
   difficulty: 1
-  tags: [terminology]
-- id: "16.7"
-  question: "The portal validates remotely per touched field (m13) and needs its own error text. How should required be declared?"
+  tags:
+  - terminology
+- id: '16.7'
+  question: The portal validates remotely per touched field (m13) and needs its own
+    error text. How should required be declared?
   options:
-    a: "Native required only, let the browser message show"
-    b: "aria-required=true with aria-describedby to the error, avoiding the browser's double-announce"
-    c: "Neither — required-ness is visual only"
-    d: "placeholder=* to imply it"
+    a: Native required only, let the browser message show
+    b: aria-required=true with aria-describedby to the error, avoiding the browser's
+      double-announce
+    c: "Neither \u2014 required-ness is visual only"
+    d: placeholder=* to imply it
   answer: b
-  explanation: "Native required triggers a blocking browser message that fights the portal's remote validation; aria-required announces without a second, redundant UI."
+  explanation: Native required triggers a blocking browser message that fights the
+    portal's remote validation; aria-required announces without a second, redundant
+    UI.
   difficulty: 2
-  tags: [comparison]
-- id: "16.8"
-  question: "Escape pressed while a custom combobox is open. Which behavior reuses the m7 dialog retrieval pattern correctly?"
+  tags:
+  - comparison
+- id: '16.8'
+  question: Escape pressed while a custom combobox is open. Which behavior reuses
+    the m7 dialog retrieval pattern correctly?
   options:
-    a: "Close the list and move focus to the first option"
-    b: "Close the list, then Tab to the next field"
-    c: "Close the list while focus stays on the input"
-    d: "Keep the list open until Enter is pressed"
+    a: Close the list and move focus to the first option
+    b: Close the list, then Tab to the next field
+    c: Close the list while focus stays on the input
+    d: Keep the list open until Enter is pressed
   answer: c
-  explanation: "Escape dismisses the layer, exactly like closing a modal returns focus to its opener; moving focus throws the user out of the field."
+  explanation: Escape dismisses the layer, exactly like closing a modal returns focus
+    to its opener; moving focus throws the user out of the field.
   difficulty: 3
-  tags: [scenario]
-- id: "16.9"
-  question: "A custom option list highlights an option as the user presses ArrowDown. What keeps the SR user aware of the highlight?"
+  tags:
+  - scenario
+- id: '16.9'
+  question: A custom option list highlights an option as the user presses ArrowDown.
+    What keeps the SR user aware of the highlight?
   options:
-    a: "A state counter rendered in the page title"
-    b: "aria-activedescendant pointing at the highlighted option's id"
-    c: "An <option> element without attributes"
-    d: "A timed alert after each keypress"
+    a: A state counter rendered in the page title
+    b: aria-activedescendant pointing at the highlighted option's id
+    c: An <option> element without attributes
+    d: A timed alert after each keypress
   answer: b
-  explanation: "aria-activedescendant tells the screen reader which listbox option is active while real focus remains on the input."
+  explanation: aria-activedescendant tells the screen reader which listbox option
+    is active while real focus remains on the input.
   difficulty: 2
-  tags: [terminology, concept]
-- id: "16.10"
-  question: "Which decision about focus is correct for this module?"
+  tags:
+  - terminology
+  - concept
+- id: '16.10'
+  question: Which decision about focus is correct for this module?
   options:
-    a: "Route focus through zustand so all screens can read it"
-    b: "Keep focus position in React state and re-render on every move"
-    c: "Store focus manages imperative refs; never route through zustand"
-    d: "Persist focus index to LocalStorage"
-  answer: c
-  explanation: "Focus is a DOM action performed with refs and an imperativeFocus helper; store writes and re-renders race against the commit and add churn."
+    a: Persist focus index to LocalStorage
+    b: Route focus through zustand so all screens can read it
+    c: Keep focus position in React state and re-render on every move
+    d: Store focus manages imperative refs; never route through zustand
+  answer: d
+  explanation: Focus is a DOM action performed with refs and an imperativeFocus helper;
+    store writes and re-renders race against the commit and add churn.
   difficulty: 1
-  tags: [concept, comparison]
-- id: "16.11"
-  question: "A data grid announces row count changes. The announcement should be made via:"
+  tags:
+  - concept
+  - comparison
+- id: '16.11'
+  question: 'A data grid announces row count changes. The announcement should be made
+    via:'
   options:
-    a: "An aria-live region with politeness 'polite'"
-    b: "An aria-live region with politeness 'assertive'"
-    c: "A console.log"
-    d: "A toast that auto-dismisses"
+    a: An aria-live region with politeness 'polite'
+    b: An aria-live region with politeness 'assertive'
+    c: A console.log
+    d: A toast that auto-dismisses
   answer: a
-  explanation: Row count changes are status updates, not emergencies. 'Polite' lets the screen reader finish the current utterance before announcing, which is the user-friendly default. 'Assertive' is reserved for errors that need immediate attention.
+  explanation: Row count changes are status updates, not emergencies. 'Polite' lets
+    the screen reader finish the current utterance before announcing, which is the
+    user-friendly default. 'Assertive' is reserved for errors that need immediate
+    attention.
   difficulty: 2
-  tags: [concept, process]
-- id: "16.12"
-  question: "A data grid announces row count changes. The announcement should be made via:"
+  tags:
+  - concept
+  - process
+- id: '16.12'
+  question: 'A data grid announces row count changes. The announcement should be made
+    via:'
   options:
-    a: "An aria-live region with politeness 'polite'"
-    b: "An aria-live region with politeness 'assertive'"
-    c: "A console.log"
-    d: "A toast that auto-dismisses"
+    a: An aria-live region with politeness 'polite'
+    b: An aria-live region with politeness 'assertive'
+    c: A console.log
+    d: A toast that auto-dismisses
   answer: a
-  explanation: Row count changes are status updates, not emergencies. 'Polite' lets the screen reader finish the current utterance before announcing, which is the user-friendly default. 'Assertive' is reserved for errors that need immediate attention.
+  explanation: Row count changes are status updates, not emergencies. 'Polite' lets
+    the screen reader finish the current utterance before announcing, which is the
+    user-friendly default. 'Assertive' is reserved for errors that need immediate
+    attention.
   difficulty: 2
-  tags: [concept, process]
+  tags:
+  - concept
+  - process
+- id: '16.13'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The test module (m3)
+    b: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+    c: The schema module (m4)
+    d: The cache module (m12)
+  answer: b
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '16.14'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: The user's network
+    b: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    c: Restart the server
+    d: Check the dashboard
+  answer: b
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '16.15'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Move all logic to a single hook
+    b: Use a different test framework
+    c: Add a unit test for every function
+    d: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+  answer: d
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '16.16'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: It runs before the loop
+    b: It does not
+    c: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    d: It replaces the loop
+  answer: c
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '16.17'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    b: Many comments
+    c: Many tests
+    d: Slow performance
+  answer: a
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

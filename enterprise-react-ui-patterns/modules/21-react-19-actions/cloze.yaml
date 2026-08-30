@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "useActionState returns [state, action, {pending}], where the action is bound to a {form}'s action prop."
+  answer: "form"
+  explanation: "The action signature is (prevState, formData) => newState. React calls it on submit and the previous state is the key reason this is useActionState, not a plain action."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "useFormStatus can only be called inside a {child} of a <form> whose action is an action function."
+  answer: "child"
+  explanation: "The hook reads the parent form's transition state. A design-system SubmitButton is the canonical use case — no prop drilling, no parent coordination."
+  difficulty: 2
+  tags: [concept]
+- id: "c.3"
+  question: "useOptimistic shows a value before the server confirms; the {rollback} is the caller's job."
+  answer: "rollback"
+  explanation: "The optimistic value evaporates only if the real state did not change AND the optimistic was based on the current optimistic value (not the saved source-of-truth)."
+  difficulty: 2
+  tags: [concept]
+- id: "c.4"
+  question: "A Server Action is a function marked '{use server}' that runs on the server; the client imports a {reference} to it."
+  answer: "use server; reference"
+  explanation: "The bundler wires the reference through a special endpoint. Server Actions are framework-backed RPC, not a general-purpose API."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.5"
+  question: "useActionState fits {simple, self-contained} forms: one submit, one server call, one success or one error."
+  answer: "simple, self-contained"
+  explanation: "Forms that need coordination with the query cache, multi-step wizards, and long-lived optimistic state are not useActionState territory — they belong to TanStack Query, state machines, and the batch engine."
+  difficulty: 2
+  tags: [concept]
+- id: "c.6"
+  question: "A 30-field form using useActionState for each field will {re-render} on every keystroke because the action is a {reducer}."
+  answer: "re-render; reducer"
+  explanation: "Use local useState per field for field state; reserve useActionState for the submit lifecycle. Conflating the two is the managed-component anti-pattern from pre-hooks React."
+  difficulty: 3
+  tags: [concept]
+- id: "c.7"
+  question: "The optimistic value for a like button is keyed by the {applicantId} so two rapid clicks compose correctly."
+  answer: "applicantId"
+  explanation: "Without a stable key, the second click sees the same base value as the first and produces an identical optimistic update. The id is the seam that lets the second click build on the first."
+  difficulty: 3
+  tags: [concept]
+- id: "c.8"
+  question: "A client-only enterprise portal with a separate API should not use Server Actions because they are {framework}-backed."
+  answer: "framework"
+  explanation: "Server Actions are a fit for Next.js App Router, Remix, and similar. A portal with a separate API uses TanStack Query mutations. The course is framework-neutral on this point."
+  difficulty: 2
+  tags: [concept]

@@ -1,0 +1,136 @@
+- id: '18.1'
+  question: Designing a new feature's state architecture starts with the {decision
+    tree}.
+  options:
+    a: library
+    b: decision tree
+    c: refactor
+    d: test
+  answer: b
+  explanation: Explanation for Designing a new feature's state architecture start...
+  difficulty: 1
+  tags:
+  - process
+- id: '18.2'
+  question: 'The {state map} is the deliverable: slice to lifetime to primitive.'
+  options:
+    a: test suite
+    b: code review
+    c: state map
+    d: type system
+  answer: c
+  explanation: 'Explanation for The {state map} is the deliverable: slice to lifet...'
+  difficulty: 1
+  tags:
+  - process
+- id: '18.3'
+  question: Integration tests exercise the {seams} between primitives.
+  options:
+    a: types
+    b: styles
+    c: components
+    d: seams
+  answer: d
+  explanation: Explanation for Integration tests exercise the {seams} between pri...
+  difficulty: 1
+  tags:
+  - process
+- id: '18.4'
+  question: The decision log is the {institutional memory} for state decisions.
+  options:
+    a: institutional memory
+    b: test
+    c: type
+    d: code
+  answer: a
+  explanation: Explanation for The decision log is the {institutional memory} for...
+  difficulty: 2
+  tags:
+  - process
+- id: '18.5'
+  question: Refactoring the state architecture is a {migration}, not a refactor.
+  options:
+    a: rewrite
+    b: refactor
+    c: migration
+    d: redesign
+  answer: c
+  explanation: Explanation for Refactoring the state architecture is a {migration...
+  difficulty: 2
+  tags:
+  - process
+- id: '18.6'
+  question: 'A feature with a form, a list, and pagination uses {three} primitives:
+    useState, TanStack Query, and URL state.'
+  options:
+    a: one
+    b: three
+    c: ten
+    d: all
+  answer: b
+  explanation: Explanation for A feature with a form, a list, and pagination uses...
+  difficulty: 2
+  tags:
+  - concept
+- id: '18.7'
+  question: The test boundary in a multi-primitive architecture is the {seam}.
+  options:
+    a: action
+    b: store
+    c: seam
+    d: component
+  answer: c
+  explanation: Explanation for The test boundary in a multi-primitive architectur...
+  difficulty: 2
+  tags:
+  - process
+- id: '18.8'
+  question: The decision log should include the rejected {alternatives} so future
+    team members understand the context.
+  options:
+    a: tests
+    b: code
+    c: types
+    d: alternatives
+  answer: d
+  explanation: Explanation for The decision log should include the rejected {alte...
+  difficulty: 2
+  tags:
+  - process
+- id: '18.9'
+  question: A migration has a {scope}, a {rollback}, and a {test} plan.
+  options:
+    a: scope; rollback; test
+    b: design; code; review
+    c: users; time; cost
+    d: name; type; value
+  answer: a
+  explanation: Explanation for A migration has a {scope}, a {rollback}, and a {te...
+  difficulty: 1
+  tags:
+  - process
+- id: '18.10'
+  question: The state map drives the {tests}; the tests are the architecture's contract.
+  options:
+    a: tests
+    b: documentation
+    c: types
+    d: naming
+  answer: a
+  explanation: Explanation for The state map drives the {tests}; the tests are th...
+  difficulty: 2
+  tags:
+  - process
+- id: '18.11'
+  question: The capstone is a {proof} that the decision tree works.
+  options:
+    a: test
+    b: proof
+    c: design
+    d: library
+  answer: b
+  explanation: Explanation for The capstone is a {proof} that the decision tree w...
+  difficulty: 1
+  tags:
+  - process
+

@@ -1,0 +1,158 @@
+- id: cum.1301
+  type: mcq
+  source_modules:
+  - 13
+  - 14
+  - 15
+  - 16
+  question: A hydration mismatch happens when
+  options:
+    a: the server crashes
+    b: the server's HTML differs from the client's first render
+    c: the user logs out
+    d: the network drops
+  answer: b
+  explanation: Answer explanation for A hydration mismatch happens when...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.1302
+  type: cloze
+  source_modules:
+  - 13
+  - 14
+  - 15
+  - 16
+  question: Reading client-only values inside {useEffect} is the safe pattern; effects
+    run after {hydration}.
+  answer: useEffect; hydration
+  explanation: Cloze explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.1303
+  type: tf
+  source_modules:
+  - 13
+  - 14
+  - 15
+  - 16
+  statement: useSyncExternalStore is for SSR-safe external store integration.
+  answer: true
+  explanation: TF explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.1304
+  type: mcq
+  source_modules:
+  - 13
+  - 14
+  - 15
+  - 16
+  question: Re-render storms happen when
+  options:
+    a: a single render happens
+    b: a single state change triggers a wide cascade
+    c: the user scrolls
+    d: the page is fast
+  answer: b
+  explanation: Answer explanation for Re-render storms happen when...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.1305
+  type: mcq
+  source_modules:
+  - 13
+  - 14
+  - 15
+  - 16
+  question: React.memo prevents a re-render when
+  options:
+    a: props are referentially equal
+    b: state changes
+    c: the page reloads
+    d: the network is fast
+  answer: a
+  explanation: Answer explanation for React.memo prevents a re-render when...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.1306
+  type: cloze
+  source_modules:
+  - 13
+  - 14
+  - 15
+  - 16
+  question: useTransition defers a state update so the {UI} stays responsive; useDeferredValue
+    defers a {value}.
+  answer: UI; value
+  explanation: Cloze explanation.
+  difficulty: 2
+  tags:
+  - cross-module
+- id: cum.1307
+  type: tf
+  source_modules:
+  - 13
+  - 14
+  - 15
+  - 16
+  statement: Multiple stores are the right answer when the stores have the same lifetime
+    and consumers.
+  answer: false
+  explanation: TF explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.1308
+  type: mcq
+  source_modules:
+  - 13
+  - 14
+  - 15
+  - 16
+  question: Cross-store coordination lives in
+  options:
+    a: components
+    b: actions
+    c: effects
+    d: renders
+  answer: b
+  explanation: Answer explanation for Cross-store coordination lives in...
+  difficulty: 2
+  tags:
+  - cross-module
+- id: cum.1309
+  type: cloze
+  source_modules:
+  - 13
+  - 14
+  - 15
+  - 16
+  question: A {migration} has a scope, a {rollback}, and a test plan.
+  answer: migration; rollback
+  explanation: Cloze explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.1310
+  type: mcq
+  source_modules:
+  - 13
+  - 14
+  - 15
+  - 16
+  question: The strangler pattern comes from
+  options:
+    a: frontend frameworks
+    b: microservices
+    c: databases
+    d: CSS
+  answer: b
+  explanation: Answer explanation for The strangler pattern comes from...
+  difficulty: 1
+  tags:
+  - cross-module

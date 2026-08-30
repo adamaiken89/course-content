@@ -1,0 +1,135 @@
+- id: '12.1'
+  question: What is the right storage for small UI settings?
+  options:
+    a: IndexedDB
+    b: localStorage
+    c: Server
+    d: Cookies
+  answer: b
+  explanation: Explanation for What is the right storage for small UI settings?...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.2'
+  question: What is the right storage for large client-side data and offline support?
+  options:
+    a: Server
+    b: Cookies
+    c: localStorage
+    d: IndexedDB
+  answer: d
+  explanation: Explanation for What is the right storage for large client-side da...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.3'
+  question: What is partialize in zustand persist?
+  options:
+    a: An option that controls which fields are persisted
+    b: A version number
+    c: A reducer
+    d: A type of middleware
+  answer: a
+  explanation: Explanation for What is partialize in zustand persist?...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.4'
+  question: Persisting {tokens} in localStorage is risky because of XSS.
+  options:
+    a: sidebar state
+    b: theme
+    c: tokens
+    d: language
+  answer: c
+  explanation: Explanation for Persisting {tokens} in localStorage is risky becau...
+  difficulty: 1
+  tags:
+  - concept
+- id: '12.5'
+  question: A {migration} is a function that transforms persisted data when the schema
+    changes.
+  options:
+    a: migration
+    b: name
+    c: schema
+    d: version
+  answer: a
+  explanation: Explanation for A {migration} is a function that transforms persis...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.6'
+  question: Persisting server-derived state is an {anti-pattern}; the cache refetches
+    on focus.
+  options:
+    a: fast
+    b: best practice
+    c: anti-pattern
+    d: required
+  answer: c
+  explanation: Explanation for Persisting server-derived state is an {anti-patter...
+  difficulty: 2
+  tags:
+  - misconception
+- id: '12.7'
+  question: IndexedDB is {asynchronous}; the API is more verbose than localStorage.
+  options:
+    a: asynchronous
+    b: blocking
+    c: lazy
+    d: synchronous
+  answer: a
+  explanation: Explanation for IndexedDB is {asynchronous}; the API is more verbo...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '12.8'
+  question: The version field in zustand persist drives the {migration} point.
+  options:
+    a: store
+    b: name
+    c: migration
+    d: cache
+  answer: c
+  explanation: Explanation for The version field in zustand persist drives the {m...
+  difficulty: 1
+  tags:
+  - process
+- id: '12.9'
+  question: localStorage is fine for {small} data, infrequent reads, single device.
+  options:
+    a: structured
+    b: binary
+    c: large
+    d: small
+  answer: d
+  explanation: Explanation for localStorage is fine for {small} data, infrequent ...
+  difficulty: 1
+  tags:
+  - concept
+- id: '12.10'
+  question: Without a migration, old data can {crash} the new app.
+  options:
+    a: improve
+    b: crash
+    c: speed up
+    d: encrypt
+  answer: b
+  explanation: Explanation for Without a migration, old data can {crash} the new ...
+  difficulty: 1
+  tags:
+  - concept
+- id: '12.11'
+  question: The right answer for cross-device persistence is the {server}.
+  options:
+    a: IndexedDB
+    b: server
+    c: cookies
+    d: localStorage
+  answer: b
+  explanation: Explanation for The right answer for cross-device persistence is t...
+  difficulty: 1
+  tags:
+  - concept
+

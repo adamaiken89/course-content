@@ -1,132 +1,260 @@
-- id: "4.1"
-  question: "What does a hand-written TypeScript interface provide at runtime?"
+- id: '4.1'
+  question: What does a hand-written TypeScript interface provide at runtime?
   options:
-    a: "Runtime validation of the data"
-    b: "A claim the compiler assumes but never verifies"
-    c: "Automatic data coercion"
-    d: "A serialization format"
-  answer: b
-  explanation: "Interfaces are erased at compile time. They describe intent; nothing checks them against real data, so drift surfaces only at runtime."
-  difficulty: 1
-  tags: [terminology, concept]
-- id: "4.2"
-  question: "Which zod API derives the TypeScript type from a schema?"
-  options:
-    a: "z.infer"
-    b: "z.coerce"
-    c: "z.refine"
-    d: "z.array"
-  answer: a
-  explanation: "z.infer creates a static type from schema. z.coerce converts values, z.refine adds cross-field checks, z.array builds arrays."
-  difficulty: 1
-  tags: [terminology, formula]
-- id: "4.3"
-  question: "How does safeParse differ from parse?"
-  options:
-    a: "safeParse is slower but more accurate"
-    b: "parse returns errors, safeParse throws"
-    c: "safeParse returns { success, data | error }, parse throws on failure"
-    d: "There is no difference"
+    a: A serialization format
+    b: Runtime validation of the data
+    c: A claim the compiler assumes but never verifies
+    d: Automatic data coercion
   answer: c
-  explanation: "safeParse returns a discriminated result you can read into UI state; parse throws, which is appropriate only where failure should crash loudly."
+  explanation: Interfaces are erased at compile time. They describe intent; nothing
+    checks them against real data, so drift surfaces only at runtime.
   difficulty: 1
-  tags: [terminology, concept]
-- id: "4.4"
-  question: "Where does throwing .parse() belong?"
+  tags:
+  - terminology
+  - concept
+- id: '4.2'
+  question: Which zod API derives the TypeScript type from a schema?
   options:
-    a: "Inside the form on every keystroke"
-    b: "In the grade averaging helper"
-    c: "In the mock server fixtures"
-    d: "At the fetch boundary when parsing a response"
+    a: z.coerce
+    b: z.refine
+    c: z.array
+    d: z.infer
   answer: d
-  explanation: "The fetch boundary is a trust boundary — a malformed response should fail loudly. In forms, failure is expected, so safeParse fits."
-  difficulty: 2
-  tags: [scenario, concept]
-- id: "4.5"
-  question: "An interface declares grades: number[] but the server sends strings. The GPA preview shows NaN. What is the root cause?"
+  explanation: z.infer creates a static type from schema. z.coerce converts values,
+    z.refine adds cross-field checks, z.array builds arrays.
+  difficulty: 1
+  tags:
+  - terminology
+  - formula
+- id: '4.3'
+  question: How does safeParse differ from parse?
   options:
-    a: "The hand-written interface was never verified against real data"
-    b: "The server is broken - the client is fine"
-    c: "TypeScript failed to compile correctly"
-    d: "React infinite-rendered the form"
-  answer: a
-  explanation: "The interface is a second description nobody checks. Without runtime verification (schema parse), the type and reality drift."
-  difficulty: 2
-  tags: [scenario, misconception]
-- id: "4.6"
-  question: "Where should per-field validation errors live, per ownership rules?"
-  options:
-    a: "In the TanStack Query cache"
-    b: "In the URL query string"
-    c: "Beside the form state in a local store"
-    d: "In the session store"
+    a: safeParse is slower but more accurate
+    b: parse returns errors, safeParse throws
+    c: safeParse returns { success, data | error }, parse throws on failure
+    d: There is no difference
   answer: c
-  explanation: "Field errors are high-frequency, per-field, local state that travels with the form. Server resources, not field errors, go in the Query cache."
-  difficulty: 2
-  tags: [scenario, comparison]
-- id: "4.7"
-  question: "When are plain TypeScript types sufficient instead of a runtime schema?"
+  explanation: safeParse returns a discriminated result you can read into UI state;
+    parse throws, which is appropriate only where failure should crash loudly.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '4.4'
+  question: Where does throwing .parse() belong?
   options:
-    a: "When the team does not know zod"
-    b: "For internal-only shapes that never cross a boundary"
-    c: "Whenever an app has forms"
-    d: "Only for server-side code"
+    a: At the fetch boundary when parsing a response
+    b: Inside the form on every keystroke
+    c: In the grade averaging helper
+    d: In the mock server fixtures
+  answer: a
+  explanation: "The fetch boundary is a trust boundary \u2014 a malformed response\
+    \ should fail loudly. In forms, failure is expected, so safeParse fits."
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+- id: '4.5'
+  question: 'An interface declares grades: number[] but the server sends strings.
+    The GPA preview shows NaN. What is the root cause?'
+  options:
+    a: The server is broken - the client is fine
+    b: TypeScript failed to compile correctly
+    c: React infinite-rendered the form
+    d: The hand-written interface was never verified against real data
+  answer: d
+  explanation: The interface is a second description nobody checks. Without runtime
+    verification (schema parse), the type and reality drift.
+  difficulty: 2
+  tags:
+  - scenario
+  - misconception
+- id: '4.6'
+  question: Where should per-field validation errors live, per ownership rules?
+  options:
+    a: In the session store
+    b: In the TanStack Query cache
+    c: In the URL query string
+    d: Beside the form state in a local store
+  answer: d
+  explanation: Field errors are high-frequency, per-field, local state that travels
+    with the form. Server resources, not field errors, go in the Query cache.
+  difficulty: 2
+  tags:
+  - scenario
+  - comparison
+- id: '4.7'
+  question: When are plain TypeScript types sufficient instead of a runtime schema?
+  options:
+    a: When the team does not know zod
+    b: For internal-only shapes that never cross a boundary
+    c: Whenever an app has forms
+    d: Only for server-side code
   answer: b
-  explanation: "If one team owns both sides and nothing serializes, drift risk is zero. Runtime validation is only worth paying for at trust boundaries."
+  explanation: If one team owns both sides and nothing serializes, drift risk is zero.
+    Runtime validation is only worth paying for at trust boundaries.
   difficulty: 2
-  tags: [comparison, concept]
-- id: "4.8"
-  question: "What does z.coerce.date() accomplish?"
+  tags:
+  - comparison
+  - concept
+- id: '4.8'
+  question: What does z.coerce.date() accomplish?
   options:
-    a: "Formats a date for a specific locale"
-    b: "Validates a date is in the future"
-    c: "Converts a string like an ISO date into a real Date at parse time"
-    d: "Encodes the date into a number"
-  answer: c
-  explanation: "Coercion runs during parsing, so the resulting value is a genuine Date. A bare interface type asserts Date but never performs the conversion."
+    a: Converts a string like an ISO date into a real Date at parse time
+    b: Encodes the date into a number
+    c: Formats a date for a specific locale
+    d: Validates a date is in the future
+  answer: a
+  explanation: Coercion runs during parsing, so the resulting value is a genuine Date.
+    A bare interface type asserts Date but never performs the conversion.
   difficulty: 2
-  tags: [terminology, formula]
-- id: "4.9"
-  question: "applicationSchema refines that campusId is required when the program is not 'online'. Why encode this in the schema?"
+  tags:
+  - terminology
+  - formula
+- id: '4.9'
+  question: applicationSchema refines that campusId is required when the program is
+    not 'online'. Why encode this in the schema?
   options:
-    a: "So the same dependent rule feeds form validation and server checks"
-    b: "So the campus list never changes"
-    c: "Because zod forbids nullable fields"
-    d: "To speed up rendering"
-  answer: a
-  explanation: "A schema-level refine keeps one rule in one place - the form, the mock server, and batch rows all apply the identical dependent constraint."
+    a: To speed up rendering
+    b: So the same dependent rule feeds form validation and server checks
+    c: So the campus list never changes
+    d: Because zod forbids nullable fields
+  answer: b
+  explanation: A schema-level refine keeps one rule in one place - the form, the mock
+    server, and batch rows all apply the identical dependent constraint.
   difficulty: 3
-  tags: [scenario, application]
-- id: "4.10"
-  question: "CSV import maps each raw row to an application. A row puts grades as comma-separated text in one cell. What does the schema-first pipeline do?"
+  tags:
+  - scenario
+  - application
+- id: '4.10'
+  question: CSV import maps each raw row to an application. A row puts grades as comma-separated
+    text in one cell. What does the schema-first pipeline do?
   options:
-    a: "Rejects the whole file"
-    b: "Silently drops the row"
-    c: "Splits the cell into an array, then safeParse validates each grade with exact row-level errors"
-    d: "Treats the text as a single grade"
+    a: Rejects the whole file
+    b: Silently drops the row
+    c: Splits the cell into an array, then safeParse validates each grade with exact
+      row-level errors
+    d: Treats the text as a single grade
   answer: c
-  explanation: "mapRow splits the cell, then the shared schema validates each element. Failures become row-level issues with exact paths, like form fields."
+  explanation: mapRow splits the cell, then the shared schema validates each element.
+    Failures become row-level issues with exact paths, like form fields.
   difficulty: 3
-  tags: [scenario, application]
-- id: "4.11"
-  question: A zod schema is the source of truth for an API request body. The form, the mock server, and the test fixtures all import the same schema. What invariant does this preserve?
+  tags:
+  - scenario
+  - application
+- id: '4.11'
+  question: A zod schema is the source of truth for an API request body. The form,
+    the mock server, and the test fixtures all import the same schema. What invariant
+    does this preserve?
   options:
-    a: "Schema is a single source of truth, so a change to the contract ripples to mock, form, and test in one compile pass"
-    b: "TypeScript types are no longer needed"
-    c: "Zod is faster than TypeScript"
-    d: "It eliminates the need for runtime validation"
-  answer: a
-  explanation: Schema-first means a single declaration drives the wire format, the form shape, and the test fixture. Drift between form and server becomes a compile error rather than a runtime 400.
+    a: TypeScript types are no longer needed
+    b: Zod is faster than TypeScript
+    c: It eliminates the need for runtime validation
+    d: Schema is a single source of truth, so a change to the contract ripples to
+      mock, form, and test in one compile pass
+  answer: d
+  explanation: Schema-first means a single declaration drives the wire format, the
+    form shape, and the test fixture. Drift between form and server becomes a compile
+    error rather than a runtime 400.
   difficulty: 1
-  tags: [concept]
-- id: "4.12"
-  question: A zod schema is the source of truth for an API request body. The form, the mock server, and the test fixtures all import the same schema. What invariant does this preserve?
+  tags:
+  - concept
+- id: '4.12'
+  question: A zod schema is the source of truth for an API request body. The form,
+    the mock server, and the test fixtures all import the same schema. What invariant
+    does this preserve?
   options:
-    a: "Schema is a single source of truth, so a change to the contract ripples to mock, form, and test in one compile pass"
-    b: "TypeScript types are no longer needed"
-    c: "Zod is faster than TypeScript"
-    d: "It eliminates the need for runtime validation"
-  answer: a
-  explanation: Schema-first means a single declaration drives the wire format, the form shape, and the test fixture. Drift between form and server becomes a compile error rather than a runtime 400.
+    a: It eliminates the need for runtime validation
+    b: Schema is a single source of truth, so a change to the contract ripples to
+      mock, form, and test in one compile pass
+    c: TypeScript types are no longer needed
+    d: Zod is faster than TypeScript
+  answer: b
+  explanation: Schema-first means a single declaration drives the wire format, the
+    form shape, and the test fixture. Drift between form and server becomes a compile
+    error rather than a runtime 400.
   difficulty: 1
-  tags: [concept]
+  tags:
+  - concept
+- id: '4.13'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+    b: The schema module (m4)
+    c: The cache module (m12)
+    d: The test module (m3)
+  answer: a
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '4.14'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: The user's network
+    b: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    c: Restart the server
+    d: Check the dashboard
+  answer: b
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '4.15'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Use a different test framework
+    b: Add a unit test for every function
+    c: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    d: Move all logic to a single hook
+  answer: c
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '4.16'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    b: It replaces the loop
+    c: It runs before the loop
+    d: It does not
+  answer: a
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '4.17'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    b: Many comments
+    c: Many tests
+    d: Slow performance
+  answer: a
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

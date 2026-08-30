@@ -1,0 +1,238 @@
+- id: '24.1'
+  question: Which browser API formats a number as currency per locale?
+  options:
+    a: Number.toLocaleString only
+    b: 'Intl.NumberFormat with style: ''currency'''
+    c: toFixed(2) with manual prefix
+    d: A polyfill
+  answer: b
+  explanation: 'Intl.NumberFormat takes a locale and options including style: ''currency''
+    and currency: ''USD''. The same value renders as $1,234.50 in en-US and 1.234,50
+    US$ in de-DE.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '24.2'
+  question: What is ICU MessageFormat used for?
+  options:
+    a: Plurals, gender, and nested substitutions
+    b: Date formatting
+    c: CSS layout
+    d: Number formatting
+  answer: a
+  explanation: Intl handles numbers, dates, and currencies. ICU MessageFormat handles
+    plurals (with locale-specific categories), gender/select clauses, and nested substitutions.
+    Use both together.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '24.3'
+  question: 'Why is hard-coded `count === 1 ? ''applicant'' : ''applicants''` wrong
+    for Spanish and Russian?'
+  options:
+    a: It is too slow
+    b: It is fine
+    c: Spanish and Russian have locale-specific plural categories that do not match
+      the English rule
+    d: JavaScript cannot handle plurals
+  answer: c
+  explanation: Spanish has two plural forms. Russian has three (one, few, many). The
+    English rule (1 = singular, else plural) is just one of many. ICU MessageFormat
+    encodes these rules per locale.
+  difficulty: 2
+  tags:
+  - concept
+- id: '24.4'
+  question: What is the cleanest CSS approach for RTL layout?
+  options:
+    a: Logical CSS properties like margin-inline-start that flip automatically
+    b: JavaScript that swaps classes on dir change
+    c: Use px positioning
+    d: Duplicate stylesheets for LTR and RTL
+  answer: a
+  explanation: Logical properties (margin-inline-start, padding-block, border-start-end-radius)
+    automatically flip in RTL. The CSS writes once; the browser handles the direction.
+    Much simpler than maintaining two stylesheets.
+  difficulty: 2
+  tags:
+  - concept
+- id: '24.5'
+  question: Where should the application's locale come from?
+  options:
+    a: Random selection
+    b: navigator.language
+    c: The user's profile (server-side) or URL parameter
+    d: A cookie set by marketing
+  answer: c
+  explanation: navigator.language is the user's browser locale, which can be anything.
+    The application locale should come from the user's profile (server-persisted)
+    or an explicit URL parameter. The browser locale is a hint, not a source of truth.
+  difficulty: 2
+  tags:
+  - concept
+- id: '24.6'
+  question: What is the build-time check for translations?
+  options:
+    a: Visual inspection
+    b: There is no check
+    c: Manual review
+    d: Key coverage check that fails CI when a language is missing keys
+  answer: d
+  explanation: A type-safe Messages type plus a build-time key coverage check that
+    fails CI when a language is missing keys. Runtime fallback (English) handles the
+    case where a translation has not landed.
+  difficulty: 2
+  tags:
+  - process
+- id: '24.7'
+  question: Why lazy-load locales?
+  options:
+    a: Browsers require it
+    b: To make the app faster
+    c: To avoid shipping all 12 locales in the initial bundle
+    d: Because the user requires it
+  answer: c
+  explanation: For 12 locales, shipping all 12 is wasteful. Lazy-load on first navigation;
+    show English strings for a few hundred milliseconds while the chunk loads. Initial
+    bundle ships the primary locale plus a tiny Intl runtime.
+  difficulty: 1
+  tags:
+  - concept
+- id: '24.8'
+  question: What is the fix for a chevron pointing right in an RTL layout?
+  options:
+    a: Use a CSS attribute selector with dir=rtl to flip the icon transform"
+    b: Manually rotate each icon
+    c: There is no fix
+    d: Hide the icon
+  answer: a
+  explanation: 'The cleanest fix is the CSS attribute selector. It works for any directional
+    icon without code changes. Alternative: use an icon set that ships RTL variants.'
+  difficulty: 2
+  tags:
+  - process
+- id: '24.9'
+  question: What is wrong with `Intl.NumberFormat(navigator.language)`?
+  options:
+    a: Nothing
+    b: The locale is the user's browser locale, not the application locale; the application
+      locale should be set by profile or URL
+    c: Intl.NumberFormat does not take a locale
+    d: It is slow
+  answer: b
+  explanation: navigator.language is the user's browser locale. A user can set their
+    browser to anything. The application locale is a server-persisted value (or URL)
+    and should be the source of truth for formatting.
+  difficulty: 2
+  tags:
+  - concept
+- id: '24.10'
+  question: What is the recommended approach to RTL when starting a new project?
+  options:
+    a: Wait until the app grows
+    b: Hire an RTL consultant
+    c: Skip it for now
+    d: Use logical CSS properties from day one
+  answer: d
+  explanation: Adding RTL incrementally with logical properties is a 2-day task. Adding
+    it later as a refactor is a multi-week project. Test RTL from day one.
+  difficulty: 1
+  tags:
+  - process
+- id: '24.11'
+  question: What is the consequence of hard-coded user-facing strings in JSX?
+  options:
+    a: Future translation debt; every string is a refactor when localization ships
+    b: Smaller bundle
+    c: Better SEO
+    d: Faster performance
+  answer: a
+  explanation: Wrap every user-facing string in a translation function from day one,
+    even if only one locale is supported. The cost is minimal; the future savings
+    are large. A linter that flags hard-coded strings catches the most common i18n
+    bug.
+  difficulty: 1
+  tags:
+  - concept
+- id: '24.12'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The test module (m3)
+    b: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+    c: The schema module (m4)
+    d: The cache module (m12)
+  answer: b
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '24.13'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: Restart the server
+    b: Check the dashboard
+    c: The user's network
+    d: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+  answer: d
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '24.14'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Move all logic to a single hook
+    b: Use a different test framework
+    c: Add a unit test for every function
+    d: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+  answer: d
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '24.15'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: It does not
+    b: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    c: It replaces the loop
+    d: It runs before the loop
+  answer: b
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '24.16'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Many tests
+    b: Slow performance
+    c: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    d: Many comments
+  answer: c
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

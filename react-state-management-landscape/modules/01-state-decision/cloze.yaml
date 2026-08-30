@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "The five questions for diagnosing React state: {ownership}, {lifetime}, {scope}, {frequency}, {persistence}."
+  answer: "ownership; lifetime; scope; frequency; persistence"
+  explanation: "Every state problem reduces to these five. The answers narrow the primitive before picking a library. Defaults skip these questions and produce over-engineered or under-engineered state."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "A component-local value with one reader and rare writes is {useState}; anything else is over-engineering."
+  answer: "useState"
+  explanation: "The simplest primitive is the right answer when the value is local, rare, and read by one component. Reaching for zustand or Context for this case adds bundle weight and re-render risk for no benefit."
+  difficulty: 1
+  tags: [concept]
+- id: "c.3"
+  question: "{TanStack Query} is for cacheable server state read in multiple places across navigations with stale-while-revalidate semantics."
+  answer: "TanStack Query"
+  explanation: "Server state has different ownership (the server), different lifetime (the cache is a window), and different concerns (staleness, invalidation, refetching). TanStack Query is built for this."
+  difficulty: 1
+  tags: [concept]
+- id: "c.4"
+  question: "Pagination is {URL} state, shareable as a link and surviving reload."
+  answer: "URL"
+  explanation: "useSearchParams or a router's primitives own URL-shaped state. The URL is the source of truth; the back button works; the link is shareable. The state and the URL are the same value."
+  difficulty: 1
+  tags: [concept]
+- id: "c.5"
+  question: "Context is a re-render {broadcast}; every consumer re-renders on every value change."
+  answer: "broadcast"
+  explanation: "For low-frequency values in a small subtree, Context is fine. For high-frequency values or large subtrees, the broadcast is the bug. The fix is split Contexts (state vs dispatch) or an external store with selectors."
+  difficulty: 2
+  tags: [concept]
+- id: "c.6"
+  question: "Zustand with the {persist} middleware handles shared state with frequent writes that must survive a {reload}."
+  answer: "persist; reload"
+  explanation: "Frequent writes need an external store with selectors. Persistence rules out local primitives. The combination is the right answer for that combination of requirements."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "The {decision tree} narrows the primitive before picking a library; library-first is a recipe for over-engineering."
+  answer: "decision tree"
+  explanation: "Walk the tree: ownership, lifetime, scope, frequency, persistence. The answers pick the primitive. The library follows. Library-first is a recipe for over-engineering."
+  difficulty: 2
+  tags: [process]
+- id: "c.8"
+  question: "Real apps use {several} primitives, each for a different question's answer."
+  answer: "several"
+  explanation: "A form field is useState. The form's draft is zustand-persisted. The submit mutation is TanStack Query. The pagination is URL state. Four primitives, four questions. One tool is rarely the answer."
+  difficulty: 2
+  tags: [concept]

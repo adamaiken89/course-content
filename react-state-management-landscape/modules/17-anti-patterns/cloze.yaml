@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "{Prop drilling} via {Context} is an anti-pattern; Context is a {broadcast}, not a {drill}."
+  answer: "Prop drilling; Context; broadcast; drill"
+  explanation: "Context is for cross-cutting values, not for passing through components that do not need the value. The fix is either props (explicit) or an external store (selective)."
+  difficulty: 1
+  tags: [misconception]
+- id: "c.2"
+  question: "{Mutating} a store outside a {reducer} is an anti-pattern; the {reactivity} contract is broken."
+  answer: "Mutating; reducer; reactivity"
+  explanation: "A store is a value. Mutating it directly produces an inconsistent state — the change is invisible to subscribers, the time-travel debugger shows the wrong history. The fix is to dispatch an action."
+  difficulty: 1
+  tags: [concept]
+- id: "c.3"
+  question: "{useEffect} for {derived state} is an anti-pattern; the value is {computed} during render, not in an effect."
+  answer: "useEffect; derived state; computed"
+  explanation: "An effect runs after render. Using an effect to recompute a value produces a flash of stale content. The fix: compute during render. The effect is for subscriptions, not for derivations."
+  difficulty: 1
+  tags: [misconception]
+- id: "c.4"
+  question: "An {unstable} selector is an anti-pattern; the selector returns a new {object} every render and the consumer re-renders."
+  answer: "unstable; object"
+  explanation: "The fix is to use a memoized selector (reselect) or to return primitives from the selector. An unstable selector is a re-render trigger."
+  difficulty: 1
+  tags: [concept]
+- id: "c.5"
+  question: "{Storing} the entire {server state} in a global store is an anti-pattern; the {cache} is the right primitive."
+  answer: "Storing; server state; cache"
+  explanation: "Server state is not owned by the client. The store is fighting the cache. TanStack Query owns the cache, the staleness, and the refetch. The store is for client state."
+  difficulty: 1
+  tags: [misconception]
+- id: "c.6"
+  question: "{Over-engineering} is the {default} state of state management; the right answer is the {simplest} primitive that solves the {question}."
+  answer: "Over-engineering; default; simplest; question"
+  explanation: "Most state anti-patterns are over-engineering. The fix is to walk the decision tree. The question picks the primitive. The simplest primitive is the right answer."
+  difficulty: 1
+  tags: [process]
+- id: "c.7"
+  question: "An {effect} that {synchronizes} state is an anti-pattern; the effect is the wrong {boundary}."
+  answer: "effect; synchronizes; boundary"
+  explanation: "An effect is for side effects on the world (network, DOM, subscriptions). Synchronizing state is a render concern, not a side-effect concern. The fix: lift the state, derive the value, or use a single source of truth."
+  difficulty: 2
+  tags: [misconception]
+- id: "c.8"
+  question: "A {god component} is a {state} anti-pattern; the component owns state that should be {lifted}, {derived}, or {externalized}."
+  answer: "god component; state; lifted; derived; externalized"
+  explanation: "A component that owns form state, route state, server state, and UI state is too big. The fix: split the state. Each piece of state belongs to the right primitive. The component is the consumer, not the owner."
+  difficulty: 2
+  tags: [misconception]

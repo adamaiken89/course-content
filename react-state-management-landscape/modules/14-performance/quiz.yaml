@@ -1,0 +1,137 @@
+- id: '14.1'
+  question: What is a re-render storm?
+  options:
+    a: A memory leak
+    b: A single render
+    c: A single state change that triggers a cascade of re-renders across unrelated
+      components
+    d: An error
+  answer: c
+  explanation: Explanation for What is a re-render storm?...
+  difficulty: 1
+  tags:
+  - concept
+- id: '14.2'
+  question: React.memo prevents a re-render when {props} are referentially equal.
+  options:
+    a: state
+    b: props
+    c: refs
+    d: context
+  answer: b
+  explanation: Explanation for React.memo prevents a re-render when {props} are r...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '14.3'
+  question: useMemo memoizes a {value}; useCallback memoizes a {function}.
+  options:
+    a: string; number
+    b: object; array
+    c: function; value
+    d: value; function
+  answer: d
+  explanation: Explanation for useMemo memoizes a {value}; useCallback memoizes a...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '14.4'
+  question: useTransition defers a state update so the {UI} stays responsive.
+  options:
+    a: network
+    b: store
+    c: DOM
+    d: UI
+  answer: a
+  explanation: Explanation for useTransition defers a state update so the {UI} st...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '14.5'
+  question: useDeferredValue is the {mirror} of useTransition.
+  options:
+    a: mirror
+    b: replacement
+    c: alternative
+    d: opposite
+  answer: a
+  explanation: Explanation for useDeferredValue is the {mirror} of useTransition....
+  difficulty: 1
+  tags:
+  - terminology
+- id: '14.6'
+  question: The {React DevTools Profiler} is the canonical tool for measuring re-render
+    frequency and cost.
+  options:
+    a: Lighthouse
+    b: Webpack
+    c: Console
+    d: React DevTools Profiler
+  answer: d
+  explanation: Explanation for The {React DevTools Profiler} is the canonical too...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '14.7'
+  question: Performance is a {measurement} problem, not an {intuition} problem.
+  options:
+    a: size; complexity
+    b: style; taste
+    c: measurement; intuition
+    d: design; architecture
+  answer: c
+  explanation: Explanation for Performance is a {measurement} problem, not an {in...
+  difficulty: 2
+  tags:
+  - process
+- id: '14.8'
+  question: The cost of React.memo is a {comparison} on every render; the benefit
+    is avoiding a re-render.
+  options:
+    a: comparison
+    b: fetch
+    c: cache lookup
+    d: context read
+  answer: a
+  explanation: Explanation for The cost of React.memo is a {comparison} on every ...
+  difficulty: 2
+  tags:
+  - concept
+- id: '14.9'
+  question: The pattern for useTransition is to mark the {non-urgent} update as deferred.
+  options:
+    a: 'no'
+    b: urgent
+    c: non-urgent
+    d: all
+  answer: c
+  explanation: Explanation for The pattern for useTransition is to mark the {non-...
+  difficulty: 2
+  tags:
+  - process
+- id: '14.10'
+  question: Memoize what is {expensive} to compute, not everything.
+  options:
+    a: boolean
+    b: expensive
+    c: everything
+    d: simple
+  answer: b
+  explanation: Explanation for Memoize what is {expensive} to compute, not everyt...
+  difficulty: 1
+  tags:
+  - process
+- id: '14.11'
+  question: 'A common anti-pattern: a single high-level state change re-renders a
+    {wide} subtree of unrelated components.'
+  options:
+    a: narrow
+    b: wide
+    c: single
+    d: empty
+  answer: b
+  explanation: 'Explanation for A common anti-pattern: a single high-level state c...'
+  difficulty: 1
+  tags:
+  - concept
+

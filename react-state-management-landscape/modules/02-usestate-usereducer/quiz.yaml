@@ -1,0 +1,137 @@
+- id: '02.1'
+  question: When is useReducer the right answer over useState?
+  options:
+    a: For a single primitive value
+    b: For a record of related fields updated by a named set of actions
+    c: Never
+    d: Always
+  answer: b
+  explanation: Explanation for When is useReducer the right answer over useState?...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '02.2'
+  question: What is the contract of a reducer?
+  options:
+    a: It must call setState
+    b: It can have side effects
+    c: 'It is a pure function: same input, same output, no side effects'
+    d: It must be async
+  answer: c
+  explanation: Explanation for What is the contract of a reducer?...
+  difficulty: 1
+  tags:
+  - concept
+- id: '02.3'
+  question: What is the action shape convention?
+  options:
+    a: '{ handler: () => {} }'
+    b: '{ value: ... }'
+    c: '{ fn: () => {} }'
+    d: '{ type: ''NAME'' } with optional payload'
+  answer: d
+  explanation: Explanation for What is the action shape convention?...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '02.4'
+  question: Why use a discriminated union for actions in TypeScript?
+  options:
+    a: It enforces the action shape at compile time; a typo in type is a compile error
+    b: It makes the bundle smaller
+    c: It is required by React
+    d: It is faster
+  answer: a
+  explanation: Explanation for Why use a discriminated union for actions in TypeS...
+  difficulty: 2
+  tags:
+  - concept
+- id: '02.5'
+  question: When should useState take a function instead of a value?
+  options:
+    a: When the initial value is expensive to compute; the function runs only on first
+      render
+    b: Never
+    c: When the value is a string
+    d: Always
+  answer: a
+  explanation: Explanation for When should useState take a function instead of a ...
+  difficulty: 2
+  tags:
+  - concept
+- id: '02.6'
+  question: useReducer's third argument is a(n) {init} function called once with the
+    initial arg.
+  options:
+    a: dispatch
+    b: action
+    c: init
+    d: reducer
+  answer: c
+  explanation: Explanation for useReducer's third argument is a(n) {init} functio...
+  difficulty: 2
+  tags:
+  - terminology
+- id: '02.7'
+  question: What is the default branch in a reducer's switch?
+  options:
+    a: Throw an error
+    b: Return the current state — the convention for unknown actions
+    c: Reset the state
+    d: Log the action
+  answer: b
+  explanation: Explanation for What is the default branch in a reducer's switch?...
+  difficulty: 2
+  tags:
+  - process
+- id: '02.8'
+  question: Multiple setState calls in a single event handler produce {one} re-render
+    in React 18+.
+  options:
+    a: one
+    b: zero
+    c: two
+    d: many
+  answer: a
+  explanation: Explanation for Multiple setState calls in a single event handler ...
+  difficulty: 1
+  tags:
+  - concept
+- id: '02.9'
+  question: A wizard with 5 steps, each with multiple fields, is a good fit for {useReducer}.
+  options:
+    a: Zustand
+    b: useState
+    c: Context
+    d: useReducer
+  answer: d
+  explanation: Explanation for A wizard with 5 steps, each with multiple fields, ...
+  difficulty: 2
+  tags:
+  - scenario
+- id: '02.10'
+  question: What is the right pattern for a state value that depends on the previous
+    state?
+  options:
+    a: useEffect
+    b: setState(value)
+    c: setState(prev => next)
+    d: setTimeout
+  answer: c
+  explanation: Explanation for What is the right pattern for a state value that d...
+  difficulty: 2
+  tags:
+  - process
+- id: '02.11'
+  question: 'A reducer is {pure}: same input, same output, no side effects.'
+  options:
+    a: impure
+    b: pure
+    c: memoized
+    d: async
+  answer: b
+  explanation: 'Explanation for A reducer is {pure}: same input, same output, no s...'
+  difficulty: 1
+  tags:
+  - terminology
+

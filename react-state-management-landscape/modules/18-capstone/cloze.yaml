@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "Designing a new feature's state architecture starts with the {decision tree}: ownership, lifetime, scope, frequency, persistence."
+  answer: "decision tree"
+  explanation: "The decision tree is the first step. The answers narrow the primitive. The library follows. The decision is the architecture."
+  difficulty: 1
+  tags: [process]
+- id: "c.2"
+  question: "A feature with a {form}, a {list}, and a {page} number uses three {primitives}: useState, TanStack Query, and URL state."
+  answer: "form; list; page; primitives"
+  explanation: "The form is local. The list is server state. The page is URL state. Three primitives, three questions, one feature. The composition is the architecture."
+  difficulty: 2
+  tags: [concept]
+- id: "c.3"
+  question: "The state architecture is a {map} of {state slices} to {primitives}; the map is the {design}."
+  answer: "map; state slices; primitives; design"
+  explanation: "The map is the deliverable. Each slice has a primitive, a lifetime, a scope, and a persistence. The map is the architecture."
+  difficulty: 2
+  tags: [process]
+- id: "c.4"
+  question: "{Integration tests} exercise the {seams} between primitives; the test {boundary} is the architecture's boundary."
+  answer: "Integration tests; seams; boundary"
+  explanation: "Unit tests exercise one primitive. Integration tests exercise the seams. The test boundary is the architecture's boundary. The test is the design's contract."
+  difficulty: 2
+  tags: [process]
+- id: "c.5"
+  question: "{Persistence} is the question of {surviving reload}; the answer picks the {layer}."
+  answer: "Persistence; surviving reload; layer"
+  explanation: "localStorage for small data, IndexedDB for large, the server for cross-device. The layer is the answer to the lifetime question."
+  difficulty: 2
+  tags: [concept]
+- id: "c.6"
+  question: "The capstone feature has a {decision log}; the team writes down the {decisions} and the {alternatives} that were rejected."
+  answer: "decision log; decisions; alternatives"
+  explanation: "The log is the institutional memory. A new team member reads the log and understands why the architecture is what it is. The pattern is the same as ADRs in software architecture."
+  difficulty: 3
+  tags: [process]
+- id: "c.7"
+  question: "{Refactoring} the state architecture is a {migration}; the migration is {reversible} and has a {rollback} plan."
+  answer: "Refactoring; migration; reversible; rollback"
+  explanation: "A migration is a project. The migration is reversible. The rollback plan is documented. The pattern is the same as database migrations."
+  difficulty: 3
+  tags: [process]
+- id: "c.8"
+  question: "The capstone is a {proof} that the decision tree works; the architecture is the {map} of state to {primitives}, and the {seams} are the {tests}."
+  answer: "proof; map; primitives; seams; tests"
+  explanation: "The capstone is the moment the team walks the tree, picks the primitives, slices the state, and writes the tests. The architecture is the deliverable. The tests are the contract."
+  difficulty: 3
+  tags: [concept]

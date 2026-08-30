@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "SSR safety is the question of {hydrating} server-rendered HTML with client-side {state} without a {mismatch}."
+  answer: "hydrating; state; mismatch"
+  explanation: "The server renders HTML with one version of the state; the client re-renders with another; React must reconcile. A mismatch causes hydration errors and content flash."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "A server {snapshot} is the state used to render the HTML; the client {re-uses} it as the initial state to avoid a refetch."
+  answer: "snapshot; re-uses"
+  explanation: "The pattern: dehydrate the server state into the HTML; hydrate it on the client. TanStack Query and zustand both ship the pattern."
+  difficulty: 1
+  tags: [concept]
+- id: "c.3"
+  question: "{Hydration mismatch} happens when the server's rendered HTML differs from the client's first render; the fix is to use a {server} snapshot on the client."
+  answer: "Hydration mismatch; server"
+  explanation: "The mismatch is the contract violation. The fix is to ensure the client's first render uses the same state as the server. A server snapshot is the mechanism."
+  difficulty: 2
+  tags: [concept]
+- id: "c.4"
+  question: "Date and time formatting is a common {hydration} trap; the server and the client may be in different {time zones}."
+  answer: "hydration; time zones"
+  explanation: "A date formatted on the server in UTC may be a different string when formatted on the client in a different timezone. The fix: format on the client only, or pass a fixed timezone to the formatter."
+  difficulty: 2
+  tags: [process]
+- id: "c.5"
+  question: "useSyncExternalStore is the {React 18+} primitive that makes external stores {SSR-safe}; the hook returns the server snapshot during {SSR} and the live value on the client."
+  answer: "React 18+; SSR-safe; SSR"
+  explanation: "The hook takes a getServerSnapshot function that returns the value to use during SSR. On the client, it returns the live value. The hook is the bridge between server and client state."
+  difficulty: 3
+  tags: [terminology]
+- id: "c.6"
+  question: "For a client-only app, SSR safety is {not relevant}; the app renders on the client only. SSR safety matters for {framework}-backed apps."
+  answer: "not relevant; framework"
+  explanation: "A portal like Aissa's is client-only. There is no server render; there is no hydration. The question is for Next.js, Remix, or any framework that ships HTML from the server."
+  difficulty: 1
+  tags: [concept]
+- id: "c.7"
+  question: "Avoiding {time} and {random} in render is a common SSR safety pattern; these can produce different values on server and client."
+  answer: "time; random"
+  explanation: "new Date() in render is server time on the server, client time on the client. Math.random() is different on every call. The fix: compute these in an effect, or pass them as props from the server."
+  difficulty: 2
+  tags: [process]
+- id: "c.8"
+  question: "The {useEffect} boundary is the safest place to read {client-only} values; effects run on the client only, after hydration."
+  answer: "useEffect; client-only"
+  explanation: "An effect runs after hydration. Reading window.localStorage, navigator.language, or window.matchMedia in an effect is SSR-safe. Reading them in render is not."
+  difficulty: 2
+  tags: [process]

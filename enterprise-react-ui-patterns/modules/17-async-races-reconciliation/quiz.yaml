@@ -1,132 +1,268 @@
-- id: "17.1"
-  question: "Three tools impose a winner on unordered network traffic. Which set is correct?"
+- id: '17.1'
+  question: Three tools impose a winner on unordered network traffic. Which set is
+    correct?
   options:
-    a: "Retry harder, cache longer, render faster"
-    b: "Debounce everything, disable buttons, await all"
-    c: "Cancel the old, guard the stale, serialize the conflicting"
-    d: "Show spinners, add timeouts, log warnings"
-  answer: c
-  explanation: "Abort cancels superseded work, version guards drop stale resolves, and per-id queues order conflicting writes."
-  difficulty: 1
-  tags: [terminology]
-- id: "17.2"
-  question: "AbortError caught inside a run that was deliberately superseded. What is the correct handling?"
-  options:
-    a: "Surface a network-error toast"
-    b: "Treat it as a carrier — the request was replaced, so ignore it and continue"
-    c: "Mark the cache stale and retry"
-    d: "Show the loading spinner indefinitely"
+    a: Debounce everything, disable buttons, await all
+    b: Cancel the old, guard the stale, serialize the conflicting
+    c: Show spinners, add timeouts, log warnings
+    d: Retry harder, cache longer, render faster
   answer: b
-  explanation: "An aborted request is not a failure; ignore it silently. Only non-abort rejections are real errors to surface (m18)."
-  difficulty: 2
-  tags: [concept]
-- id: "17.3"
-  question: "A response was already on the wire when abort() fired, so the then() still runs and its payload is stale. What stops it from painting?"
+  explanation: Abort cancels superseded work, version guards drop stale resolves,
+    and per-id queues order conflicting writes.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '17.2'
+  question: AbortError caught inside a run that was deliberately superseded. What
+    is the correct handling?
   options:
-    a: "A closure-captured version compared to the current intent at resolve time"
-    b: "A disabled submit button"
-    c: "Changing the URL to bypass the cache"
-    d: "Nothing — this is a lost-update bug"
+    a: "Treat it as a carrier \u2014 the request was replaced, so ignore it and continue"
+    b: Mark the cache stale and retry
+    c: Show the loading spinner indefinitely
+    d: Surface a network-error toast
   answer: a
-  explanation: "Abort is best-effort; the closure-time my !== current guard is the actual contract that drops the stale paint."
-  difficulty: 3
-  tags: [scenario]
-- id: "17.4"
-  question: "Why does an effect-committed cancelled flag fail as a stale-response guard for two requests inside one component?"
-  options:
-    a: "Flags reset on every render automatically"
-    b: "Effects never run more than once"
-    c: "Flags are only available in class components"
-    d: "The flag is local to one effect instance and dies when a second superseding request starts"
-  answer: d
-  explanation: "The cleanup-flag pattern covers unmount-triggered cancellation inside one effect; a newer request while mounted leaves the old flag meaningless — only a durable version ref survives."
+  explanation: An aborted request is not a failure; ignore it silently. Only non-abort
+    rejections are real errors to surface (m18).
   difficulty: 2
-  tags: [concept, comparison]
-- id: "17.5"
-  question: "Two saves on Application 4021 fire A then B, but the promises interleave and the server lands them as B,A. Which fix applies?"
+  tags:
+  - concept
+- id: '17.3'
+  question: A response was already on the wire when abort() fired, so the then() still
+    runs and its payload is stale. What stops it from painting?
   options:
-    a: "Fire both saves in a single promise all"
-    b: "Add a per-id promise chain so each write starts only after the previous settles"
-    c: "Remove the save button after the first click"
-    d: "Increase the network timeout"
-  answer: b
-  explanation: "A per-id mutex (a promise chain per application id) forces A,B ordering of the actual write calls regardless of network latency."
-  difficulty: 2
-  tags: [scenario, application]
-- id: "17.6"
-  question: "Serialization queues must live per id, not globally. Why?"
-  options:
-    a: "Global queues are banned by the browser"
-    b: "The server requires per-id keys"
-    c: "Serializing unrelated rows adds listless latency for zero correctness"
-    d: "Per-id queues are easier to delete"
-  answer: c
-  explanation: "Application 4021 and 4099 are independent writers; a single portal-wide queue orders unrelated work and slows everything."
-  difficulty: 1
-  tags: [concept]
-- id: "17.7"
-  question: "A refetch returns server truth predating the user's unsaved keystrokes. Which merge keeps the user's work?"
-  options:
-    a: "Replace the whole row with server truth"
-    b: "Replace the whole row with local state"
-    c: "Ignore the refetch entirely"
-    d: "Per field, prefer local when dirtyAt is newer than the server row timestamp"
-  answer: d
-  explanation: "dirtyAt > server.ts keeps the local field, otherwise server truth replaces; untouched rows adopt server truth. Coarse whole-row choices clobber one side for the wrong reason."
-  difficulty: 3
-  tags: [scenario, calculation]
-- id: "17.8"
-  question: "A draft is deleted, then a background refetch returns the pre-delete row. What causes the resurrection?"
-  options:
-    a: "The refetch response was merged without dirty-guard recognition of the delete intent"
-    b: "The batch engine re-ran on submit"
-    c: "LocalStorage retained the row"
-    d: "The delete never reached the server"
+    a: A closure-captured version compared to the current intent at resolve time
+    b: A disabled submit button
+    c: Changing the URL to bypass the cache
+    d: "Nothing \u2014 this is a lost-update bug"
   answer: a
-  explanation: "Deletion is the ultimate dirty: an intent newer than any refetch. Reconciliation must treat deleted as winning, or the refetch rematerializes the row in a delete-loop."
-  difficulty: 2
-  tags: [concept, scenario]
-- id: "17.9"
-  question: "A debounced search fires q1, then the user types and q2 fires; q1 resolves after q2. What must the latest-query guard do?"
+  explanation: Abort is best-effort; the closure-time my !== current guard is the
+    actual contract that drops the stale paint.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '17.4'
+  question: Why does an effect-committed cancelled flag fail as a stale-response guard
+    for two requests inside one component?
   options:
-    a: "Paint q1 because it resolved first chronologically"
-    b: "Show both result sets stacked"
-    c: "Drop q1's resolve because my !== latestQuery, keeping q2's results"
-    d: "Abort the entire component on conflict"
+    a: Effects never run more than once
+    b: Flags are only available in class components
+    c: The flag is local to one effect instance and dies when a second superseding
+      request starts
+    d: Flags reset on every render automatically
   answer: c
-  explanation: "q2 owns the screen; q1 is stale. The resolve-time identity check drops q1 and only the newest query's payload may set results."
+  explanation: "The cleanup-flag pattern covers unmount-triggered cancellation inside\
+    \ one effect; a newer request while mounted leaves the old flag meaningless \u2014\
+    \ only a durable version ref survives."
   difficulty: 2
-  tags: [scenario, application]
-- id: "17.10"
-  question: "Where do intent versions, aborts, and per-id save queues live per this module's state decision?"
+  tags:
+  - concept
+  - comparison
+- id: '17.5'
+  question: Two saves on Application 4021 fire A then B, but the promises interleave
+    and the server lands them as B,A. Which fix applies?
   options:
-    a: "In zustand so every screen can subscribe to arbitration"
-    b: "In refs and plain functions — only the winner's output becomes React state"
-    c: "In React state so renders recompute winners"
-    d: "In the URL query string"
+    a: Fire both saves in a single promise all
+    b: Add a per-id promise chain so each write starts only after the previous settles
+    c: Remove the save button after the first click
+    d: Increase the network timeout
   answer: b
-  explanation: "Races are imperative; arbitration in refs never re-renders. Routing versions through stores turns every abort into a write storm and couples arbitration to rendering."
+  explanation: A per-id mutex (a promise chain per application id) forces A,B ordering
+    of the actual write calls regardless of network latency.
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '17.6'
+  question: Serialization queues must live per id, not globally. Why?
+  options:
+    a: Global queues are banned by the browser
+    b: The server requires per-id keys
+    c: Serializing unrelated rows adds listless latency for zero correctness
+    d: Per-id queues are easier to delete
+  answer: c
+  explanation: Application 4021 and 4099 are independent writers; a single portal-wide
+    queue orders unrelated work and slows everything.
   difficulty: 1
-  tags: [concept, comparison]
-- id: "17.11"
-  question: "Two in-flight fetches target the same record. The slow one returns AFTER the fast one with stale data. The right guard is:"
+  tags:
+  - concept
+- id: '17.7'
+  question: A refetch returns server truth predating the user's unsaved keystrokes.
+    Which merge keeps the user's work?
   options:
-    a: "Last-write-wins, accept the stale value"
-    b: "Abort the slow request when the fast one completes, or compare a requestId / version stamp and discard the stale response"
-    c: "Show both and let the user pick"
-    d: "Block the second request entirely"
-  answer: b
-  explanation: AbortController or requestId comparison is the standard pattern. Last-write-wins is wrong because the slower response is older by definition. Showing both is not a real fix; blocking the second request is over-correction.
+    a: Replace the whole row with server truth
+    b: Replace the whole row with local state
+    c: Ignore the refetch entirely
+    d: Per field, prefer local when dirtyAt is newer than the server row timestamp
+  answer: d
+  explanation: dirtyAt > server.ts keeps the local field, otherwise server truth replaces;
+    untouched rows adopt server truth. Coarse whole-row choices clobber one side for
+    the wrong reason.
   difficulty: 3
-  tags: [process, concept]
-- id: "17.12"
-  question: "Two in-flight fetches target the same record. The slow one returns AFTER the fast one with stale data. The right guard is:"
+  tags:
+  - scenario
+  - calculation
+- id: '17.8'
+  question: A draft is deleted, then a background refetch returns the pre-delete row.
+    What causes the resurrection?
   options:
-    a: "Last-write-wins, accept the stale value"
-    b: "Abort the slow request when the fast one completes, or compare a requestId / version stamp and discard the stale response"
-    c: "Show both and let the user pick"
-    d: "Block the second request entirely"
+    a: LocalStorage retained the row
+    b: The delete never reached the server
+    c: The refetch response was merged without dirty-guard recognition of the delete
+      intent
+    d: The batch engine re-ran on submit
+  answer: c
+  explanation: 'Deletion is the ultimate dirty: an intent newer than any refetch.
+    Reconciliation must treat deleted as winning, or the refetch rematerializes the
+    row in a delete-loop.'
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '17.9'
+  question: A debounced search fires q1, then the user types and q2 fires; q1 resolves
+    after q2. What must the latest-query guard do?
+  options:
+    a: Show both result sets stacked
+    b: Drop q1's resolve because my !== latestQuery, keeping q2's results
+    c: Abort the entire component on conflict
+    d: Paint q1 because it resolved first chronologically
   answer: b
-  explanation: AbortController or requestId comparison is the standard pattern. Last-write-wins is wrong because the slower response is older by definition. Showing both is not a real fix; blocking the second request is over-correction.
+  explanation: q2 owns the screen; q1 is stale. The resolve-time identity check drops
+    q1 and only the newest query's payload may set results.
+  difficulty: 2
+  tags:
+  - scenario
+  - application
+- id: '17.10'
+  question: Where do intent versions, aborts, and per-id save queues live per this
+    module's state decision?
+  options:
+    a: In the URL query string
+    b: In zustand so every screen can subscribe to arbitration
+    c: "In refs and plain functions \u2014 only the winner's output becomes React\
+      \ state"
+    d: In React state so renders recompute winners
+  answer: c
+  explanation: Races are imperative; arbitration in refs never re-renders. Routing
+    versions through stores turns every abort into a write storm and couples arbitration
+    to rendering.
+  difficulty: 1
+  tags:
+  - concept
+  - comparison
+- id: '17.11'
+  question: 'Two in-flight fetches target the same record. The slow one returns AFTER
+    the fast one with stale data. The right guard is:'
+  options:
+    a: Abort the slow request when the fast one completes, or compare a requestId
+      / version stamp and discard the stale response
+    b: Show both and let the user pick
+    c: Block the second request entirely
+    d: Last-write-wins, accept the stale value
+  answer: a
+  explanation: AbortController or requestId comparison is the standard pattern. Last-write-wins
+    is wrong because the slower response is older by definition. Showing both is not
+    a real fix; blocking the second request is over-correction.
   difficulty: 3
-  tags: [process, concept]
+  tags:
+  - process
+  - concept
+- id: '17.12'
+  question: 'Two in-flight fetches target the same record. The slow one returns AFTER
+    the fast one with stale data. The right guard is:'
+  options:
+    a: Last-write-wins, accept the stale value
+    b: Abort the slow request when the fast one completes, or compare a requestId
+      / version stamp and discard the stale response
+    c: Show both and let the user pick
+    d: Block the second request entirely
+  answer: b
+  explanation: AbortController or requestId comparison is the standard pattern. Last-write-wins
+    is wrong because the slower response is older by definition. Showing both is not
+    a real fix; blocking the second request is over-correction.
+  difficulty: 3
+  tags:
+  - process
+  - concept
+- id: '17.13'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The schema module (m4)
+    b: The cache module (m12)
+    c: The test module (m3)
+    d: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+  answer: d
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '17.14'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    b: Restart the server
+    c: Check the dashboard
+    d: The user's network
+  answer: a
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '17.15'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    b: Move all logic to a single hook
+    c: Use a different test framework
+    d: Add a unit test for every function
+  answer: a
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '17.16'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: It replaces the loop
+    b: It runs before the loop
+    c: It does not
+    d: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+  answer: d
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '17.17'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Many comments
+    b: Many tests
+    c: Slow performance
+    d: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+  answer: d
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

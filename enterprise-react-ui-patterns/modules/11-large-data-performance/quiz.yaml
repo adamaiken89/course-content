@@ -1,12 +1,13 @@
 - id: '11.1'
   question: What is the core idea of virtualization?
   options:
-    d: Render every row but hide overflow with CSS
-    a: Render only the rows visible in the viewport plus overscan
-    b: SSR the list into static HTML
-    c: Chunk the data into 1,000-row pages
-  answer: a
-  explanation: Virtualization windows the DOM to the viewport — visible rows + overscan, with a spacer that preserves scrollbar reality.
+    a: SSR the list into static HTML
+    b: Chunk the data into 1,000-row pages
+    c: Render every row but hide overflow with CSS
+    d: Render only the rows visible in the viewport plus overscan
+  answer: d
+  explanation: "Virtualization windows the DOM to the viewport \u2014 visible rows\
+    \ + overscan, with a spacer that preserves scrollbar reality."
   difficulty: 1
   tags:
   - concept
@@ -14,24 +15,27 @@
 - id: '11.2'
   question: What must the scrollbar reflect even though only ~40 rows are mounted?
   options:
-    a: The overscan count
-    b: The total dataset height (the spacer)
-    c: The browser default bar
-    d: The window translation only
-  answer: b
-  explanation: A spacer of items.length × itemH makes the scrollbar match all 10k rows while only the window is DOM.
+    a: The window translation only
+    b: The overscan count
+    c: The total dataset height (the spacer)
+    d: The browser default bar
+  answer: c
+  explanation: "A spacer of items.length \xD7 itemH makes the scrollbar match all\
+    \ 10k rows while only the window is DOM."
   difficulty: 2
   tags:
   - concept
 - id: '11.3'
-  question: A row receives `onToggle={() => select(app.id)}` created inline. Why does React.memo fail to prevent re-renders?
+  question: A row receives `onToggle={() => select(app.id)}` created inline. Why does
+    React.memo fail to prevent re-renders?
   options:
-    b: memo ignores props entirely
-    c: The callback identity changes every render, so props are never equal
-    d: Inline functions are always legal in memo
-    a: memo requires class components
-  answer: c
-  explanation: memo compares props by reference; a fresh callback every render breaks equality and re-renders the row.
+    a: Inline functions are always legal in memo
+    b: memo requires class components
+    c: memo ignores props entirely
+    d: The callback identity changes every render, so props are never equal
+  answer: d
+  explanation: memo compares props by reference; a fresh callback every render breaks
+    equality and re-renders the row.
   difficulty: 2
   tags:
   - concept
@@ -39,25 +43,28 @@
 - id: '11.4'
   question: Which benchmark metric is most directly tied to browser memory pressure?
   options:
-    c: Scroll frame time
-    d: DOM node count
-    a: Keystroke latency
-    b: Bundle size
-  answer: d
-  explanation: Each node holds DOM + paint data; 60k nodes vs 40 explains the ~120MB vs ~8MB story.
+    a: Bundle size
+    b: Scroll frame time
+    c: DOM node count
+    d: Keystroke latency
+  answer: c
+  explanation: Each node holds DOM + paint data; 60k nodes vs 40 explains the ~120MB
+    vs ~8MB story.
   difficulty: 1
   tags:
   - formula
   - comparison
 - id: '11.5'
-  question: A scroll past 200 rows shows a blank area in a custom virtualizer. Which piece is broken?
+  question: A scroll past 200 rows shows a blank area in a custom virtualizer. Which
+    piece is broken?
   options:
-    d: The spacer height is correct but the window slice is empty
-    a: The window derives from scrollTop but nothing updates it (missing scroll handler)
-    b: Overscan is set to 0
-    c: The rows are not memoized
-  answer: a
-  explanation: No scroll handler → range never updates → old window stays and untranslated rows vanish. The spacer alone doesn't move the window.
+    a: The rows are not memoized
+    b: The spacer height is correct but the window slice is empty
+    c: The window derives from scrollTop but nothing updates it (missing scroll handler)
+    d: Overscan is set to 0
+  answer: c
+  explanation: "No scroll handler \u2192 range never updates \u2192 old window stays\
+    \ and untranslated rows vanish. The spacer alone doesn't move the window."
   difficulty: 3
   tags:
   - scenario
@@ -70,7 +77,8 @@
     c: useLayoutEffect + useRef
     d: createRoot + StrictMode
   answer: b
-  explanation: Deferral separates typing from the heavy render; transitions keep the swap non-blocking.
+  explanation: Deferral separates typing from the heavy render; transitions keep the
+    swap non-blocking.
   difficulty: 2
   tags:
   - react-19
@@ -78,12 +86,13 @@
 - id: '11.7'
   question: The benchmark table reports ratios matter more than absolutes. Why?
   options:
-    b: Absolute numbers are always wrong
-    c: Hardware differs; the order-of-magnitude gap is what transfers across machines
-    d: Ratios let you skip measuring memory
-    a: Ratios hide the jank entirely
-  answer: c
-  explanation: A 50× mount-time gap holds across machines; a 2.8s number on one laptop is noise on another.
+    a: Ratios let you skip measuring memory
+    b: Ratios hide the jank entirely
+    c: Absolute numbers are always wrong
+    d: Hardware differs; the order-of-magnitude gap is what transfers across machines
+  answer: d
+  explanation: "A 50\xD7 mount-time gap holds across machines; a 2.8s number on one\
+    \ laptop is noise on another."
   difficulty: 2
   tags:
   - concept
@@ -91,12 +100,13 @@
 - id: '11.8'
   question: The React Compiler is enabled. Which problem does it NOT fix?
   options:
-    c: Inline callback identity created fresh each render
-    d: Row objects re-derived by a map inside render
-    a: Missing virtualization of 10k rows
-    b: Memoization enabled by default
-  answer: a
-  explanation: Compiler covers memoization; it cannot reduce DOM node count. Virtualization is architectural.
+    a: Row objects re-derived by a map inside render
+    b: Missing virtualization of 10k rows
+    c: Memoization enabled by default
+    d: Inline callback identity created fresh each render
+  answer: b
+  explanation: Compiler covers memoization; it cannot reduce DOM node count. Virtualization
+    is architectural.
   difficulty: 2
   tags:
   - concept
@@ -104,36 +114,127 @@
 - id: '11.9'
   question: What is the role of overscan in a virtualizer?
   options:
+    a: Cache rows in Query storage
     b: Render extra rows above/below the window to avoid blank flashes on fast scroll
     c: Double the spacer height
     d: Replace the scroll handler
-    a: Cache rows in Query storage
   answer: b
-  explanation: Overscan keeps a few hidden rows mounted so quick scrolling shows content instead of white space.
+  explanation: Overscan keeps a few hidden rows mounted so quick scrolling shows content
+    instead of white space.
   difficulty: 1
   tags:
   - terminology
 - id: '11.10'
-  question: A status-chip update triggers re-render of every row in a virtualized list despite memo. Most likely cause?
+  question: A status-chip update triggers re-render of every row in a virtualized
+    list despite memo. Most likely cause?
   options:
-    c: Overscan too large
-    d: The visible array is re-created each render and children get new props
-    a: The spacer uses itemH wrong
-    b: The scroll listener uses a ref
-  answer: d
-  explanation: Deriving rows outside render with consistent row-object identity keeps memo effective; recreating them defeats it.
+    a: The visible array is re-created each render and children get new props
+    b: The spacer uses itemH wrong
+    c: The scroll listener uses a ref
+    d: Overscan too large
+  answer: a
+  explanation: Deriving rows outside render with consistent row-object identity keeps
+    memo effective; recreating them defeats it.
   difficulty: 3
   tags:
   - scenario
   - application
-- id: "11.11"
-  question: A 100,000-row list is slow to render. Virtualization is added. What is the next bottleneck virtualization does NOT fix?
+- id: '11.11'
+  question: A 100,000-row list is slow to render. Virtualization is added. What is
+    the next bottleneck virtualization does NOT fix?
   options:
-    a: "Memory cost of every row in the DOM"
-    b: "Cost of computing derived values per row"
-    c: "Cost of fetching the 100,000 rows from the server"
-    d: "Cost of garbage collection pauses from many short-lived objects"
-  answer: c
-  explanation: Virtualization reduces DOM nodes, which addresses (a). It does nothing for server fetch cost (c). For 100,000 rows, the right answer is server-side pagination or windowing, with virtualization as the second layer for smooth scrolling within the visible window.
+    a: Cost of computing derived values per row
+    b: Cost of fetching the 100,000 rows from the server
+    c: Cost of garbage collection pauses from many short-lived objects
+    d: Memory cost of every row in the DOM
+  answer: b
+  explanation: Virtualization reduces DOM nodes, which addresses (a). It does nothing
+    for server fetch cost (c). For 100,000 rows, the right answer is server-side pagination
+    or windowing, with virtualization as the second layer for smooth scrolling within
+    the visible window.
   difficulty: 3
-  tags: [scenario, process]
+  tags:
+  - scenario
+  - process
+- id: '11.12'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+    b: The schema module (m4)
+    c: The cache module (m12)
+    d: The test module (m3)
+  answer: a
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '11.13'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: Restart the server
+    b: Check the dashboard
+    c: The user's network
+    d: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+  answer: d
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '11.14'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    b: Move all logic to a single hook
+    c: Use a different test framework
+    d: Add a unit test for every function
+  answer: a
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '11.15'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    b: It replaces the loop
+    c: It runs before the loop
+    d: It does not
+  answer: a
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '11.16'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Many tests
+    b: Slow performance
+    c: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    d: Many comments
+  answer: c
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

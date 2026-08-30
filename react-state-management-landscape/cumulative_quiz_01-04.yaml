@@ -1,0 +1,160 @@
+- id: cum.101
+  type: mcq
+  source_modules:
+  - 1
+  - 2
+  - 3
+  - 4
+  question: What is the first question in the decision tree?
+  options:
+    a: ownership
+    b: lifetime
+    c: scope
+    d: frequency
+  answer: a
+  explanation: Answer explanation for What is the first question in the decision tree?...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.102
+  type: cloze
+  source_modules:
+  - 1
+  - 2
+  - 3
+  - 4
+  question: The five questions are {ownership}, {lifetime}, {scope}, {frequency},
+    {persistence}.
+  answer: ownership; lifetime; scope; frequency; persistence
+  explanation: Cloze explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.103
+  type: tf
+  source_modules:
+  - 1
+  - 2
+  - 3
+  - 4
+  statement: useState is the right primitive for any state shared across many components.
+  answer: false
+  explanation: TF explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.104
+  type: mcq
+  source_modules:
+  - 1
+  - 2
+  - 3
+  - 4
+  question: Context is best for
+  options:
+    a: high-frequency values in a large subtree
+    b: low-frequency values in a small subtree
+    c: URL-shaped state
+    d: server state
+  answer: b
+  explanation: Answer explanation for Context is best for...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.105
+  type: mcq
+  source_modules:
+  - 1
+  - 2
+  - 3
+  - 4
+  question: useReducer is the right answer when
+  options:
+    a: the value is a single primitive
+    b: the state is a record updated by named actions
+    c: the value is a URL parameter
+    d: the value comes from a server
+  answer: b
+  explanation: Answer explanation for useReducer is the right answer when...
+  difficulty: 2
+  tags:
+  - cross-module
+- id: cum.106
+  type: cloze
+  source_modules:
+  - 1
+  - 2
+  - 3
+  - 4
+  question: useState for component-{local}; useReducer for a {record} of fields; Context
+    for cross-cutting {values}.
+  answer: local; record; values
+  explanation: Cloze explanation.
+  difficulty: 2
+  tags:
+  - cross-module
+- id: cum.107
+  type: tf
+  source_modules:
+  - 1
+  - 2
+  - 3
+  - 4
+  statement: A reducer is allowed to have side effects as long as the action is dispatched
+    correctly.
+  answer: false
+  explanation: TF explanation.
+  difficulty: 2
+  tags:
+  - cross-module
+- id: cum.108
+  type: mcq
+  source_modules:
+  - 1
+  - 2
+  - 3
+  - 4
+  question: The right primitive for a form field read by one component is
+  options:
+    a: useState
+    b: Context
+    c: zustand
+    d: TanStack Query
+  answer: a
+  explanation: Answer explanation for The right primitive for a form field read by
+    one c...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.109
+  type: cloze
+  source_modules:
+  - 1
+  - 2
+  - 3
+  - 4
+  question: Lifted state lives in the {closest} common parent; the parent is the {source}
+    of truth.
+  answer: closest; source
+  explanation: Cloze explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.110
+  type: mcq
+  source_modules:
+  - 1
+  - 2
+  - 3
+  - 4
+  question: useEffect for derived state is a
+  options:
+    a: best practice
+    b: required pattern
+    c: common anti-pattern
+    d: mandatory rule
+  answer: c
+  explanation: Answer explanation for useEffect for derived state is a...
+  difficulty: 2
+  tags:
+  - cross-module

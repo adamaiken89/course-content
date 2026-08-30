@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "Zustand is a {minimal} external store; a single create() call returns a {hook} that components use to read and update the store."
+  answer: "minimal; hook"
+  explanation: "The API is small: create((set, get) => ({ ... })) returns a hook. The hook can be called with a selector or without. The shape is the API."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "A {slice} is a logical grouping of state and actions; zustand encourages {slicing} by composing multiple stores or by convention within one store."
+  answer: "slice; slicing"
+  explanation: "A slice has its own state, its own actions, and its own consumers. Slices keep the store readable; they also keep unrelated re-renders from coupling."
+  difficulty: 2
+  tags: [concept]
+- id: "c.3"
+  question: "{Middleware} in zustand is a function that wraps set; common middleware includes {persist}, {devtools}, {immer}, and {subscribeWithSelector}."
+  answer: "Middleware; persist; devtools; immer; subscribeWithSelector"
+  explanation: "Each middleware adds a capability: persistence to localStorage, devtools integration, immutable updates with mutable syntax, or selector-based subscription. The middleware is composed in the create() call."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.4"
+  question: "A zustand selector must be {referentially stable} on equal values; an unstable selector (e.g. one that returns a new {object}) re-renders every render."
+  answer: "referentially stable; object"
+  explanation: "The fix is to use zustand's shallow compare (useStore(selector, shallow)) or to memoize the selector. Without stability, the selector is a re-render trigger."
+  difficulty: 2
+  tags: [concept]
+- id: "c.5"
+  question: "The {persist} middleware persists the store to {localStorage} or another storage; the {partialize} option controls which fields are persisted."
+  answer: "persist; localStorage; partialize"
+  explanation: "Persisting tokens is risky (XSS); persisting UI state (theme, sidebar collapsed) is fine. partialize is the place to make that call."
+  difficulty: 1
+  tags: [concept]
+- id: "c.6"
+  question: "Zustand's {get} function reads the current state inside an action; {set} updates the state; the combination lets actions coordinate."
+  answer: "get; set"
+  explanation: "An action that needs to read the current value uses get(). An action that needs to update uses set() with either a partial or a function. The pattern is the same as React's setState but with the whole store as the state."
+  difficulty: 2
+  tags: [process]
+- id: "c.7"
+  question: "{Devtools} middleware integrates the store with the {Redux DevTools} extension; the actions and state are visible in the browser's devtools panel."
+  answer: "Devtools; Redux DevTools"
+  explanation: "Devtools is the debugging seam. Time-travel debugging, action logging, and state inspection are all available. The integration is one middleware away."
+  difficulty: 2
+  tags: [concept]
+- id: "c.8"
+  question: "Zustand is the right answer for shared global state with {frequent} writes; for component-local state, useState is {simpler}."
+  answer: "frequent; simpler"
+  explanation: "Zustand for one component is over-engineering. Zustand for a global value shared across routes with frequent writes is the right shape. The decision tree picks the primitive."
+  difficulty: 1
+  tags: [comparison]

@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "A {selector} is a function from store state to a derived value; the component re-renders only when the {selected} value changes."
+  answer: "selector; selected"
+  explanation: "The selector is the boundary between the store and the component. Without a selector, every state change re-renders the component. With a selector, only changes to the selected slice do."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "{Referential equality} is the default comparison in zustand and Redux; two objects with the same content but different {references} are not equal."
+  answer: "Referential equality; references"
+  explanation: "The selector must return a referentially stable value. A new object on every call re-renders every consumer. Memoize the selector or use the right primitive (e.g. zustand's shallow compare)."
+  difficulty: 1
+  tags: [concept]
+- id: "c.3"
+  question: "useSyncExternalStore is the {React 18+} primitive for subscribing to an {external store} with concurrent rendering support."
+  answer: "React 18+; external store"
+  explanation: "The hook tells React the store's current value and how to subscribe. Concurrent rendering can safely re-read the store; tearing is impossible."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.4"
+  question: "Selector {inference} is the question 'when does this selector's return value change?'; the answer drives {memoization} strategy."
+  answer: "inference; memoization"
+  explanation: "A selector that returns a primitive (string, number) is always referentially stable on equal values. A selector that returns an object needs shallow comparison or memoization."
+  difficulty: 2
+  tags: [process]
+- id: "c.5"
+  question: "{Tearing} is when different components see different versions of the same external store during concurrent {rendering}."
+  answer: "Tearing; rendering"
+  explanation: "useSyncExternalStore prevents tearing by ensuring every component sees the same value during a render. The hook is required for any external-store integration in React 18+."
+  difficulty: 3
+  tags: [concept]
+- id: "c.6"
+  question: "{Atomic} selectors (one field) are simpler; {compound} selectors (an object) need shallow comparison or {reselect}-style memoization."
+  answer: "Atomic; compound; reselect"
+  explanation: "Atomic is the default. Compound is a trade-off: the convenience of one selector against the cost of an extra re-render on a non-equal-but-same-content object."
+  difficulty: 2
+  tags: [comparison]
+- id: "c.7"
+  question: "A {selector} that returns a new array on every call (e.g. .filter) re-renders consumers; memoize the {result} with a memoized selector or {useMemo}."
+  answer: "selector; result; useMemo"
+  explanation: "The fix is to compute the array once per state change, not once per render. useMemo with a state-derived dependency, or a reselect-style selector, both work."
+  difficulty: 2
+  tags: [process]
+- id: "c.8"
+  question: "The render {boundary} is the smallest unit of work; a selector splits a single render into {sub-renders} for the components that need the value."
+  answer: "boundary; sub-renders"
+  explanation: "The selector is the boundary. A component that uses the cursor re-renders; a component that uses the user does not. The cost of the selector is the cost of the boundary; the benefit is the precision of the re-render."
+  difficulty: 3
+  tags: [concept]

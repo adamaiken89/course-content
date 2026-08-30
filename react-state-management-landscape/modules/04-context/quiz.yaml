@@ -1,0 +1,135 @@
+- id: '04.1'
+  question: What is the Context broadcast contract?
+  options:
+    a: Consumers re-render on demand
+    b: Context is read-only
+    c: Every consumer re-renders on every value change
+    d: Only changed consumers re-render
+  answer: c
+  explanation: Explanation for What is the Context broadcast contract?...
+  difficulty: 1
+  tags:
+  - concept
+- id: '04.2'
+  question: How do you keep the Context value referentially stable?
+  options:
+    a: Memoize the value with useMemo
+    b: Use a global variable
+    c: It is automatic
+    d: Pass a fresh object every render
+  answer: a
+  explanation: Explanation for How do you keep the Context value referentially st...
+  difficulty: 1
+  tags:
+  - process
+- id: '04.3'
+  question: What is the split-Context pattern?
+  options:
+    a: Split into a state Context and a dispatch Context; consumers of the dispatch
+      do not re-render on state change
+    b: Use a global store
+    c: Use a URL
+    d: One Context for everything
+  answer: a
+  explanation: Explanation for What is the split-Context pattern?...
+  difficulty: 2
+  tags:
+  - concept
+- id: '04.4'
+  question: When is Context the wrong answer?
+  options:
+    a: For theme and locale
+    b: For high-frequency values shared by a large subtree
+    c: For session
+    d: Never
+  answer: b
+  explanation: Explanation for When is Context the wrong answer?...
+  difficulty: 1
+  tags:
+  - misconception
+- id: '04.5'
+  question: React 19's {use} hook can read Context conditionally.
+  options:
+    a: useEffect
+    b: useContext
+    c: use
+    d: useState
+  answer: c
+  explanation: Explanation for React 19's {use} hook can read Context conditional...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '04.6'
+  question: The Provider sets the value; {useContext} reads it.
+  options:
+    a: useEffect
+    b: useMemo
+    c: useState
+    d: useContext
+  answer: d
+  explanation: Explanation for The Provider sets the value; {useContext} reads it...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '04.7'
+  question: A typing cursor position (30 updates per second) is a poor fit for {Context}.
+  options:
+    a: useEffect
+    b: useMemo
+    c: useState
+    d: Context
+  answer: d
+  explanation: Explanation for A typing cursor position (30 updates per second) i...
+  difficulty: 2
+  tags:
+  - scenario
+- id: '04.8'
+  question: The most common Context bug is a fresh {object} every render.
+  options:
+    a: string
+    b: object
+    c: number
+    d: boolean
+  answer: b
+  explanation: Explanation for The most common Context bug is a fresh {object} ev...
+  difficulty: 2
+  tags:
+  - misconception
+- id: '04.9'
+  question: Context is the right answer for {low-frequency} values in a {small} subtree.
+  options:
+    a: high-frequency; large
+    b: low-frequency; small
+    c: high-frequency; small
+    d: low-frequency; large
+  answer: b
+  explanation: Explanation for Context is the right answer for {low-frequency} va...
+  difficulty: 2
+  tags:
+  - concept
+- id: '04.10'
+  question: useContext must be called at the {top} of the component.
+  options:
+    a: middle
+    b: anywhere
+    c: top
+    d: bottom
+  answer: c
+  explanation: Explanation for useContext must be called at the {top} of the comp...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '04.11'
+  question: An external store with {selectors} is the right answer for high-frequency
+    values.
+  options:
+    a: selectors
+    b: Context
+    c: useEffect
+    d: useState
+  answer: a
+  explanation: Explanation for An external store with {selectors} is the right an...
+  difficulty: 2
+  tags:
+  - concept
+

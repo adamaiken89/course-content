@@ -1,0 +1,138 @@
+- id: cum.1701
+  type: mcq
+  source_modules:
+  - 17
+  - 18
+  question: Prop drilling via Context is a
+  options:
+    a: best practice
+    b: common anti-pattern
+    c: required pattern
+    d: performance optimization
+  answer: b
+  explanation: Answer explanation for Prop drilling via Context is a...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.1702
+  type: cloze
+  source_modules:
+  - 17
+  - 18
+  question: useEffect for {derived} state is a common anti-pattern; compute in {render}
+    instead.
+  answer: derived; render
+  explanation: Cloze explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.1703
+  type: tf
+  source_modules:
+  - 17
+  - 18
+  statement: Reaching for a library before the question is a recipe for over-engineering.
+  answer: true
+  explanation: TF explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.1704
+  type: mcq
+  source_modules:
+  - 17
+  - 18
+  question: Designing a new feature's state architecture starts with
+  options:
+    a: the library
+    b: the decision tree
+    c: a refactor
+    d: a test
+  answer: b
+  explanation: Answer explanation for Designing a new feature's state architecture
+    start...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.1705
+  type: mcq
+  source_modules:
+  - 17
+  - 18
+  question: The state map is the
+  options:
+    a: 'deliverable: slice to lifetime to primitive'
+    b: code review
+    c: type system
+    d: test suite
+  answer: a
+  explanation: Answer explanation for The state map is the...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.1706
+  type: cloze
+  source_modules:
+  - 17
+  - 18
+  question: Integration tests exercise the {seams} between primitives; the test boundary
+    is the {architecture}'s boundary.
+  answer: seams; architecture
+  explanation: Cloze explanation.
+  difficulty: 2
+  tags:
+  - cross-module
+- id: cum.1707
+  type: tf
+  source_modules:
+  - 17
+  - 18
+  statement: Refactoring the state architecture is a refactor, not a migration.
+  answer: false
+  explanation: TF explanation.
+  difficulty: 2
+  tags:
+  - cross-module
+- id: cum.1708
+  type: mcq
+  source_modules:
+  - 17
+  - 18
+  question: A migration has a
+  options:
+    a: name; type; value
+    b: scope; rollback; test plan
+    c: design; code; review
+    d: users; time; cost
+  answer: b
+  explanation: Answer explanation for A migration has a...
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.1709
+  type: cloze
+  source_modules:
+  - 17
+  - 18
+  question: The decision log is the {institutional} memory for state decisions.
+  answer: institutional
+  explanation: Cloze explanation.
+  difficulty: 1
+  tags:
+  - cross-module
+- id: cum.1710
+  type: mcq
+  source_modules:
+  - 17
+  - 18
+  question: The capstone is a
+  options:
+    a: test
+    b: proof that the decision tree works
+    c: design
+    d: library
+  answer: b
+  explanation: Answer explanation for The capstone is a...
+  difficulty: 1
+  tags:
+  - cross-module

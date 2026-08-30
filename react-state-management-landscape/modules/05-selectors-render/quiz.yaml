@@ -1,0 +1,138 @@
+- id: '05.1'
+  question: What does a selector do?
+  options:
+    a: Stores data in localStorage
+    b: Fetches from the server
+    c: Renders a component
+    d: A function from store state to a derived value; the component re-renders only
+      when the value changes
+  answer: d
+  explanation: Explanation for What does a selector do?...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '05.2'
+  question: What is the default equality in zustand and Redux?
+  options:
+    a: Deep equality
+    b: Referential equality (===)
+    c: Shallow equality
+    d: No comparison
+  answer: b
+  explanation: Explanation for What is the default equality in zustand and Redux?...
+  difficulty: 1
+  tags:
+  - concept
+- id: '05.3'
+  question: An unstable selector returns a new {object} every call and re-renders
+    the consumer.
+  options:
+    a: boolean
+    b: string
+    c: object
+    d: number
+  answer: c
+  explanation: Explanation for An unstable selector returns a new {object} every ...
+  difficulty: 1
+  tags:
+  - concept
+- id: '05.4'
+  question: What is tearing?
+  options:
+    a: A memory leak
+    b: A render error
+    c: Different components see different versions of the same external store during
+      concurrent rendering
+    d: A re-render storm
+  answer: c
+  explanation: Explanation for What is tearing?...
+  difficulty: 2
+  tags:
+  - terminology
+- id: '05.5'
+  question: useSyncExternalStore prevents {tearing} in React 18+.
+  options:
+    a: memory leaks
+    b: errors
+    c: re-renders
+    d: tearing
+  answer: d
+  explanation: Explanation for useSyncExternalStore prevents {tearing} in React 1...
+  difficulty: 2
+  tags:
+  - terminology
+- id: '05.6'
+  question: Atomic selectors return {primitives}; compound selectors return {objects}.
+  options:
+    a: primitives; objects
+    b: functions; strings
+    c: numbers; arrays
+    d: objects; primitives
+  answer: a
+  explanation: Explanation for Atomic selectors return {primitives}; compound sel...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '05.7'
+  question: Reselect's createSelector {memoizes} a compound selector.
+  options:
+    a: calls
+    b: memoizes
+    c: renders
+    d: deletes
+  answer: b
+  explanation: Explanation for Reselect's createSelector {memoizes} a compound se...
+  difficulty: 2
+  tags:
+  - terminology
+- id: '05.8'
+  question: The selector is the {boundary} between the store and the component.
+  options:
+    a: boundary
+    b: name
+    c: value
+    d: type
+  answer: a
+  explanation: Explanation for The selector is the {boundary} between the store a...
+  difficulty: 1
+  tags:
+  - concept
+- id: '05.9'
+  question: Selector {inference} is the question 'when does this selector's return
+    value change?'
+  options:
+    a: inference
+    b: type
+    c: name
+    d: speed
+  answer: a
+  explanation: Explanation for Selector {inference} is the question 'when does th...
+  difficulty: 2
+  tags:
+  - process
+- id: '05.10'
+  question: A selector that returns a new array on every call re-renders consumers;
+    the fix is {useMemo} or a memoized selector.
+  options:
+    a: useEffect
+    b: useMemo
+    c: useState
+    d: useContext
+  answer: b
+  explanation: Explanation for A selector that returns a new array on every call ...
+  difficulty: 2
+  tags:
+  - process
+- id: '05.11'
+  question: A shallow compare is the right answer for {compound} selectors.
+  options:
+    a: string
+    b: atomic
+    c: compound
+    d: primitive
+  answer: c
+  explanation: Explanation for A shallow compare is the right answer for {compoun...
+  difficulty: 2
+  tags:
+  - concept
+

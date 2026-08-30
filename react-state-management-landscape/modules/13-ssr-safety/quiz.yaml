@@ -1,0 +1,136 @@
+- id: '13.1'
+  question: What is a hydration mismatch?
+  options:
+    a: A network error
+    b: A re-render
+    c: The server's HTML differs from the client's first render
+    d: A type error
+  answer: c
+  explanation: Explanation for What is a hydration mismatch?...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '13.2'
+  question: 'A common hydration trap is {new Date()} in render: server time vs client
+    time.'
+  options:
+    a: useState
+    b: new Date()
+    c: useEffect
+    d: useContext
+  answer: b
+  explanation: Explanation for A common hydration trap is {new Date()} in render:...
+  difficulty: 1
+  tags:
+  - process
+- id: '13.3'
+  question: What is the fix for reading client-only values?
+  options:
+    a: Read them in render
+    b: Read them in useEffect, which runs after hydration
+    c: Read them on the server
+    d: Use Context
+  answer: b
+  explanation: Explanation for What is the fix for reading client-only values?...
+  difficulty: 1
+  tags:
+  - process
+- id: '13.4'
+  question: useSyncExternalStore's getServerSnapshot is called during {SSR}.
+  options:
+    a: unmount
+    b: client render
+    c: SSR
+    d: hydration
+  answer: c
+  explanation: Explanation for useSyncExternalStore's getServerSnapshot is called...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '13.5'
+  question: For a {client-only} app, SSR safety is not relevant.
+  options:
+    a: isomorphic
+    b: static
+    c: SSR-only
+    d: client-only
+  answer: d
+  explanation: Explanation for For a {client-only} app, SSR safety is not relevan...
+  difficulty: 1
+  tags:
+  - concept
+- id: '13.6'
+  question: The server renders HTML with one version of the state; the client re-uses
+    it to avoid a {refetch}.
+  options:
+    a: remount
+    b: refetch
+    c: rebuild
+    d: reset
+  answer: b
+  explanation: Explanation for The server renders HTML with one version of the st...
+  difficulty: 2
+  tags:
+  - concept
+- id: '13.7'
+  question: Math.random() in render is a {hydration} trap.
+  options:
+    a: hydration
+    b: memory
+    c: security
+    d: performance
+  answer: a
+  explanation: Explanation for Math.random() in render is a {hydration} trap....
+  difficulty: 1
+  tags:
+  - process
+- id: '13.8'
+  question: navigator.language is not available on the {server}.
+  options:
+    a: browser
+    b: mobile
+    c: client
+    d: server
+  answer: d
+  explanation: Explanation for navigator.language is not available on the {server...
+  difficulty: 1
+  tags:
+  - concept
+- id: '13.9'
+  question: Time zones are a common hydration {trap}.
+  options:
+    a: trap
+    b: feature
+    c: optimization
+    d: opportunity
+  answer: a
+  explanation: Explanation for Time zones are a common hydration {trap}....
+  difficulty: 1
+  tags:
+  - process
+- id: '13.10'
+  question: The server snapshot in TanStack Query is the {dehydrated} state.
+  options:
+    a: stale
+    b: loaded
+    c: dehydrated
+    d: cached
+  answer: c
+  explanation: Explanation for The server snapshot in TanStack Query is the {dehy...
+  difficulty: 2
+  tags:
+  - terminology
+- id: '13.11'
+  question: The fix for a hydration mismatch is to ensure the client's first render
+    uses the {same} state as the server.
+  options:
+    a: same
+    b: newer
+    c: older
+    d: different
+  answer: a
+  explanation: Explanation for The fix for a hydration mismatch is to ensure the ...
+  difficulty: 1
+  tags:
+  - concept
+

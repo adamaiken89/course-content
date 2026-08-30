@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "Multiple stores are the right answer when the stores have {different} lifetimes, {different} consumers, and {different} persistence."
+  answer: "different; different; different"
+  explanation: "One store for everything is a coupling. Several stores for several concerns is a composition. The decision is the slicing."
+  difficulty: 1
+  tags: [concept]
+- id: "c.2"
+  question: "A {slice} boundary is a {logical} grouping of state; the slicing decision is the {architecture}."
+  answer: "slice; logical; architecture"
+  explanation: "Slice by user, by feature, by domain — not by reducer, by action, or by selector. The slicing decision is the architecture. The rest is implementation."
+  difficulty: 2
+  tags: [process]
+- id: "c.3"
+  question: "{Cross-store} coordination is rare; when needed, it happens in an {action} that reads from one store and writes to another."
+  answer: "Cross-store; action"
+  explanation: "An action that needs to coordinate is the place to do it. The action reads via get() and writes via set(). The composition is at the action layer, not at the store layer."
+  difficulty: 2
+  tags: [concept]
+- id: "c.4"
+  question: "An {integration test} exercises the {seams} between stores; the test owns the boundary."
+  answer: "integration test; seams"
+  explanation: "Unit tests exercise one store. Integration tests exercise the seams between stores. The test boundary is the architecture's boundary."
+  difficulty: 2
+  tags: [process]
+- id: "c.5"
+  question: "{Slice} boundaries should be {stable}; refactoring a slice is a {migration}, not a refactor."
+  answer: "Slice; stable; migration"
+  explanation: "A slice is an architectural decision. Changing the slicing is changing the architecture. The pattern is the same as database schema migrations: write the migration, run it, never break the old shape."
+  difficulty: 3
+  tags: [concept]
+- id: "c.6"
+  question: "Multiple stores enable {lazy} hydration; a store is only loaded when its first {consumer} mounts."
+  answer: "lazy; consumer"
+  explanation: "A store is a chunk. The chunk is loaded when the first consumer mounts. The pattern is the same as code-splitting at the route level."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "A {shared} store is the right answer for state that is {read} by many components across the {app}; a {local} store is the right answer for state scoped to a {feature}."
+  answer: "shared; read; app; local; feature"
+  explanation: "The decision tree picks the slice. The slice's lifetime, scope, and persistence pick the store's location. Multiple stores is the answer for an app with multiple concerns."
+  difficulty: 2
+  tags: [process]
+- id: "c.8"
+  question: "Composition is the {seam}; the stores are the {parts}; the test is the {boundary}."
+  answer: "seam; parts; boundary"
+  explanation: "Multiple stores compose. The composition is at the action layer. The test boundary is the architecture. The pattern is the same as microservices: small parts, well-defined seams, integration tests at the seams."
+  difficulty: 3
+  tags: [concept]

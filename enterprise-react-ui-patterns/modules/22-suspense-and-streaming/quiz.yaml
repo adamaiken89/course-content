@@ -1,0 +1,242 @@
+- id: '22.1'
+  question: What does a Suspense boundary do when a child throws a Promise during
+    render?
+  options:
+    a: Catches the throw, shows its fallback, and re-renders when the Promise resolves
+    b: Silently ignores the throw
+    c: Renders nothing forever
+    d: Crashes the app
+  answer: a
+  explanation: Suspense catches a thrown Promise in render, renders the fallback,
+    and schedules a re-render when the Promise resolves. The boundary then commits
+    the resolved children.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '22.2'
+  question: Where should a Suspense boundary be placed?
+  options:
+    a: Around individual buttons
+    b: Below every async source
+    c: Above every async source that can suspend
+    d: Only at the route root
+  answer: c
+  explanation: "The boundary must be above the thrower. A boundary below the async\
+    \ source is useless \u2014 the throw bubbles to the parent's boundary. Trace from\
+    \ each async source to the boundary you want to catch it."
+  difficulty: 1
+  tags:
+  - concept
+- id: '22.3'
+  question: What is the only way to read a Promise in render so that Suspense catches
+    the unresolved state?
+  options:
+    a: .then
+    b: use(promise)
+    c: await + useEffect
+    d: await
+  answer: b
+  explanation: The use hook is the only React API that reads a Promise in render and
+    throws it to Suspense. await and .then do not throw to Suspense.
+  difficulty: 2
+  tags:
+  - concept
+- id: '22.4'
+  question: When is a single page-level Suspense boundary better than per-section
+    boundaries?
+  options:
+    a: Always
+    b: Never
+    c: When the sections are coordinated and the page is not useful until all sections
+      resolve
+    d: When the user is on a fast connection
+  answer: c
+  explanation: Coordinated sections belong in one boundary. Independent sections belong
+    in separate boundaries. The right granularity matches the user's mental model
+    of independence.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '22.5'
+  question: What is the most common Suspense pitfall?
+  options:
+    a: No fallback prop
+    b: Using use() instead of useQuery
+    c: Too many spinners
+    d: Too many boundaries
+  answer: a
+  explanation: A <Suspense> without a fallback renders nothing while children suspend.
+    Always provide a fallback that matches the final shape to avoid layout shift.
+  difficulty: 1
+  tags:
+  - misconception
+- id: '22.6'
+  question: What is the consequence of putting stateful children inside a Suspense
+    boundary whose key changes?
+  options:
+    a: The boundary throws
+    b: The fallback stays
+    c: Nothing
+    d: The children remount, losing their local state
+  answer: d
+  explanation: When a Suspense boundary remounts (because the key changed or navigation
+    happened), children's local state is lost. Keep stateful children outside the
+    boundary, or lift state to a stable parent.
+  difficulty: 2
+  tags:
+  - concept
+- id: '22.7'
+  question: Does Suspense require a server framework?
+  options:
+    a: 'True'
+    b: "No \u2014 client-only apps use Suspense without streaming"
+    c: Only in production
+    d: Only with React 19
+  answer: b
+  explanation: Suspense is a render-phase mechanism in React itself. Streaming SSR
+    is a server framework capability built on Suspense. A client-only app uses Suspense
+    without streaming and still benefits from the shape.
+  difficulty: 2
+  tags:
+  - concept
+- id: '22.8'
+  question: A team refactors from useQuery to useSuspenseQuery. The app shows a blank
+    page for 800ms. Why?
+  options:
+    a: useQuery was wrong
+    b: React 19 changed
+    c: useSuspenseQuery is slower
+    d: A page-level Suspense boundary wraps the whole route; the fallback shows until
+      the slowest query resolves
+  answer: d
+  explanation: useSuspenseQuery throws instead of returning isLoading. If a single
+    page-level boundary wraps everything, the whole page shows the fallback until
+    the slowest query resolves. The fix is per-section boundaries or accepting the
+    new shape.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '22.9'
+  question: What does `use(promise)` do when the Promise is rejected?
+  options:
+    a: Silently ignores
+    b: Retries forever
+    c: Returns undefined
+    d: Throws the rejection to the nearest error boundary
+  answer: d
+  explanation: use throws resolved Promises to Suspense and rejected Promises to error
+    boundaries. The boundary nearest the thrower catches it.
+  difficulty: 2
+  tags:
+  - concept
+- id: '22.10'
+  question: Which is NOT a valid async source for Suspense?
+  options:
+    a: use(promise)
+    b: useSuspenseQuery
+    c: useState with no fetcher
+    d: React.lazy
+  answer: c
+  explanation: useState does not throw a Promise. It returns synchronously. To suspend,
+    the data source must throw a Promise during render. The three listed sources are
+    the standard ones.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '22.11'
+  question: Why does streaming SSR need Suspense boundaries?
+  options:
+    a: It does not
+    b: Boundaries tell the server which chunks are independent and can be sent as
+      they resolve"
+    c: Suspense is required for any HTML
+    d: Browsers require it
+  answer: b
+  explanation: "The server uses Suspense boundaries to know which parts of the tree\
+    \ are independent chunks. Without boundaries, the server cannot stream partial\
+    \ HTML \u2014 it must wait for the whole tree to be ready."
+  difficulty: 2
+  tags:
+  - concept
+- id: '22.12'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+    b: The schema module (m4)
+    c: The cache module (m12)
+    d: The test module (m3)
+  answer: a
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '22.13'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: Restart the server
+    b: Check the dashboard
+    c: The user's network
+    d: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+  answer: d
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '22.14'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    b: Move all logic to a single hook
+    c: Use a different test framework
+    d: Add a unit test for every function
+  answer: a
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '22.15'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: It runs before the loop
+    b: It does not
+    c: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    d: It replaces the loop
+  answer: c
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '22.16'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Slow performance
+    b: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    c: Many comments
+    d: Many tests
+  answer: b
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

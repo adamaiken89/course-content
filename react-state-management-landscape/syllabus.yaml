@@ -1,0 +1,106 @@
+subject: "React State Management Landscape"
+language: en
+time_budget_hours: 25
+target_level: intermediate
+domain: "react-state-management-landscape"
+prerequisites: [react-hooks, typescript-basics]
+learning_objectives:
+  - "Diagnose a React state management problem from first principles: ownership, lifetime, scope, frequency, persistence"
+  - "Choose between useState, useReducer, Context, zustand, Jotai, Redux Toolkit, TanStack Query, and URL state from measurable conditions"
+  - "Implement each primitive correctly: store shape, action design, selector patterns, devtools, and the seam with React's render cycle"
+  - "Compose multiple stores without cross-cutting coupling; understand when one store is right and when several stores are right"
+  - "Apply SSR-safe patterns, persistence, and migration paths to a React app's state"
+  - "Measure state-related performance regressions: re-render storms, selector stability, and the cost of Context"
+  - "Recognize anti-patterns: prop drilling via Context, store mutations outside reducers, useEffect for derived state, and unstable selectors"
+
+modules:
+  - id: 1
+    name: "State Management Problems and the Decision Tree"
+    time_hours: 1.5
+    prerequisites: []
+    topics: [diagnosis, ownership, decision-tree, mental-model]
+  - id: 2
+    name: "useState and useReducer: The Local Primitives"
+    time_hours: 1.5
+    prerequisites: [1]
+    topics: [useState, useReducer, action-shape, dispatch]
+  - id: 3
+    name: "Component-Local State Patterns"
+    time_hours: 1.5
+    prerequisites: [2]
+    topics: [lifted-state, sibling-state, form-state, derived-state]
+  - id: 4
+    name: "React Context: The Built-in Global"
+    time_hours: 1.5
+    prerequisites: [2]
+    topics: [context, provider, re-render-storm, value-identity]
+  - id: 5
+    name: "Selectors and the Render Cycle"
+    time_hours: 1.5
+    prerequisites: [2, 4]
+    topics: [selectors, referential-equality, useSyncExternalStore, render-boundary]
+  - id: 6
+    name: "Zustand: The Minimal External Store"
+    time_hours: 1.5
+    prerequisites: [4, 5]
+    topics: [zustand, store-shape, actions, slices, middleware]
+  - id: 7
+    name: "Jotai: Atomic State"
+    time_hours: 1.5
+    prerequisites: [6]
+    topics: [atom, derived-atom, atomFamily, primitive-state]
+  - id: 8
+    name: "Redux Toolkit: The Canonical Store"
+    time_hours: 1.5
+    prerequisites: [2, 5]
+    topics: [redux, slice, createSlice, rtk-query, devtools]
+  - id: 9
+    name: "TanStack Query: Server-State as a First-Class Citizen"
+    time_hours: 1.5
+    prerequisites: [5]
+    topics: [tanstack-query, server-state, cache, invalidation, mutations]
+  - id: 10
+    name: "URL State: The Shareable Layer"
+    time_hours: 1.5
+    prerequisites: [3]
+    topics: [url-state, query-string, history, react-router]
+  - id: 11
+    name: "Form State: React Hook Form and TanStack Form"
+    time_hours: 1.5
+    prerequisites: [3]
+    topics: [forms, validation, schema-driven, react-hook-form, tanstack-form]
+  - id: 12
+    name: "Persistence: LocalStorage, IndexedDB, and Migrations"
+    time_hours: 1.5
+    prerequisites: [6, 7]
+    topics: [persistence, localstorage, indexeddb, zustand-persist, migrations]
+  - id: 13
+    name: "SSR Safety and Hydration"
+    time_hours: 1.5
+    prerequisites: [6, 9]
+    topics: [ssr, hydration, server-snapshot, hydration-mismatch]
+  - id: 14
+    name: "Performance: Re-render Storms and Selector Stability"
+    time_hours: 1.5
+    prerequisites: [5, 6, 9]
+    topics: [performance, react-devtools-profiler, referential-stability, memoization]
+  - id: 15
+    name: "Composition: Multiple Stores Without Coupling"
+    time_hours: 1.5
+    prerequisites: [6, 8, 9]
+    topics: [composition, slice-boundaries, cross-store, integration-tests]
+  - id: 16
+    name: "Migration Paths: From One Store to Another"
+    time_hours: 1.5
+    prerequisites: [4, 6, 8]
+    topics: [migration, codemod, parallel-state, deprecation]
+  - id: 17
+    name: "Anti-Patterns: What Not to Do"
+    time_hours: 1.5
+    prerequisites: [4, 5, 6, 8]
+    topics: [anti-patterns, useeffect-derived-state, context-prop-drilling, mutation-outside-reducer]
+  - id: 18
+    name: "Capstone: Designing a New Feature's State Architecture"
+    time_hours: 1.5
+    prerequisites: [1, 6, 9, 10, 11]
+    topics: [capstone, design-decision, architecture, integration]

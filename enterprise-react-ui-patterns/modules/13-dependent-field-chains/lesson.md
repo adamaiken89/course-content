@@ -2,7 +2,7 @@
 
 Est. study time: 1.4h
 Language: en
-Description: The crown module — program→cohort→campus cascades with live remote validation and versioned option loads.
+Description: The integration module — program→cohort→campus cascades with live remote validation and versioned option loads.
 
 ## Knowledge Map
 
@@ -29,7 +29,7 @@ mindmap
     React 19
       useTransition cascade
       useDeferredValue search
-    Crown Hardest
+    Hardest Integration
       all joined
 ```
 

@@ -1,11 +1,12 @@
 - id: '12.1'
-  question: Two components render `useQuery(['programs'], ...)` simultaneously. What does the cache dedupe?
+  question: Two components render `useQuery(['programs'], ...)` simultaneously. What
+    does the cache dedupe?
   options:
-    a: The cache entries only
-    b: The in-flight request into one promise
-    c: The UI renders
-    d: The zod types
-  answer: b
+    a: The in-flight request into one promise
+    b: The UI renders
+    c: The zod types
+    d: The cache entries only
+  answer: a
   explanation: 'Dedupe-in-flight: same key, one promise shared until resolution.'
   difficulty: 1
   tags:
@@ -13,11 +14,11 @@
 - id: '12.2'
   question: 'Stale-while-revalidate means:'
   options:
-    d: Show a spinner instead of old data
-    a: Show cached data while a background refetch replaces it
-    b: Fetch only on focus
-    c: Never reuse cached data
-  answer: a
+    a: Never reuse cached data
+    b: Show a spinner instead of old data
+    c: Show cached data while a background refetch replaces it
+    d: Fetch only on focus
+  answer: c
   explanation: The cache serves truth from last resolve and replenishes it silently.
   difficulty: 1
   tags:
@@ -25,12 +26,13 @@
 - id: '12.3'
   question: After a submit mutation, which invalidation call is the coordinator pattern?
   options:
-    b: window.location.reload()
-    c: queryCache.invalidate(['applications'])
-    d: queryClient.clear()
-    a: dispatchEvent on window
-  answer: c
-  explanation: Invalidate by key so next reads refetch that domain; components never guess.
+    a: queryClient.clear()
+    b: dispatchEvent on window
+    c: window.location.reload()
+    d: queryCache.invalidate(['applications'])
+  answer: d
+  explanation: Invalidate by key so next reads refetch that domain; components never
+    guess.
   difficulty: 2
   tags:
   - scenario
@@ -43,7 +45,8 @@
     c: Skip the cache for mutations
     d: Refetch the whole app on each mutation
   answer: a
-  explanation: Cache writes buy instant UI; invalidation buys correctness for uncomputable rows.
+  explanation: Cache writes buy instant UI; invalidation buys correctness for uncomputable
+    rows.
   difficulty: 2
   tags:
   - concept
@@ -51,11 +54,11 @@
 - id: '12.5'
   question: 'An SSE burst of 60 status changes should produce:'
   options:
-    a: 60 UI re-renders grouped into paint lanes
-    b: One coalesced cache patch and one UI transition
-    c: 60 refetches of the list
-    d: A forced reload
-  answer: b
+    a: A forced reload
+    b: 60 UI re-renders grouped into paint lanes
+    c: One coalesced cache patch and one UI transition
+    d: 60 refetches of the list
+  answer: c
   explanation: Throttle/coalesce merges events; the cache patches touched rows once.
   difficulty: 2
   tags:
@@ -64,11 +67,11 @@
 - id: '12.6'
   question: Which state belongs in zusstand, NOT the query cache?
   options:
-    a: Program option list from the server
-    b: Application row data
-    c: The draft field values the user is typing
-    d: Status counts aggregates
-  answer: c
+    a: The draft field values the user is typing
+    b: Status counts aggregates
+    c: Program option list from the server
+    d: Application row data
+  answer: a
   explanation: Drafts are client-authored truth; caches hold server truth.
   difficulty: 2
   tags:
@@ -77,12 +80,13 @@
 - id: '12.7'
   question: What does 'push never refetches the world' mean for a status event?
   options:
-    c: Ignore it entirely
-    d: Patch only the touched cache row; refetch nothing
-    a: Refetch every domain key
-    b: Reload the tab
-  answer: d
-  explanation: The upsert changes one entry; a storm would race against every other patch.
+    a: Reload the tab
+    b: Ignore it entirely
+    c: Patch only the touched cache row; refetch nothing
+    d: Refetch every domain key
+  answer: c
+  explanation: The upsert changes one entry; a storm would race against every other
+    patch.
   difficulty: 2
   tags:
   - concept
@@ -90,25 +94,28 @@
 - id: '12.8'
   question: Why must the `fetcher` be typed with a zod parse (m4) at the cache seam?
   options:
-    a: To make the seam's contract testable against the MSW contract
-    b: To avoid using TypeScript elsewhere
-    c: To slow the cache down
-    d: To match the query key
-  answer: a
-  explanation: Runtime drift dies at the parse seam, and the fixture contract becomes an assertion.
+    a: To match the query key
+    b: To make the seam's contract testable against the MSW contract
+    c: To avoid using TypeScript elsewhere
+    d: To slow the cache down
+  answer: b
+  explanation: Runtime drift dies at the parse seam, and the fixture contract becomes
+    an assertion.
   difficulty: 3
   tags:
   - scenario
   - application
 - id: '12.9'
-  question: Where does the query cache state machine live, and how do React components read it?
+  question: Where does the query cache state machine live, and how do React components
+    read it?
   options:
-    a: Inside the components; they own copies
-    b: In an external store; components subscribe via a sync bridge
-    c: Only in the server
-    d: In zusstand with selectors replacing keys
-  answer: b
-  explanation: The cache is an external store; useSyncExternalStore-style bridging keeps renders cheap.
+    a: Only in the server
+    b: In zusstand with selectors replacing keys
+    c: Inside the components; they own copies
+    d: In an external store; components subscribe via a sync bridge
+  answer: d
+  explanation: The cache is an external store; useSyncExternalStore-style bridging
+    keeps renders cheap.
   difficulty: 3
   tags:
   - concept
@@ -116,23 +123,113 @@
 - id: '12.10'
   question: 'The textbook misuse of a query library is:'
   options:
-    d: Using it as a fetcher-per-component wrapper
-    a: Reading stale data
-    b: Invalidating after mutations
-    c: Serving cached rows
-  answer: d
-  explanation: Same storm, but wrapped — the point is keyed caching, dedupe, and merged push.
+    a: Serving cached rows
+    b: Using it as a fetcher-per-component wrapper
+    c: Reading stale data
+    d: Invalidating after mutations
+  answer: b
+  explanation: "Same storm, but wrapped \u2014 the point is keyed caching, dedupe,\
+    \ and merged push."
   difficulty: 1
   tags:
   - misconception
-- id: "12.11"
-  question: "TanStack Query caches an applicant list. The user edits one row. The cache should update:"
+- id: '12.11'
+  question: 'TanStack Query caches an applicant list. The user edits one row. The
+    cache should update:'
   options:
-    a: "Manually after every mutation, with cache.setQueryData"
-    b: "By invalidating the list query, which triggers a refetch"
-    c: "Automatically via the mutation's onSuccess with setQueryData or invalidateQueries, chosen by staleness-vs-precision trade-off"
-    d: "Never; the user must refresh manually"
-  answer: c
-  explanation: setQueryData is precise (no extra fetch) but error-prone; invalidateQueries is safe (refetch guaranteed) but uses bandwidth. The choice depends on whether the server is the source of truth for the new value (invalidate) or the client knows it perfectly (set).
+    a: By invalidating the list query, which triggers a refetch
+    b: Automatically via the mutation's onSuccess with setQueryData or invalidateQueries,
+      chosen by staleness-vs-precision trade-off
+    c: Never; the user must refresh manually
+    d: Manually after every mutation, with cache.setQueryData
+  answer: b
+  explanation: setQueryData is precise (no extra fetch) but error-prone; invalidateQueries
+    is safe (refetch guaranteed) but uses bandwidth. The choice depends on whether
+    the server is the source of truth for the new value (invalidate) or the client
+    knows it perfectly (set).
   difficulty: 3
-  tags: [process, comparison]
+  tags:
+  - process
+  - comparison
+- id: '12.12'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+    b: The schema module (m4)
+    c: The cache module (m12)
+    d: The test module (m3)
+  answer: a
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '12.13'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: The user's network
+    b: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    c: Restart the server
+    d: Check the dashboard
+  answer: b
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '12.14'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Use a different test framework
+    b: Add a unit test for every function
+    c: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    d: Move all logic to a single hook
+  answer: c
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '12.15'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: It replaces the loop
+    b: It runs before the loop
+    c: It does not
+    d: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+  answer: d
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '12.16'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Many comments
+    b: Many tests
+    c: Slow performance
+    d: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+  answer: d
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

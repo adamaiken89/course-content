@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "Lifted state is the {closest common parent} of two siblings that need to share a value."
+  answer: "closest common parent"
+  explanation: "Lift to the parent that owns both children. The parent holds the state; both children receive the value and a setter as props. The parent is the source of truth."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "Derived state is {computed} from props or other state; it should never be {stored} separately."
+  answer: "computed; stored"
+  explanation: "The wrong pattern: useState + useEffect to recompute on every change. The right pattern: compute during render. The value is a function of its inputs."
+  difficulty: 1
+  tags: [concept]
+- id: "c.3"
+  question: "{useEffect} is for {side effects}, not for {derived state}."
+  answer: "useEffect; side effects; derived state"
+  explanation: "A common anti-pattern: useEffect to recompute a value from props. The fix: compute the value during render. Effects are for subscriptions, timers, and side effects on the world."
+  difficulty: 1
+  tags: [misconception]
+- id: "c.4"
+  question: "Form state in a single component is {useState}; across the form, it is {lifted} to the form container."
+  answer: "useState; lifted"
+  explanation: "Each field is useState. The form container owns the form's state; fields receive the value and a change handler. Cross-field validation lives in the container."
+  difficulty: 2
+  tags: [process]
+- id: "c.5"
+  question: "Sibling state is the {parent} state passed to two children as {props}."
+  answer: "parent; props"
+  explanation: "The parent is the source of truth. Children are pure: they receive the value and a callback. The pattern is the smallest possible shared state."
+  difficulty: 1
+  tags: [concept]
+- id: "c.6"
+  question: "A controlled {input}'s value is bound to {state}; an uncontrolled input stores its value in the {DOM}."
+  answer: "input; state; DOM"
+  explanation: "Controlled inputs are easier to validate, format, and reset. Uncontrolled inputs are simpler for one-shot forms. The choice depends on the validation surface."
+  difficulty: 2
+  tags: [comparison]
+- id: "c.7"
+  question: "State should be {lifted} as high as needed, but no higher; over-lifting creates {re-render} storms."
+  answer: "lifted; re-render"
+  explanation: "Lift to the closest common parent. Going higher re-renders siblings that do not need the value. The minimum lift is the right lift."
+  difficulty: 2
+  tags: [process]
+- id: "c.8"
+  question: "A {reducer} in a parent is the right answer when the lifted state has {multiple} coordinated updates; otherwise useState is enough."
+  answer: "reducer; multiple"
+  explanation: "One setter, one value type → useState. Many setters, many action types, a coherent state shape → useReducer. The number of updates is the signal."
+  difficulty: 2
+  tags: [process]

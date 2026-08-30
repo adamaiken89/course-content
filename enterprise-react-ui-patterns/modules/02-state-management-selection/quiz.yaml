@@ -1,132 +1,263 @@
-- id: "2.1"
-  question: "What is the term for draft data, selected program, validation errors, and modal flags scattered across useState hooks and contexts with no placement rule?"
+- id: '2.1'
+  question: What is the term for draft data, selected program, validation errors,
+    and modal flags scattered across useState hooks and contexts with no placement
+    rule?
   options:
-    a: "render throttling"
-    b: "state spaghetti"
-    c: "context tunneling"
-    d: "prop diffusion"
-  answer: b
-  explanation: "State spaghetti is state scattered over useState and context with no rule for where a value lives; every feature re-fights the same re-render storm."
-  difficulty: 1
-  tags: [terminology]
-- id: "2.2"
-  question: "Why does one big context provider re-render every consumer on every keystroke?"
-  options:
-    a: "the provider value is a new object reference each render"
-    b: "context deduplicates subscriptions by default"
-    c: "React bails out when a memoized child consumes context"
-    d: "context only re-renders subscribed slices"
+    a: state spaghetti
+    b: context tunneling
+    c: prop diffusion
+    d: render throttling
   answer: a
-  explanation: "A new value object { drafts, programId, errors } is created on every setState, so Object.is fails and every consumer re-renders; context offers no per-slice subscription."
+  explanation: State spaghetti is state scattered over useState and context with no
+    rule for where a value lives; every feature re-fights the same re-render storm.
   difficulty: 1
-  tags: [concept]
-- id: "2.3"
-  question: "A value is read by one component, changes rarely, and dies on unmount. Which matrix condition selects useState?"
+  tags:
+  - terminology
+- id: '2.2'
+  question: Why does one big context provider re-render every consumer on every keystroke?
   options:
-    a: "persistence across reloads"
-    b: "cross-screen sync"
-    c: "high write frequency at app scope"
-    d: "scope of a single component with ephemeral lifetime"
-  answer: d
-  explanation: "One consumer, rare writes, no survival need - the narrowest scope and shortest lifetime - maps to local useState; anything else is ceremony."
-  difficulty: 2
-  tags: [concept]
-- id: "2.4"
-  question: "A summary panel flickers on every keystroke in every draft after this selector: useBatchDraft((s) => ({ ...s.drafts[programId] })). Why?"
-  options:
-    a: "the drafts are too large to serialize"
-    b: "persist middleware re-hydrates on every keystroke"
-    c: "the spread builds a new object each snapshot, defeating Object.is equality"
-    d: "useBatchDraft returns a promise"
+    a: React bails out when a memoized child consumes context
+    b: context only re-renders subscribed slices
+    c: the provider value is a new object reference each render
+    d: context deduplicates subscriptions by default
   answer: c
-  explanation: "A new object identity per snapshot breaks zustand's default equality check, so the component subscribes to everything. Select primitives or the stable stored reference."
-  difficulty: 2
-  tags: [scenario]
-- id: "2.5"
-  question: "What single metric most separates context from zustand?"
-  options:
-    a: "rendering approach"
-    b: "subscription isolation granularity"
-    c: "TypeScript support"
-    d: "bundle size"
-  answer: b
-  explanation: "Context re-renders every consumer of a provider per value change; zustand re-renders only components whose selected slice changed. Frequency is the deciding condition."
-  difficulty: 2
-  tags: [comparison]
-- id: "2.6"
-  question: "Which zustand middleware makes a batch draft survive a page reload?"
-  options:
-    a: "persist"
-    b: "immutable"
-    c: "combine"
-    d: "devtools"
-  answer: a
-  explanation: "The persist middleware serializes the slice to localStorage under a given name and rehydrates it on boot, giving reload survival with one line of config."
+  explanation: A new value object { drafts, programId, errors } is created on every
+    setState, so Object.is fails and every consumer re-renders; context offers no
+    per-slice subscription.
   difficulty: 1
-  tags: [concept]
-- id: "2.7"
-  question: "A batch draft is written at typing frequency from many components, read by a summary panel on another route, and must survive reload. Which home does the matrix pick?"
+  tags:
+  - concept
+- id: '2.3'
+  question: A value is read by one component, changes rarely, and dies on unmount.
+    Which matrix condition selects useState?
   options:
-    a: "a useState flag inside the summary panel"
-    b: "a memoized context provider near the summary"
-    c: "a zustand store with persist middleware"
-    d: "lifted state in the page component"
-  answer: c
-  explanation: "All four conditions sweep to zustand plus persist: app-wide scope, hot writes, cross-screen reads, and reload survival. useState, context, and lifted state each miss at least one condition."
-  difficulty: 3
-  tags: [scenario]
-- id: "2.8"
-  question: "What React 19 primitive does zustand build on to subscribe to an external store without tearing?"
-  options:
-    a: "useContextSelector"
-    b: "useMemo"
-    c: "useReducer"
-    d: "useSyncExternalStore"
+    a: persistence across reloads
+    b: cross-screen sync
+    c: high write frequency at app scope
+    d: scope of a single component with ephemeral lifetime
   answer: d
-  explanation: "useSyncExternalStore lets React subscribe to an external store and read consistent snapshots without tearing; zustand's selectors sit on top of it."
-  difficulty: 1
-  tags: [terminology]
-- id: "2.9"
-  question: "Which value belongs in a TanStack Query cache (module 12) rather than a client store?"
+  explanation: One consumer, rare writes, no survival need - the narrowest scope and
+    shortest lifetime - maps to local useState; anything else is ceremony.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.4'
+  question: 'A summary panel flickers on every keystroke in every draft after this
+    selector: useBatchDraft((s) => ({ ...s.drafts[programId] })). Why?'
   options:
-    a: "the program catalog fetched from the server"
-    b: "the dropdown open flag"
-    c: "the typed-but-unsaved draft text"
-    d: "the login user id"
+    a: the spread builds a new object each snapshot, defeating Object.is equality
+    b: useBatchDraft returns a promise
+    c: the drafts are too large to serialize
+    d: persist middleware re-hydrates on every keystroke
   answer: a
-  explanation: "Server-derived data is answered by the network, so it belongs to the cache layer with staleness, retries, and refetch. Client state stores UI values; fetched JSON is server state."
+  explanation: A new object identity per snapshot breaks zustand's default equality
+    check, so the component subscribes to everything. Select primitives or the stable
+    stored reference.
   difficulty: 2
-  tags: [comparison]
-- id: "2.10"
-  question: "A team keeps one big context but adds React.memo everywhere to fix the re-render storm. Why does the storm persist?"
+  tags:
+  - scenario
+- id: '2.5'
+  question: What single metric most separates context from zustand?
   options:
-    a: "memo blocks context propagation entirely"
-    b: "memo only skips prop-driven renders; a new context value bypasses the memo and re-renders consumers"
-    c: "the compiler disables memo for context consumers"
-    d: "React 19 removed memoization for function components"
+    a: rendering approach
+    b: subscription isolation granularity
+    c: TypeScript support
+    d: bundle size
   answer: b
-  explanation: "React.memo bails out only when props are reference-equal; a new provider value from a keystroke still propagates through context to every consumer. Memoization changes render cost, not store topology."
+  explanation: Context re-renders every consumer of a provider per value change; zustand
+    re-renders only components whose selected slice changed. Frequency is the deciding
+    condition.
+  difficulty: 2
+  tags:
+  - comparison
+- id: '2.6'
+  question: Which zustand middleware makes a batch draft survive a page reload?
+  options:
+    a: combine
+    b: devtools
+    c: persist
+    d: immutable
+  answer: c
+  explanation: The persist middleware serializes the slice to localStorage under a
+    given name and rehydrates it on boot, giving reload survival with one line of
+    config.
+  difficulty: 1
+  tags:
+  - concept
+- id: '2.7'
+  question: A batch draft is written at typing frequency from many components, read
+    by a summary panel on another route, and must survive reload. Which home does
+    the matrix pick?
+  options:
+    a: lifted state in the page component
+    b: a useState flag inside the summary panel
+    c: a memoized context provider near the summary
+    d: a zustand store with persist middleware
+  answer: d
+  explanation: 'All four conditions sweep to zustand plus persist: app-wide scope,
+    hot writes, cross-screen reads, and reload survival. useState, context, and lifted
+    state each miss at least one condition.'
   difficulty: 3
-  tags: [scenario]
-- id: "2.11"
-  question: A value is read in 2 sibling components, written once per user click, and never persisted. Where should it live?
+  tags:
+  - scenario
+- id: '2.8'
+  question: What React 19 primitive does zustand build on to subscribe to an external
+    store without tearing?
   options:
-    a: "Redux store"
-    b: "Lifted state in the closest common parent"
-    c: "Zustand global store"
-    d: "URL query string"
-  answer: b
-  explanation: Lifted state is the cheapest correct answer when the write is rare, the read is local, and there is no cross-screen consumer. Reach for zustand only when the siblings become cousins across routes, or the URL when the state is shareable as a link.
-  difficulty: 2
-  tags: [concept, scenario]
-- id: "2.12"
-  question: A value is read in 2 sibling components, written once per user click, and never persisted. Where should it live?
+    a: useContextSelector
+    b: useMemo
+    c: useReducer
+    d: useSyncExternalStore
+  answer: d
+  explanation: useSyncExternalStore lets React subscribe to an external store and
+    read consistent snapshots without tearing; zustand's selectors sit on top of it.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.9'
+  question: Which value belongs in a TanStack Query cache (module 12) rather than
+    a client store?
   options:
-    a: "Redux store"
-    b: "Lifted state in the closest common parent"
-    c: "Zustand global store"
-    d: "URL query string"
-  answer: b
-  explanation: Lifted state is the cheapest correct answer when the write is rare, the read is local, and there is no cross-screen consumer. Reach for zustand only when the siblings become cousins across routes, or the URL when the state is shareable as a link.
+    a: the program catalog fetched from the server
+    b: the dropdown open flag
+    c: the typed-but-unsaved draft text
+    d: the login user id
+  answer: a
+  explanation: Server-derived data is answered by the network, so it belongs to the
+    cache layer with staleness, retries, and refetch. Client state stores UI values;
+    fetched JSON is server state.
   difficulty: 2
-  tags: [concept, scenario]
+  tags:
+  - comparison
+- id: '2.10'
+  question: A team keeps one big context but adds React.memo everywhere to fix the
+    re-render storm. Why does the storm persist?
+  options:
+    a: memo blocks context propagation entirely
+    b: memo only skips prop-driven renders; a new context value bypasses the memo
+      and re-renders consumers
+    c: the compiler disables memo for context consumers
+    d: React 19 removed memoization for function components
+  answer: b
+  explanation: React.memo bails out only when props are reference-equal; a new provider
+    value from a keystroke still propagates through context to every consumer. Memoization
+    changes render cost, not store topology.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '2.11'
+  question: A value is read in 2 sibling components, written once per user click,
+    and never persisted. Where should it live?
+  options:
+    a: URL query string
+    b: Redux store
+    c: Lifted state in the closest common parent
+    d: Zustand global store
+  answer: c
+  explanation: Lifted state is the cheapest correct answer when the write is rare,
+    the read is local, and there is no cross-screen consumer. Reach for zustand only
+    when the siblings become cousins across routes, or the URL when the state is shareable
+    as a link.
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '2.12'
+  question: A value is read in 2 sibling components, written once per user click,
+    and never persisted. Where should it live?
+  options:
+    a: URL query string
+    b: Redux store
+    c: Lifted state in the closest common parent
+    d: Zustand global store
+  answer: c
+  explanation: Lifted state is the cheapest correct answer when the write is rare,
+    the read is local, and there is no cross-screen consumer. Reach for zustand only
+    when the siblings become cousins across routes, or the URL when the state is shareable
+    as a link.
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '2.13'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The test module (m3)
+    b: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+    c: The schema module (m4)
+    d: The cache module (m12)
+  answer: b
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '2.14'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: The user's network
+    b: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    c: Restart the server
+    d: Check the dashboard
+  answer: b
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '2.15'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Move all logic to a single hook
+    b: Use a different test framework
+    c: Add a unit test for every function
+    d: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+  answer: d
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '2.16'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    b: It replaces the loop
+    c: It runs before the loop
+    d: It does not
+  answer: a
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '2.17'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    b: Many comments
+    c: Many tests
+    d: Slow performance
+  answer: a
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

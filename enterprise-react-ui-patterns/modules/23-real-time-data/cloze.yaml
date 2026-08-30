@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "{Polling} with refetch-on-focus covers 80% of enterprise real-time needs at the lowest cost."
+  answer: "Polling"
+  explanation: "Internal tools with tens-of-seconds staleness budget are polling's natural fit. The cost is one request per active tab per interval; no persistent connections."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "EventSource (SSE) has {built-in} reconnect with exponential backoff; WebSockets need {application-level} reconnect."
+  answer: "built-in; application-level"
+  explanation: "SSE's EventSource auto-reconnects. WebSockets require the application to implement reconnect, message framing, and cleanup. For one-way server push, SSE is simpler."
+  difficulty: 2
+  tags: [concept]
+- id: "c.3"
+  question: "The cache integration for real-time is {setQueryData} for partial updates and {invalidateQueries} for full refetch."
+  answer: "setQueryData; invalidateQueries"
+  explanation: "setQueryData merges a known payload into the cache without a round trip. invalidateQueries marks stale and refetches. Choose by safety: can the client apply the partial update correctly?"
+  difficulty: 2
+  tags: [concept]
+- id: "c.4"
+  question: "The standard reconnect pattern is exponential backoff with {jitter} and a {cap} (typically 30 seconds)."
+  answer: "jitter; cap"
+  explanation: "Doubling backoff with jitter avoids thundering herd. The cap prevents an idle tab from waiting hours. Reset attempts on successful onopen."
+  difficulty: 2
+  tags: [concept]
+- id: "c.5"
+  question: "Real-time does NOT solve the 'I was {away}' case — closed tabs miss messages. The fix is polling on {focus} or a notification."
+  answer: "away; focus"
+  explanation: "Streams do not buffer for closed tabs. The user must refetch on focus, or the app shows a 'X changes while you were away' notification that lets the user opt in to refresh."
+  difficulty: 2
+  tags: [concept]
+- id: "c.6"
+  question: "The trade-off between polling and SSE is {request} cost vs {connection} cost."
+  answer: "request; connection"
+  explanation: "Polling wastes requests when the data has not changed. SSE pushes only on change but holds a persistent connection. The choice depends on the staleness budget and the server's connection capacity."
+  difficulty: 2
+  tags: [comparison]
+- id: "c.7"
+  question: "WebSockets are the right answer over SSE when the client must send events {back} over the same connection, or sub-second {latency} is required."
+  answer: "back; latency"
+  explanation: "WebSockets are bidirectional and lower latency. The cost is server complexity, application-level reconnect, and message framing. For presence, collaborative editing, or live trading, WebSockets are necessary."
+  difficulty: 2
+  tags: [concept]
+- id: "c.8"
+  question: "When 50 SSE events arrive in 100ms and each invalidates the cache, the wire sees 50 refetches; the fix is {debouncing} the invalidation or using {setQueryData} for partial updates."
+  answer: "debouncing; setQueryData"
+  explanation: "Coalesce events within a window, or apply each partial update directly. The right pattern depends on whether the client can correctly merge the partial update into the existing list."
+  difficulty: 3
+  tags: [process]

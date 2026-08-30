@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "{Suspense} is a render-phase mechanism: a child throws a {Promise}, the nearest boundary catches and shows the fallback."
+  answer: "Suspense; Promise"
+  explanation: "Suspense catches a thrown Promise in render. The boundary shows its fallback while the Promise is pending, then re-renders with the resolved children when it settles."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "The only way to read a Promise in render so Suspense catches the unresolved state is the {use} hook."
+  answer: "use"
+  explanation: "await and .then do not throw to Suspense. use(promise) is the explicit primitive for reading a Promise during render."
+  difficulty: 2
+  tags: [concept]
+- id: "c.3"
+  question: "Boundary {placement} is the only Suspense design question that matters; match it to the user's mental model of {independence}."
+  answer: "placement; independence"
+  explanation: "Coordinated sections belong in one boundary. Independent sections belong in separate boundaries. The right granularity matches how the user reads the page."
+  difficulty: 2
+  tags: [concept]
+- id: "c.4"
+  question: "A Suspense boundary without a {fallback} prop renders nothing while children suspend — always provide a {skeleton} that matches the final shape."
+  answer: "fallback; skeleton"
+  explanation: "Skeletons are a UX contract, not optional. A blank section for 800ms is worse than three spinners. Match the skeleton's height, columns, and layout to the final content to avoid layout shift."
+  difficulty: 2
+  tags: [concept]
+- id: "c.5"
+  question: "When a Suspense boundary {remounts} (key change or navigation), the children's local state is lost — keep stateful children {outside} the boundary or lift state to a stable parent."
+  answer: "remounts; outside"
+  explanation: "A common bug: a form inside a Suspense boundary loses its draft on revalidation. The fix is to keep the form outside the boundary or to lift the draft to a stable parent."
+  difficulty: 3
+  tags: [concept]
+- id: "c.6"
+  question: "{Streaming} SSR is a server framework capability built on Suspense; a client-only app uses Suspense without streaming and benefits from the {shape}."
+  answer: "Streaming; shape"
+  explanation: "Streaming is the server's job. Suspense is React's job. A client-only app uses Suspense for fallbacks, fetch dedupe via use(), and a tree that is ready for SSR when the portal moves to a framework."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "useSuspenseQuery throws the Promise instead of returning {isLoading: true}; refactoring an app to it requires every consumer to be inside a {boundary}."
+  answer: "isLoading: true; boundary"
+  explanation: "useSuspenseQuery is a different shape from useQuery. Switching to it is a non-trivial refactor for an app built around useQuery, but it gives a cleaner Suspense story."
+  difficulty: 3
+  tags: [concept]
+- id: "c.8"
+  question: "use() throws the resolved Promise to the nearest {Suspense} and a rejected Promise to the nearest {error boundary}."
+  answer: "Suspense; error boundary"
+  explanation: "Resolved Promises suspend; rejected Promises error. The boundary nearest the thrower catches it. Place boundaries to match the user's mental model of independence and the developer's mental model of error scope."
+  difficulty: 2
+  tags: [concept]

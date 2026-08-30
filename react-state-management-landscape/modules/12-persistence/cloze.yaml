@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "Persistence is the question of {surviving reload}; the {layer} is the choice between localStorage, IndexedDB, and a server."
+  answer: "surviving reload; layer"
+  explanation: "The question is: when the user reloads, what survives? The answer picks the layer. localStorage is the simplest; IndexedDB is for large data; the server is for cross-device."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "{localStorage} is a {synchronous} key-value store; it is fine for small, infrequently-read values; it is wrong for {large} or {frequently-read} data."
+  answer: "localStorage; synchronous; large; frequently-read"
+  explanation: "localStorage is 5-10MB; reads are blocking; values are strings. For settings and small UI state, it is fine. For large data, IndexedDB. For frequently-read data, the cache (TanStack Query) is better."
+  difficulty: 2
+  tags: [concept]
+- id: "c.3"
+  question: "{IndexedDB} is an {asynchronous} key-value store; it is the right answer for {large} client-side data and {offline} support."
+  answer: "IndexedDB; asynchronous; large; offline"
+  explanation: "IndexedDB can store megabytes or gigabytes; reads are async; values can be structured (IndexedDB supports indexes). The right answer for offline-first apps."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.4"
+  question: "{zustand persist} middleware writes the store to localStorage on every {change}; the {partialize} option controls which fields are persisted."
+  answer: "zustand persist; change; partialize"
+  explanation: "Persisting tokens is risky (XSS); persisting UI state is fine. partialize is the place to make that call. The middleware handles the rest."
+  difficulty: 2
+  tags: [process]
+- id: "c.5"
+  question: "A {migration} is a function that transforms persisted data when the {schema} changes; without migrations, old data can crash the new app."
+  answer: "migration; schema"
+  explanation: "A persisted store is a contract with the user's previous version. When the schema changes, the migration function transforms the old shape into the new shape. Without it, the new app can crash on old data."
+  difficulty: 2
+  tags: [concept]
+- id: "c.6"
+  question: "Persisting {server-derived} state is an anti-pattern; the server is the source of truth, and the persisted value will be {stale} on the next refetch."
+  answer: "server-derived; stale"
+  explanation: "TanStack Query's cache is a window; persisting it is fighting the staleness logic. The cache refetches on focus; the persisted value is overridden. The pattern is to let the cache refetch."
+  difficulty: 2
+  tags: [misconception]
+- id: "c.7"
+  question: "{Versioning} the persisted shape with a {version} number is the standard migration pattern; the app refuses to load a {newer} version's data and {migrates} an older version."
+  answer: "Versioning; version; newer; migrates"
+  explanation: "The version is the migration point. Newer data is rejected (the user is on an old version). Older data is migrated. The pattern is the same as schema migrations in databases."
+  difficulty: 2
+  tags: [process]
+- id: "c.8"
+  question: "Persistence is the right answer when the {value} should survive {reload}; for one-session state, {in-memory} stores are simpler."
+  answer: "value; reload; in-memory"
+  explanation: "If the value should survive reload, persist. If it should not, in-memory. The decision tree picks the layer based on the lifetime question."
+  difficulty: 1
+  tags: [comparison]

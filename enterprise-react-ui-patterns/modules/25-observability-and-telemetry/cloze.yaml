@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "An error boundary + tracker gives the dashboard a {component} stack, the user's session, and {breadcrumbs}."
+  answer: "component; breadcrumbs"
+  explanation: "The boundary catches render-phase exceptions and the tracker reports them with the React component stack, the session, the route, the user agent, and any breadcrumbs accumulated before the error."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "Breadcrumbs accumulate in a {ring buffer} (typically the last 50-100 events) and turn a single error into the {trail} that led to it."
+  answer: "ring buffer; trail"
+  explanation: "Categories include user, navigation, http, state. The categories help filter when reading reports. The trail is the value-add of the error report."
+  difficulty: 1
+  tags: [concept]
+- id: "c.3"
+  question: "The three Core Web Vitals are LCP, INP, and {CLS}. They are the user-experience {floor} Google defines for a good page."
+  answer: "CLS; floor"
+  explanation: "Largest Contentful Paint, Interaction to Next Paint, Cumulative Layout Shift. The thresholds are LCP < 2.5s, INP < 200ms, CLS < 0.1."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.4"
+  question: "PII redaction happens at the {transport} layer, not at every call site."
+  answer: "transport"
+  explanation: "Call-site redaction is fragile — easy to miss a new event, easy to leak PII when a new field is added. Transport-layer redaction means every event goes through the same redaction function."
+  difficulty: 2
+  tags: [process]
+- id: "c.5"
+  question: "Product telemetry is a {separate} tool from error tracking because the two have different {aggregation} patterns, retention, and access controls."
+  answer: "separate; aggregation"
+  explanation: "Errors are rare and high-signal. Product events are high-volume and need funnel analysis. Different consumers (engineering vs product), different retention, different access controls."
+  difficulty: 2
+  tags: [concept]
+- id: "c.6"
+  question: "In an SPA, Web Vitals must be re-captured on every {route} change because the metric is per-{page}-load."
+  answer: "route; page"
+  explanation: "Route changes do not reset the metric automatically. Re-capture on every navigation so the dashboard reflects the current page's performance, not the initial page's."
+  difficulty: 2
+  tags: [process]
+- id: "c.7"
+  question: "Hash user {ids} on the client before sending; the server joins the hash back when needed for {support}."
+  answer: "ids; support"
+  explanation: "A tracker-side breach that exposes hashed user ids is far less damaging than one that exposes real user ids. The hash is one-way; the server joins it back only for support workflows."
+  difficulty: 2
+  tags: [concept]
+- id: "c.8"
+  question: "CLS measures layout {instability}; the cure is reserved {space} for asynchronously-rendered components."
+  answer: "instability; space"
+  explanation: "Asynchronous rendering (fetch then set state then render) causes the page to paint twice. Reserve space with a min-height matching the eventual content's height."
+  difficulty: 2
+  tags: [concept]

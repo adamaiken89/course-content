@@ -1,132 +1,271 @@
-- id: "9.1"
-  question: "In the module's Layout & Container Composition pattern, what does the AppShell own?"
+- id: '9.1'
+  question: In the module's Layout & Container Composition pattern, what does the
+    AppShell own?
   options:
-    a: "Data fetching, validation, and form state for the routed page"
-    b: "The placement of every button on the page"
-    c: "Repeated chrome: header, nav rail, main outlet, banner slot"
-    d: "The store schema that pages use"
+    a: Data fetching, validation, and form state for the routed page
+    b: The placement of every button on the page
+    c: 'Repeated chrome: header, nav rail, main outlet, banner slot'
+    d: The store schema that pages use
   answer: c
-  explanation: "The shell owns chrome — header, NavRail, main outlet, and slots like the banner. Pages own content and containers own data (module 1). Fetching (a) and store schema (d) belong to data layers, not the shell."
+  explanation: "The shell owns chrome \u2014 header, NavRail, main outlet, and slots\
+    \ like the banner. Pages own content and containers own data (module 1). Fetching\
+    \ (a) and store schema (d) belong to data layers, not the shell."
   difficulty: 1
-  tags: [terminology]
-- id: "9.2"
-  question: "Why does copying a `<div className=\"page\">` wrapper and a header into every page fail as the app grows?"
+  tags:
+  - terminology
+- id: '9.2'
+  question: Why does copying a `<div className="page">` wrapper and a header into
+    every page fail as the app grows?
   options:
-    a: "Because divs are not semantic HTML"
-    b: "Because shared chrome changes become an N-page refactor and rhythm drifts"
-    c: "Because CSS cannot style duplicated class names"
-    d: "Because routing stops working past a few pages"
-  answer: b
-  explanation: "Duplicated chrome means every change (nav rail, banner, max width) is edited N times, and each page encodes its own width and gutters so spacing drifts. A single shell centralizes those decisions."
-  difficulty: 1
-  tags: [concept]
-- id: "9.3"
-  question: "A slot prop like `headerActions` in AppShell lets a page do what without what?"
-  options:
-    a: "Inject its own buttons without owning the header frame"
-    b: "Restyle the header with its own classes"
-    c: "Hide the header entirely"
-    d: "Fetch its own user data"
+    a: Because shared chrome changes become an N-page refactor and rhythm drifts
+    b: Because CSS cannot style duplicated class names
+    c: Because routing stops working past a few pages
+    d: Because divs are not semantic HTML
   answer: a
-  explanation: "Slots (module 1) are injection points: the page supplies content, the shell supplies the frame. The page stays ignorant of header layout — it cannot restyle or unframe it (b, c), and data still comes from the store (d)."
+  explanation: Duplicated chrome means every change (nav rail, banner, max width)
+    is edited N times, and each page encodes its own width and gutters so spacing
+    drifts. A single shell centralizes those decisions.
   difficulty: 1
-  tags: [concept]
-- id: "9.4"
-  question: "The impersonation banner appears under the header whenever an agent acts as a student. Where does it live?"
+  tags:
+  - concept
+- id: '9.3'
+  question: A slot prop like `headerActions` in AppShell lets a page do what without
+    what?
   options:
-    a: "Inside every page, above the first heading"
-    b: "In the store, rendered by whichever page is active"
-    c: "Inside the batch review modal"
-    d: "In the shell's banner slot, reading a shell-level session flag"
+    a: Inject its own buttons without owning the header frame
+    b: Restyle the header with its own classes
+    c: Hide the header entirely
+    d: Fetch its own user data
+  answer: a
+  explanation: "Slots (module 1) are injection points: the page supplies content,\
+    \ the shell supplies the frame. The page stays ignorant of header layout \u2014\
+    \ it cannot restyle or unframe it (b, c), and data still comes from the store\
+    \ (d)."
+  difficulty: 1
+  tags:
+  - concept
+- id: '9.4'
+  question: The impersonation banner appears under the header whenever an agent acts
+    as a student. Where does it live?
+  options:
+    a: Inside the batch review modal
+    b: In the shell's banner slot, reading a shell-level session flag
+    c: Inside every page, above the first heading
+    d: In the store, rendered by whichever page is active
+  answer: b
+  explanation: "The shell owns the banner slot and reads the impersonation flag from\
+    \ session state (module 6). Pages never know about the banner \u2014 they neither\
+    \ reserve space nor fetch session data. Options a-c scatter layout back across\
+    \ pages."
+  difficulty: 1
+  tags:
+  - application
+- id: '9.5'
+  question: The NavRail collapse toggle must set which attribute so screen readers
+    announce the expanded state?
+  options:
+    a: aria-label
+    b: aria-current
+    c: aria-expanded
+    d: aria-live
+  answer: c
+  explanation: "aria-expanded tells assistive tech whether the disclosure is open.\
+    \ aria-current marks the active route, aria-label names the button, aria-live\
+    \ announces region changes \u2014 each a different job."
+  difficulty: 2
+  tags:
+  - terminology
+- id: '9.6'
+  question: Changing the whole app's content width should be a one-token edit. What
+    makes that true?
+  options:
+    a: A build-time variable applied by the bundler
+    b: A page-level media query in each route
+    c: A width constant in every page component
+    d: A CSS custom property like `--content-max`, consumed by one PageContainer
   answer: d
-  explanation: "The shell owns the banner slot and reads the impersonation flag from session state (module 6). Pages never know about the banner — they neither reserve space nor fetch session data. Options a-c scatter layout back across pages."
-  difficulty: 1
-  tags: [application]
-- id: "9.5"
-  question: "The NavRail collapse toggle must set which attribute so screen readers announce the expanded state?"
-  options:
-    a: "aria-label"
-    b: "aria-current"
-    c: "aria-expanded"
-    d: "aria-live"
-  answer: c
-  explanation: "aria-expanded tells assistive tech whether the disclosure is open. aria-current marks the active route, aria-label names the button, aria-live announces region changes — each a different job."
+  explanation: Spacing rhythm lives in tokens consumed by shared containers (PageContainer).
+    One declaration site, no drift. Copying a constant into every page (a, d) recreates
+    the duplication problem, and (c) is irrelevant.
   difficulty: 2
-  tags: [terminology]
-- id: "9.6"
-  question: "Changing the whole app's content width should be a one-token edit. What makes that true?"
+  tags:
+  - application
+- id: '9.7'
+  question: A developer makes ApplicationsTable render `<section className="page">`
+    with its own max-width, and wraps it in PageContainer again at call sites. What
+    is wrong?
   options:
-    a: "A width constant in every page component"
-    b: "A CSS custom property like `--content-max`, consumed by one PageContainer"
-    c: "A build-time variable applied by the bundler"
-    d: "A page-level media query in each route"
+    a: PageContainer will throw a nesting error
+    b: The table is now single-width and not reusable at other context widths
+    c: "Nothing \u2014 wrappers are harmless"
+    d: Sections are block-level and cannot contain tables
   answer: b
-  explanation: "Spacing rhythm lives in tokens consumed by shared containers (PageContainer). One declaration site, no drift. Copying a constant into every page (a, d) recreates the duplication problem, and (c) is irrelevant."
+  explanation: 'A data container that wraps itself in page chrome suffers container
+    acquisition: layout bakes into the data unit, so a second use (narrow, modal,
+    archived side panel) fights its own wrapper and can never size to context. Layout
+    belongs to shell and PageContainer only.'
   difficulty: 2
-  tags: [application]
-- id: "9.7"
-  question: "A developer makes ApplicationsTable render `<section className=\"page\">` with its own max-width, and wraps it in PageContainer again at call sites. What is wrong?"
+  tags:
+  - scenario
+- id: '9.8'
+  question: The rail-collapsed flag lives in NavRail's useState, but the impersonation
+    banner flag lives in a zustand store. Why the different homes?
   options:
-    a: "Sections are block-level and cannot contain tables"
-    b: "PageContainer will throw a nesting error"
-    c: "The table is now single-width and not reusable at other context widths"
-    d: "Nothing — wrappers are harmless"
-  answer: c
-  explanation: "A data container that wraps itself in page chrome suffers container acquisition: layout bakes into the data unit, so a second use (narrow, modal, archived side panel) fights its own wrapper and can never size to context. Layout belongs to shell and PageContainer only."
-  difficulty: 2
-  tags: [scenario]
-- id: "9.8"
-  question: "The rail-collapsed flag lives in NavRail's useState, but the impersonation banner flag lives in a zustand store. Why the different homes?"
-  options:
-    a: "Either store would work; the choice is stylistic"
-    b: "Because one flag is private UI state and the other is written on one screen and read across screens"
-    c: "Because zustand cannot hold booleans used locally"
-    d: "Because useState cannot hold session data"
-  answer: b
-  explanation: "Collapse is private to the shell (local state, module 2's read-mostly rule); the banner flag is set at login and read by the shell on every screen, so it is cross-screen state that earns a store. The distinction is reach, not style."
-  difficulty: 2
-  tags: [scenario]
-- id: "9.9"
-  question: "In the test that checks the impersonation banner, why assert on the banner's slot content rather than only `getByRole('banner')`?"
-  options:
-    a: "Roles are never asserted in RTL"
-    b: "getByRole('banner') also matches the page title"
-    c: "The browser's implicit banner landmark can also match, producing a false pass"
-    d: "Slot content is not rendered in jsdom"
-  answer: c
-  explanation: "A `<header>` at the top of a document carries the implicit banner landmark, so the role check alone can pass whether or not the shell's banner slot rendered — a false positive. Assert the slot text (the impersonation notice) to actually test the shell's banner seam."
-  difficulty: 3
-  tags: [scenario]
-- id: "9.10"
-  question: "The product adds a reviewer shell (wide content, impersonation bar always on) beside the student shell. Which reuse claim is correct?"
-  options:
-    a: "Shells vary, but PageContainer, EmptyState, and data containers are shared across both"
-    b: "Each shell needs its own EmptyState because the data differs"
-    c: "The student shell can be deleted because PageContainer covers everything"
-    d: "Data containers must fork per shell or they break layout"
+    a: Because one flag is private UI state and the other is written on one screen
+      and read across screens
+    b: Because zustand cannot hold booleans used locally
+    c: Because useState cannot hold session data
+    d: Either store would work; the choice is stylistic
   answer: a
-  explanation: "Multi-shell means shell variants (reviewer vs student chrome scope) while the presentational units and data containers stay identical and reusable — the same 'grades card' works in both portals. Data containers must never care which shell hosts them."
+  explanation: Collapse is private to the shell (local state, module 2's read-mostly
+    rule); the banner flag is set at login and read by the shell on every screen,
+    so it is cross-screen state that earns a store. The distinction is reach, not
+    style.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '9.9'
+  question: In the test that checks the impersonation banner, why assert on the banner's
+    slot content rather than only `getByRole('banner')`?
+  options:
+    a: Slot content is not rendered in jsdom
+    b: Roles are never asserted in RTL
+    c: getByRole('banner') also matches the page title
+    d: The browser's implicit banner landmark can also match, producing a false pass
+  answer: d
+  explanation: "A `<header>` at the top of a document carries the implicit banner\
+    \ landmark, so the role check alone can pass whether or not the shell's banner\
+    \ slot rendered \u2014 a false positive. Assert the slot text (the impersonation\
+    \ notice) to actually test the shell's banner seam."
   difficulty: 3
-  tags: [scenario]
-- id: "9.11"
-  question: The application shell has a top nav, a left rail, a main area, and a toast region. Which container should own the toast region?
+  tags:
+  - scenario
+- id: '9.10'
+  question: The product adds a reviewer shell (wide content, impersonation bar always
+    on) beside the student shell. Which reuse claim is correct?
   options:
-    a: "The main area, because that is where the user is"
-    b: "The shell, because toasts are app-level and outlive any single route"
-    c: "Each feature module that needs toasts owns its own"
-    d: "A global zustand store with a render-prop consumer"
-  answer: b
-  explanation: Toasts are a shell-level concern. They must survive route changes, and any feature can dispatch one. A render-prop consumer over a store is the implementation; ownership belongs to the shell.
-  difficulty: 2
-  tags: [concept]
-- id: "9.12"
-  question: The application shell has a top nav, a left rail, a main area, and a toast region. Which container should own the toast region?
+    a: The student shell can be deleted because PageContainer covers everything
+    b: Data containers must fork per shell or they break layout
+    c: Shells vary, but PageContainer, EmptyState, and data containers are shared
+      across both
+    d: Each shell needs its own EmptyState because the data differs
+  answer: c
+  explanation: "Multi-shell means shell variants (reviewer vs student chrome scope)\
+    \ while the presentational units and data containers stay identical and reusable\
+    \ \u2014 the same 'grades card' works in both portals. Data containers must never\
+    \ care which shell hosts them."
+  difficulty: 3
+  tags:
+  - scenario
+- id: '9.11'
+  question: The application shell has a top nav, a left rail, a main area, and a toast
+    region. Which container should own the toast region?
   options:
-    a: "The main area, because that is where the user is"
-    b: "The shell, because toasts are app-level and outlive any single route"
-    c: "Each feature module that needs toasts owns its own"
-    d: "A global zustand store with a render-prop consumer"
+    a: The main area, because that is where the user is
+    b: The shell, because toasts are app-level and outlive any single route
+    c: Each feature module that needs toasts owns its own
+    d: A global zustand store with a render-prop consumer
   answer: b
-  explanation: Toasts are a shell-level concern. They must survive route changes, and any feature can dispatch one. A render-prop consumer over a store is the implementation; ownership belongs to the shell.
+  explanation: Toasts are a shell-level concern. They must survive route changes,
+    and any feature can dispatch one. A render-prop consumer over a store is the implementation;
+    ownership belongs to the shell.
   difficulty: 2
-  tags: [concept]
+  tags:
+  - concept
+- id: '9.12'
+  question: The application shell has a top nav, a left rail, a main area, and a toast
+    region. Which container should own the toast region?
+  options:
+    a: Each feature module that needs toasts owns its own
+    b: A global zustand store with a render-prop consumer
+    c: The main area, because that is where the user is
+    d: The shell, because toasts are app-level and outlive any single route
+  answer: d
+  explanation: Toasts are a shell-level concern. They must survive route changes,
+    and any feature can dispatch one. A render-prop consumer over a store is the implementation;
+    ownership belongs to the shell.
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.13'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The schema module (m4)
+    b: The cache module (m12)
+    c: The test module (m3)
+    d: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+  answer: d
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '9.14'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    b: Restart the server
+    c: Check the dashboard
+    d: The user's network
+  answer: a
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '9.15'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Add a unit test for every function
+    b: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    c: Move all logic to a single hook
+    d: Use a different test framework
+  answer: b
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '9.16'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: It runs before the loop
+    b: It does not
+    c: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    d: It replaces the loop
+  answer: c
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '9.17'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    b: Many comments
+    c: Many tests
+    d: Slow performance
+  answer: a
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

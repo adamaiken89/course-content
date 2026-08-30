@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "{useState} is the simplest React state primitive; {useReducer} is the right answer when the state shape is a {record} of related fields updated by {actions}."
+  answer: "useState; useReducer; record; actions"
+  explanation: "The two are not interchangeable. useState is a single value; useReducer is a record updated by named actions. Choose based on whether the updates are independent (useState) or coordinated (useReducer)."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "useReducer takes a {reducer} function (state, action) => newState and a {dispatch} function; the reducer is a {pure} function — same input, same output, no side effects."
+  answer: "reducer; dispatch; pure"
+  explanation: "Purity is the contract. Side effects in a reducer produce inconsistent state. The dispatch is the only way to invoke the reducer; the reducer never reads the dispatch."
+  difficulty: 1
+  tags: [concept]
+- id: "c.3"
+  question: "A {reducer} is a {pure} function — same input, same output, no side effects."
+  answer: "reducer; pure"
+  explanation: "Purity is the contract. Side effects in a reducer produce inconsistent state. The dispatch is the only way to invoke the reducer; the reducer never reads the dispatch."
+  difficulty: 1
+  tags: [concept]
+- id: "c.4"
+  question: "An {action} is a {record} with a {type} field and optional {payload}; the reducer branches on type and returns a new state."
+  answer: "action; record; type; payload"
+  explanation: "The shape is convention, not enforcement. { type: 'INCREMENT' } or { type: 'SET_NAME', payload: 'Aissa' }. The reducer is a switch on type."
+  difficulty: 2
+  tags: [terminology]
+- id: "c.5"
+  question: "useReducer is the right answer when the next state depends on the {previous} state and the updates come from a {named} set of actions."
+  answer: "previous; named"
+  explanation: "Counters, wizards, and form drafts are the canonical useReducer cases. The named actions make the dispatch site readable: dispatch({ type: 'NEXT_STEP' }) instead of setCount(c => c + 1)."
+  difficulty: 2
+  tags: [concept]
+- id: "c.6"
+  question: "Lazy {initialization} of useState takes a {function} not a value: useState(() => expensiveComputation())."
+  answer: "initialization; function"
+  explanation: "The function is called only on the first render. Passing a value would compute it on every render. The lazy form is the right answer for expensive initial values."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "useState and useReducer are {local} to the component; lifting state is the {boundary} that decides whether a value is component-private or sibling-shared."
+  answer: "local; boundary"
+  explanation: "Local state is the default. The lift is the seam. Above the lift, the value is shared; below, it is private. The lift is the decision."
+  difficulty: 2
+  tags: [concept]
+- id: "c.8"
+  question: "React batches {state} updates within event handlers and effects; a re-render happens after the {batch} settles."
+  answer: "state; batch"
+  explanation: "Multiple setState calls in a single handler produce one re-render. Outside React's batch boundaries (async work, setTimeout), each setState produces a re-render. The pattern: useReducer collapses multiple updates into one."
+  difficulty: 3
+  tags: [process]

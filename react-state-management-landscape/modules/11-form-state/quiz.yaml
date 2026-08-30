@@ -1,0 +1,139 @@
+- id: '11.1'
+  question: When is useState enough for a form?
+  options:
+    a: For a single input
+    b: For many inputs
+    c: Never
+    d: Always
+  answer: a
+  explanation: Explanation for When is useState enough for a form?...
+  difficulty: 1
+  tags:
+  - concept
+- id: '11.2'
+  question: React Hook Form uses {uncontrolled} inputs with refs.
+  options:
+    a: manual
+    b: controlled
+    c: uncontrolled
+    d: hybrid
+  answer: c
+  explanation: Explanation for React Hook Form uses {uncontrolled} inputs with re...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.3'
+  question: TanStack Form is the {type-safe} alternative to React Hook Form.
+  options:
+    a: newer
+    b: faster
+    c: type-safe
+    d: smaller
+  answer: c
+  explanation: Explanation for TanStack Form is the {type-safe} alternative to Re...
+  difficulty: 1
+  tags:
+  - comparison
+- id: '11.4'
+  question: Schema-driven validation derives the form's rules from a {single source
+    of truth}.
+  options:
+    a: template
+    b: single source of truth
+    c: library
+    d: framework
+  answer: b
+  explanation: Explanation for Schema-driven validation derives the form's rules ...
+  difficulty: 1
+  tags:
+  - concept
+- id: '11.5'
+  question: Zod is a popular {schema} library for TypeScript validation.
+  options:
+    a: schema
+    b: router
+    c: state
+    d: UI
+  answer: a
+  explanation: Explanation for Zod is a popular {schema} library for TypeScript v...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '11.6'
+  question: Server-side validation re-runs the schema on the {server}; the client
+    form is optimistic but the server is the source of truth.
+  options:
+    a: server
+    b: browser
+    c: cache
+    d: client
+  answer: a
+  explanation: Explanation for Server-side validation re-runs the schema on the {...
+  difficulty: 1
+  tags:
+  - process
+- id: '11.7'
+  question: Cross-field validation depends on {multiple} fields; it lives in the schema's
+    refine or the submit handler.
+  options:
+    a: any
+    b: one
+    c: multiple
+    d: 'no'
+  answer: c
+  explanation: Explanation for Cross-field validation depends on {multiple} field...
+  difficulty: 2
+  tags:
+  - process
+- id: '11.8'
+  question: '{Field arrays} handle dynamic lists in a form.'
+  options:
+    a: useEffect
+    b: Context
+    c: useState
+    d: Field arrays
+  answer: d
+  explanation: Explanation for {Field arrays} handle dynamic lists in a form....
+  difficulty: 2
+  tags:
+  - terminology
+- id: '11.9'
+  question: The schema is the source of truth for the form's {shape} and the {validation
+    rules}.
+  options:
+    a: color; styles
+    b: shape; validation rules
+    c: size; position
+    d: id; class
+  answer: b
+  explanation: Explanation for The schema is the source of truth for the form's {...
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.10'
+  question: Form libraries give you controlled semantics with the performance of {uncontrolled}
+    inputs via refs.
+  options:
+    a: controlled
+    b: uncontrolled
+    c: hybrid
+    d: manual
+  answer: b
+  explanation: Explanation for Form libraries give you controlled semantics with ...
+  difficulty: 2
+  tags:
+  - concept
+- id: '11.11'
+  question: The choice between RHF and TanStack Form is between {ecosystem} and {type
+    safety}.
+  options:
+    a: familiarity; newness
+    b: popularity; simplicity
+    c: speed; size
+    d: ecosystem; type safety
+  answer: d
+  explanation: Explanation for The choice between RHF and TanStack Form is betwee...
+  difficulty: 2
+  tags:
+  - comparison
+

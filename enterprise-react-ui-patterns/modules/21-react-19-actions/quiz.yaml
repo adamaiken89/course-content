@@ -1,0 +1,246 @@
+- id: '21.1'
+  question: What three things does useActionState collapse into a single hook?
+  options:
+    a: Inputs, labels, button
+    b: Component, hook, ref
+    c: Form state, pending flag, error envelope
+    d: Form values, validation, submit handler
+  answer: c
+  explanation: useActionState returns [state, action, pending] where state is whatever
+    the reducer returns, action is the form-bound submit, and pending is the in-flight
+    flag. It does not own individual field state.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '21.2'
+  question: Where can useFormStatus be called from?
+  options:
+    a: Anywhere in the component tree
+    b: Only inside a child of a <form> whose action is an action function
+    c: Only in a class component
+    d: Only in a server component
+  answer: b
+  explanation: useFormStatus reads the parent form's transition state. It requires
+    a form with a real action prop. Calling it outside a form returns a noop pending=false.
+  difficulty: 2
+  tags:
+  - concept
+- id: '21.3'
+  question: Who is responsible for rolling back an optimistic update on error?
+  options:
+    a: The browser
+    b: The form's onSubmit
+    c: React automatically
+    d: "The caller \u2014 React does not auto-rollback"
+  answer: d
+  explanation: The optimistic value evaporates only because the real state was not
+    updated. If the action partially succeeded and updated server state, the next
+    refetch is the only thing that re-syncs. Explicit rollback logic is the caller's
+    job.
+  difficulty: 2
+  tags:
+  - concept
+- id: '21.4'
+  question: A form has 30 fields and the team uses useActionState for each. What is
+    the architectural issue?
+  options:
+    a: It does not support more than 10 fields
+    b: It works perfectly
+    c: Every keystroke goes through the action's pending cycle, re-rendering the whole
+      form
+    d: It is too slow because of TypeScript
+  answer: c
+  explanation: "useActionState is a reducer \u2014 every action invocation produces\
+    \ a new state. For 30 fields, that means every keystroke triggers the full action\
+    \ cycle. Use local useState per field; useActionState only for submit."
+  difficulty: 2
+  tags:
+  - scenario
+- id: '21.5'
+  question: When does useActionState beat a TanStack Query mutation for a form?
+  options:
+    a: Never
+    b: 'When the form is self-contained: one submit, one server call, one success
+      or one error, and no coordination with the query cache'
+    c: Only in Next.js
+    d: Always
+  answer: b
+  explanation: useActionState fits simple, self-contained forms. TanStack Query mutations
+    are needed when the mutation must invalidate queries, update other cached data,
+    or coordinate with related state. The two are not interchangeable.
+  difficulty: 2
+  tags:
+  - concept
+- id: '21.6'
+  question: What is a Server Action?
+  options:
+    a: A reducer function
+    b: A function that runs on a CDN
+    c: A function marked 'use server' that runs on the server; the client imports
+      a reference to it
+    d: An API endpoint
+  answer: c
+  explanation: Server Actions are framework-backed RPC functions. The bundler wires
+    the client-side reference to a special endpoint. They are not a general-purpose
+    API and not a fit for client-only apps with separate APIs.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '21.7'
+  question: A team replaces a TanStack Query mutation with useActionState. The list
+    is now stale after submit. What went wrong?
+  options:
+    a: useActionState does not invalidate queries; the original mutation's onSuccess
+      owned that coordination
+    b: TanStack Query is broken
+    c: useActionState requires a special flag to invalidate
+    d: The action must be in a useEffect
+  answer: a
+  explanation: useActionState has no concept of query invalidation. The fix is either
+    keep the mutation or call queryClient.invalidateQueries from inside the action
+    after a successful result. The 'simpler' replacement lost a seam.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '21.8'
+  question: Why is useOptimistic based on a stable id important?
+  options:
+    a: It is not important
+    b: Without a stable key, two rapid clicks see the same source-of-truth and produce
+      identical optimistic updates, so the second click does not compose
+    c: React requires ids for all state
+    d: It is required for accessibility
+  answer: b
+  explanation: The optimistic value lives inside a row identified by the key. Two
+    rapid clicks without a key see the same base value and produce identical optimistic
+    updates. The id ensures the second click composes on top of the first.
+  difficulty: 3
+  tags:
+  - concept
+- id: '21.9'
+  question: What is the right primitive for a multi-step wizard with cross-step validation?
+  options:
+    a: useFormStatus
+    b: A hand-rolled form with state machines and per-step validation, with useActionState
+      on the final submit only
+    c: useOptimistic
+    d: useActionState
+  answer: b
+  explanation: "useActionState is for the submit lifecycle. A wizard needs per-step\
+    \ state, navigation, and validation \u2014 not a single reducer. Reserve useActionState\
+    \ for the final submit; manage wizard state explicitly."
+  difficulty: 3
+  tags:
+  - scenario
+- id: '21.10'
+  question: Which of these is NOT a fit for React 19 Actions?
+  options:
+    a: A simple contact form on a marketing page
+    b: A 'like' button with optimistic feedback
+    c: A 'request more info' form with three fields
+    d: A multi-step wizard with cross-step validation
+  answer: d
+  explanation: A multi-step wizard needs per-step state and navigation, not a single
+    form-submission action. The other three are exactly the kind of self-contained
+    interaction useActionState and friends handle well.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '21.11'
+  question: In a client-only enterprise portal with a separate mock API, are Server
+    Actions the right tool for form submissions?
+  options:
+    a: "No \u2014 Server Actions are framework-backed RPC; the portal's API is separate\
+      \ and a TanStack Query mutation is the right shape"
+    b: Only in production
+    c: Only with React 19.1
+    d: Yes, always
+  answer: a
+  explanation: Server Actions are a fit for framework-backed apps (Next.js, Remix).
+    A client-only app with a separate API uses TanStack Query mutations. The course
+    is framework-neutral on this point.
+  difficulty: 2
+  tags:
+  - concept
+- id: '21.12'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The schema module (m4)
+    b: The cache module (m12)
+    c: The test module (m3)
+    d: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+  answer: d
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '21.13'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: Check the dashboard
+    b: The user's network
+    c: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    d: Restart the server
+  answer: c
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '21.14'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Move all logic to a single hook
+    b: Use a different test framework
+    c: Add a unit test for every function
+    d: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+  answer: d
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '21.15'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    b: It replaces the loop
+    c: It runs before the loop
+    d: It does not
+  answer: a
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '21.16'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    b: Many comments
+    c: Many tests
+    d: Slow performance
+  answer: a
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

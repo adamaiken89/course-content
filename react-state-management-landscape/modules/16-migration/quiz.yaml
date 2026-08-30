@@ -1,0 +1,139 @@
+- id: '16.1'
+  question: A migration has a {start}, an {end}, and a {rollback}.
+  options:
+    a: scope; size; time
+    b: design; plan; review
+    c: start; end; rollback
+    d: name; type; value
+  answer: c
+  explanation: Explanation for A migration has a {start}, an {end}, and a {rollba...
+  difficulty: 1
+  tags:
+  - concept
+- id: '16.2'
+  question: Parallel state runs both stores simultaneously; the new store is the {read}
+    source.
+  options:
+    a: cache
+    b: read
+    c: write
+    d: delete
+  answer: b
+  explanation: Explanation for Parallel state runs both stores simultaneously; th...
+  difficulty: 1
+  tags:
+  - process
+- id: '16.3'
+  question: A {codemod} automates the mechanical changes; humans make the semantic
+    decisions.
+  options:
+    a: test
+    b: refactor
+    c: codemod
+    d: rewrite
+  answer: c
+  explanation: Explanation for A {codemod} automates the mechanical changes; huma...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '16.4'
+  question: The {strangler} pattern wraps the old code with the new code.
+  options:
+    a: rewrite
+    b: strangler
+    c: parallel
+    d: versioned
+  answer: b
+  explanation: Explanation for The {strangler} pattern wraps the old code with th...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '16.5'
+  question: A {deprecation} flag is a runtime warning that the consumer sees.
+  options:
+    a: removal
+    b: version
+    c: name
+    d: deprecation
+  answer: d
+  explanation: Explanation for A {deprecation} flag is a runtime warning that the...
+  difficulty: 1
+  tags:
+  - terminology
+- id: '16.6'
+  question: The first migration in a codebase sets the {precedent} for the rest.
+  options:
+    a: bug
+    b: rate
+    c: style
+    d: precedent
+  answer: d
+  explanation: Explanation for The first migration in a codebase sets the {preced...
+  difficulty: 2
+  tags:
+  - process
+- id: '16.7'
+  question: A failed migration should {rollback} cleanly without leaving the app in
+    an inconsistent state.
+  options:
+    a: rollback
+    b: ignore
+    c: log
+    d: continue
+  answer: a
+  explanation: Explanation for A failed migration should {rollback} cleanly witho...
+  difficulty: 2
+  tags:
+  - process
+- id: '16.8'
+  question: The migration plan should document the {scope}, the {rollback}, and the
+    test plan before any code changes.
+  options:
+    a: users; time
+    b: scope; rollback
+    c: design; code
+    d: tests; CI
+  answer: b
+  explanation: Explanation for The migration plan should document the {scope}, th...
+  difficulty: 2
+  tags:
+  - process
+- id: '16.9'
+  question: Deprecation warnings should include a {removal} date so consumers know
+    when to migrate.
+  options:
+    a: name
+    b: creation
+    c: removal
+    d: version
+  answer: c
+  explanation: Explanation for Deprecation warnings should include a {removal} da...
+  difficulty: 1
+  tags:
+  - process
+- id: '16.10'
+  question: The strangler pattern comes from {microservices}.
+  options:
+    a: microservices
+    b: frontend
+    c: databases
+    d: monoliths
+  answer: a
+  explanation: Explanation for The strangler pattern comes from {microservices}....
+  difficulty: 2
+  tags:
+  - terminology
+- id: '16.11'
+  question: A migration is {reversible}; the old store stays until the migration is
+    verified.
+  options:
+    a: reversible
+    b: permanent
+    c: one-way
+    d: irreversible
+  answer: a
+  explanation: Explanation for A migration is {reversible}; the old store stays u...
+  difficulty: 1
+  tags:
+  - concept
+

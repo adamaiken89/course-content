@@ -92,10 +92,10 @@ Same output for *every* failure, no matter how small or how recoverable. A typo 
 
 React error boundaries catch **render-phase exceptions** in the tree below them — the thrown thing from a bad fetch applied to state, a null `.name`, a `map` on an undefined array. They cannot catch event-handler errors, async rejects that you never `await`, or errors in themselves (m3 calls the render seam; the boundary sits exactly there).
 
-A boundary is a class component with `getDerivedStateFromError` — function components cannot implement it yet:
+A boundary is a class component with `getDerivedStateFromError`. As of React 19 there is still no built-in functional primitive — third-party wrappers like `react-error-boundary` encapsulate the class so the rest of your tree can stay functional:
 
 ```tsx
-import { Component, type ReactNode } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 
 interface BoundaryProps {
   fallback: (reset: () => void) => ReactNode;

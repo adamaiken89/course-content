@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "TanStack Query is for {server state}; the cache is a {window} onto the server."
+  answer: "server state; window"
+  explanation: "The server is the source of truth. The cache is a window: it can be stale, it can be invalidated, it can be refetched. The cache is not the source of truth."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "A {query key} identifies a query in the cache; the same key returns the same data; {invalidateQueries} refetches every query with the matching key."
+  answer: "query key; invalidateQueries"
+  explanation: "The key is the identity. Keys are arrays; the first element is usually a string domain, subsequent elements are the parameters. invalidateQueries({ queryKey: ['applicants'] }) refetches every applicants query."
+  difficulty: 1
+  tags: [concept]
+- id: "c.3"
+  question: "{staleTime} controls how long a query is considered {fresh}; refetch is paused until the time elapses."
+  answer: "staleTime; fresh"
+  explanation: "A fresh query returns the cached value without a network round trip. A stale query refetches on the next render. staleTime is the freshness budget."
+  difficulty: 2
+  tags: [concept]
+- id: "c.4"
+  question: "A {mutation} is a write; it does not return cached data; on {success}, it can invalidate or update the cache."
+  answer: "mutation; success"
+  explanation: "Mutations are writes: create, update, delete. They do not have a queryKey; they have a mutationKey. On success, the mutation decides what to do with the cache."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.5"
+  question: "setQueryData updates the cache {without} a network round trip; {invalidateQueries} refetches."
+  answer: "without; invalidateQueries"
+  explanation: "setQueryData is a precise update (no wire). invalidateQueries is a safe refetch (network). The choice depends on whether the client knows the new value perfectly or needs to re-pull."
+  difficulty: 2
+  tags: [process]
+- id: "c.6"
+  question: "TanStack Query handles {background} refetches on {focus}, on {reconnect}, and on a {polling} interval."
+  answer: "background; focus; reconnect; polling"
+  explanation: "The hook is the bundle of behaviors: refetch on focus, refetch on reconnect, refetch on interval. The component subscribes; the cache does the rest."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "{Optimistic} updates show the result before the server confirms; {rollback} is the caller's job on error."
+  answer: "Optimistic; rollback"
+  explanation: "setQueryData is called with the expected value. The server's confirmation is awaited. On error, the previous value is restored. The pattern is the same as useOptimistic but at the cache level."
+  difficulty: 2
+  tags: [process]
+- id: "c.8"
+  question: "TanStack Query is the right answer for {cacheable} server state read in {multiple} places across navigations; for one-shot fetches, {fetch} in a handler is simpler."
+  answer: "cacheable; multiple; fetch"
+  explanation: "The cache is the value. If the value is read once and discarded, the cache is overhead. If the value is read across navigations and other components, the cache is the primitive."
+  difficulty: 2
+  tags: [comparison]

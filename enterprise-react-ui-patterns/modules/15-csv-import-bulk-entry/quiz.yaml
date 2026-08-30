@@ -1,132 +1,262 @@
-- id: "15.1"
-  question: "Why does `csvText.split('\\n').map(l => l.split(','))` fail as a CSV parser?"
+- id: '15.1'
+  question: Why does `csvText.split('\n').map(l => l.split(','))` fail as a CSV parser?
   options:
-    a: "CSV is always one field per line"
-    b: "Commas never appear inside values"
-    c: "Quoted commas, `\"\"` escapes, embedded newlines, CRLF, and BOM all break the naive splits"
-    d: "The browser forbids string splitting on CSV data"
+    a: CSV is always one field per line
+    b: Commas never appear inside values
+    c: Quoted commas, `""` escapes, embedded newlines, CRLF, and BOM all break the
+      naive splits
+    d: The browser forbids string splitting on CSV data
   answer: c
-  explanation: "A real parser honors quoting and physical-line rules; naive splits mis-file rows silently."
+  explanation: A real parser honors quoting and physical-line rules; naive splits
+    mis-file rows silently.
   difficulty: 1
-  tags: [terminology, concept]
-- id: "15.2"
-  question: "A CSV cell that begins with `=`, `+`, `-`, or `@` is a threat called:"
+  tags:
+  - terminology
+  - concept
+- id: '15.2'
+  question: 'A CSV cell that begins with `=`, `+`, `-`, or `@` is a threat called:'
   options:
-    a: "CSV (formula) injection"
-    b: "An XSS sanitizer bypass"
-    c: "A cache poisoning attack"
-    d: "A row reordering bug"
-  answer: a
-  explanation: "Spreadsheets interpret a leading operator as an expression; hostile cells payload the export file."
+    a: A cache poisoning attack
+    b: A row reordering bug
+    c: CSV (formula) injection
+    d: An XSS sanitizer bypass
+  answer: c
+  explanation: Spreadsheets interpret a leading operator as an expression; hostile
+    cells payload the export file.
   difficulty: 2
-  tags: [terminology, security]
-- id: "15.3"
-  question: "What is the correct handling of a formula-leading cell found in an inbound import row?"
+  tags:
+  - terminology
+  - security
+- id: '15.3'
+  question: What is the correct handling of a formula-leading cell found in an inbound
+    import row?
   options:
-    a: "Escape `<` to `&lt;` and render it"
-    b: "Render it via dangerouslySetInnerHTML after a replace pass"
-    c: "Prefix with a tick and echo it as a record"
-    d: "Reject it at parse and report it by row number in the error report"
+    a: Reject it at parse and report it by row number in the error report
+    b: Escape `<` to `&lt;` and render it
+    c: Render it via dangerouslySetInnerHTML after a replace pass
+    d: Prefix with a tick and echo it as a record
+  answer: a
+  explanation: Inbound data flows into the store and reports; rejection at parse beats
+    echoing a half-neutralized value.
+  difficulty: 1
+  tags:
+  - concept
+  - security
+- id: '15.4'
+  question: 300 rows import; one has a malformed grade. What happens to the other
+    299?
+  options:
+    a: The 299 import but are silently un-validated
+    b: The 23 with bad dates also abort
+    c: The whole import aborts pending the fix
+    d: 299 stage as valid; the 1 is categorized with its row number
   answer: d
-  explanation: "Inbound data flows into the store and reports; rejection at parse beats echoing a half-neutralized value."
-  difficulty: 1
-  tags: [concept, security]
-- id: "15.4"
-  question: "300 rows import; one has a malformed grade. What happens to the other 299?"
-  options:
-    a: "The whole import aborts pending the fix"
-    b: "299 stage as valid; the 1 is categorized with its row number"
-    c: "The 299 import but are silently un-validated"
-    d: "The 23 with bad dates also abort"
-  answer: b
-  explanation: "Per-row verdicts mean one bad row never blocks valid ones; errors route to the report lane."
+  explanation: Per-row verdicts mean one bad row never blocks valid ones; errors route
+    to the report lane.
   difficulty: 3
-  tags: [calculation, scenario]
-- id: "15.5"
-  question: "An imported CSV contains a column the schema does not know. The portal should:"
+  tags:
+  - calculation
+  - scenario
+- id: '15.5'
+  question: 'An imported CSV contains a column the schema does not know. The portal
+    should:'
   options:
-    a: "Silently drop it to keep the store clean"
-    b: "Throw a parse error and refuse the file"
-    c: "Warn that the column will not be imported — a header never read is data loss"
-    d: "Auto-create a free-text zod field"
-  answer: c
-  explanation: "Silent dropping hides data loss; a warning makes the decision visible and deliberate."
-  difficulty: 2
-  tags: [concept, comparison]
-- id: "15.6"
-  question: "What makes the import error report actionable rather than decorative?"
-  options:
-    a: "Row numbers plus error category and field, downloadable as CSV for fix-and-reimport"
-    b: "A single aggregate error count"
-    c: "The raw stack trace of the parse"
-    d: "The displayed original file only"
+    a: "Warn that the column will not be imported \u2014 a header never read is data\
+      \ loss"
+    b: Auto-create a free-text zod field
+    c: Silently drop it to keep the store clean
+    d: Throw a parse error and refuse the file
   answer: a
-  explanation: "The workflow is closed-loop: locate the row, fix the source, re-import."
+  explanation: Silent dropping hides data loss; a warning makes the decision visible
+    and deliberate.
   difficulty: 2
-  tags: [scenario, process]
-- id: "15.7"
-  question: "Where do staged valid import rows live?"
+  tags:
+  - concept
+  - comparison
+- id: '15.6'
+  question: What makes the import error report actionable rather than decorative?
   options:
-    a: "In the query cache, invalidation on write"
-    b: "In component useState, dropped on unmount"
-    c: "In localStorage until submitted"
-    d: "In the zustand draft store, tagged source 'import', merged with manual drafts"
+    a: A single aggregate error count
+    b: The raw stack trace of the parse
+    c: The displayed original file only
+    d: Row numbers plus error category and field, downloadable as CSV for fix-and-reimport
   answer: d
-  explanation: "Client-authored drafts must merge with hand-typed ones and feed the batch engine (m14)."
-  difficulty: 1
-  tags: [concept, comparison]
-- id: "15.8"
-  question: "Why must imported cells never pass through dangerouslySetInnerHTML?"
+  explanation: 'The workflow is closed-loop: locate the row, fix the source, re-import.'
+  difficulty: 2
+  tags:
+  - scenario
+  - process
+- id: '15.7'
+  question: Where do staged valid import rows live?
   options:
-    a: "It is deprecated in React 19"
-    b: "It parses markup instead of escaping text, so hostile cells execute"
-    c: "It is slower than string concatenation"
-    d: "It breaks CSV column alignment"
+    a: In localStorage until submitted
+    b: In the zustand draft store, tagged source 'import', merged with manual drafts
+    c: In the query cache, invalidation on write
+    d: In component useState, dropped on unmount
   answer: b
-  explanation: "React's default escaping is free and total; innerHTML converts a hostile byte into executable DOM."
+  explanation: Client-authored drafts must merge with hand-typed ones and feed the
+    batch engine (m14).
   difficulty: 1
-  tags: [concept, security]
-- id: "15.9"
-  question: "The registrar fixes 3 bad rows and re-imports the same 512-row file. What stops duplication?"
+  tags:
+  - concept
+  - comparison
+- id: '15.8'
+  question: Why must imported cells never pass through dangerouslySetInnerHTML?
   options:
-    a: "The batch engine blocks all imports after size 512"
-    b: "MSW fixture caching"
-    c: "A per-draft fingerprint dedupes re-imports against staged drafts; the engine's runId+itemId dedupes writes"
-    d: "The server refuses duplicate filenames"
-  answer: c
-  explanation: "Same file twice is the same intake twice — stable fingerprints and idempotent commit keys prevent it."
-  difficulty: 3
-  tags: [scenario, comparison]
-- id: "15.10"
-  question: "After staging, what owns the actual submission of the valid rows?"
-  options:
-    a: "The batch engine (m14) — its ledger handles partial failure, rollback, and idempotent retry"
-    b: "A for-loop inside the import screen"
-    c: "The CSV parser, resubmitting the file"
-    d: "A fresh useEffect per staged row"
+    a: It parses markup instead of escaping text, so hostile cells execute
+    b: It is slower than string concatenation
+    c: It breaks CSV column alignment
+    d: It is deprecated in React 19
   answer: a
-  explanation: "Import is intake; submission is the engine's job. One ledger, no reimplementation."
-  difficulty: 2
-  tags: [comparison, scenario]
-- id: "15.11"
-  question: "A CSV import rejects a row with a validation error. The right place to surface the error is:"
+  explanation: React's default escaping is free and total; innerHTML converts a hostile
+    byte into executable DOM.
+  difficulty: 1
+  tags:
+  - concept
+  - security
+- id: '15.9'
+  question: The registrar fixes 3 bad rows and re-imports the same 512-row file. What
+    stops duplication?
   options:
-    a: "A modal that blocks the entire import"
-    b: "A row-level error in the staged preview, with the row still editable inline"
-    c: "An alert at the top of the page listing all errors"
-    d: "Silently skip the row"
-  answer: b
-  explanation: Inline row-level errors keep the import moving. The user can fix the row in place and re-submit without leaving the staging view. Blocking modals break flow; silent skips are dishonest; alert lists do not let the user act on the specific row.
-  difficulty: 2
-  tags: [scenario, process]
-- id: "15.12"
-  question: "A CSV import rejects a row with a validation error. The right place to surface the error is:"
+    a: A per-draft fingerprint dedupes re-imports against staged drafts; the engine's
+      runId+itemId dedupes writes
+    b: The server refuses duplicate filenames
+    c: The batch engine blocks all imports after size 512
+    d: MSW fixture caching
+  answer: a
+  explanation: "Same file twice is the same intake twice \u2014 stable fingerprints\
+    \ and idempotent commit keys prevent it."
+  difficulty: 3
+  tags:
+  - scenario
+  - comparison
+- id: '15.10'
+  question: After staging, what owns the actual submission of the valid rows?
   options:
-    a: "A modal that blocks the entire import"
-    b: "A row-level error in the staged preview, with the row still editable inline"
-    c: "An alert at the top of the page listing all errors"
-    d: "Silently skip the row"
-  answer: b
-  explanation: Inline row-level errors keep the import moving. The user can fix the row in place and re-submit without leaving the staging view. Blocking modals break flow; silent skips are dishonest; alert lists do not let the user act on the specific row.
+    a: A for-loop inside the import screen
+    b: The CSV parser, resubmitting the file
+    c: A fresh useEffect per staged row
+    d: "The batch engine (m14) \u2014 its ledger handles partial failure, rollback,\
+      \ and idempotent retry"
+  answer: d
+  explanation: Import is intake; submission is the engine's job. One ledger, no reimplementation.
   difficulty: 2
-  tags: [scenario, process]
+  tags:
+  - comparison
+  - scenario
+- id: '15.11'
+  question: 'A CSV import rejects a row with a validation error. The right place to
+    surface the error is:'
+  options:
+    a: An alert at the top of the page listing all errors
+    b: Silently skip the row
+    c: A modal that blocks the entire import
+    d: A row-level error in the staged preview, with the row still editable inline
+  answer: d
+  explanation: Inline row-level errors keep the import moving. The user can fix the
+    row in place and re-submit without leaving the staging view. Blocking modals break
+    flow; silent skips are dishonest; alert lists do not let the user act on the specific
+    row.
+  difficulty: 2
+  tags:
+  - scenario
+  - process
+- id: '15.12'
+  question: 'A CSV import rejects a row with a validation error. The right place to
+    surface the error is:'
+  options:
+    a: Silently skip the row
+    b: A modal that blocks the entire import
+    c: A row-level error in the staged preview, with the row still editable inline
+    d: An alert at the top of the page listing all errors
+  answer: c
+  explanation: Inline row-level errors keep the import moving. The user can fix the
+    row in place and re-submit without leaving the staging view. Blocking modals break
+    flow; silent skips are dishonest; alert lists do not let the user act on the specific
+    row.
+  difficulty: 2
+  tags:
+  - scenario
+  - process
+- id: '15.13'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The test module (m3)
+    b: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+    c: The schema module (m4)
+    d: The cache module (m12)
+  answer: b
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '15.14'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: Check the dashboard
+    b: The user's network
+    c: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    d: Restart the server
+  answer: c
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '15.15'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Add a unit test for every function
+    b: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+    c: Move all logic to a single hook
+    d: Use a different test framework
+  answer: b
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '15.16'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: It does not
+    b: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    c: It replaces the loop
+    d: It runs before the loop
+  answer: b
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '15.17'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    b: Many comments
+    c: Many tests
+    d: Slow performance
+  answer: a
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

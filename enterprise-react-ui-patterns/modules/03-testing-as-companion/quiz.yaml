@@ -1,132 +1,266 @@
-- id: "3.1"
-  question: "What is a seam in the testing vocabulary?"
+- id: '3.1'
+  question: What is a seam in the testing vocabulary?
   options:
-    a: "any place a test asserts on the DOM"
-    b: "an integration point you own where your code meets something you do not fully control"
-    c: "a snapshot of a large component tree"
-    d: "the boundary between two test files"
-  answer: c
-  explanation: "A seam is a boundary you own plus something external: fetch, clock, browser API. The decision rule follows: test the seam you own, mock the seam you don't."
-  difficulty: 1
-  tags: [terminology]
-- id: "3.2"
-  question: "Why does 'snapshot everything' fail as a primary approach?"
-  options:
-    a: "snapshots are always slower than unit tests"
-    b: "styling tweaks and timestamps churn the diff, teach 'accept all', and assert captured text instead of behavior"
-    c: "the test runner rejects snapshots over 1 MB"
-    d: "snapshots cannot run in CI"
-  answer: b
-  explanation: "Large DOM snapshots break on every incidental change, so reviewers stop reading diffs, and the suite asserts text that was once captured rather than behavior that must hold."
-  difficulty: 1
-  tags: [concept]
-- id: "3.3"
-  question: "Where does an MSW handler stand relative to the app?"
-  options:
-    a: "inside the component's adapter function"
-    b: "at the HTTP boundary exactly where fetch stands"
-    c: "as a call to setupServer in the production bundle"
-    d: "at the database layer"
-  answer: d
-  explanation: "MSW mocks the network at the HTTP boundary with realistic fixtures; the handler occupies the same place fetch does, so the contract is exercised, not bypassed."
-  difficulty: 1
-  tags: [terminology]
-- id: "3.4"
-  question: "Apply the rule 'test the seam you own; mock the seam you don't' to a fetch call. What is the owned seam?"
-  options:
-    a: "the server's database"
-    b: "the network adapter the component calls"
-    c: "the CI pipeline"
-    d: "the browser's rendering engine"
+    a: a snapshot of a large component tree
+    b: the boundary between two test files
+    c: any place a test asserts on the DOM
+    d: an integration point you own where your code meets something you do not fully
+      control
   answer: a
-  explanation: "The HTTP boundary is yours to control and test; the server behind real fetch is not yours in a component test. MSW stands at that owned boundary while the component reads through real hooks."
-  difficulty: 2
-  tags: [concept]
-- id: "3.5"
-  question: "ProgramSelect passes integration tests, but production shows an empty list because GET /api/programs returns { results: [...] } while the fixture is a bare array. What failed?"
-  options:
-    a: "the renderer saw no stylesheet"
-    b: "the seam diverged: mock served a different shape than the real contract"
-    c: "userEvent dispatched a synthetic event"
-    d: "the snapshot covered the handler"
-  answer: c
-  explanation: "The mock lived at the wrong shape. A contract-typed MSW handler at the HTTP boundary would have broken on the shape mismatch instead of passing against a fiction."
-  difficulty: 2
-  tags: [scenario]
-- id: "3.6"
-  question: "Why prefer userEvent over fireEvent in RTL component tests?"
-  options:
-    a: "userEvent dispatches all events instantly"
-    b: "userEvent fires real timing, real focus management, and real keyboard semantics"
-    c: "fireEvent cannot click buttons"
-    d: "userEvent does not require a rendered component"
-  answer: b
-  explanation: "userEvent simulates a person: keystrokes with timing, focus, and keyboard behavior, so focus and accessibility bugs become visible. fireEvent dispatches a synthetic event with none of that."
+  explanation: 'A seam is a boundary you own plus something external: fetch, clock,
+    browser API. The decision rule follows: test the seam you own, mock the seam you
+    don''t.'
   difficulty: 1
-  tags: [concept]
-- id: "3.7"
-  question: "A flow only exists across three screens and inside real browser autofill. Where must it be tested?"
+  tags:
+  - terminology
+- id: '3.2'
+  question: Why does 'snapshot everything' fail as a primary approach?
   options:
-    a: "in a unit test of the validator"
-    b: "in an RTL integration test of one screen"
-    c: "in a Playwright journey"
-    d: "in a snapshot of each screen"
-  answer: a
-  explanation: "Cross-screen flows and browser-only behavior cannot be fabricated by an integration test; a Playwright journey is the honest price for behaviors that only exist in the real browser."
-  difficulty: 3
-  tags: [scenario]
-- id: "3.8"
-  question: "Which snapshot is legitimate under snapshot-when-structural?"
-  options:
-    a: "a full TrackerTable render with live timestamps"
-    b: "an error boundary's fallback alert"
-    c: "ProgramSelect with a dynamically fetched list"
-    d: "the login page with a greeting clock"
+    a: the test runner rejects snapshots over 1 MB
+    b: snapshots cannot run in CI
+    c: snapshots are always slower than unit tests
+    d: styling tweaks and timestamps churn the diff, teach 'accept all', and assert
+      captured text instead of behavior
   answer: d
-  explanation: "Error-boundary output is structural and stable; it only changes when the boundary's contract changes. Large DOM, timestamps, and server-fed labels churn and dim the signal."
-  difficulty: 2
-  tags: [comparison]
-- id: "3.9"
-  question: "The triangulation rule says duplicate coverage at two layers is a signal, at all three is waste. Why?"
+  explanation: Large DOM snapshots break on every incidental change, so reviewers
+    stop reading diffs, and the suite asserts text that was once captured rather than
+    behavior that must hold.
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.3'
+  question: Where does an MSW handler stand relative to the app?
   options:
-    a: "all three layers run on different machines"
-    b: "the third assertion of the same string adds cost without adding information"
-    c: "unit tests cannot share fixtures"
-    d: "E2E replaces integration entirely above two layers"
-  answer: b
-  explanation: "A component behavior test and a journey covering the same behavior are deliberate signal; a third layer re-asserting the same string pays three times for one fact."
-  difficulty: 2
-  tags: [comparison]
-- id: "3.10"
-  question: "The programs service returns HTTP 500. Which test proves the error UI renders?"
-  options:
-    a: "a snapshot of the mock adapter"
-    b: "a unit test asserting HttpResponse.error() exists"
-    c: "an RTL test overriding the MSW handler with a 500 and asserting the error message"
-    d: "a Playwright test that skips login"
+    a: at the HTTP boundary exactly where fetch stands
+    b: as a call to setupServer in the production bundle
+    c: at the database layer
+    d: inside the component's adapter function
   answer: c
-  explanation: "The negative test reuses the same seam: override the MSW handler for GET /api/programs with a failure, render ProgramSelect, and assert the error UI. One handler, one line of override."
+  explanation: MSW mocks the network at the HTTP boundary with realistic fixtures;
+    the handler occupies the same place fetch does, so the contract is exercised,
+    not bypassed.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.4'
+  question: Apply the rule 'test the seam you own; mock the seam you don't' to a fetch
+    call. What is the owned seam?
+  options:
+    a: the server's database
+    b: the network adapter the component calls
+    c: the CI pipeline
+    d: the browser's rendering engine
+  answer: a
+  explanation: The HTTP boundary is yours to control and test; the server behind real
+    fetch is not yours in a component test. MSW stands at that owned boundary while
+    the component reads through real hooks.
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.5'
+  question: 'ProgramSelect passes integration tests, but production shows an empty
+    list because GET /api/programs returns { results: [...] } while the fixture is
+    a bare array. What failed?'
+  options:
+    a: userEvent dispatched a synthetic event
+    b: the snapshot covered the handler
+    c: the renderer saw no stylesheet
+    d: 'the seam diverged: mock served a different shape than the real contract'
+  answer: a
+  explanation: The mock lived at the wrong shape. A contract-typed MSW handler at
+    the HTTP boundary would have broken on the shape mismatch instead of passing against
+    a fiction.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '3.6'
+  question: Why prefer userEvent over fireEvent in RTL component tests?
+  options:
+    a: userEvent does not require a rendered component
+    b: userEvent dispatches all events instantly
+    c: userEvent fires real timing, real focus management, and real keyboard semantics
+    d: fireEvent cannot click buttons
+  answer: c
+  explanation: 'userEvent simulates a person: keystrokes with timing, focus, and keyboard
+    behavior, so focus and accessibility bugs become visible. fireEvent dispatches
+    a synthetic event with none of that.'
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.7'
+  question: A flow only exists across three screens and inside real browser autofill.
+    Where must it be tested?
+  options:
+    a: in an RTL integration test of one screen
+    b: in a Playwright journey
+    c: in a snapshot of each screen
+    d: in a unit test of the validator
+  answer: d
+  explanation: Cross-screen flows and browser-only behavior cannot be fabricated by
+    an integration test; a Playwright journey is the honest price for behaviors that
+    only exist in the real browser.
   difficulty: 3
-  tags: [scenario]
-- id: "3.11"
-  question: A component reads from a TanStack Query cache and renders a list. What is the right boundary for a unit test versus an integration test?
+  tags:
+  - scenario
+- id: '3.8'
+  question: Which snapshot is legitimate under snapshot-when-structural?
   options:
-    a: "Unit test the cache reads, integration test the render"
-    b: "Unit test the render with an MSW handler that returns a fixture; integration test the full click-path including cache invalidation"
-    c: "Only E2E test it; unit tests are useless"
-    d: "Snapshot test the rendered tree and trust it"
+    a: ProgramSelect with a dynamically fetched list
+    b: the login page with a greeting clock
+    c: a full TrackerTable render with live timestamps
+    d: an error boundary's fallback alert
   answer: b
-  explanation: The cache is a contract, not an implementation detail. Unit-test the render against MSW so the test exercises the data shape the cache would deliver. Integration-test the full invalidation cycle to catch regressions in stale-data logic.
+  explanation: Error-boundary output is structural and stable; it only changes when
+    the boundary's contract changes. Large DOM, timestamps, and server-fed labels
+    churn and dim the signal.
   difficulty: 2
-  tags: [scenario, comparison]
-- id: "3.12"
-  question: A component reads from a TanStack Query cache and renders a list. What is the right boundary for a unit test versus an integration test?
+  tags:
+  - comparison
+- id: '3.9'
+  question: The triangulation rule says duplicate coverage at two layers is a signal,
+    at all three is waste. Why?
   options:
-    a: "Unit test the cache reads, integration test the render"
-    b: "Unit test the render with an MSW handler that returns a fixture; integration test the full click-path including cache invalidation"
-    c: "Only E2E test it; unit tests are useless"
-    d: "Snapshot test the rendered tree and trust it"
+    a: all three layers run on different machines
+    b: the third assertion of the same string adds cost without adding information
+    c: unit tests cannot share fixtures
+    d: E2E replaces integration entirely above two layers
   answer: b
-  explanation: The cache is a contract, not an implementation detail. Unit-test the render against MSW so the test exercises the data shape the cache would deliver. Integration-test the full invalidation cycle to catch regressions in stale-data logic.
+  explanation: A component behavior test and a journey covering the same behavior
+    are deliberate signal; a third layer re-asserting the same string pays three times
+    for one fact.
   difficulty: 2
-  tags: [scenario, comparison]
+  tags:
+  - comparison
+- id: '3.10'
+  question: The programs service returns HTTP 500. Which test proves the error UI
+    renders?
+  options:
+    a: an RTL test overriding the MSW handler with a 500 and asserting the error message
+    b: a Playwright test that skips login
+    c: a snapshot of the mock adapter
+    d: a unit test asserting HttpResponse.error() exists
+  answer: a
+  explanation: 'The negative test reuses the same seam: override the MSW handler for
+    GET /api/programs with a failure, render ProgramSelect, and assert the error UI.
+    One handler, one line of override.'
+  difficulty: 3
+  tags:
+  - scenario
+- id: '3.11'
+  question: A component reads from a TanStack Query cache and renders a list. What
+    is the right boundary for a unit test versus an integration test?
+  options:
+    a: Unit test the render with an MSW handler that returns a fixture; integration
+      test the full click-path including cache invalidation
+    b: Only E2E test it; unit tests are useless
+    c: Snapshot test the rendered tree and trust it
+    d: Unit test the cache reads, integration test the render
+  answer: a
+  explanation: The cache is a contract, not an implementation detail. Unit-test the
+    render against MSW so the test exercises the data shape the cache would deliver.
+    Integration-test the full invalidation cycle to catch regressions in stale-data
+    logic.
+  difficulty: 2
+  tags:
+  - scenario
+  - comparison
+- id: '3.12'
+  question: A component reads from a TanStack Query cache and renders a list. What
+    is the right boundary for a unit test versus an integration test?
+  options:
+    a: Unit test the cache reads, integration test the render
+    b: Unit test the render with an MSW handler that returns a fixture; integration
+      test the full click-path including cache invalidation
+    c: Only E2E test it; unit tests are useless
+    d: Snapshot test the rendered tree and trust it
+  answer: b
+  explanation: The cache is a contract, not an implementation detail. Unit-test the
+    render against MSW so the test exercises the data shape the cache would deliver.
+    Integration-test the full invalidation cycle to catch regressions in stale-data
+    logic.
+  difficulty: 2
+  tags:
+  - scenario
+  - comparison
+- id: '3.13'
+  question: Which other module's contract does this module's pattern most depend on?
+  options:
+    a: The schema module (m4)
+    b: The cache module (m12)
+    c: The test module (m3)
+    d: "The module whose boundary this pattern crosses \u2014 composition (m1), state\
+      \ (m2), cache (m12), persistence (m19), or batch (m14)"
+  answer: d
+  explanation: Every module owns one contract and depends on the contracts of the
+    modules whose boundaries it crosses. The right answer names the actual boundary.
+  difficulty: 2
+  tags:
+  - synthesis
+  - concept
+- id: '3.14'
+  question: When this module's pattern fails in production, what is the first thing
+    to check?
+  options:
+    a: Check the dashboard
+    b: The user's network
+    c: "Whether the seam between this module and its dependencies still holds \u2014\
+      \ boundary ownership, error envelope, or contract"
+    d: Restart the server
+  answer: c
+  explanation: Failures happen at boundaries. The first check is whether the contract
+    between this module and the one it depends on has drifted.
+  difficulty: 3
+  tags:
+  - synthesis
+  - process
+- id: '3.15'
+  question: What is the smallest refactor that would make this module's pattern testable
+    in isolation?
+  options:
+    a: Move all logic to a single hook
+    b: Use a different test framework
+    c: Add a unit test for every function
+    d: Identify the seam that crosses the module boundary, mock it at that seam, and
+      write a test that exercises the module's contract end to end
+  answer: d
+  explanation: Testability comes from seams. The smallest refactor is the one that
+    makes the seam explicit. Tests then exercise the contract end to end.
+  difficulty: 1
+  tags:
+  - process
+  - synthesis
+- id: '3.16'
+  question: How does this module compose with the micro-assembly capstone (m20)?
+  options:
+    a: It does not
+    b: "It contributes a seam \u2014 one of stage, begin, fetch, abort, submit, filter,\
+      \ or resubmit \u2014 and the loop calls it through that seam"
+    c: It replaces the loop
+    d: It runs before the loop
+  answer: b
+  explanation: The micro-assembly is a composition of seams. Each module contributes
+    one seam. The loop calls the module through that seam. The test of fit is whether
+    the module's contract is honored by the loop.
+  difficulty: 2
+  tags:
+  - synthesis
+  - cross-module
+- id: '3.17'
+  question: What signal tells you this module's pattern is being misapplied in the
+    codebase?
+  options:
+    a: Many tests
+    b: Slow performance
+    c: Code that should use the pattern is doing it by hand (useState for what should
+      be a zustand store, manual fetches for what should be TanStack Query, raw form
+      state for what should be useActionState), or code that should not use the pattern
+      is using it anyway
+    d: Many comments
+  answer: c
+  explanation: Misapplication shows up as divergence from the contract. Hand-rolled
+    versions of what the module should own, or premature adoption where the contract
+    does not fit, are the signals.
+  difficulty: 1
+  tags:
+  - misconception
+  - synthesis

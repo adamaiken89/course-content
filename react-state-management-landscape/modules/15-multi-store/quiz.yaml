@@ -1,0 +1,137 @@
+- id: '15.1'
+  question: Multiple stores are the right answer when the stores have {different}
+    lifetimes, consumers, and persistence.
+  options:
+    a: 'no'
+    b: same
+    c: different
+    d: all
+  answer: c
+  explanation: Explanation for Multiple stores are the right answer when the stor...
+  difficulty: 1
+  tags:
+  - concept
+- id: '15.2'
+  question: A slice boundary is a {logical} grouping of state, not a technical one.
+  options:
+    a: technical
+    b: logical
+    c: random
+    d: visual
+  answer: b
+  explanation: Explanation for A slice boundary is a {logical} grouping of state,...
+  difficulty: 1
+  tags:
+  - concept
+- id: '15.3'
+  question: Cross-store coordination lives in {actions}, not in components.
+  options:
+    a: components
+    b: actions
+    c: effects
+    d: renders
+  answer: b
+  explanation: Explanation for Cross-store coordination lives in {actions}, not i...
+  difficulty: 2
+  tags:
+  - concept
+- id: '15.4'
+  question: Integration tests exercise the {seams} between stores.
+  options:
+    a: seams
+    b: actions
+    c: types
+    d: components
+  answer: a
+  explanation: Explanation for Integration tests exercise the {seams} between sto...
+  difficulty: 1
+  tags:
+  - process
+- id: '15.5'
+  question: Multiple stores enable {lazy} hydration; a store chunk loads on first
+    consumer mount.
+  options:
+    a: sync
+    b: eager
+    c: lazy
+    d: eager
+  answer: c
+  explanation: Explanation for Multiple stores enable {lazy} hydration; a store c...
+  difficulty: 2
+  tags:
+  - concept
+- id: '15.6'
+  question: The slicing decision is the {architecture}; the rest is implementation.
+  options:
+    a: style
+    b: pattern
+    c: design
+    d: architecture
+  answer: d
+  explanation: Explanation for The slicing decision is the {architecture}; the re...
+  difficulty: 2
+  tags:
+  - concept
+- id: '15.7'
+  question: Slice boundaries should be {stable}; refactoring a slice is a migration,
+    not a refactor.
+  options:
+    a: fluid
+    b: stable
+    c: random
+    d: complex
+  answer: b
+  explanation: Explanation for Slice boundaries should be {stable}; refactoring a...
+  difficulty: 2
+  tags:
+  - concept
+- id: '15.8'
+  question: The test boundary in a multi-store architecture is the {seam}.
+  options:
+    a: component
+    b: action
+    c: store
+    d: seam
+  answer: d
+  explanation: Explanation for The test boundary in a multi-store architecture is...
+  difficulty: 2
+  tags:
+  - process
+- id: '15.9'
+  question: A {shared} store is the right answer for state read by many components
+    across the app.
+  options:
+    a: private
+    b: transient
+    c: shared
+    d: local
+  answer: c
+  explanation: Explanation for A {shared} store is the right answer for state rea...
+  difficulty: 1
+  tags:
+  - process
+- id: '15.10'
+  question: One store for everything is a {coupling}; several stores is a {composition}.
+  options:
+    a: coupling; composition
+    b: style; pattern
+    c: design; choice
+    d: composition; coupling
+  answer: a
+  explanation: Explanation for One store for everything is a {coupling}; several ...
+  difficulty: 2
+  tags:
+  - concept
+- id: '15.11'
+  question: Unit tests exercise one store; {integration} tests exercise the seams.
+  options:
+    a: integration
+    b: snapshot
+    c: e2e
+    d: unit
+  answer: a
+  explanation: Explanation for Unit tests exercise one store; {integration} tests...
+  difficulty: 1
+  tags:
+  - process
+

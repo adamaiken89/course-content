@@ -1,0 +1,48 @@
+- id: "c.1"
+  question: "Jotai is an {atomic} state library; the unit of state is an {atom}, a single value with a getter and a setter."
+  answer: "atomic; atom"
+  explanation: "Atoms are small, composable, and tree-shakeable. The API is a set of atom() and useAtom() primitives; the pattern is to compose atoms into derived atoms."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.2"
+  question: "A {derived} atom reads other atoms and computes a value; the dependency graph is {automatic}."
+  answer: "derived; automatic"
+  explanation: "An atom that reads other atoms is automatically a derived atom. The dependency graph is built from the reads; Jotai tracks it and re-derives when a dependency changes."
+  difficulty: 2
+  tags: [concept]
+- id: "c.3"
+  question: "atomFamily creates an atom per {parameter}; the pattern is the React equivalent of a {Map} keyed by id."
+  answer: "parameter; Map"
+  explanation: "atomFamily({ key: (id) => atom(...) }) returns a function that takes the parameter and returns the right atom. The pattern is the standard one for per-id state."
+  difficulty: 2
+  tags: [concept]
+- id: "c.4"
+  question: "Jotai's primitive state is the {atom}; the {useAtom} hook reads and updates it."
+  answer: "atom; useAtom"
+  explanation: "The hook returns [value, setter] like useState. The setter updates the atom; the value is the current value. The pattern is the same as useState, but the storage is the atom."
+  difficulty: 1
+  tags: [terminology]
+- id: "c.5"
+  question: "Jotai's {store} is per-Provider by default; the {StoreProvider} can scope atoms to a subtree."
+  answer: "store; StoreProvider"
+  explanation: "For most apps, the default store is fine. For testing or per-subtree scoping, the StoreProvider is the way to scope atoms to a region of the tree."
+  difficulty: 2
+  tags: [concept]
+- id: "c.6"
+  question: "Jotai re-renders only the {components} that use the {changed} atom; the re-render boundary is the atom."
+  answer: "components; changed"
+  explanation: "The atom is the boundary. A component that uses atom A does not re-render when atom B changes. The pattern is the same as zustand's selector but at the atom level."
+  difficulty: 2
+  tags: [concept]
+- id: "c.7"
+  question: "An atom's value is {referentially} stable across renders unless the atom's value changes; the same applies to derived atoms."
+  answer: "referentially"
+  explanation: "An atom that returns a primitive is always stable on equal values. A derived atom that returns a new object every call is unstable; the fix is to memoize the derivation."
+  difficulty: 2
+  tags: [process]
+- id: "c.8"
+  question: "Jotai is the right answer for {derived} state and per-{id} state; for a single global value, zustand is {simpler}."
+  answer: "derived; id; simpler"
+  explanation: "Jotai's atomic model shines for derived state and per-id state. For a single global value, zustand's create() is one call; Jotai's atom is a wrapper around the same idea."
+  difficulty: 2
+  tags: [comparison]

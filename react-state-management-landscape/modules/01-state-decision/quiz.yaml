@@ -1,0 +1,165 @@
+- id: '1.1'
+  question: What is the first question in the React state decision tree?
+  options:
+    a: Which library?
+    b: Is the value fetched from a server?
+    c: Who owns the value?
+    d: How many components read it?
+  answer: c
+  explanation: Ownership is the first question because it determines whether the value
+    is local (component), lifted (parent), or global (store). Library choice follows
+    from ownership, lifetime, scope, frequency, and persistence — not the other way
+    around.
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.2'
+  question: When is TanStack Query the right primitive?
+  options:
+    a: For form state
+    b: Always
+    c: For component-local state
+    d: For cacheable server state read in multiple places, with stale-while-revalidate
+      semantics
+  answer: d
+  explanation: TanStack Query owns the cache, the staleness, and the refetch logic
+    for server state. A one-shot fetch on form submit does not need a cache; a form
+    field does not need a cache; only the cross-component, cross-navigation, refresh-aware
+    case benefits.
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.3'
+  question: What is wrong with using Context for a typing-cursor position that updates
+    30 times per second?
+  options:
+    a: Every consumer of the Context re-renders 30 times per second, thrashing the
+      subtree
+    b: Context is too slow
+    c: React forbids it
+    d: Nothing
+  answer: a
+  explanation: Context is a re-render broadcast. Every consumer re-renders on every
+    value change. The fix is to split the Context into state and dispatch Contexts,
+    or to use an external store with a selector that only re-renders the component
+    using the value.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '1.4'
+  question: When is zustand with the persist middleware the right answer?
+  options:
+    a: Always
+    b: For shared global state with frequent writes that must survive a reload
+    c: For component-local state
+    d: For server state
+  answer: b
+  explanation: Frequent writes need an external store with selectors. Persistence
+    rules out local primitives. The combination is the right answer for that combination
+    of requirements.
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.5'
+  question: A team uses zustand for every state in their app. What is the most likely
+    problem?
+  options:
+    a: TypeScript errors
+    b: Nothing
+    c: Performance is great
+    d: Bundle bloat, devtools noise, useEffect for derived state, and over-engineered
+      component-local values
+  answer: d
+  explanation: Zustand for component-local state is over-engineering. For server state,
+    it fights the cache. For form state, it adds friction. The decision tree would
+    have narrowed the choice to the right primitive for each question.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '1.6'
+  question: What is the right primitive for a form field that is read by one component
+    and changes on user input?
+  options:
+    a: Zustand
+    b: Context
+    c: useState
+    d: TanStack Query
+  answer: c
+  explanation: Component-local, rare writes, one reader. useState is the simplest
+    primitive and the right answer. Anything else is over-engineering.
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.7'
+  question: What is the right primitive for a pagination page number that should be
+    shareable as a link?
+  options:
+    a: URL state (useSearchParams)
+    b: Zustand
+    c: TanStack Query
+    d: useState
+  answer: a
+  explanation: 'Pagination is URL-shaped: it is shareable, survives reload, and is
+    the source of truth for the back button. useSearchParams is the right primitive.'
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.8'
+  question: What is the right primitive for a value fetched from the server that is
+    read in three components across two routes?
+  options:
+    a: Context
+    b: Zustand
+    c: TanStack Query
+    d: useState
+  answer: c
+  explanation: Server state, multiple readers across routes, fresh-while-stale. The
+    cache is the right primitive. TanStack Query owns the cache, the staleness, and
+    the refetch.
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.9'
+  question: What is the wrong default for 'shared' state?
+  options:
+    a: Context
+    b: Zustand
+    c: All of the above
+    d: useState
+  answer: a
+  explanation: Context is a re-render broadcast. For low-frequency values shared by
+    a small subtree, it is fine. For high-frequency or large-subtree values, it is
+    wrong. The default should be 'small primitive first'.
+  difficulty: 2
+  tags:
+  - misconception
+- id: '1.10'
+  question: When does the library choice not matter?
+  options:
+    a: Only for production apps
+    b: A two-component app, a new feature in an established codebase, a prototype
+    c: Always
+    d: Never
+  answer: b
+  explanation: When the surface is small, the codebase has a convention, or the work
+    is throwaway, the library choice is downstream of the question answers. The decision
+    tree still applies, but the answer is whichever primitive the team is fastest
+    in.
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.11'
+  question: What is the first signal that the team has skipped the decision tree?
+  options:
+    a: Context for a typing-cursor position
+    b: All of the above
+    c: useState for a global value
+    d: Zustand for a form field
+  answer: b
+  explanation: 'Any of these is a sign the team picked a tool before the question.
+    The fix is to walk back the decision tree: what is the ownership, lifetime, scope,
+    frequency, persistence? The answer picks the primitive.'
+  difficulty: 2
+  tags:
+  - misconception
+
