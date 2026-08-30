@@ -1,0 +1,143 @@
+- id: '1.1'
+  question: What is the MIME type of an EPUB file at the container level?
+  options:
+    a: application/zip
+    b: application/epub+zip
+    c: application/xhtml+xml
+    d: application/oebps-package+xml
+  answer: b
+  explanation: EPUB containers are application/epub+zip. application/zip is the generic
+    ZIP type. application/xhtml+xml is for content documents. application/oebps-package+xml
+    is for the OPF package document itself.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.2'
+  question: Which file in an EPUB points the reader to the root package document?
+  options:
+    a: OEBPS/content.opf
+    b: OEBPS/nav.xhtml
+    c: mimetype
+    d: META-INF/container.xml
+  answer: d
+  explanation: META-INF/container.xml contains a <rootfile> element whose full-path
+    attribute points to the OPF. Readers open this first to find the package document.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.3'
+  question: Which requirement applies to the mimetype file inside an EPUB ZIP?
+  options:
+    a: It must be named exactly mimetype.epub
+    b: It must be UTF-8 encoded
+    c: It must be the first entry in the archive and stored without compression
+    d: It must contain a CRC32 checksum of all other files
+  answer: c
+  explanation: The mimetype file must be the first entry in the ZIP, uncompressed
+    (STORED, not DEFLATE), with no extra field. This lets readers byte-sniff the format.
+    UTF-8 encoding is irrelevant; the content is the fixed string application/epub+zip.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.4'
+  question: What is the role of the OPF <manifest> section?
+  options:
+    a: It specifies which CSS file applies to each page
+    b: It defines the reading order of pages
+    c: It declares bibliographic metadata such as title and author
+    d: It lists every resource in the EPUB with its id, href, and media type
+  answer: d
+  explanation: The manifest is a flat list of every resource. The <spine> handles
+    order, <metadata> handles bibliographic data, and CSS attachment is per-XHTML
+    <link>.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.5'
+  question: Which media type is classified as 'core' in EPUB 3.3 and therefore needs
+    no fallback chain?
+  options:
+    a: image/avif
+    b: image/jpeg
+    c: audio/mpeg
+    d: image/webp
+  answer: b
+  explanation: JPEG is a core media type. WebP and AVIF are foreign content in EPUB
+    3.3. Audio is also foreign and needs a fallback.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '1.6'
+  question: An EPUB 3 navigation document uses which element to declare itself the
+    table of contents?
+  options:
+    a: <nav epub:type='toc'>
+    b: <ol class='epub-toc'>
+    c: <manifest item properties='toc'>
+    d: <toc> with role='navigation'
+  answer: a
+  explanation: EPUB 3 nav.xhtml uses <nav epub:type='toc'>. The manifest item that
+    points to it carries properties='nav' so the reader knows to use it as the navigation
+    document.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '1.7'
+  question: A team ships an EPUB with no nav.xhtml but includes a legacy toc.ncx.
+    What happens on a strict EPUB 3 reader?
+  options:
+    a: It works fine because NCX is always accepted
+    b: It auto-generates a nav.xhtml from the NCX at render time
+    c: It may fail validation; lenient readers might still render it
+    d: It throws a runtime error and refuses to open
+  answer: c
+  explanation: Strict EPUB 3 readers require nav.xhtml. Lenient readers fall back
+    to NCX. Stores like Apple Books and Kobo will reject the package in validation.
+    Always ship nav.xhtml.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '1.8'
+  question: What does the <spine> section of content.opf contain?
+  options:
+    a: A list of <itemref> elements referencing manifest item ids in reading order
+    b: A list of CSS rules for the book
+    c: A list of <nav> entries
+    d: A list of file paths in reading order
+  answer: a
+  explanation: The spine holds <itemref idref='...'/> elements. Each idref points
+    to a manifest item id. The reader renders them in the order they appear in the
+    spine.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.9'
+  question: Why must the mimetype file have no 'extra field' in the ZIP entry header?
+  options:
+    a: Extra fields break ZIP readers entirely
+    b: Reading systems rely on the byte layout of the first entry; extra fields shift
+      the position where the content begins
+    c: Apple Books rejects all EPUBs with extra fields for copyright reasons
+    d: It is a recommended but not required practice
+  answer: b
+  explanation: 'The byte-sniffing path in many readers reads a fixed offset from the
+    start of the first entry. Extra fields change that offset, so the read returns
+    garbage. Hard requirement: no extra field.'
+  difficulty: 3
+  tags:
+  - concept
+- id: '1.10'
+  question: A new EPUB package omits the META-INF/container.xml. The ZIP is otherwise
+    complete. What is the result?
+  options:
+    a: The reader cannot locate the package document and treats the file as invalid
+    b: The reader opens the first .opf file it finds
+    c: Apple Books auto-generates a container.xml on import
+    d: The reader guesses the OPF location from the ZIP
+  answer: a
+  explanation: The container.xml is the entry pointer. Without it, the reader has
+    no way to find content.opf. The package is invalid.
+  difficulty: 2
+  tags:
+  - scenario
+

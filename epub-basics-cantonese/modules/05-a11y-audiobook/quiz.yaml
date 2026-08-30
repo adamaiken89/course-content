@@ -1,0 +1,119 @@
+- id: "5.1"
+  question: "a11y 係咩嘅縮寫？"
+  options:
+    a: "Always Apply"
+    b: "Accessibility"
+    c: "Adobe Authoring"
+    d: "Audio Anywhere"
+  answer: b
+  explanation: "a11y 係 accessibility 嘅 numeronym（11 個字母夾喺中間）。EPUB a11y 1.1 係 W3C 嘅無障礙規格。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "5.2"
+  question: "EU EAA 2025 對電子書出版商有咩影響？"
+  options:
+    a: "強制要將 EPUB 轉做 PDF"
+    b: "所有喺歐盟賣嘅電子書必須符合 a11y 標準，唔 compliant 唔可以賣"
+    c: "免費提供 EPUB 編輯器"
+    d: "取消所有 DRM 要求"
+  answer: b
+  explanation: "European Accessibility Act（EAA）2025 年生效。所有歐盟賣嘅電子書要符合 a11y 標準，唔可以例外。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "5.3"
+  question: "EPUB 入面一張有意義嘅圖片，最佳 alt-text 寫法係邊個？"
+  options:
+    a: "alt=\"\""
+    b: "alt=\"photo\""
+    c: "alt=\"EPUB 結構圖：ZIP 入面有 mimetype、META-INF、OEBPS\""
+    d: "唔寫 alt 屬性"
+  answer: c
+  explanation: "alt-text 要 describe 圖片內容同目的。空 alt (\"\") 代表純裝飾圖，「photo」太籠統，唔寫 alt 係最差（screen reader 跳唔到）。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "5.4"
+  question: "EPUB a11y 1.1 嘅三個層級由低至高係乜？"
+  options:
+    a: "Basic、Standard、Premium"
+    b: "Baseline、Accessible、Accessible + Enhanced"
+    c: "Bronze、Silver、Gold"
+    d: "Level 1、Level 2、Level 3"
+  answer: b
+  explanation: "EPUB a11y 1.1 三層級：Baseline（lang + heading）、Accessible（加 alt-text + reading order）、Accessible + Enhanced（完整 WCAG 2.1 AA）。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "5.5"
+  question: "Media overlay（SMIL）嘅主要作用係乜？"
+  options:
+    a: "壓縮音頻檔案"
+    b: "同步音頻同文字（聽書 + 字幕效果）"
+    c: "將 EPUB 轉做 PDF"
+    d: "加密 DRM 內容"
+  answer: b
+  explanation: "SMIL（Synchronized Multimedia Integration Language）用 <par> 配對 <text> 同 <audio>，做音頻同步顯示對應文字。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "5.6"
+  question: "點解大部分商業有聲書唔用 media overlay？"
+  options:
+    a: "因為 SMIL 過時"
+    b: "因為閱讀器唔支持"
+    c: "因為要逐段對齊音頻同文字，工作量巨大"
+    d: "因為 DRM 禁止"
+  answer: c
+  explanation: "Media overlay 要逐段（句 / 段）對齊音頻同文字。100 頁書可能幾千段對齊，成本過高，所以商業有聲書用 Audiobook 格式配 Dublin Core metadata。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "5.7"
+  question: "AI 旁白（AI TTS）對有聲書市場嘅主要好處係乜？"
+  options:
+    a: "完全取代真人配音"
+    b: "成本低、速度快、可多語言生產"
+    c: "聲音質素一定好過真人"
+    d: "繞過版權"
+  answer: b
+  explanation: "AI TTS 主要好處：成本低（唔使請配音員）、幾分鐘出書、支持多語言。代價係自然度同情感表達仲爭。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "5.8"
+  question: "粵語 TTS 而家嘅狀況係點？"
+  options:
+    a: "已經完全成熟，自然過真人"
+    b: "仲喺發展階段，自然度同情感表達有改善空間"
+    c: "完全唔存在"
+    d: "已經被普通話 TTS 完全取代"
+  answer: b
+  explanation: "粵語 TTS 仲喺發展階段。主流 TTS 引擎（Google、Amazon Polly）嘅粵語質素比英語 / 普通話明顯遜色，聲調同語氣仲有距離。"
+  difficulty: 1
+  tags: [scenario]
+
+- id: "5.9"
+  question: "EPUB a11y 嘅關鍵技術要求包括乜？"
+  options:
+    a: "只係加 alt-text"
+    b: "lang 屬性、heading structure、alt-text、reading order、table accessibility"
+    c: "只係改字型大小"
+    d: "完全靠閱讀器自動處理"
+  answer: b
+  explanation: "EPUB a11y 要求多項：lang 屬性（語音 TTS 用）、heading structure（skip level 違規）、alt-text（圖片描述）、reading order（spine）、<th>+scope（表格）。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "5.10"
+  question: "AI 旁白 5 年後會唔會完全取代真人配音？"
+  options:
+    a: "會，AI 一定完全取代"
+    b: "唔會完全取代，會共存：AI 適合大量生產低成本，真人適合高質量情感"
+    c: "已經完全取代"
+    d: "完全唔會取代，永遠用真人"
+  answer: b
+  explanation: "預測 AI 旁白會同人共存：AI 適合量大、預算有限（語言學習、自出版）；真人適合高質量、情感豐富（小說、文學）。"
+  difficulty: 2
+  tags: [scenario]

@@ -162,16 +162,16 @@ EMS ──▶ 35=8 (Execution Report)
 ### 4. Data Flow: A Single Order's Complete Journey
 
 ```mermaid
-graph TD
-    T["Trader<br/>AAPL 1000 Limit $150"] --> OMS
-    OMS["OMS<br/>Compliance · Check<br/>Limit · Map"] --> EMS
-    EMS["EMS<br/>Route · Algo · Send"] --> EX["Exchange<br/>Matching · Fill<br/>Report"]
-    EX --> DTCC["DTCC CNS<br/>Match · Net · Settle"]
+graph LR
+    T["Trader<br/>AAPL 1000 Limit $150"] --> |"order"| OMS
+    OMS --> |"route"| EMS
+    EMS --> |"order book"| EX
+    EX --> |"fills"| DTCC
 
-    T -.-> |"Suitability<br/>Pre-clearance<br/>Limit check<br/>AML/KYC"| OMS
-    OMS -.-> |"Venue<br/>Price<br/>Queue pos<br/>Fill qty"| EMS
-    EMS -.-> |"Matched/Partial<br/>Remain qty<br/>Exec price<br/>Commission"| EX
-    EX -.-> |"Settled<br/>Affirmed<br/>Cash moved<br/>Securities moved"| DTCC
+    T -. "suitability<br/>pre-clearance<br/>limit · AML/KYC" .-> OMS
+    OMS -. "venue · price<br/>queue pos<br/>fill qty" .-> EMS
+    EMS -. "matched/partial<br/>remain qty<br/>exec price · commission" .-> EX
+    EX -. "settled · affirmed<br/>cash moved<br/>securities moved" .-> DTCC
 
     style T fill:#7a5a8a,stroke:#333
     style OMS fill:#5c7a99,stroke:#333

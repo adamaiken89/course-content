@@ -1,0 +1,149 @@
+- id: '7.1'
+  question: What is the OPF mechanism that allows a single EPUB to mix fixed-layout
+    and reflowable pages?
+  options:
+    a: Separate spine sections for each layout
+    b: Two separate content.opf files
+    c: Per-itemref properties overriding the package-level rendition:layout
+    d: A manifest property called mixed-layout
+  answer: c
+  explanation: 'EPUB 3.3 section 8.2.1.2 lets itemref elements override the package-level
+    rendition:layout via properties. Valid values: rendition:layout-pre-paginated
+    and rendition:layout-reflowable.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '7.2'
+  question: Which per-itemref property activates fixed layout for a single spine entry?
+  options:
+    a: properties='layout:fixed'
+    b: properties='fixed-layout'
+    c: properties='pre-paginated'
+    d: properties='rendition:layout-pre-paginated'
+  answer: d
+  explanation: The full property URI is rendition:layout-pre-paginated. Without the
+    rendition:layout- prefix, the reader does not recognise the property and falls
+    back to the package default.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '7.3'
+  question: A package sets the default rendition:layout to 'reflowable' and adds an
+    FXL comic to the spine without any properties attribute. What happens?
+  options:
+    a: The FXL page renders correctly because the reader detects the image
+    b: The page renders as reflowable; the FXL composition is lost
+    c: The reader throws an error and refuses to open the book
+    d: The reader converts the image to a reflowable text equivalent
+  answer: b
+  explanation: Without the per-itemref override, the itemref inherits the package
+    default. The reflowable default means the reader treats the page as reflowable,
+    and the FXL composition is lost.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '7.4'
+  question: A graphic novel has an author foreword, comic pages, and an afterword.
+    Which pattern is the most common choice for this case?
+  options:
+    a: Global reflowable default, FXL overrides on comic pages
+    b: Global FXL default, no overrides needed
+    c: Two separate EPUBs merged into one ZIP
+    d: Global FXL default, reflowable overrides on foreword and afterword
+  answer: a
+  explanation: Pattern A (reflowable default, FXL overrides) is most common for graphic
+    novels because the prose sections outnumber the art sections. Override only the
+    sections that need FXL.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.5'
+  question: Which Python library is most commonly used for EPUB generation but has
+    a thin story for mixed/fixed layout?
+  options:
+    a: epubmaker
+    b: Pyli
+    c: pandoc
+    d: ebooklib
+  answer: d
+  explanation: ebooklib is the de facto Python EPUB library. Mixed/FXL support is
+    partial since v0.18; the high-level API may not set rendition:layout-* properties
+    correctly, requiring raw OPF injection. epubmaker is heavier and more capable
+    but smaller community. Pyli is reflowable-only. Pandoc is reflowable-only.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '7.6'
+  question: An FXL page in a mixed-layout EPUB needs a viewport meta. Does a reflowable
+    page in the same package also need one?
+  options:
+    a: No, the reader computes the viewport from the device for reflowable pages
+    b: Only if the page has images
+    c: Only if the package default is FXL
+    d: Yes, every page needs a viewport meta
+  answer: a
+  explanation: Reflowable pages do not need a viewport meta; the reader computes the
+    ICB from the device screen. FXL pages do need a viewport meta to define the fixed
+    ICB.
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.7'
+  question: Which reader is most likely to misclassify mixed-layout sections during
+    EPUB-to-KFX conversion?
+  options:
+    a: Apple Books
+    b: Kindle (via Send-to-Kindle or Calibre)
+    c: Readium SDK
+    d: Kobo Sage
+  answer: b
+  explanation: Kindle's KFX conversion may look at the package-level rendition:layout
+    and not honor per-itemref overrides. Kobo, Apple Books, and Readium honor per-itemref
+    properties. Use Kindle Previewer 3 for local validation.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '7.8'
+  question: A builder writes <itemref idref='page001' properties='rendition:layout-pre-paginated'/>
+    in a reflowable-default package. The reader renders the page as reflowable. Why?
+  options:
+    a: The package default is ignored but the itemref property is also ignored
+    b: The property name is wrong; it should be pre-paginated without the prefix
+    c: The package default overrides the itemref property
+    d: The reader does not support per-itemref properties
+  answer: b
+  explanation: 'The property must be the full URI: rendition:layout-pre-paginated.
+    Without the rendition:layout- prefix, the reader does not recognise the property
+    and falls back to the package default.'
+  difficulty: 3
+  tags:
+  - scenario
+- id: '7.9'
+  question: Which spec section governs per-itemref layout overrides in EPUB 3.3?
+  options:
+    a: EPUB 3.3 section 8.2.1.2 (Overriding Rendition Defaults)
+    b: EPUB 3.3 section 9.1
+    c: EPUB 3.3 section 3.2
+    d: EPUB 3.3 section 5.4
+  answer: a
+  explanation: Section 8.2.1.2 of EPUB 3.3 covers overriding rendition defaults via
+    per-itemref properties.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '7.10'
+  question: 'For a mixed-layout Python pipeline, the recommended approach when the
+    high-level API does not expose per-itemref properties is to:'
+  options:
+    a: Generate the EPUB twice and merge the files
+    b: Switch to a different library entirely
+    c: Inject the properties via raw OPF manipulation after writing the EPUB
+    d: Skip the per-itemref overrides and use a single global layout
+  answer: c
+  explanation: Post-processing the content.opf inside the ZIP via raw XML manipulation
+    is the common pattern when the high-level API is insufficient. The alternative
+    is to fall back to the manual zip-based approach from module 03 for full OPF control.
+  difficulty: 3
+  tags:
+  - concept
+

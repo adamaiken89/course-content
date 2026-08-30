@@ -1,0 +1,35 @@
+- id: c.1
+  question: Embedding matrix 係一個{V × D}嘅查詢表，每個 token ID 直接對應 matrix 嘅{一行}。
+  answer: V × D，一行
+  explanation: V 係詞表大小，D 係 embedding 維度。輸入 token ID 就直接攞 matrix 嗰行出嚟，唔涉及運算。所以 embedding 質量取決於訓練學到嘅嘢。
+  difficulty: 1
+  tags:
+  - concept
+- id: c.2
+  question: Cosine similarity 量度兩個向量嘅{方向}相似度，忽略{長度}差異。
+  answer: 方向，長度
+  explanation: Cosine 係角度嘅餘弦值，範圍 [-1, 1]。LLM embedding 通常 normalized，所以方向相似度就代表語義相似度。Euclidean 距離就會受長度影響。
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: 「vec(king) − vec(man) + vec(woman) ≈ vec(queen)」展示咗詞向量嘅{線性}結構，語義關係可以{向量加減}表達。
+  answer: 線性，向量加減
+  explanation: 呢個 Word2Vec 經典發現揭示語義空間有線性代數結構 — 性別、王室等抽象關係可以表達成向量偏移。呢個特性支撐翻譯、推薦、搜尋等應用。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.4
+  question: "{Contextual embedding}會根據上文動態生成向量，所以同一個詞喺唔同 context 下有{唔同}嘅表示。"
+  answer: Contextual embedding，唔同
+  explanation: Static embedding（Word2Vec）每個詞一個固定向量，無法處理一詞多義。Contextual（BERT、GPT）根據 attention 動態生成，可以分辨「銀行」喺河邊 vs 存款嘅唔同意思。
+  difficulty: 1
+  tags:
+  - concept
+- id: c.5
+  question: 訓練 LLM 嘅 objective 只係{預測下一個 token}，但 embedding 自然學到{語義幾何}，呢個叫 emergent property。
+  answer: 預測下一個 token，語義幾何
+  explanation: 訓練目標冇明確要求學語義結構，但為咗做好 next-token prediction，模型被迫學到語義。Emergent property 係深度學習常見現象。
+  difficulty: 3
+  tags:
+  - concept

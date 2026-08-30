@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "EPUB = 一班 HTML 頁面 + CSS 樣式 + 圖片，包喺一個 {blank} 入面，加埋一張「清單」同「閱讀順序」。"
+  answer: "ZIP"
+  explanation: "EPUB 物理上就係一個 ZIP archive，入面裝住 HTML、CSS、圖片等資源。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "mimetype 檔案嘅 content 必須係 {blank}，無 newline，無 BOM。"
+  answer: "application/epub+zip"
+  explanation: "呢個係 EPUB 嘅身份證，閱讀器靠呢個 byte string 認到 EPUB。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "EPUB 嘅 manifest 係一張清單，列出 EPUB 入面 {blank} 嘅所有檔案。"
+  answer: "所有"
+  explanation: "manifest 嘅作用係畀閱讀器知 EPUB 入面有乜嘢檔案。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "EPUB 嘅 spine 規定 {blank}，即係邊個 HTML 頁面先，邊個後。"
+  answer: "閱讀順序"
+  explanation: "spine 告訴閱讀器點樣將 HTML 頁面排成一本書嘅順序。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "EPUB 基於 Open Web Platform，即係 HTML + CSS + SVG + {blank}。"
+  answer: "MathML"
+  explanation: "EPUB 內容文件基於 Open Web Platform 嘅技術，包括 HTML、CSS、SVG 同 MathML。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "PDF 係固定版面，EPUB 會自動 {blank}，適應唔同屏幕大小。"
+  answer: "reflow"
+  explanation: "reflow 係 EPUB 嘅核心功能 — 內容會因應屏幕大小自動重新排版。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.7"
+  question: "EPUB 嘅 container.xml 喺 {blank} 目錄入面，指向 package document 嘅位置。"
+  answer: "META-INF"
+  explanation: "container.xml 永遠喺 META-INF 目錄入面，係閱讀器搵到 package document 嘅第一步。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.8"
+  question: "EPUB 嘅 content.opf 入面有三樣嘢：metadata、manifest 同 {blank}。"
+  answer: "spine"
+  explanation: "content.opf 係 EPUB 嘅心臟，包含 metadata（元資料）、manifest（清單）同 spine（閱讀順序）。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.9"
+  question: "mimetype 檔案必須喺 ZIP 入面第一個，而且用 {blank} 方法儲存（唔壓縮）。"
+  answer: "STORED"
+  explanation: "ZIP 有兩種壓縮方法：STORED（唔壓縮）同 DEFLATE（壓縮）。mimetype 必須用 STORED，咁閱讀器先可以 byte-sniff。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.10"
+  question: "EPUB 有三種主要類型：純文字、漫畫/圖書、同 {blank}。"
+  answer: "有聲"
+  explanation: "EPUB 支持音頻內容，可以做有聲書。呢種類型會用 media overlay 同步文字同音頻。"
+  difficulty: 1
+  tags: [concept]

@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "EPUB 最常見嘅形態係 {blank}，文字自動適應屏幕大小。"
+  answer: "Reflowable"
+  explanation: "Reflowable 係 EPUB 預設形態，小說、散文、教科書都用。一個檔案適應所有屏幕，讀者可以改字型大小。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "{blank} layout EPUB 每頁固定版面，唔識 reflow，適合漫畫同雜誌。"
+  answer: "Fixed"
+  explanation: "Fixed layout 用 CSS @page 同 @viewport 標準化，適合要精準排版嘅內容（漫畫、雜誌、攝影集）。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "DRM 嘅全稱係 {blank} Management。"
+  answer: "Digital Rights"
+  explanation: "DRM = Digital Rights Management，目的係防止電子書被未授權複製。EPUB 本身冇 DRM，係可選附加層。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Kobo 同 Google Play Books 用 {blank} DRM，授權最多 6 部裝置。"
+  answer: "Adobe"
+  explanation: "Adobe DRM 用 Adobe Digital Editions（ADE）管理，最老牌。最多 6 部裝置，係公共圖書館主流方案。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Apple Books 用嘅 DRM 係 {blank}，只可以用 Apple 裝置開。"
+  answer: "FairPlay"
+  explanation: "Apple 用自家 FairPlay DRM 完全鎖喺 Apple 生態圈（iPhone、iPad、Mac）。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.6"
+  question: "Readium 基金會開發嘅開放 DRM 標準叫 {blank}（Licensed Content Protection）。"
+  answer: "LCP"
+  explanation: "LCP 係新興開放 DRM 標準，目標係取代 Adobe DRM。Kobo、Publica 等開始採用，效能比 Adobe DRM 好。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "EPUB 3.0 用 {blank}（2011），取代 EPUB 2.0 嘅 XHTML 1.1。"
+  answer: "HTML5"
+  explanation: "EPUB 3.0 直接用 HTML5 + CSS3 + JavaScript，網頁開發者技能直接用得。EPUB 2.0 用 XHTML 1.1 + 限制 CSS。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.8"
+  question: "EPUB 嘅三種形態包括 Reflowable、Fixed layout 同 {blank}。"
+  answer: "Audio"
+  explanation: "Audio EPUB 加 audio 檔案 + media overlay（SMIL），同步音頻同文字，做有聲書或者語言學習。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.9"
+  question: "唔同 DRM 系統（Adobe / FairPlay / Kindle / LCP）之間 {blank} 唔互通。"
+  answer: "互相"
+  explanation: "唔同 DRM 鎖住唔同平台：Kobo 嘅書開唔到 Kindle，Kindle 嘅書開唔到 Apple Books，係廠商鎖定策略。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.10"
+  question: "DRM 對讀者嘅影響包括跨平台唔通、借書過期 {blank}、備份困難。"
+  answer: "自動消失"
+  explanation: "圖書館借嘅電子書過期後 DRM 自動令書失效 / 刪除，係讀者最常遇到嘅痛點。"
+  difficulty: 2
+  tags: [scenario]

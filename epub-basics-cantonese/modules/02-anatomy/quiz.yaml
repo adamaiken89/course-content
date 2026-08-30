@@ -1,0 +1,119 @@
+- id: "2.1"
+  question: "EPUB 嘅 mimetype 檔案喺 ZIP 入面必須擺喺邊個位置？"
+  options:
+    a: "最後一個"
+    b: "中間任何位置都得"
+    c: "第一個，而且用 STORED 唔壓縮"
+    d: "第一個，但可以用 DEFLATE 壓縮"
+  answer: c
+  explanation: "mimetype 必須係 ZIP 入面第一個 entry，而且用 STORED 方法（唔壓縮），咁閱讀器先可以 byte-sniff 認到 application/epub+zip。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "2.2"
+  question: "META-INF/container.xml 嘅主要作用係乜？"
+  options:
+    a: "儲存書嘅封面圖片"
+    b: "指向 package document（content.opf）嘅位置"
+    c: "儲存書嘅目錄結構"
+    d: "管理字型檔案"
+  answer: b
+  explanation: "container.xml 話畀閱讀器知 package document 喺邊度（通常係 OEBPS/content.opf），係 EPUB 嘅指路牌。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "2.3"
+  question: "content.opf 入面 manifest 嘅作用係乜？"
+  options:
+    a: "規定閱讀順序"
+    b: "儲存書嘅 metadata"
+    c: "列出 EPUB 入面所有有效檔案"
+    d: "處理 DRM 授權"
+  answer: c
+  explanation: "manifest 係一張清單，列出 EPUB 入面所有有效檔案（XHTML、CSS、圖片、字型），等閱讀器知道用邊啲檔案。spine 先決定閱讀順序。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "2.4"
+  question: "spine 同 manifest 最大嘅分別係乜？"
+  options:
+    a: "spine 處理圖片，manifest 處理文字"
+    b: "spine 規定閱讀順序，manifest 列出所有檔案"
+    c: "spine 喺 EPUB 2 用，manifest 喺 EPUB 3 用"
+    d: "spine 儲存 metadata，manifest 儲存目錄"
+  answer: b
+  explanation: "spine = 閱讀順序（邊個 XHTML 先、邊個後）。manifest = 所有檔案嘅清單（邊啲檔案屬於呢本書）。兩者各司其職。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "2.5"
+  question: "點解 CSS 唔會出現喺 spine 入面？"
+  options:
+    a: "因為 EPUB 唔支持 CSS"
+    b: "因為 spine 只接受 STORED 壓縮方法"
+    c: "因為 CSS 係樣式唔係內容頁，閱讀器唔需要按順序顯示"
+    d: "因為 CSS 一定要嵌喺 XHTML 入面"
+  answer: c
+  explanation: "spine 只列出要按順序顯示嘅內容頁（XHTML、SVG）。CSS 係被引用嘅樣式表，由閱讀器自動加載，唔需要亦唔應該出現喺 spine。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "2.6"
+  question: "EPUB 3.0 嘅目錄（TOC）用咩格式？"
+  options:
+    a: "純文字 .txt"
+    b: "NCX 檔案"
+    c: "XHTML 嘅 <nav epub:type=\"toc\"> 元素"
+    d: "PDF 內部連結"
+  answer: c
+  explanation: "EPUB 3.0 用 XHTML 嘅 <nav epub:type=\"toc\"> 做目錄，取代 EPUB 2.0 嘅 NCX 格式，係同 web 標準對齊。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "2.7"
+  question: "你將 xxx.epub 改名做 xxx.zip 解壓，發現 mimetype 唔係第一個 entry。會發生咩事？"
+  options:
+    a: "完全冇問題，所有閱讀器都識開"
+    b: "部分閱讀器可能 byte-sniff 失敗，認唔到呢個係 EPUB"
+    c: "會自動被閱讀器修正"
+    d: "會變成 PDF 格式"
+  answer: b
+  explanation: "EPUB OCF spec 要求 mimetype 必須係第一個 entry + STORED。違反嘅 EPUB 唔算 spec-compliant，會 byte-sniff 失敗嘅閱讀器會拒絕辨識。"
+  difficulty: 2
+  tags: [scenario]
+
+- id: "2.8"
+  question: "OEBPS 呢個目錄名由邊個規格留落嚟？"
+  options:
+    a: "EPUB 1.0（1999 年 OEBPS）"
+    b: "PDF 1.7"
+    c: "Microsoft LIT"
+    d: "Amazon AZW"
+  answer: a
+  explanation: "OEBPS = Open eBook Publication Structure，源自 1999 年早期 OEBF/OEBPS 規格。雖然 EPUB 已經升級幾代，呢個目錄名仲未改。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "2.9"
+  question: "以下邊個唔需要喺 manifest 登記？"
+  options:
+    a: "chapter1.xhtml"
+    b: "main.css"
+    c: "Thumbs.db（macOS/Windows 自動產生）"
+    d: "cover.jpg"
+  answer: c
+  explanation: "manifest 只列出 EPUB 真正用嘅檔案。Thumbs.db、.DS_Store 呢類系統垃圾檔唔需要（亦唔應該）登記喺 manifest。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "2.10"
+  question: "content.opf 入面 metadata 用邊個 namespace？"
+  options:
+    a: "xmlns=\"urn:oasis:names:tc:opendocument:xmlns:container\""
+    b: "xmlns:dc=\"http://purl.org/dc/elements/1.1/\""
+    c: "xmlns:epub=\"http://www.idpf.org/2007/ops\""
+    d: "xmlns:html=\"http://www.w3.org/1999/xhtml\""
+  answer: b
+  explanation: "metadata 用 Dublin Core namespace（dc:title、dc:creator、dc:language 等），係 W3C EPUB spec 嘅標準。"
+  difficulty: 2
+  tags: [terminology]

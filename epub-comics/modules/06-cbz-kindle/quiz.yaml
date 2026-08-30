@@ -1,0 +1,143 @@
+- id: '6.1'
+  question: What is the underlying container format of a CBZ archive?
+  options:
+    a: RAR
+    b: ZIP
+    c: 7z
+    d: TAR
+  answer: b
+  explanation: CBZ is a ZIP archive of images. CBR is the RAR variant. cb7 is 7z.
+    cbt is TAR. CBZ is the most common because ZIP is universally supported.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.2'
+  question: Which metadata file is commonly embedded at the root of a CBZ archive?
+  options:
+    a: META-INF/container.xml
+    b: ComicInfo.xml
+    c: OPF
+    d: metadata.json
+  answer: b
+  explanation: ComicInfo.xml is the de facto metadata standard for CBZ/CBR. Originated
+    with ComicRack, now maintained by the Anansi Project (v2.0).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.3'
+  question: Which of the following does NOT read CBZ natively in 2026?
+  options:
+    a: Calibre
+    b: YACReader
+    c: Kobo Sage
+    d: Komga (self-hosted)
+  answer: c
+  explanation: Kobo reads EPUB, KEPUB, and PDF. It does not read CBZ. Calibre, YACReader,
+    and Komga all support CBZ.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.4'
+  question: Kindle cannot read EPUB directly. Which two paths allow delivery of an
+    EPUB to a Kindle device?
+  options:
+    a: Email the EPUB to the user directly
+    b: Convert to PDF and email it
+    c: Side-load the EPUB via USB
+    d: Send-to-Kindle auto-conversion to KFX; Kindle Previewer 3 with KPF export
+  answer: d
+  explanation: Send-to-Kindle accepts EPUB and auto-converts server-side to KFX. Kindle
+    Previewer 3 is a desktop app that exports KPF (Kindle Package Format) for direct
+    KDP upload. Both are valid paths.
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.5'
+  question: Which is the recommended path for fixed-layout comics targeting Kindle
+    when quality matters?
+  options:
+    a: Email the EPUB as a KPF attachment
+    b: Send-to-Kindle auto-conversion
+    c: Kindle Previewer 3 with KPF export and local validation
+    d: Convert CBZ to AZW3 with Calibre
+  answer: c
+  explanation: Kindle Previewer 3 lets you preview the KFX/KF8 rendering locally and
+    export a KPF for KDP upload. Send-to-Kindle is lossy for fixed layout. The Calibre
+    path is workable but less controlled.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '6.6'
+  question: A team converts a CBZ to EPUB with Calibre and uploads to Kobo. The reading
+    direction is wrong for manga (LTR instead of RTL). What is the fix?
+  options:
+    a: Re-convert with a higher JPEG quality
+    b: Set page-progression-direction='rtl' on the <spine> element in content.opf
+    c: Add rendition:orientation='landscape' to the OPF
+    d: Switch to PNG for the page images
+  answer: b
+  explanation: Calibre's comic-to-EPUB conversion often drops the manga R2L reading
+    direction. The fix is to manually set <spine page-progression-direction='rtl'>
+    in the OPF, or re-package from source images with the correct direction.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '6.7'
+  question: What is the file extension of a Kindle Package Format file exported by
+    Kindle Previewer 3?
+  options:
+    a: .kpf
+    b: .mobi
+    c: .epub
+    d: .azw3
+  answer: a
+  explanation: KPF (Kindle Package Format) is the output of Kindle Previewer 3. KPF
+    files are uploaded directly to KDP. AZW3 is the older e-reader format. MOBI is
+    legacy.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.8'
+  question: ComicInfo.xml is maintained by which community project in 2026?
+  options:
+    a: Anansi Project
+    b: Kobo Writing Life
+    c: W3C
+    d: IDPF
+  answer: a
+  explanation: ComicRack was the original author. After it was abandoned, the Anansi
+    Project took over community governance. Current version 2.0; 2.1 in draft.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '6.9'
+  question: Which reader is the only major commercial e-reader to read fixed-layout
+    EPUB without conversion?
+  options:
+    a: Onyx Boox
+    b: All three require conversion
+    c: Kindle Paperwhite
+    d: Kobo Sage
+  answer: d
+  explanation: Kobo reads EPUB 3 fixed-layout natively. Kindle requires conversion
+    to KFX. Apple Books also reads EPUB 3 fixed-layout natively; the question's distractor
+    'all three' is wrong.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.10'
+  question: What is the practical limit on file size for sending an EPUB via Send-to-Kindle
+    email?
+  options:
+    a: 50 MB
+    b: 200 MB
+    c: 1 GB
+    d: 10 MB
+  answer: a
+  explanation: Amazon's Send-to-Kindle email limit is 50 MB. The Send to Kindle app
+    allows up to 200 MB. A 200-page comic at JPEG q82 is typically 50-60 MB, so it
+    fits the app but not the email path.
+  difficulty: 2
+  tags:
+  - scenario
+

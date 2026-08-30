@@ -1,0 +1,393 @@
+- id: cum.1
+  type: mcq
+  source_modules:
+  - 5
+  question: Residual stream 嘅比喻？
+  options:
+    a: 流水線
+    b: 每層只係喺主幹道旁邊「加車道」，唔攔截車流
+    c: 電腦記憶體
+    d: 硬碟儲存
+  answer: b
+  explanation: Residual stream 比喻成高速公路主幹道 — 每層只喺旁邊加車道（修改信號），唔攔截車流。呢個係深層 network 可訓練嘅關鍵。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.2
+  type: cloze
+  source_modules:
+  - 6
+  question: RoPE 用 {rotation matrix} 將位置資訊編碼到 Q/K 入面，天然支持 {relative position}。
+  answer: rotation matrix, relative position
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.3
+  type: mcq
+  source_modules:
+  - 7
+  question: Autoregressive generation 嘅基本 loop？
+  options:
+    a: 一次過生成所有 token
+    b: 輸入 prompt → 計算 next token → 加入序列 → 重複
+    c: 隨機生成 token
+    d: 用 RNN 生成
+  answer: b
+  explanation: Autoregressive 係逐個 token 生成：輸入 prompt → 計算 next token → 加入序列 → 重複直到 EOS。
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.4
+  type: tf
+  source_modules:
+  - 8
+  statement: Chinchilla 發現同時加大 data 量比單純加大 model 更有效。
+  answer: true
+  explanation: Chinchilla 2022 發現早期 scaling 太注重大模型，最佳做法係模型大小同 data 量按比例增加。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.5
+  type: mcq
+  source_modules:
+  - 5
+  question: Pre-norm 嘅訓練穩定性點解比 post-norm 好？
+  options:
+    a: Pre-norm 有更多參數
+    b: 梯度可以直接 pass through residual connection，穿過 LayerNorm 嘅路徑更短
+    c: Post-norm 計算更慢
+    d: Pre-norm 唔需要 LayerNorm
+  answer: b
+  explanation: Pre-norm 先做 LayerNorm，梯度可以直接 pass through residual connection，穿過 LayerNorm 嘅路徑更短，訓練更穩定。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.6
+  type: mcq
+  source_modules:
+  - 6
+  question: Length extrapolation 指乜嘢？
+  options:
+    a: 模型可以處理更長嘅輸入
+    b: 模型喺 training 時冇見過嘅長度上都能正常運作
+    c: 模型嘅 parameter 數量增加
+    d: 模型嘅 vocab size 增加
+  answer: b
+  explanation: Length extrapolation 指模型喺 training 時冇見過嘅序列長度上都能正常運作，唔會因為 position 超出 training 範圍而崩潰。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.7
+  type: mcq
+  source_modules:
+  - 7
+  question: Top-k sampling 嘅 k=1 等於乜嘢？
+  options:
+    a: Top-p sampling
+    b: Beam search
+    c: Greedy decoding
+    d: Random sampling
+  answer: c
+  explanation: Top-k 1 = 每步只保留 probability 最高嘅 1 個 token = Greedy decoding。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.8
+  type: cloze
+  source_modules:
+  - 8
+  question: Emergence 係指能力喺 {threshold} 前完全冇，後突然有嘅非線性跳躍。
+  answer: threshold
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.9
+  type: mcq
+  source_modules:
+  - 5
+  question: Transformer block 入面，Attention 同 FFN 嘅順序？
+  options:
+    a: FFN → Attention
+    b: Attention → FFN（中間有 residual + LN）
+    c: 同時進行
+    d: 隨機順序
+  answer: b
+  explanation: 一個 Transformer block：Input → LayerNorm → Attention → Residual Add → LayerNorm → FFN → Residual Add → Output。
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.10
+  type: tf
+  source_modules:
+  - 6
+  statement: Sinusoidal positional encoding 有 learnable 參數。
+  answer: false
+  explanation: Sinusoidal encoding 係固定嘅 sin/cos 函數，冇 learnable 參數。RoPE 同 learnable PE 先有。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.11
+  type: mcq
+  source_modules:
+  - 7
+  question: Temperature < 1 嘅效果？
+  options:
+    a: 輸出更隨機
+    b: 輸出更 deterministic
+    c: 唔影響
+    d: 減少 token 數量
+  answer: b
+  explanation: T < 1 → softmax 嘅 value 更「尖」→ 高 probability 嘅 token 更突出 → 輸出更 deterministic。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.12
+  type: mcq
+  source_modules:
+  - 8
+  question: Prompt 敏感度嘅概率解釋？
+  options:
+    a: 模型有 bug
+    b: Wording 改變 probability distribution shift，導致完全唔同嘅 output
+    c: 模型太細
+    d: 訓練資料唔夠
+  answer: b
+  explanation: 每個 token 都影響下一個 token 嘅概率分佈。Wording 改變 = probability distribution shift → 模型可能「揀」到完全唔同嘅 continuation。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.13
+  type: mcq
+  source_modules:
+  - 5
+  question: 殘差流（residual stream）點解係深層 network 可訓練嘅關鍵？
+  options:
+    a: 增加模型嘅參數
+    b: 梯度可以直接 pass through，唔使穿過每一層嘅 non-linear transformation
+    c: 減少計算量
+    d: 增加模型嘅 accuracy
+  answer: b
+  explanation: Residual connection 確保梯度可以直接 pass through，唔使穿過每一層嘅 non-linear transformation，解決深層 network 嘅梯度消失問題。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.14
+  type: cloze
+  source_modules:
+  - 7
+  question: KV cache 嘅空間複雜度係 {O(n)}，n = 序列長度。
+  answer: O(n)
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.15
+  type: mcq
+  source_modules:
+  - 8
+  question: Scaling law 嘅 diminishing returns 指乜嘢？
+  options:
+    a: 模型越大，loss 下降越快
+    b: 每倍 compute 帶嚟嘅 loss 下降越來越少
+    c: 模型越大，loss 上升
+    d: Compute 增加冇效果
+  answer: b
+  explanation: Diminishing returns = 每倍 compute 帶嚟嘅 loss 下降固定比例，但比例越來越細，每倍帶來嘅絕對提升越来越少。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.16
+  type: tf
+  source_modules:
+  - 5
+  statement: LayerNorm 同 BatchNorm 嘅主要分別係 LayerNorm 沿 feature dimension normalize，BatchNorm 沿 batch dimension normalize。
+  answer: true
+  explanation: LayerNorm 係對每個 sample 獨立 normalize（沿 feature dimension），BatchNorm 係對整個 batch 嘅同一 feature normalize（沿 batch dimension）。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.17
+  type: mcq
+  source_modules:
+  - 6
+  question: Relative position encoding 嘅優勢？
+  options:
+    a: 計算更快
+    b: 可以處理比 training 時更長嘅序列
+    c: 更準確
+    d: 唔需要任何 encoding
+  answer: b
+  explanation: Relative position encoding 編碼嘅係 token 之間嘅「距離」，而唔係絕對位置，所以可以泛化到更長嘅序列。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.18
+  type: mcq
+  source_modules:
+  - 7
+  question: Beam search 嘅主要用途？
+  options:
+    a: 訓練模型
+    b: 喺翻譯等任務入面揀全局最優 sequence
+    c: 減少模型大小
+    d: 增加 training 速度
+  answer: b
+  explanation: Beam search 同時維護 k 個 candidate，每步展開所有可能，保留最高分嘅 k 個，最終揀全局最優 sequence。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.19
+  type: cloze
+  source_modules:
+  - 8
+  question: Hallucination 有兩種：{事實 hallucination}（講錯事實）同 {忠誠度 hallucination}（唔跟指令）。
+  answer: 事實 hallucination, 忠誠度 hallucination
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.20
+  type: mcq
+  source_modules:
+  - 4
+  question: Multi-head attention 嘅「多個 head」學到乜嘢？
+  options:
+    a: 同一種 pattern
+    b: 不同類型嘅 token relationship（語法、語義、位置等）
+    c: 更多參數
+    d: 更多層
+  answer: b
+  explanation: 每個 head 學習唔同類型嘅 attention pattern — 有啲學語法關係，有啲學語義關係，有啲學位置關係。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.21
+  type: mcq
+  source_modules:
+  - 3
+  question: Embedding 嘅維度 d 越大？
+  options:
+    a: 語義空間越細
+    b: 語義空間越大，可以區分更多細微語義差別
+    c: 計算越慢
+    d: 模型越大
+  answer: b
+  explanation: 維度越大 → 語義空間越大 → 可以區分更多細微語義差別 → 但計算量都增加。呢個係 trade-off。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.22
+  type: tf
+  source_modules:
+  - 1
+  statement: Encoder-decoder model（如 T5）同時有 input encoder 同 output decoder。
+  answer: true
+  explanation: Encoder-decoder 同時有 input encoder（理解輸入）同 output decoder（生成輸出），適合 seq2seq 任務。
+  difficulty: 1
+  tags:
+  - recall
+- id: cum.23
+  type: mcq
+  source_modules:
+  - 2
+  question: SentencePiece 嘅特點？
+  options:
+    a: 用 fixed 嘅切割規則
+    b: 直接喺 raw text 上操作，唔需要 pre-tokenization
+    c: 只能處理英文
+  answer: b
+  explanation: SentencePiece 直接喺 raw text 上操作，唔需要 pre-tokenization，可以處理任何語言。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.24
+  type: mcq
+  source_modules:
+  - 8
+  question: Emergent ability 嘅例子？
+  options:
+    a: 模型可以預測下一個字
+    b: 模型可以做多步推理（GPT-2 做唔到，GPT-3/4 突然做到）
+    c: 模型可以 tokenize 文字
+    d: 模型可以做 attention
+  answer: b
+  explanation: 多步推理係 emergent ability — GPT-2 完全做唔到，GPT-3/4 規模大到某個 threshold 突然做到。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.25
+  type: cloze
+  source_modules:
+  - 5
+  question: FFN 嘅結構通常係：Hidden → Linear → {ReLU/GeLU} → Linear → Hidden。提供模型嘅「記憶力」。
+  answer: ReLU/GeLU
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.26
+  type: mcq
+  source_modules:
+  - 6
+  question: 位置編碼注入 Transformer 嘅方式？
+  options:
+    a: 喺 input embedding 入面加上 position vector
+    b: 喺 attention 入面加 position bias
+    c: 修改 weight matrix
+    d: 喺 output 入面加 position
+  answer: a
+  explanation: 最常見嘅方式係喺 input embedding 入面加上 position vector（additive），RoPE 則係乘性。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.27
+  type: mcq
+  source_modules:
+  - 7
+  question: Attention 嘅 self-attention 為乜嘢比 RNN 快？
+  options:
+    a: 參數更少
+    b: 可以 parallel 處理所有 token，RNN 必須 sequential
+    c: 唔需要 GPU
+    d: 更準確
+  answer: b
+  explanation: Self-attention 同時計算所有 token 對之間嘅 attention，可以 parallel。RNN 必須逐個 token 處理，sequential。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.28
+  type: mcq
+  source_modules:
+  - 4
+  question: Scaled dot-product attention 入面「scaled」嘅作用？
+  options:
+    a: 增加 attention 嘅值
+    b: 除以 √d_k 防止 dot product 值太大導致 softmax saturation
+    c: 減少計算量
+    d: 增加 accuracy
+  answer: b
+  explanation: Dot product 嘅值隨 d_k 增大而增大，未經 scaling 直接入 softmax 會導致梯度消失（saturation）。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.29
+  type: mcq
+  source_modules:
+  - 5
+  question: Transformer block 嘅 residual add 發生喺邊度？
+  options:
+    a: Attention 之前
+    b: Attention 之後同 FFN 之後各一次
+    c: FFN 之前
+    d: 只喺最後
+  answer: b
+  explanation: Residual add 發生兩次：Attention 之後同 FFN 之後。每次 non-linear transformation 之後都有 residual connection。
+  difficulty: 2
+  tags:
+  - recall
+- id: cum.30
+  type: cloze
+  source_modules:
+  - 6
+  question: ALiBi 冇 {learnable} 參數，直接喺 attention score 加 {distance-dependent} bias。
+  answer: learnable, distance-dependent
+  difficulty: 2
+  tags:
+  - recall

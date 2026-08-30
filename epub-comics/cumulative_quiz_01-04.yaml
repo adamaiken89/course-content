@@ -1,0 +1,109 @@
+- id: "cum.1"
+  type: mcq
+  source_modules: [1, 2]
+  question: "An author builds a fixed-layout comic EPUB. Which combination of files is strictly required for a reader to recognise the package as an EPUB?"
+  options:
+    a: "OEBPS/content.opf and OEBPS/nav.xhtml only"
+    b: "mimetype and META-INF/container.xml only"
+    c: "mimetype, META-INF/container.xml, and a content.opf pointed to by container.xml"
+    d: "mimetype, nav.xhtml, and at least one page XHTML"
+  answer: c
+  explanation: "The byte-sniff contract requires mimetype as the first entry. The reader then opens META-INF/container.xml to find the OPF. Without any of these three, the package is not a valid EPUB regardless of how many pages exist."
+  difficulty: 2
+  tags: [cross-module, terminology]
+
+- id: "cum.2"
+  type: mcq
+  source_modules: [2, 3]
+  question: "A comic is built with rendition:layout=pre-paginated at the OPF level, but a page XHTML omits the viewport meta element. What is the most likely result?"
+  options:
+    a: "The reader refuses to open the book"
+    b: "The page renders but the ICB is undefined; scaling and positioning are unpredictable"
+    c: "The reader falls back to reflowable layout for that page"
+    d: "The page renders perfectly using the OPF rendition:viewport as fallback"
+  answer: b
+  explanation: "rendition:viewport is deprecated in EPUB 3.3. The per-page viewport meta is the source of truth for the ICB. Without it, the page may render with device-screen dimensions or undefined behaviour, leading to unpredictable scaling of the image and text overlays."
+  difficulty: 3
+  tags: [cross-module, scenario]
+
+- id: "cum.3"
+  type: mcq
+  source_modules: [3, 4]
+  question: "A team uses CSS Grid to lay out six speech bubbles on a fixed-layout page. The bubbles render correctly on Kobo and Apple Books but stack vertically on Kindle. Which change fixes the cross-reader inconsistency?"
+  options:
+    a: "Add !important to the grid-template-columns rule"
+    b: "Switch to position: absolute per bubble with explicit top/left/width/height"
+    c: "Use a flexbox container with justify-content: space-between"
+    d: "Add a viewport meta to the page XHTML"
+  answer: b
+  explanation: "CSS Grid is poorly supported on Kindle's KFX renderer; the conversion drops or misinterprets the layout. Absolute positioning with explicit coordinates is the KFX-safe pattern. Flexbox is also unreliable on Kindle."
+  difficulty: 2
+  tags: [cross-module, scenario]
+
+- id: "cum.4"
+  type: mcq
+  source_modules: [3, 4]
+  question: "A page XHTML at OEBPS/pages/page001.xhtml needs to display an image at OEBPS/images/page001.jpg. Which img src is correct?"
+  options:
+    a: "images/page001.jpg"
+    b: "OEBPS/images/page001.jpg"
+    c: "../images/page001.jpg"
+    d: "/images/page001.jpg"
+  answer: c
+  explanation: "Paths in XHTML are relative to the XHTML file's location. From pages/ the image is at ../images/page001.jpg. Absolute paths from the package root are not valid in EPUB."
+  difficulty: 2
+  tags: [cross-module, application]
+
+- id: "cum.5"
+  type: cloze
+  source_modules: [1, 2]
+  question: "Complete: The MIME type string in the first entry of an EPUB ZIP is {application/epub+zip}."
+  answer: "application/epub+zip"
+  explanation: "Exact string, no trailing newline, stored uncompressed, no extra field. This is the byte-sniff contract from module 01."
+  difficulty: 1
+  tags: [cross-module, recall]
+
+- id: "cum.6"
+  type: cloze
+  source_modules: [2, 3]
+  question: "Complete: The OPF property that activates fixed layout for the whole book is {rendition:layout} with value pre-paginated."
+  answer: "rendition:layout"
+  explanation: "rendition:layout declares the default rendering intent. The value pre-paginated tells the reader to treat the book as fixed layout."
+  difficulty: 1
+  tags: [cross-module, recall]
+
+- id: "cum.7"
+  type: cloze
+  source_modules: [3, 4]
+  question: "Complete: The CSS property that makes a parent element the coordinate origin for absolutely-positioned children is {position: relative}."
+  answer: "position: relative"
+  explanation: "position: relative on the .page container makes it the containing block. Children with position: absolute resolve their top/left against it."
+  difficulty: 2
+  tags: [cross-module, synthesis]
+
+- id: "cum.8"
+  type: tf
+  source_modules: [1, 3]
+  statement: "An EPUB with valid mimetype, container.xml, and content.opf but no nav.xhtml will pass strict EPUB 3 validation in stores like Apple Books and Kobo."
+  answer: false
+  explanation: "Strict EPUB 3 readers and stores require nav.xhtml. The book may still render in lenient readers (which fall back to legacy NCX) but it will fail validation."
+  difficulty: 1
+  tags: [cross-module, misconception]
+
+- id: "cum.9"
+  type: tf
+  source_modules: [2, 4]
+  statement: "Using device-width in the viewport meta of a fixed-layout comic page is acceptable and produces correct rendering on all target readers."
+  answer: false
+  explanation: "device-width ties the ICB to the physical screen, which makes the composition scale to the screen instead of staying in a fixed ICB. For fixed layout, declare explicit pixel dimensions (e.g., width=1404, height=1872) so the composition is stable and the reader scales the whole ICB to fit."
+  difficulty: 2
+  tags: [cross-module, misconception]
+
+- id: "cum.10"
+  type: tf
+  source_modules: [1, 3]
+  statement: "A spine itemref element must use the idref attribute (not href) to reference a manifest item."
+  answer: true
+  explanation: "The spine references manifest item ids, not file paths. <itemref idref='cover'/> points to <item id='cover' href='cover.xhtml' .../> in the manifest. Using href in the spine is invalid and the reader skips the entry."
+  difficulty: 2
+  tags: [cross-module, synthesis]

@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "a11y 係 {blank} 嘅縮寫（中間有 11 個字母）。"
+  answer: "accessibility"
+  explanation: "a11y 係 accessibility 嘅 numeronym（a + 11 letters + y）。同樣模式有 i18n（internationalization）、l10n（localization）。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "EU 嘅 European Accessibility Act（EAA）喺 {blank} 年生效，所有歐盟賣嘅電子書必須符合 a11y 標準。"
+  answer: "2025"
+  explanation: "EAA 喺 2025/06/28 強制執行（transposition deadline）。唔 compliant 嘅電子書唔可以喺歐盟市場賣。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Screen reader 讀唔到嘅 EPUB 內容通常係因為冇 {blank} 屬性、冇正確 heading structure、冇閱讀順序。"
+  answer: "alt"
+  explanation: "alt-text 描述圖片內容畀視障讀者。冇 alt 嘅 <img> screen reader 會跳過或講「image」（無資訊）。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.4"
+  question: "EPUB a11y 1.1 嘅最高層級係 Accessible + {blank}，要求符合 WCAG 2.1 AA。"
+  answer: "Enhanced"
+  explanation: "三層級：Baseline、Accessible、Accessible + Enhanced。Enhanced 要求完整 structural semantics、所有圖片有 alt-text、WCAG 2.1 AA 合規。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Media overlay 用 {blank}（Synchronized Multimedia Integration Language）格式同步音頻同文字。"
+  answer: "SMIL"
+  explanation: "SMIL 係 W3C 嘅 XML 標準，用 <par> 配對 <text> 同 <audio> clipBegin/clipEnd 對齊，係 EPUB 3 audio 同步核心。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.6"
+  question: "AI {blank}（Text-to-Speech）2020 年代大躍進，多咗人用 AI 旁白做有聲書。"
+  answer: "TTS"
+  explanation: "TTS = Text-to-Speech。AI TTS 引擎（例如 Google WaveNet、Amazon Polly、Microsoft Azure）令有聲書自動化生產。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "AI 旁白嘅好處包括成本低、速度快，但 {blank} 同情感表達仲有改善空間。"
+  answer: "自然度"
+  explanation: "AI TTS 主要弱點：自然度（語氣停頓位）、情感（喜怒哀樂表達）、語言支持（粵語質素較弱）。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.8"
+  question: "EPUB 3.3 喺 {blank} 年由 W3C 發佈，係最新 Recommendation。"
+  answer: "2023"
+  explanation: "EPUB 3.3 喺 2023/05 由 W3C 發佈做 Recommendation。對齊 WCAG 2.1、整合 EPUB a11y 1.1、改進 OCF。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.9"
+  question: "AI 旁白適合 {blank} 市場、低成本生產；真人配音適合高質量、情感豐富。"
+  answer: "大量"
+  explanation: "AI 旁白 use case：語言學習、自出版、indie romance、快速 audiobook 化。真人 use case：文學小說、有聲劇、得獎作品。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.10"
+  question: "EU EAA 2025 要求電子書要符合 {blank} 2.1 AA 標準（a11y 最高層級）。"
+  answer: "WCAG"
+  explanation: "WCAG = Web Content Accessibility Guidelines，係 W3C 嘅無障礙內容指引。EPUB a11y 1.1 Enhanced 層級要求符合 WCAG 2.1 AA。"
+  difficulty: 2
+  tags: [terminology]

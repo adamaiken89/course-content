@@ -1,0 +1,108 @@
+- id: '6.1'
+  question: 點解 attention 機制一定要加位置編碼？
+  options:
+    a: 加速訓練
+    b: Attention 本身 permutation invariant，打亂 token 順序 output 會相應打亂，冇內建位置感
+    c: 減少參數
+    d: 改善 attention score
+  answer: b
+  explanation: Attention 對 input 做嘅操作係 permutation equivariant — 打亂 input，output 相應打亂。所以「狗咬人」同「人咬狗」對 attention 完全一樣，必須靠 PE 加位置感。
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.2'
+  question: Sinusoidal positional encoding 嘅關鍵特性係？
+  options:
+    a: 每個位置用唔同頻率嘅 sin/cos 生成固定向量，PE(pos+k) 可表達成 PE(pos) 線性函數
+    b: 每個位置學一個 vector
+    c: 用神經網絡生成
+    d: 完全隨機
+  answer: a
+  explanation: Sinusoidal PE 用不同頻率 sin/cos 為每個位置生成固定向量。神奇特性：PE(pos+k) 可以從 PE(pos) 線性推導，理論上可以學到相對位置關係。
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.3'
+  question: RoPE（Rotary Position Embedding）嘅核心 idea 係？
+  options:
+    a: 將位置信息加落 input embedding
+    b: 對 Q 同 K 做旋轉，旋轉角度同位置有關，令 dot product 自動 encode 相對距離
+    c: 用學習式 PE
+    d: 隨機位置 embedding
+  answer: b
+  explanation: RoPE 唔加 PE 落 input，而係將 Q_i 同 K_j 做旋轉，角度同 i, j 位置有關。Q_i · K_j 嘅 dot product 自動 encode (i - j) 相對距離。
+  difficulty: 3
+  tags:
+  - concept
+- id: '6.4'
+  question: 學習式 PE 嘅主要限制？
+  options:
+    a: 訓練太慢
+    b: max_len 固定，無法外推到更長序列；浪費參數
+    c: 準確度低
+    d: 不支援 multi-head
+  answer: b
+  explanation: 學習式 PE 為每個位置學獨立 vector，max_len 必須預設。外推到訓練時未見過嘅位置完全冇定義，呢個係長 context LLM 嘅核心障礙。
+  difficulty: 1
+  tags:
+  - tradeoff
+- id: '6.5'
+  question: ALiBi（Attention with Linear Biases）嘅做法同優點？
+  options:
+    a: 加落 input embedding 嘅 bias
+    b: 直接喺 attention score 加 −λ × |i − j| 偏置，零額外參數，天然支持長度外推
+    c: 用 sinusoidal PE
+    d: 用 RoPE
+  answer: b
+  explanation: ALiBi 唔改 embedding，直接喺 attention score 加距離偏置。超簡單、零額外參數、容易外推到長序列。BLOOM 採用。代價係表達能力受限制。
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.6'
+  question: 「狗咬人」同「人咬狗」對無 PE 嘅 transformer 嚟講？
+  options:
+    a: 兩個意思完全相反，模型可分辨
+    b: 兩個完全一樣，因為 attention 無位置感
+    c: 兩個概率分佈相同
+    d: 模型會拒絕回答
+  answer: b
+  explanation: 兩個句子字集合一樣 {狗, 咬, 人}，無 PE 嘅 attention 對呢個集合嘅處理完全 permutation equivariant。模型無法分辨詞序，所以兩個句子 output 一樣。
+  difficulty: 1
+  tags:
+  - scenario
+- id: '6.7'
+  question: 主流 LLM（Llama、Qwen、Mistral）採用邊種位置編碼？
+  options:
+    a: Sinusoidal
+    b: 學習式
+    c: RoPE
+    d: 冇用 PE
+  answer: c
+  explanation: RoPE 嘅相對位置特性、容易外推、主流 LLM 驗證有效，係而家最常用方案。Llama 系列、Qwen、Mistral 等都用 RoPE。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.8'
+  question: 「長度外推」喺 LLM 部署中指乜？
+  options:
+    a: 模型訓練時支持嘅長度
+    b: 用訓練時嘅長度（例如 4K）部署到更長 context（例如 32K-128K）
+    c: 序列越長越好
+    d: 訓練用長 context
+  answer: b
+  explanation: 長度外推指用短 context 訓練嘅模型喺推理時處理長 context 嘅能力。呢個係實際部署核心挑戰，方案包括位置插值、ALiBi、RoPE scaling、繼續預訓練等。
+  difficulty: 2
+  tags:
+  - terminology
+- id: '6.9'
+  question: 位置編碼通常加喺邊度？
+  options:
+    a: Embedding 之後但入 Transformer 前
+    b: FFN 之後
+    c: Output 之後
+    d: Loss 計算時
+  answer: a
+  explanation: 主流做法：embedding vector 同 PE vector 相加（或者 RoPE 喺 attention 內旋轉），然後入 Transformer。PE 必須喺最早期加入，否則後面 sublayer 全部睇唔到位置。
+  difficulty: 1
+  tags:
+  - structure

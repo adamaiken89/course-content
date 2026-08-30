@@ -1,0 +1,35 @@
+- id: c.1
+  question: Subword tokenization 平衡咗{詞表大小}同{序列長度}，解決 word-level 嘅 OOV 同 char-level 嘅長序列問題。
+  answer: 詞表大小，序列長度
+  explanation: Word-level 詞表爆大有 OOV，char-level 序列太長。Subword 將高頻詞保留、罕見詞拆細，兩邊都平衡到。
+  difficulty: 1
+  tags:
+  - concept
+- id: c.2
+  question: BPE 算法由{char-level}起步，反覆合併{corpus}中頻率最高嘅相鄰 pair。
+  answer: char-level，corpus
+  explanation: BPE 起點係每個字元一個 token，然後統計 corpus 內最常見嘅相鄰 pair 合併，直到詞表達到目標大小。頻率高嘅 pair 通常係有意義詞綴。
+  difficulty: 1
+  tags:
+  - algorithm
+- id: c.3
+  question: SentencePiece 直接喺{raw text}跑 tokenization，包括{空格}字符，所以語言無關。
+  answer: raw text，空格
+  explanation: 傳統 BPE 要先分詞，中文日文冇空格分唔到。SentencePiece 直接處理 raw text，將空格當作普通字符，所以任何語言都可以用同一套算法。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.4
+  question: 詞表{大}啲通常令序列較{短}，但代價係{embedding}參數爆大。
+  answer: 大，短，embedding
+  explanation: 大詞表令常用字直接成 token，序列短啲、罕見字保留更完整。但每個 token 都要一個 embedding 向量，詞表大意味住 embedding matrix 參數爆。
+  difficulty: 2
+  tags:
+  - tradeoff
+- id: c.5
+  question: 罕見 emoji 通常會被 tokenizer 拆到{byte}層處理，所以一個 emoji 可能變成 6-8 個 token。
+  answer: byte
+  explanation: 罕見字符唔會獨立成 token，會 fallback 到 byte-level 拆件。呢個係常見現象，唔係 bug，係詞表覆蓋率嘅限制。
+  difficulty: 1
+  tags:
+  - scenario
