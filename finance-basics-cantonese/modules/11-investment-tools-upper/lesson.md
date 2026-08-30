@@ -1,4 +1,4 @@
-# Module 11: 投資工具(上)
+# Module 11: 投資工具(上): 定存、貨幣市場、債
 
 Est. study time: 1h
 Language: yue

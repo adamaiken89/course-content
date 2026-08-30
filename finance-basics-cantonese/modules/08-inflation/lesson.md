@@ -1,4 +1,4 @@
-# Module 08: 通脹
+# Module 08: 通脹: 錢越嚟越唔值錢
 
 Est. study time: 1h
 Language: yue

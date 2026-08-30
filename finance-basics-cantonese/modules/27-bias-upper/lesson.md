@@ -1,4 +1,4 @@
-# Module 27: 常見財務謬誤(上)
+# Module 27: 常見財務謬誤(上): 認知 Bias
 
 Est. study time: 1h
 Language: yue

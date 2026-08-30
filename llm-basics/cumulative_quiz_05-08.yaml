@@ -1,3 +1,6 @@
+# NOTE: cumulative quiz questions are review-only and intentionally NOT
+# included in srs/deck.json. The SRS deck covers per-module quiz + cloze
+# cards only (9 mcq + 5 cloze per module = 112 cards).
 - id: cum.1
   type: mcq
   source_modules:

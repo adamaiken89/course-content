@@ -1,4 +1,4 @@
-# Module 20: 資產配置(下)
+# Module 20: 資產配置(下): 策略同再平衡
 
 Est. study time: 1h
 Language: yue

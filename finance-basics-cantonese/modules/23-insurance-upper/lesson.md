@@ -1,4 +1,4 @@
-# Module 23: 保險(上)
+# Module 23: 保險(上): 概念同人壽、醫療
 
 Est. study time: 1h
 Language: yue

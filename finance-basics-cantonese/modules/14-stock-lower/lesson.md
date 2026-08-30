@@ -1,4 +1,4 @@
-# Module 14: 股票(下)
+# Module 14: 股票(下): 估值 P/E 同股息
 
 Est. study time: 1h
 Language: yue

@@ -1,4 +1,4 @@
-# Module 18: ETF(下)
+# Module 18: ETF: 結構同優勢
 
 Est. study time: 1h
 Language: yue

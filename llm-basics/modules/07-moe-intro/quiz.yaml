@@ -40,7 +40,7 @@
   question: Mixtral 8×7B 嘅 total parameters 同 active per token 係？
   options:
     a: Total 7B, active 7B
-    b: Total 12.9B, active 47B
+    b: Total 47B, active 47B
     c: Total 56B, active 56B
     d: Total 47B, active 12.9B
   answer: d

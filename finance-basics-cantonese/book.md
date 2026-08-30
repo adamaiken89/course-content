@@ -169,7 +169,7 @@ flowchart TD
 1. **政府強制通用** — 喺香港, 法例規定 HKD 係合法支付工具, 唔收港元會犯法
 2. **政府信用** — 大家都信政府會管好, 唔會亂咁印銀紙搞到通脹失控
 
-**問題**: 一旦政府「亂印銀紙」, 法幣就會崩潰。例子: 辛巴威 2008 年通脹率達到 89,700,000,000,000% (8.97 乘 10 的 13 次方)。個鈔票上面寫住「100 億」, 但一個麵包都買唔起。
+**問題**: 一旦政府「亂印銀紙」, 法幣就會崩潰。例子: 辛巴威 2008 年通脹率達到 89,700,000,000,000% (8.97 乘 10 嘅 13 次方)。個鈔票上面寫住「100 億」, 但一個麵包都買唔起。
 
 > **Spot the Mistake**: 「法幣有政府背書, 所以點印都唔會貶值, 永遠保值。」
 >
@@ -314,8 +314,6 @@ Take the quiz. MCQs test recall + application + scenario.
 Run: `learn.sh quiz finance-basics-cantonese 1`
 Run: `learn.sh cloze finance-basics-cantonese 1`
 
----
-
 ## Quiz: 01-what-is-money
 
 
@@ -428,7 +426,7 @@ Bitcoin 已經可以用嚟買部分嘢(交換媒介 OK), 亦有人儲(BTC 持倉
 
 **Answer:** c
 
-匯率受通脹差、利率差、貿易差、政治穩定、市場預期等影響。天氣(短期自然災害除外的 macro 影響)唔直接影響匯率。天氣會間接影響農產品供應, 但唔係匯率嘅主因。
+匯率受通脹差、利率差、貿易差、政治穩定、市場預期等影響。天氣(短期自然災害除外嘅 macro 影響)唔直接影響匯率。天氣會間接影響農產品供應, 但唔係匯率嘅主因。
 
 
 ### 外匯市場每日交易量大約幾多?
@@ -478,9 +476,7 @@ Bitcoin 已經可以用嚟買部分嘢(交換媒介 OK), 亦有人儲(BTC 持倉
 
 錢嘅本質係「大家都肯收」。北極當地人唔收你嘅 HKD 紙幣, 呢疊紙就唔再係「錢」(冇做到交換媒介)。解決方法係以物易物或用當地人接受嘅交換媒介。呢個例子正正顯示錢嘅本質係「共識」, 唔係「紙」本身。
 
-
 ---
-
 
 # Module 02: 收入 vs 支出
 
@@ -776,8 +772,6 @@ Take the quiz. MCQs test recall + application + scenario.
 Run: `learn.sh quiz finance-basics-cantonese 2`
 Run: `learn.sh cloze finance-basics-cantonese 2`
 
----
-
 ## Quiz: 02-income-vs-expense
 
 
@@ -940,9 +934,7 @@ MPF 係強迫性退休儲蓄, 65 歲先可以攞(最早), 中間鎖住。應急�
 
 分階段減最實際, 即刻 cut 0% 難持續, 加兼職治標不治本。C 平衡咗改善速度同可持續性。
 
-
 ---
-
 
 # Module 03: 儲蓄同現金流
 
@@ -1134,8 +1126,6 @@ Take the quiz. MCQs test recall + application + scenario.
 Run: `learn.sh quiz finance-basics-cantonese 3`
 Run: `learn.sh cloze finance-basics-cantonese 3`
 
----
-
 ## Quiz: 03-savings-cashflow
 
 
@@ -1298,9 +1288,7 @@ Run: `learn.sh cloze finance-basics-cantonese 3`
 
 儲蓄率 5% 偏低, 應急錢 1 個月太短。失業後 1 個月就會用晒儲蓄, 餘下要靠借貸度日, 容易陷入債務陷阱。Solution: 先增加儲蓄率到 20%, 應急錢累積到 3-6 個月, 先係穩健狀態。Option c 假設佢有股票, d 失業救濟審批需時, 唔即時。
 
-
 ---
-
 
 # Module 04: 預算: 50/30/20 規則
 
@@ -1541,8 +1529,6 @@ Take the quiz. MCQs test recall + application + scenario.
 Run: `learn.sh quiz finance-basics-cantonese 4`
 Run: `learn.sh cloze finance-basics-cantonese 4`
 
----
-
 ## Quiz: 04-budget-50-30-20
 
 
@@ -1705,9 +1691,7 @@ Wants 30% 包括: 外食、旅行、訂閱 (Netflix/Spotify)、娛樂 (戲/酒�
 
 「恰好用晒 wants 30%」反映 wants 預算太緊, 容易超支。應根據自己 lifestyle 調整, 例如 25% Needs (住屋高) + 35% Wants + 20% 儲蓄 + 20% 其他。預算係 reference, 唔係死規則, 要根據實際彈性調整。Option a 係放棄, b 誤判形勢, d 會犧牲儲蓄。
 
-
 ---
-
 
 # Module 05: 銀行戶口: 往來/儲蓄/定期
 
@@ -1951,8 +1935,6 @@ Take the quiz. MCQs test recall + application + scenario.
 Run: `learn.sh quiz finance-basics-cantonese 5`
 Run: `learn.sh cloze finance-basics-cantonese 5`
 
----
-
 ## Quiz: 05-bank-accounts
 
 
@@ -2115,9 +2097,7 @@ Virtual Bank 一樣受金管局發牌同監管, 一樣有存款保障。分別�
 
 自動轉賬係「Pay Yourself First」嘅核心做法: 出糧當日自動 split 20% 去儲蓄, 剩低先用。好處: 1) 唔使記得; 2) 唔會使凸; 3) 強迫儲蓄。手動轉賬 = 容易忘記/諗多咗就唔轉。信用卡里數唔係儲蓄。糧直入儲蓄 = 日常支付唔方便。
 
-
 ---
-
 
 # Module 06: 利息(上): 單利同複利
 
@@ -2421,8 +2401,6 @@ Take the quiz. MCQs test calculation + comparison + scenario.
 Run: `learn.sh quiz finance-basics-cantonese 6`
 Run: `learn.sh cloze finance-basics-cantonese 6`
 
----
-
 ## Quiz: 06-interest-upper
 
 
@@ -2585,11 +2563,9 @@ Rule of 72 係一個實用估算: 本金翻倍年數 ≈ 72 / 年利率(%)。例
 
 信用卡年利率 30% → 月利率 30% ÷ 12 = 2.5%。月結複利 1 年: $5,000 × (1 + 0.025)^12 = $5,000 × 1.3449 ≈ $6,724, 最接近 d 嘅 $6,500。記住: 卡數唔還 = 30% 年利率複利, 一年後本 + 息已經滾大約 34%。 **卡數係普通人最大嘅財務陷阱**。
 
-
 ---
 
-
-# Module 07: 利息(下)
+# Module 07: 利息(下): APR、APY 同實際利率
 
 Est. study time: 1h
 Language: yue
@@ -2902,8 +2878,6 @@ Take the quiz. MCQs test recall + application + scenario (calculation included).
 Run: `learn.sh quiz finance-basics-cantonese 7`
 Run: `learn.sh cloze finance-basics-cantonese 7`
 
----
-
 ## Quiz: 07-interest-lower
 
 
@@ -3066,11 +3040,9 @@ EAR = (1 + 0.30/12)¹² - 1 = 34.49%。總利息 ≈ $20000 × 34.49% = $6898。
 
 「月息 2%」聽落似 2%, 心理上易接受;「年息 26.82%」太驚, 用戶即刻走。Marketing 心理戰。法例要寫 APR (年化), 但銀行行銷用月息吸引。
 
-
 ---
 
-
-# Module 08: 通脹
+# Module 08: 通脹: 錢越嚟越唔值錢
 
 Est. study time: 1h
 Language: yue
@@ -3374,8 +3346,6 @@ Take the quiz. MCQs test recall + application + scenario (calculation included).
 Run: `learn.sh quiz finance-basics-cantonese 8`
 Run: `learn.sh cloze finance-basics-cantonese 8`
 
----
-
 ## Quiz: 08-inflation
 
 
@@ -3538,9 +3508,7 @@ Rule of 72 計: 24 年後購買力減半, $100 變 $50。精確計: 100 / (1.03)
 
 100 萬 ÷ (1.03)³⁵ ≈ $35.5 萬 (1990 到 2025 係 35 年)。最接近嘅選項係 d ($30 萬)。Rule of 72: 72 ÷ 3 = 24 年購買力減半, 35 年已經蝕超過一半。如果只儲 30 年: 100 萬 ÷ (1.03)³⁰ ≈ $41 萬。
 
-
 ---
-
 
 # Module 09: 風險(上): 定義同類型
 
@@ -3760,8 +3728,6 @@ Take the quiz. MCQs test recall + application + scenario.
 Run: `learn.sh quiz finance-basics-cantonese 9`
 Run: `learn.sh cloze finance-basics-cantonese 9`
 
----
-
 ## Quiz: 09-risk-types
 
 
@@ -3924,11 +3890,9 @@ AAA 係「相對最高」, 唔等於「絕對零風險」。雷曼 2008 違約�
 
 分散 (diversification) 只可以降低非系統風險 (個別公司/個別行業), 系統風險 (整體市場) 消除唔到。例如 2008 金融海嘯, 所有股票都跌, 分散都救唔到。真正消除系統風險要靠對沖 (hedge)。
 
-
 ---
 
-
-# Module 10: 風險(下)
+# Module 10: 風險(下): 度量同 Sharpe
 
 Est. study time: 1h
 Language: yue
@@ -4233,8 +4197,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 10`
 Run: `learn.sh cloze finance-basics-cantonese 10`
 
----
-
 ## Quiz: 10-risk-lower
 
 
@@ -4397,11 +4359,9 @@ ETF 分散嘅係非系統風險(個別公司風險), 系統風險(整個市場)�
 
 短期國庫券 / 高息戶口波動近乎零, 係真正「無風險」資產。但回報低, 對抗唔到通脹。個股、Bitcoin、槓桿 ETF 全部都有顯著波動。
 
-
 ---
 
-
-# Module 11: 投資工具(上)
+# Module 11: 投資工具(上): 定存、貨幣市場、債
 
 Est. study time: 1h
 Language: yue
@@ -4689,8 +4649,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 11`
 Run: `learn.sh cloze finance-basics-cantonese 11`
 
----
-
 ## Quiz: 11-investment-tools-upper
 
 
@@ -4853,11 +4811,9 @@ $50,000 × 3% = $1,500 利息, 本金 $50,000 + 利息 $1,500 = $51,500。MMF �
 
 呢 3 種工具違約風險近乎 0, 唔涉及股票, 港幣計無匯率風險。但都有通脹風險 — 名義回報低過通脹 = 實質虧損。
 
-
 ---
 
-
-# Module 12: 投資工具(下)
+# Module 12: 投資工具(下): 股、基金、ETF 概覽
 
 Est. study time: 1h
 Language: yue
@@ -5012,7 +4968,7 @@ mindmap
 **例子**: 買 1 手盈富 (500 股 @$20 = $10,000)
 - 追蹤恒生指數
 - 持倉: 騰訊、匯豐、友邦、阿里等 80+ 隻藍籌
-- 1 年後指數升 10% → 你的盈富都升 ~10% (扣除 0.1% 管理費)
+- 1 年後指數升 10% → 你嘅盈富都升 ~10% (扣除 0.1% 管理費)
 
 **ETF 神奇之處**:
 - 創造 / 贖回機制: 當 ETF 價偏離 NAV, AP 套利, 拉返
@@ -5155,8 +5111,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 
 Run: `learn.sh quiz finance-basics-cantonese 12`
 Run: `learn.sh cloze finance-basics-cantonese 12`
-
----
 
 ## Quiz: 12-investment-tools-lower
 
@@ -5320,11 +5274,9 @@ KOL 推介多數係情緒化 + 利益衝突, 唔可以盲跟。80% ETF 核心 (�
 
 槓桿 / 反向 ETF 每日 reset, 即使指數橫行, ETF 都會因為波動而損失(波動拖累效應)。長揸 5-10 年必輸。呢類工具只適合短炒 (1-10 日) 同有經驗嘅人。
 
-
 ---
 
-
-# Module 13: 股票(上)
+# Module 13: 股票(上): 定義同市場
 
 Est. study time: 1h
 Language: yue
@@ -5614,8 +5566,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 13`
 Run: `learn.sh cloze finance-basics-cantonese 13`
 
----
-
 ## Quiz: 13-stock-upper
 
 
@@ -5778,11 +5728,9 @@ T+2 係香港股票交收標準, 落單當日為 T, 2 個工作日後 (即 T+2) 
 
 停牌期間買賣完全凍結, 股東被鎖住。漢能薄膜 2015 年停牌之後從未正常復牌, 2020 年私有化退市; 其他個案復牌後就可能暴升或暴跌。
 
-
 ---
 
-
-# Module 14: 股票(下)
+# Module 14: 股票(下): 估值 P/E 同股息
 
 Est. study time: 1h
 Language: yue
@@ -6098,8 +6046,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 14`
 Run: `learn.sh cloze finance-basics-cantonese 14`
 
----
-
 ## Quiz: 14-stock-lower
 
 
@@ -6244,7 +6190,7 @@ PEG A = 30/30 = 1 (合理), PEG B = 30/10 = 3 (貴)。P/E 一樣, 但 A 增長�
 
 **Answer:** a
 
-科技股 P/E 5 異常, 反映市場預期盈利會大跌。應該 check (1) 盈利是否一次性, (2) 行業整體情況, (3) 過往盈利走勢。唔好盲追低 P/E。
+科技股 P/E 5 異常, 反映市場預期盈利會大跌。應該 check (1) 盈利係咪一次性, (2) 行業整體情況, (3) 過往盈利走勢。唔好盲追低 P/E。
 
 
 ### 以下邊個做法最正確?
@@ -6262,11 +6208,9 @@ PEG A = 30/30 = 1 (合理), PEG B = 30/10 = 3 (貴)。P/E 一樣, 但 A 增長�
 
 估值係綜合判斷, 包括 P/E、增長率、行業、盈利質量、現金流、ROE。單一指標誤導。
 
-
 ---
 
-
-# Module 15: 債券(上)
+# Module 15: 債券(上): 概念同結構
 
 Est. study time: 1h
 Language: yue
@@ -6556,8 +6500,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 15`
 Run: `learn.sh cloze finance-basics-cantonese 15`
 
----
-
 ## Quiz: 15-bond-upper
 
 
@@ -6720,11 +6662,9 @@ Moody's Ba / S&P BB 本身已屬 Junk Bond / High Yield (投機級別), 違約�
 
 二手價反映市場利率, 平過面值通常因為舊債息率低過新債。真正比較要對標同期同類新債, 而唔係同自己面值比。
 
-
 ---
 
-
-# Module 16: 債券(下)
+# Module 16: 債券(下): YTM、Duration 同信評
 
 Est. study time: 1h
 Language: yue
@@ -7020,8 +6960,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 16`
 Run: `learn.sh cloze finance-basics-cantonese 16`
 
----
-
 ## Quiz: 16-bond-lower
 
 
@@ -7184,11 +7122,9 @@ Big 3: Moody's (Aaa 等), S&P (AAA 等), Fitch (同 S&P)。都係美國 + 歐美
 
 4 大風險: 利率、信用、通脹、流動。匯率風險只適用於外幣計價債券, 本地計價 (e.g. HKD 港元債) 無匯率風險。
 
-
 ---
 
-
-# Module 17: 基金(上)
+# Module 17: 基金: 概念同 NAV
 
 Est. study time: 1h
 Language: yue
@@ -7477,8 +7413,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 17`
 Run: `learn.sh cloze finance-basics-cantonese 17`
 
----
-
 ## Quiz: 17-fund-upper
 
 
@@ -7641,11 +7575,9 @@ SPIVA 數據: 5 年期 80%+ 主動基金跑輸指數, 15 年期 90%+ 跑輸。�
 
 跑贏指數 2% - 1.5% 費用 = 淨 Alpha 0.5%。要再扣 1.5% 嘅機會成本(同指數 ETF 比), 實質輸蝕。
 
-
 ---
 
-
-# Module 18: ETF(下)
+# Module 18: ETF: 結構同優勢
 
 Est. study time: 1h
 Language: yue
@@ -7939,8 +7871,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 18`
 Run: `learn.sh cloze finance-basics-cantonese 18`
 
----
-
 ## Quiz: 18-etf-lower
 
 
@@ -8103,11 +8033,9 @@ Synthetic ETF 用 Swap 模擬指數, Swap 對手 (通常係大行) 違約就會�
 
 ETF 0.05% 終值 ≈ $100 萬 × 1.0795³⁰ ≈ $983K。互惠 0.5% 終值 ≈ $100 萬 × 1.075³⁰ ≈ $806K。差距約 $177K, 取近似 $200K。0.45% 費用 30 年複利蝕接近 18%。
 
-
 ---
 
-
-# Module 19: 資產配置(上)
+# Module 19: 資產配置(上): 原理同 Correlation
 
 Est. study time: 1h
 Language: yue
@@ -8408,8 +8336,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 19`
 Run: `learn.sh cloze finance-basics-cantonese 19`
 
----
-
 ## Quiz: 19-allocation-upper
 
 
@@ -8572,11 +8498,9 @@ E[Rp] = 0.6×10% + 0.4×4% = 6% + 1.6% = 7.6%。
 
 Markowitz 假設常態分佈, 但 2008/2020 extreme event 證明 fat tail 重要。相關性會變 (尤其危機時升), 過去 ρ 唔等於未來。
 
-
 ---
 
-
-# Module 20: 資產配置(下)
+# Module 20: 資產配置(下): 策略同再平衡
 
 Est. study time: 1h
 Language: yue
@@ -8899,8 +8823,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 20`
 Run: `learn.sh cloze finance-basics-cantonese 20`
 
----
-
 ## Quiz: 20-allocation-lower
 
 
@@ -9063,11 +8985,9 @@ MPF DIS 嘅核心累積基金隨年齡由約 60% 股逐步降到 64 歲約 20% �
 
 原本 60/40 預期 σ ~10%, 而家 ~15%。心理上可能 cover 唔到, 跌 30% 就會斬倉。應該 rebalance 返 60/40, 紀律執行。
 
-
 ---
 
-
-# Module 21: 稅務(上)
+# Module 21: 稅務(上): 薪俸稅同 MPF
 
 Est. study time: 1h
 Language: yue
@@ -9334,8 +9254,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 21`
 Run: `learn.sh cloze finance-basics-cantonese 21`
 
----
-
 ## Quiz: 21-tax-upper
 
 
@@ -9498,11 +9416,9 @@ TVC 自願性 MPF 供款, 可扣減薪俸稅 / 利得稅, 上限 $60,000/年。�
 
 保證基金 3% 跑輸通脹 (3%+), 實質負回報。股票 7% 跑贏通脹。30+ 年時間, 應該承受短期波動換長線回報。Glide Path 隨退休接近慢慢轉保證。
 
-
 ---
 
-
-# Module 22: 稅務(下)
+# Module 22: 稅務(下): 利得稅同申報
 
 Est. study time: 1h
 Language: yue
@@ -9796,8 +9712,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 22`
 Run: `learn.sh cloze finance-basics-cantonese 22`
 
----
-
 ## Quiz: 22-tax-lower
 
 
@@ -9960,11 +9874,9 @@ Operation Test: 睇合約簽訂地、客戶所在地、服務提供地、付款�
 
 假自僱風險、派息雙重課稅、公司行政成本。應該諮詢會計師 + 用 IRD56A 判定。
 
-
 ---
 
-
-# Module 23: 保險(上)
+# Module 23: 保險(上): 概念同人壽、醫療
 
 Est. study time: 1h
 Language: yue
@@ -10262,8 +10174,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 23`
 Run: `learn.sh cloze finance-basics-cantonese 23`
 
----
-
 ## Quiz: 23-insurance-upper
 
 
@@ -10426,11 +10336,9 @@ VHIS 保費可扣減薪俸稅 / 利得稅, 上限 $8,000/人/年 (包括自己 +
 
 $400k × 18 = $7.2M 純基本 + 通脹 3%/年 + 應急 30% + 還債 = $10M 左右屬合理範圍。
 
-
 ---
 
-
-# Module 24: 保險(下)
+# Module 24: 保險(下): 危疾、年金同自願醫保
 
 Est. study time: 1h
 Language: yue
@@ -10564,7 +10472,7 @@ mindmap
 | 額外保障 | 基本 | 門診、牙科、視力 |
 | 保費 (30 歲) | $3,000-5,000/年 | $8,000-30,000/年 |
 
-**已知投保時未察覺疾病**: 標準計劃保險前未知疾病, 投保後第 31 日起先全數賠償 (等候期)。**先天的投保時未察覺疾病**: 8 歲後全數賠償。
+**已知投保時未察覺疾病**: 標準計劃保險前未知疾病, 投保後第 31 日起先全數賠償 (等候期)。**先天嘅投保時未察覺疾病**: 8 歲後全數賠償。
 
 **VHIS vs 公司團體醫療**:
 - 公司團體: 包到離開, 唔包終身
@@ -10716,8 +10624,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 
 Run: `learn.sh quiz finance-basics-cantonese 24`
 Run: `learn.sh cloze finance-basics-cantonese 24`
-
----
 
 ## Quiz: 24-insurance-lower
 
@@ -10881,11 +10787,9 @@ VHIS 保費可扣減薪俸稅 / 利得稅, 上限 $8,000/人/年, 包括自己 +
 
 年金 IRR 3-4% 蝕緊 (通脹 + 失去投資機會), 鎖死失去靈活度。應該部分買年金對沖長壽, 部分保留投資。
 
-
 ---
 
-
-# Module 25: 退休(上)
+# Module 25: 退休(上): 數字同 Annuity
 
 Est. study time: 1h
 Language: yue
@@ -11185,8 +11089,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 25`
 Run: `learn.sh cloze finance-basics-cantonese 25`
 
----
-
 ## Quiz: 25-retirement-upper
 
 
@@ -11349,11 +11251,9 @@ MPF 法定 65 歲提取, 提取時**完全免稅**。其他提取條件: 永久�
 
 投資: FV = 180,000 × [(1.07)³⁵ - 1] / 0.07 = 180,000 × 138.24 = $24.9M。儲蓄: 60,000 × [(1.02)³⁵ - 1] / 0.02 = 60,000 × 50.0 = $3.0M。兩者合計 $27.9M, 加埋 MPF $3.25M (僱主 + 僱員) 總資產約 $31M, 最接近 $30M。對比需要 $28.1M, 足夠有餘。
 
-
 ---
 
-
-# Module 26: 退休(下)
+# Module 26: 退休(下): 4% Rule、FIRE 同 MPF
 
 Est. study time: 1h
 Language: yue
@@ -11640,8 +11540,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 26`
 Run: `learn.sh cloze finance-basics-cantonese 26`
 
----
-
 ## Quiz: 26-retirement-lower
 
 
@@ -11804,11 +11702,9 @@ TVC 額外供款可扣稅, 最高 $60,000/年, 加強制性 $18,000 合共 $78,0
 
 MPF 強制 (低費 Default Fund) + 個人 ETF (VTI/VXUS) 雙軌並行。Glide Path 由 90/10 隨年齡降至 50/50。終身年金對沖長壽風險。動態提款抗序列風險。
 
-
 ---
 
-
-# Module 27: 常見財務謬誤(上)
+# Module 27: 常見財務謬誤(上): 認知 Bias
 
 Est. study time: 1h
 Language: yue
@@ -12050,8 +11946,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 Run: `learn.sh quiz finance-basics-cantonese 27`
 Run: `learn.sh cloze finance-basics-cantonese 27`
 
----
-
 ## Quiz: 27-bias-upper
 
 
@@ -12214,11 +12108,9 @@ Pre-mortem: 決策前先假設失敗, 問「如果一年後蝕 50%, 邊度錯?�
 
 警惕 4 個 Bias: Anchoring (朋友 entry price 唔係 reference)、Confirmation (朋友賺咗自然 support)、Overconfidence (1 次成功唔代表眼光好)、Availability (聳動案例容易記住)。應該自己研究, 設止蝕, 唔 FOMO。
 
-
 ---
 
-
-# Module 28: 常見財務謬誤(下)
+# Module 28: 常見財務謬誤(下): 情緒、社會同 Scam
 
 Est. study time: 1h
 Language: yue
@@ -12489,8 +12381,6 @@ Take the quiz. MCQs test different angles — recall, application, scenario.
 
 Run: `learn.sh quiz finance-basics-cantonese 28`
 Run: `learn.sh cloze finance-basics-cantonese 28`
-
----
 
 ## Quiz: 28-bias-lower
 

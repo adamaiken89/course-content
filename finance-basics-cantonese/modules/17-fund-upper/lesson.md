@@ -1,4 +1,4 @@
-# Module 17: 基金(上)
+# Module 17: 基金: 概念同 NAV
 
 Est. study time: 1h
 Language: yue

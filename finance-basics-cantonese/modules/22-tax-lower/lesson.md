@@ -1,4 +1,4 @@
-# Module 22: 稅務(下)
+# Module 22: 稅務(下): 利得稅同申報
 
 Est. study time: 1h
 Language: yue

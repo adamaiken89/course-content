@@ -58,5 +58,5 @@ modules:
   - id: 8
     name: "CoT 思維鏈與推理"
     time_hours: 1.5
-    prerequisites: [1]
+    prerequisites: [1, 5]
     topics: [chain of thought, reasoning, step-by-step, prompting]

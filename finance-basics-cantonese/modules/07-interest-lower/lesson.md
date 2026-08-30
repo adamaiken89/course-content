@@ -1,4 +1,4 @@
-# Module 07: 利息(下)
+# Module 07: 利息(下): APR、APY 同實際利率
 
 Est. study time: 1h
 Language: yue

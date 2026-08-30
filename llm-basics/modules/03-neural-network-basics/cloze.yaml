@@ -42,9 +42,9 @@
   tags:
   - process
 - id: c.7
-  question: Learning rate 太大會{overshoot}山谷最低點，太細會{train 得太慢}，啱啱好先 efficient。
-  answer: overshoot，train 得太慢
-  explanation: Learning rate = 每一步嘅 size。太大跨過最低點，太細永遠行唔到目的地。
+  question: 純 gradient descent 易陷入{shallow local minimum}。加入{momentum}後，模型會累積過往 gradient 嘅方向，幫助衝過細嘅山丘。
+  answer: shallow local minimum，momentum
+  explanation: Momentum = 將過往 steps 嘅 gradient 方向加權平均。類似物理嘅慣性 — 一個滾緊嘅波仔有動能，可以越過細障礙物。呢個技巧幫 gradient descent 避免 stuck 喺差嘅 local minimum。
   difficulty: 2
   tags:
   - concept

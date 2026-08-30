@@ -1,4 +1,4 @@
-# Module 28: 常見財務謬誤(下)
+# Module 28: 常見財務謬誤(下): 情緒、社會同 Scam
 
 Est. study time: 1h
 Language: yue

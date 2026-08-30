@@ -209,38 +209,36 @@ flowchart LR
 
 **CoT 嘅騙局：**
 
+表面睇 CoT 已經 work — 用過數學題測試，CoT 輸出 steps 同最終答案都正確。但 CoT 唔等於真 reasoning。換一條 constraint inconsistent 嘅題目，CoT 嘅 pattern matching 就會跌入陷阱：
+
 ```text
-Q: 一個球拍同一個波總共 $1.10。球拍貴個波 $1。個波幾錢？
+Q: 籠入面有雞同兔。總共 35 個頭，95 條腳。雞有幾多隻？
+
 CoT:
 Let's think step by step.
-設波嘅價格 = x
-球拍 = x + 1
-總共 = x + (x + 1) = 2x + 1 = 1.10
-2x = 0.10
-x = 0.05
-答案：$0.05 ❌ (正確係 $0.05？其實係 $0.05 啱喎！)
+設雞有 x 隻，兔有 y 隻。
+x + y = 35
+2x + 4y = 95
+由第一條：x = 35 - y
+代入：2(35 - y) + 4y = 95
+70 - 2y + 4y = 95
+2y = 25
+y = 12.5
+x = 35 - 12.5 = 22.5
+答案：22.5 隻雞，12.5 隻兔 ✅
 ```
 
-呢條題目 classic — 大部分人直覺答 $0.10（錯），CoT 幫你計到 $0.05（啱）。但改少少數字：
+Steps format 完美、substitution 啱、algebra 啱。但答案有 0.5 隻雞同 0.5 隻兔 — 呢個 **物理上唔可能**。一條雞只有整數，一個籠唔可能裝半隻雞。題目本身 inconsistent：35 隻動物，2x+4y 永遠係偶數（兩條腿嘅雞 + 四條腿嘅兔都係 2 倍數），但 95 係奇數，所以 **呢條題目根本冇解**。
 
-```text
-Q: 一個球拍同一個波總共 $1.50。球拍貴個波 $1。個波幾錢？
-CoT:
-x + (x + 1) = 1.50
-2x = 0.50
-x = 0.25
-答案：$0.25 ❌❌❌（你 check 吓 — 1.25 + 0.25 = 1.50 ✅，所以 $0.25 係啱㗎喎！）
-```
+但 LLM 嘅 CoT 唔識 detect 呢個。佢 follow 咗「兩條 equation 兩個 unknown → 求解」嘅 pattern，output 一個睇落似樣嘅答案。佢冇內部 simulator 去 test「代入答案會唔會 work」或者「個問題本身有冇解」。
 
-Wait — 呢個係啱㗎。CoT 正確㗎。所以好容易俾人一種「CoT = reasoning」嘅錯覺。
-
-但你可以 test 邊界 case 去 expose 佢 — 例如改邏輯結構但保留表面 pattern：
+呢個就係 **CoT ≠ reasoning** 嘅核心：CoT 提升嘅係「睇落合理嘅 steps 嘅生成能力」，唔係「check 自己答案有冇 logical consistency 嘅能力」。
 
 > **Spot the Mistake**: 「CoT 令 LLM 有 reasoning ability。」
 >
 > 錯咩？
 >
-> *Answer: CoT 提升嘅係 performance on reasoning tasks，唔係 reasoning ability 本身。模型仍然係 pattern matching — 佢 learn 咗「呢類問題要出 steps」同「steps 嘅典型 format」。如果問題嘅邏輯結構超出 training data 嘅 distribution，CoT 會 output 睇落合理但數學上錯嘅 steps。CoT = better pattern matching，唔係 reasoning。*
+> *Answer: CoT 提升嘅係 performance on reasoning tasks，唔係 reasoning ability 本身。模型仍然係 pattern matching — 佢 learn 咗「呢類問題要出 steps」同「steps 嘅典型 format」。如果問題嘅邏輯結構超出 training data 嘅 distribution（例如 inconsistent constraints、需要 meta-reasoning 嘅問題），CoT 會 output 睇落合理但實際上唔 self-consistent 嘅 steps。CoT = better pattern matching，唔係 reasoning。*
 
 ---
 

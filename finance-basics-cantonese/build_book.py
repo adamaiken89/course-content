@@ -37,8 +37,8 @@ def main():
             continue
         lesson = (mod_dir / "lesson.md").read_text().rstrip("\n")
         quiz_md = render_quiz(mod_dir / "quiz.yaml")
-        sections.append(f"{lesson}\n\n---\n\n## Quiz: {mod_dir.name}\n\n\n{quiz_md}")
-    (COURSE / "book.md").write_text("\n\n\n---\n\n\n".join(sections) + "\n")
+        sections.append(f"{lesson}\n\n## Quiz: {mod_dir.name}\n\n\n{quiz_md}")
+    (COURSE / "book.md").write_text("\n\n---\n\n".join(sections) + "\n")
 
 
 if __name__ == "__main__":

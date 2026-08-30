@@ -1,4 +1,4 @@
-# Module 19: 資產配置(上)
+# Module 19: 資產配置(上): 原理同 Correlation
 
 Est. study time: 1h
 Language: yue

@@ -1,4 +1,4 @@
-# Module 10: 風險(下)
+# Module 10: 風險(下): 度量同 Sharpe
 
 Est. study time: 1h
 Language: yue
