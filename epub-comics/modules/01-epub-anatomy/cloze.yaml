@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "Complete: The MIME type declared in the first entry of every EPUB is {application/epub+zip}."
+  answer: "application/epub+zip"
+  explanation: "This is the hard requirement for byte-sniff detection. Stored uncompressed, no extra field."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: The XML file in the META-INF folder that points to the root package document is {container.xml}."
+  answer: "container.xml"
+  explanation: "container.xml contains a <rootfile> element with a full-path attribute pointing to the OPF."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: The three required sections of content.opf are metadata, manifest, and {spine}."
+  answer: "spine"
+  explanation: "The spine holds itemref elements in reading order. The manifest lists resources. Metadata holds Dublin Core terms."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Complete: The EPUB 3 navigation document uses the element {<nav>} with epub:type='toc' to mark the table of contents."
+  answer: "<nav>"
+  explanation: "nav.xhtml is XHTML; the <nav> element with epub:type='toc' marks the table of contents. EPUB 2 used a separate NCX."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Complete: A manifest item pointing to nav.xhtml should carry the property {nav} so the reader knows to use it as the navigation document."
+  answer: "nav"
+  explanation: "The manifest <item> for nav.xhtml carries properties='nav'. This is how the reader identifies which document is the navigation."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "Complete: In EPUB 3.3, image formats classified as core media types include JPEG, PNG, and {GIF}."
+  answer: "GIF"
+  explanation: "GIF is core. WebP and AVIF are foreign. Fonts, audio, and video are also foreign and need fallbacks."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Complete: A <spine> entry uses {idref} to point to a manifest item by its id."
+  answer: "idref"
+  explanation: "<itemref idref='cover'/> references the manifest item with id='cover'. The spine never holds file paths directly."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Complete: A foreign media type in an EPUB requires a {fallback} declared in the manifest to handle non-conforming readers."
+  answer: "fallback"
+  explanation: "The manifest <item> for a foreign media type uses the fallback attribute to point to a core media type that can stand in. This is the EPUB fallback chain."
+  difficulty: 3
+  tags: [concept]

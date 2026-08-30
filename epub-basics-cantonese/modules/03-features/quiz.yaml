@@ -1,0 +1,119 @@
+- id: "3.1"
+  question: "EPUB 嘅三種主要形態係乜？"
+  options:
+    a: "Reflowable、Fixed layout、Audio"
+    b: "PDF、HTML、App"
+    c: "Kindle、iBooks、Calibre"
+    d: "MOBI、AZW、EPUB"
+  answer: a
+  explanation: "EPUB 嘅三種形態：Reflowable（最常見，自動 reflow）、Fixed layout（每頁固定，漫畫用）、Audio（有聲書 + media overlay）。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "3.2"
+  question: "點解 Reflowable EPUB 適合手機閱讀？"
+  options:
+    a: "因為檔案比較細"
+    b: "因為有 DRM 保護"
+    c: "因為會自動 reflow 適應唔同屏幕"
+    d: "因為支持更多圖片"
+  answer: c
+  explanation: "Reflowable 嘅核心係文字自動重排，適應手機/平板/e-reader 各種屏幕大小。一個檔案通吃全部裝置。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "3.3"
+  question: "Fixed layout EPUB 最適合邊種內容？"
+  options:
+    a: "小說同散文"
+    b: "純文字教科書"
+    c: "漫畫、雜誌、攝影集（要固定版面）"
+    d: "有聲書"
+  answer: c
+  explanation: "Fixed layout 每頁版面固定，唔識 reflow。適合漫畫、雜誌、設計稿、攝影集呢類要精準排版嘅內容。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "3.4"
+  question: "DRM 嘅全稱同目的係乜？"
+  options:
+    a: "Digital Read Mode，令閱讀更舒適"
+    b: "Digital Rights Management，防止電子書被未授權複製"
+    c: "Document Render Markup，標記渲染格式"
+    d: "Data Resource Map，資源地圖"
+  answer: b
+  explanation: "DRM = Digital Rights Management，目的係防止電子書被任意複製，保護出版商收入。EPUB 本身冇 DRM，係可選附加層。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "3.5"
+  question: "以下邊個係開放標準嘅 DRM 系統？"
+  options:
+    a: "Apple FairPlay"
+    b: "Amazon Kindle DRM"
+    c: "Readium LCP"
+    d: "Adobe DRM"
+  answer: c
+  explanation: "Readium LCP（Licensed Content Protection）係 Readium 基金會開發嘅開放標準，唔鎖死一個廠商，Kobo、Publica 等開始採用。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "3.6"
+  question: "你喺 Kobo 買咗一本電子書，可以喺 Kindle 開到嗎？"
+  options:
+    a: "得，EPUB 通用"
+    b: "得，只要 calibre 轉檔"
+    c: "唔得，Kobo 用 Adobe DRM、Kindle 用自家 DRM，互不相通"
+    d: "得，但要先過 30 日冷卻期"
+  answer: c
+  explanation: "Kobo 用 Adobe DRM（最多 6 部裝置），Kindle 用自家 DRM。兩個系統唔互通，唔可以跨平台開。"
+  difficulty: 1
+  tags: [scenario]
+
+- id: "3.7"
+  question: "EPUB 3.0 同 EPUB 2.0 嘅主要技術分別係乜？"
+  options:
+    a: "EPUB 3 用 XHTML 1.1，EPUB 2 用 HTML5"
+    b: "EPUB 3 用 HTML5 + CSS3 + JavaScript，EPUB 2 用 XHTML 1.1 + 限制 CSS"
+    c: "EPUB 3 唔支持 SVG，EPUB 2 支持"
+    d: "EPUB 3 一定要有 DRM，EPUB 2 唔使"
+  answer: b
+  explanation: "EPUB 3.0（2011）直接用 HTML5 + CSS3 + JavaScript，係 web 標準。EPUB 2.0（2007）用 XHTML 1.1 + 限制 CSS。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "3.8"
+  question: "以下邊個唔係 EPUB 3.0 革命帶嚟嘅好處？"
+  options:
+    a: "網頁開發者直接用 HTML/CSS 技能做電子書"
+    b: "Fixed layout 標準化"
+    c: "可以加 JavaScript 同多媒體互動"
+    d: "EPUB 自動變成 DRM-free"
+  answer: d
+  explanation: "EPUB 3.0 用 HTML5 帶嚟網頁技能直接用、fixed layout 標準化、media overlay。DRM 係出版商選擇，唔係 EPUB 3 自動結果。"
+  difficulty: 2
+  tags: [misconception]
+
+- id: "3.9"
+  question: "圖書館借嘅電子書過期咗會點？"
+  options:
+    a: "自動轉成你嘅永久書"
+    b: "DRM 自動刪除過期內容，書會消失"
+    c: "書仍然喺你裝置度但讀唔到"
+    d: "書會轉成 PDF"
+  answer: b
+  explanation: "圖書館借嘅電子書用 DRM 控制限期。過期後 DRM 自動令書失效 / 刪除，要重新借或者買。"
+  difficulty: 1
+  tags: [scenario]
+
+- id: "3.10"
+  question: "EPUB 一定要有 DRM 嗎？"
+  options:
+    a: "係，EPUB spec 強制要有 DRM"
+    b: "係，所有商業 EPUB 都有 DRM"
+    c: "唔係，DRM 係出版商選擇加唔加，獨立作者可以出 DRM-free EPUB"
+    d: "唔係，DRM 係 EU EAA 強制要有"
+  answer: c
+  explanation: "EPUB 本身係開放格式，冇強制 DRM。出版商可以選擇加（保護收入）或唔加（DRM-free 吸引讀者）。獨立作者普遍出 DRM-free。"
+  difficulty: 1
+  tags: [misconception]

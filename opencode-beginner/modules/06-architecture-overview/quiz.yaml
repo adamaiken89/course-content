@@ -1,0 +1,119 @@
+- id: "6.1"
+  question: "Which layer of opencode's architecture handles AGENTS.md and CLAUDE.md?"
+  options:
+    a: "Extension Layer"
+    b: "Integration Layer"
+    c: "Memory Layer"
+    d: "Programming Layer"
+  answer: c
+  explanation: "The Memory Layer (記憶層) is responsible for instruction files and project knowledge."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "6.2"
+  question: "What is the correct order of the four-layer architecture from bottom to top?"
+  options:
+    a: "Extension → Memory → Integration → Programming"
+    b: "Memory → Extension → Integration → Programming"
+    c: "Integration → Memory → Extension → Programming"
+    d: "Programming → Integration → Extension → Memory"
+  answer: b
+  explanation: "The layers are Memory → Extension → Integration → Programming."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "6.3"
+  question: "Which package contains the main application logic (agents, tools, providers, sessions)?"
+  options:
+    a: "core"
+    b: "schema"
+    c: "opencode"
+    d: "llm"
+  answer: c
+  explanation: "The `opencode` package is the main application package."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "6.4"
+  question: "What happens during a 'provider turn' in the request flow?"
+  options:
+    a: "The user sends a message"
+    b: "A tool is executed"
+    c: "The LLM processes context and generates a response"
+    d: "The system prompt is assembled"
+  answer: c
+  explanation: "A provider turn is when the LLM receives the full context and produces a response."
+  difficulty: 2
+  tags: [concept]
+
+- id: "6.5"
+  question: "How does opencode handle reading files outside the project root?"
+  options:
+    a: "It ignores instruction files"
+    b: "It traverses parent directories to find nearby AGENTS.md/CLAUDE.md"
+    c: "It prompts the user for which instructions to apply"
+    d: "It only loads instructions from the project root"
+  answer: b
+  explanation: "Dynamic instruction loading traverses parent directories when reading files outside the project root."
+  difficulty: 2
+  tags: [concept]
+
+- id: "6.6"
+  question: "Which package provides the public API schemas for Agent, Session, Model, and Provider?"
+  options:
+    a: "core"
+    b: "schema"
+    c: "server"
+    d: "plugin"
+  answer: b
+  explanation: "The `schema` package defines the public API types."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "6.7"
+  question: "In the request flow, what assembles the system prompt before sending to the LLM?"
+  options:
+    a: "The Memory Layer alone"
+    b: "The Extension Layer alone"
+    c: "Environment + instructions + skills + MCP tools"
+    d: "The user's message"
+  answer: c
+  explanation: "The system prompt combines env info, instructions, skills, and MCP tools."
+  difficulty: 2
+  tags: [concept]
+
+- id: "6.8"
+  question: "What is the role of the Programming Layer in the four-layer model?"
+  options:
+    a: "Handles instruction files"
+    b: "Manages MCP connections"
+    c: "Provides the Agent SDK for building on opencode"
+    d: "Customizes agent behavior via Skills"
+  answer: c
+  explanation: "The Programming Layer provides the Agent SDK for embedding opencode capabilities."
+  difficulty: 2
+  tags: [concept]
+
+- id: "6.9"
+  question: "Where is session history stored in opencode?"
+  options:
+    a: "In memory only"
+    b: "In SQLite database"
+    c: "In JSON files"
+    d: "In the operating system clipboard"
+  answer: b
+  explanation: "Session history is persisted in SQLite via Drizzle ORM."
+  difficulty: 2
+  tags: [concept]
+
+- id: "6.10"
+  question: "Which built-in agent is designed for code exploration without making changes?"
+  options:
+    a: "build"
+    b: "plan"
+    c: "general"
+    d: "explore"
+  answer: d
+  explanation: "The explore agent has deny-all permissions except read-only tools."
+  difficulty: 1
+  tags: [terminology]

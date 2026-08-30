@@ -1,0 +1,108 @@
+- id: '1.1'
+  question: n-gram 語言模型嘅兩大主要限制係乜？
+  options:
+    a: 訓練太慢同精度唔夠
+    b: 窗口太短同 OOV（未見過詞）問題
+    c: 只能處理英文同需要 GPU
+    d: 詞表太大同記憶體爆
+  answer: b
+  explanation: n-gram 嘅死穴係固定窗口（n−1 個字嘅 context）同 OOV（未見過詞冇概率）。神經 LM 透過連續表示同 subword 解決呢兩個問題。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.2'
+  question: 神經語言模型點樣避開 OOV 問題？
+  options:
+    a: 用更大嘅詞表
+    b: 用連續向量表示 token，相似詞共享空間
+    c: 訓練多國語言 corpus
+    d: 預先人手標註所有詞
+  answer: b
+  explanation: 神經 LM 將 token 表達成連續向量，未見過嘅 token 都可以通過 subword 拆件拆到模型識處理，而且相似詞會喺向量空間接近。
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.3'
+  question: Transformer 比起 RNN 點解更容易堆規模？
+  options:
+    a: Transformer 算法更精準
+    b: Transformer 可以完全平行化訓練，唔需要順序計
+    c: Transformer 用更少參數
+    d: Transformer 唔需要 GPU
+  answer: b
+  explanation: RNN / LSTM 訓練時要逐個 token 順序 forward，難以平行。Transformer 用 attention 完全平行，呢個 engineering 突破令模型可以堆到千億參數。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '1.4'
+  question: 「規模可堆（scalable）」喺 LLM 脈絡下指乜？
+  options:
+    a: 模型越大，能力會一直線性提升
+    b: 加大 data／參數／compute 唔會再提升能力
+    c: 工程上可以持續加大 data／參數／compute 並且訓練穩定
+    d: 規模大就唔需要調參
+  answer: c
+  explanation: Scalable 意思係工程上可以一路加大（data / params / compute）而訓練仍然穩定、能力持續提升。唔代表能力一定線性增長 — 實際上係 scaling law 關係。
+  difficulty: 2
+  tags:
+  - terminology
+- id: '1.5'
+  question: 點解本課程唔從零開始解釋，而係假設你已經學過 llm-basics？
+  options:
+    a: 因為內容太簡單唔使教
+    b: 為咗避免重複，直接用基礎概念做 jump-off point 拆解架構
+    c: 因為只俾高級讀者睇
+    d: 因為 basics 已經包含架構內容
+  answer: b
+  explanation: 本課程定位係「intermediate bridge」—llm-basics 教過嘅概念（token、attention 概念、訓練流程）唔再重複，直接從呢度出發去拆解架構細節。
+  difficulty: 1
+  tags:
+  - meta
+- id: '1.6'
+  question: 以下邊個唔係 n-gram 限制？
+  options:
+    a: 固定窗口長度
+    b: 平行訓練困難
+    c: OOV 問題
+    d: 相似詞關係難 capture
+  answer: b
+  explanation: 平行訓練困難係 RNN / LSTM 嘅限制，唔係 n-gram 嘅。n-gram 嘅問題係窗口、OOV、相似詞關係。RNN 解決咗 n-gram 嘅部分問題但引入咗新問題（順序依賴）。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '1.7'
+  question: 「貓」同「狗」喺神經 LM 嘅 embedding 空間會點？
+  options:
+    a: 完全冇關係，隨機分佈
+    b: 因為訓練語境相似而接近
+    c: 一個喺正軸一個喺負軸
+    d: 完全重疊
+  answer: b
+  explanation: 神經 LM 透過訓練語料學到「貓」同「狗」常出現喺相似 context（飼養、可愛、寵物），所以佢哋嘅 embedding 會喺向量空間接近。呢個類比關係係 n-gram 完全做唔到嘅。
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.8'
+  question: 本課程 8 個 module 嘅邏輯次序最接近？
+  options:
+    a: 隨機排列，方便跳讀
+    b: 由抽象到具體
+    c: 由「文字點入電腦」到「Transformer 一層做乜」到「點樣生成」到「規模效應」
+    d: 純粹按重要性排
+  answer: c
+  explanation: 路線圖由輸入端（tokenization → embedding）→ 核心機制（attention → transformer block）→ 位置問題（PE）→ 輸出（自回歸）→ 宏觀效果（規模）。每步都建立上一步。
+  difficulty: 2
+  tags:
+  - structure
+- id: '1.9'
+  question: 「LLM 唔係魔法，而係一系列清晰可解釋嘅工程決策疊起嚟」— 呢句話對應本課程咩取向？
+  options:
+    a: 純粹文學修辭，冇實際意義
+    b: 每個 module 都會拆開一個具體決策（token 點切、向量點表達、attention 點計）
+    c: 假設讀者已經全部識
+    d: 強調 LLM 簡單
+  answer: b
+  explanation: 本課程每一個 module 都對應一個具體工程決策同佢嘅理由：點解用 BPE 唔用 char-level、點解用 residual、點解用 RoPE。每個都係可解釋嘅工程選擇。
+  difficulty: 1
+  tags:
+  - meta

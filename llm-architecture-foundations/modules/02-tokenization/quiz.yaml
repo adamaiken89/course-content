@@ -1,0 +1,108 @@
+- id: '2.1'
+  question: Subword tokenization 點解係 word-level 同 char-level 嘅平衡？
+  options:
+    a: 因為 subword 最容易實作
+    b: word-level 詞表太大有 OOV，char-level 序列太長，subword 兩邊取平衡
+    c: subword 速度最快
+    d: subword 準確度最高
+  answer: b
+  explanation: Word-level 詞表爆大且有 OOV 問題，char-level 序列太長且學唔到語義。Subword 將高頻詞保留、罕見詞拆細，平衡詞表大小同序列長度。
+  difficulty: 1
+  tags:
+  - concept
+- id: '2.2'
+  question: BPE（Byte Pair Encoding）算法嘅核心步驟係？
+  options:
+    a: 由詞表起步，逐步刪除最常見 token
+    b: 由 char-level 起步，合併最常見嘅相鄰 pair，直到詞表達到目標大小
+    c: 隨機合併 pair
+    d: 由詞頻排序，揀最高 N 個詞
+  answer: b
+  explanation: BPE 從字元起步，反覆合併 corpus 中最常見嘅相鄰 pair，產生新 token，直到詞表達到預設大小（例如 50K）。高頻 pair 通常係有意義嘅詞綴。
+  difficulty: 2
+  tags:
+  - algorithm
+- id: '2.3'
+  question: SentencePiece 同 BPE 最大分別係乜？
+  options:
+    a: SentencePiece 速度更快
+    b: SentencePiece 直接喺 raw text 跑，唔需要預先分詞，所以語言無關
+    c: SentencePiece 詞表更細
+    d: SentencePiece 用神經網絡
+  answer: b
+  explanation: SentencePiece 嘅突破係直接喺 raw text（包括空格字符）跑 tokenization，唔需要先分詞。呢個令佢可以處理中文、日文等冇空格分隔嘅語言。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '2.4'
+  question: 詞表大啲（例如 128K）嘅主要好處係？
+  options:
+    a: 模型更準確一定
+    b: 序列長度通常較短，罕見字可以保留更完整
+    c: 訓練時間一定更短
+    d: 記憶體一定更少
+  answer: b
+  explanation: 大詞表通常令序列短啲（因為常用字直接成 token），罕見字亦可以保留更完整。但代價係 embedding 參數爆大，訓練 memory 增加。
+  difficulty: 2
+  tags:
+  - tradeoff
+- id: '2.5'
+  question: 邊個唔係常見 tokenization 失敗模式？
+  options:
+    a: 罕見 emoji 被拆成多個 byte token
+    b: 中英混合句成本高
+    c: 全形半形標點混亂
+    d: 模型無法區分大細階
+    answer: d
+  explanation: Tokenization 失敗模式集中喺「拆得太碎」或「語言覆蓋唔到」：罕見 emoji、多語混合、編碼混亂都係常見。模型區分大小階係另一個問題，唔係 tokenization 失敗。
+  difficulty: 2
+  tags:
+  - scenario
+- id: '2.6'
+  question: API 按 token 收費時，邊個選擇對成本影響最大？
+  options:
+    a: 模型大小
+    b: 詞表大細同語言選擇
+    c: 訓練 data 來源
+    d: GPU 型號
+  answer: b
+  explanation: 同一句話用細詞表可能要 30 tokens，大詞表可能 20 tokens，成本差 50%。多語句尤其受詞表覆蓋率影響。
+  difficulty: 2
+  tags:
+  - tradeoff
+- id: '2.7'
+  question: BPE 點決定邊個 pair 值得合併？
+  options:
+    a: 隨機揀
+    b: 根據 pair 出現頻率
+    c: 根據字母順序
+    d: 根據語言學規則
+  answer: b
+  explanation: BPE 純粹基於頻率 — 統計 corpus 中最常見嘅相鄰 pair 然後合併。呢個 data-driven 做法令高頻 subword 通常係有語義嘅詞綴。
+  difficulty: 1
+  tags:
+  - algorithm
+- id: '2.8'
+  question: 點解 BPE 原始算法對中文直接用唔到？
+  options:
+    a: 中文字太多
+    b: BPE 預設以空格分詞，中文冇空格
+    c: 中文 BPE 太慢
+    d: 中文唔可以用 Unicode
+  answer: b
+  explanation: BPE 傳統做法需要 pre-tokenize（用空格分詞），中文冇空格分隔，所以需要 SentencePiece 或類似方案直接喺 raw text 跑。
+  difficulty: 1
+  tags:
+  - concept
+- id: '2.9'
+  question: 「我哋去食 sushi 🍣」入面，「🍣」如果切成 6 個 byte token，意味住？
+  options:
+    a: 模型有 bug
+    b: 詞表冇收呢個 emoji，所以拆到 byte 層處理
+    c: 用戶打錯
+    d: 訓練 data 唔夠
+  answer: b
+  explanation: 罕見 emoji 通常唔會獨立成 token，會 fallback 到 byte-level 拆件。呢個係常見現象，唔係 bug，係 tokenizer 詞表覆蓋率限制。
+  difficulty: 1
+  tags:
+  - scenario

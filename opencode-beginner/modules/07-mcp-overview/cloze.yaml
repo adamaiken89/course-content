@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "MCP stands for {Model Context Protocol}, an open standard for AI tool integration."
+  answer: "Model Context Protocol"
+  explanation: "MCP is the protocol that standardizes how AI agents connect to external tools."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "MCP has three components: Host, Client, and {Server}."
+  answer: "Server"
+  explanation: "The Server is the external service that provides tools."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Local MCP servers communicate via {stdio} (stdin/stdout)."
+  answer: "stdio"
+  explanation: "Local MCP uses stdio transport with a child process runtime."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "Remote MCP servers typically require {OAuth} authentication."
+  answer: "OAuth"
+  explanation: "Remote MCP uses OAuth, and opencode supports automatic OAuth flows."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "MCP tools are namespaced as {serverName}_{toolName} to avoid collisions."
+  answer: "serverName"
+  explanation: "The server name prefix prevents tool name conflicts between MCP servers."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "Each MCP tool's description consumes {context} window space."
+  answer: "context"
+  explanation: "Too many MCP tools can cause context overflow."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "To check MCP server status, run {opencode mcp list}."
+  answer: "opencode mcp list"
+  explanation: "This command shows all configured MCP servers and their connection status."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.8"
+  question: "MCP servers are configured in the {mcp} section of opencode.json."
+  answer: "mcp"
+  explanation: "The mcp field in opencode.json defines all MCP server configurations."
+  difficulty: 1
+  tags: [terminology]

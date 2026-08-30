@@ -1,0 +1,110 @@
+module: 08-scale-emergence
+title: 規模、湧現同幻覺直覺
+questions:
+  - id: q1
+    difficulty: 1
+    tag: terminology
+    question: Scaling law 嘅 power law 關係指乜？
+    options:
+      a: 模型越大，參數越多，速度越快
+      b: Test loss 同 compute 有 L(C) ∝ C^(-α) 關係
+      c: 訓練資料越大，模型越複雜
+      d: 參數增加，loss 線性下降
+    answer: b
+    explanation: Scaling law 指 test loss 同 compute 有 power law 關係，每倍 compute 帶嚟固定比例嘅 loss 下降（diminishing returns）。
+
+  - id: q2
+    difficulty: 2
+    tag: concept
+    question: Chinchilla 2022 發現咗乜？
+    options:
+      a: 模型越大，loss 下降越快
+      b: 同時加大 data 量比單純加大模型更有效
+      c: 訓練時間越長，效果越好
+      d: MoE 比 dense model 更好
+    answer: b
+    explanation: Chinchilla 發現早期 scaling 太注重大模型，最佳做法係模型大小同 data 量按比例增加。
+
+  - id: q3
+    difficulty: 2
+    tag: concept
+    question: In-context learning 點樣同 attention 連結？
+    options:
+      a: ICL 用 fine-tune 更新參數
+      b: Example token 影響 Q/K/V 投影，output 反映 pattern
+      c: ICL 係 attention 嘅副產品
+      d: ICL 需要外部 retrieval
+    answer: b
+    explanation: Example token 直接影響 Q/K/V 投影，模型透過 attention 天然 pattern matching 自動學到 pattern，冇 gradient update。
+
+  - id: q4
+    difficulty: 3
+    tag: comparison
+    question: Scaling 同 Emergence 嘅主要分別？
+    options:
+      a: Scaling 有 threshold，emergence 冇
+      b: Scaling 係 non-linear，emergence 係 linear
+      c: Scaling 持續 diminish，emergence 係 threshold 後突然出現
+      d: Scaling 只影響速度，emergence 只影響質素
+    answer: c
+    explanation: Scaling 係 loss 隨規模持續下降（diminishing returns），emergence 係能力喺 threshold 前完全冇，後突然有（非線性跳躍）。
+
+  - id: q5
+    difficulty: 2
+    tag: terminology
+    question: Hallucination 有邊兩種主要類型？
+    options:
+      a: 訓練 hallucination 同推理 hallucination
+      b: 事實 hallucination 同忠誠度 hallucination
+      c: 輸入 hallucination 同輸出 hallucination
+      d: 語法 hallucination 同語義 hallucination
+    answer: b
+    explanation: 事實 hallucination（講錯事實）同忠誠度 hallucination（唔跟指令）係兩種主要類型。
+
+  - id: q6
+    difficulty: 3
+    tag: scenario
+    question: LLM 點解會出現事實 hallucination？（結構性原因）
+    options:
+      a: 因為訓練資料太少
+      b: 因為 model 有 bug
+      c: 因為模型只預測「合理嘅下一個字」，唔係預測事實
+      d: 因為參數太少
+    answer: c
+    explanation: LLM 本質上係 probability estimator，知乜嘢係「常見嘅下一個字」，唔知乜嘢係真/假。呢個係 architectural limitation，唔係 engineering 問題。
+
+  - id: q7
+    difficulty: 1
+    tag: terminology
+    question: Prompt 敏感度指乜？
+    options:
+      a: 模型對輸入長度敏感
+      b: 改少少 wording 效果差好遠
+      c: 模型對 hardware 敏感
+      d: 模型對 temperature 敏感
+    answer: b
+    explanation: Prompt 敏感度指同一個問題，唔同 wording 可以導致完全唔同嘅 output。
+
+  - id: q8
+    difficulty: 2
+    tag: concept
+    question: In-context learning 點解可以冇 fine-tune？
+    options:
+      a: 因為模型已經學過所有 pattern
+      b: 因為 attention 天然可以做 pattern matching
+      c: 因為有 external memory
+      d: 因為 example 有 gradient
+    answer: b
+    explanation: Attention mechanism 天然可以做 pattern matching，幾 个 example 就足夠「激活」訓練時學到嘅相關 pattern。
+
+  - id: q9
+    difficulty: 3
+    tag: tradeoff
+    question: 以下邊個最能概括 LLM 嘅本質限制？
+    options:
+      a: 計算資源不足
+      b: 本質上係 probability estimator，知常見唔知真確
+      c: 訓練資料唔夠大
+      d: 模型架構過時
+    answer: b
+    explanation: LLM 本質上係 probability estimator，知乜嘢係常見嘅下一個字，唔知乜嘢係事實。呢個係 architectural limitation，唔係 engineering 問題。

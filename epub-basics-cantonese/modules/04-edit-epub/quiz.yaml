@@ -1,0 +1,119 @@
+- id: "4.1"
+  question: "Calibre 同 Sigil 嘅主要分別係乜？"
+  options:
+    a: "Calibre 收費，Sigil 免費"
+    b: "Calibre 係管理同轉格式工具，Sigil 係 EPUB 編輯器"
+    c: "Calibre 只支援 Mac，Sigil 跨平台"
+    d: "Calibre 處理 DRM，Sigil 唔處理 DRM"
+  answer: b
+  explanation: "Calibre 係電子書管理（轉格式、改 metadata、書庫管理）。Sigil 係 EPUB 編輯器（直接改 XHTML、CSS、結構）。兩個都免費。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "4.2"
+  question: "你想將 EPUB 轉成 MOBI 格式，應該用邊個工具？"
+  options:
+    a: "Sigil"
+    b: "EPUBCheck"
+    c: "Calibre"
+    d: "Readium"
+  answer: c
+  explanation: "Calibre 內建轉格式功能（EPUB ↔ MOBI ↔ PDF ↔ AZW ↔ TXT）。Sigil 係編輯器，唔做轉檔。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "4.3"
+  question: "EPUB 嘅 metadata 入面，書名對應嘅欄位係邊個？"
+  options:
+    a: "dc:identifier"
+    b: "dc:title"
+    c: "dc:creator"
+    d: "dc:subject"
+  answer: b
+  explanation: "dc:title = 書名、dc:creator = 作者、dc:identifier = ISBN/UUID、dc:subject = 分類。全部 Dublin Core namespace。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "4.4"
+  question: "EPUB 入面指定封面圖片用邊個 meta 標籤？"
+  options:
+    a: "dc:cover"
+    b: "meta name=\"cover\""
+    c: "img class=\"cover\""
+    d: "link rel=\"cover\""
+  answer: b
+  explanation: "封面用 <meta name=\"cover\" content=\"cover.jpg\"/> 喺 metadata 入面標記，閱讀器認呢個做封面。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "4.5"
+  question: "用 Sigil 加咗一個新嘅 XHTML 章節，之後仲要做乜先可以畀閱讀器見到？"
+  options:
+    a: "乜都唔使做，Sigil 自動更新"
+    b: "喺 content.opf 嘅 manifest 加 <item>，spine 加 <itemref>"
+    c: "重新打包做 ZIP"
+    d: "加 DRM 授權"
+  answer: b
+  explanation: "新檔案要喺 manifest 登記（<item>）先被閱讀器認到，要喺 spine 加 <itemref> 先會按順序顯示。Sigil 唔會自動改 metadata。"
+  difficulty: 2
+  tags: [scenario]
+
+- id: "4.6"
+  question: "中文 EPUB 內嵌字型有咩好處？"
+  options:
+    a: "減細檔案"
+    b: "確保唔同裝置都顯示一致字型"
+    c: "加快渲染速度"
+    d: "繞過 DRM"
+  answer: b
+  explanation: "內嵌字型（.ttf/.otf/.woff）令所有裝置顯示一樣字型，唔受裝置預設字型影響。代價係檔案大啲 + 字型授權問題。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "4.7"
+  question: "以下邊個 CSS 屬性可以令 EPUB 圖片響應唔同屏幕大小？"
+  options:
+    a: "img { max-width: 100%; height: auto; }"
+    b: "img { width: 800px; }"
+    c: "img { display: fixed; }"
+    d: "img { size: contain; }"
+  answer: a
+  explanation: "img { max-width: 100%; height: auto; } 係標準響應式寫法，圖片自動縮到容器寬度，高度等比。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "4.8"
+  question: "改咗 EPUB 嘅 CSS 喺唔同閱讀器效果會唔會一樣？"
+  options:
+    a: "一定一樣，所有閱讀器都支持所有 CSS"
+    b: "唔一定，Kindle 對 CSS 支援較差，Kobo 同 Apple Books 支援較好"
+    c: "一定唔一樣，CSS 喺 EPUB 完全無效"
+    d: "只有自訂字型先唔同"
+  answer: b
+  explanation: "唔同閱讀器對 CSS 嘅支援程度唔同。Kindle 支援最受限（自訂 subset），Kobo、Apple Books、Readium 支援較完整。"
+  difficulty: 2
+  tags: [scenario]
+
+- id: "4.9"
+  question: "dc:language 寫 yue 代表乜？"
+  options:
+    a: "普通話"
+    b: "英文"
+    c: "廣東話（Cantonese）"
+    d: "日文"
+  answer: c
+  explanation: "yue 係 ISO 639-3 廣東話語言代碼。Screen reader 同翻譯工具靠呢個 code 揀語言模型。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "4.10"
+  question: "以下邊個唔係 EPUB 嘅有效 metadata 欄位？"
+  options:
+    a: "dc:title"
+    b: "dc:creator"
+    c: "dc:identifier"
+    d: "dc:renderMode"
+  answer: d
+  explanation: "dc:renderMode 唔存在。EPUB 用 Dublin Core + EPUB 自訂 meta（如 cover、ibooks:specified-fonts）。renderMode 係閱讀器內部概念。"
+  difficulty: 2
+  tags: [terminology]

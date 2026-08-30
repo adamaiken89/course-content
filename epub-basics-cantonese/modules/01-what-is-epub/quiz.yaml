@@ -1,0 +1,125 @@
+- id: '1.1'
+  question: EPUB 嘅物理本質係乜？
+  options:
+    a: 一個 ZIP archive，加特定嘅目錄結構
+    b: 一班 HTML 頁面直接傳輸
+    c: 一個專有格式，只有特定軟件識開
+    d: 一個 PDF 檔案
+  answer: a
+  explanation: EPUB 物理上就係一個 ZIP，但加咗特定嘅結構約定（mimetype、META-INF、OEBPS）。唔係純 ZIP，亦唔係專有格式。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.2'
+  question: mimetype 檔案嘅 content 係乜？
+  options:
+    a: application/zip
+    b: application/xml
+    c: text/html
+    d: application/epub+zip
+  answer: d
+  explanation: mimetype 檔案嘅 content 必須係 application/epub+zip，無 newline，無 BOM。呢個係 EPUB
+    嘅身份證。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.3'
+  question: EPUB 嘅 manifest 同 spine 分別做乜？
+  options:
+    a: manifest 儲 metadata，spine 儲目錄
+    b: manifest 控制 DRM，spine 控制頁數
+    c: manifest 控制字型，spine 控制圖片
+    d: manifest 列出所有檔案，spine 規定閱讀順序
+  answer: d
+  explanation: manifest 係一張清單，列出 EPUB 入面所有檔案。spine 規定閱讀順序，即係邊個 HTML 頁面先，邊個後。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.4'
+  question: EPUB 比 PDF 更適合手機閱讀，主要原因是乜？
+  options:
+    a: EPUB 有 DRM 保護
+    b: EPUB 會自動 reflow，適應唔同屏幕大小
+    c: EPUB 支持更多圖片格式
+    d: EPUB 檔案更細
+  answer: b
+  explanation: EPUB 係 reflowable 嘅 — 內容會因應屏幕大小自動重新排版。PDF 係固定版面，喺細屏幕要不停放大縮小。
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.5'
+  question: 點解 mimetype 檔案唔可以 compressed（用 DEFLATE）？
+  options:
+    a: 因為 spec 要求所有檔案都唔可以壓縮
+    b: 因為 ZIP format 唔支持壓縮文字檔
+    c: 因為閱讀器要喺未 unzip 之前 byte-sniff 認到 EPUB
+    d: 因為 compressed 嘅 mimetype 會影響閱讀速度
+  answer: c
+  explanation: 閱讀器未開 ZIP 之前就要認到呢個係 EPUB。mimetype 必須 STORED（唔壓縮），咁閱讀器先可以 byte-sniff
+    到 application/epub+zip 呢個 string。
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.6'
+  question: container.xml 嘅作用係乜？
+  options:
+    a: 儲存書嘅封面圖片
+    b: 儲存書嘅目錄
+    c: 指向 package document 嘅位置
+    d: 儲存書嘅 DRM 資訊
+  answer: c
+  explanation: container.xml 喺 META-INF 目錄入面，話畀閱讀器知 package document（通常係 content.opf）喺邊度。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.7'
+  question: EPUB 入面嘅內容文件主要係乜格式？
+  options:
+    a: XHTML 同 SVG
+    b: Word document
+    c: 純文字 txt
+    d: PDF
+  answer: a
+  explanation: EPUB 入面嘅內容文件係 XHTML（XML syntax 嘅 HTML）同 SVG。呢兩個都係 Open Web Platform
+    嘅技術。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.8'
+  question: 以下邊個唔係 EPUB 解決嘅問題？
+  options:
+    a: 離線閱讀
+    b: 視頻串流
+    c: 圖書館 digital lending
+    d: 屏幕大小唔同
+  answer: b
+  explanation: EPUB 係電子書格式，處理文字、圖片、音頻。視頻串流唔係 EPUB 嘅主要用途。
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.9'
+  question: 有個人話「我整咗一個 HTML 網頁，改個副檔名做 .epub 就得」。呢個做法有咩問題？
+  options:
+    a: 淨係改副檔名冇用，閱讀器要搵到 mimetype、container.xml 等特定檔案先認到
+    b: EPUB 唔支持 HTML
+    c: 改副檔名會損壞檔案
+    d: HTML 唔可以轉做 EPUB
+  answer: a
+  explanation: EPUB 有特定嘅結構約定（mimetype、container.xml、content.opf）。淨係改副檔名冇呢啲檔案，閱讀器唔會認。
+  difficulty: 2
+  tags:
+  - scenario
+- id: '1.10'
+  question: EPUB 嘅 OCF 係指乜？
+  options:
+    a: Online Content Format
+    b: Open Container Format
+    c: Open Compression Function
+    d: Online Catalog File
+  answer: b
+  explanation: OCF = Open Container Format，定義 EPUB 嘅 ZIP 容器結構。呢個係 W3C EPUB 3 spec
+    嘅一部分。
+  difficulty: 1
+  tags:
+  - terminology
+

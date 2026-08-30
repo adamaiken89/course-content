@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "Complete: For a Kobo Sage 8-inch fixed-layout comic, the recommended viewport is {width=1404, height=1872}."
+  answer: "width=1404, height=1872"
+  explanation: "Kobo Sage 8\" is 1404x1872 CSS pixels. The viewport meta should match."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: The recommended JPEG quality for production comic images on e-ink is {82}."
+  answer: "82"
+  explanation: "Quality 82 is the sweet spot. Visually identical to higher qualities on e-ink at one-third the file size."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: The color space that EPUB reading systems expect for images is {sRGB}."
+  answer: "sRGB"
+  explanation: "Convert to sRGB at production time. Strip embedded ICC profiles."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Complete: The Pillow resampling filter recommended for sharpest downscale is {Image.LANCZOS}."
+  answer: "Image.LANCZOS"
+  explanation: "LANCZOS produces the sharpest downscale. BICUBIC is faster but blurrier."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Complete: WebP is classified as a {foreign} media type in EPUB 3.3 and requires a fallback."
+  answer: "foreign"
+  explanation: "WebP is not core. It needs a fallback image declared in the manifest. For cross-reader delivery, use JPEG or PNG."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "Complete: For transparency and sharp line art, the recommended image format is {PNG}."
+  answer: "PNG"
+  explanation: "PNG is lossless. Use PNG for transparency and line art; JPEG for photos."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Complete: The Kindle Paperwhite 11 has a recommended ICB of {width=1236, height=1648}."
+  answer: "width=1236, height=1648"
+  explanation: "Kindle Paperwhite 11 is 1236x1648 CSS pixels. The viewport meta should match."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Complete: The most common one-size-fits-all ICB for cross-device comic delivery is {width=1404, height=1872}."
+  answer: "width=1404, height=1872"
+  explanation: "Kobo Sage's 1404x1872 is the de facto one-size-fits-all for cross-device comic delivery."
+  difficulty: 1
+  tags: [terminology]

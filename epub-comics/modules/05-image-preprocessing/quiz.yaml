@@ -1,0 +1,148 @@
+- id: '5.1'
+  question: Which image dimensions match the recommended viewport for a Kobo Sage
+    8-inch fixed-layout comic?
+  options:
+    a: 1264 x 1680
+    b: 1404 x 1872
+    c: 2048 x 2732
+    d: 1072 x 1448
+  answer: b
+  explanation: Kobo Sage 8" is 1404x1872. 1072x1448 is the Kobo Clara 6". 1264x1680
+    is the Kobo Libra 7". 2048x2732 is the Apple iPad Pro 12.9".
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.2'
+  question: Which JPEG quality is the typical sweet spot for production comic images
+    on e-ink?
+  options:
+    a: Quality 82
+    b: Quality 95
+    c: Quality 100
+    d: Quality 60
+  answer: a
+  explanation: Quality 82 produces visually identical results to quality 95 on e-ink
+    at one-third the file size. Quality 60 introduces visible artefacts. Quality 100
+    is wasteful.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.3'
+  question: A 200-page comic is exported as JPEG quality 95 and the EPUB is 200 MB.
+    The user cannot send it to Kindle via email. What is the most likely fix?
+  options:
+    a: Reduce the number of pages
+    b: Switch to WebP for better compression
+    c: Switch to PNG for lossless quality
+    d: Re-encode at quality 82 to reduce file size to roughly one-third
+  answer: d
+  explanation: Quality 82 on e-ink is visually indistinguishable from quality 95.
+    The fix is re-encoding, not changing format. Amazon's email limit is 50 MB; 200
+    MB blocks the most common delivery path.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '5.4'
+  question: Which color space should comic images be converted to before packaging
+    for EPUB?
+  options:
+    a: sRGB
+    b: Display P3
+    c: CMYK
+    d: Adobe RGB
+  answer: a
+  explanation: EPUB reading systems expect sRGB. CMYK is for print. Adobe RGB and
+    Display P3 may not be supported by all readers. Always convert to sRGB at production
+    time.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.5'
+  question: Which Pillow resampling filter is recommended for downscaling high-resolution
+    scans to a target ICB?
+  options:
+    a: Image.BILINEAR
+    b: Image.BICUBIC
+    c: Image.LANCZOS
+    d: Image.NEAREST
+  answer: c
+  explanation: LANCZOS produces the sharpest downscale among Pillow's built-in filters.
+    BICUBIC is faster but blurrier. NEAREST and BILINEAR are too low-quality for production.
+  difficulty: 2
+  tags:
+  - terminology
+- id: '5.6'
+  question: WebP is classified as what kind of media type in EPUB 3.3?
+  options:
+    a: Core media type
+    b: Foreign media type requiring a fallback
+    c: Forbidden media type
+    d: Deprecated media type
+  answer: b
+  explanation: WebP is foreign content. It needs a fallback declared in the manifest.
+    For cross-reader delivery, stick to JPEG and PNG.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.7'
+  question: A team has 200 manga pages exported as PNG with transparent speech bubbles.
+    The EPUB is 1.2 GB. What is the right approach?
+  options:
+    a: Strip the transparency and use JPEG
+    b: Switch all pages to JPEG quality 95
+    c: Keep PNG for the transparency but reduce image dimensions; PNG is correct for
+      transparency
+    d: Use WebP with fallback to PNG
+  answer: c
+  explanation: PNG is correct for transparency. The file size is large because the
+    dimensions are too high. Reduce dimensions to match the target ICB (e.g., 1404x1872)
+    and the PNG size will drop proportionally.
+  difficulty: 3
+  tags:
+  - scenario
+- id: '5.8'
+  question: Which strategy is generally recommended for distributing a comic across
+    multiple e-readers?
+  options:
+    a: 'Two builds: phone and tablet'
+    b: Use the highest-resolution build and let the reader downscale
+    c: Generate a separate EPUB for every device model
+    d: One-size-fits-all build at a common dimension like 1404x1872
+  answer: d
+  explanation: A single build at 1404x1872 is the right answer for most comics. The
+    reader scales the ICB to fit. Per-device builds are reserved for premium or art-book
+    projects.
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.9'
+  question: Why should ICC color profiles be stripped from images before packaging?
+  options:
+    a: They make the file invalid EPUB
+    b: EPUB readers often ignore ICC profiles; sRGB is the expected default
+    c: They are copyrighted
+    d: Kindle requires profile stripping for DRM
+  answer: b
+  explanation: EPUB readers often ignore ICC profiles, so the image renders in the
+    reader's assumed color space (sRGB). If the image embeds an Adobe RGB or CMYK
+    profile and the reader ignores it, the colors shift. Strip profiles and convert
+    to sRGB at production time.
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.10'
+  question: Apple iPad Pro 12.9" has a recommended ICB of 2048x2732. For a Kobo Sage
+    user, this image renders how?
+  options:
+    a: Scaled down to fit the Kobo Sage ICB of 1404x1872 by the reader
+    b: Cropped to the Kobo Sage ICB
+    c: Refused because the dimensions exceed the viewport
+    d: At native resolution, no scaling
+  answer: a
+  explanation: The reader scales the ICB to fit the device screen. A 2048x2732 image
+    with viewport 2048x2732 is scaled to fit a Kobo Sage 1404x1872 display. The result
+    is slightly softer than a native 1404x1872 source but acceptable for most comics.
+  difficulty: 2
+  tags:
+  - scenario
+

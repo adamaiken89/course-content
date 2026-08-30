@@ -1,0 +1,63 @@
+- id: "c.1"
+  question: "opencode 嘅主要指令文件名係 {AGENTS.md}。"
+  answer: "AGENTS.md"
+  explanation: "AGENTS.md 係 opencode 原生嘅指令文件格式，優先於 CLAUDE.md。"
+  difficulty: 1
+  tags:
+    - terminology
+
+- id: "c.2"
+  question: "opencode 支持 {三層} 指令文件層級：全局、專案、目錄。"
+  answer: "三層"
+  explanation: "全局（~/.config/opencode/AGENTS.md）、專案（根目錄）、目錄（子目錄）。"
+  difficulty: 1
+  tags:
+    - terminology
+
+- id: "c.3"
+  question: "Session 歷史存儲喺 {SQLite} 數據庫。"
+  answer: "SQLite"
+  explanation: "opencode 用 SQLite 持久化 session 歷史，每個 session 有獨立標題同完整對話記錄。"
+  difficulty: 1
+  tags:
+    - terminology
+
+- id: "c.4"
+  question: "當你讀文件時，opencode 會自動加載該文件附近嘅指令文件，呢個機制叫做 {動態加載}。"
+  answer: "動態加載"
+  explanation: "動態加載確保 agent 喺處理特定目錄嘅文件時，自動獲得該目錄嘅行為規則。"
+  difficulty: 2
+  tags:
+    - concept
+
+- id: "c.5"
+  question: "系統提示包含四個部分：環境資訊、指令文件、MCP 指令、{Skills}。"
+  answer: "Skills"
+  explanation: "系統提示由環境資訊、指令文件、MCP 指令同 Skills 組成，提供 agent 完整嘅上下文。"
+  difficulty: 2
+  tags:
+    - terminology
+
+- id: "c.6"
+  question: "全局指令文件嘅路徑係 {~/.config/opencode/AGENTS.md}。"
+  answer: "~/.config/opencode/AGENTS.md"
+  explanation: "全局指令對所有專案生效，適用於個人偏好。"
+  difficulty: 1
+  tags:
+    - terminology
+
+- id: "c.7"
+  question: "opencode 冇跨 {session} 記憶，需要用手動方式保存長期偏好。"
+  answer: "session"
+  explanation: "opencode 嘅 session 歷史只喺該 session 內有效，冇跨 session 記憶文件系統。"
+  difficulty: 2
+  tags:
+    - concept
+
+- id: "c.8"
+  question: "config.instructions 字段允許你指定額外嘅指令文件 {路徑} 或 URL。"
+  answer: "路徑"
+  explanation: "config.instructions 擴展 agent 嘅知識庫，支持本地路徑同遠程 URL。"
+  difficulty: 2
+  tags:
+    - terminology

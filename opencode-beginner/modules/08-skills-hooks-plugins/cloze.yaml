@@ -1,0 +1,56 @@
+- id: "c.1"
+  question: "Skills 係 {blank} 文件，agent 按需讀取。"
+  answer: "Markdown"
+  explanation: "Skills 用 Markdown 格式，包含 YAML frontmatter。"
+  difficulty: 1
+  tags:
+    - terminology
+- id: "c.2"
+  question: "SKILL.md 檔名必須 {blank}。"
+  answer: "全大寫"
+  explanation: "SKILL.md 必須全大寫，否则搵唔到。"
+  difficulty: 1
+  tags:
+    - terminology
+- id: "c.3"
+  question: "Plugins 係 {blank} 驅動嘅擴展模組。"
+  answer: "event"
+  explanation: "Plugins 用 event callbacks 處理各種事件。"
+  difficulty: 2
+  tags:
+    - concept
+- id: "c.4"
+  question: "想注入 shell 環境變數，用 {blank} event。"
+  answer: "shell.env"
+  explanation: "shell.env event 喺 shell 執行前觸發。"
+  difficulty: 2
+  tags:
+    - concept
+- id: "c.5"
+  question: "Plugin 放喺 {blank}/plugins/ 會自動載入。"
+  answer: ".opencode"
+  explanation: ".opencode/plugins/ 係項目級嘅 plugin 目錄。"
+  difficulty: 2
+  tags:
+    - terminology
+- id: "c.6"
+  question: "npm plugins 用 {blank} 自動安裝。"
+  answer: "Bun"
+  explanation: "opencode 用 Bun 安裝 npm plugins。"
+  difficulty: 2
+  tags:
+    - concept
+- id: "c.7"
+  question: "Plugin 同 built-in tool 同名時，plugin tool 會 {blank}。"
+  answer: "覆蓋"
+  explanation: "Plugin tool 同名時覆蓋 built-in tool。"
+  difficulty: 2
+  tags:
+    - concept
+- id: "c.8"
+  question: "想阻止 agent 讀 .env 檔案，可以 hook {blank} event。"
+  answer: "tool.execute.before"
+  explanation: "喺 tool 執行前檢查，如果不是 .env 就 throw error。"
+  difficulty: 3
+  tags:
+    - concept

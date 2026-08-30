@@ -1,0 +1,142 @@
+[
+  {
+    "id": "1.1",
+    "question": "What is the primary role of a human developer when using agentic coding tools?",
+    "options": {
+      "a": "Write every line of code themselves",
+      "b": "Review and guide the agent's output",
+      "c": "Let the agent handle everything autonomously",
+      "d": "Only test the final product"
+    },
+    "answer": "b",
+    "explanation": "In agentic development, the human acts as architect and reviewer — defining goals, guiding direction, and verifying output. The agent handles the labor of writing code.",
+    "difficulty": 1,
+    "tags": ["concept", "terminology"]
+  },
+  {
+    "id": "1.2",
+    "question": "Which scenario is BEST suited for agentic coding?",
+    "options": {
+      "a": "Implementing a novel sorting algorithm",
+      "b": "Optimizing a hot path for nanosecond latency",
+      "c": "Writing 15 similar CRUD API endpoints",
+      "d": "Designing a security-critical authentication flow"
+    },
+    "answer": "c",
+    "explanation": "Repetitive, well-defined tasks with clear patterns are ideal for agents. Novel algorithms, performance-critical paths, and security code require human judgment and expertise.",
+    "difficulty": 1,
+    "tags": ["concept", "scenario"]
+  },
+  {
+    "id": "1.3",
+    "question": "What is a 'harness' in the context of AI coding agents?",
+    "options": {
+      "a": "The API key used to access the model",
+      "b": "The programming language used to write the agent",
+      "c": "The AI model itself (e.g., GPT-4)",
+      "d": "The system that controls how the agent operates — tools, permissions, workflows"
+    },
+    "answer": "d",
+    "explanation": "A harness is the infrastructure around the model — tools, permissions, memory, workflows. The same model in different harnesses can perform very differently. opencode is a harness.",
+    "difficulty": 2,
+    "tags": ["terminology", "concept"]
+  },
+  {
+    "id": "1.4",
+    "question": "Why is it dangerous to approve agent-generated code without understanding it?",
+    "options": {
+      "a": "The code will always have syntax errors",
+      "b": "The agent will refuse to make changes later",
+      "c": "You become responsible for code you cannot maintain or debug",
+      "d": "It violates copyright laws"
+    },
+    "answer": "c",
+    "explanation": "If you approve code you don't understand, you're still responsible for it. When it breaks at 3 AM, you'll be debugging code you never read. The 'rubber stamp' pattern is a common pitfall.",
+    "difficulty": 2,
+    "tags": ["concept", "misconception"]
+  },
+  {
+    "id": "1.5",
+    "question": "opencode provides memory, tools, permissions, and skills to agents. What is the purpose of the permission system?",
+    "options": {
+      "a": "To make agents run faster",
+      "b": "To control what agents can and cannot do",
+      "c": "To reduce token costs",
+      "d": "To enable multi-model support"
+    },
+    "answer": "b",
+    "explanation": "Permissions are guardrails that control agent actions — which files can be read, which commands can be run, which directories are off-limits. They prevent agents from doing destructive things.",
+    "difficulty": 1,
+    "tags": ["concept", "terminology"]
+  },
+  {
+    "id": "1.6",
+    "question": "Compare manual coding and agentic coding. Which statement is TRUE?",
+    "options": {
+      "a": "Agentic coding always produces better code than manual coding",
+      "b": "Manual coding is always faster than agentic coding",
+      "c": "Agentic coding trades full control for speed and leverage",
+      "d": "Manual coding and agentic coding have identical risk profiles"
+    },
+    "answer": "c",
+    "explanation": "Agentic coding is faster for many tasks but you share control with the agent. The tradeoff is speed/leverage vs full control. Neither approach is universally superior.",
+    "difficulty": 2,
+    "tags": ["comparison", "concept"]
+  },
+  {
+    "id": "1.7",
+    "question": "An agent generates a database query that works correctly but has an N+1 performance problem. The developer deploys without review. What went wrong?",
+    "options": {
+      "a": "The agent should have refused to write the query",
+      "b": "The database was configured incorrectly",
+      "c": "The developer prioritized speed over understanding and review",
+      "d": "N+1 problems are not real issues in production"
+    },
+    "answer": "c",
+    "explanation": "The agent optimized for 'working code' not 'performant code.' The developer should have reviewed for performance patterns. This is a classic case of rubber-stamping agent output.",
+    "difficulty": 3,
+    "tags": ["scenario", "misconception"]
+  },
+  {
+    "id": "1.8",
+    "question": "Which mental model best describes the human-agent relationship in agentic development?",
+    "options": {
+      "a": "Boss and employee — agent follows orders exactly",
+      "b": "Customer and contractor — agent delivers final product",
+      "c": "Teacher and student — agent learns from corrections",
+      "d": "Senior developer and junior developer — agent has skills but needs guidance"
+    },
+    "answer": "d",
+    "explanation": "The agent is like a junior developer with superpowers — fast, knowledgeable, tireless, but lacks business context and can hallucinate. The human provides direction and judgment.",
+    "difficulty": 2,
+    "tags": ["concept", "analogy"]
+  },
+  {
+    "id": "1.9",
+    "question": "What is the key difference between the 'model' and the 'harness' in an AI coding agent?",
+    "options": {
+      "a": "The model is the code editor; the harness is the AI brain",
+      "b": "The model is the brain; the harness is the infrastructure that controls how the agent operates",
+      "c": "They are the same thing with different names",
+      "d": "The harness is more important than the model"
+    },
+    "answer": "b",
+    "explanation": "The model (GPT-4, Claude) is the brain — it generates code. The harness (opencode) is the infrastructure — tools, permissions, memory, workflows. Same brain in different harnesses performs differently.",
+    "difficulty": 2,
+    "tags": ["terminology", "concept"]
+  },
+  {
+    "id": "1.10",
+    "question": "When should you stick to manual coding instead of using an agent?",
+    "options": {
+      "a": "When writing boilerplate code",
+      "b": "When implementing a novel algorithm no one has solved before",
+      "c": "When creating test cases for existing code",
+      "d": "When refactoring code with existing tests"
+    },
+    "answer": "b",
+    "explanation": "Novel algorithms, security-critical code, performance-tuned paths, and learning exercises are best done manually. Boilerplate, tests, and refactoring are good agent tasks.",
+    "difficulty": 1,
+    "tags": ["scenario", "concept"]
+  }
+]

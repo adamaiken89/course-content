@@ -1,0 +1,115 @@
+subject: "大型語言模型架構入門 — 拆解 Transformer 內部"
+language: yue
+language_policy:
+  default: cantonese
+  english_when:
+    - proper_noun
+    - acronym
+    - code_identifier
+    - untranslatable_tech_term
+  first_use_gloss: true
+  notes: "英文 term 第一次出現加粵語註腳，之後直接用。"
+time_budget_hours: 12
+target_level: beginner
+domain: "LLM architecture, Transformer internals, training mechanisms"
+prerequisites:
+  - "llm-basics 課程（或同等基礎：理解 token、attention 概念、訓練流程）"
+learning_objectives:
+  - "回顧語言模型由 n-gram 到 LLM 嘅演進，定立本課程座標"
+  - "解釋 Tokenization 同 BPE 點樣將文字切成 subword，詞表大細點影響模型"
+  - "描述 Embedding 向量空間嘅語義幾何，點樣用 cosine similarity 量度詞義"
+  - "用 Q/K/V 直覺解釋 Attention 機制，理解 scaled dot-product 同 masking"
+  - "拆解一個 Transformer Block 嘅四大組件：Attention、FFN、Residual、LayerNorm"
+  - "說明位置編碼嘅必要性，比較 sinusoidal 同 RoPE 嘅直覺"
+  - "理解自回歸生成 loop 同 KV cache 點樣省 compute"
+  - "建立對 scaling law、in-context learning、湧現同 hallucination 嘅直覺"
+position_in_chain:
+  after: llm-basics
+  before: llm-moe-cot
+  role: "intermediate bridge — 將概念性基礎接到研究級深度之間"
+
+modules:
+  - id: 1
+    name: "語言模型入門回顧"
+    time_hours: 1.5
+    prerequisites: []
+    topics:
+      - n-gram 限制
+      - 神經語言模型
+      - LLM 規模躍升
+      - 本課程路線圖
+  - id: 2
+    name: "Tokenization 同詞表拆解"
+    time_hours: 1.5
+    prerequisites: [1]
+    topics:
+      - 點解要切 token
+      - subword 直覺
+      - BPE 概念
+      - SentencePiece
+      - 詞表大細影響
+      - 罕見字 / 多語挑戰
+  - id: 3
+    name: "Embedding 同向量空間"
+    time_hours: 1.5
+    prerequisites: [2]
+    topics:
+      - token → vector
+      - 維度選擇
+      - 相似度
+      - 語義幾何
+      - 詞類比
+      - embedding 同 context embedding 嘅分別
+  - id: 4
+    name: "Attention 機制深入"
+    time_hours: 1.5
+    prerequisites: [3]
+    topics:
+      - Q / K / V 直覺
+      - scaled dot-product
+      - softmax
+      - causal mask
+      - multi-head 概念
+      - attention 點解 work
+  - id: 5
+    name: "Transformer Block 全解構"
+    time_hours: 1.5
+    prerequisites: [4]
+    topics:
+      - attention sub-layer
+      - FFN sub-layer
+      - residual connection
+      - LayerNorm
+      - pre-norm vs post-norm 直覺
+      - residual stream 直覺
+  - id: 6
+    name: "位置編碼 — 點解同點做"
+    time_hours: 1.5
+    prerequisites: [5]
+    topics:
+      - 點解 attention 本身無位置感
+      - sinusoidal 直覺
+      - 學習式位置編碼
+      - RoPE 直覺
+      - 長度外插挑戰
+  - id: 7
+    name: "自回歸生成同 KV Cache"
+    time_hours: 1.5
+    prerequisites: [5]
+    topics:
+      - next-token loop
+      - greedy decoding
+      - sampling
+      - top-k / top-p
+      - temperature
+      - KV cache 點省 compute
+  - id: 8
+    name: "規模、湧現同幻覺直覺"
+    time_hours: 1.5
+    prerequisites: [1, 7]
+    topics:
+      - scaling 直覺
+      - in-context learning
+      - 湧現係咩
+      - hallucination 結構性原因
+      - 點解 prompt 改少少效果差好遠

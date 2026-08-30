@@ -1,0 +1,109 @@
+- id: "cum.1"
+  type: mcq
+  source_modules: [5]
+  question: "A team builds a fixed-layout comic. They size the source images at 4000x6000 and declare viewport=1404x1872 in each page XHTML. The Kobo renders the book but the file is 200 MB. What is the most impactful single change to reduce file size?"
+  options:
+    a: "Switch all images to PNG"
+    b: "Re-encode images at 1404x1872 with JPEG quality 82"
+    c: "Add a CSS object-fit: cover to each image"
+    d: "Split the book into two EPUBs"
+  answer: a
+  explanation: "Sizing the images to the viewport dimensions and using JPEG quality 82 reduces file size by roughly 3-5x for photographic content without visible quality loss on e-ink. PNG would increase size; CSS does not change file size; splitting does not address the per-page size."
+  difficulty: 2
+  tags: [cross-module, scenario]
+
+- id: "cum.2"
+  type: mcq
+  source_modules: [5, 6]
+  question: "A team converts a CBZ to EPUB with Calibre and uploads to Kindle via Send-to-Kindle. The manga renders left-to-right instead of right-to-left. Which two changes could fix this?"
+  options:
+    a: "Add a viewport meta to every page; switch to PNG"
+    b: "Set page-progression-direction='rtl' on the spine; use Kindle Previewer 3 to validate before upload"
+    c: "Add CSS direction:rtl; increase JPEG quality"
+    d: "Use CBZ instead; send the original archive"
+  answer: b
+  explanation: "Calibre's comic conversion often drops the R2L direction. The fix is to set page-progression-direction='rtl' on the spine. Kindle Previewer 3 validates the result before upload because Send-to-Kindle auto-conversion may also misclassify."
+  difficulty: 3
+  tags: [cross-module, scenario]
+
+- id: "cum.3"
+  type: mcq
+  source_modules: [6, 7]
+  question: "A mixed-layout EPUB declares rendition:layout='reflowable' at the package level. A comic section in the spine has no properties attribute. What does the reader do?"
+  options:
+    a: "Auto-detects the image and renders as FXL"
+    b: "Renders the section as reflowable because the itemref has no override"
+    c: "Throws an error and refuses to open the book"
+    d: "Renders the section with the default but warns the user"
+  answer: c
+  explanation: "Without a per-itemref property, the itemref inherits the package default. The FXL composition is lost. The fix is to add properties='rendition:layout-pre-paginated' to every FXL itemref in a reflowable-default package."
+  difficulty: 2
+  tags: [cross-module, scenario]
+
+- id: "cum.4"
+  type: mcq
+  source_modules: [5]
+  question: "Which combination of image format, color space, and quality is the right choice for a 200-page photographic comic on Kobo Sage?"
+  options:
+    a: "PNG, sRGB, quality 100"
+    b: "JPEG, sRGB, quality 82"
+    c: "WebP, Adobe RGB, quality 90"
+    d: "JPEG, CMYK, quality 70"
+  answer: d
+  explanation: "JPEG is correct for photos. sRGB is the expected color space. Quality 82 is the e-ink sweet spot. PNG is too large; WebP is foreign in EPUB 3.3; CMYK is wrong for screens."
+  difficulty: 1
+  tags: [cross-module, terminology]
+
+- id: "cum.5"
+  type: cloze
+  source_modules: [5]
+  question: "Complete: The recommended JPEG quality for production comic images on e-ink is {82}."
+  answer: "82"
+  explanation: "Quality 82 produces visually identical results to higher qualities on e-ink at one-third the file size."
+  difficulty: 1
+  tags: [cross-module, recall]
+
+- id: "cum.6"
+  type: cloze
+  source_modules: [7]
+  question: "Complete: The per-itemref property that activates fixed layout for a single spine entry in a mixed-layout EPUB is {rendition:layout-pre-paginated}."
+  answer: "rendition:layout-pre-paginated"
+  explanation: "The full property URI must be used. Without the rendition:layout- prefix, the reader does not recognise the property."
+  difficulty: 1
+  tags: [cross-module, recall]
+
+- id: "cum.7"
+  type: cloze
+  source_modules: [6]
+  question: "Complete: The Kindle Package Format file exported by Kindle Previewer 3 has the extension {.kpf}."
+  answer: ".kpf"
+  explanation: "KPF is the output of Kindle Previewer 3. KDP accepts KPF for upload."
+  difficulty: 1
+  tags: [cross-module, recall]
+
+- id: "cum.8"
+  type: tf
+  source_modules: [6]
+  statement: "CBZ is a formal W3C specification for comic book archives."
+  answer: false
+  explanation: "CBZ is a de facto convention (ZIP of images), not a formal spec. EPUB 3 fixed-layout is the modern W3C Recommendation for digital comics."
+  difficulty: 1
+  tags: [cross-module, misconception]
+
+- id: "cum.9"
+  type: tf
+  source_modules: [7]
+  statement: "An EPUB 3 mixed-layout book can contain both fixed-layout and reflowable pages in the same package via per-itemref properties."
+  answer: true
+  explanation: "EPUB 3.3 section 8.2.1.2 allows per-itemref properties (rendition:layout-pre-paginated, rendition:layout-reflowable) to override the package-level rendition:layout default."
+  difficulty: 1
+  tags: [cross-module, synthesis]
+
+- id: "cum.10"
+  type: tf
+  source_modules: [5, 6]
+  statement: "WebP is a core media type in EPUB 3.3 and can be used as the primary image format without a fallback."
+  answer: false
+  explanation: "WebP is a foreign media type in EPUB 3.3. It requires a fallback image declared in the manifest. Reader support is inconsistent; for cross-reader delivery, use JPEG or PNG."
+  difficulty: 2
+  tags: [cross-module, misconception]

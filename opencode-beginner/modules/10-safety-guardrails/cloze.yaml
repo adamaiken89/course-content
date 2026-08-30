@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "Permission rules have three actions: {allow}, {deny}, and ask."
+  answer: "allow"
+  explanation: "allow lets tools execute without asking; deny blocks them entirely."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Permission evaluation uses {last-match-wins} — the last matching rule determines the action."
+  answer: "last-match-wins"
+  explanation: "This gives flexibility to override broad rules with specific ones."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.3"
+  question: "Plan mode restricts the agent to {read-only} exploration."
+  answer: "read-only"
+  explanation: "Plan mode cannot edit files or run commands."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.4"
+  question: "A {doom loop} occurs when the agent repeatedly fails at the same task without progress."
+  answer: "doom loop"
+  explanation: "Doom loops waste tokens and indicate the agent is stuck."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: "Use {git stash} to save uncommitted changes for later restoration."
+  answer: "git stash"
+  explanation: "git stash saves changes temporarily and restores them with git stash pop."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.6"
+  question: "For sensitive files like .env, use the {ask} permission to require user confirmation."
+  answer: "ask"
+  explanation: "ask ensures the user reviews access to sensitive files."
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.7"
+  question: "{context pollution} occurs when irrelevant information in the context window reduces agent performance."
+  answer: "context pollution"
+  explanation: "Use /clear or /compact to prevent context pollution."
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.8"
+  question: "The security principle of {least privilege} means giving agents only the permissions they need."
+  answer: "least privilege"
+  explanation: "Least privilege minimizes the risk of accidental or malicious damage."
+  difficulty: 2
+  tags: [concept]

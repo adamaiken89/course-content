@@ -1,0 +1,108 @@
+- id: '4.1'
+  question: Attention 機制嘅核心直覺係？
+  options:
+    a: 每個 token 揀一個最相似嘅 token
+    b: 每個 token 對所有 token 做加權平均，權重由相關度決定
+    c: 每個 token 隨機抽樣其他 token
+    d: 每個 token 忽略其他 token
+  answer: b
+  explanation: Attention 係「軟性查詢」— 每個 token 對所有 token 計算相關度，用 softmax 變概率分佈，再加權 average 對應 value。唔係 hard 揀一個。
+  difficulty: 1
+  tags:
+  - concept
+- id: '4.2'
+  question: Q、K、V 喺 attention 中分別代表乜嘢角色？
+  options:
+    a: Q 我想知乜、K 我提供乜索引、V 我嘅內容
+    b: Q Query、K Kernel、V Vector — 純數學符號冇語義
+    c: Q Quick、K Key、V Value — 速度標記
+    d: Q 上一個、K 當前、V 下一個 token
+  answer: a
+  explanation: Q (Query) = 當前 token 嘅問題，K (Key) = 每個 token 提供嘅索引，V (Value) = 每個 token 嘅實際內容。Q 同 K 配對計分，用分數加權 V。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.3'
+  question: 點解 scaled dot-product 要除以 √d_k？
+  options:
+    a: 加速計算
+    b: 控制 QK^T 嘅方差避免 softmax 過尖，穩定 gradient
+    c: 標準化輸出
+    d: 增加 attention 頭數
+  answer: b
+  explanation: d_k 大，QK^T 方差大，softmax 變 one-hot（接近 0/1），gradient 細難訓練。除以 √d_k 將方差 normalize 回 1，smoothing softmax 分佈。
+  difficulty: 2
+  tags:
+  - algorithm
+- id: '4.4'
+  question: Causal mask 對 decoder-only LLM（例如 GPT）點解必要？
+  options:
+    a: 加速訓練
+    b: 防止 token 偷睇未來，維持自回歸性質
+    c: 減少參數
+    d: 增加準確度
+  answer: b
+  explanation: 訓練目標係「預測下一個 token」，如果 token 可以睇到未來，等於直接偷答案，學唔到語言結構。Causal mask 將未來位置設為 -∞，softmax 後變 0 weight。
+  difficulty: 1
+  tags:
+  - concept
+- id: '4.5'
+  question: Multi-head attention 比起 single head 主要好處？
+  options:
+    a: 計算更快
+    b: 每頭可以學唔同 attention pattern（語法、語義、長距關係），並行計算
+    c: 參數更少
+    d: 一定更準
+  answer: b
+  explanation: 唔同語法/語義關係需要唔同 query/key 投影。Multi-head 提供多組「眼鏡」並行注意，最後 concat。多頭令模型可以同時注意唔同類型嘅關係。
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.6'
+  question: Standard attention 嘅計算複雜度係？
+  options:
+    a: O(n) — 線性
+    b: O(n²) — 二次方（n 為序列長度）
+    c: O(log n) — 對數
+    d: O(1) — 常數
+  answer: b
+  explanation: Attention 對每對 token 計 score，所以 n 個 token 有 n² 對。呢個係 long context 主要瓶頸 — context 長度 4 倍，計算量 16 倍。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.7'
+  question: Softmax(QK^T / √d_k) 嘅作用係？
+  options:
+    a: 將 score 變概率分佈，總和為 1
+    b: 標準化向量長度
+    c: 計算 attention head 數
+    d: 加密 token
+  answer: a
+  explanation: Softmax 將任意實數 score 壓到 (0, 1) 範圍且總和為 1，變成概率分佈，可以直接用嚟加權 average V。Mask 後 softmax(-∞) 變 0 weight。
+  difficulty: 1
+  tags:
+  - algorithm
+- id: '4.8'
+  question: 「一組 attention 頭專門學動詞 → 主語關係，另一組學形容詞 → 名詞」呢個現象叫？
+  options:
+    a: Attention collapse
+    b: Head specialization — 不同 head 自然分工
+    c: Random initialization
+    d: Overfitting
+  answer: b
+  explanation: 訓練後唔同 attention head 確實會自然分化，專注唔同類型嘅語法/語義關係。研究（BERTology）有實證支持。Multi-head 嘅有效性正正喺呢度。
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.9'
+  question: 點解 Q / K / V 要用三個獨立投影矩陣，而唔直接用 input vector？
+  options:
+    a: 三個投影令模型可以學唔同角色分工，靈活表達
+    b: 計算更快
+    c: 減少參數
+    d: 訓練更簡單
+  answer: a
+  explanation: Q/K/V 雖然源自同一 input，但通過唔同投影矩陣後變成唔同角色嘅向量 — Q 係「問題」、K 係「索引」、V 係「內容」。獨立投影令模型可以靈活學到呢個分工。
+  difficulty: 2
+  tags:
+  - concept
