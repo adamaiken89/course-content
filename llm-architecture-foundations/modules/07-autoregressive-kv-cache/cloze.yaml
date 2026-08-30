@@ -1,0 +1,35 @@
+- id: c.1
+  question: 自回歸生成 loop 嘅基本步驟：{forward}計 logits → {sampling}揀 token → {append}落 sequence → 重複到 EOS。
+  answer: forward，sampling，append
+  explanation: 每次 forward 計 logits，sampling 策略揀下一個 token，append 落 sequence，重複直到生成 EOS token 或達到 max length。每次都要處理整個 sequence。
+  difficulty: 1
+  tags:
+  - algorithm
+- id: c.2
+  question: "{Greedy}永遠揀概率最高 token，{穩定}但容易重複；{top-p}動態選累計概率達 p 嘅 token 集合。"
+  answer: Greedy，穩定，top-p
+  explanation: Greedy 簡單穩定但缺乏多樣性。Top-p (nucleus) 動態選 token 集合 — 高概率分佈保留多 token，低概率分佈保留少，更靈活。Top-k 固定 k 個 token，唔夠動態。
+  difficulty: 2
+  tags:
+  - comparison
+- id: c.3
+  question: "{Temperature}控制概率分佈嘅尖平 — T 越{低}越接近 greedy，T 越{高}越隨機。"
+  answer: Temperature，低，高
+  explanation: 公式 logits' = logits / T。T → 0 放大 logits，softmax 變 one-hot，近似 greedy。T → ∞ logits 接近 0，softmax 變均勻。T=1 為原始分佈。
+  difficulty: 1
+  tags:
+  - algorithm
+- id: c.4
+  question: "{KV cache}重用之前 token 嘅 K 同 V，將推理 attention 從{O(n²)}變{O(n)}。"
+  answer: KV cache，O(n²)，O(n)
+  explanation: 冇 KV cache，每生成新 token 都要重新 forward 整個 sequence（O(n²)）。KV cache 將之前所有 token 嘅 K/V 存住，新 token 只需計 Q，attention 計算變 O(n)。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.5
+  question: Inference 成本主要受{sequence length}、{batch size}、{model size}三個維度影響。
+  answer: sequence length，batch size，model size
+  explanation: 序列長影響 KV cache 同 attention。Batch size 影響 GPU 平行度。Model size 影響每步 FLOPs。三維度乘積決定實際 inference 成本。
+  difficulty: 1
+  tags:
+  - tradeoff

@@ -1,0 +1,109 @@
+- id: "cum.1"
+  type: mcq
+  source_modules: [5, 6]
+  question: "In opencode's instruction file hierarchy, which file takes priority when both AGENTS.md and CLAUDE.md exist in the same directory?"
+  options:
+    a: "CLAUDE.md"
+    b: "AGENTS.md"
+    c: "They are merged alphabetically"
+    d: "Both are ignored"
+  answer: b
+  explanation: "AGENTS.md takes priority over CLAUDE.md in opencode's instruction loading."
+  difficulty: 2
+  tags: [cross-module, recall]
+
+- id: "cum.2"
+  type: mcq
+  source_modules: [6, 7]
+  question: "Which layer of the four-layer architecture model handles external tool integration like MCP servers?"
+  options:
+    a: "記憶層 (Memory Layer)"
+    b: "擴展層 (Extension Layer)"
+    c: "集成層 (Integration Layer)"
+    d: "編程層 (Programming Layer)"
+  answer: c
+  explanation: "The Integration Layer (集成層) handles external tool connections including MCP."
+  difficulty: 2
+  tags: [cross-module, recall]
+
+- id: "cum.3"
+  type: cloze
+  source_modules: [5, 6]
+  question: "opencode's system prompt includes an {env} block with the working directory, git status, platform, and today's date."
+  answer: "env"
+  explanation: "The <env> XML block provides environmental context to the LLM."
+  difficulty: 1
+  tags: [cross-module, terminology]
+
+- id: "cum.4"
+  type: tf
+  source_modules: [5, 7]
+  statement: "MCP tools in opencode are namespaced as {serverName}_{toolName} to avoid collisions between servers."
+  answer: true
+  explanation: "Namespace prefixing prevents tool name conflicts when multiple MCP servers are connected."
+  difficulty: 1
+  tags: [cross-module, recall]
+
+- id: "cum.5"
+  type: mcq
+  source_modules: [7, 8]
+  question: "What is the key difference between MCP and Skills in opencode?"
+  options:
+    a: "MCP provides external tools; Skills provide contextual instructions for agent behavior"
+    b: "MCP is for coding; Skills are for non-coding tasks"
+    c: "MCP runs locally; Skills run remotely"
+    d: "MCP is deprecated in favor of Skills"
+  answer: a
+  explanation: "MCP extends agent capabilities with external tools; Skills guide HOW the agent behaves."
+  difficulty: 3
+  tags: [cross-module, comparison]
+
+- id: "cum.6"
+  type: cloze
+  source_modules: [6, 8]
+  question: "The Extension Layer ({extension}) includes Skills, Hooks, Plugins, and Custom Tools."
+  answer: "擴展層"
+  explanation: "The Extension Layer (擴展層) is where customizations and extensions are configured."
+  difficulty: 1
+  tags: [cross-module, terminology]
+
+- id: "cum.7"
+  type: tf
+  source_modules: [6, 7]
+  statement: "MCP servers defined in opencode.json can use different transport types: stdio for local and StreamableHTTP for remote servers."
+  answer: true
+  explanation: "opencode supports both local (stdio) and remote (StreamableHTTP, SSE) MCP transports."
+  difficulty: 2
+  tags: [cross-module, recall]
+
+- id: "cum.8"
+  type: mcq
+  source_modules: [7, 8]
+  question: "When opencode reads a file, what happens regarding instruction files?"
+  options:
+    a: "Nothing — instructions are only loaded at startup"
+    b: "It traverses parent directories to find and attach nearby AGENTS.md or CLAUDE.md files"
+    c: "It prompts the user to select which instructions to apply"
+    d: "It only loads instructions from the project root"
+  answer: b
+  explanation: "Dynamic instruction loading attaches nearby instruction files when reading files outside the project root."
+  difficulty: 2
+  tags: [cross-module, process]
+
+- id: "cum.9"
+  type: cloze
+  source_modules: [5, 8]
+  question: "Plugins in opencode are JavaScript or TypeScript modules that can add new tools, modify behavior, and are loaded {automatically}."
+  answer: "automatically"
+  explanation: "Plugins are auto-discovered and loaded without manual registration."
+  difficulty: 1
+  tags: [cross-module, concept]
+
+- id: "cum.10"
+  type: tf
+  source_modules: [6, 8]
+  statement: "The four layers of opencode's architecture (Memory, Extension, Integration, Programming) are tightly coupled — changes in one layer always affect others."
+  answer: false
+  explanation: "The layers are designed to be orthogonal — each can be configured independently without affecting others."
+  difficulty: 3
+  tags: [cross-module, misconception]

@@ -1,0 +1,109 @@
+- id: "cum.1"
+  type: mcq
+  source_modules: [9, 10]
+  question: "What is the default behavior when a tool's permission rule is not matched by any configured rule?"
+  options:
+    a: "Allow"
+    b: "Deny"
+    c: "Ask"
+    d: "Skip"
+  answer: c
+  explanation: "Unmatched rules default to 'ask', requiring user confirmation."
+  difficulty: 1
+  tags: [cross-module, recall]
+
+- id: "cum.2"
+  type: mcq
+  source_modules: [9, 10]
+  question: "In opencode's permission system, what does 'last-match-wins' mean?"
+  options:
+    a: "The first matching rule takes precedence"
+    b: "The most specific rule always wins"
+    c: "The last matching rule in the ruleset determines the action"
+    d: "Rules are evaluated in random order"
+  answer: c
+  explanation: "Permission evaluation uses findLast — the last matching rule in the flattened ruleset wins."
+  difficulty: 2
+  tags: [cross-module, concept]
+
+- id: "cum.3"
+  type: cloze
+  source_modules: [9, 10]
+  question: "The __1__ agent in opencode is read-only and designed for exploring codebases without making changes."
+  answer: "explore"
+  explanation: "The explore agent has deny-all permissions except read-only tools like grep, glob, and websearch."
+  difficulty: 1
+  tags: [cross-module, terminology]
+
+- id: "cum.4"
+  type: tf
+  source_modules: [9, 10]
+  statement: "SubAgents in opencode inherit all permission rules from their parent agent."
+  answer: false
+  explanation: "SubAgents inherit parent's deny rules and external_directory rules, but not all rules."
+  difficulty: 2
+  tags: [cross-module, misconception]
+
+- id: "cum.5"
+  type: mcq
+  source_modules: [9, 10]
+  question: "When should you use Plan mode instead of Build mode?"
+  options:
+    a: "When you want the agent to make changes immediately"
+    b: "When you need the agent to explore and propose without making changes"
+    c: "When you want to skip the planning phase"
+    d: "When you need faster execution"
+  answer: b
+  explanation: "Plan mode restricts the agent to read-only exploration and proposal generation."
+  difficulty: 1
+  tags: [cross-module, application]
+
+- id: "cum.6"
+  type: cloze
+  source_modules: [9, 10]
+  question: "To revert all uncommitted changes in opencode, you can use the {rollback} feature which leverages git stash."
+  answer: "rollback"
+  explanation: "Rollback uses git stash to save and restore uncommitted changes."
+  difficulty: 2
+  tags: [cross-module, terminology]
+
+- id: "cum.7"
+  type: tf
+  source_modules: [9, 10]
+  statement: "A doom loop in opencode occurs when an agent repeatedly tries and fails at the same task, consuming tokens without progress."
+  answer: true
+  explanation: "Doom loops are a common failure mode where the agent gets stuck in repetitive failure cycles."
+  difficulty: 2
+  tags: [cross-module, recall]
+
+- id: "cum.8"
+  type: mcq
+  source_modules: [9, 10]
+  question: "Which custom agent mode is used for background research tasks that don't modify the workspace?"
+  options:
+    a: "primary"
+    b: "subagent"
+    c: "all"
+    d: "hidden"
+  answer: b
+  explanation: "Subagent mode is used for delegated tasks. For read-only research, configure a custom agent with deny-all write permissions."
+  difficulty: 3
+  tags: [cross-module, application]
+
+- id: "cum.9"
+  type: cloze
+  source_modules: [9, 10]
+  question: "Permission rules use {wildcard} patterns like '*.py' to match multiple files with a single rule."
+  answer: "wildcard"
+  explanation: "Wildcard patterns enable flexible permission matching across files and commands."
+  difficulty: 1
+  tags: [cross-module, terminology]
+
+- id: "cum.10"
+  type: tf
+  source_modules: [9, 10]
+  statement: "Setting a permission to 'deny' for a tool makes it completely invisible to the agent — it cannot even see the tool exists."
+  answer: true
+  explanation: "Tools with deny on wildcard pattern are hidden from the UI, not just blocked from execution."
+  difficulty: 3
+  tags: [cross-module, synthesis]

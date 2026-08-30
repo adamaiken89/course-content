@@ -1,0 +1,62 @@
+- id: c.1
+  question: "The simultaneous submission of at least 15 coordinated transactions totaling at least $1 million is a {program trade} — about 27% of NYSE volume."
+  answer: 'program trade'
+  explanation: 'NYSE/SEC classify trades meeting both thresholds as program trades; index arbitrageurs account for only about 9% of that volume, so most program trading is other portfolio strategies.'
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: c.2
+  question: "An exchange-designated member who must continuously quote two-sided markets so that markets always exist in their specialty is a {specialist}."
+  answer: 'specialist'
+  explanation: 'Specialists also keep markets orderly and prevent prices from jumping too quickly; exchanges with this design run designated primary market maker systems more generally.'
+  difficulty: 1
+  tags: [terminology]
+
+- id: c.3
+  question: "Dealers {internalize} orders when they fill their own clients' trades away from the organized market."
+  answer: 'internalize'
+  explanation: 'Internalization, preferencing, and crossing all arrange trades away from organized markets, which fragments the market and reduces order transparency.'
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: c.4
+  question: "Routing a client's marketable order to a chosen dealer in exchange for payments for order flow is called {preferencing}."
+  answer: 'preferencing'
+  explanation: 'Brokers preference marketable orders to dealers and limit orders to ECNs that pay liquidity fees; under competition these payments become low retail commissions.'
+  difficulty: 1
+  tags: [terminology]
+
+- id: c.5
+  question: "Traders gravitate to whichever market already has the most liquidity: each joiner attracts more traders — the order flow {externality}, a network externality that makes markets winner-take-all."
+  answer: 'externality'
+  explanation: 'Because "the value of a system to a user increases as more people use the system," markets consolidate with no regulatory help — and newcomers struggle to lure flow away, as Optimark''s $406 million deficit showed.'
+  difficulty: 2
+  tags: [concept]
+
+- id: c.6
+  question: "Specialists must not fill standing public limit orders for their own account — the public {liquidity} preservation principle."
+  answer: 'liquidity'
+  explanation: 'This negative obligation protects limit traders'' ability to cancel when news moves the market; specialists may trade only with incoming marketable orders unless they improve the price.'
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: c.7
+  question: "Floor traders screen counterparties, signal size credibly, and know which latent traders have not yet submitted orders — the floor's {informational liquidity}, which screens cannot replicate."
+  answer: 'informational liquidity'
+  explanation: 'This information exchange is what oral auctions do that computers do not; screens answer with messaging systems and undisclosed-size limit orders instead of reputation.'
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: c.8
+  question: "A {circuit breaker} is a trading rule that limits trading activity — trading halts, price limits, transaction taxes, margin requirements, position limits, and collars."
+  answer: 'circuit breaker'
+  explanation: 'NYSE Rule 80B halts trading after DJIA moves of 10%, 20%, or 30%; halts slow fundamental price adjustment, and their effect on transitory volatility is theoretically indeterminate.'
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: c.9
+  question: "Winans was convicted under the {misappropriation} doctrine: trading on information taken from an employer or publication, illegal even though he owed no duty to the companies he wrote about."
+  answer: 'misappropriation'
+  explanation: 'The doctrine also covers printers, lawyers, bankers, and government employees; Chiarella was acquitted in 1980 before the law changed, and today the same facts would convict him.'
+  difficulty: 3
+  tags: [terminology, concept]

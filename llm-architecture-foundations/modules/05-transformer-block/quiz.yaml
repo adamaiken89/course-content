@@ -1,0 +1,108 @@
+- id: '5.1'
+  question: 一個 Transformer Block 嘅四大組件包括？
+  options:
+    a: Convolution、Pooling、ReLU、Softmax
+    b: Attention、FFN、Residual、LayerNorm
+    c: Embedding、Positional、Recurrent、Gating
+    d: Query、Key、Value、Output
+  answer: b
+  explanation: Transformer Block 由 Attention sub-layer + FFN sub-layer 兩個核心操作，加 Residual connection 同 LayerNorm 兩個輔助設計組成。Q/K/V 係 attention 內部，唔係 block 級。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.2'
+  question: 點解 FFN 對 Transformer Block 必要，attention 唔夠嗎？
+  options:
+    a: Attention 計算太慢
+    b: Attention 係線性組合（加權平均），冇非線性；FFN 提供非線性轉換令 block 可以學任意函數
+    c: FFN 減少參數
+    d: FFN 取代 attention
+  answer: b
+  explanation: Attention 對 V 做加權平均，本質係線性組合。冇非線性，疊多層都仲係線性。FFN 嘅 activation（SwiGLU 等）提供非線性，令整個 block 可以近似任意函數。
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.3'
+  question: Residual connection 點解對深層 Transformer 必要？
+  options:
+    a: 增加參數
+    b: 提供梯度直達通道同訊息保留，否則 96 層網絡無法穩定訓練
+    c: 加速推理
+    d: 改善 attention
+  answer: b
+  explanation: 冇 residual，gradient 要經過每一層嘅 sublayer，深層（96+ 層）gradient 會 vanish 或爆炸，訓練失敗。Residual 令 gradient 可以直接穿過，訊息保留，訓練穩定。
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.4'
+  question: Pre-norm 同 post-norm 主要 trade-off？
+  options:
+    a: Pre-norm 訓練穩定但 output 未 normalize；post-norm 原始但深層難 train
+    b: 完全等價
+    c: Pre-norm 一定更好
+    d: Post-norm 一定更快
+  answer: a
+  explanation: Pre-norm（主流）將 LN 放喺 sublayer 之前，訓練穩定，適合深層。Post-norm（原始論文）將 LN 放喺 residual 之後，最終 output 分布更穩但深層難 train。現代 LLM 全部用 pre-norm。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '5.5'
+  question: 「Residual stream 高速公路」直覺中，每層 sublayer 扮演乜嘢角色？
+  options:
+    a: 完全重寫內容
+    b: 從 stream 攞嘢、加工、加返入去 — 細微調整而非從頭計
+    c: 刪除舊訊息
+    d: 隨機化內容
+  answer: b
+  explanation: Residual stream 比喻：input 沿 stream 流過每層，每層 sublayer 選擇性「加嘢」落 stream。原始 input 訊息保留，sublayer 學「調整幅度」。呢個分工令深層訓練穩定。
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.6'
+  question: FFN 嘅典型 expansion ratio（例如 hidden 4096 → intermediate 16384）係？
+  options:
+    a: 1×（相同維度）
+    b: 約 4×（中間層擴張）
+    c: 0.25×（壓縮）
+    d: 100×（極擴張）
+  answer: b
+  explanation: FFN 通常將 hidden 擴張到 4×（例如 4096 → 16384 → 4096），呢個維度擴張畀非線性轉換足夠空間。Llama 用 SwiGLU 仍保持接近 4× 比例。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.7'
+  question: 「深層 Transformer 自然分層抽象，底層學 syntax 頂層學推理」呢個現象屬於？
+  options:
+    a: Emergent 分層特化
+    b: 隨機 noise
+    c: Overfitting
+    d: 過度設計
+  answer: a
+  explanation: 訓練時冇明確指定每層做乜，但 deep transformer 自然分化出階層式特化（底層 syntax、中層語義、頂層推理）。呢個 emergent property 支撐咗 deep stack 嘅有效性。
+  difficulty: 3
+  tags:
+  - concept
+- id: '5.8'
+  question: SwiGLU / GeGLU 相比早期 ReLU 嘅主要改進？
+  options:
+    a: 計算更簡單
+    b: 更好嘅 gradient flow 同表達能力
+    c: 參數更少
+    d: 完全等價
+  answer: b
+  explanation: ReLU 簡單但有 dead neuron 問題。SwiGLU/GeGLU 用 gated 設計（兩條線乘埋），gradient flow 更順，表達能力更強。Llama 等現代 LLM 全部採用。
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.9'
+  question: LayerNorm 對每個 token 做咩操作？
+  options:
+    a: 對整個 batch normalize
+    b: 對單一 token 嘅 embedding 維度 normalize 到 mean=0, std=1
+    c: 隨機 dropout
+    d: 線性變換
+  answer: b
+  explanation: LayerNorm 對單一 token 嘅所有維度計 mean/std 再 normalize，呢個 per-token normalization 唔受 batch size 影響，適合序列模型。BatchNorm 就對 batch 維度做。
+  difficulty: 1
+  tags:
+  - terminology

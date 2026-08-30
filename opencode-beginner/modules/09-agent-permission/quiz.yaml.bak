@@ -1,0 +1,129 @@
+- id: "9.1"
+  question: "opencode 有幾個內建 Agent？"
+  options:
+    a: "5 個"
+    b: "7 個"
+    c: "9 個"
+    d: "12 個"
+  answer: b
+  explanation: "build, plan, general, explore, compaction, title, summary 共 7 個。"
+  difficulty: 1
+  tags:
+    - terminology
+
+- id: "9.2"
+  question: "Custom Agent 的 mode 設為 subagent，代表什麼？"
+  options:
+    a: "可以按 Tab 切換"
+    b: "可以 @mention 調用"
+    c: "自動在每次對話中執行"
+    d: "只能用於背景任務"
+  answer: b
+  explanation: "subagent 模式只能透過 @mention 調用，primary 才能按 Tab 切換。"
+  difficulty: 1
+  tags:
+    - terminology
+
+- id: "9.3"
+  question: "Permission 規則的評估邏輯是什麼？"
+  options:
+    a: "第一條匹配的規則生效"
+    b: "所有匹配的規則都生效"
+    c: "最後匹配的規則生效"
+    d: "優先級最高的規則生效"
+  answer: c
+  explanation: "Permission 使用最後匹配原則（last-match-wins），類似 CSS specificity。"
+  difficulty: 2
+  tags:
+    - concept
+
+- id: "9.4"
+  question: "Custom Agent 配置中，mode 設為 primary 的意思是什麼？"
+  options:
+    a: "這個 Agent 是主要的執行引擎"
+    b: "可以透過 Tab 鍵切換"
+    c: "只能 @mention 調用"
+    d: "自動在背景執行"
+  answer: b
+  explanation: "primary mode 可以按 Tab 鍵在對話中切換，subagent 只能 @mention 調用。"
+  difficulty: 1
+  tags:
+    - terminology
+
+- id: "9.5"
+  question: "Permission 的預設 action 是什麼？"
+  options:
+    a: "allow"
+    b: "deny"
+    c: "ask"
+    d: "depends"
+  answer: c
+  explanation: "opencode 的安全哲學是「不確定就問」，預設 ask。"
+  difficulty: 2
+  tags:
+    - concept
+
+- id: "9.6"
+  question: "SubAgent 繼承 parent 的什麼權限？"
+  options:
+    a: "所有 allow 規則"
+    b: "所有 deny 規則和 external_directory"
+    c: "所有規則"
+    d: "只有 read 權限"
+  answer: b
+  explanation: "SubAgent 自動繼承 parent 的 deny 規則和 external_directory 規則。"
+  difficulty: 2
+  tags:
+    - concept
+
+- id: "9.7"
+  question: "opencode 的合併順序，以下哪個正確？"
+  options:
+    a: "全域 → 預設 → Agent 專屬"
+    b: "Agent 專屬 → 全域 → 預設"
+    c: "預設 → Agent 專屬 → 全域"
+    d: "預設 → 全域 → Agent 專屬"
+  answer: d
+  explanation: "權限合併順序是：硬編碼預設 → 全域配置 → Agent 專屬配置。"
+  difficulty: 2
+  tags:
+    - concept
+
+- id: "9.8"
+  question: "如果我想建立一個只能讀不能寫的程式碼審查 Agent，permission 應該怎麼設？"
+  options:
+    a: "read: allow, edit: allow, bash: deny"
+    b: "read: allow, edit: deny, bash: deny"
+    c: "read: deny, edit: deny, bash: deny"
+    d: "read: ask, edit: deny, bash: deny"
+  answer: b
+  explanation: "審查 Agent 需要讀取權限但不能修改，所以 read allow + edit deny + bash deny。"
+  difficulty: 2
+  tags:
+    - application
+
+- id: "9.9"
+  question: "Permission 規則中，`\"bash\": {\"git *\": \"allow\", \"*\": \"ask\"}` 的意思是什麼？"
+  options:
+    a: "所有 bash 指令都 allow"
+    b: "git 指令 allow，其他 ask"
+    c: "git 指令 deny，其他 allow"
+    d: "所有 bash 指令都 ask"
+  answer: b
+  explanation: "git 指令匹配 'git *' 所以 allow，其他指令匹配 '*' 所以 ask。"
+  difficulty: 2
+  tags:
+    - application
+
+- id: "9.10"
+  question: "Custom Agent 的 prompt 欄位可以設為什麼？"
+  options:
+    a: "只能是文字"
+    b: "只能是檔案路徑"
+    c: "文字或檔案路徑"
+    d: "只能是 URL"
+  answer: c
+  explanation: "prompt 欄位接受直接文字或檔案路徑，.md 檔案的 body 也會成為 prompt。"
+  difficulty: 1
+  tags:
+    - terminology

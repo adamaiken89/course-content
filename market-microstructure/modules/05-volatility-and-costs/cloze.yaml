@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: 'Price changes caused by the trading activity of uninformed traders, which eventually revert to fundamental values, are called {transitory} volatility.'
+  answer: 'transitory'
+  explanation: 'Transitory volatility results when impatient uninformed traders push prices away from value; the divergence is temporary because value traders push prices back.'
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: '{fundamental} volatility is due to unanticipated changes in instrument values and is necessary because prices must change as the world changes.'
+  answer: 'fundamental'
+  explanation: 'Only unexpected events should move prices; this price discovery is what lets markets allocate resources, so regulators cannot and should not stop it.'
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: 'Commissions, exchange fees, taxes, and trading-desk expenses are {explicit} transaction costs — everything a cost accountant would easily identify.'
+  answer: 'explicit'
+  explanation: 'Explicit costs are the visible bucket; implicit costs (spread and price impact) and missed trade opportunity costs are the hidden ones that usually dominate.'
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: 'Profits forgone when orders fail to fill or fill too late are called {missed trade opportunity} costs, the third bucket of total transaction costs.'
+  answer: 'missed trade opportunity'
+  explanation: 'The cotton limit order that never filled at 64.95 cost $137,500 of missed opportunity — a real trading cost with zero commission attached.'
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.5"
+  question: 'Twice the signed difference between the trade price and the quotation midpoint at time of trade equals the {effective spread}.'
+  answer: 'effective spread'
+  explanation: 'Effective spread benchmarks each fill against the contemporaneous midpoint, making it the least noisy estimator — but it is blind to the cumulative impact of split orders.'
+  difficulty: 2
+  tags: [formula]
+
+- id: "c.6"
+  question: 'The benchmark fixed at the moment the manager decided to trade — and therefore immune to broker gaming — is {implementation shortfall}.'
+  answer: 'implementation shortfall'
+  explanation: 'Because the decision-time midpoint is set before the broker gets the order, execution timing cannot flatter the measurement; Harris calls it the best estimator when data cost is no issue.'
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.7"
+  question: 'Raw return minus (portfolio beta times market return) equals the {risk-adjusted excess return}, also called realized alpha.'
+  answer: 'risk-adjusted excess return'
+  explanation: 'This subtracts what the manager earned merely from market exposure, leaving only stock-selection skill; raw return decomposes into excess return plus market timing return plus market return.'
+  difficulty: 3
+  tags: [formula]
+
+- id: "c.8"
+  question: 'When only winners are publicized and losers are merged away, selected past averages look high and later returns fall — a process called {regression to the mean}.'
+  answer: 'regression to the mean'
+  explanation: 'Sample selection bias pushes observed past returns up; subsequent averages are invariably lower, which is why chasing last year stars systematically disappoints.'
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.9"
+  question: 'Because skill of about 2%/yr is tiny relative to roughly 7%/yr of market-adjusted noise, statistical tests of manager skill suffer a low {signal-to-noise} ratio.'
+  answer: 'signal-to-noise'
+  explanation: 'Low signal-to-noise collapses t-test power: 95% confidence on 5 years of monthly data finds real 2%/yr skill only 15% of the time, and a defensible 95/75 test needs 22 years.'
+  difficulty: 3
+  tags: [concept]

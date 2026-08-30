@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "Calibre 主要用嚟管理同 {blank} 電子書（例如 EPUB 轉 MOBI、PDF、AZW）。"
+  answer: "轉格式"
+  explanation: "Calibre 內建轉格式引擎，支援 EPUB、MOBI、PDF、AZW、TXT 等常見電子書格式互通。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Sigil 係一個 EPUB {blank} 器，可以直接改 XHTML、CSS、metadata。"
+  answer: "編輯"
+  explanation: "Sigil 係開源 EPUB 編輯器，提供 WYSIWYG + code view，可以即時預覽改動效果。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "EPUB metadata 用 {blank} Core namespace（dc:title、dc:creator、dc:language）。"
+  answer: "Dublin"
+  explanation: "EPUB metadata 用 Dublin Core（dc:）標準欄位，係 W3C 規範一部分，跨閱讀器通用。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "EPUB 嘅封面喺 metadata 入面用 <meta name=\"{blank}\" content=\"cover.jpg\"/> 標記。"
+  answer: "cover"
+  explanation: "封面用 <meta name=\"cover\"> 標記，content 係相對 path 指向封面圖。閱讀器靠呢個 meta 搵封面。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "喺 Sigil 加新 XHTML 章節之後，要喺 manifest 加 <item>、喺 spine 加 {blank} 先畀閱讀器認到。"
+  answer: "<itemref>"
+  explanation: "manifest 列出檔案，spine 用 <itemref idref=\"...\"> 引用 manifest id。兩個都必要，否則新章節唔會出現喺閱讀順序。"
+  difficulty: 2
+  tags: [process]
+
+- id: "c.6"
+  question: "中文 EPUB 想確保唔同裝置顯示一致字型，可以將字型檔案 {blank} 入 EPUB。"
+  answer: "內嵌"
+  explanation: "內嵌字型（embed）將 .ttf/.otf/.woff 放入 fonts/ 目錄，喺 CSS 用 @font-face 引用，所有裝置一致顯示。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.7"
+  question: "令 EPUB 圖片自動適應屏幕嘅 CSS 寫法係 img { max-width: {blank}%; height: auto; }。"
+  answer: "100"
+  explanation: "max-width: 100% 令圖片最大唔超過容器寬度，height: auto 保持比例，係標準響應式寫法。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "EPUB a11y 要求 <html lang=\"{blank}\">，screen reader 先識揀正確發音引擎。"
+  answer: "yue"
+  explanation: "廣東話 EPUB 寫 <html lang=\"yue\">，screen reader 會切去粵語 TTS。寫錯 lang 會用錯語言讀。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.9"
+  question: "用 Calibre 改完 metadata 之後，要 {blank} 先可以喺閱讀器睇到新 metadata。"
+  answer: "儲存"
+  explanation: "Calibre 改 metadata 必須按「儲存」先寫入 EPUB 內部 XML。閱讀器開檔先讀到新 metadata。"
+  difficulty: 1
+  tags: [process]
+
+- id: "c.10"
+  question: "EPUB 入面嘅 {blank} reset 可以避免閱讀器預設樣式同你嘅 CSS 衝突。"
+  answer: "CSS"
+  explanation: "CSS reset（例如 body { margin: 0; padding: 0; line-height: 1.6; }）統一 baseline，跨閱讀器排版更穩定。"
+  difficulty: 2
+  tags: [concept]

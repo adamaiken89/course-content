@@ -1,0 +1,62 @@
+- id: c.1
+  question: '"The gap between a stock''s fundamental value and its market price is called {noise}; a price is informative when it sits near fundamental value."'
+  answer: 'noise'
+  explanation: 'Harris defines noise as the difference between fundamental value and market value (price). A price is informative when it is near its corresponding fundamental value; completely informative means it equals that value.'
+  difficulty: 1
+  tags: [terminology]
+
+- id: c.2
+  question: '"In an {efficient} market, prices reflect all information that traders can acquire and profitably trade upon."'
+  answer: 'efficient'
+  explanation: 'Harris''s microstructure definition adds a cost qualifier: information that is too expensive to acquire or trade upon may legitimately stay out of price — unlike the textbook definitions of market efficiency.'
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: c.3
+  question: '"Traders who act on information that is already in the price are {pseudo-informed} — they think they are well informed but are actually uninformed."'
+  answer: 'pseudo-informed'
+  explanation: 'Trading on stale information is the most common trading mistake. Occidental Petroleum''s +10% then full retrace after Armand Hammer''s death shows the pattern: nothing new was in the news, so late buyers lost to value traders selling against them.'
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: c.4
+  question: '"Under {semistrong-form} efficiency, prices reflect all publicly available information — earnings releases and announcements are priced in immediately."'
+  answer: 'semistrong-form'
+  explanation: 'Weak-form efficiency covers only past-price information; semistrong adds all public info; strong-form adds private info too (realistic only where value is common knowledge, like a five-dollar bill market).'
+  difficulty: 2
+  tags: [terminology, comparison]
+
+- id: c.5
+  question: '"Traders suffer the {winner''s curse} when they win an auction and subsequently regret trading because they paid too much or sold for too little."'
+  answer: 'winner''s curse'
+  explanation: 'In common-value auctions the highest bidders are systematically the overestimators — you learn your estimate was high by winning. Fix: bid below your estimate, shaving more with more bidders and harder-to-estimate values.'
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: c.6
+  question: '"A trader who collects information about trades other traders have already decided to arrange, then trades before them, is called a {front runner}."'
+  answer: 'front runner'
+  explanation: 'Front running is the best-known form of order anticipation. It is illegal only when the order information came from a confidentiality breach; observing public broker behavior is legal. Quote matching (penny jumping) front-runs standing limit orders.'
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: c.7
+  question: '"When uninformed traders cannot change prices substantially, the market is {resilient} to their trading — value traders create this by standing ready when price departs from value."'
+  answer: 'resilient'
+  explanation: 'Also called market resiliency. Value traders are the liquidity suppliers of last resort: they trade against uninformed flow that pushes price off value, and their willingness to absorb inventory lets dealers hold bigger positions — more immediacy for everyone.'
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: c.8
+  question: '"Arbitrageurs unwittingly enforce the {law of one price}: identical instruments should have identical prices, so they buy relatively cheap and sell relatively expensive."'
+  answer: 'law of one price'
+  explanation: 'Arbitrageurs profit when prices converge. They trade the arbitrage spread — basis minus fair value of the basis — only when it lies outside the arbitrage bounds, and pure arbitrage requires a mean-reverting basis.'
+  difficulty: 3
+  tags: [concept, comparison]
+
+- id: c.9
+  question: '"LTCM died not of bad analysis but of low {staying power}: $125 billion of assets on $4.1 billion of equity meant margin calls forced liquidation of positions that were still attractive."'
+  answer: 'staying power'
+  explanation: 'Staying power is the ability to finance a position through adverse moves. LTCM was rescued by a consortium for $3.6B in September 1998 — the arb was right, the leverage was not. Rule: never max out leverage; control basis risk with scale.'
+  difficulty: 3
+  tags: [concept, formula]

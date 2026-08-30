@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: "Complete: An EPUB layout where the reader computes pages based on font size and viewport is called {reflowable}."
+  answer: "reflowable"
+  explanation: "Reflowable is the browser model. The reader paginates dynamically. User controls font and size."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: An EPUB layout where the author pre-decides every page is called {pre-paginated} or fixed layout."
+  answer: "pre-paginated"
+  explanation: "Pre-paginated = one XHTML per page, pixel-precise. Used for comics, manga, art books."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: The OPF property that declares the default layout for the whole book is {rendition:layout}."
+  answer: "rendition:layout"
+  explanation: "rendition:layout accepts 'reflowable' or 'pre-paginated'. Per-itemref overrides are possible (module 07)."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Complete: The OPF property that controls synthetic spread display (two pages side by side) is {rendition:spread}."
+  answer: "rendition:spread"
+  explanation: "rendition:spread takes 'none', 'landscape', 'both', or 'auto'. It is conditional on orientation."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Complete: The logical canvas in CSS pixels that all CSS positioning is relative to is called the {Initial Containing Block} or ICB."
+  answer: "Initial Containing Block"
+  explanation: "The ICB is defined by the viewport meta per page. The reader scales the ICB to fit the physical screen."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "Complete: In EPUB 3.3, the ICB is defined per page by the {<meta name='viewport'>} element in the XHTML head."
+  answer: "<meta name='viewport'>"
+  explanation: "The first viewport meta in the head wins. rendition:viewport in OPF is deprecated."
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "Complete: For an image-based comic, the recommended rendition:layout value is {pre-paginated}."
+  answer: "pre-paginated"
+  explanation: "Fixed layout. Reflow destroys panel composition and speech bubble anchoring."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Complete: The OPF property that declares orientation hint is {rendition:orientation}."
+  answer: "rendition:orientation"
+  explanation: "Takes 'portrait', 'landscape', or 'auto'. 'auto' lets the reader follow device rotation."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.9"
+  question: "Complete: The {rendition:viewport} property in OPF is deprecated in EPUB 3.3 in favour of per-page viewport meta."
+  answer: "rendition:viewport"
+  explanation: "The viewport moved from the package level to each XHTML document. Backward compatibility is partial."
+  difficulty: 3
+  tags: [concept]

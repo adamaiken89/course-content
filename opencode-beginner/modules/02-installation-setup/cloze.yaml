@@ -1,0 +1,82 @@
+[
+  {
+    "id": "c.1",
+    "question": "The recommended installation method for opencode is {blank}.",
+    "answer": "npm install -g opencode",
+    "explanation": "npm install -g opencode is the simplest and most maintainable installation method.",
+    "difficulty": 1,
+    "tags": ["terminology", "process"]
+  },
+  {
+    "id": "c.2",
+    "question": "Configuration files are merged in {blank} order, with global config having highest priority.",
+    "answer": "precedence",
+    "explanation": "opencode merges configuration in priority order: global > project > project-local > defaults.",
+    "difficulty": 2,
+    "tags": ["concept"]
+  },
+  {
+    "id": "c.3",
+    "question": "Model IDs must use the format {blank} to specify which provider to use.",
+    "answer": "provider/model",
+    "explanation": "The correct format is 'provider/model' — e.g., 'anthropic/claude-sonnet-4-20250514'.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "c.4",
+    "question": "Environment variables {blank} file-based configuration settings.",
+    "answer": "override",
+    "explanation": "Environment variables always take precedence over settings in opencode.json.",
+    "difficulty": 2,
+    "tags": ["concept"]
+  },
+  {
+    "id": "c.5",
+    "question": "On first run, opencode creates a {blank} directory in your project root.",
+    "answer": ".opencode",
+    "explanation": "The .opencode/ directory stores project-specific configuration and session data.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "c.6",
+    "question": "opencode prefers {blank} authentication over manual API key entry for security.",
+    "answer": "OAuth",
+    "explanation": "OAuth tokens are stored in the system keychain, not in plain text files.",
+    "difficulty": 2,
+    "tags": ["concept", "comparison"]
+  },
+  {
+    "id": "c.7",
+    "question": "The minimum Node.js version required for opencode is {blank}.",
+    "answer": "20.x",
+    "explanation": "opencode requires Node.js 20.x or later.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "c.8",
+    "question": "Different agents can use different models to optimize {blank} and {blank} per task.",
+    "answer": "cost and capability",
+    "explanation": "Planning might use a larger model, while exploration uses a faster, cheaper one.",
+    "difficulty": 2,
+    "tags": ["concept"]
+  },
+  {
+    "id": "c.9",
+    "question": "Set {blank}=true to prevent opencode from loading project-level configuration.",
+    "answer": "OPENCODE_DISABLE_PROJECT_CONFIG",
+    "explanation": "This environment variable disables project-level config, useful for testing or enterprise deployments.",
+    "difficulty": 2,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "c.10",
+    "question": "When no API keys are configured, opencode {blank} you through provider selection.",
+    "answer": "prompts",
+    "explanation": "opencode detects missing authentication and guides you through setup.",
+    "difficulty": 1,
+    "tags": ["concept", "process"]
+  }
+]

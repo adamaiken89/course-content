@@ -1,0 +1,172 @@
+- id: '4.1'
+  question: 'Per the book, a dealer is:'
+  options:
+    a: A broker who executes client orders on an agency basis and never holds positions
+    b: A profit-motivated trader who allows other traders to trade when they want
+      to trade
+    c: An exchange official who maintains a single fair price for one stock
+    d: A regulator who monitors market manipulation
+  answer: b
+  explanation: 'The book''s definition: dealers "allow other traders to trade when
+    they want to trade" and make money buying low and selling high. Brokers act as
+    agents, specialists are a floor name for the same job, and regulators do not trade.'
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '4.2'
+  question: A dealer posts a bid of 35.00 and an ask of 35.30. What is the quoted
+    spread?
+  options:
+    a: '0.30'
+    b: '3.00'
+    c: '0.03'
+    d: '35.00'
+  answer: a
+  explanation: Quoted spread = ask − bid = 35.30 − 35.00 = 0.30. The 35.00 figure
+    is the bid itself and 0.03 confuses dollars with cents — the book stresses the
+    spread is "the price impatient traders pay for immediacy."
+  difficulty: 1
+  tags:
+  - calculation
+  - terminology
+- id: '4.3'
+  question: How does the realized spread differ from the quoted spread?
+  options:
+    a: The quoted spread is what the dealer keeps after losses to informed traders
+    b: The two are identical — the terms are interchangeable
+    c: The realized spread is what the dealer actually earned on the round trip, and
+      it is usually smaller than the quoted spread
+    d: The realized spread is always larger than the quoted spread because dealers
+      add a safety premium
+  answer: c
+  explanation: Realized spread = prices at which the dealer actually bought and sold.
+    Quotes move between trades and dealers sometimes give price improvement, so realized
+    is usually smaller — Dell's round trip realized −0.1 against a 0.3 quoted spread
+    shows it can even be negative.
+  difficulty: 1
+  tags:
+  - comparison
+  - concept
+- id: '4.4'
+  question: Five dealers each quote a 50-cent spread. The highest bid in the market
+    is 100.3 and the lowest ask is 100.4. What is the inside spread?
+  options:
+    a: 40 cents
+    b: 50 cents
+    c: 1 cent
+    d: 10 cents
+  answer: d
+  explanation: Inside spread = highest bid − lowest ask = 100.4 − 100.3 = 10 cents.
+    It matches the best quote from two different dealers, which is why it is far narrower
+    than any single dealer's 50-cent quote and never exceeds the narrowest one.
+  difficulty: 2
+  tags:
+  - calculation
+  - concept
+- id: '4.5'
+  question: '"Large positions are expensive to finance. They also expose dealers to
+    serious losses if prices move against them." What does the book call this risk?'
+  options:
+    a: Adverse selection risk
+    b: Liquidity risk
+    c: Settlement risk
+    d: Inventory risk
+  answer: d
+  explanation: That is the book's definition of inventory risk, split into diversifiable
+    risk (unpredictable, mean-zero price moves — scary but harmless long run) and
+    adverse selection risk (losses to informed traders — genuinely dangerous).
+  difficulty: 1
+  tags:
+  - terminology
+- id: '4.6'
+  question: 'In the Glosten–Milgrom model, value is V, an informed trader''s signal
+    is ±E, and the probability the next trader is informed is P. The adverse selection
+    spread component equals:'
+  options:
+    a: 2 · P · E
+    b: P · E
+    c: V · P
+    d: E · P / 2
+  answer: a
+  explanation: Conditional values are V + P·E given a buyer and V − P·E given a seller,
+    so the gap — the adverse selection component — is 2·P·E. The accounting view (average
+    loss to informed traders) gives the same number.
+  difficulty: 2
+  tags:
+  - formula
+  - concept
+- id: '4.7'
+  question: A dealer quotes 35.0 bid / 35.3 ask. A client sells at 35.0, bad news
+    arrives, the dealer reprices to 34.6 / 34.9 and dumps the inventory to a buyer
+    at 34.9. What is the dealer's realized spread?
+  options:
+    a: −0.10
+    b: '+0.30'
+    c: '+0.10'
+    d: '0'
+  answer: a
+  explanation: Realized = actual sell price − actual buy price = 34.9 − 35.0 = −0.10.
+    The 0.30 quoted spread was never earned — the price moved between the two legs.
+    This is the book's Dell example and the reason quoted spread ≠ profit.
+  difficulty: 2
+  tags:
+  - calculation
+  - scenario
+- id: '4.8'
+  question: Roughly what share of large U.S. block trades is seller-initiated, and
+    why?
+  options:
+    a: About 20% — institutions prefer to accumulate positions quietly
+    b: About 80% — short-sale constraints let sellers credibly prove their full size,
+      while large buyers look more informed
+    c: About 80% — buyers must disclose their full size but sellers are allowed to
+      hide it
+    d: About 50% — block trades are split evenly by construction
+  answer: b
+  explanation: Sellers can prove they really hold the shares (short-sale constraints),
+    buyers cannot prove they will not buy more later, and large buying looks informed.
+    Hence ~80% seller-initiated — and blocks still clear in the upstairs market.
+  difficulty: 2
+  tags:
+  - scenario
+  - concept
+- id: '4.9'
+  question: 'An uninformed investor says: "I always use limit orders, so informed
+    traders cannot hurt me." What does the book argue?'
+  options:
+    a: Correct — displayed limit orders are immune to adverse selection
+    b: 'Wrong — uninformed traders lose either way: limit orders fill when they should
+      not or miss when they should, and market orders pay a spread widened by adverse
+      selection; the only defense is trading less'
+    c: Correct as long as the limit order is closer to the bid than the ask
+    d: Wrong — market orders are strictly worse, so limit orders always win
+  answer: b
+  explanation: 'The book''s headline lesson from ch. 14: uninformed traders lose simply
+    because they trade. Limit order users suffer adverse selection on fills and regret
+    on misses; market order users pay "a fee that dealers charge market order traders
+    for bearing adverse selection risk." Switching order type does not help.'
+  difficulty: 3
+  tags:
+  - scenario
+  - concept
+- id: '4.10'
+  question: A patient trader posts limit orders only to cheapen a trade she already
+    intends to make, and an arbitrageur buys where liquidity is cheap and sells where
+    it is dear. How does the book classify them?
+  options:
+    a: The limit order trader is a block broker and the arbitrageur is a value trader
+    b: Both are liquidity demanders, not suppliers
+    c: The limit order trader is a precommitted liquidity supplier; the arbitrageur
+      is a "porter" of liquidity connecting different markets
+    d: Both are dealers — anyone quoting a price supplies liquidity
+  answer: c
+  explanation: 'Precommitted traders supply immediacy without dealers'' business costs,
+    and arbitrageurs are "porters": they connect markets across space at the same
+    time, while dealers connect buyers and sellers in the same market at different
+    times. Value traders are the ones who supply depth and resiliency.'
+  difficulty: 3
+  tags:
+  - concept
+  - comparison
+

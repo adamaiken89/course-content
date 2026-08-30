@@ -1,0 +1,35 @@
+- id: c.1
+  question: Attention 本身係{permutation equivariant}，打亂 token 順序 output 會相應打亂，所以必須靠{位置編碼}加位置感。
+  answer: permutation equivariant，位置編碼
+  explanation: Attention 對 input 嘅操作對順序冇內建敏感度。「狗咬人」同「人咬狗」字集合一樣，無 PE 嘅 transformer 處理結果完全相同。PE 就係補呢個缺口。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.2
+  question: "{Sinusoidal}PE 用唔同頻率嘅 sin/cos 為每個位置生成固定向量，{PE(pos+k)} 可從 PE(pos) 線性推導。"
+  answer: Sinusoidal，PE(pos+k)
+  explanation: Vaswani 2017 原始做法。每個維度用唔同頻率 sin/cos。神奇特性：相對位置 k 嘅編碼可從絕對位置推導，理論上學到相對位置關係。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.3
+  question: "{RoPE}對 Q 同 K 做{旋轉}，旋轉角度同位置有關，令 dot product 自動 encode 相對距離。"
+  answer: RoPE，旋轉
+  explanation: RoPE 唔改 input embedding，而係將 Q_i 同 K_j 做旋轉。Q_i · K_j 嘅 dot product 自動包含 (i - j) 相對距離，呢個天然特性令長度外推更容易。Llama、Qwen 等主流 LLM 採用。
+  difficulty: 3
+  tags:
+  - concept
+- id: c.4
+  question: 學習式 PE 嘅限制係{max_len}固定，無法{外推}到更長序列。
+  answer: max_len，外推
+  explanation: 學習式 PE 每個位置學一個獨立 vector，max_len 必須預設且固定。訓練時未見過嘅位置完全冇定義，外推到更長 context 係核心障礙。
+  difficulty: 1
+  tags:
+  - tradeoff
+- id: c.5
+  question: "{ALiBi}直接喺 attention score 加{距離}偏置，零額外參數，天然支持長度外推。"
+  answer: ALiBi，距離
+  explanation: ALiBi 做法：score_ij = q_i · k_j − λ × |i − j|。超簡單、零參數、天然支持長度外推。BLOOM 採用。代價係表達能力受偏置形式限制。
+  difficulty: 2
+  tags:
+  - concept

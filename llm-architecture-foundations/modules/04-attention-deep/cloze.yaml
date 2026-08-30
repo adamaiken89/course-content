@@ -1,0 +1,35 @@
+- id: c.1
+  question: Attention 嘅核心係每個 token 對所有 token 做{加權平均}，權重由{相關度}決定。
+  answer: 加權平均，相關度
+  explanation: Attention 係「軟性查詢」— 唔係 hard 揀一個最相似 token，而係按相關度分數加權 average 所有 token 嘅 value。呢個特性令 output 平滑且 differentiable。
+  difficulty: 1
+  tags:
+  - concept
+- id: c.2
+  question: Q 代表「我{想知乜}」、K 代表「我提供{乜索引}」、V 代表「我嘅{內容}」。
+  answer: 想知乜，乜索引，內容
+  explanation: Q/K/V 雖然源自同一 input 投影，但扮演唔同角色。Q 係查詢問題，K 係索引標籤，V 係實際內容。Q 同 K 配對計分，分數加權 V。
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.3
+  question: Scaled dot-product 除以{√d_k}，目的係控制{QK^T}嘅方差，避免 softmax 過尖。
+  answer: √d_k，QK^T
+  explanation: d_k 維度大令 QK^T 方差大，softmax 變 one-hot，gradient 細難訓練。÷ √d_k 將方差 normalize 回 1，穩定訓練。
+  difficulty: 2
+  tags:
+  - algorithm
+- id: c.4
+  question: "{Causal mask}將上三角設為{-∞}，softmax 後變 0，確保 token 只能睇{上文}。"
+  answer: Causal mask，-∞，上文
+  explanation: Decoder-only LLM 訓練目標係預測下一個 token，所以必須防止偷睇未來。Mask 矩陣將未來位置設為 -∞，softmax 後自動變 0 weight，呢個 token 就唔參與 attention。
+  difficulty: 1
+  tags:
+  - concept
+- id: c.5
+  question: "{Multi-head}attention 令多組 Q/K/V 並行計算，每組學{唔同 pattern}，最後 concat。"
+  answer: Multi-head，唔同 pattern
+  explanation: 唔同語法/語義關係需要唔同 query/key 投影。Multi-head 提供多組「眼鏡」並行注意，最後 concat 結合。實證顯示 head 會自然 specialize（動詞主語、形容詞名詞等）。
+  difficulty: 2
+  tags:
+  - concept

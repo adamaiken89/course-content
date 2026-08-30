@@ -1,0 +1,108 @@
+- id: '3.1'
+  question: Embedding matrix 點樣將 token ID 變成向量？
+  options:
+    a: 用神經網絡 encode
+    b: 直接查表 — ID 對應 matrix 嘅一行
+    c: 隨機生成
+    d: 用 lookup 公式計
+  answer: b
+  explanation: Embedding 係一個查詢表（V × D 大小），每個 token ID 直接對應 matrix 嘅一行，冇運算。所以 embedding 質量完全取決於訓練學到嘅嘢。
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.2'
+  question: Embedding 維度（例如 4096 同 256）嘅主要 trade-off 係？
+  options:
+    a: 維度越大訓練越快
+    b: 維度越大表達能力越強但訓練成本越高
+    c: 維度越大越準一定
+    d: 維度同成本無關
+  answer: b
+  explanation: 維度越大可以 encode 嘅抽象軸越多（性別、時態、語域等），但同時記憶體、計算量、參數量都爆增。維度選擇係工程 trade-off。
+  difficulty: 1
+  tags:
+  - tradeoff
+- id: '3.3'
+  question: Cosine similarity 點解喺 embedding 相似度中用得最多？
+  options:
+    a: 計算最簡單
+    b: 量度方向相似度，忽略向量長度差異
+    c: 最準確
+    d: 最快速
+  answer: b
+  explanation: Cosine similarity 量度兩個向量嘅夾角（方向），忽略長度差異。LLM embedding 通常 normalize，所以方向相似度就等於語義相似度。
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.4'
+  question: 「vec(king) - vec(man) + vec(woman) ≈ vec(queen)」呢個現象代表？
+  options:
+    a: 模型有偏見
+    b: 語義空間有線性結構，可以向量加減表達語義關係
+    c: 模型出 bug
+    d: 純粹巧合
+  answer: b
+  explanation: 呢個 Word2Vec 經典發現展示咗詞向量嘅線性代數結構。語義關係（性別、王室）可以表達成向量偏移，呢個特性支撐咗好多應用（翻譯、推薦、搜尋）。
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.5'
+  question: Static embedding 同 contextual embedding 最大分別？
+  options:
+    a: Static 較快
+    b: Static 每個詞一個固定向量，contextual 同一詞喺唔同上文有唔同向量
+    c: Static 較準
+    d: Static 用更少記憶體
+  answer: b
+  explanation: Static（Word2Vec, GloVe）每個詞一個固定向量，無法處理一詞多義。Contextual（BERT, GPT）根據上文動態生成向量，可以分辨「銀行」喺「河邊」vs「存款」嘅唔同意思。
+  difficulty: 1
+  tags:
+  - comparison
+- id: '3.6'
+  question: LLM 嘅 training objective 只係「預測下一個 token」，但 embedding 學到語義幾何。呢個叫？
+  options:
+    a: Overfitting
+    b: Emergent property
+    c: Underfitting
+    d: Memorization
+  answer: b
+  explanation: Emergent property — 訓練目標冇明確要求學語義，但模型為咗做好 next-token prediction 自然學到語義結構。呢個係深度學習常見現象。
+  difficulty: 3
+  tags:
+  - concept
+- id: '3.7'
+  question: 「銀行」喺「河邊」同「存款」context 下，contextual embedding 會點？
+  options:
+    a: 完全相同
+    b: 唔同 — 河邊 context 偏地理，存款 context 偏金融
+    c: 河邊較長
+    d: 存款較短
+  answer: b
+  explanation: Contextual embedding 根據上文動態調整，所以「銀行」喺唔同 context 下會有唔同向量，可以解決一詞多義。Static embedding 永遠做唔到呢點。
+  difficulty: 1
+  tags:
+  - concept
+- id: '3.8'
+  question: 以下邊個唔係 cosine similarity 嘅典型值？
+  options:
+    a: 0.95（極相似）
+    b: 0.1（弱關係）
+    c: -0.7（負相關）
+    d: 5.0（超級相似）
+  answer: d
+  explanation: Cosine similarity 值域 [-1, 1]。1 = 同方向，0 = 正交，-1 = 反方向。5.0 超出範圍，唔可能。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.9'
+  question: Embedding 維度 12288 嘅 LLM（例如 GPT-4 級）相比 768 嘅 BERT-base，主要代價係？
+  options:
+    a: 訓練同推理成本高好多
+    b: 一定更準
+    c: 一定更穩定
+    d: 一定更安全
+  answer: a
+  explanation: 高維度意味住每個 token 嘅 embedding 佔更多記憶體（V × D），attention 矩陣也更大（D × D 投影），訓練同推理成本都倍增。準確性唔一定線性提升。
+  difficulty: 2
+  tags:
+  - tradeoff

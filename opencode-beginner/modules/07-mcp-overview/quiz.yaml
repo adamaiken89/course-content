@@ -1,0 +1,119 @@
+- id: "7.1"
+  question: "What does MCP stand for?"
+  options:
+    a: "Multi-Channel Process"
+    b: "Managed Code Pipeline"
+    c: "Model Connection Platform"
+    d: "Model Context Protocol"
+  answer: d
+  explanation: "MCP = Model Context Protocol, an open standard for AI tool integration."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "7.2"
+  question: "What are the three components of MCP?"
+  options:
+    a: "Request, Response, Handler"
+    b: "Host, Client, Server"
+    c: "Agent, Tool, Provider"
+    d: "Input, Process, Output"
+  answer: b
+  explanation: "MCP Host (the AI app), MCP Client (protocol handler), MCP Server (external service)."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "7.3"
+  question: "What transport does Local MCP use?"
+  options:
+    a: "stdio"
+    b: "HTTP"
+    c: "WebSocket"
+    d: "gRPC"
+  answer: a
+  explanation: "Local MCP servers communicate via stdio (stdin/stdout) with a local runtime."
+  difficulty: 2
+  tags: [concept]
+
+- id: "7.4"
+  question: "What authentication do Remote MCP servers typically require?"
+  options:
+    a: "OAuth"
+    b: "SSH Key"
+    c: "Certificate"
+    d: "Basic Auth only"
+  answer: a
+  explanation: "Remote MCP servers use OAuth, and opencode supports automatic OAuth flows."
+  difficulty: 2
+  tags: [concept]
+
+- id: "7.5"
+  question: "How are MCP tools named in opencode?"
+  options:
+    a: "{toolName}.{serverName}"
+    b: "{serverName}-{toolName}"
+    c: "{type}_{serverName}_{toolName}"
+    d: "{serverName}_{toolName}"
+  answer: d
+  explanation: "MCP tools are automatically prefixed: {serverName}_{toolName}."
+  difficulty: 2
+  tags: [concept]
+
+- id: "7.6"
+  question: "You added an MCP server but keep hitting context limits. Most likely cause?"
+  options:
+    a: "API key expired"
+    b: "Too many MCP tools consuming context"
+    c: "MCP server is too slow"
+    d: "opencode version is outdated"
+  answer: b
+  explanation: "Each MCP tool's description consumes context window space; too many tools cause overflow."
+  difficulty: 2
+  tags: [scenario]
+
+- id: "7.7"
+  question: "How do you make Sentry MCP available only to the debug-agent?"
+  options:
+    a: "Not possible — MCP is always global"
+    b: "Disable Sentry globally, then enable per-agent in debug-agent config"
+    c: "Add agent: debug-agent to Sentry config"
+    d: "Write 'use sentry' in the debug-agent prompt"
+  answer: b
+  explanation: "Disable globally (sentry_*: false), then enable per-agent (tools: { sentry_*: true })."
+  difficulty: 3
+  tags: [scenario]
+
+- id: "7.8"
+  question: "Which of these is a Remote MCP server?"
+  options:
+    a: "File system manager"
+    b: "Local database client"
+    c: "Sentry MCP"
+    d: "Local git tool"
+  answer: c
+  explanation: "Sentry MCP is a cloud service accessed via HTTP. The others are local tools suited for Local MCP."
+  difficulty: 1
+  tags: [concept]
+
+- id: "7.9"
+  question: "What command checks MCP server connection status?"
+  options:
+    a: "opencode mcp show"
+    b: "opencode mcp info"
+    c: "opencode mcp list"
+    d: "opencode mcp status"
+  answer: c
+  explanation: "opencode mcp list shows all MCP servers and their connection status."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "7.10"
+  question: "How do you make MCP tools appear only for specific prompts?"
+  options:
+    a: "Per-agent enable/disable configuration"
+    b: "Set a timeout"
+    c: "Change the MCP server URL"
+    d: "Use a different API key"
+  answer: a
+  explanation: "Per-agent configuration controls which agents can access which MCP tools."
+  difficulty: 3
+  tags: [scenario]

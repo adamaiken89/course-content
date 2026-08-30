@@ -1,0 +1,109 @@
+- id: "cum.1"
+  type: mcq
+  source_modules: [1, 2]
+  question: "What is the primary difference between a traditional developer and an agentic developer?"
+  options:
+    a: "Agentic developers write more code"
+    b: "Agentic developers delegate coding tasks to AI agents while focusing on architecture and review"
+    c: "Agentic developers do not need to understand code"
+    d: "Agentic developers work faster because they skip planning"
+  answer: b
+  explanation: "Agentic development shifts the developer role from writing every line to directing, reviewing, and orchestrating AI agents."
+  difficulty: 1
+  tags: [cross-module, recall]
+
+- id: "cum.2"
+  type: mcq
+  source_modules: [2, 3]
+  question: "In opencode, which configuration file has the highest priority when merging settings?"
+  options:
+    a: "Project-level opencode.json"
+    b: "Environment variables like OPENCODE_MODEL"
+    c: "Global ~/.config/opencode/opencode.json"
+    d: "CLAUDE.md in the project root"
+  answer: b
+  explanation: "Environment variables override all config file settings."
+  difficulty: 2
+  tags: [cross-module, recall]
+
+- id: "cum.3"
+  type: cloze
+  source_modules: [1, 4]
+  question: "The __1__ Loop describes the continuous cycle where an AI agent receives a prompt, processes it, takes actions, observes results, and iterates until the task is complete."
+  answer: "Agentic"
+  explanation: "The Agentic Loop is the core workflow pattern in agentic development."
+  difficulty: 1
+  tags: [cross-module, terminology]
+
+- id: "cum.4"
+  type: tf
+  source_modules: [1, 3]
+  statement: "In opencode, the /undo command can revert both file changes and messages in the current session."
+  answer: true
+  explanation: "/undo reverts file changes AND removes the assistant message that made them, keeping session state consistent."
+  difficulty: 2
+  tags: [cross-module, recall]
+
+- id: "cum.5"
+  type: mcq
+  source_modules: [3, 4]
+  question: "When multiple tools can run in parallel during an Agentic Loop iteration, what does opencode do?"
+  options:
+    a: "Runs them sequentially in alphabetical order"
+    b: "Asks the user which ones to run"
+    c: "Executes independent tool calls simultaneously in a single response"
+    d: "Skips redundant tool calls automatically"
+  answer: c
+  explanation: "opencode batches independent tool calls and executes them in parallel, reducing latency."
+  difficulty: 2
+  tags: [cross-module, concept]
+
+- id: "cum.6"
+  type: cloze
+  source_modules: [2, 4]
+  question: "opencode configuration is loaded in layers: global config, then project config, then {env} variables."
+  answer: "env"
+  explanation: "Environment variables are the final override layer in the config hierarchy."
+  difficulty: 1
+  tags: [cross-module, terminology]
+
+- id: "cum.7"
+  type: tf
+  source_modules: [1, 2]
+  statement: "opencode supports only Anthropic Claude models as its LLM provider."
+  answer: false
+  explanation: "opencode supports Anthropic, OpenAI, Google, Azure, Bedrock, and many other providers via AI SDK adapters."
+  difficulty: 1
+  tags: [cross-module, misconception]
+
+- id: "cum.8"
+  type: mcq
+  source_modules: [3, 4]
+  question: "What happens when an LLM produces a hallucinated file path during an Agentic Loop?"
+  options:
+    a: "The agent stops and asks the user for help"
+    b: "The system automatically corrects the path"
+    c: "The next iteration discovers the error and self-corrects"
+    d: "The file is created at the wrong location"
+  answer: c
+  explanation: "Self-correction is a key feature of the Agentic Loop — errors in one iteration trigger corrective actions in the next."
+  difficulty: 2
+  tags: [cross-module, concept]
+
+- id: "cum.9"
+  type: cloze
+  source_modules: [2, 3]
+  question: "The /clear command __1__ the current session's message history, giving you a fresh context window."
+  answer: "resets"
+  explanation: "/clear removes all previous messages from context, useful when switching topics."
+  difficulty: 1
+  tags: [cross-module, process]
+
+- id: "cum.10"
+  type: tf
+  source_modules: [3, 4]
+  statement: "Context accumulation in the Agentic Loop means the context window grows monotonically until compaction is triggered."
+  answer: true
+  explanation: "Each iteration adds messages to context. Compaction (summarization) reduces it when the window fills up."
+  difficulty: 3
+  tags: [cross-module, synthesis]

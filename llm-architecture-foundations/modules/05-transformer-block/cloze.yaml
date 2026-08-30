@@ -1,0 +1,35 @@
+- id: c.1
+  question: Transformer Block 四大組件係{Attention}、{FFN}、{Residual}、{LayerNorm}。
+  answer: Attention，FFN，Residual，LayerNorm
+  explanation: Attention 提供 contextual aggregation、FFN 提供非線性、Residual 提供梯度直達、LayerNorm 穩定 activation 分佈。Q/K/V 係 attention 內部組件，唔係 block 級。
+  difficulty: 1
+  tags:
+  - terminology
+- id: c.2
+  question: FFN 對 Transformer 必要，因為 Attention 係{線性}組合（加權平均），需要 FFN 提供{非線性}。
+  answer: 線性，非線性
+  explanation: 冇非線性嘅話，多層疊加都仲係線性變換，學唔到複雜函數。FFN 嘅 activation（SwiGLU 等）注入非線性，令整個 block 可以近似任意函數。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.3
+  question: Residual connection 令{gradient}可以直達，同時{保留}原始 input 訊息，呢個係深層可訓練嘅基礎。
+  answer: gradient，保留
+  explanation: 冇 residual，深層（96+ 層）gradient 會 vanish 或爆炸，訓練失敗。Residual 令 gradient 直接穿過，input 訊息保留，每層只做細微調整。
+  difficulty: 2
+  tags:
+  - concept
+- id: c.4
+  question: "{Pre-norm}將 LN 放喺 sublayer 之前，訓練{穩定}，所以現代 LLM 全部採用。"
+  answer: Pre-norm，穩定
+  explanation: Pre-norm（LN(x) 然後 sublayer）訓練穩定，適合深層。Post-norm（原始論文 sublayer(x) 然後 LN）最終分布更穩但深層難 train。Llama、GPT 系列全部 pre-norm。
+  difficulty: 2
+  tags:
+  - comparison
+- id: c.5
+  question: "{Residual stream}比喻中，sublayer 從 stream 攞嘢、加工、{加返入去}，而非從頭計。"
+  answer: Residual stream，加返入去
+  explanation: Residual stream 將深層網絡比喻為河流：原始 input 沿 stream 流過每層，每層 sublayer 選擇性「加工」後「加落」stream。細微調整分工令訓練穩定。
+  difficulty: 2
+  tags:
+  - concept

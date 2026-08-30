@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "EPUB 嘅最大誤解係以為佢係 PDF 嘅 {blank}。"
+  answer: "替代品"
+  explanation: "PDF 同 EPUB 解決唔同問題：PDF 固定版面（雜誌、設計稿），EPUB reflowable 文字（小說、教科書）。兩者互補唔係替代。"
+  difficulty: 1
+  tags: [misconception]
+
+- id: "c.2"
+  question: "EPUB = 將 {blank} 打包成一本書（HTML + CSS + 圖片 + 結構）。"
+  answer: "網頁"
+  explanation: "EPUB 核心就係將網頁技術（HTML + CSS + SVG + MathML）打包，加 manifest / spine / metadata，變成可以被閱讀器當書顯示嘅檔案。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Amazon Kindle 用嘅係 AZW / KFX，源自 {blank} 格式，唔係 EPUB。"
+  answer: "MOBI"
+  explanation: "Kindle AZW 源自法國 Mobipocket 嘅 MOBI。Amazon 2007 年買起 Mobipocket，AZW 變 Kindle 預設格式。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "EPUB 可唔可以加 DRM 係由 {blank} 決定，唔係 spec 強制。"
+  answer: "出版商"
+  explanation: "EPUB spec 開放，DRM 係選擇性。商業出版商普遍加 DRM；獨立作者同教材出版商多數出 DRM-free。"
+  difficulty: 2
+  tags: [misconception]
+
+- id: "c.5"
+  question: "EPUB 要可以畀 screen reader 讀到，要做好 {blank} 結構、alt-text、reading order。"
+  answer: "a11y"
+  explanation: "a11y（accessibility）係 EPUB 可唔可以被 screen reader 讀嘅關鍵：lang 屬性、heading structure、alt-text、spine order 全部要正確。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.6"
+  question: "W3C 嘅 EPUB 驗證工具叫 {blank}，可分 ERROR / WARNING / INFO 三級。"
+  answer: "EPUBCheck"
+  explanation: "EPUBCheck (epubcheck) 係 W3C 官方 EPUB 驗證工具。ERROR 必須修（spec 違規），WARNING 建議修（a11y 缺失等），INFO 純資訊。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "EPUB 3.3 嘅 spec URL 喺 https://www.w3.org/TR/epub-{blank}/。"
+  answer: "33"
+  explanation: "EPUB 3.3 係 W3C 2023 年發佈嘅 Recommendation，URL 係 https://www.w3.org/TR/epub-33/，幾百頁，分 OCF / OPF / Content Documents / Media Overlays / a11y 等子規格。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.8"
+  question: "EPUB 入門書推薦用 {blank} 直接改現有 EPUB，再讀 spec，係最有效學習路徑。"
+  answer: "Sigil"
+  explanation: "Sigil 係 WYSIWYG EPUB 編輯器，新手可以直接觀察現有 EPUB 嘅 manifest / spine / XHTML 結構，比由零寫快好多。"
+  difficulty: 2
+  tags: [process]
+
+- id: "c.9"
+  question: "Calibre 適合管理書庫、轉 {blank}，Sigil 適合編輯 EPUB 內容。"
+  answer: "格式"
+  explanation: "Calibre 強項係 library management + format conversion（EPUB / MOBI / PDF / AZW）。Sigil 強項係 EPUB 結構編輯。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.10"
+  question: "W3C EPUB 3.0 到 3.3 用咗 12 年，下一個大版本（4.0）預計 2030 {blank} 先有。"
+  answer: "年代"
+  explanation: "W3C 治理慢，EPUB 3.0 (2011) → 3.3 (2023) 12 年。EPUB 4.0 暫無 roadmap，預計 2030 年代先有正式 Recommendation。"
+  difficulty: 1
+  tags: [scenario]

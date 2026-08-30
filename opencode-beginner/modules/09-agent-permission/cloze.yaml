@@ -1,0 +1,63 @@
+- id: c.1
+  question: "opencode 的七個內建 Agent 中，用於快速程式碼探索、只允許 grep/glob/read 等唯讀工具的 Agent 是 {explore}。"
+  answer: explore
+  explanation: "explore Agent 使用 deny-all 但允許 grep/glob/read/bash/webfetch/websearch。"
+  difficulty: 1
+  tags:
+    - terminology
+
+- id: c.2
+  question: "Permission 規則的三種動作是 allow、deny 和 {ask}。"
+  answer: ask
+  explanation: "ask 會詢問使用者確認，是 opencode 的預設動作。"
+  difficulty: 1
+  tags:
+    - terminology
+
+- id: c.3
+  question: "多條 Permission 規則匹配時，最後匹配的規則生效，稱為 {last-match-wins} 原則。"
+  answer: last-match-wins
+  explanation: "類似 CSS specificity，最後匹配的規則優先生效。"
+  difficulty: 2
+  tags:
+    - concept
+
+- id: c.4
+  question: "Custom Agent 的 mode 設為 subagent，只能透過 @mention {調用}。"
+  answer: 調用
+  explanation: "subagent 模式不能按 Tab 切換，只能 @mention。"
+  difficulty: 1
+  tags:
+    - concept
+
+- id: c.5
+  question: "Permission 合併順序是：硬編碼預設 → 全域配置 → Agent {專屬配置}。"
+  answer: 專屬配置
+  explanation: "Agent 專屬配置覆蓋全域配置，全域配置覆蓋預設值。"
+  difficulty: 2
+  tags:
+    - concept
+
+- id: c.6
+  question: "SubAgent 自動繼承 parent 的 deny 規則和 {external_directory} 規則。"
+  answer: external_directory
+  explanation: "外部目錄存取規則也從 parent 繼承。"
+  difficulty: 2
+  tags:
+    - concept
+
+- id: c.7
+  question: "Custom Agent 的 mode 設為 primary，代表可以透過 {Tab} 鍵在對話中切換。"
+  answer: Tab
+  explanation: "primary mode 可以按 Tab 鍵切換。"
+  difficulty: 1
+  tags:
+    - terminology
+
+- id: c.8
+  question: "Custom Agent 配置中，prompt 欄位接受直接文字或 {檔案路徑}。"
+  answer: 檔案路徑
+  explanation: "prompt 可以是文字字串或指向 .md 檔案的路徑。"
+  difficulty: 1
+  tags:
+    - terminology

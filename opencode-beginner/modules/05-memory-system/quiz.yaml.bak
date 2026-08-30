@@ -1,0 +1,133 @@
+- id: "5.1"
+  question: "opencode 嘅指令文件主要有邊兩個文件名？"
+  options:
+    a: "AGENTS.md 同 MEMORY.md"
+    b: "AGENTS.md 同 CLAUDE.md"
+    c: "CONFIG.md 同 AGENTS.md"
+    d: "CLAUDE.md 同 INSTRUCTIONS.md"
+  answer: b
+  explanation: "opencode 支持 AGENTS.md（主要）同 CLAUDE.md（兼容 Claude Code）。兩者功能相似，但 AGENTS.md 優先。"
+  difficulty: 1
+  tags:
+    - terminology
+    - concept
+
+- id: "5.2"
+  question: "當 AGENTS.md 同 CLAUDE.md 同時存在時，邊個會被使用？"
+  options:
+    a: "CLAUDE.md"
+    b: "兩者合併"
+    c: "AGENTS.md"
+    d: "隨機選擇"
+  answer: c
+  explanation: "AGENTS.md 優先於 CLAUDE.md。呢個設計確保 opencode 嘅原生格式永遠被優先使用。"
+  difficulty: 1
+  tags:
+    - concept
+
+- id: "5.3"
+  question: "以下邊個唔係 opencode 指令文件嘅層級？"
+  options:
+    a: "全局指令（~/.config/opencode/AGENTS.md）"
+    b: "專案指令（專案根目錄）"
+    c: "用戶指令（~/.user/AGENTS.md）"
+    d: "目錄指令（子目錄中）"
+  answer: c
+  explanation: "opencode 支持全局、專案、目錄三層指令文件。冇「用戶指令」呢個層級。"
+  difficulty: 1
+  tags:
+    - terminology
+
+- id: "5.4"
+  question: "opencode 嘅 session 歷史存儲喺邊度？"
+  options:
+    a: "JSON 文件"
+    b: "SQLite 數據庫"
+    c: "記憶文件"
+    d: "雲端"
+  answer: b
+  explanation: "Session 歷史持久化喺 SQLite 數據庫，自動保存每個 session 嘅完整對話記錄。"
+  difficulty: 1
+  tags:
+    - terminology
+
+- id: "5.5"
+  question: "Agent 啟動時，記憶注入嘅正確順序係？"
+  options:
+    a: "配置指令 → 專案指令 → 全局指令"
+    b: "全局指令 → 目錄指令 → 配置指令"
+    c: "專案指令 → 全局指令 → 目錄指令"
+    d: "目錄指令 → 配置指令 → 專案指令"
+  answer: b
+  explanation: "注入順序：全局指令 → 專案指令 → 目錄指令 → 配置指令。每層可以覆蓋前一層嘅設定。"
+  difficulty: 2
+  tags:
+    - process
+    - concept
+
+- id: "5.6"
+  question: "點解 agent 需要環境資訊（工作目錄、git 狀態）注入系統提示？"
+  options:
+    a: "為咗顯示天氣資訊"
+    b: "為咗知道「我喺邊度」「我喺咩狀態」"
+    c: "為咗計算 token 數量"
+    d: "為咗記錄日誌"
+  answer: b
+  explanation: "環境資訊提供上下文，令 agent 知道當前位置同狀態，先可以做出正確決策。"
+  difficulty: 2
+  tags:
+    - concept
+
+- id: "5.7"
+  question: "動態指令加載嘅作用係？"
+  options:
+    a: "自動備份指令文件"
+    b: "當讀文件時自動加載該文件附近嘅指令"
+    c: "自動下載遠程指令"
+    d: "自動翻譯指令"
+  answer: b
+  explanation: "動態加載確保 agent 喺處理特定目錄嘅文件時，自動獲得該目錄嘅行為規則。"
+  difficulty: 2
+  tags:
+    - process
+    - concept
+
+- id: "5.8"
+  question: "opencode 同 Claude Code 喺記憶方面嘅主要差異係？"
+  options:
+    a: "opencode 有跨 session 記憶，Claude Code 冇"
+    b: "Claude Code 有跨 session 記憶，opencode 冇"
+    c: "兩者都冇跨 session 記憶"
+    d: "兩者都有跨 session 記憶"
+  answer: b
+  explanation: "Claude Code 有跨 session 記憶文件系統，opencode 冇。opencode 用 Session 歷史（SQLite）代替。"
+  difficulty: 2
+  tags:
+    - comparison
+
+- id: "5.9"
+  question: "小明想保存「偏好用 2 spaces 縮排」呢個偏好。以下邊個做法最有效？"
+  options:
+    a: "喺 session 入面話俾 agent 聽"
+    b: "寫入 AGENTS.md"
+    c: "每次新 session 重複一次"
+    d: "用 config.instructions"
+  answer: b
+  explanation: "AGENTS.md 係永久保存規則嘅正確位置。Session 內對話唔會跨 session 保存。"
+  difficulty: 3
+  tags:
+    - scenario
+    - application
+
+- id: "5.10"
+  question: "config.instructions 字段嘅作用係？"
+  options:
+    a: "定義 MCP 伺服器"
+    b: "指定額外嘅指令文件路徑或 URL"
+    c: "配置 agent 權限"
+    d: "設定模型參數"
+  answer: b
+  explanation: "config.instructions 允許你指定自定義指令文件嘅路徑或 URL，擴展 agent 嘅知識庫。"
+  difficulty: 2
+  tags:
+    - terminology

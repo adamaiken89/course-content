@@ -1,0 +1,142 @@
+[
+  {
+    "id": "4.1",
+    "question": "What are the five steps of the agentic loop?",
+    "options": {
+      "a": "Plan, code, test, deploy, monitor",
+      "b": "Prompt, LLM inference, tool execution, result feedback, continuation check",
+      "c": "Read, write, edit, delete, save",
+      "d": "Ask, search, find, apply, confirm"
+    },
+    "answer": "b",
+    "explanation": "The five steps are: prompt admission, LLM inference, tool execution, result feedback, and continuation check.",
+    "difficulty": 1,
+    "tags": ["terminology", "concept"]
+  },
+  {
+    "id": "4.2",
+    "question": "Why does opencode read files instead of guessing their contents?",
+    "options": {
+      "a": "It's faster than generating code",
+      "b": "To ground responses in reality and prevent hallucination",
+      "c": "Because LLMs can't generate code",
+      "d": "To reduce API costs"
+    },
+    "answer": "b",
+    "explanation": "Reading actual file contents ensures the model works with real code, not imagined code.",
+    "difficulty": 2,
+    "tags": ["concept"]
+  },
+  {
+    "id": "4.3",
+    "question": "What enables the model to fix errors without human intervention?",
+    "options": {
+      "a": "The permission system",
+      "b": "The continuation check",
+      "c": "Self-correction via the loop",
+      "d": "The context window"
+    },
+    "answer": "c",
+    "explanation": "Self-correction: model receives error, analyzes cause, tries alternative, retries — all within the loop.",
+    "difficulty": 2,
+    "tags": ["concept"]
+  },
+  {
+    "id": "4.4",
+    "question": "What happens when the agentic loop reaches max turns?",
+    "options": {
+      "a": "The session crashes",
+      "b": "The loop is forced to stop",
+      "c": "opencode restarts",
+      "d": "The model switches to a different provider"
+    },
+    "answer": "b",
+    "explanation": "Max turns is a safety limit. When reached, the loop stops and the model provides a final response.",
+    "difficulty": 1,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "4.5",
+    "question": "Why can opencode execute multiple tool calls in parallel?",
+    "options": {
+      "a": "It uses multiple API keys",
+      "b": "Independent operations don't block each other",
+      "c": "The model can run on multiple GPUs",
+      "d": "Parallel execution is always faster"
+    },
+    "answer": "b",
+    "explanation": "When tool calls are independent (e.g., reading two different files), they can run simultaneously.",
+    "difficulty": 2,
+    "tags": ["concept"]
+  },
+  {
+    "id": "4.6",
+    "question": "What is 'prompt admission' in the agentic loop?",
+    "options": {
+      "a": "Validating and persisting the user's message",
+      "b": "Sending the prompt to the LLM",
+      "c": "Executing the first tool call",
+      "d": "Compacting the context"
+    },
+    "answer": "a",
+    "explanation": "Prompt admission validates input, persists to SQLite, and promotes to visible message before the loop starts.",
+    "difficulty": 2,
+    "tags": ["terminology"]
+  },
+  {
+    "id": "4.7",
+    "question": "What does the model receive during LLM inference?",
+    "options": {
+      "a": "Only the user's latest message",
+      "b": "System prompt, conversation history, tool definitions, and current prompt",
+      "c": "Only the tool definitions",
+      "d": "Only the conversation history"
+    },
+    "answer": "b",
+    "explanation": "The model receives full context: system prompt, history, available tools, and the current message.",
+    "difficulty": 1,
+    "tags": ["concept"]
+  },
+  {
+    "id": "4.8",
+    "question": "When does the agentic loop terminate?",
+    "options": {
+      "a": "Only when the user presses Ctrl+C",
+      "b": "When no tool calls are made, max turns reached, user interrupt, or error",
+      "c": "After exactly 5 iterations",
+      "d": "Only when all files are read"
+    },
+    "answer": "b",
+    "explanation": "Loop terminates on: no tool calls (final response), max turns, user interrupt, or fatal error.",
+    "difficulty": 2,
+    "tags": ["concept", "comparison"]
+  },
+  {
+    "id": "4.9",
+    "question": "Why does context grow during the agentic loop?",
+    "options": {
+      "a": "opencode adds unnecessary data",
+      "b": "Each iteration adds tool calls and results to history",
+      "c": "The LLM generates longer responses over time",
+      "d": "Files are loaded into memory"
+    },
+    "answer": "b",
+    "explanation": "Every tool call and result becomes part of conversation history, increasing context usage.",
+    "difficulty": 2,
+    "tags": ["concept"]
+  },
+  {
+    "id": "4.10",
+    "question": "An agent tries to edit a file, gets 'Permission denied', and retries the same edit 3 times. What's wrong?",
+    "options": {
+      "a": "Nothing — retrying is correct",
+      "b": "The agent should ask for permission or try an alternative approach",
+      "c": "The agent should switch to a different model",
+      "d": "The agent should compact context first"
+    },
+    "answer": "b",
+    "explanation": "Retrying the same failed action wastes context. Better: check permissions, ask user, or try different approach.",
+    "difficulty": 3,
+    "tags": ["concept", "scenario"]
+  }
+]

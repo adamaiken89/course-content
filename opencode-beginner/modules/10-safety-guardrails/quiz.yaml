@@ -1,0 +1,121 @@
+- id: '10.1'
+  question: In opencode's permission system, what happens when a tool is set to 'ask'?
+  options:
+    a: The user must confirm before execution
+    b: It runs in the background
+    c: It executes silently
+    d: It is blocked entirely
+  answer: a
+  explanation: '''ask'' requires user confirmation before the tool executes.'
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.2'
+  question: What does 'last-match-wins' mean in permission evaluation?
+  options:
+    a: The most specific rule always wins
+    b: The last matching rule in the ruleset determines the action
+    c: Rules are evaluated in random order
+    d: The first matching rule takes precedence
+  answer: b
+  explanation: Permission evaluation uses findLast — the last matching rule wins.
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.3'
+  question: Which mode should you use when exploring an unfamiliar codebase?
+  options:
+    a: Debug mode
+    b: Build mode
+    c: Plan mode
+    d: Auto mode
+  answer: c
+  explanation: Plan mode restricts to read-only exploration, safe for unfamiliar code.
+  difficulty: 1
+  tags:
+  - concept
+- id: '10.4'
+  question: What is a 'doom loop' in agentic development?
+  options:
+    a: A security vulnerability
+    b: A memory leak
+    c: A loop that never terminates
+    d: Agent repeatedly failing at the same task without progress
+  answer: d
+  explanation: Doom loops occur when the agent gets stuck in repetitive failure cycles.
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.5'
+  question: How do you save uncommitted changes for later restoration?
+  options:
+    a: git merge
+    b: git commit
+    c: git stash
+    d: git push
+  answer: c
+  explanation: git stash saves uncommitted changes and restores them later.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.6'
+  question: What permission should you use for sensitive files like .env?
+  options:
+    a: ignore
+    b: allow
+    c: deny
+    d: ask
+  answer: d
+  explanation: '''ask'' ensures the user reviews access to sensitive files.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.7'
+  question: What is permission escalation in the context of agentic development?
+  options:
+    a: Agent finds ways to bypass intended restrictions
+    b: User grants more permissions than needed
+    c: Agent requests additional tools
+    d: Agent gains higher system privileges
+  answer: a
+  explanation: Permission escalation occurs when the agent circumvents restrictions.
+  difficulty: 3
+  tags:
+  - concept
+- id: '10.8'
+  question: What is the recommended approach for making changes to production code?
+  options:
+    a: Make all changes at once
+    b: Make small, incremental, testable changes
+    c: Let the agent handle everything autonomously
+    d: Skip testing to save time
+  answer: b
+  explanation: Incremental changes reduce risk and make rollback easier.
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.9'
+  question: Which tool can you use to fork a session from a previous message?
+  options:
+    a: Use git fork
+    b: opencode supports session forking from any message
+    c: Use /restart command
+    d: The agent cannot fork sessions
+  answer: b
+  explanation: Session fork creates a branch point from any message in the conversation.
+  difficulty: 2
+  tags:
+  - concept
+- id: '10.10'
+  question: What is context pollution?
+  options:
+    a: Irrelevant information in the context window reducing agent performance
+    b: Corrupting the session database
+    c: Overwriting AGENTS.md
+    d: Adding too many files to the project
+  answer: a
+  explanation: Context pollution occurs when irrelevant data degrades agent performance.
+  difficulty: 3
+  tags:
+  - concept
+

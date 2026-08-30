@@ -1,0 +1,161 @@
+- id: '1.1'
+  question: Harris opens the book by calling trading a "search problem." What does
+    he mean?
+  options:
+    a: Brokers must search their records for lost certificates
+    b: Traders must analyze financial statements to find mispriced stocks
+    c: Buyers must find sellers, and sellers must find buyers
+    d: Regulators must search for insider trading
+  answer: c
+  explanation: '"Trading is a search problem. Buyers must find sellers, and sellers
+    must find buyers." Traders search on price, size, and counterparty. Exchanges
+    exist to minimize these search costs by gathering traders in one place.'
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '1.2'
+  question: Which of the following is a utilitarian trader?
+  options:
+    a: A speculator trading on a private earnings forecast
+    b: A wheat farmer selling futures to reduce price risk
+    c: A pseudo-informed trader reacting to month-old news
+    d: A dealer quoting bid/ask prices to earn the spread
+  answer: b
+  explanation: Utilitarian traders "trade because they expect to obtain some benefit
+    from trading besides trading profits" — hedgers, investors, asset exchangers,
+    gamblers. Dealers and speculators are profit-motivated; pseudo-informed traders
+    are futile.
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '1.3'
+  question: '"Trading is a zero-sum game" means that:'
+  options:
+    a: Both sides of every trade lose money after costs
+    b: One side's gain comes at the other side's expense
+    c: Trading creates wealth for both parties every time
+    d: Markets return exactly zero percent over time
+  answer: b
+  explanation: Measured relative to the market average, winners' gains equal losers'
+    losses — combined gains and losses sum to zero. Both sides can still gain in usefulness
+    (private benefit); that is a different accounting than trading P&L.
+  difficulty: 1
+  tags:
+  - concept
+- id: '1.4'
+  question: Why are "informative prices" considered a public benefit rather than a
+    private one?
+  options:
+    a: Prices guide capital and manager allocation for everyone, even non-traders
+    b: Regulators, not traders, consume price data
+    c: Only traders who submit orders receive price information
+    d: Exchanges charge the public a fee for price data
+  answer: a
+  explanation: 'Informative prices are a positive externality: primary markets fund
+    the best ideas, secondary markets discipline managers — outcomes that affect everyone
+    whether or not they trade. The informed trader pays for information but the price
+    signal is free to all.'
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.5'
+  question: BINC's bank sells £5M to a customer at 1.4477 after funding at the dealer's
+    1.4475. What is the bank's gross margin?
+  options:
+    a: $10,000
+    b: $200
+    c: $1,000
+    d: $2,000
+  answer: c
+  explanation: £5,000,000 × (1.4477 − 1.4475) = £5,000,000 × $0.0002 = $1,000. The
+    spread between what the dealer charges and what the customer is charged is intermediary
+    revenue — liquidity is never free.
+  difficulty: 2
+  tags:
+  - calculation
+  - scenario
+- id: '1.6'
+  question: Jennifer sells 200 shares at 19.80 (best bid was 19.83) and pays a $15
+    commission. What is her total trading cost?
+  options:
+    a: $36
+    b: $6
+    c: $15
+    d: $21
+  answer: d
+  explanation: Explicit cost = $15 commission. Implicit cost = selling 3¢ below the
+    bid = 200 × $0.03 = $6 (cost of crossing the spread). Total = $21. Cost accounting
+    that looks only at commissions misses a third of the toll.
+  difficulty: 2
+  tags:
+  - calculation
+  - scenario
+- id: '1.7'
+  question: What is the key difference between a forward contract and a futures contract?
+  options:
+    a: Futures are standardized and cleared by a clearinghouse; forwards are private
+      deals requiring counterparty search and trust
+    b: Forwards can only be used for hedging; futures only for speculation
+    c: Futures expire daily; forwards never expire
+    d: Forwards trade on exchanges; futures are private agreements
+  answer: a
+  explanation: A forward requires finding a trusted counterparty and agreeing delivery
+    terms — often illiquid. Futures are standardized, and the clearinghouse interposes
+    as buyer to every seller, so "traders do not need to decide whether another trader
+    is creditworthy."
+  difficulty: 2
+  tags:
+  - comparison
+  - concept
+- id: '1.8'
+  question: A friend beat the market with a paper portfolio for three months and wants
+    to trade full-time. According to the book, which statement is best supported?
+  options:
+    a: Paper success reliably predicts live trading skill
+    b: Fewer than 5% of fledgling traders survive to trade profitably, and real money
+      changes risk aversion and biases
+    c: Only investors survive; fledgling speculators always fail
+    d: Survival depends only on starting capital
+  answer: b
+  explanation: The book warns that paper-trading success is not skill — real money
+    changes risk aversion and biases (Brad story), and fewer than 5% of fledgling
+    traders survive to trade profitably.
+  difficulty: 3
+  tags:
+  - scenario
+  - concept
+- id: '1.9'
+  question: 'An instrument is fungible when:'
+  options:
+    a: One unit is economically indistinguishable from all other units
+    b: It trades on multiple exchanges simultaneously
+    c: It pays dividends in cash rather than stock
+    d: It can be sold in fractions of a share
+  answer: a
+  explanation: Fungibility — "one unit is economically indistinguishable from all
+    other units" — means buyers accept any seller's unit without inspection, which
+    is why trading concentrates in a few standardized contracts.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.10'
+  question: '"Since dealers sell liquidity, they prefer to trade in illiquid markets."
+    What is the reasoning?'
+  options:
+    a: Regulators exempt dealers in illiquid markets
+    b: Illiquid markets never move in price
+    c: Illiquid markets have no informed traders
+    d: Dealers' services are more valuable where other traders struggle to trade,
+      so spreads and profits are higher
+  answer: d
+  explanation: 'Liquidity is scarce where trading is hard — dealers who provide it
+    can charge more. This inverts the beginner intuition that everyone prefers liquid
+    markets: all traders except dealers like liquid markets, because dealers'' product
+    IS liquidity.'
+  difficulty: 3
+  tags:
+  - concept
+  - scenario
+

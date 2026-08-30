@@ -1,0 +1,62 @@
+- id: c.1
+  question: "Trading is a {search problem}: buyers must find sellers, and sellers must find buyers."
+  answer: search problem
+  explanation: Harris frames all of trading as search — on price, size, and counterparty. Exchanges minimize these search costs by gathering traders in one place.
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: c.2
+  question: "Trading is a {zero-sum} game when gains and losses are measured relative to the market average: winners' gains exactly equal losers' losses."
+  answer: zero-sum
+  explanation: Zero-sum is measured against the market average, not against each trader's own goals — both sides of a voluntary trade can still gain in usefulness.
+  difficulty: 1
+  tags: [concept]
+
+- id: c.3
+  question: "{Utilitarian} traders trade because they expect to obtain some benefit from trading besides trading profits; economists also call them liquidity traders."
+  answer: Utilitarian
+  explanation: Utilitarian traders (investors, hedgers, asset exchangers, gamblers) need liquidity to accomplish their goals — they are the counterparties profit-motivated traders depend on.
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: c.4
+  question: "Dealers {sell} liquidity to impatient traders; the bid/ask spread is the price they charge for it."
+  answer: sell
+  explanation: Dealers take the trading problem off impatient traders' hands, trading as principal. Supply is also an acceptable phrasing — dealers supply liquidity.
+  difficulty: 2
+  tags: [concept]
+
+- id: c.5
+  question: "Well-functioning markets produce {informative} prices — prices close to fundamental values — which the whole economy relies on for capital and manager allocation."
+  answer: informative
+  explanation: 'Informative prices are the premier public benefit (positive externality) of markets: they guide funding of good ideas and discipline of bad managers, even for people who never trade.'
+  difficulty: 2
+  tags: [concept]
+
+- id: c.6
+  question: "Transaction costs are what people pay to move money from one point in {time} to another — when they are high, trades that would benefit both sides stop happening."
+  answer: time
+  explanation: Book's ch.8 definition. When costs exceed the value difference between the two sides' valuations, the trade dies — at the extreme, autarky (no trading at all).
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: c.7
+  question: "Markets ultimately exist only when {utilitarian} traders are willing to trade: profit-motivated traders cannot profit on average if they trade only among themselves."
+  answer: utilitarian
+  explanation: Because trading is zero-sum vs the market average, speculators and dealers need counterparties who trade for non-profit reasons — utilitarian traders are the foundation of every market.
+  difficulty: 3
+  tags: [concept]
+
+- id: c.8
+  question: "A {futures} contract is a standardized forward contract for which a clearinghouse interposes itself between buyer and seller, acting as seller for every buyer and buyer for every seller."
+  answer: futures
+  explanation: Standardization plus clearinghouse guarantee solves the forward market's three problems — finding a counterparty, trusting performance, agreeing delivery terms — which is why futures trade liquidly.
+  difficulty: 2
+  tags: [terminology, comparison]
+
+- id: c.9
+  question: "Transaction costs have three parts: {explicit} costs (commissions and fees an accountant would identify), implicit costs (price impact), and missed trade opportunity costs."
+  answer: explicit
+  explanation: Explicit = commissions, fees, taxes. Implicit = spread crossing and price impact. Missed opportunity = profit forgone when orders fail to fill or fill late. Full split comes from ch.21.
+  difficulty: 3
+  tags: [concept, formula]

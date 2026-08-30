@@ -1,0 +1,81 @@
+subject: "Market Microstructure: Trading & Exchanges"
+language: en
+time_budget_hours: 9
+target_level: beginner
+domain: market-microstructure
+prerequisites: []
+learning_objectives:
+  - Explain why voluntary trade creates gains for both sides and identify the main motives for trading
+  - Describe the trading industry roles and compare the major market structures
+  - Classify order types and order properties, and trace how an order executes in an order-driven market
+  - Distinguish informed traders, order anticipators, bluffers, value traders, and arbitrageurs, and explain how each affects prices
+  - Explain how dealers supply liquidity, how bid/ask spreads are set, and what liquidity and volatility mean
+  - Measure transaction costs and evaluate trading performance, and recognize how market designs fail or get abused
+modules:
+  - id: 1
+    name: Why Traders Trade
+    time_hours: 1.5
+    prerequisites: []
+    topics:
+      - microstructure-overview
+      - trading-stories
+      - motives-for-trade
+      - good-market-attributes
+      - zero-sum-flows
+  - id: 2
+    name: Orders & Market Structures
+    time_hours: 1.5
+    prerequisites: [1]
+    topics:
+      - trading-industry-roles
+      - order-types
+      - order-properties
+      - quote-vs-order-driven
+      - order-book
+      - brokers
+  - id: 3
+    name: Traders & Information
+    time_hours: 1.5
+    prerequisites: [2]
+    topics:
+      - informed-traders
+      - market-efficiency
+      - order-anticipation
+      - bluffers-and-manipulation
+      - value-traders
+      - arbitrageurs
+      - buy-side-traders
+  - id: 4
+    name: Dealers & Spreads
+    time_hours: 1.5
+    prerequisites: [3]
+    topics:
+      - dealers
+      - inventory-risk
+      - bid-ask-spread
+      - adverse-selection
+      - block-traders
+      - liquidity-definition
+  - id: 5
+    name: Volatility & Transaction Costs
+    time_hours: 1.5
+    prerequisites: [4]
+    topics:
+      - volatility-sources
+      - explicit-implicit-costs
+      - effective-vs-realized-spread
+      - implementation-shortfall
+      - performance-evaluation
+      - luck-vs-skill
+  - id: 6
+    name: Markets & Market Failures
+    time_hours: 1.5
+    prerequisites: [5]
+    topics:
+      - index-portfolio-markets
+      - specialists
+      - internalization
+      - market-competition
+      - floor-vs-automated
+      - bubbles-and-circuit-breakers
+      - insider-trading
