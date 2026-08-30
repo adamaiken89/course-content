@@ -64,18 +64,24 @@ mindmap
 
 **流程**:
 
-```
-新需求:
-  投資者 → 券商 → AP (Authorized Participant)
-  AP 收集一籃子股票 (e.g. S&amp;P 500 全部 500 隻)
-  AP 交給 ETF Sponsor (Vanguard)
-  Sponsor 發新 ETF 單位 (Creation Unit, 通常 50,000 股)
-  AP 拆細賣俾散戶
+```mermaid
+flowchart LR
+  subgraph Creation["創造 (Creation)"]
+    direction LR
+    I1["投資者"] --> B1["券商"]
+    B1 --> AP1["AP (Authorized<br/>Participant)"]
+    AP1 -->|"交一籃子股票<br/>(e.g. S&amp;P 500 全部 500 隻)"| SP1["ETF Sponsor<br/>(Vanguard)"]
+    SP1 -->|"發新 ETF 單位<br/>(Creation Unit, 通常 50,000 股)"| AP1
+    AP1 -->|"拆細賣俾散戶"| B1
+  end
 
-贖回:
-  AP 收集 50,000 股 ETF
-  交給 Sponsor 換一籃子股票
-  AP 賣股票套現
+  subgraph Redemption["贖回 (Redemption)"]
+    direction LR
+    AP2["AP 收集 50,000 股 ETF"] --> SP2["交給 Sponsor<br/>換一籃子股票"]
+    SP2 --> MK["AP 賣股票套現"]
+  end
+
+  AP1 -.-> AP2
 ```
 
 **關鍵好處**:
