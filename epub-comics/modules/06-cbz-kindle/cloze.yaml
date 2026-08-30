@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "Complete: CBZ is a {ZIP} archive of images sorted alphabetically by filename."
+  answer: "ZIP"
+  explanation: "CBZ = Comic Book ZIP. CBR is the RAR variant."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: The de facto metadata file embedded at the root of a CBZ is {ComicInfo.xml}."
+  answer: "ComicInfo.xml"
+  explanation: "ComicInfo.xml is maintained by the Anansi Project. Current v2.0."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: The Kindle Package Format exported by Kindle Previewer 3 has the file extension {.kpf}."
+  answer: ".kpf"
+  explanation: "KPF is the output of Kindle Previewer 3. KDP accepts KPF for upload."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Complete: Kindle's auto-conversion of EPUB is to the {KFX} format."
+  answer: "KFX"
+  explanation: "KFX is Amazon's current Kindle format. Conversion is lossy for fixed layout."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Complete: The OPF element that controls reading direction is {<spine>} with the page-progression-direction attribute."
+  answer: "<spine>"
+  explanation: "<spine page-progression-direction='rtl'> sets right-to-left reading for manga."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.6"
+  question: "Complete: Amazon's Send-to-Kindle email limit is {50 MB}."
+  answer: "50 MB"
+  explanation: "The app allows up to 200 MB. The email path is 50 MB."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Complete: Calibre's command-line tool for converting between e-book formats is {ebook-convert}."
+  answer: "ebook-convert"
+  explanation: "ebook-convert input.cbz output.epub is the typical comic conversion command."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Complete: A fixed-layout comic EPUB sent through Send-to-Kindle may render with {misaligned panels} because the auto-conversion to KFX is lossy for fixed layout."
+  answer: "misaligned panels"
+  explanation: "Use Kindle Previewer 3 for tighter quality control on fixed-layout Kindle delivery."
+  difficulty: 2
+  tags: [concept]

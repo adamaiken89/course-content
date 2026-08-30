@@ -1,0 +1,67 @@
+subject: "廣東話 EPUB 入門：由失敗故事到動手做"
+language: yue
+time_budget_hours: 5.5
+target_level: beginner
+domain: "epub-basics"
+prerequisites: []
+learning_objectives:
+  - "解釋 EPUB 係乜、點解存在、早期失敗嘅嘢同點解 2020 年代先普及"
+  - "識得拆開 EPUB，認得入面每一個檔案嘅角色"
+  - "比較 EPUB 嘅三種形態：reflowable、fixed layout、有聲書"
+  - "解釋 DRM 點解存在、讀者會遇到咩問題、LCP 趨勢"
+  - "用 Calibre 同 Sigil 修改 EPUB 嘅 metadata 同 CSS"
+  - "解釋 EPUB a11y 點解重要、EU EAA 2025 嘅影響"
+  - "講 EPUB 同 audiobook 嘅 crossover、media overlay 點運作、AI 旁白趨勢"
+  - "知道 5 個常見誤解、EPUB 3.3 spec 邊度睇、下一步點學"
+
+parts:
+  - id: 1
+    name: "Part I: EPUB 係乜"
+    summary: "由失敗歷史講到外賣盒比喻，到 file anatomy 同動手拆"
+    modules: [1, 2]
+  - id: 2
+    name: "Part II: EPUB 嘅特質"
+    summary: "三種形態 + DRM 簡介 + 動手玩"
+    modules: [3, 4, 5]
+  - id: 3
+    name: "Part III: 點繼續"
+    summary: "結尾 + 誤解 + spec 入門"
+    modules: [6]
+
+modules:
+  - id: 1
+    part: 1
+    name: "EPUB 由失敗講到普及"
+    time_hours: 1.0
+    prerequisites: []
+    topics: [what-is-epub, history, takeout-box, epub-2-0, amazon-azw, indie, eu-eaa-2025]
+  - id: 2
+    part: 1
+    name: "EPUB file anatomy + 動手拆"
+    time_hours: 1.0
+    prerequisites: [1]
+    topics: [zip, mimetype, ocf, oebps, manifest, spine, container-xml, hands-on]
+  - id: 3
+    part: 2
+    name: "EPUB 特質 + 三種形態 + DRM"
+    time_hours: 1.0
+    prerequisites: [1, 2]
+    topics: [reflowable, fixed-layout, audio, epub-3-revolution, drm-systems, lcp, fairplay, adobe-drm]
+  - id: 4
+    part: 2
+    name: "動手玩 EPUB — metadata + CSS"
+    time_hours: 1.0
+    prerequisites: [2]
+    topics: [calibre, sigil, metadata, cover, css, styling, edit]
+  - id: 5
+    part: 2
+    name: "動手玩 EPUB — a11y + Audiobook + AI 旁白"
+    time_hours: 1.0
+    prerequisites: [2, 3]
+    topics: [accessibility, eu-eaa, alt-text, media-overlay, smil, ai-narration, tts]
+  - id: 6
+    part: 3
+    name: "點繼續 + 5 個誤解 + spec 入門"
+    time_hours: 0.5
+    prerequisites: [1, 2, 3]
+    topics: [misconceptions, resources, epub-3-3-spec, what-next]

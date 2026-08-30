@@ -1,0 +1,51 @@
+subject: "Image-Based Comic EPUB"
+language: en
+time_budget_hours: 8
+target_level: beginner
+domain: "epub-comics"
+prerequisites: []
+learning_objectives:
+  - "Unzip and explain the role of every required file inside any .epub"
+  - "Choose between fixed-layout and reflowable EPUB for a given content type"
+  - "Author a valid EPUB 3 fixed-layout OPF, nav, cover, and page XHTML from scratch"
+  - "Write CSS that renders consistently on Kobo, Apple Books, and Kindle"
+  - "Preprocess images to correct dimensions and color profile per target reader"
+  - "Decide when CBZ/CBR is appropriate versus fixed-layout EPUB, and ship to Kindle via KPF"
+  - "Combine fixed-layout and reflowable pages in a single EPUB (Mixed/Hybrid)"
+
+modules:
+  - id: 1
+    name: "EPUB Anatomy"
+    time_hours: 0.6
+    prerequisites: []
+    topics: [container, mimetype, opf, spine, nav, media-types]
+  - id: 2
+    name: "Fixed vs Reflowable Layout"
+    time_hours: 0.7
+    prerequisites: [1]
+    topics: [rendition-layout, pre-paginated, reflowable, ICB, viewport]
+  - id: 3
+    name: "Building the OPF + Page XHTML"
+    time_hours: 0.85
+    prerequisites: [1, 2]
+    topics: [content-opf, manifest, spine, cover, nav-xhtml, page-xhtml]
+  - id: 4
+    name: "Safe CSS for Fixed-Layout Pages"
+    time_hours: 0.75
+    prerequisites: [2, 3]
+    topics: [viewport-meta, position-absolute, object-fit, reader-quirks, unsafe-css]
+  - id: 5
+    name: "Image Preprocessing and Reader Targeting"
+    time_hours: 0.7
+    prerequisites: [3, 4]
+    topics: [device-dimensions, sRGB, JPEG-quality, aspect-ratio, color-space]
+  - id: 6
+    name: "CBZ and CBR vs EPUB plus Kindle Pipeline"
+    time_hours: 0.7
+    prerequisites: [3, 4, 5]
+    topics: [cbz, cbr, comicinfo-xml, kindle-previewer, kpf, kfx, send-to-kindle]
+  - id: 7
+    name: "Mixed and Hybrid Layout"
+    time_hours: 0.85
+    prerequisites: [2, 3, 4, 6]
+    topics: [mixed-layout, hybrid-layout, per-itemref-override, rendition-default, ebooklib]

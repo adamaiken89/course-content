@@ -1,0 +1,148 @@
+- id: '2.1'
+  question: Which EPUB layout type is correct for an image-based comic?
+  options:
+    a: Auto-paginated, because the reader should compute page breaks around images
+    b: Layout is irrelevant for image content
+    c: Reflowable, because images reflow too
+    d: Pre-paginated (fixed layout), because panel composition must not reflow
+  answer: d
+  explanation: Comics need pre-paginated. Speech bubbles are anchored to panel positions.
+    Reflow destroys the storytelling.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.2'
+  question: Which OPF metadata property declares the default layout for the whole
+    book?
+  options:
+    a: rendition:layout
+    b: dc:type
+    c: epub:layout
+    d: rendition:viewport
+  answer: a
+  explanation: rendition:layout accepts 'reflowable' or 'pre-paginated'. The reader
+    uses it as the default; individual itemref elements can override it (module 07).
+  difficulty: 1
+  tags:
+  - terminology
+- id: "2.3"
+  question: "In EPUB 3.3, where is the viewport declared for a fixed-layout page?"
+  options:
+    a: In the OPF <metadata> section as a global property
+    b: In the manifest <item> for the page
+    c: In the page XHTML <head> as <meta name='viewport'>
+    d: In the nav.xhtml
+  answer: c
+  explanation: EPUB 3.3 moves the viewport to per-page <meta name='viewport' content='width=W,
+    height=H'> in the XHTML head. The first such meta wins; later ones are ignored.
+    rendition:viewport is deprecated.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.4'
+  question: What does the Initial Containing Block (ICB) represent in a fixed-layout
+    page?
+  options:
+    a: The logical canvas in CSS pixels defined by the viewport meta, used for all
+      CSS positioning
+    b: The total number of pages in the book
+    c: The padding around the content area
+    d: The physical screen size of the device
+  answer: a
+  explanation: The ICB is the logical coordinate system. The reader scales the ICB
+    to fit the physical screen. CSS positions (top, left, width, height in px or %)
+    are relative to the ICB.
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.5'
+  question: An author sets rendition:spread='landscape' on a comic. The user opens
+    the book in portrait orientation. What do they see?
+  options:
+    a: Single pages, because orientation is checked first
+    b: A blank screen with an error
+    c: The reader zooms to fit two pages vertically
+    d: Two pages side by side
+  answer: a
+  explanation: rendition:spread='landscape' means show two pages in landscape orientation.
+    In portrait, the reader shows single pages. The spread property is conditional
+    on orientation.
+  difficulty: 2
+  tags:
+  - scenario
+- id: '2.6'
+  question: Which content type is most appropriate for reflowable layout?
+  options:
+    a: A children's picture book with anchored text
+    b: A manga chapter
+    c: A full-bleed art book
+    d: A novel with no images
+  answer: d
+  explanation: Reflowable is for prose. Manga, art books, and picture books need fixed
+    layout because spatial relationship carries meaning.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.7'
+  question: A developer writes <meta name='viewport' content='device-width, initial-scale=1.0'>
+    for a fixed-layout comic. The result is that artwork looks too small on a phone.
+    Why?
+  options:
+    a: device-width is invalid in EPUB
+    b: device-width makes the ICB equal to the physical screen, so the composition
+      scales to screen size instead of staying in a fixed ICB
+    c: initial-scale must be 0 for fixed layout
+    d: The reader ignores viewport in portrait
+  answer: b
+  explanation: device-width ties the ICB to the device. For fixed layout you want
+    explicit pixel dimensions (e.g., 1404x1872) so the composition stays fixed and
+    the reader scales the whole ICB to fit the screen.
+  difficulty: 3
+  tags:
+  - concept
+- id: '2.8'
+  question: Which OPF property controls how the reader displays two pages side by
+    side?
+  options:
+    a: rendition:orientation
+    b: rendition:spread
+    c: rendition:flow
+    d: rendition:layout
+  answer: b
+  explanation: rendition:spread takes 'none', 'landscape', 'both', or 'auto'. It controls
+    synthetic spread display. rendition:layout controls reflow vs fixed. rendition:orientation
+    controls portrait vs landscape. rendition:flow controls auto-pagination.
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.9'
+  question: What is the practical effect of declaring rendition:layout='pre-paginated'
+    at the OPF level without per-page viewport meta?
+  options:
+    a: The reader hides the content and shows a warning
+    b: The reader will use the device screen as the ICB for every page
+    c: The reader has no way to compute the ICB; pages render with undefined dimensions
+    d: The reader falls back to reflowable automatically
+  answer: c
+  explanation: rendition:layout declares intent; the per-page viewport meta declares
+    the actual ICB. Without it, the reader has no canvas size. The EPUB may validate
+    but render unpredictably.
+  difficulty: 3
+  tags:
+  - concept
+- id: '2.10'
+  question: An EPUB uses rendition:orientation='auto'. The user rotates the device.
+    What happens in a fixed-layout comic?
+  options:
+    a: The reader closes the book and reopens it
+    b: The reader rotates the page; aspect ratio is preserved (letterboxed if needed)
+    c: The reader re-paginates the content for the new orientation
+    d: The reader forces portrait regardless of device
+  answer: b
+  explanation: rendition:orientation='auto' lets the reader follow the device orientation.
+    In fixed layout, the page is scaled to fit and letterboxed if the aspect ratio
+    does not match.
+  difficulty: 2
+  tags:
+  - scenario
+

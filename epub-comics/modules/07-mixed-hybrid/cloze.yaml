@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "Complete: A mixed-layout EPUB uses per-itemref properties to override the package-level {rendition:layout} default."
+  answer: "rendition:layout"
+  explanation: "rendition:layout in <metadata> sets the default; per-itemref properties override it for individual spine entries."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Complete: The per-itemref property that activates fixed layout for a single spine entry is {rendition:layout-pre-paginated}."
+  answer: "rendition:layout-pre-paginated"
+  explanation: "The full property URI must be used. Without the rendition:layout- prefix, the reader does not recognise the property."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Complete: The per-itemref property that activates reflowable layout for a single spine entry is {rendition:layout-reflowable}."
+  answer: "rendition:layout-reflowable"
+  explanation: "Use this override when the package default is FXL but a specific section is prose."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Complete: The spec section that governs per-itemref layout overrides is EPUB 3.3 section {8.2.1.2}."
+  answer: "8.2.1.2"
+  explanation: "Section 8.2.1.2 'Overriding Rendition Defaults' in the EPUB 3.3 W3C Recommendation."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "Complete: The most common Python library for EPUB generation, with a thin story for mixed/fixed layout, is {ebooklib}."
+  answer: "ebooklib"
+  explanation: "ebooklib supports per-itemref properties since v0.18 but the FXL/mixed story is thin; raw OPF injection is often required."
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.6"
+  question: "Complete: For mixed-layout Kindle delivery, the recommended approach is to use {Kindle Previewer 3} for local validation before KPF export."
+  answer: "Kindle Previewer 3"
+  explanation: "Send-to-Kindle auto-conversion may misclassify mixed-layout sections. Kindle Previewer 3 lets you validate locally."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.7"
+  question: "Complete: Pattern A for mixed layout uses a {reflowable} default with FXL overrides on the art sections."
+  answer: "reflowable"
+  explanation: "Pattern A is the most common for graphic novels. Override only the FXL sections."
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Complete: The rendering engine that backs the Readium open-source reference reader is called the {Readium SDK}."
+  answer: "Readium SDK"
+  explanation: "Readium SDK is the reference implementation for EPUB 3 reading systems. It fully honors per-itemref layout properties."
+  difficulty: 3
+  tags: [terminology]
