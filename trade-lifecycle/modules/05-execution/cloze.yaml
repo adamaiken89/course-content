@@ -1,0 +1,104 @@
+- id: "c.1"
+  question: "執行（{execution}）係生命週期第二步，由 {經紀} 或者交易台負責，將意圖變成成交事實。"
+  answer: "execution / 經紀"
+  explanation: "執行嘅核心問題：用咩價、幾快、成交幾多。呢三個答案決定之後配對、結算見到嘅數字。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "bid-ask spread 係 {買入價}（bid）同 {賣出價}（ask）嘅差額，係你嘅隱形交易成本。"
+  answer: "買入價 / 賣出價"
+  explanation: "買入用 ask、沽出用 bid，一買一沽即刻蝕 spread。帳面要升超過 spread 先回本。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "冷門股嘅 spread 通常比藍籌股 {大}，因為做市商風險高、難對沖。"
+  answer: "大"
+  explanation: "交易頻繁嘅藍籌股容易對沖，spread 細；冷門股相反。spread 寬 = 流動性差。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "Order routing 三條路：{交易所}（公開撮合）、做市商（principal 直接成交，{唔上交易所}）、{暗池}（大單細聲走）。"
+  answer: "交易所 / 唔上交易所 / 暗池"
+  explanation: "交易所透明但大單會俾人見到；內部化快但差價可能闊、利益可能相反；暗池減洩漏但流動性未必夠。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "做市商報價同交易所撮合價有 {差距}，因為做市商提供流動性要賺 spread。"
+  answer: "差距"
+  explanation: "呢個唔係「食水深」，係做市商模式嘅正常成本。想避免可以揀交易所撮合渠道。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "急市中市價單成交價同落單瞬間價有差距，係 {正常行為}，唔算滑價。"
+  answer: "正常行為"
+  explanation: "市價單用當前最佳價成交，急市中價位一直變。滑價係指預期價同實際價嘅差距。"
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.7"
+  question: "想買貨用 {ask} 價，想沽貨用 {bid} 價。"
+  answer: "ask / bid"
+  explanation: "Ask 係市場願意賣俾你嘅價，bid 係市場願意買你嘅貨嘅價。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.8"
+  question: "兩種撮合方式：{連續交易}（開市時段即刻撮合）同 {集體競價}（特定時刻統一撮合）。"
+  answer: "連續交易 / 集體競價"
+  explanation: "連續交易係日常模式；競價用喺開市、收市、停牌復牌等特殊時刻。"
+  difficulty: 1
+  tags: [comparison]
+
+- id: "c.9"
+  question: "你落單 10,000 股只成交 6,000 股，叫做 {partial fill}（部分成交），係正常現象。"
+  answer: "partial fill"
+  explanation: "流動性有限，市場冇咁多貨即刻俾你。剩低部分會跟 TIF 走——GTC 繼續等，IOC 取消。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.10"
+  question: "香港股票開市前嘅 {pre-opening session}（9:00-9:30）用競價搵平衡價，避免開市瞬間亂跳。"
+  answer: "pre-opening session"
+  explanation: "開市前累積咗隔夜單，競價統一撮合搵最多人接受嘅價。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.11"
+  question: "收市競價（{closing auction}）嘅目的係搵公平嘅收市價，俾基金估值同指數計算用。"
+  answer: "closing auction"
+  explanation: "用最後一筆零星交易做收市價好容易被操控，統一競價更公平。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.12"
+  question: "大單喺冷門股會造成 {市場衝擊}（market impact）——掃走晒啲平貨，價即刻飆升。"
+  answer: "市場衝擊"
+  explanation: "所以大單通常會拆細慢慢執行（TWAP/VWAP 算法），減少對價位嘅衝擊。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.13"
+  question: "執行質素嘅四個指標：{滑價}（slippage）、{成交率}（fill rate）、{時間}、{市場衝擊}。"
+  answer: "滑價 / 成交率 / 時間 / 市場衝擊"
+  explanation: "TCA（Transaction Cost Analysis）用呢啲指標評估執行係咪着數。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.14"
+  question: "市價單用 {當前最佳價} 成交，急市中價位一直變，所以成交價同落單瞬間價有差距係正常。"
+  answer: "當前最佳價"
+  explanation: "市價單用當前最佳價成交，唔保證價位。急市時差距會更大。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.15"
+  question: "執行之後，生命週期嘅下一個步驟係 {配對}（matching）——確認成交真係成立。"
+  answer: "配對"
+  explanation: "執行只係搵到對手，配對先至確認買賣雙方資料一致、交易正式成立。"
+  difficulty: 1
+  tags: [process]

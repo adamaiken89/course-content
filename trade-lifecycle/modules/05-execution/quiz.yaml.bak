@@ -1,0 +1,206 @@
+- id: '5.1'
+  question: 執行（execution）環節由邊個負責？
+  options:
+    a: 清算所
+    b: 托管行
+    c: 客人自己
+    d: 經紀/交易台
+  answer: d
+  explanation: 執行係由經紀或交易台負責，將客人嘅意圖轉化成市場上真係成交嘅事實。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.2'
+  question: 你買入股票嗰一刻，用嘅係邊個價？
+  options:
+    a: Bid 買入價
+    b: Ask 賣出價
+    c: 最後成交價（last price）
+    d: 開市價
+  answer: b
+  explanation: 想買貨，你要用市場嘅 ask 價（有人願意賣俾你嘅價）。想沽貨先至用 bid 價。
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.3'
+  question: Bid-ask spread 係 $0.05，你買入後即刻帳面要升幾多先回本？
+  options:
+    a: $0.10
+    b: 要升 5%
+    c: $0.01
+    d: $0.05
+  answer: d
+  explanation: 你用 ask 買入、用 bid 沽出，spread $0.05 就係你嘅入場費。帳面要升超過 $0.05 先回本（假設 spread
+    唔變）。
+  difficulty: 2
+  tags:
+  - calculation
+- id: '5.4'
+  question: 冷門股（交易少少嘅股票）嘅 spread 通常會點？
+  options:
+    a: 比藍籌股大，因為做市商風險高
+    b: 比藍籌股細，因為冇人爭
+    c: 同藍籌股一樣
+    d: 一定係零
+  answer: a
+  explanation: 冷門股交易頻繁度低、難以對沖，做市商要求更大 spread 先肯提供流動性。藍籌股交易頻繁，spread 細。
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.5'
+  question: Order routing 三條主要路徑係？
+  options:
+    a: 交易所、做市商、暗池
+    b: 買入、賣出、持有
+    c: 開市、連續、收市
+    d: 電話、App、OMS
+  answer: a
+  explanation: 張單可以經交易所公開撮合（MM 報價都屬呢條）、同做市商/券商以 principal 直接 fill 唔上交易所、或者拆去暗池減少資訊洩漏。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.6'
+  question: 大基金要沽 200 萬股，點解通常唔直接掃交易所？
+  options:
+    a: 大單一定成交唔到
+    b: 交易所唔收大單
+    c: 公開顯示大賣壓，其他人跟住沽，市場衝擊大
+    d: 交易所手續費特別貴
+  answer: c
+  explanation: 直接掃會暴露意圖，引發跟單同價格下跌。拆去暗池或者拆細執行可以減少洩漏同衝擊。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '5.7'
+  question: 連續交易（continuous trading）同集體競價（auction）最大嘅分別係乜？
+  options:
+    a: 連續交易喺收市後進行
+    b: 連續交易即刻撮合；競價喺特定時刻統一撮合
+    c: 兩者冇分別
+    d: 競價只可以用嚟買，連續交易只可以用嚟沽
+  answer: b
+  explanation: 連續交易喺開市時段一路有人就即刻撮合；競價喺開市/收市等特定時刻收集所有單統一搵平衡價。
+  difficulty: 1
+  tags:
+  - comparison
+- id: '5.8'
+  question: 你落單 10,000 股，市場即刻只成交咗 6,000 股。呢個情況叫做乜？
+  options:
+    a: 部分成交（partial fill）
+    b: 訂單被取消
+    c: 配對失敗
+    d: 全部成交（full fill）
+  answer: a
+  explanation: 部分成交係正常現象——流動性有限，市場冇咁多貨即刻俾你。剩低部分會跟 TIF 走。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '5.9'
+  question: 香港股票開市前有 pre-opening session，目的係乜？
+  options:
+    a: 累積隔夜單，用競價一次過搵平衡價，避免開市瞬間亂跳
+    b: 讓券商休息
+    c: 計算佣金
+    d: 等客人瞓醒
+  answer: a
+  explanation: 開市前累積咗好多隔夜單，用競價統一撮合搵最多人接受嘅價，避免開市瞬間價位亂跳。
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.10'
+  question: 收市競價（closing auction）嘅主要目的係乜？
+  options:
+    a: 讓客人快啲收工
+    b: 搵一個公平嘅收市價，俾基金估值同指數計算用
+    c: 減少交易佣金
+    d: 減少印花稅
+  answer: b
+  explanation: 如果用最後一筆零星交易做收市價，好容易俾人操控。統一競價搵出嘅價比較公平。
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.11'
+  question: 你發現 App 顯示嘅買入價永遠比交易所貴 $0.05，同時見到「做市商報價」字樣。正確解讀係乜？
+  options:
+    a: 做市商提供流動性要賺 spread，係正常成本
+    b: 系統出錯
+    c: 交易所報價錯誤
+    d: 券商食水深，應該投訴
+  answer: a
+  explanation: 做市商模式下，報價同交易所有差距係正常——做市商賺 spread 做回報。想避免可以揀交易所撮合渠道，但可能要等成交。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '5.12'
+  question: 急市中你用市價單，成交價比落單瞬間貴咗 $0.02。呢個係咪滑價？
+  options:
+    a: 唔係，因為市價單保證用最後成交價
+    b: 係，滑價好嚴重
+    c: 唔係，係市價單正常行為——你用當前最佳賣出價成交
+    d: 係，因為券商故意食你價
+  answer: c
+  explanation: 市價單用「當前最佳價」成交，急市中價位一直變，所以成交價同你落單瞬間嘅價有差距係正常。滑價係指預期價同實際價嘅差距，急市時無可避免。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '5.13'
+  question: 你落市價單買 50,000 股冷門股，成交後發現價比預期貴 2%。最可能嘅原因係乜？
+  options:
+    a: 交易所手續費提高
+    b: 印花稅增加
+    c: 券商故意食你價
+    d: 市場衝擊——你張單掃走晒啲平貨，價即刻飆升
+  answer: d
+  explanation: 冷門股流動性差，大單掃貨會令價位急升，之後嘅貨越嚟越貴。呢個就係市場衝擊（market impact）。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '5.14'
+  question: TCA（Transaction Cost Analysis）係用嚟做咩？
+  options:
+    a: 計算印花稅
+    b: 預測股價
+    c: 計算佣金
+    d: 分析執行質素——我哋嘅執行貴唔貴
+  answer: d
+  explanation: TCA 分析滑價、成交率、時間、市場衝擊等指標，評估執行係咪「着數」。機構常用。
+  difficulty: 2
+  tags:
+  - concept
+- id: '5.15'
+  question: 執行質素嘅四個常見指標，邊個唔係？
+  options:
+    a: 市場衝擊（market impact）
+    b: 公司市盈率（P/E）
+    c: 滑價（slippage）
+    d: 成交率（fill rate）
+  answer: b
+  explanation: P/E 係股票估值指標，同執行質素完全無關。執行質素指標：滑價、成交率、時間、市場衝擊。
+  difficulty: 1
+  tags:
+  - concept
+- id: '5.16'
+  question: 你嘅限價單只成交咗 30%，剩低 70% 到收市都冇人理。你決定「以後唔用限價單」。呢個決定有咩問題？
+  options:
+    a: 限價單只可以喺開市用
+    b: 冇問題，限價單好難用
+    c: 混淆咗「限價單唔啱用」同「你揀錯價位」——問題係價位太進取，唔係限價單本身
+    d: 限價單唔可以用嚟沽
+  answer: c
+  explanation: 限價單嘅設計就係「唔到價唔成交」。價位設得太低，自然成交唔到。正確反思係價位係咪脫離市價太遠。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '5.17'
+  question: 執行環節之後，生命週期嘅下一個步驟係乜？
+  options:
+    a: 結算
+    b: 清算
+    c: 配對（matching）
+    d: 入帳
+  answer: c
+  explanation: 執行之後係配對——確認買賣雙方資料一致、成交真係成立。之後先至有分配、清算、結算。
+  difficulty: 1
+  tags:
+  - process
+

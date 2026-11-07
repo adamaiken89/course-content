@@ -1,0 +1,131 @@
+- id: '13.1'
+  question: 股票交易中，邊項費用係政府收嘅法定稅項？
+  options:
+    a: 托管費
+    b: 印花稅
+    c: 外匯點差
+    d: 佣金
+  answer: b
+  explanation: 印花稅係政府收嘅稅，買賣股票都要俾，無法議價。佣金係經紀收嘅服務費。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '13.2'
+  question: 客人買入 100,000 港元股票，佣金 0.25%、印花稅 0.1%，買入成本增加幾多？
+  options:
+    a: 350 港元
+    b: 1,000 港元
+    c: 100 港元
+    d: 250 港元
+  answer: a
+  explanation: 佣金 100,000 × 0.25% = 250，印花稅 100,000 × 0.1% = 100，合計 350 港元（未計其他徵費）。
+  difficulty: 3
+  tags:
+  - calculation
+  - formula
+- id: '13.3'
+  question: 托管費幾時收？
+  options:
+    a: 只喺賣出時收
+    b: 只喺買入時收
+    c: 持倉期間持續收（按年率計）
+    d: 每年固定日收一次
+  answer: c
+  explanation: 托管費係持有成本，按持倉市值年率逐日/逐月計算，由資產扣。冇交易都要俾。
+  difficulty: 2
+  tags:
+  - concept
+  - process
+- id: '13.4'
+  question: 客人話「換匯冇收費」，實際費用喺邊？
+  options:
+    a: 冇費用，真係免費
+    b: 佣金
+    c: 印花稅
+    d: 銀行買賣價之間嘅點差
+  answer: d
+  explanation: FX 點差係隱性費用。銀行低價買入、高價賣出，差價就係利潤。睇似冇手續費，實際已計入。
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '13.5'
+  question: 高換手策略（一年交易 50 次）受咩影響最大？
+  options:
+    a: 印花稅豁免
+    b: 免佣優惠
+    c: 托管費
+    d: 費用拖累（fee drag）
+  answer: d
+  explanation: 每次往返成本累積，交易越頻密費用食得越多。高費用環境下短線炒賣代價大。
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '13.6'
+  question: 兩隻回報相同嘅基金，收費高嗰隻點解唔吸引？
+  options:
+    a: 因為收費直接減淨回報，複利下差距越滾越大
+    b: 因為管理規模細
+    c: 因為冇派息
+    d: 因為風險高
+  answer: a
+  explanation: 收費從資產扣，淨回報低。複利下，長期差距明顯。
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '13.7'
+  question: 以下邊個係持有成本（冇交易都要俾）？
+  options:
+    a: 印花稅
+    b: 托管費
+    c: 結算交收費
+    d: 佣金
+  answer: b
+  explanation: 托管費按持倉年率計，持倉期間持續收。佣金、印花稅、交收費都係交易時收。
+  difficulty: 1
+  tags:
+  - terminology
+  - comparison
+- id: '13.8'
+  question: 私人銀行客人組合「淨回報」點計？
+  options:
+    a: 總回報 + 全部費用
+    b: 總回報 − 全部費用
+    c: 只計佣金
+    d: 只計管理費
+  answer: b
+  explanation: 淨回報 = 總回報 −（產品管理費 + 托管費 + 交易費 + 表現費等全部費用）。
+  difficulty: 1
+  tags:
+  - formula
+  - concept
+- id: '13.9'
+  question: 佣金、印花稅、托管費、FX 點差，邊個由經紀收？
+  options:
+    a: 佣金
+    b: 印花稅
+    c: 托管費
+    d: FX 點差
+  answer: a
+  explanation: 佣金係經紀服務費。印花稅政府收，托管費托管行收，FX 點差銀行收。
+  difficulty: 1
+  tags:
+  - terminology
+  - comparison
+- id: '13.10'
+  question: 一位客人偏好短線炒賣，一年交易 60 次。作為 RM，你最應該提醒佢咩？
+  options:
+    a: 托管費會減免
+    b: 免佣平台完全冇成本
+    c: 往返費用會累積，費用拖累可能食掉大部分回報
+    d: 印花稅會退回
+  answer: c
+  explanation: 高換手放大費用拖累。RM 應幫客人計總費用，提醒淨回報風險。
+  difficulty: 3
+  tags:
+  - scenario
+  - comparison
+

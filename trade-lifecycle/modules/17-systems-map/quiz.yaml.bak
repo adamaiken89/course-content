@@ -1,0 +1,130 @@
+- id: '17.1'
+  question: OMS 嘅全名係？
+  options:
+    a: Order Management System
+    b: Operational Management System
+    c: Open Market System
+    d: Outer Matching Service
+  answer: a
+  explanation: OMS = Order Management System，管理訂單成個生命週期：落單、修改、狀態追蹤。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '17.2'
+  question: 以下邊個屬於前台系統？
+  options:
+    a: 清算所
+    b: CSD
+    c: EMS
+    d: 對帳報告系統
+  answer: c
+  explanation: 前台負責落單執行：OMS、EMS。清算所、CSD、對帳屬中後台。
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '17.3'
+  question: 風險監控擺邊個台？點解？
+  options:
+    a: 前台，因為最快收到成交
+    b: 後台，因為最接近帳簿
+    c: 中台，獨立制衡前台
+    d: 客人自己做
+  answer: c
+  explanation: 風險屬中台。前台想成交，中台獨立制衡——自己監察自己冇意義。
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '17.4'
+  question: OMS 收到訂單後第一件事係？
+  options:
+    a: 直接送去交易所
+    b: 預檢（資金、保證金、限制清單）
+    c: 等對手方確認
+    d: 先扣佣金
+  answer: b
+  explanation: OMS 先做預檢，過唔到就唔流去市場——事前攔截成本最低。
+  difficulty: 2
+  tags:
+  - process
+  - concept
+- id: '17.5'
+  question: EMS 主要職責係？
+  options:
+    a: 管客人帳簿
+    b: 管清算交割
+    c: 揀執行場所同切單，執行得平
+    d: 出月結單
+  answer: c
+  explanation: EMS（Execution Management System）專注執行質素：邊個場、幾時切大單。
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '17.6'
+  question: 成交後第一個更新狀態嘅系統係？
+  options:
+    a: CSD
+    b: 托管行
+    c: OMS
+    d: 清算所
+  answer: c
+  explanation: OMS 狀態由「已落單」變「已成交」，中台先有數可配。
+  difficulty: 2
+  tags:
+  - process
+  - scenario
+- id: '17.7'
+  question: 清算交割鏈正確次序係？
+  options:
+    a: CSD → 清算所 → 托管行 → 中台
+    b: 中台 → 清算所 CCP → CSD → 托管行
+    c: 托管行 → OMS → 清算所 → CSD
+    d: 清算所 → 中台 → 托管行 → CSD
+  answer: b
+  explanation: 中台指令 → 清算所淨額結算 → CSD 貨銀兩訖 → 托管行帳簿 → 對帳。
+  difficulty: 1
+  tags:
+  - process
+  - terminology
+- id: '17.8'
+  question: 客人「擁有」股票，帳記喺邊？
+  options:
+    a: 只記喺 OMS
+    b: CSD 中央帳簿直接記客人名
+    c: 托管行細帳；CSD 記托管行戶口
+    d: 清算所代客人記
+  answer: c
+  explanation: 兩層帳：CSD 中央帳簿記托管行戶口，托管行再為客人記細帳。
+  difficulty: 3
+  tags:
+  - concept
+  - misconception
+- id: '17.9'
+  question: 系統之間交接靠咩？
+  options:
+    a: 標準訊息（SWIFT、FIX、API）
+    b: 人手抄寫
+    c: 口頭通知
+    d: 冇交接，各系統獨立
+  answer: a
+  explanation: 系統靠標準訊息交接。每個交接點都係斷鏈風險。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '17.10'
+  question: 同事話：「清算所保證交收，托管行唔使對帳。」問題係？
+  options:
+    a: 清算所保證唔可靠
+    b: 清算所保證係佢同參與者之間；托管行同客人嘅帳要自己對
+    c: 托管行冇對帳系統
+    d: 清算所從來唔保證
+  answer: b
+  explanation: 兩層對帳唔可以互替。清算所保證唔涵蓋托管行同客人嘅帳。
+  difficulty: 3
+  tags:
+  - misconception
+  - comparison

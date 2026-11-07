@@ -1,0 +1,114 @@
+- id: "cum.1"
+  type: mcq
+  source_modules: [1, 2, 3, 4]
+  question: "交易生命週期六大步正確次序係?"
+  options:
+    a: "落單 → 執行 → 配對 → 分配 → 清算 → 結算"
+    b: "執行 → 落單 → 結算 → 配對 → 分配 → 清算"
+    c: "配對 → 落單 → 執行 → 清算 → 分配 → 結算"
+    d: "落單 → 配對 → 執行 → 清算 → 分配 → 結算"
+  answer: a
+  explanation: "六大步: 落單、執行、配對、分配、清算、結算。次序固定，前一步冇完成後一步做唔到。"
+  difficulty: 1
+  tags: [cross-module, recall]
+
+- id: "cum.2"
+  type: mcq
+  source_modules: [1, 2, 3, 4]
+  question: "現金帳戶同保證金帳戶最大分別係?"
+  options:
+    a: "現金帳戶收佣金，保證金唔收"
+    b: "現金帳戶要全額資金；保證金可以借力放大購買力"
+    c: "保證金帳戶唔可以買股票"
+    d: "現金帳戶只可以買基金"
+  answer: b
+  explanation: "現金帳戶: 金額 + 費用 ≤ 現金。保證金帳戶: 購買力 = 持倉 × 保證金比例，可以借力但有追繳風險。"
+  difficulty: 2
+  tags: [cross-module, comparison]
+
+- id: "cum.3"
+  type: cloze
+  source_modules: [1, 2, 3, 4]
+  question: "三種下單渠道：{電話}（俾 RM 聽）、{e-Platform}（自己撳）、{OMS}（系統自動）。"
+  answer: "電話 / e-Platform / OMS"
+  explanation: "電話慢但有人跟，e-Platform 快但自己負責，OMS 最快但要預設規則。"
+  difficulty: 2
+  tags: [cross-module, terminology]
+
+- id: "cum.4"
+  type: tf
+  source_modules: [1, 2, 3, 4]
+  statement: "Market order 保證成交價係你見到個價。"
+  answer: false
+  explanation: "Market order 唔保證價錢——跟隊排、用最佳可得價，急市會漂移（slippage）。成交近乎一定，但價位自己負責。"
+  difficulty: 2
+  tags: [cross-module, misconception]
+
+- id: "cum.5"
+  type: tf
+  source_modules: [1, 2, 3, 4]
+  statement: "Limit order 可以保證成交。"
+  answer: false
+  explanation: "Limit order 保證價錢上限/下限，但唔保證成交——市價掂唔到 limit 價就唔會成交。"
+  difficulty: 1
+  tags: [cross-module, misconception]
+
+- id: "cum.6"
+  type: mcq
+  source_modules: [1, 2, 3, 4]
+  question: "Broker 同 dealer 最主要分別係?"
+  options:
+    a: "Broker 用佣金，dealer 賺買賣差價"
+    b: "Broker 只可以買，dealer 只可以賣"
+    c: "Broker 唔受監管，dealer 受監管"
+    d: "Broker 唔可以代客落單"
+  answer: a
+  explanation: "Broker 代理身份收佣金；dealer 自營身份用 spread 賺錢，同時面對 adverse selection 風險。"
+  difficulty: 2
+  tags: [cross-module, comparison]
+
+- id: "cum.7"
+  type: cloze
+  source_modules: [1, 2, 3, 4]
+  question: "全權代客管理 = {discretionary}；只給建議 = {advisory}；自己落單 = self-directed。"
+  answer: "discretionary / advisory"
+  explanation: "三種服務程度，權限同責任唔同。"
+  difficulty: 1
+  tags: [cross-module, terminology]
+
+- id: "cum.8"
+  type: mcq
+  source_modules: [1, 2, 3, 4]
+  question: "部分成交（partial fill）點解係正常現象?"
+  options:
+    a: "因為經紀打錯"
+    b: "因為市場流動性唔足以一次過食晒你張單"
+    c: "因為系統故障"
+    d: "因為你用錯帳戶"
+  answer: b
+  explanation: "大單食唔晒成個市場深度，分批成交正常。唔係錯誤，係流動性限制。"
+  difficulty: 2
+  tags: [cross-module, concept]
+
+- id: "cum.9"
+  type: tf
+  source_modules: [1, 2, 3, 4]
+  statement: "IOC（Immediate or Cancel）單未成交部分會轉做 GTC 繼續等。"
+  answer: false
+  explanation: "IOC: 成交到嘅即刻要，剩低即刻 cancel。唔會轉 GTC。FOK 更嚴——要全部成交，否則成張取消。"
+  difficulty: 2
+  tags: [cross-module, misconception]
+
+- id: "cum.10"
+  type: mcq
+  source_modules: [1, 2, 3, 4]
+  question: "以下邊個唔係下單渠道嘅主要取捨?"
+  options:
+    a: "速度"
+    b: "人為錯誤風險"
+    c: "股票嘅盈利前景"
+    d: "成本"
+  answer: c
+  explanation: "渠道取捨係速度、控制權、錯誤風險、成本——完全唔影響股票本身嘅盈利前景。"
+  difficulty: 1
+  tags: [cross-module, concept]

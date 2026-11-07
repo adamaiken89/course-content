@@ -1,0 +1,122 @@
+- id: '3.1'
+  question: 市價單（market order）嘅主要特徵係乜？
+  options:
+    a: 近乎一定成交，但唔保證價位
+    b: 只可以喺收市前有效
+    c: 保證全部數量一次過成交
+    d: 保證用指定價位成交
+  answer: a
+  explanation: 市價單即刻入隊、用當前最佳可得價——正常流動性下近乎一定成交，但價會漂。d 錯，唔保證價位；c 錯，冇人「保證」全數。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.2'
+  question: 你落限價單 $64 買匯豐，全日最低見到 $63.8。張單成交咗未？咩價？
+  options:
+    a: 未成交，因為市價冇跌到 $64 以下
+    b: 成交咗，因為市價跌穿 $64
+    c: 成交咗，但一定係 $64 成交
+    d: 取消咗，因為限價單只限一日
+  answer: b
+  explanation: 限價買單喺市價等於或者低過你嘅價位時觸發。全日有 $63.8 低位，所以成交咗，而且可能喺 $64 或者更好嘅價。c 錯，可能成交喺更好價。
+  difficulty: 2
+  tags:
+  - application
+- id: '3.3'
+  question: 止蝕單（stop order）點解唔可以保證你 $60 止蝕？
+  options:
+    a: 因為止蝕單要等 T+2 先生效
+    b: 因為止蝕單唔會觸發
+    c: 因為觸發後變市價單，大跌時滑價可能令你成交喺更低價
+    d: 因為止蝕單只可以用嚟買，唔可以用嚟沽
+  answer: c
+  explanation: 止蝕單觸發後即刻變市價單。如果市價一口氣跌穿 $60 落到 $59，你會喺 $59 附近成交，唔係 $60。大跌時流動性差，滑價更大。
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.4'
+  question: IOC（Immediate or Cancel）TIF 嘅意思係乜？
+  options:
+    a: 即刻全部成交，唔係就取消
+    b: 搵到幾多成交幾多，剩低即刻取消
+    c: 一直擺喺度直到取消
+    d: 只限收市前有效
+  answer: b
+  explanation: IOC 係「即刻成交或者取消」——成交得幾多得幾多，成交唔到嘅剩額即刻取消。a 描述嘅係 FOK（Fill or Kill）。
+  difficulty: 2
+  tags:
+  - terminology
+- id: '3.5'
+  question: GTC（Good Till Cancel）訂單嘅命運係乜？
+  options:
+    a: 擺喺度直到成交或者手動取消
+    b: 只可以成交一次，之後自動取消
+    c: 三日後自動失效
+    d: 收市前冇成交就自動取消
+  answer: a
+  explanation: GTC 係「直到取消都有效」——一直擺喺市場等人成交，唔成交唔走，要手動 cancel 先會消失。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '3.6'
+  question: 你用 GTC 限價單，三日後先成交。結算周期 T+2 由邊日起計？
+  options:
+    a: 落單日
+    b: 成交日（trade date）
+    c: 三日後嘅下一日
+    d: 你收到通知嗰日
+  answer: b
+  explanation: 生命週期嘅時間軸由成交嗰一刻開始計。T+2 係由 trade date 起計 2 個工作天，唔係落單日。
+  difficulty: 2
+  tags:
+  - concept
+- id: '3.7'
+  question: 你落單買 1,000 股，App 顯示「部分成交 600 股」，用嘅係 GTC。剩低 400 股會點？
+  options:
+    a: 自動改成市價單
+    b: 張成張單取消，600 股都返還
+    c: 自動取消
+    d: 繼續喺市場等成交
+  answer: d
+  explanation: 部分成交（partial fill）係正常。GTC 嘅剩額會繼續擺喺市場等。想即刻取消剩低部分，要手動 cancel。b 錯，已成交嘅
+    600 股唔會返還。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '3.8'
+  question: 你想即刻追貨，現價急升中。最適合用邊種訂單？
+  options:
+    a: 市價單，近乎一定成交
+    b: GTC 限價單
+    c: 止蝕單
+    d: 限價單，價位設喺現價
+  answer: a
+  explanation: 急住成交嘅話，成交優先於價位——用市價單。限價單追唔到急升嘅價，因為佢只喺指定價或更低先成交。
+  difficulty: 2
+  tags:
+  - application
+- id: '3.9'
+  question: FOK（Fill or Kill）同 IOC 最大嘅分別係乜？
+  options:
+    a: FOK 只可以用嚟沽，IOC 只可以用嚟買
+    b: FOK 保證成交，IOC 唔保證
+    c: FOK 要就全要，唔係就全部取消；IOC 搵到幾多成交幾多
+    d: FOK 係 IOC 嘅另一個名
+  answer: c
+  explanation: FOK 要求全部數量一次過成交，唔得就成張取消。IOC 允許部分成交，剩額即刻取消。d 錯，兩者都唔保證成交。
+  difficulty: 1
+  tags:
+  - comparison
+- id: '3.10'
+  question: 以下邊個屬性唔會影響後續嘅配對同結算？
+  options:
+    a: 數量（quantity）
+    b: 價位（price）
+    c: 戶口（account）
+    d: 你落單時用嘅手機型號
+  answer: d
+  explanation: 數量決定過幾多貨、價位決定金額影響費用、戶口決定邊個承擔——全部影響後續環節。手機型號完全唔影響交易內容。
+  difficulty: 1
+  tags:
+  - concept
+

@@ -1,0 +1,137 @@
+- id: '10.1'
+  question: DvP（Delivery versus Payment）嘅核心係？
+  options:
+    a: 先交貨，遲啲收錢
+    b: 逐筆現金交收
+    c: 先俾錢，遲啲交貨
+    d: 貨交割同錢交割綁埋一齊，靠結算系統同步過戶
+  answer: d
+  explanation: DvP 即貨銀兩訖。除非錢到位貨唔過戶，除非貨過戶錢唔付出。結算系統兩邊扣住、同步放行，買賣雙方唔使直接信對方。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '10.2'
+  question: 香港股票結算標準 T+2 嘅「2」點計？
+  options:
+    a: 由交易日（trade date）起計，週末假期唔計
+    b: 由 contract note 發出日起計
+    c: 固定三日後
+    d: 由確認日起計
+  answer: a
+  explanation: T+0 成交、T+1 對數、T+2 交收。週五成交下週二交收，遇假期順延。
+  difficulty: 2
+  tags:
+  - process
+- id: '10.3'
+  question: CSD（中央證券存管）嘅職責係？
+  options:
+    a: 計算佣金
+    b: 代客户持有證券
+    c: 持有證券總帳、執行過戶
+    d: 發出 contract note
+  answer: c
+  explanation: CSD 係中央機構，持有證券總帳。托管行嘅持倉都記喺 CSD 入面。
+  difficulty: 2
+  tags:
+  - terminology
+- id: '10.4'
+  question: 托管行（Custodian）嘅角色係？
+  options:
+    a: 代客戶持有證券、發 settlement instruction、對帳出單
+    b: 交易所
+    c: 清算所
+    d: 中央存管機構
+  answer: a
+  explanation: 托管行係中介：代客收付款、發 settlement instruction 俾 CSD、對帳月結單、管 failing。佢嘅持倉記喺
+    CSD，兩者唔同層級。
+  difficulty: 2
+  tags:
+  - terminology
+- id: '10.5'
+  question: 如果買方喺交收日帳戶錢唔夠，會點？
+  options:
+    a: 賣方免費送貨
+    b: 交易取消
+    c: 交收自動延遲
+    d: 交收失敗（settlement fail），要俾罰息、可能被 buy-in
+  answer: d
+  explanation: 錢唔夠 = settlement fail。DvP 下貨唔過戶（賣方仍然有貨）。買方要俾罰息，遲唔補錢會被 buy-in。唔係 margin
+    call——margin call 係保證金帳戶追保。
+  difficulty: 2
+  tags:
+  - scenario
+- id: '10.6'
+  question: 以下邊個唔係結算參與者？
+  options:
+    a: 托管行
+    b: 結算銀行
+    c: 投資顧問
+    d: CSD
+  answer: c
+  explanation: 結算參與者：CSD（貨）、結算銀行（錢）、托管行（代客户）。投資顧問唔參與交收。
+  difficulty: 1
+  tags:
+  - concept
+- id: '10.7'
+  question: Gross DvP 同 Net DvP 分別係？
+  options:
+    a: 都係本金風險
+    b: Gross = 逐筆一一配對（最安全）；Net = 先計淨額再配對（平衡效率）
+    c: 兩者一樣
+    d: Gross = 淨額；Net = 逐筆
+  answer: b
+  explanation: Gross 逐筆最安全但效率低（例如英國 CREST）；Net 淨額後交收，平衡安全同效率——HK CCASS、US NSCC 都係
+    Net DvP。冇 DvP 先係本金風險交收。
+  difficulty: 3
+  tags:
+  - comparison
+- id: '10.8'
+  question: 週五成交，香港標準 T+2 幾時交收？
+  options:
+    a: 下週二
+    b: 下週一
+    c: 週六
+    d: 週日
+  answer: a
+  explanation: 週末唔計交易日。週五 T+0，週一 T+1，週二 T+2 交收。
+  difficulty: 2
+  tags:
+  - scenario
+- id: '10.9'
+  question: 「托管行就係 CSD」呢句說話點解錯？
+  options:
+    a: 其實係啱嘅
+    b: 因為托管行更大
+    c: CSD 係中央存管（如 CCASS），托管行係代客户持有嘅中介，兩者唔同層級
+    d: 因為 CSD 係私營機構
+  answer: c
+  explanation: 托管行嘅持倉記喺 CSD 入面。CSD 持總帳、執行過戶；托管行代客收付款、發 instruction、對帳。中介同中央機構，唔係同一個。
+  difficulty: 3
+  tags:
+  - misconception
+- id: '10.10'
+  question: T+2 交收流程中，T+1 主要做咩？
+  options:
+    a: 成交
+    b: affirmation、清算計算、保證金追收
+    c: 發 fill report
+    d: 落單
+  answer: b
+  explanation: T+1：買賣雙方 affirmation、清算所計算應收應付、追收保證金。為 T+2 交收做準備。
+  difficulty: 2
+  tags:
+  - process
+- id: '10.11'
+  question: SSI（Standing Settlement Instructions）同 settlement instruction 分別係？
+  options:
+    a: 兩者一樣
+    b: SSI = 預先登記嘅戶口資料；settlement instruction = 呢單交幾多幾時嘅指令
+    c: SSI = 呢單指令；settlement instruction = 常設資料
+    d: SSI 只俾零售用，機構唔用
+  answer: b
+  explanation: SSI 係常設資料（邊個戶口收錢交貨），交易前設好；settlement instruction 係呢單嘅具體指令。機構單多戶口，SSI
+    特別重要（ALERT 管 SSI）。
+  difficulty: 2
+  tags:
+  - terminology
+

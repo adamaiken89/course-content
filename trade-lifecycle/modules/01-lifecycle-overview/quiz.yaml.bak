@@ -1,0 +1,128 @@
+- id: '1.1'
+  question: 一條交易生命週期嘅六個主要步驟，邊個次序係正確？
+  options:
+    a: 執行、落單、分配、配對、結算、清算
+    b: 落單、執行、清算、配對、結算、分配
+    c: 落單、執行、配對、分配、清算、結算
+    d: 落單、配對、執行、清算、分配、結算
+  answer: c
+  explanation: 正確次序係落單 → 執行 → 配對 → 分配 → 清算 → 結算。其他選項都將配對、清算或者分配嘅次序調亂咗。
+  difficulty: 1
+  tags:
+  - terminology
+  - process
+- id: '1.2'
+  question: Front Office 嘅主要職責係乜？
+  options:
+    a: 落單、執行
+    b: 結算同過戶
+    c: 實際保管股票同現金
+    d: 對帳同出月結單
+  answer: a
+  explanation: Front Office 負責落單、執行——直接接觸客人同市場嘅「搵食」部門。配對、分配、風控屬 Middle Office；b、d係
+    Back Office，c 係托管行。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.3'
+  question: 清算所（CCP）喺生命週期入面嘅角色係乜？
+  options:
+    a: 計算佣金同印花稅
+    b: 幫客人揀股票
+    c: 記錄邊個揸住邊隻股票
+    d: 做交易對手嘅保證人，降低對手風險
+  answer: d
+  explanation: CCP 嘅核心角色係做「保證人」——你嘅對手變成 CCP，就算對方破產，CCP 都會保證交收。b 係 RM 幫客揀股票，c 係 CSD
+    記帳，a 係 Back Office 計費。
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.4'
+  question: 陳生朝早落單買股票，下晝成交，月尾收到月結單有記錄。由落單到月結單，邊個部門負責出月結單？
+  options:
+    a: Front Office
+    b: Middle Office
+    c: Back Office
+    d: 交易所
+  answer: c
+  explanation: 月結單係 Back Office 對完帳之後出嘅報告。Front Office 負責落單執行，Middle Office 負責合規風控。
+  difficulty: 2
+  tags:
+  - scenario
+- id: '1.5'
+  question: 點解交易要有「配對」（matching）呢個步驟？
+  options:
+    a: 確認買賣雙方資料一致，成交真係成立
+    b: 為咗計算印花稅
+    c: 為咗安排托管行
+    d: 為咗收佣金
+  answer: a
+  explanation: 配對係要確保你買嘅份數、價位同對方賣嘅一致，確認呢張成交真係成立。未配對成功嘅交易叫做 unmatched trade，有機會要取消或者更正。
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.6'
+  question: 私人銀行嘅客戶經理（RM）屬於邊個部門？
+  options:
+    a: 清算所
+    b: Front Office
+    c: Middle Office
+    d: Back Office
+  answer: b
+  explanation: RM 直接接觸客人、幫客人落單，屬於 Front Office。佢唔會自己對數或者過戶——嗰啲係 Middle/Back Office
+    嘅工作。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '1.7'
+  question: 假設 Back Office 罷工一日，最有可能出現咩情況？
+  options:
+    a: 清算所拒絕做保證人
+    b: 客人完全落唔到單
+    c: 交易所停止交易
+    d: 入帳、對帳、出月結單延誤
+  answer: d
+  explanation: 入帳、對帳、出月結單全部係 Back Office 工作。Front Office 罷工先至會令客人落唔到單；交易所同清算所係獨立機構，唔受券商
+    Back Office 影響。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '1.8'
+  question: 「成交咗就等於入咗帳」呢句說話，邊個講法正確？
+  options:
+    a: 正確，只要 App 顯示成交就代表股票已經入戶
+    b: 錯誤，成交同入帳係兩個步驟，香港股票 T+2 先完成過戶
+    c: 錯誤，因為香港股票係 T+0 即日入帳
+    d: 正確，成交即入帳
+  answer: b
+  explanation: 成交（execution）只係搵到對手，入帳（settlement）係之後嘅事。香港股票 T+2，即係最快後日先至真正過戶。d 錯，香港股票唔係
+    T+0。
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '1.9'
+  question: 你 App 見到嘅「成交」畫面，對應生命週期邊個環節？
+  options:
+    a: 分配
+    b: 執行
+    c: 結算
+    d: 清算
+  answer: b
+  explanation: App 顯示「成交」代表執行（execution）完成，即係搵到對手。之後仲有配對、分配、清算、結算幾個環節，全部係你見唔到嘅後台工作。
+  difficulty: 2
+  tags:
+  - concept
+- id: '1.10'
+  question: 點解要有清算所（CCP），而唔係買賣雙方直接交收？
+  options:
+    a: 為咗降低對手風險——你嘅對手變成信用高嘅 CCP
+    b: 為咗提高佣金收入
+    c: 為咗加快成交速度
+    d: 為咗減少交易手續
+  answer: a
+  explanation: 直接交收嘅話，你要信對方會找數，對方破產你就損失慘重。CCP 做保證人，將對手風險轉移去 CCP。代價係要交保證金，但換嚟唔使驚對方跳單。
+  difficulty: 2
+  tags:
+  - concept
+

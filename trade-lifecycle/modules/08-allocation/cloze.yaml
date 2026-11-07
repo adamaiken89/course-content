@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "平均價法：{總成本} ÷ {總股數} = 平均价，每個客户成本 = 各自股數 × 平均价。"
+  answer: "總成本 / 總股數"
+  explanation: "所有客户共用同一個每股成本，確保成本計算公平。"
+  difficulty: 1
+  tags: [formula]
+
+- id: "c.2"
+  question: "分配（allocation）= 將 {fill} 入去正確嘅 {account}；多客時要拆，單客時 1:1。"
+  answer: "fill / account"
+  explanation: "單客單都有 allocation（1:1）；omnibus 單客都要內部入 sub-account。判準係幾多個最終持倉記錄，唔係幾多個客落單。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "合併落單好處：{慳佣金}、減少市場衝擊、提高成交率；代價係 allocation 變複雜（多客拆分）。"
+  answer: "慳佣金"
+  explanation: "大單議價能力強，佣金率低；一次過攞貨減少對價位衝擊。合併唔會令 allocation 消失——單客 omnibus 都要做，只係由 1:1 變多客拆分。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "PB（Private Bank 私人銀行）{omnibus account} 嘅分配係內部帳簿操作，唔涉及市場，外部睇唔到。"
+  answer: "omnibus account"
+  explanation: "銀行以自己名義持有，內部再記每個客户嘅持倉。錯配難被外部發現。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.5"
+  question: "分配必須喺 {T+2 交收} 前完成，否則托管行唔知要將貨分俾邊個。"
+  answer: "T+2 交收"
+  explanation: "交收時托管行按 allocation 指令過貨。冇 allocation = settlement fail。"
+  difficulty: 2
+  tags: [process]
+
+- id: "c.6"
+  question: "平均價法公平係指 {成本計算}公平（同一個每股成本），唔代表每個客户賺蝕一樣。"
+  answer: "成本計算"
+  explanation: "持倉量唔同，市價變動時賺蝕金額自然唔同。常見誤解：以為回報都一樣。"
+  difficulty: 2
+  tags: [misconception]
+
+- id: "c.7"
+  question: "Omnibus 分配錯誤，只有 {托管行對帳} 或客戶核對持倉先會發現，外部機構睇唔到。"
+  answer: "托管行對帳"
+  explanation: "交易所、清算所只見 omnibus 一個帳戶，內部錯配對佢哋隱形。"
+  difficulty: 3
+  tags: [scenario]
+
+- id: "c.8"
+  question: "一單有兩種成交價，平均價會喺兩者之間，取決於 {各價位成交量}，所有客户共用。"
+  answer: "各價位成交量"
+  explanation: "加權平均，唔會有人獨享較低價。"
+  difficulty: 3
+  tags: [calculation]
+
+- id: "c.9"
+  question: "分配時序：T+0 成交 → 起草 {allocation instructions} → T+1 提交 → 托管行處理 → T+2 交收。"
+  answer: "allocation instructions"
+  explanation: "分配指令係托管行分貨嘅依據，必須喺交收前到位。"
+  difficulty: 2
+  tags: [process]
+
+- id: "c.10"
+  question: "Omnibus 慳{戶口成本}同{結算}效率；代價係內部記帳，錯配要靠對帳先發現。"
+  answer: "戶口成本 / 結算"
+  explanation: "一個總戶口接所有客：唔使逐客開戶、同 CSD 只對一個戶口可淨額。單客另攞統一報表；多客合併再慳佣金。"
+  difficulty: 2
+  tags: [concept]

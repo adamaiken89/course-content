@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: "Settlement fail 四大原因：{錢}唔夠、{貨}唔夠、檔案錯誤、日曆唔同。"
+  answer: "錢 / 貨"
+  explanation: "最常見係錢唔夠（現金帳戶不足）；貨唔夠係賣方冇貨交。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.2"
+  question: "{Buy-in} 係賣方強制喺市場買返啲貨交俾違約買方，價差+罰息由違約方承担。"
+  answer: "Buy-in"
+  explanation: "賣方嘅補救權利，確保收到貨。違約方代價好大。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "Buy-in 發生時市價升咗，{買方}（違約方）承擔價差，唔係賣方。"
+  answer: "買方"
+  explanation: "違約方要以更高市價買返啲貨，價差自己吞。"
+  difficulty: 2
+  tags: [scenario]
+
+- id: "c.4"
+  question: "結算日曆：週五成交 → {下週二} 交收（週末唔計交易日）。"
+  answer: "下週二"
+  explanation: "T+0 週五、T+1 週一、T+2 週二。遇公眾假期順延。"
+  difficulty: 2
+  tags: [process]
+
+- id: "c.5"
+  question: "跨市場交易特別容易 fail，因為 {唔同市場假期}唔同，交收日計算出錯。"
+  answer: "唔同市場假期"
+  explanation: "香港放假但美國唔放，一邊做到一邊做唔到。"
+  difficulty: 3
+  tags: [concept]
+
+- id: "c.6"
+  question: "{Partial settlement} 先交收部分（錢唔夠買 10,000 股先交 8,000），減少雙方損失。"
+  answer: "Partial settlement"
+  explanation: "未交收部分仍要跟進，唔係就此了結。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "交收失敗後果：{罰息}、buy-in 風險、聲譽受損、影響 KPI。"
+  answer: "罰息"
+  explanation: "Fail 會累積成本，必須即刻處理，唔可以拖。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "Buy-in 通常喺 {交收日未交收 + 寬限期}後觸發，唔係即刻。"
+  answer: "交收日未交收 + 寬限期"
+  explanation: "買方有機會補錢，寬限期後先啟動 buy-in。"
+  difficulty: 2
+  tags: [process]
+
+- id: "c.9"
+  question: "「fail 拖下就冇事」係誤解——fail 只會 {越嚟越貴}，必須即刻處理。"
+  answer: "越嚟越貴"
+  explanation: "罰息累積、buy-in 觸發、客户投訴，拖延成本更高。"
+  difficulty: 2
+  tags: [misconception]

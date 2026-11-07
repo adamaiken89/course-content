@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: 股票往返費用：{佣金}（經紀收）+ {印花稅}（政府收），買賣兩邊都要俾。
+  answer: 佣金 / 印花稅
+  explanation: 佣金係服務費，印花稅係法定稅項，兩者性質唔同。
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.2"
+  question: 買入 100,000 港元股票，佣金 0.25% = {250} 港元，印花稅 0.1% = {100} 港元。
+  answer: 250 / 100
+  explanation: 100,000 × 0.25% = 250；100,000 × 0.1% = 100。合計 350 港元。
+  difficulty: 3
+  tags: [calculation, formula]
+
+- id: "c.3"
+  question: 托管費係{持有}成本，按持倉市值{年率}計算，持倉期間持續收。
+  answer: 持有 / 年率
+  explanation: 冇交易都要俾，逐日/逐月由資產扣。
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.4"
+  question: 外匯點差係{隱性}費用：銀行{低價}買入、高價賣出，差價就係利潤。
+  answer: 隱性 / 低價
+  explanation: 睇似冇手續費，實際費用已計入買賣價之間。
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "c.5"
+  question: 高換手策略會放大{費用拖累}（fee drag）：交易越{頻密}，費用食得越多。
+  answer: 費用拖累 / 頻密
+  explanation: 往返成本累積，一年交易 50 次可食掉大量回報。
+  difficulty: 2
+  tags: [concept, comparison]
+
+- id: "c.6"
+  question: 淨回報 = 總回報 − {全部}費用（管理費 + 托管費 + {交易費} + 表現費等）。
+  answer: 全部 / 交易費
+  explanation: 私人銀行組合收費層級多，要計晒先知淨數。
+  difficulty: 1
+  tags: [formula, concept]
+
+- id: "c.7"
+  question: 印花稅由{政府}收，無法{議價}，同交易量掛鉤。
+  answer: 政府 / 議價
+  explanation: 法定稅項，經紀只係代收。
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.8"
+  question: 兩隻回報相同基金，收費高嗰隻淨回報{低}，複利下差距{越滾越大}。
+  answer: 低 / 越滾越大
+  explanation: 收費從資產扣，長期複利放大差距。
+  difficulty: 2
+  tags: [concept, comparison]
+
+- id: "c.9"
+  question: 費用思維：落單前就要{計入}成本，做決定時要睇{淨}回報，唔係毛回報。
+  answer: 計入 / 淨
+  explanation: 資深玩家同新手嘅分別就喺呢度。
+  difficulty: 3
+  tags: [concept, scenario]

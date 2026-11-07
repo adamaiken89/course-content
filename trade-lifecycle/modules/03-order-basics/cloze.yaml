@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: "市價單（{market order}）近乎一定 {成交}，但唔保證價位——落單前諗清楚值唔值呢個價。"
+  answer: "market order / 成交"
+  explanation: "正常流動性下近乎一定成交（market maker 提供流動性）；代價係價會漂（slippage），可能買貴啲。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "限價單（{limit order}）保證價位，但唔保證 {成交}。市價一直冇到價，張單會一直等或者到期取消。"
+  answer: "limit order / 成交"
+  explanation: "限價單係「唔會比指定價更差」，但唔代表一定成交。追貨時限價單會追唔到急升嘅價。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "止蝕單（{stop order}）觸發後會變成 {市價單}，所以大跌時可能有滑價（slippage）。"
+  answer: "stop order / 市價單"
+  explanation: "滑價係指最終成交價同你設嘅止蝕價有差距。大跌時流動性差，滑價會更大。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "TIF 嘅四種常見設定：{DAY}（收市前有效）、{GTC}（直到取消）、{IOC}（即刻唔得就取消）、{FOK}（全要或者全唔要）。"
+  answer: "DAY / GTC / IOC / FOK"
+  explanation: "TIF = Time in Force，決定張單擺幾耐。GTC 擺最耐，FOK 最苛刻。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "部分成交（{partial fill}）係正常現象，剩低數量會跟 {TIF} 設定走——GTC 繼續等，IOC 即刻取消。"
+  answer: "partial fill / TIF"
+  explanation: "市場冇咁多貨即刻俾你，所以成交一部分。剩額嘅命運取決於你最初 set 嘅 TIF。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "結算周期（T+2）由 {成交日}（trade date）起計，唔係落單日。"
+  answer: "成交日"
+  explanation: "生命週期嘅時間軸由成交嗰一刻開始。GTC 單三日後先成交，T+2 就由第三日起計。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "急住追貨要用 {市價單}，因為限價單只喺指定價或更低先成交，追唔到急升嘅價。"
+  answer: "市價單"
+  explanation: "成交優先於價位。急住持貨或者追貨時，市價單近乎一定成交——但落單前都要諗清楚值唔值呢個價。"
+  difficulty: 2
+  tags: [application]
+
+- id: "c.8"
+  question: "訂單嘅五個基本屬性：{side}（買賣）、{quantity}（數量）、{price}（價位）、{TIF}、{account}（戶口）。"
+  answer: "side / quantity / price / TIF / account"
+  explanation: "呢啲屬性決定後續每一步：邊個承擔、過幾多貨、幾多錢、幾時失效。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.9"
+  question: "FOK 要求 {全部} 數量一次過成交，唔得就成張取消；IOC 允許 {部分} 成交，剩額即刻取消。"
+  answer: "全部 / 部分"
+  explanation: "FOK 最苛刻（全要或全唔要），IOC 寬鬆啲（有幾多要幾多）。"
+  difficulty: 2
+  tags: [comparison]

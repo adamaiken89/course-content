@@ -1,0 +1,131 @@
+- id: '12.1'
+  question: 以下邊個工具嘅生命週期最接近「標準參考點」（交易所撮合 + CCP + T+2）？
+  options:
+    a: 債券
+    b: 基金
+    c: 股票
+    d: 結構性票據
+  answer: c
+  explanation: 股票流程最標準化：交易所撮合、CCP 清算、CCASS T+2 DvP。其他工具都係喺呢個骨架上改。
+  difficulty: 1
+  tags:
+  - terminology
+  - comparison
+- id: '12.2'
+  question: 債券交易多數冇 CCP 擔保，咁對手方風險由邊個承擔？
+  options:
+    a: 買賣雙方自己
+    b: 政府
+    c: 交易所
+    d: 渣打銀行
+  answer: a
+  explanation: 場外債券交易冇 CCP，買賣雙方直接面對對手方信用風險。所以大行會做信用限額管理。
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '12.3'
+  question: 投資者賣出一隻股票基金，最可能幾時收到錢？
+  options:
+    a: T+3 至 T+10
+    b: T+2
+    c: T+1
+    d: 即日
+  answer: a
+  explanation: 基金係申購贖回制，按 NAV 計價，結算日通常 T+3 至 T+10，視乎基金類型，唔係固定 T+2。
+  difficulty: 2
+  tags:
+  - concept
+  - calculation
+- id: '12.4'
+  question: 基金投資者收到份數之前，基金公司會用咩價計價？
+  options:
+    a: 市價（market price）
+    b: 資產淨值（NAV）
+    c: 開市價
+    d: 收市競價價
+  answer: b
+  explanation: 基金按 NAV（資產淨值）計價，即資產總值減負債再除以已發行份數。基金冇二級市場撮合價。
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '12.5'
+  question: 外匯交易嘅結算本質係咩？
+  options:
+    a: 單一貨幣過數
+    b: 雙幣交割（一邊過數一邊收數）
+    c: 只過數唔交割貨幣
+    d: 由 CCP 統一交割
+  answer: b
+  explanation: 外匯交易同時交割兩種貨幣。Herstatt 風險就係兩邊唔同時完成交割嘅風險。
+  difficulty: 2
+  tags:
+  - concept
+  - process
+- id: '12.6'
+  question: 窩輪（warrant）到期時負責支付嘅係邊個？
+  options:
+    a: 政府
+    b: 交易所
+    c: 清算所
+    d: 發行商
+  answer: d
+  explanation: 窩輪屬結構性產品，由發行商（通常係投行）設計同發行。到期或行權時發行商對投資者支付，唔係 CCP 撮合對手。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '12.7'
+  question: 債券交易嘅執行方式多數係？
+  options:
+    a: 基金申購贖回
+    b: CCP 集中拍賣
+    c: 交易所自動撮合
+    d: 場外（OTC）議價
+  answer: d
+  explanation: 債券多數喺場外交易，透過電話或平台議價，冇統一撮合平台。
+  difficulty: 1
+  tags:
+  - terminology
+  - process
+- id: '12.8'
+  question: 基金生命週期第一步係？
+  options:
+    a: 交易所撮合
+    b: 投資者落單（申購或贖回）
+    c: CCP 清算
+    d: 收市競價
+  answer: b
+  explanation: 基金冇二級市場撮合。第一步係投資者向基金公司落單，之後基金公司確認、按 NAV 計價、份數過戶。
+  difficulty: 1
+  tags:
+  - process
+  - terminology
+- id: '12.9'
+  question: 以下邊個組合最準確描述五種工具嘅結算日？
+  options:
+    a: 股票 T+2、基金 T+數日、債券見合約、外匯 T+2、結構產品條款定
+    b: 股票 T+1、基金 T+2、債券 T+3、外匯 T+4
+    c: 股票即日、基金 T+2、債券 T+5、外匯 T+1
+    d: 全部 T+2
+  answer: a
+  explanation: 只有主流股票同部分外匯係 T+2。基金 T+數日，債券見合約，結構性產品按發行條款。
+  difficulty: 3
+  tags:
+  - comparison
+  - scenario
+- id: '12.10'
+  question: 私人銀行客人組合混合股票、基金、債券。客人問「我賣咗幾時收到錢」，正確做法係？
+  options:
+    a: 統一答 T+2
+    b: 統一答 T+3
+    c: 先問清楚工具，再套對應結算時間線
+    d: 答客人自己查
+  answer: c
+  explanation: 唔同工具唔同時間線。先認工具再答，先唔會誤導客人現金流。
+  difficulty: 3
+  tags:
+  - scenario
+  - comparison
+

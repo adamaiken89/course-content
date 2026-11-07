@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: 事前檢查三類：{適當性}、資金/{保證金}檢查、{限制清單}。
+  answer: 適當性 / 保證金 / 限制清單
+  explanation: 任何一關不過，訂單拒絕或擱置。
+  difficulty: 1
+  tags: [terminology, process]
+
+- id: "c.2"
+  question: 適當性 = KYC 之後，確保客人{風險承受}能力同產品{風險}匹配。
+  answer: 風險承受 / 風險
+  explanation: 保守型客人唔應該買到高風險產品。
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.3"
+  question: 現金帳戶：買入金額 + {費用} ≤ 帳戶{現金}，唔夠就拒絕。
+  answer: 費用 / 現金
+  explanation: 保證金帳戶則檢查購買力同保證金維持率。
+  difficulty: 2
+  tags: [concept, formula]
+
+- id: "c.4"
+  question: 保證金帳戶{購買力}唔係現金總額，係基於持倉市值 × {保證金比例}計算嘅可用額度。
+  answer: 購買力 / 保證金比例
+  explanation: 例如持倉市值 100 萬、保證金比例 30%，購買力可達更高額度。
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.5"
+  question: 限制清單過唔到 = {絕對}唔可以落單，{冇得}商量。
+  answer: 絕對 / 冇得
+  explanation: 制裁名單、內部限制、客人限制都係硬性攔截。
+  difficulty: 2
+  tags: [concept, scenario]
+
+- id: "c.6"
+  question: 事前{攔截}成本近乎零；事後{補救}又貴又有法律風險。
+  answer: 攔截 / 補救
+  explanation: 成交後要取消、賠償、可能罰款。
+  difficulty: 2
+  tags: [concept, comparison]
+
+- id: "c.7"
+  question: 適當性檢查喺 {KYC} 之後、{落單}之前執行。
+  answer: KYC / 落單
+  explanation: 先認識客人，再確保產品適合，最後先落單。
+  difficulty: 1
+  tags: [process, terminology]
+
+- id: "c.8"
+  question: RM 明知不匹配仲落單 = {違規}。適當性係 RM {合規}責任，唔可以轉嫁客人。
+  answer: 違規 / 合規
+  explanation: 應攔截並解釋，或建議適合產品。
+  difficulty: 3
+  tags: [scenario, misconception]
+
+- id: "c.9"
+  question: 事前檢查係{保護}客人、保護公司、合規{生命線}。
+  answer: 保護 / 生命線
+  explanation: 監管要求事前檢查，做齊先免罰款同投訴。
+  difficulty: 1
+  tags: [concept, comparison]

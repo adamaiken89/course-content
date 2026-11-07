@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: "CCP（{Central Counterparty 中央對手方}）取代對手方：成為所有買方嘅賣方、所有賣方嘅買方。"
+  answer: "Central Counterparty 中央對手方"
+  explanation: "就算一方違約，CCP 都保證履行，交易對手風險大幅降低。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "清算所保證交收靠兩樣：{保證金}（margin）同 {風險基金}。"
+  answer: "保證金 / 風險基金"
+  explanation: "會員按持倉繳保證金，會員共同出資風險基金，違約時用嚟補數。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.3"
+  question: "{Netting}（淨額結算）將多筆交易淨額化，減少交收次數、結算風險、現金需求。"
+  answer: "Netting"
+  explanation: "原本 100 筆交易可能淨額化做 10 筆交收，效率大增。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.4"
+  question: "Cash netting 只交收淨 {現金}差額；Security netting 只交收淨 {貨}。"
+  answer: "現金 / 貨"
+  explanation: "兩種淨額方式都減少逐筆交收嘅成本同風險。"
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.5"
+  question: "會員保證金唔夠，清算所即刻追收 {margin call}，唔補就 {強制平倉}（liquidate）。"
+  answer: "margin call / 強制平倉"
+  explanation: "確保清算所自己唔受損，係風險控制嘅最後防線。"
+  difficulty: 2
+  tags: [scenario]
+
+- id: "c.6"
+  question: "香港 HKEX（Hong Kong Exchanges and Clearing）旗下嘅中央結算系統叫 {CCASS}（Central Clearing and Settlement System），擔任 CCP 角色。"
+  answer: "CCASS"
+  explanation: "CCASS 保證香港股票交收，係市場基礎設施核心。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.7"
+  question: "多層保證機制：{保證金} + {風險基金}（會員共同出資，即結算基金）。"
+  answer: "保證金 / 風險基金"
+  explanation: "極端情況（如 2008 金融海嘯）單靠保證金唔夠，要多層 buffer。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "清算（clearing）先計算 {應收應付}，結算（settlement）後錢貨兩訖——順序不能倒轉。"
+  answer: "應收應付"
+  explanation: "常見誤解：以為清算=結算。其實清算屬中間環節，結算屬最終動作。"
+  difficulty: 2
+  tags: [misconception]
+
+- id: "c.9"
+  question: "結算會員只限 {大機構}，因為要繳保證金、出資風險基金（結算基金），需要強勁資本。"
+  answer: "大機構"
+  explanation: "資本要求確保會員有能力應付違約，維持清算所穩健。"
+  difficulty: 2
+  tags: [concept]

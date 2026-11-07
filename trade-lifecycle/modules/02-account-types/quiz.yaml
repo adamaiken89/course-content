@@ -1,0 +1,111 @@
+- id: '2.1'
+  question: 現金戶口（cash account）同保證金戶口（margin account）最根本嘅分別係乜？
+  options:
+    a: 保證金戶口一定冇風險，現金戶口風險更大
+    b: 現金戶口可以借孖展，保證金戶口唔可以
+    c: 現金戶口只可以用戶口入面嘅錢，保證金戶口可以借款買嘢
+    d: 兩者冇分別，只係名稱唔同
+  answer: c
+  explanation: 現金戶口嘅購買力等於現金餘額；保證金戶口可以向銀行借款（孖展）放大購買力，但代價係有 margin call 風險。d 錯，保證金戶口風險更大。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.2'
+  question: 你有現金戶口，入面 $200,000，想買 $300,000 股票。銀行會點做？
+  options:
+    a: 批准你買，但會自動扣你信用評分
+    b: 要求你即刻轉去保證金戶口先至可以買
+    c: 批准你買 $300,000，借埋差額俾你
+    d: 拒絕你張單，或者只准你買 $200,000
+  answer: d
+  explanation: 現金戶口唔可以借錢，購買力就係現金餘額。想買更多，要入多啲錢或者開保證金戶口。
+  difficulty: 2
+  tags:
+  - application
+- id: '2.3'
+  question: 全權委託（discretionary）戶口嘅主要特徵係乜？
+  options:
+    a: 銀行按投資目標自主交易，客人唔使逐筆批准
+    b: 客人完全唔俾銀行掂佢啲錢
+    c: 只可以用嚟買基金，唔可以買股票
+    d: 客人逐筆批准每張交易
+  answer: a
+  explanation: 全權委託即係銀行代客決策，按簽咗嘅投資目標自主落單。主要收費係 all-in 管理費（AUM fee，通常包托管）。d 係 advisory，c
+    係 self-directed 嘅極端版。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '2.4'
+  question: 保證金戶口買 $1,000,000 股票（自己 $500,000 + 借 $500,000），股價下跌時你最怕發生咩事？
+  options:
+    a: 股息會減少
+    b: 銀行會自動幫你加倉
+    c: 收到 margin call，要補錢或者被強制沽貨
+    d: 交易佣金會提高
+  answer: c
+  explanation: 股價跌穿維持保證金率，銀行會追收孖展（margin call），要你即刻補錢或者自動沽貨。呢個風險喺你最唔想沽嘅時候出現。
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.5'
+  question: 複合戶口（omnibus account）係乜？
+  options:
+    a: 客人自己開嘅獨立托管戶口
+    b: 銀行以自己名義喺 CSD 開一個總戶口，內部再記帳分邊個客揸幾多
+    c: 用嚟做孖展借貸嘅專用戶口
+    d: 只可以用嚟買 ETF 嘅戶口
+  answer: b
+  explanation: 真戶口開喺 CSD/托管行、以銀行名義；客人 sub-account 只係銀行內部記帳，唔係市場戶口。法律上啲貨仲係客人嘅，但正因為係記帳，對帳特別關鍵。
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.6'
+  question: 諮詢服務（advisory）同全權委託（discretionary）最大嘅分別係乜？
+  options:
+    a: advisory 客人逐筆批准，discretionary 銀行自主決定
+    b: discretionary 唔收任何費用
+    c: advisory 銀行自主決定，discretionary 客人決定
+    d: 兩者冇分別
+  answer: a
+  explanation: advisory 係銀行建議、客人逐筆批准（收佣金 + 托管費分開列）；discretionary 係銀行自主決定（收 all-in
+    管理費，多數包托管）。兩者「邊個話事」同收費結構都唔同。
+  difficulty: 1
+  tags:
+  - comparison
+- id: '2.7'
+  question: 全權委託戶口嘅客人喺月結單見到一筆自己冇印象嘅交易，正確反應係乜？
+  options:
+    a: 睇清楚係咪符合投資目標，唔符合就要求調整策略
+    b: 乜都唔做，當冇事發生
+    c: 即刻投訴銀行未經同意交易
+    d: 即刻要求銀行退款
+  answer: a
+  explanation: 全權委託嘅定義就係銀行唔使逐筆批准。客人應該檢查交易係咪符合簽咗嘅投資目標，唔符合先至要求調整或者轉戶口類型。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '2.8'
+  question: 帳戶種類點樣影響生命週期嘅「落單」環節？
+  options:
+    a: 完全唔影響，所有戶口一樣
+    b: 全權委託戶口由銀行發起落單，客人冇機會喺落單前把關
+    c: 保證金戶口唔可以落單
+    d: 現金戶口落單要等 7 日
+  answer: b
+  explanation: 帳戶種類決定邊個發起落單。全權委託由銀行系統自動執行，所以合規（suitability）檢查特別重要——要確保方案適合呢個客人。
+  difficulty: 2
+  tags:
+  - concept
+- id: '2.9'
+  question: 以下邊個唔係帳戶種類對交易嘅影響？
+  options:
+    a: 可買金額（購買力）
+    b: 邊個話事（落單發起人）
+    c: 結算同費用結構
+    d: 股票嘅基本面
+  answer: d
+  explanation: 帳戶種類影響購買力、落單方式、結算、費用、合規，但完全唔影響股票本身嘅基本面（盈利、估值等）。
+  difficulty: 1
+  tags:
+  - concept
+

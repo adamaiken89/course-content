@@ -1,0 +1,119 @@
+- id: "11.1"
+  question: "以下邊個唔係 settlement fail 常見原因？"
+  options:
+    a: "錢唔夠"
+    b: "貨唔夠"
+    c: "檔案錯誤"
+    d: "交易太成功"
+  answer: d
+  explanation: "常見原因：錢唔夠、貨唔夠、檔案錯、日曆唔同。「太成功」唔會造成 fail。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "11.2"
+  question: "Buy-in 嘅作用係？"
+  options:
+    a: "延遲交收"
+    b: "賣方強制喺市場買返啲貨交俾違約買方"
+    c: "取消交易"
+    d: "退還佣金"
+  answer: b
+  explanation: "Buy-in 係賣方補救權利，確保收到貨。價差+罰息由違約方承担。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "11.3"
+  question: "Buy-in 發生時市價升咗 5%，邊個承擔價差？"
+  options:
+    a: "賣方"
+    b: "買方（違約方）"
+    c: "清算所"
+    d: "托管行"
+  answer: b
+  explanation: "違約方要以更高市價買返啲貨，價差自己吞。交收失敗代價好大。"
+  difficulty: 2
+  tags: [scenario]
+
+- id: "11.4"
+  question: "週五成交，香港標準 T+2 幾時交收？"
+  options:
+    a: "週六"
+    b: "週日"
+    c: "下週二"
+    d: "下週一"
+  answer: c
+  explanation: "週末唔計交易日。週五 T+0、週一 T+1、週二 T+2。"
+  difficulty: 2
+  tags: [process]
+
+- id: "11.5"
+  question: "跨市場交易特別容易 settlement fail 嘅原因係？"
+  options:
+    a: "手續費高"
+    b: "唔同市場假期唔同，交收日計算出錯"
+    c: "貨唔夠"
+    d: "系統慢"
+  answer: b
+  explanation: "香港放假但美國唔放，一邊做到一邊做唔到，變成 fail。"
+  difficulty: 3
+  tags: [concept]
+
+- id: "11.6"
+  question: "Partial settlement 嘅作用係？"
+  options:
+    a: "取消成筆交易"
+    b: "先交收部分，減少雙方損失，剩低部分繼續跟進"
+    c: "延遲所有交收"
+    d: "強制 buy-in"
+  answer: b
+  explanation: "錢唔夠買 10,000 股，先交 8,000 股。減少損失，但 2,000 股仍要處理。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "11.7"
+  question: "交收失敗嘅後果包括以下邊項？"
+  options:
+    a: "罰息"
+    b: "Buy-in 風險"
+    c: "聲譽受損"
+    d: "以上全部"
+  answer: d
+  explanation: "Fail 會累積罰息、触发 buy-in、影響 KPI、損害客户關係。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "11.8"
+  question: "Buy-in 通常喺邊個時候觸發？"
+  options:
+    a: "T+0 成交即刻"
+    b: "交收日未交收 + 寬限期後"
+    c: "T+5"
+    d: "月結時"
+  answer: b
+  explanation: "唔係即刻 buy-in，有寬限期。買方有機會補錢，寬限期後先啟動。"
+  difficulty: 2
+  tags: [process]
+
+- id: "11.9"
+  question: "「fail 唔緊要，拖下就冇事」點解錯？"
+  options:
+    a: "其實係啱嘅"
+    b: "Fail 會累積罰息、触发 buy-in、影響 KPI，必須即刻處理"
+    c: "因為監管唔理"
+    d: "因為托管行會自動補"
+  answer: b
+  explanation: "Fail 唔會自己消失，只會越嚟越貴。即刻處理先可以減少損失。"
+  difficulty: 2
+  tags: [misconception]
+
+- id: "11.10"
+  question: "以下邊個情況最適合用 partial settlement？"
+  options:
+    a: "買方錢唔夠交晒 10,000 股"
+    b: "交易檔案錯誤"
+    c: "跨市場假期唔同"
+    d: "賣方完全冇貨"
+  answer: a
+  explanation: "部分資金到位可以先交部分貨，減少損失。其他情況要先解決根因。"
+  difficulty: 3
+  tags: [scenario]

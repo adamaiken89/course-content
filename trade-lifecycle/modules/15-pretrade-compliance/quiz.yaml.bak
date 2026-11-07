@@ -1,0 +1,119 @@
+- id: "15.1"
+  question: 以下邊個屬於事前合規檢查？
+  options:
+    a: 月結單核對
+    b: 對帳
+    c: 適當性檢查
+    d: 年度審計
+  answer: c
+  explanation: 適當性檢查喺落單前執行，確保產品適合客人。對帳、月結單係事後工作。
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "15.2"
+  question: 適當性（suitability）檢查主要確保咩？
+  options:
+    a: 客人有足夠現金
+    b: 客人風險承受能力同產品風險匹配
+    c: 產品回報高
+    d: 經紀佣金合理
+  answer: b
+  explanation: KYC 之後，要確保客人風險承受（保守/穩健/進取）同產品風險級別匹配。
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "15.3"
+  question: 保守型客人想買高風險衍生工具，正確處理係？
+  options:
+    a: 直接落單，客人自己負責
+    b: 攔截，解釋風險或建議適合產品
+    c: 等客人簽免責聲明先落單
+    d: 轉俾其他 RM 處理
+  answer: b
+  explanation: 適當性不匹配 → 系統攔截。RM 要解釋風險或建議適合產品。強行推銷違規。
+  difficulty: 3
+  tags: [scenario, process]
+
+- id: "15.4"
+  question: 現金帳戶買入檢查規則係？
+  options:
+    a: 買入金額 + 費用 ≤ 帳戶現金
+    b: 只要帳戶有股票就得
+    c: 保證金夠就得
+    d: 無需檢查
+  answer: a
+  explanation: 現金帳戶要求買入金額連費用唔超過帳戶現金。唔夠就拒絕。
+  difficulty: 2
+  tags: [concept, formula]
+
+- id: "15.5"
+  question: 保證金帳戶嘅「購買力」係指？
+  options:
+    a: 帳戶現金總額
+    b: 可以用嚟買嘢嘅額度（基於持倉 × 保證金比例）
+    c: 已買入股票嘅市值
+    d: 客人收入
+  answer: b
+  explanation: 購買力唔係現金總額，係基於持倉市值同保證金比例計算嘅可用額度。
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "15.6"
+  question: 制裁名單過唔到，結果係？
+  options:
+    a: 可以落單，事後報告
+    b: 絕對唔可以落單，冇得商量
+    c: 等上級批准
+    d: 改少少資料再試
+  answer: b
+  explanation: 限制清單（制裁、內部限制）過唔到 = 絕對拒絕。冇得商量，冇得改資料再試。
+  difficulty: 2
+  tags: [concept, scenario]
+
+- id: "15.7"
+  question: 事前檢查點解好過事後補救？
+  options:
+    a: 事前檢查可以跳過
+    b: 事前攔截成本近乎零，事後補救又貴又有法律風險
+    c: 事後補救更快
+    d: 兩者無分別
+  answer: b
+  explanation: 成交後要取消、賠償、可能違規罰款。事前攔截成本低，事後補救代價大。
+  difficulty: 2
+  tags: [concept, comparison]
+
+- id: "15.8"
+  question: 適當性檢查喺流程上幾時做？
+  options:
+    a: KYC 之前
+    b: KYC 之後、落單之前
+    c: 成交之後
+    d: 月結單之後
+  answer: b
+  explanation: 先做 KYC 認識客人，再做適當性確保產品適合，最後先落單。
+  difficulty: 1
+  tags: [process, terminology]
+
+- id: "15.9"
+  question: RM 明知客人保守型但想買高風險產品，RM 直接落單。問題係？
+  options:
+    a: 冇問題，客人自己負責
+    b: 適當性係 RM 合規責任，唔可以轉嫁客人，明知不匹配仲落單違規
+    c: 只要客人簽字就得
+    d: 等公司發現先算
+  answer: b
+  explanation: 適當性係合規責任。明知不匹配仲落單，違規兼可能要賠償。應攔截並解釋。
+  difficulty: 3
+  tags: [scenario, misconception]
+
+- id: "15.10"
+  question: 以下邊個唔係事前檢查類型？
+  options:
+    a: 適當性
+    b: 資金/保證金檢查
+    c: 限制清單
+    d: 事後對帳
+  answer: d
+  explanation: 事後對帳係成交後工作。事前檢查三類：適當性、資金/保證金、限制清單。
+  difficulty: 1
+  tags: [terminology, comparison]

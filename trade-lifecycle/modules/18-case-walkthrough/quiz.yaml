@@ -1,0 +1,131 @@
+- id: '18.1'
+  question: 一單交易生命週期正確次序係？
+  options:
+    a: 指示 → 預檢 → 執行 → 配對 → 清算 → 結算 → 對帳
+    b: 配對 → 指示 → 執行 → 對帳
+    c: 結算 → 執行 → 指示 → 清算
+    d: 執行 → 指示 → 結算 → 配對
+  answer: a
+  explanation: 八步：指示 → 預檢 → 執行 → 配對 → 分配 → 清算 → 結算 → 對帳。
+  difficulty: 1
+  tags:
+  - process
+  - terminology
+- id: '18.2'
+  question: 陳先生用現金帳戶，戶口得 HK$300,000，想買 5,000 股 @ 65.20。點解單落唔到？
+  options:
+    a: 65.20 太貴
+    b: 佢冇做 KYC
+    c: 現金帳戶要全額 + 費用 ≤ 現金；326,000 > 300,000
+    d: 市價單唔可以用現金帳戶
+  answer: c
+  explanation: 現金帳戶要求全額 + 費用 ≤ 現金。5,000 × 65.20 ≈ 326,000 超咗 → 事前攔截。
+  difficulty: 2
+  tags:
+  - scenario
+  - calculation
+- id: '18.3'
+  question: 平均價分配對客人公唔公平？
+  options:
+    a: 唔公平，先落單嘅客蝕底
+    b: 公平——全組同一單價，成本一致
+    c: 唔公平，因為回報會唔同
+    d: 只對大客公平
+  answer: b
+  explanation: 公平係成本一致，唔係回報一致。平均價 = 總成本 ÷ 總股數。
+  difficulty: 2
+  tags:
+  - concept
+  - misconception
+- id: '18.4'
+  question: 配對要對邊四項？
+  options:
+    a: 價、量、佣金、稅
+    b: 客人名、地址、電話、帳戶
+    c: 系統 ID、IP、時間戳、雜湊
+    d: 價、量、日期、證券代碼
+  answer: d
+  explanation: 四項：price、qty、date、ser code。任一唔一致 = trade break。
+  difficulty: 1
+  tags:
+  - terminology
+  - process
+- id: '18.5'
+  question: Affirmation 限期內冇確認會點？
+  options:
+    a: 變 unmatched，要跟進
+    b: 無人理
+    c: 直接取消
+    d: 自動成交
+  answer: a
+  explanation: 48 小時（T+1）內唔確認 → unmatched，要查要跟。
+  difficulty: 2
+  tags:
+  - process
+  - scenario
+- id: '18.6'
+  question: HK 股票 T+2 由邊日開始計？
+  options:
+    a: 由 settle date 起計
+    b: 由 trade date 起計（週末唔計）
+    c: 由 affirm date 起計
+    d: 由 contract note 日期起計
+  answer: b
+  explanation: T+2 由成交日（trade date）起計，跳過週末。星期五成交 → 下星期二。
+  difficulty: 2
+  tags:
+  - process
+  - terminology
+- id: '18.7'
+  question: T+2 結算時客人現金唔夠，後果係？
+  options:
+    a: 自動改為 T+5
+    b: 交易取消
+    c: 冇事，銀行會借俾佢
+    d: 結算失敗 → 保證金追繳 / 強制平倉 / buy-in
+  answer: d
+  explanation: Fail 有保證金追繳、強制平個、buy-in 損失。要即刻補，唔係等。
+  difficulty: 3
+  tags:
+  - scenario
+  - concept
+- id: '18.8'
+  question: Contract Note 嘅作用係？
+  options:
+    a: 純參考，冇法律效力
+    b: 法律文件，列明成交細節同費用
+    c: 代替月結單
+    d: 清算所指令
+  answer: b
+  explanation: Contract Note = 法律文件 + 費用明細。唔係「手續」。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '18.9'
+  question: 對帳涉及邊三方？
+  options:
+    a: 自己、對手、清算所
+    b: OMS、EMS、CSD
+    c: 銪行、稅局、交易所
+    d: 客人、RM、經理
+  answer: a
+  explanation: 三方對帳：自己記錄 vs 對手 vs 清算所。每日做先防錯累積。
+  difficulty: 2
+  tags:
+  - process
+  - concept
+- id: '18.10'
+  question: 客人問「星期一買幾時有貨」，RM 答「即刻有」。問題係？
+  options:
+    a: 冇問題，市價單真係即刻
+    b: 答得太快
+    c: HK T+2——最早星期三先貨銀兩訖入帳
+    d: 應該答 T+0
+  answer: c
+  explanation: 成交即刻，但交割 T+2。唔識結算週期先會答「即刻有」。
+  difficulty: 3
+  tags:
+  - misconception
+  - scenario
+

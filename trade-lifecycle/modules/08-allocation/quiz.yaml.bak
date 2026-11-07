@@ -1,0 +1,136 @@
+- id: '8.1'
+  question: 平均價法（average price）嘅計算方式係？
+  options:
+    a: 最高價 + 最低價 ÷ 2
+    b: 每個客户各自嘅成交價
+    c: 市價 × 總股數
+    d: 總成本 ÷ 總股數
+  answer: d
+  explanation: 平均價 = 總成本 ÷ 總股數。每個客户成本 = 各自股數 × 平均价，大家同一個每股成本。
+  difficulty: 1
+  tags:
+  - formula
+- id: '8.2'
+  question: 點解經紀鍾意合併多個客户嘅指令落一單？
+  options:
+    a: 為咗增加佣金
+    b: 慳佣金（大單議價）、減少市場衝擊、提高成交率
+    c: 監管強制要求
+    d: 因為系統只支持一單
+  answer: b
+  explanation: 合併落單慳佣金、減衝擊、提高成交率。代價係 allocation 變複雜（多客拆分），唔係「先至有 allocation」——omnibus
+    單張單都要做。三層：omnibus 結構決定有冇 allocation，合併決定複唔複雜。
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.3'
+  question: PB（Private Bank 私人銀行）omnibus account 嘅分配係咩性質？
+  options:
+    a: 清算所處理
+    b: 市場交易
+    c: 內部帳簿操作（internal bookkeeping）
+    d: 交易所撮合
+  answer: c
+  explanation: Omnibus 以 PB 名義持有，分配係內部記數，唔涉及市場。外部睇唔到。
+  difficulty: 2
+  tags:
+  - concept
+- id: '8.4'
+  question: 分配（allocation）必須喺邊個時間前完成？
+  options:
+    a: T+2 交收前
+    b: T+5 結單時
+    c: 冇截止時間
+    d: T+0 成交即刻
+  answer: a
+  explanation: 交收時托管行要按 allocation 指令過貨入每個客户 account。冇 allocation 交收做唔到。
+  difficulty: 2
+  tags:
+  - process
+- id: '8.5'
+  question: 平均價法下，每個客户嘅每股成本係？
+  options:
+    a: 各自唔同
+    b: 全部一樣（同一個平均價）
+    c: 持股最多嘅最平
+    d: 市價決定
+  answer: b
+  explanation: 平均價法確保所有客户同一個每股成本，唔會有人比其他人買貴。
+  difficulty: 1
+  tags:
+  - concept
+- id: '8.6'
+  question: 一單有兩種成交價（50.00 同 50.10），平均價會係？
+  options:
+    a: 一定係 50.10
+    b: 喺兩者之間，取決於各價位成交量
+    c: 取決於客户人數
+    d: 一定係 50.00
+  answer: b
+  explanation: 混合平均價加權計算，所有客户共用，唔會有人獨享較低價。
+  difficulty: 3
+  tags:
+  - calculation
+- id: '8.7'
+  question: Omnibus 分配錯咗，邊個最先發現？
+  options:
+    a: 托管行對帳或客戶核對持倉
+    b: 證監會
+    c: 交易所
+    d: 清算所
+  answer: a
+  explanation: 外部只見 omnibus 一個帳戶，睇唔到內部錯配。只有托管行對帳或客戶核對先發現。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '8.8'
+  question: 平均價法「公平」嘅正確理解係？
+  options:
+    a: 市價一樣
+    b: 每個客户賺蝕一樣
+    c: 成本計算公平（同一個每股成本），唔代表回報公平
+    d: 持倉量一樣
+  answer: c
+  explanation: 平均價統一成本價，但持倉量唔同，市價變動時賺蝕金額自然唔同。
+  difficulty: 2
+  tags:
+  - misconception
+- id: '8.9'
+  question: 以下邊個唔係合併落單嘅好處？
+  options:
+    a: 慳佣金
+    b: 減少市場衝擊
+    c: 提高成交率
+    d: 唔使再做 allocation
+  answer: d
+  explanation: 合併唔會令 allocation 消失——單客 omnibus 都要做（1:1 入 sub-account）。合併只令 allocation
+    變複雜（平均價/按比例拆）。其他三項先係好處。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '8.10'
+  question: 單客單（一張 order、一個 account）有冇 allocation？
+  options:
+    a: 只有 omnibus 先有
+    b: 交收後先補做
+    c: 有，1:1 仍然要做
+    d: 冇，多客合併先有
+  answer: c
+  explanation: Allocation 本質 = fill 入正確 account。單客單 1:1 好平凡但仍然存在；omnibus 單客都仲要內部入
+    sub-account。
+  difficulty: 1
+  tags:
+  - concept
+- id: '8.11'
+  question: 機構點解會用 omnibus account？
+  options:
+    a: 慳戶口成本、結算效率、可彙總落單
+    b: 因為獨立戶口唔可以買股票
+    c: 因為 omnibus 免佣金
+    d: 因為法例強制所有客合併
+  answer: a
+  explanation: Omnibus 用一個總戶口接所有客：唔使逐客開獨立市場戶口、同 CSD 只對一個戶口可淨額、內部先合再出市。單客另攞統一報表同費用分攤。
+  difficulty: 2
+  tags:
+  - concept
+

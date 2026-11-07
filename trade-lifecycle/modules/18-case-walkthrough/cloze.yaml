@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: 八步：{指示} → 預檢 → 執行 → 配對 → 分配 → 清算 → 結算 → {對帳}。
+  answer: 指示 / 對帳
+  explanation: 缺一不可，成交只係中段。
+  difficulty: 1
+  tags: [process, terminology]
+
+- id: "c.2"
+  question: 現金帳戶要求：全額 + 費用 ≤ {現金}；保證金帳戶購買力 = 持倉 × {保證金}比例。
+  answer: 現金 / 保證金
+  explanation: 兩種帳戶資金要求唔同。
+  difficulty: 2
+  tags: [concept, comparison]
+
+- id: "c.3"
+  question: 平均價公平 = {成本}一致，唔係{回報}一致。
+  answer: 成本 / 回報
+  explanation: 全組客人同一單價。
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "c.4"
+  question: 配對四項：{價}、{量}、日期、證券代碼。
+  answer: 價 / 量
+  explanation: 任一唔一致 = trade break。
+  difficulty: 1
+  tags: [terminology, process]
+
+- id: "c.5"
+  question: Affirmation {48} 小時（T+1）內唔確認 → {unmatched}，要查要跟。
+  answer: 48 / unmatched
+  explanation: 過期變未配對。
+  difficulty: 2
+  tags: [process, terminology]
+
+- id: "c.6"
+  question: HK T+2 由 {trade} date 起計，跳過{週末}。星期五成交 → 下星期二。
+  answer: trade / 週末
+  explanation: 唔係由 affirm 或 settle date 起計。
+  difficulty: 2
+  tags: [process, misconception]
+
+- id: "c.7"
+  question: 結算失敗 → 保證金{追繳} / 強制{平倉} / buy-in 損失，要即刻補。
+  answer: 追繳 / 平倉
+  explanation: Fail 積累成本，唔係等。
+  difficulty: 3
+  tags: [scenario, concept]
+
+- id: "c.8"
+  question: "{Contract} Note = 法律文件 + 費用明細；月結單 = 持倉{總覽}。"
+  answer: Contract / 總覽
+  explanation: 唔係「手續」，係保障。
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.9"
+  question: 對帳三方：{自己}、對手、{清算所}；每日做先防錯累積。
+  answer: 自己 / 清算所
+  explanation: 淨靠一邊對帳唔夠。
+  difficulty: 2
+  tags: [process, concept]

@@ -1,0 +1,97 @@
+- id: '4.1'
+  question: 以下邊個渠道落單速度通常最慢？
+  options:
+    a: OMS 系統自動落單
+    b: 手機 App 自己撳
+    c: 打電話俾 RM
+    d: 網頁版交易平台
+  answer: c
+  explanation: 電話落單要等 RM 接聽、理解、輸入系統，所以最慢。OMS 最快，App/網頁次之。
+  difficulty: 1
+  tags:
+  - comparison
+- id: '4.2'
+  question: 你嘅單由 RM 受指示代你行事，跟住經紀搵市場對手成交。呢個係邊種中介模式？
+  options:
+    a: Principal 自營——dealer 自己做你對手
+    b: Agency 代理——幫你搵對手，唔持倉
+    c: 三者冇分別，都係收佣金
+    d: Principal 自營——交易所自己做對手
+  answer: b
+  explanation: Agency 模式幫你搵對手、唔持倉，賺佣金/手續費，利益同你一致。Broker 執行一單、Agent 受託行事都屬 agency。Principal 先係自己做你對手（dealer 賺 spread）。
+  difficulty: 1
+  tags:
+  - comparison
+- id: '4.3'
+  question: 私人銀行 RM 幫客人電話落單，RM 屬於邊個部門？呢個角色點影響生命週期？
+  options:
+    a: Front Office，係落單環節嘅發起人
+    b: Middle Office，負責合規
+    c: 交易所，負責撮合
+    d: Back Office，負責結算
+  answer: a
+  explanation: RM 屬於 Front Office，將客人意圖轉化成正式訂單。佢嘅準確度直接影響之後每一步——聽錯數量，後面全部錯。
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.4'
+  question: OMS（Order Management System）最適合邊類用戶？
+  options:
+    a: 只想收息嘅退休人士
+    b: 從未交易過嘅人
+    c: 唔熟投資嘅新手
+    d: 機構、基金經理，需要快速自動執行
+  answer: d
+  explanation: OMS 係俾機構用嘅系統，可以根據預設規則自動搵最佳執行，速度最快。新手通常用電話或者 App。
+  difficulty: 1
+  tags:
+  - concept
+- id: '4.5'
+  question: 以下邊個唔係下單渠道對生命週期嘅影響？
+  options:
+    a: 股票嘅盈利前景
+    b: 落單速度
+    c: 人為錯誤風險（電話落單聽錯數）
+    d: 執行成本（佣金、系統費）
+  answer: a
+  explanation: 渠道影響速度、錯誤風險、成本，但完全唔影響股票本身嘅盈利前景。
+  difficulty: 1
+  tags:
+  - concept
+- id: '4.6'
+  question: 同一張大單，邊種做法最能減少資訊洩漏？
+  options:
+    a: 打電話大聲同 RM 講全名全數量
+    b: 用 OMS 拆單按預設規則分批執行
+    c: 直接喺 App 一次過掃入
+    d: 喺社交媒體講出自己嘅交易計劃
+  answer: b
+  explanation: OMS 拆單可以分批、控制時間同價位，減少大單意圖俾市場見到；電話/公開渠道更容易洩漏。
+  difficulty: 2
+  tags:
+  - scenario
+- id: '4.7'
+  question: App 顯示「做市商報價」，你同做市商直接成交，唔係上交易所。呢個係邊種模式？最大問題係乜？
+  options:
+    a: Agency 代理——冇問題，利益同你一致
+    b: Principal 自營——佢利益可能同你相反
+    c: Principal 自營——交易所會罰做市商
+    d: Agency 代理——呢個一定係詐騙
+  answer: b
+  explanation: 做市商報價背後係 principal：dealer 自己持倉做你對手賺 spread，利益可能相反。佣金計費單先係 agency。
+  difficulty: 2
+  tags:
+  - concept
+- id: '4.8'
+  question: 電話渠道落單，RM 聽錯數量買多咗。正確嘅防範係乜？
+  options:
+    a: 完全禁止電話落單
+    b: RM 落單後覆述確認，客人核對先送出
+    c: 交易所會自動糾正
+    d: 只可以怪客人自己唔小心
+  answer: b
+  explanation: 人為錯誤係電話渠道已知風險，標準做法係覆述確認（數量、價位、方向）留低紀錄。
+  difficulty: 2
+  tags:
+  - scenario
+

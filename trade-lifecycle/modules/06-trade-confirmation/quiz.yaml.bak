@@ -1,0 +1,121 @@
+- id: '6.1'
+  question: 經紀喺成交後即刻發出、話你知交易成立嘅文件係邊個？
+  options:
+    a: Fill report
+    b: Custody statement
+    c: Affirmation
+    d: Contract note
+  answer: a
+  explanation: Fill report 係初步通知，即刻或當日發出。Contract note 先係法定費用文件，會遲啲發出。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.2'
+  question: Contract note 上面邊項唔係法定必列內容？
+  options:
+    a: 印花稅
+    b: 你嘅投資目標
+    c: 成交價
+    d: 佣金
+  answer: b
+  explanation: Contract note 列明交易細節同費用（成交價、佣金、印花稅、交收日期），唔會列投資目標。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '6.3'
+  question: Affirmation 應該喺邊個時間完成？
+  options:
+    a: T+2
+    b: T+3
+    c: T+0
+    d: T+1
+  answer: d
+  explanation: 香港銀行公會規定 affirmation 喺 T+1 完成，超過 48 小時未 affirm 會進入 unmatched 狀態。
+  difficulty: 2
+  tags:
+  - process
+- id: '6.4'
+  question: 以下邊個先係真正扣錢嘅時點？
+  options:
+    a: 收到 contract note
+    b: Affirmation 完成
+    c: T+2 交收
+    d: 收到 fill report
+  answer: c
+  explanation: Contract note 只係確認應付金額，真正資金轉移喺 T+2 交收嗰陣先發生。
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.5'
+  question: Fill report 同 contract note 最大分別係咩？
+  options:
+    a: Fill report 列明所有費用
+    b: Fill report 話交易成立；contract note 話交易成本
+    c: Contract note 沒有法律效力
+    d: 兩者完全一樣
+  answer: b
+  explanation: Fill report 係初步成交通知；contract note 係法定文件，列明佣金、印花稅等費用結構。fill report 唔係法定成交單據。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '6.6'
+  question: Affirmation 發現成交數目同自己記錄唔一致，交易會進入咩狀態？
+  options:
+    a: Settled
+    b: Affirmed
+    c: Unmatched / trade break
+    d: Cancelled
+  answer: c
+  explanation: 數目唔一致 = trade break，交易停喺 unmatched 狀態，需要異常處理先可以繼續交收。
+  difficulty: 2
+  tags:
+  - concept
+- id: '6.7'
+  question: 香港股票交易嘅標準確認時序係邊個？
+  options:
+    a: T+0 成交 → T+0 交收 → T+1 對數
+    b: T+1 成交 → T+2 對數 → T+3 交收
+    c: T+2 成交 → T+3 對數 → T+4 交收
+    d: T+0 成交 → T+1 對數 → T+2 交收
+  answer: d
+  explanation: 香港標準：T+0 成交並發出 fill report，contract note 通常 T+0 發出（法例最遲 T+2），T+1 affirmation，T+2 交收。
+  difficulty: 1
+  tags:
+  - process
+- id: '6.8'
+  question: 如果你發現 contract note 成交價同自己記憶唔同，第一步應該做咩？
+  options:
+    a: 核對 fill report 同 OMS 記錄，再聯絡經紀
+    b: 假裝冇睇到
+    c: 直接賣出止蝕
+    d: 即刻去托管行投訴
+  answer: a
+  explanation: 先查內部記錄（fill report、OMS）確認邊邊錯，再聯絡經紀。唔好跳過中間環節直接找托管行。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '6.9'
+  question: Contract note 嘅法律地位係咩？
+  options:
+    a: 只係參考文件，冇效力
+    b: 法定交易確認文件，係對帳基礎
+    c: 同 fill report 完全相同
+    d: 交收完成後先至有效
+  answer: b
+  explanation: 《證券及期貨條例》規定經紀必須發出 contract note，佢係正式法律文件同對帳依據。
+  difficulty: 2
+  tags:
+  - terminology
+- id: '6.10'
+  question: 以下邊個正確描述 fill report 嘅發出時間？
+  options:
+    a: T+0 成交後即刻或當日
+    b: 每月結單時
+    c: T+2 交收後
+    d: T+1 affirmation 後
+  answer: a
+  explanation: Fill report 目的係等客戶即刻知道交易成立，所以喺 T+0 成交後即刻或當日發出。
+  difficulty: 1
+  tags:
+  - terminology
+

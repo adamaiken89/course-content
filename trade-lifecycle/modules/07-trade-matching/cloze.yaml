@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: "配對（{matching}）比對四個欄位：{價格}、{數量}、交易日期、證券代號。"
+  answer: "matching / 價格 / 數量"
+  explanation: "四欄全部一致先至 matched。任何一個唔一致 → unmatched。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "{Trade capture} 係將交易所撮合結果變成買賣雙方各自交易記錄嘅環節。"
+  answer: "Trade capture"
+  explanation: "獨立記錄先可以互相核對，防止一方出錯無人知。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "系統自動配對之後，仲要人手 {affirmation} 確認，應喺 {T+1} 完成。"
+  answer: "affirmation / T+1"
+  explanation: "系統只比對數字，唔知背後係咪真係呢筆交易。人手 affirmation 係最後防線。"
+  difficulty: 2
+  tags: [process]
+
+- id: "c.4"
+  question: "買方記錄 50.00、賣方記錄 50.10，價錢唔同 → {unmatched}，要入 queue 查證。"
+  answer: "unmatched"
+  explanation: "Unmatched 唔會自己變 matched，必須即刻處理。"
+  difficulty: 2
+  tags: [scenario]
+
+- id: "c.5"
+  question: "Unmatched trades 常見原因：價格唔同、{數量}唔同、日期唔同、{漏記錄}。"
+  answer: "數量 / 漏記錄"
+  explanation: "漏記錄（一邊根本冇入單）少見但最嚴重，因為完全冇另一邊可以比對。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "配對（matching）先確認交易成立，{清算}（clearing）之後計算各方義務——順序不能倒轉。"
+  answer: "清算"
+  explanation: "常見誤解：以為配對就係清算。其實配對屬中間環節，清算屬後端。"
+  difficulty: 2
+  tags: [misconception]
+
+- id: "c.7"
+  question: "私人銀行 {omnibus account} 增加配對複雜度——一單對應多個客戶，任何一個數目錯成筆交易 unmatched。"
+  answer: "omnibus account"
+  explanation: "Omnibus 令配對由一對一變成一對多，錯配風險更高。"
+  difficulty: 3
+  tags: [scenario]
+
+- id: "c.8"
+  question: "Affirmation 發現數目唔一致，交易進入 {trade break} 狀態，需異常處理先可繼續。"
+  answer: "trade break"
+  explanation: "Trade break 令交易停喺 unmatched，唔解決就無法進入分配同交收。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.9"
+  question: "Matched 嘅交易先可以進入 {分配}、清算、交收；unmatched 會阻塞成個後端流程。"
+  answer: "分配"
+  explanation: "配對係正式成立關卡——matched 先可以行落去，unmatched 卡住成條鏈。"
+  difficulty: 1
+  tags: [process]

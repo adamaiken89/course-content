@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: "一條交易生命週期嘅六個主要步驟係 {落單}、{執行}、{配對}、{分配}、{清算} 同 {結算}。"
+  answer: "落單 / 執行 / 配對 / 分配 / 清算 / 結算"
+  explanation: "由客人開口到股票入戶，就係呢六步接力。記住次序：先有單，先有成交，先有對手，先至分貨、保證、過戶。"
+  difficulty: 1
+  tags: [process]
+
+- id: "c.2"
+  question: "Front Office 負責 {落單} 同 {執行}，Middle Office 負責 {配對}、分配同風控，Back Office 負責 {清算}、{結算} 同 {對帳}。"
+  answer: "落單 / 執行 / 配對 / 清算 / 結算 / 對帳"
+  explanation: "Front Office 搵食，Middle Office 監工（配對合規風控），Back Office 執手尾。分清楚邊個部門做乜，投訴時先知搵邊個。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "清算所（{CCP}）做交易對手嘅保證人，將對手風險由你轉移去 CCP，代價係你要交保證金。"
+  answer: "CCP"
+  explanation: "CCP = Central Counterparty，中央對手方。你嘅對手變成佢，就算對方破產，CCP 都會保證交收。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.4"
+  question: "香港股票結算周期係 {T+2}，即係成交後最快 2 個工作天先至真正過戶。"
+  answer: "T+2"
+  explanation: "T+2 代表 settlement 係 trade date 加 2 個工作日。所以「成交咗」唔等於「入咗帳」，中間有時間差。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "私人銀行嘅客戶經理（{RM}）屬於 Front Office，直接接觸客人幫佢哋落單。"
+  answer: "RM"
+  explanation: "Relationship Manager，關係經理。佢係客人嘅第一接觸點，但佢唔會自己對數或者過戶。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.6"
+  question: "如果張單係成組客人合買，要將成交咗嘅貨按比例分翻俾每位客人，呢個步驟叫做 {分配}（allocation）。"
+  answer: "分配"
+  explanation: "例如基金經理幫 50 個客一齊買，成交 100,000 股，就要按每位客人嘅出資比例分貨。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "記錄邊個揸住邊隻股票嘅中央登記機構叫做 {CSD}（Central Securities Depository）。"
+  answer: "CSD"
+  explanation: "CSD 係中央證券存管機構，香港係 HKSCC。佢記錄股票嘅最終持有人，但實際保管係托管行嘅工作。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "托管行（{custodian}）實際保管股票同現金，確保客人嘅資產唔會俾人挪用。"
+  answer: "custodian"
+  explanation: "Custodian 係資產保管人。私人銀行會將客人嘅股票存喺托管行度，同銀行自身資產分開，保障客人。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.9"
+  question: "「成交咗但未入帳」嘅情況，通常因為 {配對}、{清算} 或者 {結算} 環節出咗問題。"
+  answer: "配對 / 清算 / 結算"
+  explanation: "成交只係搵到對手。之後配對唔上、清算失敗、托管行有問題，都會導致「成交咗但未入帳」。"
+  difficulty: 2
+  tags: [concept]

@@ -1,0 +1,165 @@
+- id: cum.1
+  type: mcq
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  question: TCA（交易成本分析）唔包括以下邊項指標?
+  options:
+    a: 印花稅稅率
+    b: Fill rate
+    c: Market impact
+    d: Slippage
+  answer: a
+  explanation: 'TCA 指標: slippage、fill rate、時間、market impact。印花稅係固定稅率，唔係執行質素指標。'
+  difficulty: 2
+  tags:
+  - cross-module
+  - terminology
+- id: cum.2
+  type: mcq
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  question: Contract Note 同 fill report 最大分別係?
+  options:
+    a: 冇分別，同一件事
+    b: Contract Note 係法律文件列費用；fill report 只係成交通知
+    c: Fill report 有法律效力，Contract Note 冇
+    d: Contract Note 由交易所出，fill report 由政府出
+  answer: b
+  explanation: Fill report 即時通知成交；Contract Note 係法律文件，列成交細節同費用，雙方簽收。
+  difficulty: 2
+  tags:
+  - cross-module
+  - comparison
+- id: cum.3
+  type: cloze
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  question: '配對四項: {價}、{量}、日期、證券代碼——任一唔一致 = trade break。'
+  answer: 價 / 量
+  explanation: 雙方獨立記錄，要四項全對先配得上。
+  difficulty: 1
+  tags:
+  - cross-module
+  - terminology
+- id: cum.4
+  type: tf
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  statement: Affirmation 超過 48 小時冇確認，單會自動取消。
+  answer: false
+  explanation: 超時變 unmatched，要人手跟進查原因，唔會自動取消。
+  difficulty: 2
+  tags:
+  - cross-module
+  - misconception
+- id: cum.5
+  type: tf
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  statement: 平均價分配對所有客人公平，因為大家同一單價。
+  answer: true
+  explanation: 公平 = 成本一致。總成本 ÷ 總股數 = 單一平均價，全組客人用同一價。
+  difficulty: 1
+  tags:
+  - cross-module
+  - concept
+- id: cum.6
+  type: mcq
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  question: 8 個客嘅訂單合併做一張大單，主要好處係?
+  options:
+    a: 可以跳過配對
+    b: 唔使交印花稅
+    c: 佣金更平、market impact 更細、fill rate 更高
+    d: 可以保證成交價
+  answer: c
+  explanation: '合併: 大單攤薄佣金、減衝擊成本、提高成交率。但要公平分配返俾各客。'
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.7
+  type: cloze
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  question: 平均價 = 總{成本} ÷ 總{股數}；全組客人同一單價。
+  answer: 成本 / 股數
+  explanation: 公平係成本一致，唔係回報一致。
+  difficulty: 1
+  tags:
+  - cross-module
+  - formula
+- id: cum.8
+  type: mcq
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  question: Omnibus account 點解增加配對難度?
+  options:
+    a: 因為 omnibus 唔使配對
+    b: 因為 omnibus 只可以用現金
+    c: 因為 omnibus 唔成交
+    d: 因為對手方只見一張總數，內部要再拆落各客
+  answer: d
+  explanation: 'Omnibus: 外面一張總數，內部要自行分配。多一層內部簿記 = 多一層出錯風險。'
+  difficulty: 3
+  tags:
+  - cross-module
+  - concept
+- id: cum.9
+  type: tf
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  statement: Trade break 應該即刻改數，唔使查原始成交單。
+  answer: false
+  explanation: 第一步查原始成交單確認邊邊啱，先修正。冇查證就改可能改錯方向。
+  difficulty: 3
+  tags:
+  - cross-module
+  - misconception
+- id: cum.10
+  type: mcq
+  source_modules:
+  - 5
+  - 6
+  - 7
+  - 8
+  question: Closing auction 嘅目的係?
+  options:
+    a: 俾散戶優先落單
+    b: 撮合出公平嘅收市價
+    c: 取消全日訂單
+    d: 計算印花稅
+  answer: b
+  explanation: Closing auction 集中收市前需求，撮合出一個公平參考收市價，減人為操縱。
+  difficulty: 1
+  tags:
+  - cross-module
+  - recall

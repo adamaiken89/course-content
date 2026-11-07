@@ -1,0 +1,121 @@
+- id: '9.1'
+  question: CCP（Central Counterparty 中央對手方）喺交易中嘅角色係？
+  options:
+    a: 取代對手方：成為所有買方嘅賣方、所有賣方嘅買方
+    b: 只係記錄交易
+    c: 發出 contract note
+    d: 計算佣金
+  answer: a
+  explanation: CCP 取代交易雙方，保證就算一方違約，另一方都收到貨/錢。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.2'
+  question: 清算所點樣做到保證交收？
+  options:
+    a: 靠保證金（margin）同風險基金
+    b: 靠交易所主席
+    c: 唔需要錢
+    d: 靠政府擔保
+  answer: a
+  explanation: 每個結算會員按持倉繳保證金 + 會員共同出資嘅風險基金 buffer，違約時用呢啲錢補數。
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.3'
+  question: Netting（淨額結算）嘅主要好處係？
+  options:
+    a: 增加佣金
+    b: 令交易更複雜
+    c: 增加交收次數
+    d: 減少交收次數、減少結算風險、減少現金需求
+  answer: d
+  explanation: 將多筆交易淨額化，原本 100 筆可能變 10 筆交收，效率大增。
+  difficulty: 2
+  tags:
+  - concept
+- id: '9.4'
+  question: 會員持倉虧損、保證金唔夠，清算所會點做？
+  options:
+    a: 唔理佢
+    b: 即刻追收 margin（margin call），唔補就強制平倉
+    c: 退還保證金
+    d: 等市場自己修復
+  answer: b
+  explanation: Margin call 要求補錢，唔補就 liquidate 強制平倉，確保清算所唔受損。
+  difficulty: 2
+  tags:
+  - scenario
+- id: '9.5'
+  question: 以下邊個唔係清算所嘅功能？
+  options:
+    a: 取代對手方
+    b: 計算應收應付
+    c: 保證交收
+    d: 發出投資建議
+  answer: d
+  explanation: 清算所做：取代對手方、計算義務、保證交收。發投資建議唔關佢事。
+  difficulty: 1
+  tags:
+  - concept
+- id: '9.6'
+  question: Cash netting 同 Security netting 分別係？
+  options:
+    a: Cash = 貨；Security = 錢
+    b: 都係逐筆交收
+    c: Cash = 淨現金差額；Security = 淨貨過戶
+    d: 兩者一樣
+  answer: c
+  explanation: Cash netting 只過淨現金；Security netting 只過淨貨。都減少交收次數。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '9.7'
+  question: 「清算將風險集中，唔係消滅」嘅正確理解係？
+  options:
+    a: 清算所冇風險
+    b: 極端情況清算所自己都可能受損，所以要多層保證機制
+    c: 風險轉移咗就消失
+    d: 會員唔使再擔心違約
+  answer: b
+  explanation: 2008 金融海嘯證明清算所都可能受損。多層保證（保證金+風險基金/結算基金）係為此。
+  difficulty: 3
+  tags:
+  - misconception
+- id: '9.8'
+  question: 清算（clearing）同結算（settlement）嘅先後係？
+  options:
+    a: 清算先計算義務，結算後錢貨兩訖——順序不能倒轉
+    b: 兩者同時發生
+    c: 冇關係
+    d: 結算先，清算後
+  answer: a
+  explanation: 清算屬中間環節計算應收應付；結算屬最終動作。清算先，結算後。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '9.9'
+  question: 以下邊個機構係 HKEX 旗下嘅中央結算系統？
+  options:
+    a: EMS（Execution Management System）
+    b: CSD（Central Securities Depository）
+    c: CCASS（Central Clearing and Settlement System）
+    d: OMS（Order Management System）
+  answer: c
+  explanation: CCASS 喺香港擔任 CCP 角色，保證股票交收。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '9.10'
+  question: 點解只有大機構可以做結算會員？
+  options:
+    a: 因為佢哋鍾意
+    b: 有資本要求，確保有足夠錢應付違約
+    c: 監管歧視細機構
+    d: 因為系統容量有限
+  answer: b
+  explanation: 結算會員要繳保證金、出資風險基金（結算基金），需要強勁資本，所以只限大機構。
+  difficulty: 2
+  tags:
+  - concept
+

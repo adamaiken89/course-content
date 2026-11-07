@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: 中後台首選通讀本：{Loader} 嘅 Clearing, Settlement, and Custody。
+  answer: Loader
+  explanation: 涵蓋配對、清算、結算、托管、fail 全流程。
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.2"
+  question: 前台首選通讀本：{Harris} 嘅 Trading and Exchanges（OUP，2002）。
+  answer: Harris
+  explanation: 市場微觀結構實務標準參考。
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.3"
+  question: 書單分三類讀法：{通讀}、工具查閱、理論加餐。
+  answer: 通讀
+  explanation: 一本貼崗位通讀，其餘當 reference。
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: 驗證書目用 {Open Library}；兩個獨立來源搵到先好買。
+  answer: Open Library
+  explanation: 課程七本全部經兩次查證。
+  difficulty: 2
+  tags: [process, concept]
+
+- id: "c.5"
+  question: O'Hara 嘅 Market Microstructure Theory 屬{理論}加餐，唔係必讀。
+  answer: 理論
+  explanation: 大量數學模型，想知「點解」先讀。
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "c.6"
+  question: Hull 嘅 Options, Futures, and Other Derivatives 對應 Module {12} 唔同工具。
+  answer: 12
+  explanation: 衍生工具聖經，當工具書查。
+  difficulty: 1
+  tags: [terminology, process]
+
+- id: "c.7"
+  question: STP（直通式處理）對應 Module {17} 系統地圖。
+  answer: 17
+  explanation: Khanna 嘅書講全自動化系統架構。
+  difficulty: 2
+  tags: [process, terminology]
+
+- id: "c.8"
+  question: 工具書按{場景}查閱，唔係由第 1 頁順序讀。
+  answer: 場景
+  explanation: 冇場景配合，讀完都留唔低。
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "c.9"
+  question: Harris（2002）之後想知暗池、算法交易，加 Laruelle 嘅 Market Microstructure in {Practice}（2013）。
+  answer: Practice
+  explanation: 比 Harris 新、比 O'Hara 易讀。
+  difficulty: 3
+  tags: [terminology, concept]

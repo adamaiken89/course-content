@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: 訂單管理系統縮寫 {OMS}，執行管理系統縮寫 {EMS}。
+  answer: OMS / EMS
+  explanation: OMS 管單嘅一生，EMS 管執行質素。
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.2"
+  question: 前台負責{落單}同{執行}；中台負責配對、風控、合規。
+  answer: 落單 / 執行
+  explanation: 三層制衡：前台做，中台查，後台交割。
+  difficulty: 1
+  tags: [concept, comparison]
+
+- id: "c.3"
+  question: 風險監控屬{中}台——獨立制衡{前台}，自己監察自己冇意義。
+  answer: 中 / 前台
+  explanation: 前台想成交，中台要獨立。
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "c.4"
+  question: OMS 收單先{預檢}（資金、保證金、限制清單），過唔到就唔流去{市場}。
+  answer: 預檢 / 市場
+  explanation: 事前攔截成本最低。
+  difficulty: 2
+  tags: [process, concept]
+
+- id: "c.5"
+  question: 清算交割鏈：中台 → 清算所 {CCP} → {CSD} 貨銀兩訖 → 托管行帳簿。
+  answer: CCP / CSD
+  explanation: 清算所淨額結算，CSD 做貨銀兩訖。
+  difficulty: 1
+  tags: [process, terminology]
+
+- id: "c.6"
+  question: "{CSD} 中央帳簿記托管行戶口；托管行再為{客人}記細帳——兩層帳。"
+  answer: CSD / 客人
+  explanation: 客人唔直接喺 CSD 開戶。
+  difficulty: 2
+  tags: [concept, misconception]
+
+- id: "c.7"
+  question: 成交後第一個更新狀態嘅系統係 {OMS}，中台先有{數}可配。
+  answer: OMS / 數
+  explanation: 狀態「已落單」→「已成交」。
+  difficulty: 2
+  tags: [process, scenario]
+
+- id: "c.8"
+  question: 系統交接靠標準{訊息}（SWIFT、FIX、API）；每個交接點都係{斷鏈}風險。
+  answer: 訊息 / 斷鏈
+  explanation: 斷咗一環單就停。
+  difficulty: 2
+  tags: [concept, terminology]
+
+- id: "c.9"
+  question: 清算所保證係佢同參與者之間；托管行同{客人}嘅帳要自己{對}——兩層對帳唔互替。
+  answer: 客人 / 對
+  explanation: 淨靠清算所保證唔夠。
+  difficulty: 3
+  tags: [misconception, comparison]

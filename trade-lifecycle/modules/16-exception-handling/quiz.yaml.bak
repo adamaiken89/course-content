@@ -1,0 +1,119 @@
+- id: "16.1"
+  question: 以下邊個屬於交易異常？
+  options:
+    a: 正常部分成交
+    b: 手數打錯（10,000 打成 100,000）
+    c: 客人主動取消訂單
+    d: 市場正常波動
+  answer: b
+  explanation: 輸入錯誤（手數、價錢打錯）係常見異常。正常成交、主動取消、市場波動唔係異常。
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "16.2"
+  question: Cancel-correct 流程正確次序係？
+  options:
+    a: Correct → Cancel → 重新落單
+    b: Cancel → Correct → 重新落單
+    c: 重新落單 → Cancel → Correct
+    d: Cancel → 重新落單 → Correct
+  answer: b
+  explanation: 先 cancel 錯誤訂單，再 correct 資料，最後重新落單。
+  difficulty: 2
+  tags: [process, terminology]
+
+- id: "16.3"
+  question: 異常處理流程第一步係？
+  options:
+    a: 結案
+    b: 分類
+    c: 發現
+    d: 升級
+  answer: c
+  explanation: 流程：發現 → 分類 → 跟進 → 結案。發現來源包括對帳、系統警報、客人投訴。
+  difficulty: 1
+  tags: [process, terminology]
+
+- id: "16.4"
+  question: 異常點解要即時處理？
+  options:
+    a: 因為公司規定要快
+    b: 拖得越耐，損失越大（價差擴大、違規風險）
+    c: 因為客人會投訴
+    d: 因為唔處理會冇飯食
+  answer: b
+  explanation: 速度直接影響損失大小。拖耐會放大價差、違規風險、客人不滿。
+  difficulty: 2
+  tags: [concept, comparison]
+
+- id: "16.5"
+  question: 以下邊個異常優先次序最高？
+  options:
+    a: 格式問題
+    b: 非緊急文件錯誤
+    c: 影響結算、大額、客人投訴
+    d: 一般輸入錯誤
+  answer: c
+  explanation: 高優先 = 影響結算、大額、客人投訴。呢啲拖耐會直接影響客人資產。
+  difficulty: 2
+  tags: [concept, scenario]
+
+- id: "16.6"
+  question: SLA 係指？
+  options:
+    a: 異常分類標準
+    b: 處理時限（Service Level Agreement）
+    c: 升級流程
+    d: 記錄格式
+  answer: b
+  explanation: SLA = 處理時限。例如高優先異常 2 小時內處理。
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "16.7"
+  question: 處理異常時發現牽涉合規問題，正確做法係？
+  options:
+    a: 自己解決，唔好張揚
+    b: 升級合規部處理
+    c: 等月底報告先講
+    d: 忽略，當冇事
+  answer: b
+  explanation: 牽涉合規/法律嘅異常要升級合規部。系統性問題升級 IT，超 SLA 升級上級。
+  difficulty: 2
+  tags: [process, scenario]
+
+- id: "16.8"
+  question: 發現異常後只改數，冇記錄、冇通知。問題係？
+  options:
+    a: 冇問題，改咗就得
+    b: 冇記錄就冇辦法防止再犯，冇通知可能影響其他部門
+    c: 太慢了
+    d: 費用太高
+  answer: b
+  explanation: 完整流程：修正 + 記錄 + 通知 + 防再犯。淨改數唔夠。
+  difficulty: 3
+  tags: [scenario, misconception]
+
+- id: "16.9"
+  question: 異常處理速度點樣影響客人信心？
+  options:
+    a: 冇影響
+    b: 快 → 客人信心保得住；慢 → 客人不滿
+    c: 快 → 客人會投訴
+    d: 慢 → 客人會讚
+  answer: b
+  explanation: 速度直接影響客人體驗。快速復原保得住信心。
+  difficulty: 2
+  tags: [concept, comparison]
+
+- id: "16.10"
+  question: 以下邊個唔係異常處理流程步驟？
+  options:
+    a: 發現
+    b: 分類
+    c: 跟進
+    d: 成交
+  answer: d
+  explanation: 異常處理流程：發現 → 分類 → 跟進 → 結案。「成交」係正常流程，唔係異常處理。
+  difficulty: 1
+  tags: [terminology, comparison]

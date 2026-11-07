@@ -1,0 +1,4197 @@
+{
+  "cards": {
+    "trade-lifecycle-01-lifecycle-overview-1.1": {
+      "id": "trade-lifecycle-01-lifecycle-overview-1.1",
+      "questionId": "1.1",
+      "moduleId": "01-lifecycle-overview",
+      "courseId": "trade-lifecycle",
+      "question": "一條交易生命週期嘅六個主要步驟，邊個次序係正確？",
+      "answer": "c. 落單、執行、配對、分配、清算、結算",
+      "explanation": "正確次序係落單 → 執行 → 配對 → 分配 → 清算 → 結算。其他選項都將配對、清算或者分配嘅次序調亂咗。",
+      "tags": [
+        "terminology",
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-01-lifecycle-overview-1.10": {
+      "id": "trade-lifecycle-01-lifecycle-overview-1.10",
+      "questionId": "1.10",
+      "moduleId": "01-lifecycle-overview",
+      "courseId": "trade-lifecycle",
+      "question": "點解要有清算所（CCP），而唔係買賣雙方直接交收？",
+      "answer": "a. 為咗降低對手風險——你嘅對手變成信用高嘅 CCP",
+      "explanation": "直接交收嘅話，你要信對方會找數，對方破產你就損失慘重。CCP 做保證人，將對手風險轉移去 CCP。代價係要交保證金，但換嚟唔使驚對方跳單。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-01-lifecycle-overview-1.2": {
+      "id": "trade-lifecycle-01-lifecycle-overview-1.2",
+      "questionId": "1.2",
+      "moduleId": "01-lifecycle-overview",
+      "courseId": "trade-lifecycle",
+      "question": "Front Office 嘅主要職責係乜？",
+      "answer": "a. 落單、執行",
+      "explanation": "Front Office 負責落單、執行——直接接觸客人同市場嘅「搵食」部門。配對、分配、風控屬 Middle Office；b、d係 Back Office，c 係托管行。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-01-lifecycle-overview-1.3": {
+      "id": "trade-lifecycle-01-lifecycle-overview-1.3",
+      "questionId": "1.3",
+      "moduleId": "01-lifecycle-overview",
+      "courseId": "trade-lifecycle",
+      "question": "清算所（CCP）喺生命週期入面嘅角色係乜？",
+      "answer": "d. 做交易對手嘅保證人，降低對手風險",
+      "explanation": "CCP 嘅核心角色係做「保證人」——你嘅對手變成 CCP，就算對方破產，CCP 都會保證交收。b 係 RM 幫客揀股票，c 係 CSD 記帳，a 係 Back Office 計費。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-01-lifecycle-overview-1.4": {
+      "id": "trade-lifecycle-01-lifecycle-overview-1.4",
+      "questionId": "1.4",
+      "moduleId": "01-lifecycle-overview",
+      "courseId": "trade-lifecycle",
+      "question": "陳生朝早落單買股票，下晝成交，月尾收到月結單有記錄。由落單到月結單，邊個部門負責出月結單？",
+      "answer": "c. Back Office",
+      "explanation": "月結單係 Back Office 對完帳之後出嘅報告。Front Office 負責落單執行，Middle Office 負責合規風控。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-01-lifecycle-overview-1.5": {
+      "id": "trade-lifecycle-01-lifecycle-overview-1.5",
+      "questionId": "1.5",
+      "moduleId": "01-lifecycle-overview",
+      "courseId": "trade-lifecycle",
+      "question": "點解交易要有「配對」（matching）呢個步驟？",
+      "answer": "a. 確認買賣雙方資料一致，成交真係成立",
+      "explanation": "配對係要確保你買嘅份數、價位同對方賣嘅一致，確認呢張成交真係成立。未配對成功嘅交易叫做 unmatched trade，有機會要取消或者更正。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-01-lifecycle-overview-1.6": {
+      "id": "trade-lifecycle-01-lifecycle-overview-1.6",
+      "questionId": "1.6",
+      "moduleId": "01-lifecycle-overview",
+      "courseId": "trade-lifecycle",
+      "question": "私人銀行嘅客戶經理（RM）屬於邊個部門？",
+      "answer": "b. Front Office",
+      "explanation": "RM 直接接觸客人、幫客人落單，屬於 Front Office。佢唔會自己對數或者過戶——嗰啲係 Middle/Back Office 嘅工作。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-01-lifecycle-overview-1.7": {
+      "id": "trade-lifecycle-01-lifecycle-overview-1.7",
+      "questionId": "1.7",
+      "moduleId": "01-lifecycle-overview",
+      "courseId": "trade-lifecycle",
+      "question": "假設 Back Office 罷工一日，最有可能出現咩情況？",
+      "answer": "d. 入帳、對帳、出月結單延誤",
+      "explanation": "入帳、對帳、出月結單全部係 Back Office 工作。Front Office 罷工先至會令客人落唔到單；交易所同清算所係獨立機構，唔受券商 Back Office 影響。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-01-lifecycle-overview-1.8": {
+      "id": "trade-lifecycle-01-lifecycle-overview-1.8",
+      "questionId": "1.8",
+      "moduleId": "01-lifecycle-overview",
+      "courseId": "trade-lifecycle",
+      "question": "「成交咗就等於入咗帳」呢句說話，邊個講法正確？",
+      "answer": "b. 錯誤，成交同入帳係兩個步驟，香港股票 T+2 先完成過戶",
+      "explanation": "成交（execution）只係搵到對手，入帳（settlement）係之後嘅事。香港股票 T+2，即係最快後日先至真正過戶。d 錯，香港股票唔係 T+0。",
+      "tags": [
+        "concept",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-01-lifecycle-overview-1.9": {
+      "id": "trade-lifecycle-01-lifecycle-overview-1.9",
+      "questionId": "1.9",
+      "moduleId": "01-lifecycle-overview",
+      "courseId": "trade-lifecycle",
+      "question": "你 App 見到嘅「成交」畫面，對應生命週期邊個環節？",
+      "answer": "b. 執行",
+      "explanation": "App 顯示「成交」代表執行（execution）完成，即係搵到對手。之後仲有配對、分配、清算、結算幾個環節，全部係你見唔到嘅後台工作。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-02-account-types-2.1": {
+      "id": "trade-lifecycle-02-account-types-2.1",
+      "questionId": "2.1",
+      "moduleId": "02-account-types",
+      "courseId": "trade-lifecycle",
+      "question": "現金戶口（cash account）同保證金戶口（margin account）最根本嘅分別係乜？",
+      "answer": "c. 現金戶口只可以用戶口入面嘅錢，保證金戶口可以借款買嘢",
+      "explanation": "現金戶口嘅購買力等於現金餘額；保證金戶口可以向銀行借款（孖展）放大購買力，但代價係有 margin call 風險。d 錯，保證金戶口風險更大。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-02-account-types-2.2": {
+      "id": "trade-lifecycle-02-account-types-2.2",
+      "questionId": "2.2",
+      "moduleId": "02-account-types",
+      "courseId": "trade-lifecycle",
+      "question": "你有現金戶口，入面 $200,000，想買 $300,000 股票。銀行會點做？",
+      "answer": "d. 拒絕你張單，或者只准你買 $200,000",
+      "explanation": "現金戶口唔可以借錢，購買力就係現金餘額。想買更多，要入多啲錢或者開保證金戶口。",
+      "tags": [
+        "application"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-02-account-types-2.3": {
+      "id": "trade-lifecycle-02-account-types-2.3",
+      "questionId": "2.3",
+      "moduleId": "02-account-types",
+      "courseId": "trade-lifecycle",
+      "question": "全權委託（discretionary）戶口嘅主要特徵係乜？",
+      "answer": "a. 銀行按投資目標自主交易，客人唔使逐筆批准",
+      "explanation": "全權委託即係銀行代客決策，按簽咗嘅投資目標自主落單。主要收費係 all-in 管理費（AUM fee，通常包托管）。d 係 advisory，c 係 self-directed 嘅極端版。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-02-account-types-2.4": {
+      "id": "trade-lifecycle-02-account-types-2.4",
+      "questionId": "2.4",
+      "moduleId": "02-account-types",
+      "courseId": "trade-lifecycle",
+      "question": "保證金戶口買 $1,000,000 股票（自己 $500,000 + 借 $500,000），股價下跌時你最怕發生咩事？",
+      "answer": "c. 收到 margin call，要補錢或者被強制沽貨",
+      "explanation": "股價跌穿維持保證金率，銀行會追收孖展（margin call），要你即刻補錢或者自動沽貨。呢個風險喺你最唔想沽嘅時候出現。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-02-account-types-2.5": {
+      "id": "trade-lifecycle-02-account-types-2.5",
+      "questionId": "2.5",
+      "moduleId": "02-account-types",
+      "courseId": "trade-lifecycle",
+      "question": "複合戶口（omnibus account）係乜？",
+      "answer": "b. 銀行以自己名義喺 CSD 開一個總戶口，內部再記帳分邊個客揸幾多",
+      "explanation": "真戶口開喺 CSD/托管行、以銀行名義；客人 sub-account 只係銀行內部記帳，唔係市場戶口。法律上啲貨仲係客人嘅，但正因為係記帳，對帳特別關鍵。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-02-account-types-2.6": {
+      "id": "trade-lifecycle-02-account-types-2.6",
+      "questionId": "2.6",
+      "moduleId": "02-account-types",
+      "courseId": "trade-lifecycle",
+      "question": "諮詢服務（advisory）同全權委託（discretionary）最大嘅分別係乜？",
+      "answer": "a. advisory 客人逐筆批准，discretionary 銀行自主決定",
+      "explanation": "advisory 係銀行建議、客人逐筆批准（收佣金）；discretionary 係銀行自主決定（收 all-in 管理費，多數包托管）。兩者「邊個話事」同收費結構都唔同。",
+      "tags": [
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-02-account-types-2.7": {
+      "id": "trade-lifecycle-02-account-types-2.7",
+      "questionId": "2.7",
+      "moduleId": "02-account-types",
+      "courseId": "trade-lifecycle",
+      "question": "全權委託戶口嘅客人喺月結單見到一筆自己冇印象嘅交易，正確反應係乜？",
+      "answer": "a. 睇清楚係咪符合投資目標，唔符合就要求調整策略",
+      "explanation": "全權委託嘅定義就係銀行唔使逐筆批准。客人應該檢查交易係咪符合簽咗嘅投資目標，唔符合先至要求調整或者轉戶口類型。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-02-account-types-2.8": {
+      "id": "trade-lifecycle-02-account-types-2.8",
+      "questionId": "2.8",
+      "moduleId": "02-account-types",
+      "courseId": "trade-lifecycle",
+      "question": "帳戶種類點樣影響生命週期嘅「落單」環節？",
+      "answer": "b. 全權委託戶口由銀行發起落單，客人冇機會喺落單前把關",
+      "explanation": "帳戶種類決定邊個發起落單。全權委託由銀行系統自動執行，所以合規（suitability）檢查特別重要——要確保方案適合呢個客人。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-02-account-types-2.9": {
+      "id": "trade-lifecycle-02-account-types-2.9",
+      "questionId": "2.9",
+      "moduleId": "02-account-types",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個唔係帳戶種類對交易嘅影響？",
+      "answer": "d. 股票嘅基本面",
+      "explanation": "帳戶種類影響購買力、落單方式、結算、費用、合規，但完全唔影響股票本身嘅基本面（盈利、估值等）。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-03-order-basics-3.1": {
+      "id": "trade-lifecycle-03-order-basics-3.1",
+      "questionId": "3.1",
+      "moduleId": "03-order-basics",
+      "courseId": "trade-lifecycle",
+      "question": "市價單（market order）嘅主要特徵係乜？",
+      "answer": "a. 近乎一定成交，但唔保證價位",
+      "explanation": "市價單即刻入隊、用當前最佳可得價——正常流動性下近乎一定成交，但價會漂。d 錯，唔保證價位；c 錯，冇人「保證」全數。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-03-order-basics-3.10": {
+      "id": "trade-lifecycle-03-order-basics-3.10",
+      "questionId": "3.10",
+      "moduleId": "03-order-basics",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個屬性唔會影響後續嘅配對同結算？",
+      "answer": "d. 你落單時用嘅手機型號",
+      "explanation": "數量決定過幾多貨、價位決定金額影響費用、戶口決定邊個承擔——全部影響後續環節。手機型號完全唔影響交易內容。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-03-order-basics-3.2": {
+      "id": "trade-lifecycle-03-order-basics-3.2",
+      "questionId": "3.2",
+      "moduleId": "03-order-basics",
+      "courseId": "trade-lifecycle",
+      "question": "你落限價單 $64 買匯豐，全日最低見到 $63.8。張單成交咗未？咩價？",
+      "answer": "b. 成交咗，因為市價跌穿 $64",
+      "explanation": "限價買單喺市價等於或者低過你嘅價位時觸發。全日有 $63.8 低位，所以成交咗，而且可能喺 $64 或者更好嘅價。c 錯，可能成交喺更好價。",
+      "tags": [
+        "application"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-03-order-basics-3.3": {
+      "id": "trade-lifecycle-03-order-basics-3.3",
+      "questionId": "3.3",
+      "moduleId": "03-order-basics",
+      "courseId": "trade-lifecycle",
+      "question": "止蝕單（stop order）點解唔可以保證你 $60 止蝕？",
+      "answer": "c. 因為觸發後變市價單，大跌時滑價可能令你成交喺更低價",
+      "explanation": "止蝕單觸發後即刻變市價單。如果市價一口氣跌穿 $60 落到 $59，你會喺 $59 附近成交，唔係 $60。大跌時流動性差，滑價更大。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-03-order-basics-3.4": {
+      "id": "trade-lifecycle-03-order-basics-3.4",
+      "questionId": "3.4",
+      "moduleId": "03-order-basics",
+      "courseId": "trade-lifecycle",
+      "question": "IOC（Immediate or Cancel）TIF 嘅意思係乜？",
+      "answer": "b. 搵到幾多成交幾多，剩低即刻取消",
+      "explanation": "IOC 係「即刻成交或者取消」——成交得幾多得幾多，成交唔到嘅剩額即刻取消。a 描述嘅係 FOK（Fill or Kill）。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-03-order-basics-3.5": {
+      "id": "trade-lifecycle-03-order-basics-3.5",
+      "questionId": "3.5",
+      "moduleId": "03-order-basics",
+      "courseId": "trade-lifecycle",
+      "question": "GTC（Good Till Cancel）訂單嘅命運係乜？",
+      "answer": "a. 擺喺度直到成交或者手動取消",
+      "explanation": "GTC 係「直到取消都有效」——一直擺喺市場等人成交，唔成交唔走，要手動 cancel 先會消失。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-03-order-basics-3.6": {
+      "id": "trade-lifecycle-03-order-basics-3.6",
+      "questionId": "3.6",
+      "moduleId": "03-order-basics",
+      "courseId": "trade-lifecycle",
+      "question": "你用 GTC 限價單，三日後先成交。結算周期 T+2 由邊日起計？",
+      "answer": "b. 成交日（trade date）",
+      "explanation": "生命週期嘅時間軸由成交嗰一刻開始計。T+2 係由 trade date 起計 2 個工作天，唔係落單日。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-03-order-basics-3.7": {
+      "id": "trade-lifecycle-03-order-basics-3.7",
+      "questionId": "3.7",
+      "moduleId": "03-order-basics",
+      "courseId": "trade-lifecycle",
+      "question": "你落單買 1,000 股，App 顯示「部分成交 600 股」，用嘅係 GTC。剩低 400 股會點？",
+      "answer": "d. 繼續喺市場等成交",
+      "explanation": "部分成交（partial fill）係正常。GTC 嘅剩額會繼續擺喺市場等。想即刻取消剩低部分，要手動 cancel。b 錯，已成交嘅 600 股唔會返還。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-03-order-basics-3.8": {
+      "id": "trade-lifecycle-03-order-basics-3.8",
+      "questionId": "3.8",
+      "moduleId": "03-order-basics",
+      "courseId": "trade-lifecycle",
+      "question": "你想即刻追貨，現價急升中。最適合用邊種訂單？",
+      "answer": "a. 市價單，近乎一定成交",
+      "explanation": "急住成交嘅話，成交優先於價位——用市價單。限價單追唔到急升嘅價，因為佢只喺指定價或更低先成交。",
+      "tags": [
+        "application"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-03-order-basics-3.9": {
+      "id": "trade-lifecycle-03-order-basics-3.9",
+      "questionId": "3.9",
+      "moduleId": "03-order-basics",
+      "courseId": "trade-lifecycle",
+      "question": "FOK（Fill or Kill）同 IOC 最大嘅分別係乜？",
+      "answer": "c. FOK 要就全要，唔係就全部取消；IOC 搵到幾多成交幾多",
+      "explanation": "FOK 要求全部數量一次過成交，唔得就成張取消。IOC 允許部分成交，剩額即刻取消。d 錯，兩者都唔保證成交。",
+      "tags": [
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-04-order-placement-4.1": {
+      "id": "trade-lifecycle-04-order-placement-4.1",
+      "questionId": "4.1",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個渠道落單速度通常最慢？",
+      "answer": "c. 打電話俾 RM",
+      "explanation": "電話落單要等 RM 接聽、理解、輸入系統，所以最慢。OMS 最快，App/網頁次之。",
+      "tags": [
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. OMS 系統自動落單",
+        "b. 手機 App 自己撳",
+        "c. 打電話俾 RM",
+        "d. 網頁版交易平台"
+      ]
+    },
+    "trade-lifecycle-04-order-placement-4.2": {
+      "id": "trade-lifecycle-04-order-placement-4.2",
+      "questionId": "4.2",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "你嘅單由 RM 受指示代你行事，跟住經紀搵市場對手成交。呢個係邊種中介模式？",
+      "answer": "c. Agency 代理——幫你搵對手，唔持倉",
+      "explanation": "Agency 模式幫你搵對手、唔持倉，賺佣金/手續費，利益同你一致。Broker 執行一單、Agent 受託行事都屬 agency。Principal 先係自己做你對手（dealer 賺 spread）。",
+      "tags": [
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. Principal 自營——交易所自己做對手",
+        "b. Principal 自營——dealer 自己做你對手",
+        "c. Agency 代理——幫你搵對手，唔持倉",
+        "d. 三者冇分別，都係收佣金"
+      ]
+    },
+    "trade-lifecycle-04-order-placement-4.3": {
+      "id": "trade-lifecycle-04-order-placement-4.3",
+      "questionId": "4.3",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "私人銀行 RM 幫客人電話落單，RM 屬於邊個部門？呢個角色點影響生命週期？",
+      "answer": "a. Front Office，係落單環節嘅發起人",
+      "explanation": "RM 屬於 Front Office，將客人意圖轉化成正式訂單。佢嘅準確度直接影響之後每一步——聽錯數量，後面全部錯。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. Front Office，係落單環節嘅發起人",
+        "b. Middle Office，負責合規",
+        "c. 交易所，負責撮合",
+        "d. Back Office，負責結算"
+      ]
+    },
+    "trade-lifecycle-04-order-placement-4.4": {
+      "id": "trade-lifecycle-04-order-placement-4.4",
+      "questionId": "4.4",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "OMS（Order Management System）最適合邊類用戶？",
+      "answer": "d. 機構、基金經理，需要快速自動執行",
+      "explanation": "OMS 係俾機構用嘅系統，可以根據預設規則自動搵最佳執行，速度最快。新手通常用電話或者 App。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 只想收息嘅退休人士",
+        "b. 從未交易過嘅人",
+        "c. 唔熟投資嘅新手",
+        "d. 機構、基金經理，需要快速自動執行"
+      ]
+    },
+    "trade-lifecycle-04-order-placement-4.5": {
+      "id": "trade-lifecycle-04-order-placement-4.5",
+      "questionId": "4.5",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個唔係下單渠道對生命週期嘅影響？",
+      "answer": "a. 股票嘅盈利前景",
+      "explanation": "渠道影響速度、錯誤風險、成本，但完全唔影響股票本身嘅盈利前景。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 股票嘅盈利前景",
+        "b. 落單速度",
+        "c. 人為錯誤風險（電話落單聽錯數）",
+        "d. 執行成本（佣金、系統費）"
+      ]
+    },
+    "trade-lifecycle-04-order-placement-4.6": {
+      "id": "trade-lifecycle-04-order-placement-4.6",
+      "questionId": "4.6",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "同一張大單，邊種做法最能減少資訊洩漏？",
+      "answer": "b. 用 OMS 拆單按預設規則分批執行",
+      "explanation": "OMS 拆單可以分批、控制時間同價位，減少大單意圖俾市場見到；電話/公開渠道更容易洩漏。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 打電話大聲同 RM 講全名全數量",
+        "b. 用 OMS 拆單按預設規則分批執行",
+        "c. 直接喺 App 一次過掃入",
+        "d. 喺社交媒體講出自己嘅交易計劃"
+      ]
+    },
+    "trade-lifecycle-04-order-placement-4.7": {
+      "id": "trade-lifecycle-04-order-placement-4.7",
+      "questionId": "4.7",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "App 顯示「做市商報價」，你同做市商直接成交，唔係上交易所。呢個係邊種模式？最大問題係乜？",
+      "answer": "d. Principal 自營——佢利益可能同你相反",
+      "explanation": "做市商報價背後係 principal：dealer 自己持倉做你對手賺 spread，利益可能相反。佣金計費單先係 agency。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. Principal 自營——交易所會罰做市商",
+        "b. Agency 代理——呢個一定係詐騙",
+        "c. Agency 代理——冇問題，利益同你一致",
+        "d. Principal 自營——佢利益可能同你相反"
+      ]
+    },
+    "trade-lifecycle-04-order-placement-4.8": {
+      "id": "trade-lifecycle-04-order-placement-4.8",
+      "questionId": "4.8",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "電話渠道落單，RM 聽錯數量買多咗。正確嘅防範係乜？",
+      "answer": "b. RM 落單後覆述確認，客人核對先送出",
+      "explanation": "人為錯誤係電話渠道已知風險，標準做法係覆述確認（數量、價位、方向）留低紀錄。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 完全禁止電話落單",
+        "b. RM 落單後覆述確認，客人核對先送出",
+        "c. 交易所會自動糾正",
+        "d. 只可以怪客人自己唔小心"
+      ]
+    },
+    "trade-lifecycle-04-order-placement-c.1": {
+      "id": "trade-lifecycle-04-order-placement-c.1",
+      "questionId": "c.1",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "三種主要下單渠道：{電話}（俾 RM 聽）、{e-Platform}（自己撳 App）、{OMS}（系統自動）。",
+      "answer": "電話 / e-Platform / OMS",
+      "explanation": "電話慢但有人跟，e-Platform 快但自己負責，OMS 最快但要預設規則。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-04-order-placement-c.2": {
+      "id": "trade-lifecycle-04-order-placement-c.2",
+      "questionId": "c.2",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "中介兩種模式：{agency} 代理幫你搵對手（broker/agent，賺佣金）；{principal} 自營自己做你對手（dealer，賺 spread）。",
+      "answer": "agency / principal",
+      "explanation": "分界：幫你搵對手 = agency，利益同你一致；自己做你對手 = principal，利益可能相反。",
+      "tags": [
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-04-order-placement-c.3": {
+      "id": "trade-lifecycle-04-order-placement-c.3",
+      "questionId": "c.3",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "私人銀行嘅 {RM}（客戶經理）屬於 {Front Office}，係落單環節嘅發起人。",
+      "answer": "RM / Front Office",
+      "explanation": "RM 將客人意圖轉化成正式訂單。佢嘅準確度直接影響之後每一步。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-04-order-placement-c.4": {
+      "id": "trade-lifecycle-04-order-placement-c.4",
+      "questionId": "c.4",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "渠道取捨：{速度}、控制權、人為錯誤風險、成本——冇完美渠道，只有啱你交易風格嘅渠道。",
+      "answer": "速度",
+      "explanation": "Phone 慢但有人跟；e-Platform 快但自己負責；OMS 最快但要預設規則。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-04-order-placement-c.5": {
+      "id": "trade-lifecycle-04-order-placement-c.5",
+      "questionId": "c.5",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "OMS（{Order Management System}）最適合機構用戶，可以根據預設規則自動搵最佳執行。",
+      "answer": "Order Management System",
+      "explanation": "OMS 速度快，適合基金經理等需要快速自動執行嘅機構。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-04-order-placement-c.6": {
+      "id": "trade-lifecycle-04-order-placement-c.6",
+      "questionId": "c.6",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "電話落單主要風險係 {人為錯誤}（聽錯數量），所以 RM 落單後要覆述確認。",
+      "answer": "人為錯誤",
+      "explanation": "e-Platform 風險係自己落錯冇人把關；OMS 風險係規則設錯會批量出錯。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-04-order-placement-c.7": {
+      "id": "trade-lifecycle-04-order-placement-c.7",
+      "questionId": "c.7",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "大單用 OMS {拆單} 分批執行，可以減少資訊洩漏同市場衝擊。",
+      "answer": "拆單",
+      "explanation": "一次過掃入會俾人見到意圖；拆細慢慢執行減低被跟單嘅風險。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-04-order-placement-c.8": {
+      "id": "trade-lifecycle-04-order-placement-c.8",
+      "questionId": "c.8",
+      "moduleId": "04-order-placement",
+      "courseId": "trade-lifecycle",
+      "question": "Agency 模式下，張單會上 {交易所} 撮合；Principal 模式下，係同做市商 {直接成交}，可能唔上交易所。",
+      "answer": "交易所 / 直接成交",
+      "explanation": "兩種模式嘅配對、結算路徑會唔同——落單前要知自己張單行邊條路。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-05-execution-5.1": {
+      "id": "trade-lifecycle-05-execution-5.1",
+      "questionId": "5.1",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "執行（execution）環節由邊個負責？",
+      "answer": "d. 經紀/交易台",
+      "explanation": "執行係由經紀或交易台負責，將客人嘅意圖轉化成市場上真係成交嘅事實。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 清算所",
+        "b. 托管行",
+        "c. 客人自己",
+        "d. 經紀/交易台"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.10": {
+      "id": "trade-lifecycle-05-execution-5.10",
+      "questionId": "5.10",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "收市競價（closing auction）嘅主要目的係乜？",
+      "answer": "b. 搵一個公平嘅收市價，俾基金估值同指數計算用",
+      "explanation": "如果用最後一筆零星交易做收市價，好容易俾人操控。統一競價搵出嘅價比較公平。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 讓客人快啲收工",
+        "b. 搵一個公平嘅收市價，俾基金估值同指數計算用",
+        "c. 減少交易佣金",
+        "d. 減少印花稅"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.11": {
+      "id": "trade-lifecycle-05-execution-5.11",
+      "questionId": "5.11",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "你發現 App 顯示嘅買入價永遠比交易所貴 $0.05，同時見到「做市商報價」字樣。正確解讀係乜？",
+      "answer": "a. 做市商提供流動性要賺 spread，係正常成本",
+      "explanation": "做市商模式下，報價同交易所有差距係正常——做市商賺 spread 做回報。想避免可以揀交易所撮合渠道，但可能要等成交。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 做市商提供流動性要賺 spread，係正常成本",
+        "b. 系統出錯",
+        "c. 交易所報價錯誤",
+        "d. 券商食水深，應該投訴"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.12": {
+      "id": "trade-lifecycle-05-execution-5.12",
+      "questionId": "5.12",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "急市中你用市價單，成交價比落單瞬間貴咗 $0.02。呢個係咪滑價？",
+      "answer": "c. 唔係，係市價單正常行為——你用當前最佳賣出價成交",
+      "explanation": "市價單用「當前最佳價」成交，急市中價位一直變，所以成交價同你落單瞬間嘅價有差距係正常。滑價係指預期價同實際價嘅差距，急市時無可避免。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 唔係，因為市價單保證用最後成交價",
+        "b. 係，滑價好嚴重",
+        "c. 唔係，係市價單正常行為——你用當前最佳賣出價成交",
+        "d. 係，因為券商故意食你價"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.13": {
+      "id": "trade-lifecycle-05-execution-5.13",
+      "questionId": "5.13",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "你落市價單買 50,000 股冷門股，成交後發現價比預期貴 2%。最可能嘅原因係乜？",
+      "answer": "d. 市場衝擊——你張單掃走晒啲平貨，價即刻飆升",
+      "explanation": "冷門股流動性差，大單掃貨會令價位急升，之後嘅貨越嚟越貴。呢個就係市場衝擊（market impact）。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 交易所手續費提高",
+        "b. 印花稅增加",
+        "c. 券商故意食你價",
+        "d. 市場衝擊——你張單掃走晒啲平貨，價即刻飆升"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.14": {
+      "id": "trade-lifecycle-05-execution-5.14",
+      "questionId": "5.14",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "TCA（Transaction Cost Analysis）係用嚟做咩？",
+      "answer": "d. 分析執行質素——我哋嘅執行貴唔貴",
+      "explanation": "TCA 分析滑價、成交率、時間、市場衝擊等指標，評估執行係咪「着數」。機構常用。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 計算印花稅",
+        "b. 預測股價",
+        "c. 計算佣金",
+        "d. 分析執行質素——我哋嘅執行貴唔貴"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.15": {
+      "id": "trade-lifecycle-05-execution-5.15",
+      "questionId": "5.15",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "執行質素嘅四個常見指標，邊個唔係？",
+      "answer": "b. 公司市盈率（P/E）",
+      "explanation": "P/E 係股票估值指標，同執行質素完全無關。執行質素指標：滑價、成交率、時間、市場衝擊。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 市場衝擊（market impact）",
+        "b. 公司市盈率（P/E）",
+        "c. 滑價（slippage）",
+        "d. 成交率（fill rate）"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.16": {
+      "id": "trade-lifecycle-05-execution-5.16",
+      "questionId": "5.16",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "你嘅限價單只成交咗 30%，剩低 70% 到收市都冇人理。你決定「以後唔用限價單」。呢個決定有咩問題？",
+      "answer": "c. 混淆咗「限價單唔啱用」同「你揀錯價位」——問題係價位太進取，唔係限價單本身",
+      "explanation": "限價單嘅設計就係「唔到價唔成交」。價位設得太低，自然成交唔到。正確反思係價位係咪脫離市價太遠。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 限價單只可以喺開市用",
+        "b. 冇問題，限價單好難用",
+        "c. 混淆咗「限價單唔啱用」同「你揀錯價位」——問題係價位太進取，唔係限價單本身",
+        "d. 限價單唔可以用嚟沽"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.17": {
+      "id": "trade-lifecycle-05-execution-5.17",
+      "questionId": "5.17",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "執行環節之後，生命週期嘅下一個步驟係乜？",
+      "answer": "c. 配對（matching）",
+      "explanation": "執行之後係配對——確認買賣雙方資料一致、成交真係成立。之後先至有分配、清算、結算。",
+      "tags": [
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 結算",
+        "b. 清算",
+        "c. 配對（matching）",
+        "d. 入帳"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.2": {
+      "id": "trade-lifecycle-05-execution-5.2",
+      "questionId": "5.2",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "你買入股票嗰一刻，用嘅係邊個價？",
+      "answer": "b. Ask 賣出價",
+      "explanation": "想買貨，你要用市場嘅 ask 價（有人願意賣俾你嘅價）。想沽貨先至用 bid 價。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. Bid 買入價",
+        "b. Ask 賣出價",
+        "c. 最後成交價（last price）",
+        "d. 開市價"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.3": {
+      "id": "trade-lifecycle-05-execution-5.3",
+      "questionId": "5.3",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "Bid-ask spread 係 $0.05，你買入後即刻帳面要升幾多先回本？",
+      "answer": "d. $0.05",
+      "explanation": "你用 ask 買入、用 bid 沽出，spread $0.05 就係你嘅入場費。帳面要升超過 $0.05 先回本（假設 spread 唔變）。",
+      "tags": [
+        "calculation"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. $0.10",
+        "b. 要升 5%",
+        "c. $0.01",
+        "d. $0.05"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.4": {
+      "id": "trade-lifecycle-05-execution-5.4",
+      "questionId": "5.4",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "冷門股（交易少少嘅股票）嘅 spread 通常會點？",
+      "answer": "a. 比藍籌股大，因為做市商風險高",
+      "explanation": "冷門股交易頻繁度低、難以對沖，做市商要求更大 spread 先肯提供流動性。藍籌股交易頻繁，spread 細。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 比藍籌股大，因為做市商風險高",
+        "b. 比藍籌股細，因為冇人爭",
+        "c. 同藍籌股一樣",
+        "d. 一定係零"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.5": {
+      "id": "trade-lifecycle-05-execution-5.5",
+      "questionId": "5.5",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "Order routing 三條主要路徑係？",
+      "answer": "a. 交易所、做市商、暗池",
+      "explanation": "張單可以經交易所公開撮合（MM 報價都屬呢條）、同做市商/券商以 principal 直接 fill 唔上交易所、或者拆去暗池減少資訊洩漏。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 交易所、做市商、暗池",
+        "b. 買入、賣出、持有",
+        "c. 開市、連續、收市",
+        "d. 電話、App、OMS"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.6": {
+      "id": "trade-lifecycle-05-execution-5.6",
+      "questionId": "5.6",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "大基金要沽 200 萬股，點解通常唔直接掃交易所？",
+      "answer": "c. 公開顯示大賣壓，其他人跟住沽，市場衝擊大",
+      "explanation": "直接掃會暴露意圖，引發跟單同價格下跌。拆去暗池或者拆細執行可以減少洩漏同衝擊。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 大單一定成交唔到",
+        "b. 交易所唔收大單",
+        "c. 公開顯示大賣壓，其他人跟住沽，市場衝擊大",
+        "d. 交易所手續費特別貴"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.7": {
+      "id": "trade-lifecycle-05-execution-5.7",
+      "questionId": "5.7",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "連續交易（continuous trading）同集體競價（auction）最大嘅分別係乜？",
+      "answer": "b. 連續交易即刻撮合；競價喺特定時刻統一撮合",
+      "explanation": "連續交易喺開市時段一路有人就即刻撮合；競價喺開市/收市等特定時刻收集所有單統一搵平衡價。",
+      "tags": [
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 連續交易喺收市後進行",
+        "b. 連續交易即刻撮合；競價喺特定時刻統一撮合",
+        "c. 兩者冇分別",
+        "d. 競價只可以用嚟買，連續交易只可以用嚟沽"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.8": {
+      "id": "trade-lifecycle-05-execution-5.8",
+      "questionId": "5.8",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "你落單 10,000 股，市場即刻只成交咗 6,000 股。呢個情況叫做乜？",
+      "answer": "a. 部分成交（partial fill）",
+      "explanation": "部分成交係正常現象——流動性有限，市場冇咁多貨即刻俾你。剩低部分會跟 TIF 走。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 部分成交（partial fill）",
+        "b. 訂單被取消",
+        "c. 配對失敗",
+        "d. 全部成交（full fill）"
+      ]
+    },
+    "trade-lifecycle-05-execution-5.9": {
+      "id": "trade-lifecycle-05-execution-5.9",
+      "questionId": "5.9",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "香港股票開市前有 pre-opening session，目的係乜？",
+      "answer": "a. 累積隔夜單，用競價一次過搵平衡價，避免開市瞬間亂跳",
+      "explanation": "開市前累積咗好多隔夜單，用競價統一撮合搵最多人接受嘅價，避免開市瞬間價位亂跳。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New",
+      "options": [
+        "a. 累積隔夜單，用競價一次過搵平衡價，避免開市瞬間亂跳",
+        "b. 讓券商休息",
+        "c. 計算佣金",
+        "d. 等客人瞓醒"
+      ]
+    },
+    "trade-lifecycle-05-execution-c.1": {
+      "id": "trade-lifecycle-05-execution-c.1",
+      "questionId": "c.1",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "執行（{execution}）係生命週期第二步，由 {經紀} 或者交易台負責，將意圖變成成交事實。",
+      "answer": "execution / 經紀",
+      "explanation": "執行嘅核心問題：用咩價、幾快、成交幾多。呢三個答案決定之後配對、結算見到嘅數字。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-05-execution-c.10": {
+      "id": "trade-lifecycle-05-execution-c.10",
+      "questionId": "c.10",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "香港股票開市前嘅 {pre-opening session}（9:00-9:30）用競價搵平衡價，避免開市瞬間亂跳。",
+      "answer": "pre-opening session",
+      "explanation": "開市前累積咗隔夜單，競價統一撮合搵最多人接受嘅價。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-05-execution-c.11": {
+      "id": "trade-lifecycle-05-execution-c.11",
+      "questionId": "c.11",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "收市競價（{closing auction}）嘅目的係搵公平嘅收市價，俾基金估值同指數計算用。",
+      "answer": "closing auction",
+      "explanation": "用最後一筆零星交易做收市價好容易被操控，統一競價更公平。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-05-execution-c.12": {
+      "id": "trade-lifecycle-05-execution-c.12",
+      "questionId": "c.12",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "大單喺冷門股會造成 {市場衝擊}（market impact）——掃走晒啲平貨，價即刻飆升。",
+      "answer": "市場衝擊",
+      "explanation": "所以大單通常會拆細慢慢執行（TWAP/VWAP 算法），減少對價位嘅衝擊。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-05-execution-c.13": {
+      "id": "trade-lifecycle-05-execution-c.13",
+      "questionId": "c.13",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "執行質素嘅四個指標：{滑價}（slippage）、{成交率}（fill rate）、{時間}、{市場衝擊}。",
+      "answer": "滑價 / 成交率 / 時間 / 市場衝擊",
+      "explanation": "TCA（Transaction Cost Analysis）用呢啲指標評估執行係咪着數。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-05-execution-c.14": {
+      "id": "trade-lifecycle-05-execution-c.14",
+      "questionId": "c.14",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "市價單用 {當前最佳價} 成交，急市中價位一直變，所以成交價同落單瞬間價有差距係正常。",
+      "answer": "當前最佳價",
+      "explanation": "市價單用當前最佳價成交，唔保證價位。急市時差距會更大。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-05-execution-c.15": {
+      "id": "trade-lifecycle-05-execution-c.15",
+      "questionId": "c.15",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "執行之後，生命週期嘅下一個步驟係 {配對}（matching）——確認成交真係成立。",
+      "answer": "配對",
+      "explanation": "執行只係搵到對手，配對先至確認買賣雙方資料一致、交易正式成立。",
+      "tags": [
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-05-execution-c.2": {
+      "id": "trade-lifecycle-05-execution-c.2",
+      "questionId": "c.2",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "bid-ask spread 係 {買入價}（bid）同 {賣出價}（ask）嘅差額，係你嘅隱形交易成本。",
+      "answer": "買入價 / 賣出價",
+      "explanation": "買入用 ask、沽出用 bid，一買一沽即刻蝕 spread。帳面要升超過 spread 先回本。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-05-execution-c.3": {
+      "id": "trade-lifecycle-05-execution-c.3",
+      "questionId": "c.3",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "冷門股嘅 spread 通常比藍籌股 {大}，因為做市商風險高、難對沖。",
+      "answer": "大",
+      "explanation": "交易頻繁嘅藍籌股容易對沖，spread 細；冷門股相反。spread 寬 = 流動性差。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-05-execution-c.4": {
+      "id": "trade-lifecycle-05-execution-c.4",
+      "questionId": "c.4",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "Order routing 三條路：{交易所}（公開撮合）、做市商（principal 直接成交，{唔上交易所}）、{暗池}（大單細聲走）。",
+      "answer": "交易所 / 唔上交易所 / 暗池",
+      "explanation": "交易所透明但大單會俾人見到；內部化快但差價可能闊、利益可能相反；暗池減洩漏但流動性未必夠。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-05-execution-c.5": {
+      "id": "trade-lifecycle-05-execution-c.5",
+      "questionId": "c.5",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "做市商報價同交易所撮合價有 {差距}，因為做市商提供流動性要賺 spread。",
+      "answer": "差距",
+      "explanation": "呢個唔係「食水深」，係做市商模式嘅正常成本。想避免可以揀交易所撮合渠道。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-05-execution-c.6": {
+      "id": "trade-lifecycle-05-execution-c.6",
+      "questionId": "c.6",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "急市中市價單成交價同落單瞬間價有差距，係 {正常行為}，唔算滑價。",
+      "answer": "正常行為",
+      "explanation": "市價單用當前最佳價成交，急市中價位一直變。滑價係指預期價同實際價嘅差距。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-05-execution-c.7": {
+      "id": "trade-lifecycle-05-execution-c.7",
+      "questionId": "c.7",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "想買貨用 {ask} 價，想沽貨用 {bid} 價。",
+      "answer": "ask / bid",
+      "explanation": "Ask 係市場願意賣俾你嘅價，bid 係市場願意買你嘅貨嘅價。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-05-execution-c.8": {
+      "id": "trade-lifecycle-05-execution-c.8",
+      "questionId": "c.8",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "兩種撮合方式：{連續交易}（開市時段即刻撮合）同 {集體競價}（特定時刻統一撮合）。",
+      "answer": "連續交易 / 集體競價",
+      "explanation": "連續交易係日常模式；競價用喺開市、收市、停牌復牌等特殊時刻。",
+      "tags": [
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-05-execution-c.9": {
+      "id": "trade-lifecycle-05-execution-c.9",
+      "questionId": "c.9",
+      "moduleId": "05-execution",
+      "courseId": "trade-lifecycle",
+      "question": "你落單 10,000 股只成交 6,000 股，叫做 {partial fill}（部分成交），係正常現象。",
+      "answer": "partial fill",
+      "explanation": "流動性有限，市場冇咁多貨即刻俾你。剩低部分會跟 TIF 走——GTC 繼續等，IOC 取消。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-08",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-06-trade-confirmation-6.1": {
+      "id": "trade-lifecycle-06-trade-confirmation-6.1",
+      "questionId": "6.1",
+      "moduleId": "06-trade-confirmation",
+      "courseId": "trade-lifecycle",
+      "question": "經紀喺成交後即刻發出、話你知交易成立嘅文件係邊個？",
+      "answer": "a. Fill report",
+      "explanation": "Fill report 係初步通知，即刻或當日發出。Contract note 先係法定費用文件，會遲啲發出。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-06-trade-confirmation-6.10": {
+      "id": "trade-lifecycle-06-trade-confirmation-6.10",
+      "questionId": "6.10",
+      "moduleId": "06-trade-confirmation",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個正確描述 fill report 嘅發出時間？",
+      "answer": "a. T+0 成交後即刻或當日",
+      "explanation": "Fill report 目的係等客戶即刻知道交易成立，所以喺 T+0 成交後即刻或當日發出。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-06-trade-confirmation-6.2": {
+      "id": "trade-lifecycle-06-trade-confirmation-6.2",
+      "questionId": "6.2",
+      "moduleId": "06-trade-confirmation",
+      "courseId": "trade-lifecycle",
+      "question": "Contract note 上面邊項唔係法定必列內容？",
+      "answer": "b. 你嘅投資目標",
+      "explanation": "Contract note 列明交易細節同費用（成交價、佣金、印花稅、交收日期），唔會列投資目標。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-06-trade-confirmation-6.3": {
+      "id": "trade-lifecycle-06-trade-confirmation-6.3",
+      "questionId": "6.3",
+      "moduleId": "06-trade-confirmation",
+      "courseId": "trade-lifecycle",
+      "question": "Affirmation 應該喺邊個時間完成？",
+      "answer": "d. T+1",
+      "explanation": "香港銀行公會規定 affirmation 喺 T+1 完成，超過 48 小時未 affirm 會進入 unmatched 狀態。",
+      "tags": [
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-06-trade-confirmation-6.4": {
+      "id": "trade-lifecycle-06-trade-confirmation-6.4",
+      "questionId": "6.4",
+      "moduleId": "06-trade-confirmation",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個先係真正扣錢嘅時點？",
+      "answer": "c. T+2 交收",
+      "explanation": "Contract note 只係確認應付金額，真正資金轉移喺 T+2 交收嗰陣先發生。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-06-trade-confirmation-6.5": {
+      "id": "trade-lifecycle-06-trade-confirmation-6.5",
+      "questionId": "6.5",
+      "moduleId": "06-trade-confirmation",
+      "courseId": "trade-lifecycle",
+      "question": "Fill report 同 contract note 最大分別係咩？",
+      "answer": "b. Fill report 話交易成立；contract note 話交易成本",
+      "explanation": "Fill report 係初步成交通知；contract note 係法定文件，列明佣金、印花稅等費用結構。fill report 唔係法定成交單據。",
+      "tags": [
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-06-trade-confirmation-6.6": {
+      "id": "trade-lifecycle-06-trade-confirmation-6.6",
+      "questionId": "6.6",
+      "moduleId": "06-trade-confirmation",
+      "courseId": "trade-lifecycle",
+      "question": "Affirmation 發現成交數目同自己記錄唔一致，交易會進入咩狀態？",
+      "answer": "c. Unmatched / trade break",
+      "explanation": "數目唔一致 = trade break，交易停喺 unmatched 狀態，需要異常處理先可以繼續交收。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-06-trade-confirmation-6.7": {
+      "id": "trade-lifecycle-06-trade-confirmation-6.7",
+      "questionId": "6.7",
+      "moduleId": "06-trade-confirmation",
+      "courseId": "trade-lifecycle",
+      "question": "香港股票交易嘅標準確認時序係邊個？",
+      "answer": "d. T+0 成交 → T+1 對數 → T+2 交收",
+      "explanation": "香港標準：T+0 成交並發出 fill report，contract note 通常 T+0 發出（法例最遲 T+2），T+1 affirmation，T+2 交收。",
+      "tags": [
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-06-trade-confirmation-6.8": {
+      "id": "trade-lifecycle-06-trade-confirmation-6.8",
+      "questionId": "6.8",
+      "moduleId": "06-trade-confirmation",
+      "courseId": "trade-lifecycle",
+      "question": "如果你發現 contract note 成交價同自己記憶唔同，第一步應該做咩？",
+      "answer": "a. 核對 fill report 同 OMS 記錄，再聯絡經紀",
+      "explanation": "先查內部記錄（fill report、OMS）確認邊邊錯，再聯絡經紀。唔好跳過中間環節直接找托管行。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-06-trade-confirmation-6.9": {
+      "id": "trade-lifecycle-06-trade-confirmation-6.9",
+      "questionId": "6.9",
+      "moduleId": "06-trade-confirmation",
+      "courseId": "trade-lifecycle",
+      "question": "Contract note 嘅法律地位係咩？",
+      "answer": "b. 法定交易確認文件，係對帳基礎",
+      "explanation": "《證券及期貨條例》規定經紀必須發出 contract note，佢係正式法律文件同對帳依據。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-07-trade-matching-7.1": {
+      "id": "trade-lifecycle-07-trade-matching-7.1",
+      "questionId": "7.1",
+      "moduleId": "07-trade-matching",
+      "courseId": "trade-lifecycle",
+      "question": "配對（matching）比對嘅四個關鍵欄位係邊四個？",
+      "answer": "a. 價格、數量、日期、證券代號",
+      "explanation": "配對比對價格、數量、交易日期、證券代號。四欄全部一致先至 matched。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-07-trade-matching-7.10": {
+      "id": "trade-lifecycle-07-trade-matching-7.10",
+      "questionId": "7.10",
+      "moduleId": "07-trade-matching",
+      "courseId": "trade-lifecycle",
+      "question": "Unmatched trades 唔處理嘅後果係咩？",
+      "answer": "a. 越嚟越難查，阻塞後端交收流程",
+      "explanation": "Unmatched 唔會自己消失。時間越耐當事人越唔記得，查證成本越高，交收被阻塞。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-07-trade-matching-7.2": {
+      "id": "trade-lifecycle-07-trade-matching-7.2",
+      "questionId": "7.2",
+      "moduleId": "07-trade-matching",
+      "courseId": "trade-lifecycle",
+      "question": "Trade capture 嘅作用係咩？",
+      "answer": "d. 將交易所撮合結果變成買賣雙方各自嘅交易記錄",
+      "explanation": "Trade capture 係記錄環節，將撮合結果分別寫入買方同賣方系統，之後先可以配對。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-07-trade-matching-7.3": {
+      "id": "trade-lifecycle-07-trade-matching-7.3",
+      "questionId": "7.3",
+      "moduleId": "07-trade-matching",
+      "courseId": "trade-lifecycle",
+      "question": "系統自動配對成功之後，下一步係咩？",
+      "answer": "a. 人手 affirmation 確認",
+      "explanation": "系統比對只係第一步，affirmation 係人手最後防線，確保冇錯配，應喺 T+1 完成。",
+      "tags": [
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-07-trade-matching-7.4": {
+      "id": "trade-lifecycle-07-trade-matching-7.4",
+      "questionId": "7.4",
+      "moduleId": "07-trade-matching",
+      "courseId": "trade-lifecycle",
+      "question": "買方記錄成交價 50.00，賣方記錄 50.10，配對結果係？",
+      "answer": "b. Unmatched / trade break",
+      "explanation": "價格唔一致 → unmatched。必須入 queue 查證邊邊錯，唔會自己變 matched。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-07-trade-matching-7.5": {
+      "id": "trade-lifecycle-07-trade-matching-7.5",
+      "questionId": "7.5",
+      "moduleId": "07-trade-matching",
+      "courseId": "trade-lifecycle",
+      "question": "點解買賣雙方要各自獨立記錄同一筆交易？",
+      "answer": "b. 雙方係獨立機構，獨立記錄先可以互相核對",
+      "explanation": "獨立機構各有帳簿風控，獨立記錄 + 互相核對 = 防止一方出錯無人知。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-07-trade-matching-7.6": {
+      "id": "trade-lifecycle-07-trade-matching-7.6",
+      "questionId": "7.6",
+      "moduleId": "07-trade-matching",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個唔係 unmatched trades 常見原因？",
+      "answer": "c. 雙方都啱",
+      "explanation": "常見原因：價格、數量、日期唔同，或漏記錄。「雙方都啱」唔會造成 unmatched。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-07-trade-matching-7.7": {
+      "id": "trade-lifecycle-07-trade-matching-7.7",
+      "questionId": "7.7",
+      "moduleId": "07-trade-matching",
+      "courseId": "trade-lifecycle",
+      "question": "Affirmation 應該喺邊個時間完成？",
+      "answer": "b. T+1",
+      "explanation": "香港銀行公會規定 affirmation 喺 T+1 完成，超過 48 小時未 affirm 會進入 unmatched 狀態。",
+      "tags": [
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-07-trade-matching-7.8": {
+      "id": "trade-lifecycle-07-trade-matching-7.8",
+      "questionId": "7.8",
+      "moduleId": "07-trade-matching",
+      "courseId": "trade-lifecycle",
+      "question": "私人銀行 omnibus account 對配對嘅影響係咩？",
+      "answer": "d. 一單對應多個客戶，任何一個數目錯成筆交易 unmatched",
+      "explanation": "Omnibus 增加複雜度——一單多客，任何一個客戶數目錯，成筆交易 unmatched。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-07-trade-matching-7.9": {
+      "id": "trade-lifecycle-07-trade-matching-7.9",
+      "questionId": "7.9",
+      "moduleId": "07-trade-matching",
+      "courseId": "trade-lifecycle",
+      "question": "配對（matching）同清算（clearing）嘅關係係？",
+      "answer": "c. 配對先確認交易成立，清算先計算各方義務——順序不能倒轉",
+      "explanation": "配對屬前端/中間環節確認交易成立；清算屬後端計算義務。配對先，清算後。",
+      "tags": [
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-08-allocation-8.1": {
+      "id": "trade-lifecycle-08-allocation-8.1",
+      "questionId": "8.1",
+      "moduleId": "08-allocation",
+      "courseId": "trade-lifecycle",
+      "question": "平均價法（average price）嘅計算方式係？",
+      "answer": "d. 總成本 ÷ 總股數",
+      "explanation": "平均價 = 總成本 ÷ 總股數。每個客户成本 = 各自股數 × 平均价，大家同一個每股成本。",
+      "tags": [
+        "formula"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-08-allocation-8.10": {
+      "id": "trade-lifecycle-08-allocation-8.10",
+      "questionId": "8.10",
+      "moduleId": "08-allocation",
+      "courseId": "trade-lifecycle",
+      "question": "單客單（一張 order、一個 account）有冇 allocation？",
+      "answer": "c. 有，1:1 仍然要做",
+      "explanation": "Allocation 本質 = fill 入正確 account。單客單 1:1 好平凡但仍然存在；omnibus 單客都仲要內部入 sub-account。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-08-allocation-8.11": {
+      "id": "trade-lifecycle-08-allocation-8.11",
+      "questionId": "8.11",
+      "moduleId": "08-allocation",
+      "courseId": "trade-lifecycle",
+      "question": "機構點解會用 omnibus account？",
+      "answer": "a. 慳戶口成本、結算效率、可彙總落單",
+      "explanation": "Omnibus 用一個總戶口接所有客：唔使逐客開獨立市場戶口、同 CSD 只對一個戶口可淨額、內部先合再出市。單客另攞統一報表同費用分攤。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-08-allocation-8.2": {
+      "id": "trade-lifecycle-08-allocation-8.2",
+      "questionId": "8.2",
+      "moduleId": "08-allocation",
+      "courseId": "trade-lifecycle",
+      "question": "點解經紀鍾意合併多個客户嘅指令落一單？",
+      "answer": "b. 慳佣金（大單議價）、減少市場衝擊、提高成交率",
+      "explanation": "合併落單慳佣金、減衝擊、提高成交率。代價係 allocation 變複雜（多客拆分），唔係「先至有 allocation」——omnibus 單張單都要做。三層：omnibus 結構決定有冇 allocation，合併決定複唔複雜。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-08-allocation-8.3": {
+      "id": "trade-lifecycle-08-allocation-8.3",
+      "questionId": "8.3",
+      "moduleId": "08-allocation",
+      "courseId": "trade-lifecycle",
+      "question": "PB（Private Bank 私人銀行）omnibus account 嘅分配係咩性質？",
+      "answer": "c. 內部帳簿操作（internal bookkeeping）",
+      "explanation": "Omnibus 以 PB 名義持有，分配係內部記數，唔涉及市場。外部睇唔到。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-08-allocation-8.4": {
+      "id": "trade-lifecycle-08-allocation-8.4",
+      "questionId": "8.4",
+      "moduleId": "08-allocation",
+      "courseId": "trade-lifecycle",
+      "question": "分配（allocation）必須喺邊個時間前完成？",
+      "answer": "a. T+2 交收前",
+      "explanation": "交收時托管行要按 allocation 指令過貨入每個客户 account。冇 allocation 交收做唔到。",
+      "tags": [
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-08-allocation-8.5": {
+      "id": "trade-lifecycle-08-allocation-8.5",
+      "questionId": "8.5",
+      "moduleId": "08-allocation",
+      "courseId": "trade-lifecycle",
+      "question": "平均價法下，每個客户嘅每股成本係？",
+      "answer": "b. 全部一樣（同一個平均價）",
+      "explanation": "平均價法確保所有客户同一個每股成本，唔會有人比其他人買貴。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-08-allocation-8.6": {
+      "id": "trade-lifecycle-08-allocation-8.6",
+      "questionId": "8.6",
+      "moduleId": "08-allocation",
+      "courseId": "trade-lifecycle",
+      "question": "一單有兩種成交價（50.00 同 50.10），平均價會係？",
+      "answer": "b. 喺兩者之間，取決於各價位成交量",
+      "explanation": "混合平均價加權計算，所有客户共用，唔會有人獨享較低價。",
+      "tags": [
+        "calculation"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-08-allocation-8.7": {
+      "id": "trade-lifecycle-08-allocation-8.7",
+      "questionId": "8.7",
+      "moduleId": "08-allocation",
+      "courseId": "trade-lifecycle",
+      "question": "Omnibus 分配錯咗，邊個最先發現？",
+      "answer": "a. 托管行對帳或客戶核對持倉",
+      "explanation": "外部只見 omnibus 一個帳戶，睇唔到內部錯配。只有托管行對帳或客戶核對先發現。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-08-allocation-8.8": {
+      "id": "trade-lifecycle-08-allocation-8.8",
+      "questionId": "8.8",
+      "moduleId": "08-allocation",
+      "courseId": "trade-lifecycle",
+      "question": "平均價法「公平」嘅正確理解係？",
+      "answer": "c. 成本計算公平（同一個每股成本），唔代表回報公平",
+      "explanation": "平均價統一成本價，但持倉量唔同，市價變動時賺蝕金額自然唔同。",
+      "tags": [
+        "misconception"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-08-allocation-8.9": {
+      "id": "trade-lifecycle-08-allocation-8.9",
+      "questionId": "8.9",
+      "moduleId": "08-allocation",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個唔係合併落單嘅好處？",
+      "answer": "d. 唔使再做 allocation",
+      "explanation": "合併唔會令 allocation 消失——單客 omnibus 都要做（1:1 入 sub-account）。合併只令 allocation 變複雜（平均價/按比例拆）。其他三項先係好處。",
+      "tags": [
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-09-clearing-9.1": {
+      "id": "trade-lifecycle-09-clearing-9.1",
+      "questionId": "9.1",
+      "moduleId": "09-clearing",
+      "courseId": "trade-lifecycle",
+      "question": "CCP（Central Counterparty 中央對手方）喺交易中嘅角色係？",
+      "answer": "a. 取代對手方：成為所有買方嘅賣方、所有賣方嘅買方",
+      "explanation": "CCP 取代交易雙方，保證就算一方違約，另一方都收到貨/錢。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-09-clearing-9.10": {
+      "id": "trade-lifecycle-09-clearing-9.10",
+      "questionId": "9.10",
+      "moduleId": "09-clearing",
+      "courseId": "trade-lifecycle",
+      "question": "點解只有大機構可以做結算會員？",
+      "answer": "b. 有資本要求，確保有足夠錢應付違約",
+      "explanation": "結算會員要繳保證金、出資風險基金（結算基金），需要強勁資本，所以只限大機構。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-09-clearing-9.2": {
+      "id": "trade-lifecycle-09-clearing-9.2",
+      "questionId": "9.2",
+      "moduleId": "09-clearing",
+      "courseId": "trade-lifecycle",
+      "question": "清算所點樣做到保證交收？",
+      "answer": "a. 靠保證金（margin）同風險基金",
+      "explanation": "每個結算會員按持倉繳保證金 + 會員共同出資嘅風險基金 buffer，違約時用呢啲錢補數。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-09-clearing-9.3": {
+      "id": "trade-lifecycle-09-clearing-9.3",
+      "questionId": "9.3",
+      "moduleId": "09-clearing",
+      "courseId": "trade-lifecycle",
+      "question": "Netting（淨額結算）嘅主要好處係？",
+      "answer": "d. 減少交收次數、減少結算風險、減少現金需求",
+      "explanation": "將多筆交易淨額化，原本 100 筆可能變 10 筆交收，效率大增。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-09-clearing-9.4": {
+      "id": "trade-lifecycle-09-clearing-9.4",
+      "questionId": "9.4",
+      "moduleId": "09-clearing",
+      "courseId": "trade-lifecycle",
+      "question": "會員持倉虧損、保證金唔夠，清算所會點做？",
+      "answer": "b. 即刻追收 margin（margin call），唔補就強制平倉",
+      "explanation": "Margin call 要求補錢，唔補就 liquidate 強制平倉，確保清算所唔受損。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-09-clearing-9.5": {
+      "id": "trade-lifecycle-09-clearing-9.5",
+      "questionId": "9.5",
+      "moduleId": "09-clearing",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個唔係清算所嘅功能？",
+      "answer": "d. 發出投資建議",
+      "explanation": "清算所做：取代對手方、計算義務、保證交收。發投資建議唔關佢事。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-09-clearing-9.6": {
+      "id": "trade-lifecycle-09-clearing-9.6",
+      "questionId": "9.6",
+      "moduleId": "09-clearing",
+      "courseId": "trade-lifecycle",
+      "question": "Cash netting 同 Security netting 分別係？",
+      "answer": "c. Cash = 淨現金差額；Security = 淨貨過戶",
+      "explanation": "Cash netting 只過淨現金；Security netting 只過淨貨。都減少交收次數。",
+      "tags": [
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-09-clearing-9.7": {
+      "id": "trade-lifecycle-09-clearing-9.7",
+      "questionId": "9.7",
+      "moduleId": "09-clearing",
+      "courseId": "trade-lifecycle",
+      "question": "「清算將風險集中，唔係消滅」嘅正確理解係？",
+      "answer": "b. 極端情況清算所自己都可能受損，所以要多層保證機制",
+      "explanation": "2008 金融海嘯證明清算所都可能受損。多層保證（保證金+風險基金/結算基金）係為此。",
+      "tags": [
+        "misconception"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-09-clearing-9.8": {
+      "id": "trade-lifecycle-09-clearing-9.8",
+      "questionId": "9.8",
+      "moduleId": "09-clearing",
+      "courseId": "trade-lifecycle",
+      "question": "清算（clearing）同結算（settlement）嘅先後係？",
+      "answer": "a. 清算先計算義務，結算後錢貨兩訖——順序不能倒轉",
+      "explanation": "清算屬中間環節計算應收應付；結算屬最終動作。清算先，結算後。",
+      "tags": [
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-09-clearing-9.9": {
+      "id": "trade-lifecycle-09-clearing-9.9",
+      "questionId": "9.9",
+      "moduleId": "09-clearing",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個機構係 HKEX 旗下嘅中央結算系統？",
+      "answer": "c. CCASS（Central Clearing and Settlement System）",
+      "explanation": "CCASS 喺香港擔任 CCP 角色，保證股票交收。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-10-settlement-10.1": {
+      "id": "trade-lifecycle-10-settlement-10.1",
+      "questionId": "10.1",
+      "moduleId": "10-settlement",
+      "courseId": "trade-lifecycle",
+      "question": "DvP（Delivery versus Payment）嘅核心係？",
+      "answer": "d. 貨交割同錢交割綁埋一齊，靠結算系統同步過戶",
+      "explanation": "DvP 即貨銀兩訖。除非錢到位貨唔過戶，除非貨過戶錢唔付出。結算系統兩邊扣住、同步放行，買賣雙方唔使直接信對方。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-10-settlement-10.10": {
+      "id": "trade-lifecycle-10-settlement-10.10",
+      "questionId": "10.10",
+      "moduleId": "10-settlement",
+      "courseId": "trade-lifecycle",
+      "question": "T+2 交收流程中，T+1 主要做咩？",
+      "answer": "b. affirmation、清算計算、保證金追收",
+      "explanation": "T+1：買賣雙方 affirmation、清算所計算應收應付、追收保證金。為 T+2 交收做準備。",
+      "tags": [
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-10-settlement-10.2": {
+      "id": "trade-lifecycle-10-settlement-10.2",
+      "questionId": "10.2",
+      "moduleId": "10-settlement",
+      "courseId": "trade-lifecycle",
+      "question": "香港股票結算標準 T+2 嘅「2」點計？",
+      "answer": "a. 由交易日（trade date）起計，週末假期唔計",
+      "explanation": "T+0 成交、T+1 對數、T+2 交收。週五成交下週二交收，遇假期順延。",
+      "tags": [
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-10-settlement-10.3": {
+      "id": "trade-lifecycle-10-settlement-10.3",
+      "questionId": "10.3",
+      "moduleId": "10-settlement",
+      "courseId": "trade-lifecycle",
+      "question": "CSD（中央證券存管）嘅職責係？",
+      "answer": "c. 持有證券總帳、執行過戶",
+      "explanation": "CSD 係中央機構，持有證券總帳。托管行嘅持倉都記喺 CSD 入面。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-10-settlement-10.4": {
+      "id": "trade-lifecycle-10-settlement-10.4",
+      "questionId": "10.4",
+      "moduleId": "10-settlement",
+      "courseId": "trade-lifecycle",
+      "question": "托管行（Custodian）嘅角色係？",
+      "answer": "a. 代客戶持有證券、發 settlement instruction、對帳出單",
+      "explanation": "托管行係中介：代客收付款、發 settlement instruction 俾 CSD、對帳月結單、管 failing。佢嘅持倉記喺 CSD，兩者唔同層級。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-10-settlement-10.5": {
+      "id": "trade-lifecycle-10-settlement-10.5",
+      "questionId": "10.5",
+      "moduleId": "10-settlement",
+      "courseId": "trade-lifecycle",
+      "question": "如果買方喺交收日帳戶錢唔夠，會點？",
+      "answer": "d. 交收失敗（settlement fail），要俾罰息、可能被 buy-in",
+      "explanation": "錢唔夠 = settlement fail。DvP 下貨唔過戶（賣方仍然有貨）。買方要俾罰息，遲唔補錢會被 buy-in。唔係 margin call——margin call 係保證金帳戶追保。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-10-settlement-10.6": {
+      "id": "trade-lifecycle-10-settlement-10.6",
+      "questionId": "10.6",
+      "moduleId": "10-settlement",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個唔係結算參與者？",
+      "answer": "c. 投資顧問",
+      "explanation": "結算參與者：CSD（貨）、結算銀行（錢）、托管行（代客户）。投資顧問唔參與交收。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-10-settlement-10.7": {
+      "id": "trade-lifecycle-10-settlement-10.7",
+      "questionId": "10.7",
+      "moduleId": "10-settlement",
+      "courseId": "trade-lifecycle",
+      "question": "Gross DvP 同 Net DvP 分別係？",
+      "answer": "b. Gross = 逐筆一一配對（最安全）；Net = 先計淨額再配對（平衡效率）",
+      "explanation": "Gross 逐筆最安全但效率低（例如英國 CREST）；Net 淨額後交收，平衡安全同效率——HK CCASS、US NSCC 都係 Net DvP。冇 DvP 先係本金風險交收。",
+      "tags": [
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-10-settlement-10.8": {
+      "id": "trade-lifecycle-10-settlement-10.8",
+      "questionId": "10.8",
+      "moduleId": "10-settlement",
+      "courseId": "trade-lifecycle",
+      "question": "週五成交，香港標準 T+2 幾時交收？",
+      "answer": "a. 下週二",
+      "explanation": "週末唔計交易日。週五 T+0，週一 T+1，週二 T+2 交收。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-10-settlement-10.9": {
+      "id": "trade-lifecycle-10-settlement-10.9",
+      "questionId": "10.9",
+      "moduleId": "10-settlement",
+      "courseId": "trade-lifecycle",
+      "question": "「托管行就係 CSD」呢句說話點解錯？",
+      "answer": "c. CSD 係中央存管（如 CCASS），托管行係代客户持有嘅中介，兩者唔同層級",
+      "explanation": "托管行嘅持倉記喺 CSD 入面。CSD 持總帳、執行過戶；托管行代客收付款、發 instruction、對帳。中介同中央機構，唔係同一個。",
+      "tags": [
+        "misconception"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-10-settlement-10.11": {
+      "id": "trade-lifecycle-10-settlement-10.11",
+      "questionId": "10.11",
+      "moduleId": "10-settlement",
+      "courseId": "trade-lifecycle",
+      "question": "SSI（Standing Settlement Instructions）同 settlement instruction 分別係？",
+      "answer": "b. SSI = 預先登記嘅戶口資料；settlement instruction = 呢單交幾多幾時嘅指令",
+      "explanation": "SSI 係常設資料（邊個戶口收錢交貨），交易前設好；settlement instruction 係呢單嘅具體指令。機構單多戶口，SSI 特別重要（ALERT 管 SSI）。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-11-settlement-fails-11.1": {
+      "id": "trade-lifecycle-11-settlement-fails-11.1",
+      "questionId": "11.1",
+      "moduleId": "11-settlement-fails",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個唔係 settlement fail 常見原因？",
+      "answer": "c. 交易太成功",
+      "explanation": "常見原因：錢唔夠、貨唔夠、檔案錯、日曆唔同。「太成功」唔會造成 fail。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-11-settlement-fails-11.10": {
+      "id": "trade-lifecycle-11-settlement-fails-11.10",
+      "questionId": "11.10",
+      "moduleId": "11-settlement-fails",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個情況最適合用 partial settlement？",
+      "answer": "b. 買方錢唔夠交晒 10,000 股",
+      "explanation": "部分資金到位可以先交部分貨，減少損失。其他情況要先解決根因。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-11-settlement-fails-11.2": {
+      "id": "trade-lifecycle-11-settlement-fails-11.2",
+      "questionId": "11.2",
+      "moduleId": "11-settlement-fails",
+      "courseId": "trade-lifecycle",
+      "question": "Buy-in 嘅作用係？",
+      "answer": "b. 賣方強制喺市場買返啲貨交俾違約買方",
+      "explanation": "Buy-in 係賣方補救權利，確保收到貨。價差+罰息由違約方承担。",
+      "tags": [
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-11-settlement-fails-11.3": {
+      "id": "trade-lifecycle-11-settlement-fails-11.3",
+      "questionId": "11.3",
+      "moduleId": "11-settlement-fails",
+      "courseId": "trade-lifecycle",
+      "question": "Buy-in 發生時市價升咗 5%，邊個承擔價差？",
+      "answer": "c. 買方（違約方）",
+      "explanation": "違約方要以更高市價買返啲貨，價差自己吞。交收失敗代價好大。",
+      "tags": [
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-11-settlement-fails-11.4": {
+      "id": "trade-lifecycle-11-settlement-fails-11.4",
+      "questionId": "11.4",
+      "moduleId": "11-settlement-fails",
+      "courseId": "trade-lifecycle",
+      "question": "週五成交，香港標準 T+2 幾時交收？",
+      "answer": "a. 下週二",
+      "explanation": "週末唔計交易日。週五 T+0、週一 T+1、週二 T+2。",
+      "tags": [
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-11-settlement-fails-11.5": {
+      "id": "trade-lifecycle-11-settlement-fails-11.5",
+      "questionId": "11.5",
+      "moduleId": "11-settlement-fails",
+      "courseId": "trade-lifecycle",
+      "question": "跨市場交易特別容易 settlement fail 嘅原因係？",
+      "answer": "d. 唔同市場假期唔同，交收日計算出錯",
+      "explanation": "香港放假但美國唔放，一邊做到一邊做唔到，變成 fail。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-11-settlement-fails-11.6": {
+      "id": "trade-lifecycle-11-settlement-fails-11.6",
+      "questionId": "11.6",
+      "moduleId": "11-settlement-fails",
+      "courseId": "trade-lifecycle",
+      "question": "Partial settlement 嘅作用係？",
+      "answer": "a. 先交收部分，減少雙方損失，剩低部分繼續跟進",
+      "explanation": "錢唔夠買 10,000 股，先交 8,000 股。減少損失，但 2,000 股仍要處理。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-11-settlement-fails-11.7": {
+      "id": "trade-lifecycle-11-settlement-fails-11.7",
+      "questionId": "11.7",
+      "moduleId": "11-settlement-fails",
+      "courseId": "trade-lifecycle",
+      "question": "交收失敗嘅後果包括以下邊項？",
+      "answer": "d. 以上全部",
+      "explanation": "Fail 會累積罰息、觸發 buy-in、影響 KPI、損害客户關係。",
+      "tags": [
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-11-settlement-fails-11.8": {
+      "id": "trade-lifecycle-11-settlement-fails-11.8",
+      "questionId": "11.8",
+      "moduleId": "11-settlement-fails",
+      "courseId": "trade-lifecycle",
+      "question": "Buy-in 通常喺邊個時候觸發？",
+      "answer": "b. 交收日未交收 + 寬限期後",
+      "explanation": "唔係即刻 buy-in，有寬限期。買方有機會補錢，寬限期後先啟動。",
+      "tags": [
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-11-settlement-fails-11.9": {
+      "id": "trade-lifecycle-11-settlement-fails-11.9",
+      "questionId": "11.9",
+      "moduleId": "11-settlement-fails",
+      "courseId": "trade-lifecycle",
+      "question": "「fail 唔緊要，拖下就冇事」點解錯？",
+      "answer": "a. Fail 會累積罰息、觸發 buy-in、影響 KPI，必須即刻處理",
+      "explanation": "Fail 唔會自己消失，只會越嚟越貴。即刻處理先可以減少損失。",
+      "tags": [
+        "misconception"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-12-instrument-lifecycle-12.1": {
+      "id": "trade-lifecycle-12-instrument-lifecycle-12.1",
+      "questionId": "12.1",
+      "moduleId": "12-instrument-lifecycle",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個工具嘅生命週期最接近「標準參考點」（交易所撮合 + CCP + T+2）？",
+      "answer": "c. 股票",
+      "explanation": "股票流程最標準化：交易所撮合、CCP 清算、CCASS T+2 DvP。其他工具都係喺呢個骨架上改。",
+      "tags": [
+        "terminology",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-12-instrument-lifecycle-12.10": {
+      "id": "trade-lifecycle-12-instrument-lifecycle-12.10",
+      "questionId": "12.10",
+      "moduleId": "12-instrument-lifecycle",
+      "courseId": "trade-lifecycle",
+      "question": "私人銀行客人組合混合股票、基金、債券。客人問「我賣咗幾時收到錢」，正確做法係？",
+      "answer": "c. 先問清楚工具，再套對應結算時間線",
+      "explanation": "唔同工具唔同時間線。先認工具再答，先唔會誤導客人現金流。",
+      "tags": [
+        "scenario",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-12-instrument-lifecycle-12.2": {
+      "id": "trade-lifecycle-12-instrument-lifecycle-12.2",
+      "questionId": "12.2",
+      "moduleId": "12-instrument-lifecycle",
+      "courseId": "trade-lifecycle",
+      "question": "債券交易多數冇 CCP 擔保，咁對手方風險由邊個承擔？",
+      "answer": "a. 買賣雙方自己",
+      "explanation": "場外債券交易冇 CCP，買賣雙方直接面對對手方信用風險。所以大行會做信用限額管理。",
+      "tags": [
+        "concept",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-12-instrument-lifecycle-12.3": {
+      "id": "trade-lifecycle-12-instrument-lifecycle-12.3",
+      "questionId": "12.3",
+      "moduleId": "12-instrument-lifecycle",
+      "courseId": "trade-lifecycle",
+      "question": "投資者賣出一隻股票基金，最可能幾時收到錢？",
+      "answer": "a. T+3 至 T+10",
+      "explanation": "基金係申購贖回制，按 NAV 計價，結算日通常 T+3 至 T+10，視乎基金類型，唔係固定 T+2。",
+      "tags": [
+        "concept",
+        "calculation"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-12-instrument-lifecycle-12.4": {
+      "id": "trade-lifecycle-12-instrument-lifecycle-12.4",
+      "questionId": "12.4",
+      "moduleId": "12-instrument-lifecycle",
+      "courseId": "trade-lifecycle",
+      "question": "基金投資者收到份數之前，基金公司會用咩價計價？",
+      "answer": "b. 資產淨值（NAV）",
+      "explanation": "基金按 NAV（資產淨值）計價，即資產總值減負債再除以已發行份數。基金冇二級市場撮合價。",
+      "tags": [
+        "terminology",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-12-instrument-lifecycle-12.5": {
+      "id": "trade-lifecycle-12-instrument-lifecycle-12.5",
+      "questionId": "12.5",
+      "moduleId": "12-instrument-lifecycle",
+      "courseId": "trade-lifecycle",
+      "question": "外匯交易嘅結算本質係咩？",
+      "answer": "b. 雙幣交割（一邊過數一邊收數）",
+      "explanation": "外匯交易同時交割兩種貨幣。Herstatt 風險就係兩邊唔同時完成交割嘅風險。",
+      "tags": [
+        "concept",
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-12-instrument-lifecycle-12.6": {
+      "id": "trade-lifecycle-12-instrument-lifecycle-12.6",
+      "questionId": "12.6",
+      "moduleId": "12-instrument-lifecycle",
+      "courseId": "trade-lifecycle",
+      "question": "窩輪（warrant）到期時負責支付嘅係邊個？",
+      "answer": "d. 發行商",
+      "explanation": "窩輪屬結構性產品，由發行商（通常係投行）設計同發行。到期或行權時發行商對投資者支付，唔係 CCP 撮合對手。",
+      "tags": [
+        "terminology",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-12-instrument-lifecycle-12.7": {
+      "id": "trade-lifecycle-12-instrument-lifecycle-12.7",
+      "questionId": "12.7",
+      "moduleId": "12-instrument-lifecycle",
+      "courseId": "trade-lifecycle",
+      "question": "債券交易嘅執行方式多數係？",
+      "answer": "d. 場外（OTC）議價",
+      "explanation": "債券多數喺場外交易，透過電話或平台議價，冇統一撮合平台。",
+      "tags": [
+        "terminology",
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-12-instrument-lifecycle-12.8": {
+      "id": "trade-lifecycle-12-instrument-lifecycle-12.8",
+      "questionId": "12.8",
+      "moduleId": "12-instrument-lifecycle",
+      "courseId": "trade-lifecycle",
+      "question": "基金生命週期第一步係？",
+      "answer": "b. 投資者落單（申購或贖回）",
+      "explanation": "基金冇二級市場撮合。第一步係投資者向基金公司落單，之後基金公司確認、按 NAV 計價、份數過戶。",
+      "tags": [
+        "process",
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-12-instrument-lifecycle-12.9": {
+      "id": "trade-lifecycle-12-instrument-lifecycle-12.9",
+      "questionId": "12.9",
+      "moduleId": "12-instrument-lifecycle",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個組合最準確描述五種工具嘅結算日？",
+      "answer": "a. 股票 T+2、基金 T+數日、債券見合約、外匯 T+2、結構產品條款定",
+      "explanation": "只有主流股票同部分外匯係 T+2。基金 T+數日，債券見合約，結構性產品按發行條款。",
+      "tags": [
+        "comparison",
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-13-fee-impact-13.1": {
+      "id": "trade-lifecycle-13-fee-impact-13.1",
+      "questionId": "13.1",
+      "moduleId": "13-fee-impact",
+      "courseId": "trade-lifecycle",
+      "question": "股票交易中，邊項費用係政府收嘅法定稅項？",
+      "answer": "a. 近乎一定成交，但唔保證價位",
+      "explanation": "市價單即刻入隊、用當前最佳可得價——正常流動性下近乎一定成交，但價會漂。d 錯，唔保證價位；c 錯，冇人「保證」全數。",
+      "tags": [
+        "terminology",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-13-fee-impact-13.10": {
+      "id": "trade-lifecycle-13-fee-impact-13.10",
+      "questionId": "13.10",
+      "moduleId": "13-fee-impact",
+      "courseId": "trade-lifecycle",
+      "question": "一位客人偏好短線炒賣，一年交易 60 次。作為 RM，你最應該提醒佢咩？",
+      "answer": "c. 往返費用會累積，費用拖累可能食掉大部分回報",
+      "explanation": "高換手放大費用拖累。RM 應幫客人計總費用，提醒淨回報風險。",
+      "tags": [
+        "scenario",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-13-fee-impact-13.2": {
+      "id": "trade-lifecycle-13-fee-impact-13.2",
+      "questionId": "13.2",
+      "moduleId": "13-fee-impact",
+      "courseId": "trade-lifecycle",
+      "question": "客人買入 100,000 港元股票，佣金 0.25%、印花稅 0.1%，買入成本增加幾多？",
+      "answer": "a. 350 港元",
+      "explanation": "佣金 100,000 × 0.25% = 250，印花稅 100,000 × 0.1% = 100，合計 350 港元（未計其他徵費）。",
+      "tags": [
+        "calculation",
+        "formula"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-13-fee-impact-13.3": {
+      "id": "trade-lifecycle-13-fee-impact-13.3",
+      "questionId": "13.3",
+      "moduleId": "13-fee-impact",
+      "courseId": "trade-lifecycle",
+      "question": "托管費幾時收？",
+      "answer": "c. 持倉期間持續收（按年率計）",
+      "explanation": "托管費係持有成本，按持倉市值年率逐日/逐月計算，由資產扣。冇交易都要俾。",
+      "tags": [
+        "concept",
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-13-fee-impact-13.4": {
+      "id": "trade-lifecycle-13-fee-impact-13.4",
+      "questionId": "13.4",
+      "moduleId": "13-fee-impact",
+      "courseId": "trade-lifecycle",
+      "question": "客人話「換匯冇收費」，實際費用喺邊？",
+      "answer": "d. 銀行買賣價之間嘅點差",
+      "explanation": "FX 點差係隱性費用。銀行低價買入、高價賣出，差價就係利潤。睇似冇手續費，實際已計入。",
+      "tags": [
+        "concept",
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-13-fee-impact-13.5": {
+      "id": "trade-lifecycle-13-fee-impact-13.5",
+      "questionId": "13.5",
+      "moduleId": "13-fee-impact",
+      "courseId": "trade-lifecycle",
+      "question": "高換手策略（一年交易 50 次）受咩影響最大？",
+      "answer": "d. 費用拖累（fee drag）",
+      "explanation": "每次往返成本累積，交易越頻密費用食得越多。高費用環境下短線炒賣代價大。",
+      "tags": [
+        "concept",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-13-fee-impact-13.6": {
+      "id": "trade-lifecycle-13-fee-impact-13.6",
+      "questionId": "13.6",
+      "moduleId": "13-fee-impact",
+      "courseId": "trade-lifecycle",
+      "question": "兩隻回報相同嘅基金，收費高嗰隻點解唔吸引？",
+      "answer": "a. 因為收費直接減淨回報，複利下差距越滾越大",
+      "explanation": "收費從資產扣，淨回報低。複利下，長期差距明顯。",
+      "tags": [
+        "concept",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-13-fee-impact-13.7": {
+      "id": "trade-lifecycle-13-fee-impact-13.7",
+      "questionId": "13.7",
+      "moduleId": "13-fee-impact",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個係持有成本（冇交易都要俾）？",
+      "answer": "b. 托管費",
+      "explanation": "托管費按持倉年率計，持倉期間持續收。佣金、印花稅、交收費都係交易時收。",
+      "tags": [
+        "terminology",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-13-fee-impact-13.8": {
+      "id": "trade-lifecycle-13-fee-impact-13.8",
+      "questionId": "13.8",
+      "moduleId": "13-fee-impact",
+      "courseId": "trade-lifecycle",
+      "question": "私人銀行客人組合「淨回報」點計？",
+      "answer": "a. 市價單，近乎一定成交",
+      "explanation": "淨回報 = 總回報 −（產品管理費 + 托管費 + 交易費 + 表現費等全部費用）。",
+      "tags": [
+        "formula",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-13-fee-impact-13.9": {
+      "id": "trade-lifecycle-13-fee-impact-13.9",
+      "questionId": "13.9",
+      "moduleId": "13-fee-impact",
+      "courseId": "trade-lifecycle",
+      "question": "佣金、印花稅、托管費、FX 點差，邊個由經紀收？",
+      "answer": "a. 佣金",
+      "explanation": "佣金係經紀服務費。印花稅政府收，托管費托管行收，FX 點差銀行收。",
+      "tags": [
+        "terminology",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-14-reconciliation-reporting-14.1": {
+      "id": "trade-lifecycle-14-reconciliation-reporting-14.1",
+      "questionId": "14.1",
+      "moduleId": "14-reconciliation-reporting",
+      "courseId": "trade-lifecycle",
+      "question": "對帳（reconciliation）係指邊三方核對？",
+      "answer": "c. 自己、對手方、清算所",
+      "explanation": "對帳 = 內部帳 vs 對手方帳 vs 清算所/結算系統帳。三方一致先算數。",
+      "tags": [
+        "terminology",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-14-reconciliation-reporting-14.10": {
+      "id": "trade-lifecycle-14-reconciliation-reporting-14.10",
+      "questionId": "14.10",
+      "moduleId": "14-reconciliation-reporting",
+      "courseId": "trade-lifecycle",
+      "question": "客人問「我月結單嘅持倉同我自己記嘅唔同」，作為 RM 你應點做？",
+      "answer": "d. 對帳查證，向中後台核實後回覆客人",
+      "explanation": "牽涉帳目差異，要走對帳流程核實，先回覆客人。唔可以未查證就下結論。",
+      "tags": [
+        "scenario",
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-14-reconciliation-reporting-14.2": {
+      "id": "trade-lifecycle-14-reconciliation-reporting-14.2",
+      "questionId": "14.2",
+      "moduleId": "14-reconciliation-reporting",
+      "courseId": "trade-lifecycle",
+      "question": "對帳發現兩邊數目唔符，稱為？",
+      "answer": "a. Trade Break",
+      "explanation": "Trade break = 兩邊記錄唔一致。要查證邊邊錯，再修正。",
+      "tags": [
+        "terminology",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-14-reconciliation-reporting-14.3": {
+      "id": "trade-lifecycle-14-reconciliation-reporting-14.3",
+      "questionId": "14.3",
+      "moduleId": "14-reconciliation-reporting",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個係 trade break 常見原因？",
+      "answer": "a. 輸入錯誤（手數打錯）",
+      "explanation": "輸入錯誤、時點差異、價錢差異、漏記都係常見 trade break 原因。",
+      "tags": [
+        "concept",
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-14-reconciliation-reporting-14.4": {
+      "id": "trade-lifecycle-14-reconciliation-reporting-14.4",
+      "questionId": "14.4",
+      "moduleId": "14-reconciliation-reporting",
+      "courseId": "trade-lifecycle",
+      "question": "發現 trade break，正確第一步係？",
+      "answer": "b. 查證邊邊錯，對返原始成交單",
+      "explanation": "要查原始成交單（fill report）同系統記錄，搵出差異來源，修正錯誤嗰邊。冇查證就改數可能改錯方向。",
+      "tags": [
+        "process",
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-14-reconciliation-reporting-14.5": {
+      "id": "trade-lifecycle-14-reconciliation-reporting-14.5",
+      "questionId": "14.5",
+      "moduleId": "14-reconciliation-reporting",
+      "courseId": "trade-lifecycle",
+      "question": "合約單（contract note）嘅主要用途係？",
+      "answer": "c. 法律交易證明，列明費用",
+      "explanation": "成交單係法律文件，列明交易細節同費用，係客人嘅交易憑證。",
+      "tags": [
+        "terminology",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-14-reconciliation-reporting-14.6": {
+      "id": "trade-lifecycle-14-reconciliation-reporting-14.6",
+      "questionId": "14.6",
+      "moduleId": "14-reconciliation-reporting",
+      "courseId": "trade-lifecycle",
+      "question": "月結單（statement）主要俾邊個睇？",
+      "answer": "b. 客人（帳戶總覽）",
+      "explanation": "月結單係月度帳戶總覽：交易、持倉、結餘，俾客人核對帳目。",
+      "tags": [
+        "terminology",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-14-reconciliation-reporting-14.7": {
+      "id": "trade-lifecycle-14-reconciliation-reporting-14.7",
+      "questionId": "14.7",
+      "moduleId": "14-reconciliation-reporting",
+      "courseId": "trade-lifecycle",
+      "question": "每日對帳嘅主要價值係？",
+      "answer": "a. 早期發現錯誤，防止累積",
+      "explanation": "每日對帳令錯數即時發現修正，唔會累積到月底先爆。",
+      "tags": [
+        "concept",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-14-reconciliation-reporting-14.8": {
+      "id": "trade-lifecycle-14-reconciliation-reporting-14.8",
+      "questionId": "14.8",
+      "moduleId": "14-reconciliation-reporting",
+      "courseId": "trade-lifecycle",
+      "question": "月結單點解要列明所有費用？",
+      "answer": "d. 合規要求 + 客人要計淨回報",
+      "explanation": "合規要求定期提供費用明細，客人知情權，亦要計到淨回報。",
+      "tags": [
+        "concept",
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-14-reconciliation-reporting-14.9": {
+      "id": "trade-lifecycle-14-reconciliation-reporting-14.9",
+      "questionId": "14.9",
+      "moduleId": "14-reconciliation-reporting",
+      "courseId": "trade-lifecycle",
+      "question": "對帳唔一致時，邊個帳最可信作參考？",
+      "answer": "b. 原始成交單同清算所記錄",
+      "explanation": "原始成交單係第一手記錄，清算所係獨立第三方，兩者比內部帳更可信。",
+      "tags": [
+        "concept",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-15-pretrade-compliance-15.1": {
+      "id": "trade-lifecycle-15-pretrade-compliance-15.1",
+      "questionId": "15.1",
+      "moduleId": "15-pretrade-compliance",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個屬於事前合規檢查？",
+      "answer": "b. 適當性檢查",
+      "explanation": "適當性檢查喺落單前執行，確保產品適合客人。對帳、月結單係事後工作。",
+      "tags": [
+        "terminology",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-15-pretrade-compliance-15.10": {
+      "id": "trade-lifecycle-15-pretrade-compliance-15.10",
+      "questionId": "15.10",
+      "moduleId": "15-pretrade-compliance",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個唔係事前檢查類型？",
+      "answer": "a. 事後對帳",
+      "explanation": "事後對帳係成交後工作。事前檢查三類：適當性、資金/保證金、限制清單。",
+      "tags": [
+        "terminology",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-15-pretrade-compliance-15.2": {
+      "id": "trade-lifecycle-15-pretrade-compliance-15.2",
+      "questionId": "15.2",
+      "moduleId": "15-pretrade-compliance",
+      "courseId": "trade-lifecycle",
+      "question": "適當性（suitability）檢查主要確保咩？",
+      "answer": "a. 客人風險承受能力同產品風險匹配",
+      "explanation": "KYC 之後，要確保客人風險承受（保守/穩健/進取）同產品風險級別匹配。",
+      "tags": [
+        "terminology",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-15-pretrade-compliance-15.3": {
+      "id": "trade-lifecycle-15-pretrade-compliance-15.3",
+      "questionId": "15.3",
+      "moduleId": "15-pretrade-compliance",
+      "courseId": "trade-lifecycle",
+      "question": "保守型客人想買高風險衍生工具，正確處理係？",
+      "answer": "d. 攔截，解釋風險或建議適合產品",
+      "explanation": "適當性不匹配 → 系統攔截。RM 要解釋風險或建議適合產品。強行推銷違規。",
+      "tags": [
+        "scenario",
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-15-pretrade-compliance-15.4": {
+      "id": "trade-lifecycle-15-pretrade-compliance-15.4",
+      "questionId": "15.4",
+      "moduleId": "15-pretrade-compliance",
+      "courseId": "trade-lifecycle",
+      "question": "現金帳戶買入檢查規則係？",
+      "answer": "c. 買入金額 + 費用 ≤ 帳戶現金",
+      "explanation": "現金帳戶要求買入金額連費用唔超過帳戶現金。唔夠就拒絕。",
+      "tags": [
+        "concept",
+        "formula"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-15-pretrade-compliance-15.5": {
+      "id": "trade-lifecycle-15-pretrade-compliance-15.5",
+      "questionId": "15.5",
+      "moduleId": "15-pretrade-compliance",
+      "courseId": "trade-lifecycle",
+      "question": "保證金帳戶嘅「購買力」係指？",
+      "answer": "d. 可以用嚟買嘢嘅額度（基於持倉 × 保證金比例）",
+      "explanation": "購買力唔係現金總額，係基於持倉市值同保證金比例計算嘅可用額度。",
+      "tags": [
+        "terminology",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-15-pretrade-compliance-15.6": {
+      "id": "trade-lifecycle-15-pretrade-compliance-15.6",
+      "questionId": "15.6",
+      "moduleId": "15-pretrade-compliance",
+      "courseId": "trade-lifecycle",
+      "question": "制裁名單過唔到，結果係？",
+      "answer": "a. 絕對唔可以落單，冇得商量",
+      "explanation": "限制清單（制裁、內部限制）過唔到 = 絕對拒絕。冇得商量，冇得改資料再試。",
+      "tags": [
+        "concept",
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-15-pretrade-compliance-15.7": {
+      "id": "trade-lifecycle-15-pretrade-compliance-15.7",
+      "questionId": "15.7",
+      "moduleId": "15-pretrade-compliance",
+      "courseId": "trade-lifecycle",
+      "question": "事前檢查點解好過事後補救？",
+      "answer": "b. 事前攔截成本近乎零，事後補救又貴又有法律風險",
+      "explanation": "成交後要取消、賠償、可能違規罰款。事前攔截成本低，事後補救代價大。",
+      "tags": [
+        "concept",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-15-pretrade-compliance-15.8": {
+      "id": "trade-lifecycle-15-pretrade-compliance-15.8",
+      "questionId": "15.8",
+      "moduleId": "15-pretrade-compliance",
+      "courseId": "trade-lifecycle",
+      "question": "適當性檢查喺流程上幾時做？",
+      "answer": "b. KYC 之後、落單之前",
+      "explanation": "先做 KYC 認識客人，再做適當性確保產品適合，最後先落單。",
+      "tags": [
+        "process",
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-15-pretrade-compliance-15.9": {
+      "id": "trade-lifecycle-15-pretrade-compliance-15.9",
+      "questionId": "15.9",
+      "moduleId": "15-pretrade-compliance",
+      "courseId": "trade-lifecycle",
+      "question": "RM 明知客人保守型但想買高風險產品，RM 直接落單。問題係？",
+      "answer": "c. 適當性係 RM 合規責任，唔可以轉嫁客人，明知不匹配仲落單違規",
+      "explanation": "適當性係合規責任。明知不匹配仲落單，違規兼可能要賠償。應攔截並解釋。",
+      "tags": [
+        "scenario",
+        "misconception"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-16-exception-handling-16.1": {
+      "id": "trade-lifecycle-16-exception-handling-16.1",
+      "questionId": "16.1",
+      "moduleId": "16-exception-handling",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個屬於交易異常？",
+      "answer": "c. 手數打錯（10,000 打成 100,000）",
+      "explanation": "輸入錯誤（手數、價錢打錯）係常見異常。正常成交、主動取消、市場波動唔係異常。",
+      "tags": [
+        "terminology",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-16-exception-handling-16.10": {
+      "id": "trade-lifecycle-16-exception-handling-16.10",
+      "questionId": "16.10",
+      "moduleId": "16-exception-handling",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個唔係異常處理流程步驟？",
+      "answer": "a. 成交",
+      "explanation": "異常處理流程：發現 → 分類 → 跟進 → 結案。「成交」係正常流程，唔係異常處理。",
+      "tags": [
+        "terminology",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-16-exception-handling-16.2": {
+      "id": "trade-lifecycle-16-exception-handling-16.2",
+      "questionId": "16.2",
+      "moduleId": "16-exception-handling",
+      "courseId": "trade-lifecycle",
+      "question": "Cancel-correct 流程正確次序係？",
+      "answer": "a. Cancel → Correct → 重新落單",
+      "explanation": "先 cancel 錯誤訂單，再 correct 資料，最後重新落單。",
+      "tags": [
+        "process",
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-16-exception-handling-16.3": {
+      "id": "trade-lifecycle-16-exception-handling-16.3",
+      "questionId": "16.3",
+      "moduleId": "16-exception-handling",
+      "courseId": "trade-lifecycle",
+      "question": "異常處理流程第一步係？",
+      "answer": "a. 發現",
+      "explanation": "流程：發現 → 分類 → 跟進 → 結案。發現來源包括對帳、系統警報、客人投訴。",
+      "tags": [
+        "process",
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-16-exception-handling-16.4": {
+      "id": "trade-lifecycle-16-exception-handling-16.4",
+      "questionId": "16.4",
+      "moduleId": "16-exception-handling",
+      "courseId": "trade-lifecycle",
+      "question": "異常點解要即時處理？",
+      "answer": "d. 拖得越耐，損失越大（價差擴大、違規風險）",
+      "explanation": "速度直接影響損失大小。拖耐會放大價差、違規風險、客人不滿。",
+      "tags": [
+        "concept",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-16-exception-handling-16.5": {
+      "id": "trade-lifecycle-16-exception-handling-16.5",
+      "questionId": "16.5",
+      "moduleId": "16-exception-handling",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個異常優先次序最高？",
+      "answer": "b. 影響結算、大額、客人投訴",
+      "explanation": "高優先 = 影響結算、大額、客人投訴。呢啲拖耐會直接影響客人資產。",
+      "tags": [
+        "concept",
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-16-exception-handling-16.6": {
+      "id": "trade-lifecycle-16-exception-handling-16.6",
+      "questionId": "16.6",
+      "moduleId": "16-exception-handling",
+      "courseId": "trade-lifecycle",
+      "question": "SLA 係指？",
+      "answer": "b. 處理時限（Service Level Agreement）",
+      "explanation": "SLA = 處理時限。例如高優先異常 2 小時內處理。",
+      "tags": [
+        "terminology",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-16-exception-handling-16.7": {
+      "id": "trade-lifecycle-16-exception-handling-16.7",
+      "questionId": "16.7",
+      "moduleId": "16-exception-handling",
+      "courseId": "trade-lifecycle",
+      "question": "處理異常時發現牽涉合規問題，正確做法係？",
+      "answer": "c. 升級合規部處理",
+      "explanation": "牽涉合規/法律嘅異常要升級合規部。系統性問題升級 IT，超 SLA 升級上級。",
+      "tags": [
+        "process",
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-16-exception-handling-16.8": {
+      "id": "trade-lifecycle-16-exception-handling-16.8",
+      "questionId": "16.8",
+      "moduleId": "16-exception-handling",
+      "courseId": "trade-lifecycle",
+      "question": "發現異常後只改數，冇記錄、冇通知。問題係？",
+      "answer": "d. 冇記錄就冇辦法防止再犯，冇通知可能影響其他部門",
+      "explanation": "完整流程：修正 + 記錄 + 通知 + 防再犯。淨改數唔夠。",
+      "tags": [
+        "scenario",
+        "misconception"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-16-exception-handling-16.9": {
+      "id": "trade-lifecycle-16-exception-handling-16.9",
+      "questionId": "16.9",
+      "moduleId": "16-exception-handling",
+      "courseId": "trade-lifecycle",
+      "question": "異常處理速度點樣影響客人信心？",
+      "answer": "b. 快 → 客人信心保得住；慢 → 客人不滿",
+      "explanation": "速度直接影響客人體驗。快速復原保得住信心。",
+      "tags": [
+        "concept",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-17-systems-map-17.1": {
+      "id": "trade-lifecycle-17-systems-map-17.1",
+      "questionId": "17.1",
+      "moduleId": "17-systems-map",
+      "courseId": "trade-lifecycle",
+      "question": "OMS 嘅全名係？",
+      "answer": "d. Order Management System",
+      "explanation": "OMS = Order Management System，管理訂單成個生命週期：落單、修改、狀態追蹤。",
+      "tags": [
+        "terminology",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-17-systems-map-17.10": {
+      "id": "trade-lifecycle-17-systems-map-17.10",
+      "questionId": "17.10",
+      "moduleId": "17-systems-map",
+      "courseId": "trade-lifecycle",
+      "question": "同事話：「清算所保證交收，托管行唔使對帳。」問題係？",
+      "answer": "a. 清算所保證係佢同參與者之間；托管行同客人嘅帳要自己對",
+      "explanation": "兩層對帳唔可以互替。清算所保證唔涵蓋托管行同客人嘅帳。",
+      "tags": [
+        "misconception",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-17-systems-map-17.2": {
+      "id": "trade-lifecycle-17-systems-map-17.2",
+      "questionId": "17.2",
+      "moduleId": "17-systems-map",
+      "courseId": "trade-lifecycle",
+      "question": "以下邊個屬於前台系統？",
+      "answer": "a. EMS",
+      "explanation": "前台負責落單執行：OMS、EMS。清算所、CSD、對帳屬中後台。",
+      "tags": [
+        "concept",
+        "comparison"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-17-systems-map-17.3": {
+      "id": "trade-lifecycle-17-systems-map-17.3",
+      "questionId": "17.3",
+      "moduleId": "17-systems-map",
+      "courseId": "trade-lifecycle",
+      "question": "風險監控擺邊個台？點解？",
+      "answer": "b. 中台，獨立制衡前台",
+      "explanation": "風險屬中台。前台想成交，中台獨立制衡——自己監察自己冇意義。",
+      "tags": [
+        "concept",
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-17-systems-map-17.4": {
+      "id": "trade-lifecycle-17-systems-map-17.4",
+      "questionId": "17.4",
+      "moduleId": "17-systems-map",
+      "courseId": "trade-lifecycle",
+      "question": "OMS 收到訂單後第一件事係？",
+      "answer": "b. 預檢（資金、保證金、限制清單）",
+      "explanation": "OMS 先做預檢，過唔到就唔流去市場——事前攔截成本最低。",
+      "tags": [
+        "process",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-17-systems-map-17.5": {
+      "id": "trade-lifecycle-17-systems-map-17.5",
+      "questionId": "17.5",
+      "moduleId": "17-systems-map",
+      "courseId": "trade-lifecycle",
+      "question": "EMS 主要職責係？",
+      "answer": "a. 揀執行場所同切單，執行得平",
+      "explanation": "EMS（Execution Management System）專注執行質素：邊個場、幾時切大單。",
+      "tags": [
+        "terminology",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-17-systems-map-17.6": {
+      "id": "trade-lifecycle-17-systems-map-17.6",
+      "questionId": "17.6",
+      "moduleId": "17-systems-map",
+      "courseId": "trade-lifecycle",
+      "question": "成交後第一個更新狀態嘅系統係？",
+      "answer": "c. OMS",
+      "explanation": "OMS 狀態由「已落單」變「已成交」，中台先有數可配。",
+      "tags": [
+        "process",
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-17-systems-map-17.7": {
+      "id": "trade-lifecycle-17-systems-map-17.7",
+      "questionId": "17.7",
+      "moduleId": "17-systems-map",
+      "courseId": "trade-lifecycle",
+      "question": "清算交割鏈正確次序係？",
+      "answer": "b. 中台 → 清算所 CCP → CSD → 托管行",
+      "explanation": "中台指令 → 清算所淨額結算 → CSD 貨銀兩訖 → 托管行帳簿 → 對帳。",
+      "tags": [
+        "process",
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-17-systems-map-17.8": {
+      "id": "trade-lifecycle-17-systems-map-17.8",
+      "questionId": "17.8",
+      "moduleId": "17-systems-map",
+      "courseId": "trade-lifecycle",
+      "question": "客人「擁有」股票，帳記喺邊？",
+      "answer": "c. 托管行細帳；CSD 記托管行戶口",
+      "explanation": "兩層帳：CSD 中央帳簿記托管行戶口，托管行再為客人記細帳。",
+      "tags": [
+        "concept",
+        "misconception"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-17-systems-map-17.9": {
+      "id": "trade-lifecycle-17-systems-map-17.9",
+      "questionId": "17.9",
+      "moduleId": "17-systems-map",
+      "courseId": "trade-lifecycle",
+      "question": "系統之間交接靠咩？",
+      "answer": "d. 標準訊息（SWIFT、FIX、API）",
+      "explanation": "系統靠標準訊息交接。每個交接點都係斷鏈風險。",
+      "tags": [
+        "terminology",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-18-case-walkthrough-18.1": {
+      "id": "trade-lifecycle-18-case-walkthrough-18.1",
+      "questionId": "18.1",
+      "moduleId": "18-case-walkthrough",
+      "courseId": "trade-lifecycle",
+      "question": "一單交易生命週期正確次序係？",
+      "answer": "a. 指示 → 預檢 → 執行 → 配對 → 清算 → 結算 → 對帳",
+      "explanation": "八步：指示 → 預檢 → 執行 → 配對 → 分配 → 清算 → 結算 → 對帳。",
+      "tags": [
+        "process",
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-18-case-walkthrough-18.10": {
+      "id": "trade-lifecycle-18-case-walkthrough-18.10",
+      "questionId": "18.10",
+      "moduleId": "18-case-walkthrough",
+      "courseId": "trade-lifecycle",
+      "question": "客人問「星期一買幾時有貨」，RM 答「即刻有」。問題係？",
+      "answer": "c. HK T+2——最早星期三先貨銀兩訖入帳",
+      "explanation": "成交即刻，但交割 T+2。唔識結算週期先會答「即刻有」。",
+      "tags": [
+        "misconception",
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-18-case-walkthrough-18.2": {
+      "id": "trade-lifecycle-18-case-walkthrough-18.2",
+      "questionId": "18.2",
+      "moduleId": "18-case-walkthrough",
+      "courseId": "trade-lifecycle",
+      "question": "陳先生用現金帳戶，戶口得 HK$300,000，想買 5,000 股 @ 65.20。點解單落唔到？",
+      "answer": "c. 現金帳戶要全額 + 費用 ≤ 現金；326,000 > 300,000",
+      "explanation": "現金帳戶要求全額 + 費用 ≤ 現金。5,000 × 65.20 ≈ 326,000 超咗 → 事前攔截。",
+      "tags": [
+        "scenario",
+        "calculation"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-18-case-walkthrough-18.3": {
+      "id": "trade-lifecycle-18-case-walkthrough-18.3",
+      "questionId": "18.3",
+      "moduleId": "18-case-walkthrough",
+      "courseId": "trade-lifecycle",
+      "question": "平均價分配對客人公唔公平？",
+      "answer": "b. 公平——全組同一單價，成本一致",
+      "explanation": "公平係成本一致，唔係回報一致。平均價 = 總成本 ÷ 總股數。",
+      "tags": [
+        "concept",
+        "misconception"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-18-case-walkthrough-18.4": {
+      "id": "trade-lifecycle-18-case-walkthrough-18.4",
+      "questionId": "18.4",
+      "moduleId": "18-case-walkthrough",
+      "courseId": "trade-lifecycle",
+      "question": "配對要對邊四項？",
+      "answer": "d. 價、量、日期、證券代碼",
+      "explanation": "四項：price、qty、date、ser code。任一唔一致 = trade break。",
+      "tags": [
+        "terminology",
+        "process"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-18-case-walkthrough-18.5": {
+      "id": "trade-lifecycle-18-case-walkthrough-18.5",
+      "questionId": "18.5",
+      "moduleId": "18-case-walkthrough",
+      "courseId": "trade-lifecycle",
+      "question": "Affirmation 限期內冇確認會點？",
+      "answer": "a. 變 unmatched，要跟進",
+      "explanation": "48 小時（T+1）內唔確認 → unmatched，要查要跟。",
+      "tags": [
+        "process",
+        "scenario"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-18-case-walkthrough-18.6": {
+      "id": "trade-lifecycle-18-case-walkthrough-18.6",
+      "questionId": "18.6",
+      "moduleId": "18-case-walkthrough",
+      "courseId": "trade-lifecycle",
+      "question": "HK 股票 T+2 由邊日開始計？",
+      "answer": "b. 由 trade date 起計（週末唔計）",
+      "explanation": "T+2 由成交日（trade date）起計，跳過週末。星期五成交 → 下星期二。",
+      "tags": [
+        "process",
+        "terminology"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-18-case-walkthrough-18.7": {
+      "id": "trade-lifecycle-18-case-walkthrough-18.7",
+      "questionId": "18.7",
+      "moduleId": "18-case-walkthrough",
+      "courseId": "trade-lifecycle",
+      "question": "T+2 結算時客人現金唔夠，後果係？",
+      "answer": "d. 結算失敗 → 保證金追繳 / 強制平倉 / buy-in",
+      "explanation": "Fail 有保證金追繳、強制平個、buy-in 損失。要即刻補，唔係等。",
+      "tags": [
+        "scenario",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-18-case-walkthrough-18.8": {
+      "id": "trade-lifecycle-18-case-walkthrough-18.8",
+      "questionId": "18.8",
+      "moduleId": "18-case-walkthrough",
+      "courseId": "trade-lifecycle",
+      "question": "Contract Note 嘅作用係？",
+      "answer": "b. 法律文件，列明成交細節同費用",
+      "explanation": "Contract Note = 法律文件 + 費用明細。唔係「手續」。",
+      "tags": [
+        "terminology",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    },
+    "trade-lifecycle-18-case-walkthrough-18.9": {
+      "id": "trade-lifecycle-18-case-walkthrough-18.9",
+      "questionId": "18.9",
+      "moduleId": "18-case-walkthrough",
+      "courseId": "trade-lifecycle",
+      "question": "對帳涉及邊三方？",
+      "answer": "a. 自己、對手、清算所",
+      "explanation": "三方對帳：自己記錄 vs 對手 vs 清算所。每日做先防錯累積。",
+      "tags": [
+        "process",
+        "concept"
+      ],
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2026-11-07",
+      "lastReviewed": null,
+      "isStarred": false,
+      "state": "New"
+    }
+  }
+}

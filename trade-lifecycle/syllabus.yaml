@@ -1,0 +1,108 @@
+subject: "交易生命週期 — 私人銀行同經紀視角（廣東話）"
+language: yue
+time_budget_hours: 19
+target_level: beginner
+domain: "trade-lifecycle, private-banking, brokerage-ops"
+prerequisites: []
+learning_objectives:
+  - "由客人落單到收貨入帳，成條交易生命週期講得出口，仲識分每個步驟負責人係邊個"
+  - "分辨唔同帳戶、唔同工具、唔同費用點樣影響交易流程同埋最終結果"
+  - "解釋執行、配對、分配、清算、結算每個環節做乜，出錯時點補救"
+  - "睇得明成交確認、對帳報告、費用明細，識得指出邊度唔對數"
+
+modules:
+  - id: 1
+    name: "交易生命週期總覽"
+    time_hours: 1.0
+    prerequisites: []
+    topics: [lifecycle-overview, key-players, front-middle-back-office]
+  - id: 2
+    name: "帳戶種類點樣影響交易"
+    time_hours: 1.0
+    prerequisites: [1]
+    topics: [account-types, custody-cash-margin, discretionary-vs-advisory, pb-composite]
+  - id: 3
+    name: "訂單基礎"
+    time_hours: 1.0
+    prerequisites: [1]
+    topics: [order-types, market-limit-stop, time-in-force, order-attributes]
+  - id: 4
+    name: "落單通道：渠道同中介"
+    time_hours: 1.0
+    prerequisites: [3]
+    topics: [channels, broker-dealer-agent, order-accuracy, oms]
+  - id: 5
+    name: "執行：由訂單到成交"
+    time_hours: 1.0
+    prerequisites: [4]
+    topics: [execution, bid-ask-spread, order-routing, venues, auction-continuous, partial-fill]
+  - id: 6
+    name: "成交確認同 Contract Note"
+    time_hours: 1.0
+    prerequisites: [5]
+    topics: [fill-report, contract-note, affirmation, confirmation-timing]
+  - id: 7
+    name: "配對：買賣雙方點對數"
+    time_hours: 1.0
+    prerequisites: [6]
+    topics: [trade-capture, matching, affirmation-flow, unmatched-trades]
+  - id: 8
+    name: "分配：一單多客點分"
+    time_hours: 1.0
+    prerequisites: [7]
+    topics: [allocation, average-price, pb-omnibus, allocation-timing]
+  - id: 9
+    name: "清算：邊個保證交收"
+    time_hours: 1.0
+    prerequisites: [8]
+    topics: [clearing, ccp, netting, clearing-house-role]
+  - id: 10
+    name: "結算：錢貨兩訖"
+    time_hours: 1.0
+    prerequisites: [9]
+    topics: [settlement, t-plus-1, dvp, custodian-csd]
+  - id: 11
+    name: "結算失敗同補救"
+    time_hours: 1.0
+    prerequisites: [10]
+    topics: [settlement-fails, buy-in, settlement-calendar, partial-settlement]
+  - id: 12
+    name: "唔同工具點樣影響生命週期"
+    time_hours: 1.0
+    prerequisites: [10]
+    topics: [equity-bond-fund-fx, structured-products, lifecycle-differences]
+  - id: 13
+    name: "費用點樣影響交易"
+    time_hours: 1.0
+    prerequisites: [6]
+    topics: [commission, stamp-duty, custody-fees, fx-spread, fee-impact]
+  - id: 14
+    name: "對帳同報告"
+    time_hours: 1.0
+    prerequisites: [10]
+    topics: [reconciliation, statements, trade-break, reporting]
+  - id: 15
+    name: "事前合規檢查"
+    time_hours: 1.0
+    prerequisites: [3]
+    topics: [pre-trade-checks, suitability, credit-cash-check, restrictions]
+  - id: 16
+    name: "異常處理"
+    time_hours: 1.0
+    prerequisites: [7]
+    topics: [exceptions, cancel-correct, error-handling, queues]
+  - id: 17
+    name: "系統地圖：OMS 到托管行"
+    time_hours: 1.0
+    prerequisites: [1]
+    topics: [oms-ems, clearing-custodian-link, systems-flow]
+  - id: 18
+    name: "個案：一單 PB 訂單走全程"
+    time_hours: 1.0
+    prerequisites: [1, 17]
+    topics: [end-to-end-case, walkthrough, review]
+  - id: 19
+    name: "延伸學習：書單同閱讀路徑"
+    time_hours: 1.0
+    prerequisites: [18]
+    topics: [reading-list, further-study, reference-books]

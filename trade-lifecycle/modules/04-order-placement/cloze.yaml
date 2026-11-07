@@ -1,0 +1,55 @@
+- id: "c.1"
+  question: "三種主要下單渠道：{電話}（俾 RM 聽）、{e-Platform}（自己撳 App）、{OMS}（系統自動）。"
+  answer: "電話 / e-Platform / OMS"
+  explanation: "電話慢但有人跟，e-Platform 快但自己負責，OMS 最快但要預設規則。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "中介兩種模式：{agency} 代理幫你搵對手（broker/agent，賺佣金）；{principal} 自營自己做你對手（dealer，賺 spread）。"
+  answer: "agency / principal"
+  explanation: "分界：幫你搵對手 = agency，利益同你一致；自己做你對手 = principal，利益可能相反。"
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.3"
+  question: "私人銀行嘅 {RM}（客戶經理）屬於 {Front Office}，係落單環節嘅發起人。"
+  answer: "RM / Front Office"
+  explanation: "RM 將客人意圖轉化成正式訂單。佢嘅準確度直接影響之後每一步。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.4"
+  question: "渠道取捨：{速度}、控制權、人為錯誤風險、成本——冇完美渠道，只有啱你交易風格嘅渠道。"
+  answer: "速度"
+  explanation: "Phone 慢但有人跟；e-Platform 快但自己負責；OMS 最快但要預設規則。"
+  difficulty: 1
+  tags: [concept]
+
+- id: "c.5"
+  question: "OMS（{Order Management System}）最適合機構用戶，可以根據預設規則自動搵最佳執行。"
+  answer: "Order Management System"
+  explanation: "OMS 速度快，適合基金經理等需要快速自動執行嘅機構。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.6"
+  question: "電話落單主要風險係 {人為錯誤}（聽錯數量），所以 RM 落單後要覆述確認。"
+  answer: "人為錯誤"
+  explanation: "e-Platform 風險係自己落錯冇人把關；OMS 風險係規則設錯會批量出錯。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.7"
+  question: "大單用 OMS {拆單} 分批執行，可以減少資訊洩漏同市場衝擊。"
+  answer: "拆單"
+  explanation: "一次過掃入會俾人見到意圖；拆細慢慢執行減低被跟單嘅風險。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "Agency 模式下，張單會上 {交易所} 撮合；Principal 模式下，係同做市商 {直接成交}，可能唔上交易所。"
+  answer: "交易所 / 直接成交"
+  explanation: "兩種模式嘅配對、結算路徑會唔同——落單前要知自己張單行邊條路。"
+  difficulty: 2
+  tags: [concept]

@@ -1,0 +1,145 @@
+- id: cum.1
+  type: mcq
+  source_modules:
+  - 17
+  - 18
+  question: OMS 嘅主要職責係?
+  options:
+    a: 管理訂單成個生命週期：落單、修改、狀態追蹤
+    b: 替客人揀股票
+    c: 收取佣金
+    d: 出月結單
+  answer: a
+  explanation: OMS = Order Management System。EMS 先係管執行質素（揀場、切單）。
+  difficulty: 1
+  tags:
+  - cross-module
+  - terminology
+- id: cum.2
+  type: mcq
+  source_modules:
+  - 17
+  - 18
+  question: 風險監控應該擺邊個台?
+  options:
+    a: 前台，最快收到成交
+    b: 中台，獨立制衡前台
+    c: 後台，最接近帳簿
+    d: 客人自己做
+  answer: b
+  explanation: 中台獨立制衡。前台想成交，自己監察自己冇意義。
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.3
+  type: cloze
+  source_modules:
+  - 17
+  - 18
+  question: '八步: {指示} → 預檢 → 執行 → 配對 → 分配 → 清算 → 結算 → {對帳}。'
+  answer: 指示 / 對帳
+  explanation: 缺一不可。成交只係中段，唔係終點。
+  difficulty: 1
+  tags:
+  - cross-module
+  - process
+- id: cum.4
+  type: tf
+  source_modules:
+  - 17
+  - 18
+  statement: CSD 中央帳簿直接記每個終端客人嘅名。
+  answer: false
+  explanation: CSD 記托管行戶口，托管行再為客人記細帳。兩層帳，唔係一層。
+  difficulty: 2
+  tags:
+  - cross-module
+  - misconception
+- id: cum.5
+  type: tf
+  source_modules:
+  - 17
+  - 18
+  statement: 成交咗就等於生命週期完成。
+  answer: false
+  explanation: 成交只係中段。配對、分配、清算、結算、對帳先係保障客人嘅部分。
+  difficulty: 2
+  tags:
+  - cross-module
+  - misconception
+- id: cum.6
+  type: mcq
+  source_modules:
+  - 17
+  - 18
+  question: 陳先生現金帳戶得 HK$300,000，想買 5,000 股 @ 65.20。單會點?
+  options:
+    a: 即刻成交
+    b: 改用保證金自動過
+    c: 事前攔截——326,000 > 300,000，現金唔夠
+    d: 等 T+2 先知
+  answer: c
+  explanation: '現金帳戶: 全額 + 費用 ≤ 現金。事前攔截成本最低。'
+  difficulty: 3
+  tags:
+  - cross-module
+  - scenario
+- id: cum.7
+  type: cloze
+  source_modules:
+  - 17
+  - 18
+  question: 系統交接靠標準{訊息}（SWIFT、FIX、API）；每個交接點都係{斷鏈}風險。
+  answer: 訊息 / 斷鏈
+  explanation: 斷咗一環單就停。OMS 傳唔到交易台 = 單落唔到。
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.8
+  type: mcq
+  source_modules:
+  - 17
+  - 18
+  question: 客人問「星期一買幾時有貨」，正確答案係?
+  options:
+    a: 即刻有，成交就入帳
+    b: 要等月結單
+    c: 下個月
+    d: 最早星期三——HK T+2 貨銀兩訖
+  answer: d
+  explanation: T+2 由 trade date 起計，跳過週末。星期一買 → 星期三入帳。
+  difficulty: 2
+  tags:
+  - cross-module
+  - scenario
+- id: cum.9
+  type: tf
+  source_modules:
+  - 17
+  - 18
+  statement: 清算所保證交收，所以托管行唔使對帳。
+  answer: false
+  explanation: 兩層對帳唔互替。清算所保證係佢同參與者之間；托管行同客人嘅帳要自己對。
+  difficulty: 3
+  tags:
+  - cross-module
+  - misconception
+- id: cum.10
+  type: mcq
+  source_modules:
+  - 17
+  - 18
+  question: 全條鏈邊個交接點最易斷?
+  options:
+    a: 客人同 RM 之間
+    b: 系統之間嘅標準訊息接口
+    c: 政府同稅局之間
+    d: 唔會斷，全部自動
+  answer: b
+  explanation: 每個系統交接點都係斷鏈風險。接口同對帳先係關鍵控制。
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept

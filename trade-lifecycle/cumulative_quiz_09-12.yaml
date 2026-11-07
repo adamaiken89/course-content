@@ -1,0 +1,165 @@
+- id: cum.1
+  type: mcq
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  question: Clearing 同 Settlement 分別係?
+  options:
+    a: Clearing = 確認淨額保證交收；Settlement = 錢貨兩訖真正交割
+    b: 冇分別，同一件事
+    c: Settlement 先，Clearing 後
+    d: Clearing 由政府做，Settlement 由交易所做
+  answer: a
+  explanation: Clearing 先（淨額 + 保證），settlement 後（錢貨同時過戶）。次序固定。
+  difficulty: 2
+  tags:
+  - cross-module
+  - comparison
+- id: cum.2
+  type: mcq
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  question: CCP 最核心嘅功能係?
+  options:
+    a: 替客人揀股票
+    b: 取代對手方，保證交收
+    c: 收取佣金
+    d: 出月結單
+  answer: b
+  explanation: CCP = Central Counterparty，做中央對手方。買賣雙方都對 CCP，唔使擔心對手方倒閉。
+  difficulty: 1
+  tags:
+  - cross-module
+  - terminology
+- id: cum.3
+  type: cloze
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  question: HK 股票結算週期 {T+2}，由 {trade} date 起計，跳過週末。
+  answer: T+2 / trade
+  explanation: 星期五成交 → 下星期二。唔係由 affirm 或 settle date 起計。
+  difficulty: 2
+  tags:
+  - cross-module
+  - process
+- id: cum.4
+  type: tf
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  statement: DvP（貨銀兩訖）可以消除本金風險。
+  answer: true
+  explanation: 'DvP: 錢同貨同時過戶。一邊唔交另一邊都唔交，冇「俾咗錢冇貨」風險。'
+  difficulty: 1
+  tags:
+  - cross-module
+  - concept
+- id: cum.5
+  type: tf
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  statement: 結算失敗（fail）冇乜大不了，等埋單就得。
+  answer: false
+  explanation: 'Fail 積累成本: 保證金追繳、buy-in 強制買入價差損失、違規風險。要即刻補救。'
+  difficulty: 2
+  tags:
+  - cross-module
+  - misconception
+- id: cum.6
+  type: mcq
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  question: Netting（淨額結算）嘅主要好處係?
+  options:
+    a: 可以跳過清算所
+    b: 令印花稅減半
+    c: 減少交割次數同結算風險
+    d: 保證成交價
+  answer: c
+  explanation: '淨額: 多單對沖成一個淨數，交割次數大減，風險敞口細好多。'
+  difficulty: 2
+  tags:
+  - cross-module
+  - concept
+- id: cum.7
+  type: cloze
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  question: 'Buy-in: 買方唔交收，賣方可以 {強制} 市場買入，價差 + {罰款} 由買方承擔。'
+  answer: 強制 / 罰款
+  explanation: Buy-in 係最後手段，成本轉嫁俾違約方。
+  difficulty: 3
+  tags:
+  - cross-module
+  - process
+- id: cum.8
+  type: mcq
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  question: 以下邊個工具生命週期同股票最唔同?
+  options:
+    a: 藍籌股
+    b: 普通港股
+    c: ETF
+    d: 債券（多數 OTC，多數冇 CCP）
+  answer: d
+  explanation: 債券多數 OTC、多數冇 CCP → 對手方風險自己扛，流程同股票差好遠。
+  difficulty: 2
+  tags:
+  - cross-module
+  - comparison
+- id: cum.9
+  type: tf
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  statement: 基金申購贖回通常比股票交收更快。
+  answer: false
+  explanation: 基金 T+3 至 T+10（NAV 計價 + 申購流程），貨幣快股票慢。股票 T+2 反而快過基金。
+  difficulty: 2
+  tags:
+  - cross-module
+  - misconception
+- id: cum.10
+  type: mcq
+  source_modules:
+  - 9
+  - 10
+  - 11
+  - 12
+  question: Herstatt 風險係指?
+  options:
+    a: 股票停牌風險
+    b: 外匯兩邊交割唔同時完成嘅風險
+    c: 印花稅加價風險
+    d: 佣金折扣取消風險
+  answer: b
+  explanation: 'Herstatt: 一邊俾咗錢，另一邊未交——時間差風險。外匯雙幣交割最常見。'
+  difficulty: 3
+  tags:
+  - cross-module
+  - terminology

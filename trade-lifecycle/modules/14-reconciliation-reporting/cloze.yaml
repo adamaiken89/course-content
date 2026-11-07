@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: 對帳三方核對：{自己}（內部帳）、{對手方}、清算所。
+  answer: 自己 / 對手方
+  explanation: 三方數目一致先算數。唔一致 = trade break。
+  difficulty: 2
+  tags: [terminology, process]
+
+- id: "c.2"
+  question: Trade Break = 兩邊{數目}唔符。常見原因：輸入錯誤、{漏記}、價錢差異。
+  answer: 數目 / 漏記
+  explanation: 手數打錯、一邊記咗一邊冇記、成交價抄錯都係常見原因。
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.3"
+  question: 發現 trade break，第一步：{查證}邊邊錯，對返{原始}成交單，再修正錯誤嗰邊。
+  answer: 查證 / 原始
+  explanation: 冇查證就改數可能改錯方向，將啱嗰邊改成錯。
+  difficulty: 3
+  tags: [process, scenario]
+
+- id: "c.4"
+  question: 成交單（contract note）係{法律}交易證明，列明{費用}，係客人交易憑證。
+  answer: 法律 / 費用
+  explanation: 有法律效力，監管要求提供。
+  difficulty: 2
+  tags: [terminology, comparison]
+
+- id: "c.5"
+  question: 月結單（statement）係月度{帳戶}總覽：交易、{持倉}、結餘，俾客人核對。
+  answer: 帳戶 / 持倉
+  explanation: 客人定期帳目報告，合規要求。
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.6"
+  question: 每日{對帳}喺開市前完成，{早期}發現錯誤，防止錯數累積。
+  answer: 對帳 / 早期
+  explanation: 日清日結，唔會月底先爆大鑊。
+  difficulty: 2
+  tags: [process, concept]
+
+- id: "c.7"
+  question: 對帳價值：保護{客人}資產、{合規}要求、帳目可信。
+  answer: 客人 / 合規
+  explanation: 私人銀行尤其重視，因為牽涉客戶資產隔離。
+  difficulty: 1
+  tags: [concept, comparison]
+
+- id: "c.8"
+  question: 前台要識讀{對帳}報告、識回應客人帳目{差異}查詢，唔係淨係會計嘅事。
+  answer: "對帳 / 差異"
+  explanation: 對帳結果影響客人帳戶，前台都要識。
+  difficulty: 2
+  tags: [concept, scenario]
+
+- id: "c.9"
+  question: 核實帳目最可信參考：{原始}成交單（第一手）+ {清算所}記錄（獨立第三方）。
+  answer: 原始 / 清算所
+  explanation: 兩者比內部帳更可信，因為獨立於公司內部流程。
+  difficulty: 3
+  tags: [concept, comparison]

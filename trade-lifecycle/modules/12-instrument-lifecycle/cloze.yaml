@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: 股票生命週期係標準參考點：交易所撮合、{CCP}清算、T+2 {DvP} 結算。
+  answer: CCP / DvP
+  explanation: 股票流程最標準化，其他工具喺呢個骨架上改。
+  difficulty: 1
+  tags: [terminology, process]
+
+- id: "c.2"
+  question: 債券多數喺場外（{OTC}）交易，多數冇 {CCP}，對手方風險自己扛。
+  answer: OTC / CCP
+  explanation: 場外債券冇統一撮合，冇 CCP 擔保。
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.3"
+  question: 基金冇二級市場撮合，係{申購贖回}制，按 {NAV}（資產淨值）計價。
+  answer: 申購贖回 / NAV
+  explanation: 投資者同基金公司做，唔係同另一個投資者做。NAV = 資產總值減負債除以份數。
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.4"
+  question: 基金結算日通常 T+數日（T+3 至 T+10），唔係固定 {T+2}。貨幣基金{快}，股票基金慢。
+  answer: T+2 / 快
+  explanation: 唔可以照股票 T+2 估基金收錢時間。
+  difficulty: 2
+  tags: [concept, comparison]
+
+- id: "c.5"
+  question: 外匯結算係{雙幣}交割，主流 T+2，主要貨幣即日（{T+0}）交割都常見。
+  answer: 雙幣 / T+0
+  explanation: 一邊過數一邊收數。Herstatt 風險 = 兩邊唔同時完成。
+  difficulty: 2
+  tags: [terminology, concept]
+
+- id: "c.6"
+  question: 窩輪屬結構性產品，由{發行商}（通常係投行）設計同發行，到期時發行商對投資者{支付}。
+  answer: 發行商 / 支付
+  explanation: 唔係 CCP 撮合對手，係發行商主導。
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.7"
+  question: 基金第一步係投資者{落單}（申購或贖回），基金公司確認後按 {NAV} 計價。
+  answer: 落單 / NAV
+  explanation: 基金生命週期：落單 → 確認 → NAV 計價 → 過戶/過賬 → 結算。
+  difficulty: 1
+  tags: [process, terminology]
+
+- id: "c.8"
+  question: 結構性產品生命週期由{發行商}主導，到期支付按產品{條款}，複雜過股票。
+  answer: 發行商 / 條款
+  explanation: 提前贖回條款等都要睇發行文件。
+  difficulty: 2
+  tags: [concept, process]
+
+- id: "c.9"
+  question: 記憶框架：工具{決定}流程。先認客人買賣咩工具，再套對應嘅執行→配對→{清算}→結算。
+  answer: 決定 / 清算
+  explanation: 同一生命週期骨架，唔同工具換唔同零件。
+  difficulty: 3
+  tags: [concept, comparison]

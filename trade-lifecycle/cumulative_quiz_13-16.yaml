@@ -1,0 +1,114 @@
+- id: "cum.1"
+  type: mcq
+  source_modules: [13, 14, 15, 16]
+  question: "以下邊個費用係政府收取?"
+  options:
+    a: "佣金"
+    b: "托管費"
+    c: "印花稅"
+    d: "FX 點差"
+  answer: c
+  explanation: "印花稅 = 政府收取，HK 買賣各 0.1%。佣金俾經紀，托管費俾托管行，FX 點差係銀行。"
+  difficulty: 1
+  tags: [cross-module, terminology]
+
+- id: "cum.2"
+  type: mcq
+  source_modules: [13, 14, 15, 16]
+  question: "100k 買入，佣金 0.25% + 印花稅 0.1%，總費用係?"
+  options:
+    a: "HK$100"
+    b: "HK$250"
+    c: "HK$350"
+    d: "HK$1,000"
+  answer: c
+  explanation: "佣金 100k × 0.25% = 250；印花稅 100k × 0.1% = 100。總 350（買入成本）。往返 ≈ 0.7%。"
+  difficulty: 2
+  tags: [cross-module, calculation]
+
+- id: "cum.3"
+  type: cloze
+  source_modules: [13, 14, 15, 16]
+  question: "淨回報 = 總回報 − 全部{費用}；高換手會放大 {fee} drag。"
+  answer: "費用 / fee"
+  explanation: "零佣金 ≠ 零成本。隱性費用（FX 點差、價差）都要計。"
+  difficulty: 2
+  tags: [cross-module, concept]
+
+- id: "cum.4"
+  type: tf
+  source_modules: [13, 14, 15, 16]
+  statement: "零佣金平台真係完全免費。"
+  answer: false
+  explanation: "零佣金仍有 FX 點差、買賣價差、托管費、匯款費。隱性成本往往仲貴過佣金。"
+  difficulty: 2
+  tags: [cross-module, misconception]
+
+- id: "cum.5"
+  type: tf
+  source_modules: [13, 14, 15, 16]
+  statement: "每日對帳比月底先對一次更好。"
+  answer: true
+  explanation: "每日對帳防錯累積。拖到月底，錯誤滾大難查。"
+  difficulty: 1
+  tags: [cross-module, concept]
+
+- id: "cum.6"
+  type: mcq
+  source_modules: [13, 14, 15, 16]
+  question: "發現 trade break 第一步係?"
+  options:
+    a: "即刻改數"
+    b: "查原始成交單確認邊邊啱"
+    c: "通知客人"
+    d: "等月底一齊處理"
+  answer: b
+  explanation: "先查證再修正。冇查證就改可能改錯方向。改完要記錄 + 通知 + 防再犯。"
+  difficulty: 2
+  tags: [cross-module, process]
+
+- id: "cum.7"
+  type: cloze
+  source_modules: [13, 14, 15, 16]
+  question: "對帳三方: {自己}、對手、{清算所}；每日做先防錯累積。"
+  answer: "自己 / 清算所"
+  explanation: "淨靠一邊對帳唔夠。"
+  difficulty: 2
+  tags: [cross-module, process]
+
+- id: "cum.8"
+  type: mcq
+  source_modules: [13, 14, 15, 16]
+  question: "事前合規檢查三類唔包括?"
+  options:
+    a: "適當性（KYC + 風險匹配）"
+    b: "資金 / 保證金檢查"
+    c: "限制清單（制裁等）"
+    d: "事後盈虧分析"
+  answer: d
+  explanation: "三類: 適當性、資金保證金、限制清單。事後盈虧分析屬報告，唔係事前攔截。"
+  difficulty: 1
+  tags: [cross-module, recall]
+
+- id: "cum.9"
+  type: tf
+  source_modules: [13, 14, 15, 16]
+  statement: "RM 明知產品同客人風險唔匹配，只要客人堅持就可以落單。"
+  answer: false
+  explanation: "違規。責任唔可轉嫁客人。適當性唔過 = 絕對拒絕，唔係「客人大晒」。"
+  difficulty: 3
+  tags: [cross-module, misconception]
+
+- id: "cum.10"
+  type: mcq
+  source_modules: [13, 14, 15, 16]
+  question: "Cancel-correct 正確次序係?"
+  options:
+    a: "Cancel → Correct → 重新落單"
+    b: "Correct → Cancel → 重新落單"
+    c: "重新落單 → Cancel → Correct"
+    d: "Cancel → 重新落單 → Correct"
+  answer: a
+  explanation: "先撤回錯單，再改正確，最後用正確資料再落。順序錯會留雙張單。"
+  difficulty: 2
+  tags: [cross-module, process]

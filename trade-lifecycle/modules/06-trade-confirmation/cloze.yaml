@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: "經紀喺成交後即刻發出嘅初步通知叫 {fill report}，正式法定費用文件叫 {contract note}。"
+  answer: "fill report / contract note"
+  explanation: "Fill report 話交易成立，contract note 列明所有費用，後者先係對帳基礎。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "Contract note 列明成交價、{佣金}、{印花稅}、交收日期等費用結構。"
+  answer: "佣金 / 印花稅"
+  explanation: "呢啲費用直接影響投資回報，忽略佢哋會令「賺錢」變蝕錢。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.3"
+  question: "{Affirmation} 係買賣雙方核對成交細節嘅過程，應喺 {T+1} 完成。"
+  answer: "Affirmation / T+1"
+  explanation: "香港銀行公會規定 T+1 完成，超過 48 小時未 affirm 會進入 unmatched 狀態。"
+  difficulty: 2
+  tags: [process]
+
+- id: "c.4"
+  question: "香港標準時序：{T+0} 成交、{T+1} 對數、{T+2} 交收。"
+  answer: "T+0 / T+1 / T+2"
+  explanation: "T+0 發 fill report 同 contract note（法例最遲 T+2），T+1 affirmation，T+2 托管行交收。"
+  difficulty: 1
+  tags: [process]
+
+- id: "c.5"
+  question: "Affirmation 發現數目唔一致，交易進入 {trade break}（unmatched）狀態，需要異常處理。"
+  answer: "trade break"
+  explanation: "Trade break 令交易停喺 unmatched，唔解決就無法交收，補救成本更高。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.6"
+  question: "真正扣錢喺 {T+2 交收}，contract note 只係確認應付金額，唔代表已扣款。"
+  answer: "T+2 交收"
+  explanation: "常見誤解：收到 contract note 以為錢扣咗。其實資金轉移要等到交收日。"
+  difficulty: 2
+  tags: [misconception]
+
+- id: "c.7"
+  question: "Contract note 係根據《{證券及期貨條例}》規定，經紀必須發出嘅法定文件。"
+  answer: "證券及期貨條例"
+  explanation: "法律要求確保交易有正式記錄，係對帳同爭議處理嘅依據。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.8"
+  question: "Fill report 嘅目的係令客戶即刻知道交易成立，方便跟進；佢係初步通知，唔係 {法定費用文件}。"
+  answer: "法定費用文件"
+  explanation: "Fill report 快但簡略；contract note 遲啲但完整，列明所有費用。"
+  difficulty: 2
+  tags: [comparison]
+
+- id: "c.9"
+  question: "如果 contract note 同 fill report 數目唔一致，第一步係核對 {OMS 記錄} 再聯絡經紀，唔好直接找托管行。"
+  answer: "OMS 記錄"
+  explanation: "先查內部記錄確認邊邊錯，避免浪費時間喺錯誤嘅環節。"
+  difficulty: 3
+  tags: [scenario]

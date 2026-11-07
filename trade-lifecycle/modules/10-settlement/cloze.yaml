@@ -1,0 +1,69 @@
+- id: "c.1"
+  question: "DvP（{Delivery versus Payment}）即係貨銀兩訖：貨交割同錢交割綁埋一齊，靠結算系統同步過戶。"
+  answer: "Delivery versus Payment"
+  explanation: "除非錢到位貨唔過戶，除非貨過戶錢唔付出。金融版「貨到付款」。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.2"
+  question: "香港 T+2：T+0 成交、{T+1} 對數清算、{T+2} 交收，週末假期唔計。"
+  answer: "T+1 / T+2"
+  explanation: "由交易日起計，唔係確認日。週五成交下週二交收。"
+  difficulty: 1
+  tags: [process]
+
+- id: "c.3"
+  question: "CSD（{中央證券存管}）持有證券總帳、執行過戶；托管行代{客户}持有，交收日發 settlement instruction 俾 CSD。"
+  answer: "中央證券存管 / 客户"
+  explanation: "兩者唔同層級：CSD 係中央機構，托管行係中介，持倉記喺 CSD。托管行仲要對帳、出月結單、管 failing。"
+  difficulty: 2
+  tags: [terminology]
+
+- id: "c.4"
+  question: "結算 = {錢}貨同時過戶，屬生命週期最後一步。"
+  answer: "錢"
+  explanation: "貨過戶（賣方→買方）+ 錢過數（買方→賣方），同步進行。"
+  difficulty: 1
+  tags: [terminology]
+
+- id: "c.5"
+  question: "買方交收日錢唔夠 → {settlement fail}，要俾 {罰息}、可能被 {buy-in}；貨唔過戶。"
+  answer: "settlement fail / 罰息 / buy-in"
+  explanation: "唔係 margin call——margin call 係保證金帳戶追保。DvP 下賣方仍然有貨，但買方要罰息+buy-in。"
+  difficulty: 2
+  tags: [scenario]
+
+- id: "c.6"
+  question: "Gross DvP 逐筆配對最安全；{Net DvP} 淨額後配對，平衡安全同{效率}。"
+  answer: "Net DvP / 效率"
+  explanation: "香港股票結算用 CCP + Net DvP——CCP 先淨額，CSD 再對淨額做 DvP。Gross 例如英國 CREST。"
+  difficulty: 3
+  tags: [comparison]
+
+- id: "c.7"
+  question: "結算參與者：CSD（貨）、{結算銀行}（錢）、托管行（代客户）。"
+  answer: "結算銀行"
+  explanation: "投資顧問唔參與交收，只提供意見。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.8"
+  question: "「托管行就係 CSD」係常見誤解——CSD 係中央機構（如 {CCASS}），托管行係中介。"
+  answer: "CCASS"
+  explanation: "托管行嘅持倉記喺 CSD 入面，兩者唔同層級。"
+  difficulty: 3
+  tags: [misconception]
+
+- id: "c.9"
+  question: "DvP 防止 {對手方風險}——唔使擔心俾咗錢對方跑路。"
+  answer: "對手方風險"
+  explanation: "係金融市場信任嘅基石，等同網購貨到付款。"
+  difficulty: 2
+  tags: [concept]
+
+- id: "c.10"
+  question: "SSI（{常設結算指示}）係預先登記嘅戶口資料；{settlement instruction} 先係呢單交幾多幾時嘅指令。"
+  answer: "常設結算指示 / settlement instruction"
+  explanation: "SSI 係常設資料，settlement instruction 係呢單嘅指令，兩者唔同。"
+  difficulty: 2
+  tags: [terminology]

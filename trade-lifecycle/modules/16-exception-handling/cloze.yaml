@@ -1,0 +1,62 @@
+- id: "c.1"
+  question: 常見交易異常類型：{輸入}錯誤、{系統}故障、對手方問題、市場異動。
+  answer: 輸入 / 系統
+  explanation: 手數價錢打錯、系統當機、對手方唔確認、極端波動都係異常。
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.2"
+  question: Cancel-correct 三步：{取消}錯誤訂單 → {修正}資料 → 重新落單。
+  answer: 取消 / 修正
+  explanation: 先撤回，再改正確，最後用正確資料再落。
+  difficulty: 2
+  tags: [process, terminology]
+
+- id: "c.3"
+  question: 異常處理流程：{發現} → {分類} → 跟進 → 結案。
+  answer: 發現 / 分類
+  explanation: 發現來源：對帳、系統警報、客人投訴。
+  difficulty: 1
+  tags: [process, terminology]
+
+- id: "c.4"
+  question: 異常{即時}處理：拖得越{耐}，損失越大（價差擴大、違規風險）。
+  answer: 即時 / 耐
+  explanation: 速度直接影響損失大小。
+  difficulty: 2
+  tags: [concept, comparison]
+
+- id: "c.5"
+  question: 高優先異常：影響{結算}、{大額}、客人投訴，要快過低優先處理。
+  answer: 結算 / 大額
+  explanation: 呢啲拖耐會直接影響客人資產。
+  difficulty: 2
+  tags: [concept, scenario]
+
+- id: "c.6"
+  question: "{SLA} = 處理{時限}（Service Level Agreement）。例如高優先 2 小時內處理。"
+  answer: SLA / 時限
+  explanation: 有時限先有壓力快速處理。
+  difficulty: 1
+  tags: [terminology, concept]
+
+- id: "c.7"
+  question: 牽涉合規/法律異常要{升級}合規部；系統性問題升級 {IT}。
+  answer: 升級 / IT
+  explanation: 超 SLA 未處理升級上級。
+  difficulty: 2
+  tags: [process, scenario]
+
+- id: "c.8"
+  question: 異常處理完整流程：{修正} + {記錄} + 通知 + 防再犯。
+  answer: 修正 / 記錄
+  explanation: 淨改數唔夠。冇記錄就冇辦法防止再犯。
+  difficulty: 3
+  tags: [process, misconception]
+
+- id: "c.9"
+  question: 速度影響{客人}信心：快 → 保住；慢 → 不滿。異常係常態，{唔使}特別準備係誤解。
+  answer: 客人 / 唔使
+  explanation: 有流程、有隊列、有 SLA，先處理得快。異常必然出現。
+  difficulty: 3
+  tags: [concept, misconception]

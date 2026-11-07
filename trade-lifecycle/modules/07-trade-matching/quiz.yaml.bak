@@ -1,0 +1,121 @@
+- id: '7.1'
+  question: 配對（matching）比對嘅四個關鍵欄位係邊四個？
+  options:
+    a: 價格、數量、日期、證券代號
+    b: 價格、佣金、日期、客戶名
+    c: 數量、手續費、時間、帳號
+    d: 價格、數量、匯率、國家
+  answer: a
+  explanation: 配對比對價格、數量、交易日期、證券代號。四欄全部一致先至 matched。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '7.2'
+  question: Trade capture 嘅作用係咩？
+  options:
+    a: 執行清算
+    b: 發出 contract note
+    c: 計算佣金
+    d: 將交易所撮合結果變成買賣雙方各自嘅交易記錄
+  answer: d
+  explanation: Trade capture 係記錄環節，將撮合結果分別寫入買方同賣方系統，之後先可以配對。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '7.3'
+  question: 系統自動配對成功之後，下一步係咩？
+  options:
+    a: 人手 affirmation 確認
+    b: 取消交易
+    c: 重新撮合
+    d: 即刻交收
+  answer: a
+  explanation: 系統比對只係第一步，affirmation 係人手最後防線，確保冇錯配，應喺 T+1 完成。
+  difficulty: 2
+  tags:
+  - process
+- id: '7.4'
+  question: 買方記錄成交價 50.00，賣方記錄 50.10，配對結果係？
+  options:
+    a: Settled
+    b: Unmatched / trade break
+    c: Affirmed
+    d: Matched
+  answer: b
+  explanation: 價格唔一致 → unmatched。必須入 queue 查證邊邊錯，唔會自己變 matched。
+  difficulty: 2
+  tags:
+  - scenario
+- id: '7.5'
+  question: 點解買賣雙方要各自獨立記錄同一筆交易？
+  options:
+    a: 因為系統故障
+    b: 雙方係獨立機構，獨立記錄先可以互相核對
+    c: 監管冇要求
+    d: 為咗增加佣金
+  answer: b
+  explanation: 獨立機構各有帳簿風控，獨立記錄 + 互相核對 = 防止一方出錯無人知。
+  difficulty: 2
+  tags:
+  - concept
+- id: '7.6'
+  question: 以下邊個唔係 unmatched trades 常見原因？
+  options:
+    a: 數量唔同
+    b: 交易日期唔同
+    c: 雙方都啱
+    d: 價格唔同
+  answer: c
+  explanation: 常見原因：價格、數量、日期唔同，或漏記錄。「雙方都啱」唔會造成 unmatched。
+  difficulty: 1
+  tags:
+  - concept
+- id: '7.7'
+  question: Affirmation 應該喺邊個時間完成？
+  options:
+    a: T+0
+    b: T+1
+    c: T+2
+    d: T+5
+  answer: b
+  explanation: 香港銀行公會規定 affirmation 喺 T+1 完成，超過 48 小時未 affirm 會進入 unmatched 狀態。
+  difficulty: 2
+  tags:
+  - process
+- id: '7.8'
+  question: 私人銀行 omnibus account 對配對嘅影響係咩？
+  options:
+    a: 令配對更快
+    b: 唔使 affirmation
+    c: 冇影響
+    d: 一單對應多個客戶，任何一個數目錯成筆交易 unmatched
+  answer: d
+  explanation: Omnibus 增加複雜度——一單多客，任何一個客戶數目錯，成筆交易 unmatched。
+  difficulty: 3
+  tags:
+  - scenario
+- id: '7.9'
+  question: 配對（matching）同清算（clearing）嘅關係係？
+  options:
+    a: 配對喺交收之後
+    b: 清算先，配對後
+    c: 配對先確認交易成立，清算先計算各方義務——順序不能倒轉
+    d: 兩者係同一件事
+  answer: c
+  explanation: 配對屬前端/中間環節確認交易成立；清算屬後端計算義務。配對先，清算後。
+  difficulty: 2
+  tags:
+  - comparison
+- id: '7.10'
+  question: Unmatched trades 唔處理嘅後果係咩？
+  options:
+    a: 越嚟越難查，阻塞後端交收流程
+    b: 交易自動取消
+    c: 佣金會退還
+    d: 自己會變 matched
+  answer: a
+  explanation: Unmatched 唔會自己消失。時間越耐當事人越唔記得，查證成本越高，交收被阻塞。
+  difficulty: 2
+  tags:
+  - concept
+

@@ -1,0 +1,131 @@
+- id: '14.1'
+  question: 對帳（reconciliation）係指邊三方核對？
+  options:
+    a: 交易所、政府、銀行
+    b: 公司內部兩個部門
+    c: 自己、對手方、清算所
+    d: 客人、RM、經理
+  answer: c
+  explanation: 對帳 = 內部帳 vs 對手方帳 vs 清算所/結算系統帳。三方一致先算數。
+  difficulty: 2
+  tags:
+  - terminology
+  - concept
+- id: '14.2'
+  question: 對帳發現兩邊數目唔符，稱為？
+  options:
+    a: Trade Break
+    b: Allocate
+    c: Match
+    d: Settle
+  answer: a
+  explanation: Trade break = 兩邊記錄唔一致。要查證邊邊錯，再修正。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '14.3'
+  question: 以下邊個係 trade break 常見原因？
+  options:
+    a: 輸入錯誤（手數打錯）
+    b: 客人主動取消
+    c: 市場休市
+    d: 匯率變動
+  answer: a
+  explanation: 輸入錯誤、時點差異、價錢差異、漏記都係常見 trade break 原因。
+  difficulty: 1
+  tags:
+  - concept
+  - scenario
+- id: '14.4'
+  question: 發現 trade break，正確第一步係？
+  options:
+    a: 直接改內部帳令兩邊一致
+    b: 查證邊邊錯，對返原始成交單
+    c: 忽略，等月底先處理
+    d: 通知客人自己查
+  answer: b
+  explanation: 要查原始成交單（fill report）同系統記錄，搵出差異來源，修正錯誤嗰邊。冇查證就改數可能改錯方向。
+  difficulty: 3
+  tags:
+  - process
+  - scenario
+- id: '14.5'
+  question: 合約單（contract note）嘅主要用途係？
+  options:
+    a: 內部對帳報告
+    b: 月度帳戶總覽
+    c: 法律交易證明，列明費用
+    d: 持倉明細
+  answer: c
+  explanation: 成交單係法律文件，列明交易細節同費用，係客人嘅交易憑證。
+  difficulty: 2
+  tags:
+  - terminology
+  - comparison
+- id: '14.6'
+  question: 月結單（statement）主要俾邊個睇？
+  options:
+    a: 只有監管機構
+    b: 客人（帳戶總覽）
+    c: 只有交易所
+    d: 只有稅務局
+  answer: b
+  explanation: 月結單係月度帳戶總覽：交易、持倉、結餘，俾客人核對帳目。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '14.7'
+  question: 每日對帳嘅主要價值係？
+  options:
+    a: 早期發現錯誤，防止累積
+    b: 提高交易速度
+    c: 減少交易費用
+    d: 減少員工工作量
+  answer: a
+  explanation: 每日對帳令錯數即時發現修正，唔會累積到月底先爆。
+  difficulty: 2
+  tags:
+  - concept
+  - comparison
+- id: '14.8'
+  question: 月結單點解要列明所有費用？
+  options:
+    a: 政府要求列明所有交易
+    b: 方便會計記帳
+    c: 純粹為咗格式整齊
+    d: 合規要求 + 客人要計淨回報
+  answer: d
+  explanation: 合規要求定期提供費用明細，客人知情權，亦要計到淨回報。
+  difficulty: 2
+  tags:
+  - concept
+  - scenario
+- id: '14.9'
+  question: 對帳唔一致時，邊個帳最可信作參考？
+  options:
+    a: 客人自己嘅記錄
+    b: 原始成交單同清算所記錄
+    c: RM 嘅記憶
+    d: 內部帳（因為係自己記錄）
+  answer: b
+  explanation: 原始成交單係第一手記錄，清算所係獨立第三方，兩者比內部帳更可信。
+  difficulty: 3
+  tags:
+  - concept
+  - comparison
+- id: '14.10'
+  question: 客人問「我月結單嘅持倉同我自己記嘅唔同」，作為 RM 你應點做？
+  options:
+    a: 話客人記錯
+    b: 叫客人自己再查
+    c: 直接改客人帳目
+    d: 對帳查證，向中後台核實後回覆客人
+  answer: d
+  explanation: 牽涉帳目差異，要走對帳流程核實，先回覆客人。唔可以未查證就下結論。
+  difficulty: 3
+  tags:
+  - scenario
+  - process
+

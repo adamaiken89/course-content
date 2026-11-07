@@ -1,0 +1,127 @@
+- id: '19.1'
+  question: 中後台（settlement、對帳）崗位，課程推薦通讀邊本書？
+  options:
+    a: Options, Futures, and Other Derivatives — Hull
+    b: Clearing, Settlement, and Custody — Loader
+    c: Market Microstructure Theory — O'Hara
+    d: Trading and Exchanges — Harris
+  answer: b
+  explanation: Loader 嘅 Clearing, Settlement, and Custody 涵蓋成個 post-trade 流程，係中後台首選通讀本。
+  difficulty: 1
+  tags:
+  - terminology
+  - concept
+- id: '19.2'
+  question: Trading and Exchanges 係邊個作者寫？
+  options:
+    a: Maureen O'Hara
+    b: John C. Hull
+    c: Larry Harris
+    d: David Loader
+  answer: c
+  explanation: Larry Harris，Oxford University Press 2002 首版。曾任 SEC 經濟學家，市場微觀結構實務標準參考。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '19.3'
+  question: 點解書單話「工具書唔使由第 1 頁順序讀」？
+  options:
+    a: 因為書太厚讀唔晒
+    b: 工具書係 reference，按場景查先有效；冇場景配合讀完都留唔低
+    c: 因為作者寫得差
+    d: 因為課程已經講晒
+  answer: b
+  explanation: 課程俾骨架，書俾深度。按模組章節對應查閱，先至用得着。
+  difficulty: 2
+  tags:
+  - concept
+  - misconception
+- id: '19.4'
+  question: 以下邊本屬於「理論加餐」、唔係必讀？
+  options:
+    a: Market Microstructure Theory — O'Hara
+    b: Clearing, Settlement, and Custody — Loader
+    c: Securities Operations — Simmons
+    d: Straight Through Processing — Khanna
+  answer: a
+  explanation: O'Hara 嗰本大量數學模型，係學術經典。想知「點解會咁」先讀，實務崗位唔係必讀。
+  difficulty: 2
+  tags:
+  - concept
+  - terminology
+- id: '19.5'
+  question: Straight Through Processing 對應課程邊個模組？
+  options:
+    a: Module 03 訂單基礎
+    b: Module 12 唔同工具
+    c: Module 17 系統地圖
+    d: Module 01 總覽
+  answer: c
+  explanation: Khanna 嘅 STP 講全自動化系統架構，直接對應 Module 17 嘅 OMS 到托管行鏈路。
+  difficulty: 2
+  tags:
+  - process
+- id: '19.6'
+  question: 驗證一本書係咪真存在，正確做法係？
+  options:
+    a: 輸入書名去 Open Library 同第二個獨立來源，兩個都搵到先算
+    b: 問朋友聽過未
+    c: 睲封面設計靚唔靚
+    d: 睲邊本最厚
+  answer: a
+  explanation: 課程書單七本全部經 Open Library 二次查證。兩個獨立來源一致先好買，防止買錯。
+  difficulty: 2
+  tags:
+  - process
+  - concept
+- id: '19.7'
+  question: 同事買齊七本由第 1 頁讀起，結果「一本都讀唔完」。問題係？
+  options:
+    a: 佢讀得太慢
+    b: 書單係工具箱唔係 checklist——一本通讀 + 其餘查閱就夠
+    c: 佢應該買多幾本
+    d: 佢應該讀慢啲
+  answer: b
+  explanation: 強求讀晒七本通常全軍覆沒。一輩子一本貼崗位通讀本 + 其餘按需查，已經夠用。
+  difficulty: 2
+  tags:
+  - misconception
+  - scenario
+- id: '19.8'
+  question: Options, Futures, and Other Derivatives 作者係？
+  options:
+    a: Larry Harris
+    b: Sophie Laruelle
+    c: John C. Hull
+    d: Michael Simmons
+  answer: c
+  explanation: John C. Hull，首版 1989，更新至第 10 版。衍生工具聖經，當工具書查閱。
+  difficulty: 1
+  tags:
+  - terminology
+- id: '19.9'
+  question: 前台（執行）崗位通讀 Harris 之後，想知近十年暗池、算法交易變化，再加邊本？
+  options:
+    a: Market Microstructure in Practice — Laruelle（2013）
+    b: Market Microstructure Theory — O'Hara（1995）
+    c: Securities Operations — Simmons（2002）
+    d: Trading and Exchanges — Harris（2002）
+  answer: a
+  explanation: Laruelle 2013 年出版，涵蓋暗池、算法交易等現代議題，比 Harris 新、比 O'Hara 易讀。
+  difficulty: 3
+  tags:
+  - scenario
+  - concept
+- id: '19.10'
+  question: 主管問「結算 fail 點處理」，你引到 Loader 邊章講咩。呢個表現比淨係答課程內容好，因為？
+  options:
+    a: 顯示你讀得多書
+    b: 兩層理解——課程骨架 + 專業參考深度，證明你知市場點解咁做
+    c: 顯示你識英文
+    d: 其實冇分別
+  answer: b
+  explanation: 課程俾骨架同詞彙，書俾深度。引到出處代表你有第二層理解，唔係背誦。
+  difficulty: 3
+  tags:
+  - scenario
+  - concept
